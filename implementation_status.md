@@ -50,7 +50,14 @@ Dieses Dokument verfolgt den Fortschritt der Implementierung des Langchain SQL A
 
 ## Nächste unmittelbare Aufgaben
 
-1.  ~~**Debugging des SQL Agenten:** Sicherstellen, dass der Agent die dynamisch erstellte `TestTable` in der SQLite In-Memory-Datenbank erkennt. Möglicher Ansatz: `db.refresh_schema()` verwenden.~~ **ERLEDIGT**
-2.  ~~Analyse der doppelten "Loaded 4 documents"-Ausgabe.~~ **ERLEDIGT**
-3.  ~~Vervollständigung der Unit-Tests für den FAISS-Pfad in `test_firebird_sql_agent.py`.~~ **ERLEDIGT**
-4.  ~~Implementierung der Extraktion der tatsächlichen SQL-Query.~~ **ERLEDIGT**
+1.  **Analyse des Agentenverhaltens bezüglich Schema-Nutzung:**
+    *   Untersuchen, warum der Agent angibt, dass das `sql_db_schema`-Tool nicht funktioniert oder er keinen Zugriff auf korrekte Schema-Informationen hat.
+    *   Prüfen, ob die vom `sqlalchemy-firebird`-Dialekt nach unseren Korrekturen zurückgegebenen Schema-Informationen für das LLM verständlich und vollständig sind.
+2.  **Weitere Optimierung des System-Prompts für den SQL-Agenten:**
+    *   Basierend auf dem Verhalten des Agenten den System-Prompt in `firebird_sql_agent.py` weiter verfeinern, um die SQL-Generierung und den Umgang mit dem Schema zu verbessern.
+3.  **Testen der Stabilität und Korrektheit von SQL-Abfragen:**
+    *   Systematische Tests mit verschiedenen natürlichsprachigen Anfragen durchführen, um die Qualität der generierten SQL-Abfragen zu bewerten.
+4.  ~~**Debugging des SQL Agenten:** Sicherstellen, dass der Agent die dynamisch erstellte `TestTable` in der SQLite In-Memory-Datenbank erkennt. Möglicher Ansatz: `db.refresh_schema()` verwenden.~~ **ERLEDIGT**
+5.  ~~Analyse der doppelten "Loaded 4 documents"-Ausgabe.~~ **ERLEDIGT**
+6.  ~~Vervollständigung der Unit-Tests für den FAISS-Pfad in `test_firebird_sql_agent.py`.~~ **ERLEDIGT**
+7.  ~~Implementierung der Extraktion der tatsächlichen SQL-Query.~~ **ERLEDIGT**

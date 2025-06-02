@@ -30,36 +30,58 @@ from sqlalchemy.pool import StaticPool
 from retrievers import FaissDocumentationRetriever, BaseDocumentationRetriever
 
 class SQLCaptureCallbackHandler(BaseCallbackHandler):
-    """A callback handler to capture the SQL query executed by the agent."""
+    """A callback handler to capture SQL queries and other agent actions."""
     def __init__(self):
         super().__init__()
         self.sql_query: Optional[str] = None
+        self.full_log: List[Dict[str, Any]] = [] # To store actions and observations
+        self._current_action: Optional[AgentAction] = None
 
     def on_agent_action(self, action: AgentAction, **kwargs: Any) -> Any:
-        """Capture the SQL query if the action is a database query."""
-        # The tool name might vary depending on the SQL agent version/setup.
-        # Common names are 'sql_db_query', 'query-sql', 'sql_query'.
-        # We should inspect the `action.tool` to be sure.
-        # For SQLDatabaseToolkit, it's typically 'sql_db_query'.
-        if action.tool == "sql_db_query": # Or whatever the specific tool name is
-            # The tool_input can be a string or a dictionary.
-            # If it's a dictionary, the query might be under a 'query' key.
+        """Called when the agent is about to perform an action."""
+        print(f"Callback: Agent action: {action.tool}, Input: {action.tool_input}")
+        self._current_action = action # Store action to associate with observation later
+        
+        # Capture SQL query specifically if it's a sql_db_query action
+        if action.tool == "sql_db_query":
             if isinstance(action.tool_input, str):
                 self.sql_query = action.tool_input
             elif isinstance(action.tool_input, dict) and 'query' in action.tool_input:
                 self.sql_query = action.tool_input['query']
+            else:
+                # Handle cases where tool_input might be a different dict structure
+                # For example, some agents might pass {'sql_query': 'SELECT ...'}
+                # This part might need adjustment based on actual tool_input format if not str or {'query': ...}
+                print(f"Callback: sql_db_query tool_input is not a string or a dict with 'query' key: {action.tool_input}")
+                self.sql_query = str(action.tool_input) # Fallback to string representation
+
             print(f"Callback captured SQL: {self.sql_query}")
 
-    def on_tool_start(self, serialized: Dict[str, Any], input_str: str, **kwargs: Any) -> Any:
-        """Alternative way to capture input to a specific tool if on_agent_action is tricky."""
-        # This might be more reliable if the tool name is consistent.
-        if serialized.get("name") == "sql_db_query": # Check the tool's name
-            self.sql_query = input_str
-            print(f"Callback (on_tool_start) captured SQL: {self.sql_query}")
+    def on_tool_end(self, output: str, name: str, **kwargs: Any) -> Any:
+        """Called when a tool has finished running."""
+        print(f"Callback: Tool '{name}' ended. Output: {str(output)[:200]}...")
+        if self._current_action:
+            self.full_log.append({
+                "action": self._current_action.dict(), # Convert AgentAction to dict for easier storage/access
+                "observation": output
+            })
+            self._current_action = None # Reset for the next action
 
-    def clear_sql_query(self):
-        """Clears the captured SQL query for the next run."""
+    def on_tool_error(self, error: Union[Exception, KeyboardInterrupt], name: str, **kwargs: Any) -> Any:
+        """Called when a tool errors."""
+        print(f"Callback: Tool '{name}' errored: {error}")
+        if self._current_action:
+            self.full_log.append({
+                "action": self._current_action.dict(),
+                "error": str(error)
+            })
+            self._current_action = None
+
+    def clear_log(self):
+        """Clears all captured data for the next run."""
         self.sql_query = None
+        self.full_log = []
+        self._current_action = None
 
 class FirebirdDocumentedSQLAgent:
     """
@@ -256,6 +278,61 @@ class FirebirdDocumentedSQLAgent:
         """
         Initializes the Langchain SQL Agent.
         """
+        # --- Diagnose: SQLAlchemy Dialekte auflisten ---
+        try:
+            import importlib.metadata
+            print("Inspecting SQLAlchemy dialects via importlib.metadata:")
+            dialects_group = 'sqlalchemy.dialects'
+            entry_points = []
+            # In Python 3.10+ importlib.metadata.entry_points() returns a SelectableGroups object
+            # For older versions, it might return a dict or require a different approach.
+            # We'll try the modern approach first.
+            try:
+                eps = importlib.metadata.entry_points(group=dialects_group)
+                if eps: # Check if eps is not None or empty
+                     for ep in eps:
+                        entry_points.append(ep.name)
+            except AttributeError: # Fallback for older Python versions if .entry_points(group=...) is not available or behaves differently
+                 # This fallback might need adjustment based on the specific Python version's importlib.metadata API
+                all_eps = importlib.metadata.entry_points()
+                if dialects_group in all_eps:
+                    for ep in all_eps[dialects_group]:
+                        entry_points.append(ep.name)
+
+            if entry_points:
+                print(f"Found entry points for '{dialects_group}':")
+                for ep_name in sorted(list(set(entry_points))): # Sort and unique
+                    print(f"  - {ep_name}")
+            else:
+                print(f"No entry points found for group '{dialects_group}'. This method might not work for this Python/SQLAlchemy version or no dialects are registered this way.")
+
+        except Exception as e_diag:
+            print(f"Error inspecting SQLAlchemy dialects via importlib.metadata: {e_diag}")
+        # --- Ende Diagnose ---
+
+        # --- Test direkter fdb.connect für Firebird Embedded ---
+        if "firebird+fdb" in self.db_connection_string and "///" in self.db_connection_string: # Nur für Embedded-Test
+            print("Attempting direct fdb.connect test for embedded Firebird...")
+            try:
+                url_for_direct_test = make_url(self.db_connection_string)
+                db_path_for_direct_test = str(url_for_direct_test.database)
+                if db_path_for_direct_test.startswith("//"): # Korrektur für Pfad, falls nötig
+                     db_path_for_direct_test = db_path_for_direct_test[1:]
+                
+                print(f"Direct fdb.connect with DSN: {db_path_for_direct_test}, User: {url_for_direct_test.username}")
+                conn_test_direct = fdb.connect(
+                    dsn=db_path_for_direct_test,
+                    user=url_for_direct_test.username,
+                    password=url_for_direct_test.password,
+                    charset="WIN1252"
+                )
+                print("Direct fdb.connect successful.")
+                conn_test_direct.close()
+                print("Direct fdb.connect closed.")
+            except Exception as e_fdb_direct:
+                print(f"Direct fdb.connect test failed: {e_fdb_direct}")
+        # --- Ende direkter fdb.connect Test ---
+
         if not self.db_connection_string:
             print("Error: DB connection string is not set. Cannot initialize SQL Agent.")
             return None
@@ -367,6 +444,7 @@ class FirebirdDocumentedSQLAgent:
             VERY IMPORTANT: Only use column names that you can explicitly see in the schema description for the respective tables. Do not invent column names or assume they exist.
             Be careful to not query for columns that do not exist.
             Also, pay attention to which column is in which table. If the schema information is incomplete or seems to be missing for a table, state this and ask for clarification rather than guessing column names.
+            If the schema information from the `sql_db_schema` tool is ambiguous or seems incomplete, prioritize the table and column information found in the supplementary documentation context (YAML, Markdown files) if available.
 
             Use the DDL and schema information provided in the documentation context and from the `sql_db_schema` tool to construct your queries.
             If a Stored Procedure seems relevant based on its name or description in the documentation, consider using it.
@@ -392,7 +470,8 @@ class FirebirdDocumentedSQLAgent:
                 verbose=True, # Set to False for less console output in production
                 handle_parsing_errors=True, # Handles errors if LLM outputs non-SQL
                 max_iterations=10,
-                callbacks=[self.sql_callback_handler] # Pass the callback handler here
+                callbacks=[self.sql_callback_handler], # Pass the callback handler here
+                return_intermediate_steps=True # Hinzufügen, um Schritte zu erhalten
                 # agent_type=AgentType.OPENAI_FUNCTIONS, # Or other agent types if needed
                 # agent_kwargs={"system_message": system_message} # Pass system message if supported by agent type
             )
@@ -552,35 +631,40 @@ class FirebirdDocumentedSQLAgent:
         print(f"\nSending to SQL agent:\nUser Query: {natural_language_query}\nEnhanced with context (first 200 chars of context): {doc_context_str[:200] if doc_context_str else 'N/A'}")
 
         try:
-            self.sql_callback_handler.clear_sql_query() # Clear previous SQL
-            # Use invoke instead of run for more structured output and access to intermediate steps
+            self.sql_callback_handler.clear_log() # Clear previous full log and SQL query
+            
+            # Use invoke instead of run for more structured output
             agent_response_dict = self.sql_agent.invoke({"input": enhanced_query_for_agent, "chat_history": []})
             agent_final_answer = agent_response_dict.get("output", "No output from agent.")
             
+            # Get SQL from the callback handler, which should be more reliable now
             generated_sql = self.sql_callback_handler.sql_query
-            if not generated_sql:
-                # Fallback: Try to parse from intermediate_steps if callback didn't catch it
-                # This is a secondary measure. The callback should be the primary.
-                intermediate_steps = agent_response_dict.get("intermediate_steps", [])
-                for step in reversed(intermediate_steps): # Check last SQL query
-                    if isinstance(step, tuple) and len(step) > 0:
-                        action_taken = step[0]
-                        if isinstance(action_taken, AgentAction) and action_taken.tool == "sql_db_query":
-                            tool_input = action_taken.tool_input
-                            if isinstance(tool_input, str):
-                                generated_sql = tool_input
-                                break
-                            elif isinstance(tool_input, dict) and 'query' in tool_input:
-                                generated_sql = tool_input['query']
-                                break
-                if generated_sql:
-                    print(f"SQL extracted from intermediate_steps: {generated_sql}")
-                else:
-                    print("Warning: SQL query not captured by callback or found in intermediate_steps.")
-                    generated_sql = "SQL_QUERY_NOT_EXTRACTED"
+            
+            # Get the full log of actions and observations from the callback
+            detailed_steps = self.sql_callback_handler.full_log
+            
+            if not generated_sql: # If callback didn't set it directly
+                # Try to find it in the detailed_steps from the callback
+                for log_entry in reversed(detailed_steps):
+                    action_data = log_entry.get("action")
+                    if action_data and action_data.get("tool") == "sql_db_query":
+                        tool_input = action_data.get("tool_input")
+                        if isinstance(tool_input, str):
+                            generated_sql = tool_input
+                            break
+                        elif isinstance(tool_input, dict) and 'query' in tool_input:
+                            generated_sql = tool_input['query']
+                            break
+            
+            if not generated_sql: # If still not found
+                generated_sql = "SQL_QUERY_NOT_EXTRACTED_BY_CALLBACK_OR_LOG_PARSE"
+                print("Warning: SQL query could not be extracted via callback or by parsing its full_log.")
+            else:
+                # This print might be redundant if the callback already printed it.
+                # Consider removing if callback's print is sufficient.
+                print(f"SQL extracted (by query method logic): {generated_sql}")
 
             print(f"Agent Final Answer: {agent_final_answer}")
-            print(f"Extracted SQL: {generated_sql}")
 
             # Now generate the three textual response variants
             text_responses = self._generate_textual_responses(
@@ -596,9 +680,10 @@ class FirebirdDocumentedSQLAgent:
                 "agent_final_answer": agent_final_answer,
                 "generated_sql": generated_sql,
                 "text_variants": text_responses,
+                "detailed_steps": detailed_steps,
                 "error": None
             }
-
+ 
         except Exception as e:
             print(f"Error during SQL agent execution: {e}")
             # Log the full exception for debugging
@@ -616,9 +701,10 @@ class FirebirdDocumentedSQLAgent:
                 "agent_final_answer": None,
                 "generated_sql": None,
                 "text_variants": error_text_variants,
+                "detailed_steps": self.sql_callback_handler.full_log if hasattr(self, 'sql_callback_handler') else [],
                 "error": str(e)
             }
-
+ 
     def _generate_textual_responses(self,
                                     natural_language_query: str,
                                     retrieved_context: str,
@@ -731,8 +817,9 @@ if __name__ == "__main__":
     # TEST_DB_CONNECTION_STRING = "firebird+fdb://sysdba:masterkey@localhost:3050//path/to/your/database.fdb"
     
     # Option 2: Use SQLite in-memory for basic agent testing (no Firebird specifics)
-    TEST_DB_CONNECTION_STRING = "sqlite:///:memory:"
-
+    # TEST_DB_CONNECTION_STRING = "sqlite:///:memory:"
+    TEST_DB_CONNECTION_STRING = "firebird+fdb://sysdba:masterkey@///home/projects/langchain_project/WINCASA2022.FDB" # Echte Wincasa DB (Embedded-Modus)
+ 
     # LLM Configuration (using a placeholder model name, replace if needed)
     # Ensure OPENROUTER_API_KEY or OPENAI_API_KEY is set in your environment or .env file
     # For OpenRouter, model name might be like "openai/gpt-3.5-turbo"
@@ -848,7 +935,7 @@ if __name__ == "__main__":
 
             # Test query
             # This query should work with the in-memory SQLite TestTable
-            test_query_1 = "How many items are in TestTable?"
+            test_query_1 = "Zeige mir die ersten 5 Bewohner." # Query for Wincasa DB
             print(f"\n--- Running Test Query 1: \"{test_query_1}\" ---")
             response_1 = agent.query(test_query_1)
             print(f"\nResponse for Query 1:")
@@ -859,10 +946,19 @@ if __name__ == "__main__":
             if response_1.get("text_variants"):
                 for i, variant in enumerate(response_1["text_variants"]):
                     print(f"  Text Variant {i+1} ({variant.get('variant_name')}):\n    {variant.get('text')}")
+            if response_1.get('detailed_steps'):
+                print("\n  Detailed Steps (Query 1 from Callback Handler):")
+                for entry_idx, entry in enumerate(response_1['detailed_steps']):
+                    action_data = entry.get('action', {})
+                    observation = entry.get('observation', entry.get('error', 'N/A')) # Handle if it's an error entry
+                    print(f"    Step {entry_idx + 1}:")
+                    print(f"      Tool: {action_data.get('tool')}")
+                    print(f"      Tool Input: {action_data.get('tool_input')}")
+                    print(f"      Observation/Error: {str(observation)[:500]}...") # Truncate long observations
             if response_1.get('error'):
                 print(f"  Error: {response_1.get('error')}")
-
-            test_query_2 = "What is the name of the item with id 1?"
+ 
+            test_query_2 = "Welche Spalten hat die Tabelle BEWOHNER?" # Query for Wincasa DB
             print(f"\n--- Running Test Query 2: \"{test_query_2}\" ---")
             response_2 = agent.query(test_query_2)
             print(f"\nResponse for Query 2:")
@@ -872,9 +968,62 @@ if __name__ == "__main__":
             if response_2.get("text_variants"):
                  for i, variant in enumerate(response_2["text_variants"]):
                     print(f"  Text Variant {i+1} ({variant.get('variant_name')}):\n    {variant.get('text')}")
+            if response_2.get('detailed_steps'):
+                print("\n  Detailed Steps (Query 2 from Callback Handler):")
+                for entry_idx, entry in enumerate(response_2['detailed_steps']):
+                    action_data = entry.get('action', {})
+                    observation = entry.get('observation', entry.get('error', 'N/A'))
+                    print(f"    Step {entry_idx + 1}:")
+                    print(f"      Tool: {action_data.get('tool')}")
+                    print(f"      Tool Input: {action_data.get('tool_input')}")
+                    print(f"      Observation/Error: {str(observation)[:500]}...")
             if response_2.get('error'):
                 print(f"  Error: {response_2.get('error')}")
 
+            # test_query_3 = "What is the name of the item with id 99?" # Test non-existent
+            # print(f"\n--- Running Test Query 3: \"{test_query_3}\" ---")
+            # response_3 = agent.query(test_query_3)
+            # print(f"\nResponse for Query 3:")
+            # print(f"  Natural Language Query: {response_3.get('natural_language_query')}")
+            # print(f"  Generated SQL: {response_3.get('generated_sql')}")
+            # print(f"  Agent Final Answer: {response_3.get('agent_final_answer')}")
+            # if response_3.get("text_variants"):
+            #      for i, variant in enumerate(response_3["text_variants"]):
+            #         print(f"  Text Variant {i+1} ({variant.get('variant_name')}):\n    {variant.get('text')}")
+            # if response_3.get('detailed_steps'):
+            #     print("\n  Detailed Steps (Query 3 from Callback Handler):")
+            #     for entry_idx, entry in enumerate(response_3['detailed_steps']):
+            #         action_data = entry.get('action', {})
+            #         observation = entry.get('observation', entry.get('error', 'N/A'))
+            #         print(f"    Step {entry_idx + 1}:")
+            #         print(f"      Tool: {action_data.get('tool')}")
+            #         print(f"      Tool Input: {action_data.get('tool_input')}")
+            #         print(f"      Observation/Error: {str(observation)[:500]}...")
+            # if response_3.get('error'):
+            #     print(f"  Error: {response_3.get('error')}")
+
+            # test_query_4 = "Are there any items with 'Sample' in their name?" # Test LIKE
+            # print(f"\n--- Running Test Query 4: \"{test_query_4}\" ---")
+            # response_4 = agent.query(test_query_4)
+            # print(f"\nResponse for Query 4:")
+            # print(f"  Natural Language Query: {response_4.get('natural_language_query')}")
+            # print(f"  Generated SQL: {response_4.get('generated_sql')}")
+            # print(f"  Agent Final Answer: {response_4.get('agent_final_answer')}")
+            # if response_4.get("text_variants"):
+            #      for i, variant in enumerate(response_4["text_variants"]):
+            #         print(f"  Text Variant {i+1} ({variant.get('variant_name')}):\n    {variant.get('text')}")
+            # if response_4.get('detailed_steps'):
+            #     print("\n  Detailed Steps (Query 4 from Callback Handler):")
+            #     for entry_idx, entry in enumerate(response_4['detailed_steps']):
+            #         action_data = entry.get('action', {})
+            #         observation = entry.get('observation', entry.get('error', 'N/A'))
+            #         print(f"    Step {entry_idx + 1}:")
+            #         print(f"      Tool: {action_data.get('tool')}")
+            #         print(f"      Tool Input: {action_data.get('tool_input')}")
+            #         print(f"      Observation/Error: {str(observation)[:500]}...")
+            # if response_4.get('error'):
+            #     print(f"  Error: {response_4.get('error')}")
+ 
         else:
             print("\nAgent or SQL sub-agent initialization failed. Check logs.")
 
@@ -1050,7 +1199,3 @@ def run_test_with_mock_llm():
         shutil.rmtree("output_mock", ignore_errors=True) # Remove the parent mock dir
         print("Mock LLM test cleanup complete.")
 
-
-if __name__ == "__main__":
-    # run_test_with_mock_llm() # Uncomment to run the mock LLM test
-    pass # Keep the original test run active by default
