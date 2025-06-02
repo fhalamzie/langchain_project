@@ -1,4 +1,4 @@
-# Implementierungsstatus: Langchain SQL Agent mit parallelen RAG-Ansätzen
+h# Implementierungsstatus: Langchain SQL Agent mit parallelen RAG-Ansätzen
 
 Dieses Dokument verfolgt den Fortschritt der Implementierung des Langchain SQL Agents mit FAISS- und Neo4j-basierten RAG-Ansätzen.
 

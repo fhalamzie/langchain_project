@@ -232,6 +232,7 @@ class FirebirdDocumentedSQLAgent:
         self.neo4j_retriever: Optional[BaseDocumentationRetriever] = None # Placeholder for Neo4j
         
         self.active_retriever: Optional[BaseDocumentationRetriever] = None
+        self.db_engine: Optional[create_engine] = None # Hinzufügen für direkten Engine-Zugriff
         
         self.sql_agent = None # To be initialized by _setup_sql_agent
         self.sql_callback_handler = SQLCaptureCallbackHandler() # Initialize the callback handler
@@ -310,28 +311,30 @@ class FirebirdDocumentedSQLAgent:
             print(f"Error inspecting SQLAlchemy dialects via importlib.metadata: {e_diag}")
         # --- Ende Diagnose ---
 
-        # --- Test direkter fdb.connect für Firebird Embedded ---
-        if "firebird+fdb" in self.db_connection_string and "///" in self.db_connection_string: # Nur für Embedded-Test
-            print("Attempting direct fdb.connect test for embedded Firebird...")
-            try:
-                url_for_direct_test = make_url(self.db_connection_string)
-                db_path_for_direct_test = str(url_for_direct_test.database)
-                if db_path_for_direct_test.startswith("//"): # Korrektur für Pfad, falls nötig
-                     db_path_for_direct_test = db_path_for_direct_test[1:]
-                
-                print(f"Direct fdb.connect with DSN: {db_path_for_direct_test}, User: {url_for_direct_test.username}")
-                conn_test_direct = fdb.connect(
-                    dsn=db_path_for_direct_test,
-                    user=url_for_direct_test.username,
-                    password=url_for_direct_test.password,
-                    charset="WIN1252"
-                )
-                print("Direct fdb.connect successful.")
-                conn_test_direct.close()
-                print("Direct fdb.connect closed.")
-            except Exception as e_fdb_direct:
-                print(f"Direct fdb.connect test failed: {e_fdb_direct}")
-        # --- Ende direkter fdb.connect Test ---
+        # # --- Test direkter fdb.connect für Firebird Embedded ---
+        # if "firebird+fdb" in self.db_connection_string and "///" in self.db_connection_string: # Nur für Embedded-Test
+        #     print("Attempting direct fdb.connect test for embedded Firebird...")
+        #     try:
+        #         url_for_direct_test = make_url(self.db_connection_string)
+        #         db_path_for_direct_test = str(url_for_direct_test.database)
+        #         if db_path_for_direct_test.startswith("//"): # Korrektur für Pfad, falls nötig
+        #              db_path_for_direct_test = db_path_for_direct_test[1:]
+        #
+        #         print(f"Direct fdb.connect with DSN: {db_path_for_direct_test}, User: {url_for_direct_test.username}")
+        #         conn_test_direct = fdb.connect(
+        #             dsn=db_path_for_direct_test,
+        #             user=url_for_direct_test.username,
+        #             password=url_for_direct_test.password,
+        #             charset="WIN1252"
+        #         )
+        #         print("Direct fdb.connect successful.")
+        #         conn_test_direct.close()
+        #         print("Direct fdb.connect closed.")
+        #     except Exception as e_fdb_direct:
+        #         print(f"Direct fdb.connect test failed: {e_fdb_direct}")
+        #         print("Skipping further SQL Agent setup due to direct fdb.connect failure.")
+        #         return None # Verhindert weiteren Initialisierungsversuch
+        # # --- Ende direkter fdb.connect Test ---
 
         if not self.db_connection_string:
             print("Error: DB connection string is not set. Cannot initialize SQL Agent.")
@@ -376,7 +379,8 @@ class FirebirdDocumentedSQLAgent:
                     print("SQLAlchemy engine created for the persistent SQLite connection.")
 
                     # Initialize SQLDatabase with the engine and explicitly include TestTable
-                    db = SQLDatabase(engine, include_tables=['TestTable'])
+                    self.db_engine = engine # Engine speichern
+                    db = SQLDatabase(self.db_engine, include_tables=['TestTable'])
                     print("SQLDatabase initialized with custom engine and include_tables=['TestTable'].")
 
                 except Exception as e_create:
@@ -403,7 +407,7 @@ class FirebirdDocumentedSQLAgent:
                             user=url.username,
                             password=url.password,
                             port=url.port if url.port else 3050, # Standard-Firebird-Port
-                            charset="WIN1252" # Wie in db_executor.py
+                            charset="WIN1252" # Wieder hinzufügen, da der Server es erwarten könnte
                         )
 
                     engine = create_engine(
@@ -416,7 +420,8 @@ class FirebirdDocumentedSQLAgent:
                     with engine.connect() as connection_test:
                         print("SQLAlchemy engine connected successfully via custom creator.")
                     
-                    db = SQLDatabase(engine)
+                    self.db_engine = engine # Engine speichern
+                    db = SQLDatabase(self.db_engine)
                     print("SQLDatabase initialized with custom Firebird creator function.")
                 except Exception as e_fdb_creator:
                     print(f"Error setting up Firebird SQLDatabase with custom creator: {e_fdb_creator}")
@@ -818,7 +823,7 @@ if __name__ == "__main__":
     
     # Option 2: Use SQLite in-memory for basic agent testing (no Firebird specifics)
     # TEST_DB_CONNECTION_STRING = "sqlite:///:memory:"
-    TEST_DB_CONNECTION_STRING = "firebird+fdb://sysdba:masterkey@///home/projects/langchain_project/WINCASA2022.FDB" # Echte Wincasa DB (Embedded-Modus)
+    TEST_DB_CONNECTION_STRING = "firebird+fdb://sysdba:masterkey@localhost:3050//home/projects/langchain_project/WINCASA2022.FDB" # Echte Wincasa DB (Server-Modus)
  
     # LLM Configuration (using a placeholder model name, replace if needed)
     # Ensure OPENROUTER_API_KEY or OPENAI_API_KEY is set in your environment or .env file
@@ -930,9 +935,39 @@ if __name__ == "__main__":
         )
         
         # Check if the agent and its SQL sub-agent were initialized
-        if agent and agent.sql_agent:
+        if agent and agent.sql_agent and agent.db_engine: # Prüfen, ob die Engine gespeichert wurde
             print("\nAgent and SQL sub-agent initialized successfully.")
 
+            # --- Direkter SQLAlchemy Inspector Test ---
+            from sqlalchemy import inspect, text
+            engine_to_inspect = agent.db_engine # Gespeicherte Engine verwenden
+            print(f"\n--- Running direct SQLAlchemy Inspector test for table BEWOHNER on engine: {engine_to_inspect} ---")
+            try:
+                inspector = inspect(engine_to_inspect)
+                columns = inspector.get_columns("BEWOHNER") # Großschreibung beachten, wie Firebird es speichert
+                if columns:
+                    print("Columns in BEWOHNER (via direct inspection):")
+                    for column in columns:
+                        print(f"  - {column['name']}: {column['type']}")
+                else:
+                    print("Could not retrieve columns for BEWOHNER via direct inspection (no columns found or table does not exist).")
+                
+                # Teste eine einfache Abfrage direkt über SQLAlchemy, um die Verbindung weiter zu prüfen
+                print("\nAttempting direct SQLAlchemy query on BEWOHNER...")
+                with engine_to_inspect.connect() as connection:
+                    result = connection.execute(text("SELECT FIRST 5 * FROM BEWOHNER"))
+                    print("Direct query successful. First 5 rows (or less):")
+                    for row in result:
+                        print(row)
+                    result.close()
+
+            except Exception as e_inspect:
+                print(f"Error during direct SQLAlchemy inspection/query for BEWOHNER: {e_inspect}")
+                import traceback
+                traceback.print_exc()
+            print("--- End of direct SQLAlchemy Inspector test ---")
+            # --- Ende Direkter SQLAlchemy Inspector Test ---
+ 
             # Test query
             # This query should work with the in-memory SQLite TestTable
             test_query_1 = "Zeige mir die ersten 5 Bewohner." # Query for Wincasa DB
