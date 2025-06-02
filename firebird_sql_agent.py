@@ -1,0 +1,1056 @@
+import os
+# Setzen der Umgebungsvariable für den Firebird-Client-Pfad
+# Dies sollte vor dem Import von fdb oder sqlalchemy erfolgen, falls diese den Pfad beim Import prüfen.
+# Da fdb wahrscheinlich erst bei der Initialisierung von SQLDatabase geladen wird, ist es hier sicher.
+lib_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'lib'))
+os.environ['FIREBIRD_LIBRARY_PATH'] = os.path.join(lib_path, 'libfbclient.so')
+print(f"FIREBIRD_LIBRARY_PATH set to: {os.environ['FIREBIRD_LIBRARY_PATH']}")
+
+import fdb # FDB früh importieren
+import glob
+import yaml
+from typing import List, Dict, Any, Optional, Union # Added Optional and Union
+from pathlib import Path # Hinzufügen für Pfadoperationen
+from unittest.mock import MagicMock # Moved import to top level
+from langchain_core.documents import Document
+from langchain_core.callbacks.base import BaseCallbackHandler
+from langchain_core.agents import AgentAction, AgentFinish
+from langchain_openai import OpenAIEmbeddings
+from langchain_community.utilities import SQLDatabase
+from langchain_community.agent_toolkits.sql.base import create_sql_agent # Updated import
+from langchain_community.agent_toolkits.sql.toolkit import SQLDatabaseToolkit # Updated import
+import sqlite3
+import fdb # Hinzufügen für direkte fdb-Verbindung
+from sqlalchemy import create_engine, event # event für Ping
+from sqlalchemy.engine.url import make_url # Zum Parsen des Connection Strings
+from sqlalchemy.pool import StaticPool
+
+
+# Assuming retrievers.py is in the same directory or accessible in PYTHONPATH
+from retrievers import FaissDocumentationRetriever, BaseDocumentationRetriever
+
+class SQLCaptureCallbackHandler(BaseCallbackHandler):
+    """A callback handler to capture the SQL query executed by the agent."""
+    def __init__(self):
+        super().__init__()
+        self.sql_query: Optional[str] = None
+
+    def on_agent_action(self, action: AgentAction, **kwargs: Any) -> Any:
+        """Capture the SQL query if the action is a database query."""
+        # The tool name might vary depending on the SQL agent version/setup.
+        # Common names are 'sql_db_query', 'query-sql', 'sql_query'.
+        # We should inspect the `action.tool` to be sure.
+        # For SQLDatabaseToolkit, it's typically 'sql_db_query'.
+        if action.tool == "sql_db_query": # Or whatever the specific tool name is
+            # The tool_input can be a string or a dictionary.
+            # If it's a dictionary, the query might be under a 'query' key.
+            if isinstance(action.tool_input, str):
+                self.sql_query = action.tool_input
+            elif isinstance(action.tool_input, dict) and 'query' in action.tool_input:
+                self.sql_query = action.tool_input['query']
+            print(f"Callback captured SQL: {self.sql_query}")
+
+    def on_tool_start(self, serialized: Dict[str, Any], input_str: str, **kwargs: Any) -> Any:
+        """Alternative way to capture input to a specific tool if on_agent_action is tricky."""
+        # This might be more reliable if the tool name is consistent.
+        if serialized.get("name") == "sql_db_query": # Check the tool's name
+            self.sql_query = input_str
+            print(f"Callback (on_tool_start) captured SQL: {self.sql_query}")
+
+    def clear_sql_query(self):
+        """Clears the captured SQL query for the next run."""
+        self.sql_query = None
+
+class FirebirdDocumentedSQLAgent:
+    """
+    A SQL agent for Firebird databases, augmented with documentation retrieval
+    capabilities using either FAISS or Neo4j.
+    """
+
+    def __init__(self, db_connection_string: str, llm: Any, retrieval_mode: str = 'faiss', neo4j_config: Dict = None):
+        """
+        Initializes the FirebirdDocumentedSQLAgent.
+
+        Args:
+            db_connection_string: SQLAlchemy connection string for Firebird.
+            llm: The language model instance (e.g., from Langchain).
+            retrieval_mode: 'faiss' or 'neo4j'. Defaults to 'faiss'.
+            neo4j_config: Configuration dictionary for Neo4j if mode is 'neo4j'.
+        """
+        self.db_connection_string = db_connection_string
+        self.llm = llm
+        self.retrieval_mode = retrieval_mode
+        self.neo4j_config = neo4j_config
+
+        # Firebird Umgebungsvariablen setzen (adaptiert von generate_yaml_ui.py)
+        # Dies sollte vor jeglicher fdb-Initialisierung geschehen.
+        fb_temp_dir = Path("./fb_temp").absolute()
+        if not fb_temp_dir.exists():
+            fb_temp_dir.mkdir(exist_ok=True, parents=True) # parents=True hinzugefügt
+        
+        print(f"FirebirdDocumentedSQLAgent: Setting Firebird environment variables. Temp dir: {fb_temp_dir}")
+        os.environ["FIREBIRD_TMP"] = str(fb_temp_dir)
+        os.environ["FIREBIRD_TEMP"] = str(fb_temp_dir)
+        os.environ["FIREBIRD_TMPDIR"] = str(fb_temp_dir)
+        os.environ["FB_TMPDIR"] = str(fb_temp_dir)
+        os.environ["TMPDIR"] = str(fb_temp_dir) # Kann Konflikte verursachen, wenn andere Tools TMPDIR erwarten
+        os.environ["TMP"] = str(fb_temp_dir)
+        os.environ["TEMP"] = str(fb_temp_dir)
+        # FB_HOME und FIREBIRD_HOME könnten kritisch sein, wenn die Client-Bibliothek relativ dazu sucht
+        # oder Konfigurationsdateien erwartet.
+        # Wir setzen sie auf das Projektverzeichnis, da dort ./lib/libfbclient.so liegt.
+        # Wenn Firebird Server-Komponenten erwartet, ist dies ggf. nicht korrekt.
+        # Für den reinen Client-Zugriff sollte es aber eher helfen als schaden.
+        project_root_for_fb_home = Path(os.path.dirname(__file__)).parent.absolute()
+        os.environ["FB_HOME"] = str(project_root_for_fb_home)
+        os.environ["FIREBIRD_HOME"] = str(project_root_for_fb_home)
+        os.environ["FIREBIRD_LOCK"] = str(fb_temp_dir)
+
+
+        self.parsed_docs: List[Document] = self._load_and_parse_documentation()
+
+        # --- LLM and Embeddings Configuration ---
+        from dotenv import load_dotenv
+        # MagicMock import moved to top level
+
+        # Load OpenRouter specific .env file if it exists
+        openrouter_env_path = '/home/envs/openrouter.env'
+        if os.path.exists(openrouter_env_path):
+            load_dotenv(dotenv_path=openrouter_env_path, override=True) # override needed if other .env files exist
+            print(f"Loaded environment variables from {openrouter_env_path}")
+        
+        # Load direct OpenAI specific .env file if it exists
+        openai_env_path = '/home/envs/openai.env'
+        if os.path.exists(openai_env_path):
+            load_dotenv(dotenv_path=openai_env_path, override=True) # override ensures this takes precedence if OPENAI_API_KEY is in both
+            print(f"Loaded environment variables from {openai_env_path}")
+
+        # Get API keys
+        openrouter_api_key = os.getenv("OPENROUTER_API_KEY")
+        direct_openai_api_key = os.getenv("OPENAI_API_KEY")
+
+        # --- Initialize Embeddings Model (Prioritize direct OpenAI key) ---
+        embeddings_initialized_successfully = False
+        if direct_openai_api_key:
+            try:
+                self.embeddings_model = OpenAIEmbeddings(
+                    api_key=direct_openai_api_key,
+                    model="text-embedding-3-large" # As requested
+                )
+                print("OpenAIEmbeddings initialized using direct OPENAI_API_KEY for text-embedding-3-large.")
+                embeddings_initialized_successfully = True
+            except Exception as e:
+                print(f"Error initializing OpenAIEmbeddings with direct key: {e}. Trying OpenRouter key for embeddings if available.")
+        
+        if not embeddings_initialized_successfully and openrouter_api_key:
+            # Fallback to OpenRouter for embeddings if direct OpenAI failed or key wasn't present
+            try:
+                self.embeddings_model = OpenAIEmbeddings(
+                    api_key=openrouter_api_key,
+                    base_url="https://openrouter.ai/api/v1",
+                    model="text-embedding-ada-002" # A common default, or specify one known to OpenRouter
+                )
+                print("OpenAIEmbeddings initialized using OPENROUTER_API_KEY (model: text-embedding-ada-002).")
+                embeddings_initialized_successfully = True
+            except Exception as e:
+                print(f"Error initializing OpenAIEmbeddings with OpenRouter key: {e}.")
+
+        if not embeddings_initialized_successfully:
+            self.embeddings_model = MagicMock(spec=OpenAIEmbeddings)
+            def mock_embed_query(text: str) -> List[float]:
+                print(f"MockEmbeddings: Simulating embedding for: {text[:30]}...")
+                return [0.0] * 1536
+            self.embeddings_model.embed_query = mock_embed_query
+            def mock_embed_documents(texts: List[str]) -> List[List[float]]:
+                print(f"MockEmbeddings: Simulating embedding for {len(texts)} documents...")
+                return [[0.0] * 1536 for _ in texts]
+            self.embeddings_model.embed_documents = mock_embed_documents
+            print("Using MagicMock for OpenAIEmbeddings as no suitable API key was found or init failed.")
+
+        # --- Initialize LLM (Chat Model) ---
+        # self.llm is the argument passed to __init__
+        # If it's a string (model name), we initialize it. Otherwise, we use the passed instance.
+        if isinstance(self.llm, str):
+            llm_model_name = self.llm
+            llm_params = {"model_name": llm_model_name, "temperature": 0}
+            llm_provider = "Direct OpenAI" # Default
+
+            if openrouter_api_key: # Prioritize OpenRouter for LLM if key exists
+                llm_params["api_key"] = openrouter_api_key
+                llm_params["base_url"] = "https://openrouter.ai/api/v1"
+                # OpenRouter model names often include the provider, e.g., "openai/gpt-3.5-turbo"
+                # If llm_model_name doesn't have '/', assume it's a generic name and prepend openai/
+                if "/" not in llm_model_name:
+                    llm_params["model_name"] = f"openai/{llm_model_name}" # Default to openai prefix for OpenRouter
+                llm_provider = "OpenRouter"
+                print(f"Configuring LLM '{llm_params['model_name']}' for {llm_provider}.")
+            elif direct_openai_api_key:
+                llm_params["api_key"] = direct_openai_api_key
+                print(f"Configuring LLM '{llm_params['model_name']}' for {llm_provider}.")
+            else:
+                print(f"WARNING: No API key for LLM '{llm_model_name}'. LLM calls will likely fail or use a mock if not pre-configured.")
+                self.llm = MagicMock() # Fallback if string and no key
+                print(f"Using MagicMock for LLM '{llm_model_name}'.")
+
+            if not isinstance(self.llm, MagicMock): # If not already mocked
+                try:
+                    from langchain_openai import ChatOpenAI
+                    self.llm = ChatOpenAI(**llm_params) # type: ignore
+                    print(f"ChatOpenAI LLM '{llm_params['model_name']}' initialized for {llm_provider}.")
+                except Exception as e:
+                    print(f"Error initializing ChatOpenAI with model '{llm_params['model_name']}' for {llm_provider}: {e}.")
+                    print("Falling back to MagicMock for LLM due to initialization error.")
+                    self.llm = MagicMock()
+        elif not (direct_openai_api_key or openrouter_api_key) and not isinstance(self.llm, MagicMock):
+            print(f"Warning: LLM instance provided but no API key found. LLM calls might fail if it's not a mock.")
+
+
+        # Retriever instances
+        self.faiss_retriever: Optional[FaissDocumentationRetriever] = None
+        self.neo4j_retriever: Optional[BaseDocumentationRetriever] = None # Placeholder for Neo4j
+        
+        self.active_retriever: Optional[BaseDocumentationRetriever] = None
+        
+        self.sql_agent = None # To be initialized by _setup_sql_agent
+        self.sql_callback_handler = SQLCaptureCallbackHandler() # Initialize the callback handler
+
+        self._initialize_components() # Call initialization
+
+    def _initialize_components(self):
+        """
+        Initializes the retriever components based on the retrieval_mode.
+        Also sets up the SQL agent.
+        """
+        if self.retrieval_mode == 'faiss':
+            if not self.parsed_docs:
+                print("Warning: No documents loaded. FAISS retriever will be empty.")
+                # Or raise an error: raise ValueError("Cannot initialize FAISS retriever without parsed documents.")
+            try:
+                self.faiss_retriever = FaissDocumentationRetriever(
+                    documents=self.parsed_docs,
+                    embeddings_model=self.embeddings_model
+                )
+                self.active_retriever = self.faiss_retriever
+                print("FAISS retriever initialized and set as active.")
+            except Exception as e:
+                print(f"Error initializing FAISS retriever: {e}")
+                # Potentially fall back to a no-op retriever or raise
+        elif self.retrieval_mode == 'neo4j':
+            # Placeholder for Neo4j retriever initialization
+            # self.neo4j_retriever = Neo4jDocumentationRetriever(self.parsed_docs, self.neo4j_config, self.embeddings_model)
+            # self.active_retriever = self.neo4j_retriever
+            print("Neo4j retrieval mode selected, but Neo4j retriever is not yet implemented.")
+            pass
+        else:
+            print(f"Warning: Unknown retrieval_mode '{self.retrieval_mode}'. No document retriever will be active.")
+
+        # Setup SQL agent
+        self.sql_agent = self._setup_sql_agent()
+        if self.sql_agent:
+            print("SQL Agent initialized successfully.")
+        else:
+            print("Warning: SQL Agent initialization failed.")
+
+
+    def _setup_sql_agent(self):
+        """
+        Initializes the Langchain SQL Agent.
+        """
+        if not self.db_connection_string:
+            print("Error: DB connection string is not set. Cannot initialize SQL Agent.")
+            return None
+        if not self.llm:
+            print("Error: LLM is not set. Cannot initialize SQL Agent.")
+            return None
+            
+        try:
+            if self.db_connection_string == "sqlite:///:memory:":
+                try:
+                    print("Setting up SQLite in-memory database with persistent connection for TestTable...")
+                    # Create a persistent in-memory SQLite connection
+                    # The check_same_thread=False is important for some Langchain/SQLAlchemy uses.
+                    connection = sqlite3.connect(":memory:", check_same_thread=False)
+                    
+                    # Create and populate TestTable using this connection
+                    create_table_sql = "CREATE TABLE TestTable (id INTEGER PRIMARY KEY, name VARCHAR(100));"
+                    connection.execute(create_table_sql)
+                    print(f"Executed via sqlite3.Connection: {create_table_sql}")
+                    
+                    insert_sql = "INSERT INTO TestTable (id, name) VALUES (1, 'Sample Item');"
+                    connection.execute(insert_sql)
+                    print(f"Executed via sqlite3.Connection: {insert_sql}")
+                    connection.commit()
+
+                    # Verify table creation using the same connection
+                    verification_query = "SELECT name FROM sqlite_master WHERE type='table' AND name='TestTable';"
+                    cursor = connection.execute(verification_query)
+                    verification_result = cursor.fetchall()
+                    print(f"Verification query via sqlite3.Connection '{verification_query}' result: {verification_result}")
+                    if not verification_result or "TestTable" not in str(verification_result):
+                         print("WARNING: TestTable might not have been created successfully or is not visible via sqlite3.Connection.")
+
+                    # Create SQLAlchemy engine that uses the existing connection
+                    engine = create_engine(
+                        "sqlite://",  # In-memory database
+                        creator=lambda: connection,  # Reuse the existing connection
+                        poolclass=StaticPool,  # Disable pooling for single connection
+                        connect_args={"check_same_thread": False}
+                    )
+                    print("SQLAlchemy engine created for the persistent SQLite connection.")
+
+                    # Initialize SQLDatabase with the engine and explicitly include TestTable
+                    db = SQLDatabase(engine, include_tables=['TestTable'])
+                    print("SQLDatabase initialized with custom engine and include_tables=['TestTable'].")
+
+                except Exception as e_create:
+                    print(f"Could not create or verify TestTable in sqlite:///:memory: for test: {e_create}")
+                    return None # Ensure agent setup fails if in-memory DB setup fails
+            else:
+                # Für Firebird eine benutzerdefinierte Creator-Funktion verwenden
+                try:
+                    url = make_url(self.db_connection_string)
+                    
+                    db_path = str(url.database) # Der Pfad zur .fdb Datei
+                    # SQLAlchemy URL kann // für absolute Pfade haben, fdb.connect braucht nur /
+                    if db_path.startswith("//"):
+                        db_path = db_path[1:]
+
+                    print(f"Attempting to connect to Firebird DB: DSN='{db_path}', User='{url.username}', Host='{url.host}', Port='{url.port}'")
+
+                    def creator():
+                        # Setze hier die Umgebungsvariablen, die in db_executor.py verwendet werden,
+                        # falls sie für fdb.connect relevant sind und nicht global gesetzt werden können/sollen.
+                        # Fürs Erste verlassen wir uns auf die globalen Einstellungen am Anfang der Datei.
+                        return fdb.connect(
+                            dsn=db_path, # Oder host=url.host, database=url.database wenn getrennt
+                            user=url.username,
+                            password=url.password,
+                            port=url.port if url.port else 3050, # Standard-Firebird-Port
+                            charset="WIN1252" # Wie in db_executor.py
+                        )
+
+                    engine = create_engine(
+                        self.db_connection_string, # Der ursprüngliche String für Dialekt-Auswahl
+                        creator=creator,
+                        poolclass=StaticPool # Wichtig bei benutzerdefiniertem Creator, um Pooling-Probleme zu vermeiden
+                    )
+                    
+                    # Optional: Teste die Verbindung direkt nach dem Erstellen der Engine
+                    with engine.connect() as connection_test:
+                        print("SQLAlchemy engine connected successfully via custom creator.")
+                    
+                    db = SQLDatabase(engine)
+                    print("SQLDatabase initialized with custom Firebird creator function.")
+                except Exception as e_fdb_creator:
+                    print(f"Error setting up Firebird SQLDatabase with custom creator: {e_fdb_creator}")
+                    import traceback
+                    traceback.print_exc()
+                    return None
+
+
+            if db is None: # Zusätzliche Prüfung, falls die Erstellung oben fehlschlägt
+                print("SQLDatabase instance could not be created.")
+                return None
+
+            toolkit = SQLDatabaseToolkit(db=db, llm=self.llm)
+            
+            # Define a more specific system message for the SQL agent
+            # This can be further refined.
+            system_message = """
+            You are an expert Firebird SQL data analyst.
+            Given an input question, first create a syntactically correct Firebird SQL query to run,
+            then look at the results of the query and return the answer.
+            Unless the user specifies a specific number of examples they wish to obtain, always limit your query to at most 10 results. For Firebird, use `SELECT FIRST N ...` or `SELECT ... ROWS N` or `SELECT ... FETCH FIRST N ROWS ONLY` to limit results. Do NOT use `LIMIT N`.
+            You can order the results by a relevant column to return the most interesting examples in the database.
+            Never query for all the columns from a specific table, only ask for the relevant columns given the question.
+            
+            VERY IMPORTANT: Only use column names that you can explicitly see in the schema description for the respective tables. Do not invent column names or assume they exist.
+            Be careful to not query for columns that do not exist.
+            Also, pay attention to which column is in which table. If the schema information is incomplete or seems to be missing for a table, state this and ask for clarification rather than guessing column names.
+
+            Use the DDL and schema information provided in the documentation context and from the `sql_db_schema` tool to construct your queries.
+            If a Stored Procedure seems relevant based on its name or description in the documentation, consider using it.
+            For Firebird, Stored Procedures are often selected using a SELECT query, e.g., SELECT * FROM MY_PROCEDURE(param1, param2).
+
+            Always use the following format:
+
+            Question: The input question you must answer
+            Thought: You should always think about what to do.
+            Action: The action to take, should be one of [sql_db_query, sql_db_schema, sql_db_list_tables, sql_db_query_checker]
+            Action Input: The input to the action
+            Observation: The result of the action
+            ... (this Thought/Action/Action Input/Observation can repeat N times)
+            Thought: I now know the final answer.
+            Final Answer: The final answer to the original input question.
+            """
+            # Note: The exact tools available (sql_db_query, etc.) depend on the SQLDatabaseToolkit.
+            # The agent created by create_sql_agent with SQLDatabaseToolkit will have these.
+
+            agent_executor = create_sql_agent(
+                llm=self.llm,
+                toolkit=toolkit,
+                verbose=True, # Set to False for less console output in production
+                handle_parsing_errors=True, # Handles errors if LLM outputs non-SQL
+                max_iterations=10,
+                callbacks=[self.sql_callback_handler] # Pass the callback handler here
+                # agent_type=AgentType.OPENAI_FUNCTIONS, # Or other agent types if needed
+                # agent_kwargs={"system_message": system_message} # Pass system message if supported by agent type
+            )
+            # For some agent types, the system message is part of the prompt or passed differently.
+            # The default create_sql_agent might not directly use "system_message" in agent_kwargs
+            # in the same way as a direct ChatOpenAI call. It constructs its own prompt.
+            # We might need to customize the prompt template if we want a very specific system message.
+            # For now, we rely on the default prompt structure of create_sql_agent.
+            
+            return agent_executor
+        except Exception as e:
+            print(f"Error initializing SQL Agent: {e}")
+            return None
+
+    def _load_and_parse_documentation(
+            self,
+            schema_path: str = "output/schema",
+            yamls_path: str = "output/yamls",
+            ddl_path: str = "output/ddl"
+        ) -> List[Document]:
+        """
+        Loads and parses documentation from specified project directories.
+        Converts various file formats (Markdown, YAML, SQL) into Langchain Documents.
+
+        Args:
+            schema_path: Path to the directory containing general schema Markdown files.
+            yamls_path: Path to the directory containing YAML table/procedure definitions.
+            ddl_path: Path to the directory containing DDL SQL scripts.
+
+        Returns:
+            A list of Langchain Document objects.
+        """
+        all_documents: List[Document] = []
+        doc_id_counter = 1
+        MAX_DOC_CONTENT_LENGTH = 1500 # Maximale Zeichen pro Dokument für Embedding (stärker reduziert)
+
+        # 1. Load Markdown files from output/schema/
+        #    (index.md, relation_report.md, table_diagrams.md, table_clusters.md, and individual table/proc MDs)
+        for md_file_path in glob.glob(os.path.join(schema_path, "*.md")):
+            try:
+                with open(md_file_path, 'r', encoding='utf-8') as f:
+                    content = f.read()[:MAX_DOC_CONTENT_LENGTH] # Inhalt kürzen
+                file_name = os.path.basename(md_file_path)
+                metadata = {"source": file_name, "type": "schema_markdown", "path": md_file_path, "doc_id": f"doc_{doc_id_counter}"}
+                all_documents.append(Document(page_content=content, metadata=metadata))
+                doc_id_counter +=1
+            except Exception as e:
+                print(f"Error reading or processing Markdown file {md_file_path}: {e}")
+
+        # 2. Load YAML files from output/yamls/
+        for yaml_file_path in glob.glob(os.path.join(yamls_path, "*.yaml")):
+            try:
+                with open(yaml_file_path, 'r', encoding='utf-8') as f:
+                    data = yaml.safe_load(f)
+                file_name = os.path.basename(yaml_file_path)
+                
+                # Convert YAML data to a structured text representation
+                # This is a basic representation, can be made more sophisticated
+                content_parts = [f"Source YAML: {file_name}"]
+                if isinstance(data, dict):
+                    table_name = data.get('name', file_name.replace('.yaml', ''))
+                    content_parts.append(f"Entity Name: {table_name}")
+                    description = data.get('description', 'N/A')
+                    content_parts.append(f"Description: {description}")
+
+                    if 'columns' in data and isinstance(data['columns'], list):
+                        content_parts.append("Columns:")
+                        for col in data['columns']:
+                            if isinstance(col, dict):
+                                col_name = col.get('name', 'N/A')
+                                col_type = col.get('type', 'N/A')
+                                col_desc = col.get('description', 'N/A')
+                                content_parts.append(f"  - {col_name} (Type: {col_type}): {col_desc}")
+                    
+                    if 'relations' in data and isinstance(data['relations'], list): # Assuming 'relations' key from previous plan
+                        content_parts.append("Relations:")
+                        for rel in data['relations']:
+                             content_parts.append(f"  - {rel}")
+                
+                page_content = "\n".join(content_parts)[:MAX_DOC_CONTENT_LENGTH] # Inhalt kürzen
+                metadata = {"source": file_name, "type": "yaml_definition", "path": yaml_file_path, "doc_id": f"doc_{doc_id_counter}"}
+                all_documents.append(Document(page_content=page_content, metadata=metadata))
+                doc_id_counter +=1
+            except yaml.YAMLError as e:
+                print(f"Error parsing YAML file {yaml_file_path}: {e}")
+            except Exception as e:
+                print(f"Error reading or processing YAML file {yaml_file_path}: {e}")
+
+        # 3. Load SQL DDL files from output/ddl/
+        for sql_file_path in glob.glob(os.path.join(ddl_path, "*.sql")):
+            try:
+                with open(sql_file_path, 'r', encoding='utf-8') as f:
+                    content = f.read()
+                file_name = os.path.basename(sql_file_path)
+                # Attempt to determine if it's a table or procedure from filename
+                entity_type = "procedure_ddl" if "procedure" in file_name.lower() else "table_ddl"
+                metadata = {"source": file_name, "type": entity_type, "path": sql_file_path, "doc_id": f"doc_{doc_id_counter}"}
+                # Prepend context to the SQL content
+                page_content = f"DDL script for {file_name}:\n```sql\n{content}\n```"[:MAX_DOC_CONTENT_LENGTH] # Inhalt kürzen
+                all_documents.append(Document(page_content=page_content, metadata=metadata))
+                doc_id_counter +=1
+            except Exception as e:
+                print(f"Error reading or processing SQL file {sql_file_path}: {e}")
+        
+        print(f"Loaded {len(all_documents)} documents.")
+        return all_documents
+
+    # Placeholder for other methods as per plan.md
+    # def _generate_textual_responses(self, query, sql_generated, sql_result, doc_context): ...
+
+    def query(self, natural_language_query: str, retrieval_mode_override: Optional[str] = None) -> Dict[str, Any]:
+        """
+        Processes a natural language query:
+        1. Retrieves relevant documentation context.
+        2. Uses the SQL agent to generate and execute a SQL query.
+        3. Prepares data for textual response generation.
+        """
+        if not self.sql_agent:
+            return {"error": "SQL Agent is not initialized."}
+
+        current_retrieval_mode = retrieval_mode_override if retrieval_mode_override else self.retrieval_mode
+        
+        doc_context_str = ""
+        retrieved_docs: List[Document] = []
+
+        if current_retrieval_mode == 'faiss' and self.faiss_retriever:
+            print(f"Retrieving context using FAISS for query: \"{natural_language_query}\"")
+            retrieved_docs = self.faiss_retriever.get_relevant_documents(natural_language_query)
+            # self.active_retriever is already set during _initialize_components
+        elif current_retrieval_mode == 'neo4j' and self.neo4j_retriever:
+            # This part will be enabled when Neo4j retriever is implemented
+            # print(f"Retrieving context using Neo4j for query: \"{natural_language_query}\"")
+            # retrieved_docs = self.neo4j_retriever.get_relevant_documents(natural_language_query)
+            print("Neo4j retriever selected but not fully implemented in query method yet.")
+            # self.active_retriever would be set if neo4j was initialized
+            pass
+        
+        if not self.active_retriever and (current_retrieval_mode == 'faiss' or current_retrieval_mode == 'neo4j'):
+             print(f"Warning: Retriever for mode '{current_retrieval_mode}' is not available or not initialized. Proceeding without doc context.")
+
+
+        if retrieved_docs:
+            doc_context_str = "\n\n".join([f"--- Source: {doc.metadata.get('source', 'N/A')} ---\n{doc.page_content}" for doc in retrieved_docs])
+            print(f"Retrieved context ({len(retrieved_docs)} docs):\n{doc_context_str[:500]}...")
+        else:
+            print("No relevant documentation context found or retriever not active for the selected mode.")
+        
+        enhanced_query_for_agent = f"""
+        Based on the following documentation context:
+        --- START OF CONTEXT ---
+        {doc_context_str if doc_context_str else "No specific context retrieved."}
+        --- END OF CONTEXT ---
+
+        Please answer the following question: {natural_language_query}
+        """
+        
+        print(f"\nSending to SQL agent:\nUser Query: {natural_language_query}\nEnhanced with context (first 200 chars of context): {doc_context_str[:200] if doc_context_str else 'N/A'}")
+
+        try:
+            self.sql_callback_handler.clear_sql_query() # Clear previous SQL
+            # Use invoke instead of run for more structured output and access to intermediate steps
+            agent_response_dict = self.sql_agent.invoke({"input": enhanced_query_for_agent, "chat_history": []})
+            agent_final_answer = agent_response_dict.get("output", "No output from agent.")
+            
+            generated_sql = self.sql_callback_handler.sql_query
+            if not generated_sql:
+                # Fallback: Try to parse from intermediate_steps if callback didn't catch it
+                # This is a secondary measure. The callback should be the primary.
+                intermediate_steps = agent_response_dict.get("intermediate_steps", [])
+                for step in reversed(intermediate_steps): # Check last SQL query
+                    if isinstance(step, tuple) and len(step) > 0:
+                        action_taken = step[0]
+                        if isinstance(action_taken, AgentAction) and action_taken.tool == "sql_db_query":
+                            tool_input = action_taken.tool_input
+                            if isinstance(tool_input, str):
+                                generated_sql = tool_input
+                                break
+                            elif isinstance(tool_input, dict) and 'query' in tool_input:
+                                generated_sql = tool_input['query']
+                                break
+                if generated_sql:
+                    print(f"SQL extracted from intermediate_steps: {generated_sql}")
+                else:
+                    print("Warning: SQL query not captured by callback or found in intermediate_steps.")
+                    generated_sql = "SQL_QUERY_NOT_EXTRACTED"
+
+            print(f"Agent Final Answer: {agent_final_answer}")
+            print(f"Extracted SQL: {generated_sql}")
+
+            # Now generate the three textual response variants
+            text_responses = self._generate_textual_responses(
+                natural_language_query=natural_language_query,
+                retrieved_context=doc_context_str,
+                agent_final_answer=agent_final_answer, # Use the 'output' from invoke
+                generated_sql=generated_sql
+            )
+
+            return {
+                "natural_language_query": natural_language_query,
+                "retrieved_context": doc_context_str,
+                "agent_final_answer": agent_final_answer,
+                "generated_sql": generated_sql,
+                "text_variants": text_responses,
+                "error": None
+            }
+
+        except Exception as e:
+            print(f"Error during SQL agent execution: {e}")
+            # Log the full exception for debugging
+            import traceback
+            traceback.print_exc()
+            # Ensure text_variants is populated even in case of agent error before _generate_textual_responses
+            error_text_variants = [
+                {"variant_name": "Error Variant 1", "text": f"SQL Agent execution failed: {e}"},
+                {"variant_name": "Error Variant 2", "text": "The system could not process the request with the SQL agent."},
+                {"variant_name": "Error Variant 3", "text": "Please try rephrasing or check logs for SQL agent errors."}
+            ]
+            return {
+                "natural_language_query": natural_language_query,
+                "retrieved_context": doc_context_str,
+                "agent_final_answer": None,
+                "generated_sql": None,
+                "text_variants": error_text_variants,
+                "error": str(e)
+            }
+
+    def _generate_textual_responses(self,
+                                    natural_language_query: str,
+                                    retrieved_context: str,
+                                    agent_final_answer: Optional[str],
+                                    generated_sql: Optional[str]) -> List[Dict[str, str]]:
+        """
+        Generates three different textual response variants based on the agent's findings.
+        """
+        if not self.llm:
+            print("Error: LLM is not set. Cannot generate textual responses.")
+            return [{"variant_name": "Error", "text": "LLM not available."}]
+
+        if agent_final_answer is None and generated_sql is None:
+            return [
+                {"variant_name": "Error Variant", "text": "The SQL agent failed to produce a response or SQL query."},
+                {"variant_name": "Suggestion Variant", "text": "Could you try rephrasing your question? The system was unable to process it."},
+                {"variant_name": "Contextual Suggestion", "text": f"Based on your query '{natural_language_query}', the system couldn't find a direct answer. You might want to explore related topics in the documentation."}
+            ]
+
+        # Fallback if LLM is a MagicMock or if we want to ensure some output even if LLM fails for other reasons
+        if isinstance(self.llm, MagicMock) or not hasattr(self.llm, 'invoke'):
+            print("LLM is a MagicMock or does not have 'invoke'. Generating placeholder responses.")
+            return [
+                {"variant_name": "Placeholder Basic", "text": f"Query: {natural_language_query}\nSQL: {generated_sql}\nAnswer: {agent_final_answer}"},
+                {"variant_name": "Placeholder Detailed", "text": f"For your question '{natural_language_query}', the system generated the SQL query '{generated_sql}' and found the answer: {agent_final_answer}. Context used: {retrieved_context[:100]}..."},
+                {"variant_name": "Placeholder Summary", "text": f"The answer to '{natural_language_query}' is {agent_final_answer}."}
+            ]
+
+        # Prompts for the three variants
+        prompt_template_1 = f"""
+        Original Question: {natural_language_query}
+        Retrieved Documentation Context:
+        {retrieved_context if retrieved_context else "No specific documentation context was retrieved."}
+        ---
+        Generated SQL Query (if available): {generated_sql if generated_sql else "Not available or not applicable."}
+        ---
+        Final Answer from SQL Agent: {agent_final_answer if agent_final_answer else "No answer was produced by the SQL agent."}
+        ---
+        Based on all the information above, provide a concise, direct answer to the original question.
+        Focus on the 'Final Answer from SQL Agent'. If the agent's answer is sufficient, use it directly.
+        If the context or SQL provides additional clarity, incorporate it briefly.
+        Do not mention the SQL query or the documentation retrieval process unless it's essential for understanding the answer.
+        """
+
+        prompt_template_2 = f"""
+        Original Question: {natural_language_query}
+        Retrieved Documentation Context:
+        {retrieved_context if retrieved_context else "No specific documentation context was retrieved."}
+        ---
+        Generated SQL Query (if available): {generated_sql if generated_sql else "Not available or not applicable."}
+        ---
+        Final Answer from SQL Agent: {agent_final_answer if agent_final_answer else "No answer was produced by the SQL agent."}
+        ---
+        Provide a more detailed explanation.
+        Start by stating the answer derived from the 'Final Answer from SQL Agent'.
+        Then, explain how this answer was found, mentioning the role of the SQL query (if available and relevant) and any key information from the documentation context that supports or clarifies the answer.
+        If the SQL query is complex or insightful, you can briefly describe what it does.
+        """
+
+        prompt_template_3 = f"""
+        Original Question: {natural_language_query}
+        Retrieved Documentation Context:
+        {retrieved_context if retrieved_context else "No specific documentation context was retrieved."}
+        ---
+        Generated SQL Query (if available): {generated_sql if generated_sql else "Not available or not applicable."}
+        ---
+        Final Answer from SQL Agent: {agent_final_answer if agent_final_answer else "No answer was produced by the SQL agent."}
+        ---
+        Provide a very brief, executive-summary style answer to the original question.
+        This should be a single sentence if possible, directly addressing the user's query based on the 'Final Answer from SQL Agent'.
+        Avoid technical jargon, SQL details, or context mentions unless absolutely critical to the core answer.
+        """
+        
+        responses = []
+        prompts = [
+            ("Concise Direct Answer", prompt_template_1),
+            ("Detailed Explanation", prompt_template_2),
+            ("Executive Summary", prompt_template_3)
+        ]
+
+        for variant_name, prompt_content in prompts:
+            try:
+                # Assuming self.llm is an initialized Langchain LLM/ChatModel
+                # For newer Langchain versions, it's usually .invoke() for chat models
+                # or .generate() for LLMs. Adjust if your self.llm has a different API.
+                if hasattr(self.llm, 'invoke'):
+                    # For ChatModels (like ChatOpenAI)
+                    from langchain_core.messages import HumanMessage
+                    message = HumanMessage(content=prompt_content)
+                    response_content = self.llm.invoke([message]).content # type: ignore
+                elif hasattr(self.llm, 'generate'):
+                    # For older LLMs or if invoke is not available
+                    response_content = self.llm.generate([prompt_content]).generations[0][0].text # type: ignore
+                else:
+                    response_content = "LLM does not support .invoke or .generate."
+                
+                responses.append({"variant_name": variant_name, "text": str(response_content)})
+            except Exception as e:
+                print(f"Error generating text variant '{variant_name}' with LLM: {e}")
+                responses.append({"variant_name": variant_name, "text": f"Error generating response: {e}"})
+        
+        return responses
+
+
+# --- Main execution / Test section ---
+if __name__ == "__main__":
+    import shutil # For cleaning up dummy files/dirs
+    # --- Configuration for Testing ---
+    # Option 1: Use a real Firebird connection string (replace with your actual string)
+    # TEST_DB_CONNECTION_STRING = "firebird+fdb://sysdba:masterkey@localhost:3050//path/to/your/database.fdb"
+    
+    # Option 2: Use SQLite in-memory for basic agent testing (no Firebird specifics)
+    TEST_DB_CONNECTION_STRING = "sqlite:///:memory:"
+
+    # LLM Configuration (using a placeholder model name, replace if needed)
+    # Ensure OPENROUTER_API_KEY or OPENAI_API_KEY is set in your environment or .env file
+    # For OpenRouter, model name might be like "openai/gpt-3.5-turbo"
+    # For direct OpenAI, model name might be "gpt-3.5-turbo"
+    TEST_LLM_MODEL_NAME = "gpt-3.5-turbo" # Generic, will be prefixed if OpenRouter is used
+
+    # --- Setup Dummy Documentation ---
+    # Create dummy directories and files for documentation loading
+    dummy_schema_path = "output_dummy/schema"
+    dummy_yamls_path = "output_dummy/yamls"
+    dummy_ddl_path = "output_dummy/ddl"
+    
+    os.makedirs(dummy_schema_path, exist_ok=True)
+    os.makedirs(dummy_yamls_path, exist_ok=True)
+    os.makedirs(dummy_ddl_path, exist_ok=True)
+
+    with open(os.path.join(dummy_schema_path, "index.md"), "w", encoding="utf-8") as f:
+        f.write("# Main Schema\nThis is the main schema document.")
+    with open(os.path.join(dummy_schema_path, "tables.md"), "w", encoding="utf-8") as f:
+        f.write("# Tables\nDetails about tables.")
+    
+    # Dummy YAML for a hypothetical 'TestTable' (matching the one created in _setup_sql_agent for sqlite)
+    dummy_test_table_yaml = {
+        "name": "TestTable",
+        "description": "A table for testing purposes.",
+        "columns": [
+            {"name": "id", "type": "INTEGER", "description": "Primary key"},
+            {"name": "name", "type": "VARCHAR(100)", "description": "Name of the item"}
+        ],
+        "relations": [] # No relations for this simple example
+    }
+    with open(os.path.join(dummy_yamls_path, "test_table.yaml"), "w", encoding="utf-8") as f: # Ensure this matches the table name used in sqlite setup
+        yaml.dump(dummy_test_table_yaml, f)
+
+    with open(os.path.join(dummy_ddl_path, "create_test_table.sql"), "w", encoding="utf-8") as f:
+        f.write("CREATE TABLE TestTable (id INTEGER PRIMARY KEY, name VARCHAR(100));")
+    with open(os.path.join(dummy_ddl_path, "another_table.sql"), "w", encoding="utf-8") as f:
+        f.write("CREATE TABLE AnotherTable (data TEXT);")
+
+    # --- Symlink or Move 'output' to 'output_default' and 'output_dummy' to 'output' ---
+    # This is to make the agent use the dummy files without changing its internal paths.
+    # We'll restore them in the finally block.
+    
+    # Define paths
+    default_output_path = "output"
+    dummy_output_target_path = "output" # The agent expects 'output'
+    
+    # Backup map to store original locations if we move/rename
+    backup_map = {}
+
+    def setup_symlinks_or_moves(default_path, dummy_source_path, target_link_name, backup_mapping):
+        """
+        Sets up the environment for testing by either symlinking or moving directories.
+        - If default_path exists, it's moved to default_path_backup.
+        - dummy_source_path is then symlinked or moved to target_link_name.
+        """
+        backup_suffix = "_roo_backup"
+        
+        # Handle the original 'output' directory
+        if os.path.exists(target_link_name):
+            if os.path.islink(target_link_name):
+                print(f"Removing existing symlink: {target_link_name}")
+                os.unlink(target_link_name)
+            else: # It's a directory or file
+                backup_location = target_link_name + backup_suffix
+                print(f"Backing up existing '{target_link_name}' to '{backup_location}'")
+                if os.path.exists(backup_location):
+                    print(f"Warning: Backup location '{backup_location}' already exists. Removing it.")
+                    shutil.rmtree(backup_location) # Remove if it exists to avoid error in rename
+                os.rename(target_link_name, backup_location)
+                backup_mapping[target_link_name] = backup_location
+        
+        # Create symlink from dummy_source_path to target_link_name
+        try:
+            os.symlink(os.path.abspath(dummy_source_path), os.path.abspath(target_link_name), target_is_directory=True)
+            print(f"Symlinked '{dummy_source_path}' to '{target_link_name}'")
+        except OSError as e:
+            print(f"Symlink creation failed (OSError: {e}). Falling back to moving/renaming '{dummy_source_path}' to '{target_link_name}'.")
+            try:
+                shutil.copytree(dummy_source_path, target_link_name) # Use copytree for directories
+                print(f"Copied '{dummy_source_path}' to '{target_link_name}' as fallback.")
+                backup_mapping[target_link_name] = "copied_dummy" # Mark that we copied, so we remove it later
+            except Exception as move_e:
+                print(f"Fallback move/copy also failed for '{dummy_source_path}' to '{target_link_name}': {move_e}")
+                raise # Re-raise if fallback also fails
+
+    # --- Test Execution ---
+    agent = None
+    try:
+        # Setup: Use dummy 'output_dummy' as 'output' for the test
+        setup_symlinks_or_moves(
+            default_output_path,      # Original 'output' path (if it exists, it will be backed up)
+            "output_dummy",           # The dummy directory we want to use
+            dummy_output_target_path, # The name the agent expects ('output')
+            backup_map
+        )
+
+        # Initialize the agent
+        # The agent will now use 'output_dummy' (linked as 'output') for its _load_and_parse_documentation
+        print(f"\nInitializing FirebirdDocumentedSQLAgent with DB: {TEST_DB_CONNECTION_STRING} and LLM: {TEST_LLM_MODEL_NAME}")
+        
+        # Attempt to use a real LLM if API keys are available, otherwise it will use MagicMock
+        # The __init__ method handles API key loading and LLM/Embedding initialization
+        agent = FirebirdDocumentedSQLAgent(
+            db_connection_string=TEST_DB_CONNECTION_STRING,
+            llm=TEST_LLM_MODEL_NAME, # Pass the model name string
+            retrieval_mode='faiss'   # Or 'neo4j' if you want to test that path (though it's a placeholder)
+        )
+        
+        # Check if the agent and its SQL sub-agent were initialized
+        if agent and agent.sql_agent:
+            print("\nAgent and SQL sub-agent initialized successfully.")
+
+            # Test query
+            # This query should work with the in-memory SQLite TestTable
+            test_query_1 = "How many items are in TestTable?"
+            print(f"\n--- Running Test Query 1: \"{test_query_1}\" ---")
+            response_1 = agent.query(test_query_1)
+            print(f"\nResponse for Query 1:")
+            print(f"  Natural Language Query: {response_1.get('natural_language_query')}")
+            # print(f"  Retrieved Context: {response_1.get('retrieved_context')[:200]}...") # Print first 200 chars
+            print(f"  Generated SQL: {response_1.get('generated_sql')}")
+            print(f"  Agent Final Answer: {response_1.get('agent_final_answer')}")
+            if response_1.get("text_variants"):
+                for i, variant in enumerate(response_1["text_variants"]):
+                    print(f"  Text Variant {i+1} ({variant.get('variant_name')}):\n    {variant.get('text')}")
+            if response_1.get('error'):
+                print(f"  Error: {response_1.get('error')}")
+
+            test_query_2 = "What is the name of the item with id 1?"
+            print(f"\n--- Running Test Query 2: \"{test_query_2}\" ---")
+            response_2 = agent.query(test_query_2)
+            print(f"\nResponse for Query 2:")
+            print(f"  Natural Language Query: {response_2.get('natural_language_query')}")
+            print(f"  Generated SQL: {response_2.get('generated_sql')}")
+            print(f"  Agent Final Answer: {response_2.get('agent_final_answer')}")
+            if response_2.get("text_variants"):
+                 for i, variant in enumerate(response_2["text_variants"]):
+                    print(f"  Text Variant {i+1} ({variant.get('variant_name')}):\n    {variant.get('text')}")
+            if response_2.get('error'):
+                print(f"  Error: {response_2.get('error')}")
+
+        else:
+            print("\nAgent or SQL sub-agent initialization failed. Check logs.")
+
+    except Exception as e:
+        print(f"\nAn error occurred during the test: {e}")
+        import traceback
+        traceback.print_exc()
+
+    finally:
+        # --- Cleanup ---
+        print("\n--- Cleaning up dummy files and restoring original 'output' directory ---")
+        
+        # Remove the symlink/copied dummy 'output'
+        if os.path.islink(dummy_output_target_path):
+            print(f"Removing symlink: {dummy_output_target_path}")
+            os.unlink(dummy_output_target_path)
+        elif backup_map.get(dummy_output_target_path) == "copied_dummy": # If we copied it
+            print(f"Removing copied dummy directory: {dummy_output_target_path}")
+            if os.path.exists(dummy_output_target_path): # Check existence before removal
+                 shutil.rmtree(dummy_output_target_path)
+        
+        # Restore original 'output' if it was backed up
+        backed_up_original_output = backup_map.get(dummy_output_target_path)
+        if backed_up_original_output and backed_up_original_output != "copied_dummy":
+            if os.path.exists(backed_up_original_output):
+                print(f"Restoring original '{dummy_output_target_path}' from '{backed_up_original_output}'")
+                os.rename(backed_up_original_output, dummy_output_target_path)
+            else:
+                print(f"Warning: Backup '{backed_up_original_output}' not found. Cannot restore.")
+        
+        # Remove the main dummy directory
+        if os.path.exists("output_dummy"):
+            print("Removing main dummy directory: output_dummy")
+            shutil.rmtree("output_dummy")
+        
+        print("Cleanup complete.")
+
+# Example of how to load environment variables from a specific .env file
+# from dotenv import load_dotenv
+# load_dotenv(dotenv_path='/path/to/your/.env') # Replace with actual path if needed
+
+# Example of direct OpenAIEmbeddings initialization (if you have the key)
+# try:
+#     embeddings = OpenAIEmbeddings(api_key="sk-...") # Replace with your key
+#     print("OpenAIEmbeddings initialized successfully with direct key.")
+# except Exception as e:
+#     print(f"Error initializing OpenAIEmbeddings with direct key: {e}")
+
+# Example of OpenRouter Embeddings initialization
+# try:
+#     embeddings_openrouter = OpenAIEmbeddings(
+#         api_key=os.getenv("OPENROUTER_API_KEY"), # Ensure this is set
+#         base_url="https://openrouter.ai/api/v1",
+#         model="text-embedding-ada-002" # Or other model
+#     )
+#     print("OpenAIEmbeddings initialized successfully with OpenRouter.")
+# except Exception as e:
+#     print(f"Error initializing OpenAIEmbeddings with OpenRouter: {e}")
+
+
+# --- Test with a mock LLM to ensure agent structure works without API calls ---
+def run_test_with_mock_llm():
+    print("\n--- Running Test with Mock LLM ---")
+    
+    # Create dummy documentation as before
+    dummy_schema_path_mock = "output_mock_schema"
+    dummy_yamls_path_mock = "output_mock_yamls"
+    dummy_ddl_path_mock = "output_mock_ddl"
+    os.makedirs(dummy_schema_path_mock, exist_ok=True)
+    os.makedirs(dummy_yamls_path_mock, exist_ok=True)
+    os.makedirs(dummy_ddl_path_mock, exist_ok=True)
+    with open(os.path.join(dummy_yamls_path_mock, "test_table.yaml"), "w", encoding="utf-fs8") as f: # Corrected typo utf-8
+        yaml.dump({"name": "TestTable", "description": "Mock table"}, f)
+    # Add other dummy files if needed for _load_and_parse_documentation
+
+    mock_backup_map = {}
+    try:
+        setup_symlinks_or_moves(
+            "output",
+            "output_mock_yamls", # This should be the parent dummy dir, e.g., "output_mock"
+                                 # if _load_and_parse_documentation expects output/yamls etc.
+                                 # For simplicity, let's assume _load_and_parse_documentation
+                                 # will be called with schema_path="output_mock_schema", etc.
+                                 # OR, we create output_mock/yamls, output_mock/schema etc.
+            "output", # Target link name
+            mock_backup_map
+        )
+        
+        # Create a proper mock structure for 'output_mock'
+        os.makedirs("output_mock/schema", exist_ok=True)
+        os.makedirs("output_mock/yamls", exist_ok=True)
+        os.makedirs("output_mock/ddl", exist_ok=True)
+        with open(os.path.join("output_mock/yamls", "test_table.yaml"), "w", encoding="utf-8") as f:
+             yaml.dump({"name": "TestTable", "description": "Mock table for mock LLM test"}, f)
+
+
+        # If OPENAI_API_KEY is not set, the agent's __init__ should fall back to MagicMock for LLM
+        # We can explicitly pass a MagicMock instance too.
+        from unittest.mock import MagicMock
+        mock_llm = MagicMock()
+        
+        # Configure the mock LLM to return a plausible response for agent.run()
+        # The SQL agent's .run() method typically returns a string which is the final answer.
+        # For the SQL agent part:
+        mock_sql_agent_run_return = "The TestTable contains 10 items."
+        
+        # For the _generate_textual_responses part, the mock_llm.invoke might be called.
+        # Let's make it return something simple.
+        if hasattr(mock_llm, 'invoke'):
+            mock_llm.invoke.return_value = MagicMock(content="Mocked LLM response for text generation.")
+        elif hasattr(mock_llm, 'generate'): # For older Langchain LLM interface
+             mock_llm.generate.return_value = MagicMock(generations=[[MagicMock(text="Mocked LLM response for text generation.")]])
+
+
+        # Temporarily unset API keys to force mock usage if relying on internal fallback
+        original_openai_key = os.environ.pop("OPENAI_API_KEY", None)
+        original_openrouter_key = os.environ.pop("OPENROUTER_API_KEY", None)
+
+        try:
+            # Pass the MagicMock instance directly
+            mock_agent = FirebirdDocumentedSQLAgent(
+                db_connection_string="sqlite:///:memory:", 
+                llm=mock_llm, # Pass the MagicMock instance
+                retrieval_mode='faiss'
+            )
+
+            # We need to mock the sql_agent.run part specifically if the outer llm mock isn't enough
+            if mock_agent.sql_agent: # If sql_agent was created (it should be, even with mock LLM for toolkit)
+                mock_agent.sql_agent.run = MagicMock(return_value=mock_sql_agent_run_return)
+            else:
+                print("Warning: SQL agent was not created in mock test, cannot mock its run method.")
+
+
+            if mock_agent:
+                print("\nMock LLM Agent initialized.")
+                test_query_mock = "How many items in TestTable with mock?"
+                response_mock = mock_agent.query(test_query_mock)
+                print(f"\nResponse for Mock LLM Query:")
+                print(f"  Natural Language Query: {response_mock.get('natural_language_query')}")
+                print(f"  Agent Final Answer: {response_mock.get('agent_final_answer')}") # Should be mock_sql_agent_run_return
+                if response_mock.get("text_variants"):
+                    for i, variant in enumerate(response_mock["text_variants"]):
+                        print(f"  Text Variant {i+1} ({variant.get('variant_name')}):\n    {variant.get('text')}")
+                if response_mock.get('error'):
+                    print(f"  Error: {response_mock.get('error')}")
+            else:
+                print("Mock LLM Agent initialization failed.")
+        finally:
+            # Restore API keys if they were popped
+            if original_openai_key:
+                os.environ["OPENAI_API_KEY"] = original_openai_key
+            if original_openrouter_key:
+                os.environ["OPENROUTER_API_KEY"] = original_openrouter_key
+    
+    except Exception as e_mock:
+        print(f"Error during mock LLM test: {e_mock}")
+        traceback.print_exc()
+    finally:
+        # Cleanup for mock test
+        if os.path.islink("output") and os.readlink("output") == os.path.abspath("output_mock"): # Check if it points to output_mock
+            os.unlink("output")
+        elif os.path.exists("output") and mock_backup_map.get("output") == "copied_dummy": # if output_mock was copied to output
+             shutil.rmtree("output")
+
+
+        if mock_backup_map.get("output") and mock_backup_map.get("output") != "copied_dummy":
+            if os.path.exists(mock_backup_map["output"]):
+                 os.rename(mock_backup_map["output"], "output")
+        
+        shutil.rmtree(dummy_schema_path_mock, ignore_errors=True)
+        shutil.rmtree(dummy_yamls_path_mock, ignore_errors=True)
+        shutil.rmtree(dummy_ddl_path_mock, ignore_errors=True)
+        shutil.rmtree("output_mock", ignore_errors=True) # Remove the parent mock dir
+        print("Mock LLM test cleanup complete.")
+
+
+if __name__ == "__main__":
+    # run_test_with_mock_llm() # Uncomment to run the mock LLM test
+    pass # Keep the original test run active by default
