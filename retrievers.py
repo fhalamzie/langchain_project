@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Optional, Any
 from abc import ABC
 from langchain_core.retrievers import BaseRetriever
 from langchain_core.documents import Document
@@ -15,7 +15,11 @@ class BaseDocumentationRetriever(BaseRetriever, ABC):
     pass
 
 class FaissDocumentationRetriever(BaseDocumentationRetriever):
-    def __init__(self, documents: List[Document], embeddings_model: OpenAIEmbeddings):
+    vector_store: Optional[FAISS] = None
+    retriever: Optional[Any] = None
+    
+    def __init__(self, documents: List[Document], embeddings_model: OpenAIEmbeddings, **kwargs):
+        super().__init__(**kwargs)
         self.vector_store = FAISS.from_documents(documents, embeddings_model)
         self.retriever = self.vector_store.as_retriever()
     

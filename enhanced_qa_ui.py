@@ -28,6 +28,7 @@ import random
 from qa_enhancer import QAEnhancer # Behalten wir vorerst für Feedback-Speicherung, falls nötig
 from db_executor import get_all_tables, execute_sql, results_to_dataframe # execute_sql für Rohdaten
 from firebird_sql_agent_direct import FirebirdDirectSQLAgent
+from phoenix_monitoring import get_monitor, PhoenixMonitor
 
 # Konfiguration
 FEEDBACK_DIR = Path("./output/feedback")
@@ -45,17 +46,29 @@ def get_qa_enhancer():
 # Wichtig: Der Pfad zur .FDB Datei muss für den Server, auf dem Python läuft, erreichbar sein.
 # Sicherstellen, dass das Präfix korrekt ist.
 DB_CONNECTION_STRING = os.getenv("DB_CONNECTION_STRING", "firebird+fdb://sysdba:masterkey@localhost:3050//home/projects/langchain_project/WINCASA2022.FDB")
-LLM_MODEL_NAME = "gpt-4-1106-preview"
+LLM_MODEL_NAME = "gpt-4o-mini"
 
 @st.cache_resource
-def get_firebird_sql_agent(retrieval_mode: str = 'faiss'):
+def get_phoenix_monitor():
+    """Erzeugt eine zwischengespeicherte Instanz des Phoenix Monitors."""
+    try:
+        monitor = get_monitor(enable_ui=True)
+        return monitor
+    except Exception as e:
+        st.warning(f"Phoenix monitoring konnte nicht initialisiert werden: {e}")
+        return None
+
+@st.cache_resource
+def get_firebird_sql_agent(retrieval_mode: str = 'faiss', use_enhanced_knowledge: bool = True):
     """Erzeugt eine zwischengespeicherte Instanz des FirebirdDirectSQLAgent."""
-    st.info(f"Initialisiere FirebirdDirectSQLAgent mit DB: {DB_CONNECTION_STRING} und Retrieval: {retrieval_mode}")
+    st.info(f"Initialisiere FirebirdDirectSQLAgent mit DB: {DB_CONNECTION_STRING}")
+    st.info(f"Retrieval-Modus: {retrieval_mode}, Enhanced Knowledge: {'Aktiviert' if use_enhanced_knowledge else 'Deaktiviert'}")
     try:
         agent = FirebirdDirectSQLAgent(
             db_connection_string=DB_CONNECTION_STRING,
             llm=LLM_MODEL_NAME,
-            retrieval_mode=retrieval_mode
+            retrieval_mode=retrieval_mode,
+            use_enhanced_knowledge=use_enhanced_knowledge
         )
         st.success("FirebirdDirectSQLAgent erfolgreich initialisiert.")
         return agent
@@ -74,38 +87,68 @@ def create_enhanced_qa_tab():
     
     **🎉 Neue Features:**
     - **Direkte FDB-Schnittstelle**: Umgeht SQLAlchemy-Sperrprobleme (SQLCODE -902)
-    - **Verbesserte Performance**: Keine Zwischenschicht mehr
-    - **Robuste Verbindung**: Automatisches Server/Embedded-Fallback
+    - **Enhanced Knowledge System**: Nutzt vorkompilierte Datenbankübersicht mit 149 Beziehungen
+    - **Multi-Stage Retrieval**: Priorisiert Schema, Beziehungen und historische Muster
+    - **Query Preprocessing**: Erkennt Geschäftsentitäten und optimiert JOINs
     
     Stellen Sie eine Frage in natürlicher Sprache. Das System wird:
-    1. Relevante Dokumentation und Schema-Informationen abrufen.
-    2. Eine SQL-Abfrage direkt auf der Firebird-Datenbank generieren und ausführen.
-    3. Die Ergebnisse in mehreren Textvarianten präsentieren.
+    1. Die Anfrage analysieren und relevante Entitäten identifizieren
+    2. Relevante Dokumentation mit Multi-Stage-Retrieval abrufen
+    3. Eine SQL-Abfrage direkt auf der Firebird-Datenbank generieren und ausführen
+    4. Die Ergebnisse in mehreren Textvarianten präsentieren
     """)
         
     # Sidebar-Konfiguration
     st.sidebar.markdown("### 🔧 Konfiguration")
     
     # Auswahl des Retrieval-Modus
-    retrieval_options = ['faiss', 'neo4j'] # Neo4j ist noch nicht voll implementiert im Agenten
+    retrieval_options = ['faiss', 'enhanced', 'neo4j'] # Neo4j ist noch nicht voll implementiert im Agenten
     selected_retrieval_mode = st.sidebar.selectbox(
         "Retrieval-Modus:",
         retrieval_options,
-        index=0, # Standardmäßig FAISS
-        help="FAISS für Vektorsuche, Neo4j für Graph-basierte Suche (experimentell)."
+        index=1, # Standardmäßig Enhanced
+        help="FAISS für Vektorsuche, Enhanced für Multi-Stage-Retrieval, Neo4j für Graph-basierte Suche (experimentell)."
+    )
+    
+    # Enhanced Knowledge System Toggle
+    use_enhanced_knowledge = st.sidebar.checkbox(
+        "Enhanced Knowledge System",
+        value=True,
+        help="Aktiviert die erweiterte Wissensbasis mit Datenbankübersicht, Beziehungen und Query-Preprocessing."
     )
     
     # Status-Anzeige
     st.sidebar.markdown("### 📊 System-Status")
     st.sidebar.success("✅ Direkte FDB-Schnittstelle aktiv")
+    if use_enhanced_knowledge:
+        st.sidebar.success("✅ Enhanced Knowledge System aktiv")
+        st.sidebar.info("📚 149 Beziehungen geladen")
+        st.sidebar.info("🔍 Query Preprocessor aktiv")
     st.sidebar.info(f"🔍 Retrieval-Modus: {selected_retrieval_mode.upper()}")
+    
+    # Phoenix Monitoring
+    st.sidebar.markdown("### 🔍 AI Observability")
+    monitor = get_phoenix_monitor()
+    if monitor and hasattr(monitor, 'session') and monitor.session:
+        st.sidebar.success("✅ Phoenix Monitoring aktiv")
+        phoenix_url = monitor.session.url if monitor.session else "http://localhost:6006"
+        st.sidebar.markdown(f"[📊 Phoenix Dashboard öffnen]({phoenix_url})")
+        
+        # Display metrics if available
+        metrics = monitor.get_metrics_summary()
+        if metrics['total_queries'] > 0:
+            st.sidebar.metric("Queries", metrics['total_queries'])
+            st.sidebar.metric("Success Rate", f"{metrics['success_rate']*100:.1f}%")
+            st.sidebar.metric("Total Cost", f"${metrics['total_cost_usd']:.2f}")
+    else:
+        st.sidebar.warning("⚠️ Phoenix Monitoring nicht verfügbar")
     
     # Datenbankverbindung anzeigen
     db_display = DB_CONNECTION_STRING.replace("masterkey", "***")  # Passwort verstecken
     st.sidebar.text(f"🗄️ DB: {db_display}")
 
     # Lade Firebird SQL Agent
-    agent = get_firebird_sql_agent(retrieval_mode=selected_retrieval_mode)
+    agent = get_firebird_sql_agent(retrieval_mode=selected_retrieval_mode, use_enhanced_knowledge=use_enhanced_knowledge)
     
     if agent is None:
         st.error("❌ Direkte FDB SQL Agent konnte nicht geladen werden. Bitte überprüfen Sie die Konfiguration und Fehlermeldungen.")
@@ -169,6 +212,26 @@ def create_enhanced_qa_tab():
                             st.markdown(variant_data['text'])
                 elif 'agent_final_answer' in entry: # Fallback, falls text_variants nicht da sind
                      st.markdown(f"**🤖 Antwort:** {entry['agent_final_answer']}")
+                
+                # Show monitoring info if available
+                if monitor:
+                    with st.expander("📊 Query Monitoring", expanded=False):
+                        st.markdown("**Performance Metrics:**")
+                        metrics = monitor.get_metrics_summary()
+                        col1, col2, col3 = st.columns(3)
+                        with col1:
+                            st.metric("Total Queries", metrics['total_queries'])
+                        with col2:
+                            st.metric("Success Rate", f"{metrics['success_rate']*100:.1f}%")
+                        with col3:
+                            st.metric("Avg Cost", f"${metrics['total_cost_usd']/max(1, metrics['total_queries']):.4f}")
+                        
+                        if 'retrieval_performance' in metrics and metrics['retrieval_performance']:
+                            st.markdown("**Retrieval Performance:**")
+                            for mode, stats in metrics['retrieval_performance'].items():
+                                if stats['total_retrievals'] > 0:
+                                    st.write(f"- **{mode.upper()}**: {stats['successful_retrievals']}/{stats['total_retrievals']} successful, "
+                                           f"avg {stats['avg_duration']:.2f}s, {stats['avg_documents']:.1f} docs")
 
 
             # Feedback-System (muss ggf. angepasst werden, welche Antwort bewertet wird)

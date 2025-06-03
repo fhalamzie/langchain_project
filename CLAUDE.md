@@ -1,117 +1,229 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides technical guidance for working with the WINCASA database query system.
 
-## Project Overview
+## System Overview
 
-WINCASA is a database documentation generator and natural language query system that bridges Firebird databases with modern LLM technology. The system enables users to query complex databases using natural language without SQL knowledge.
+WINCASA is a natural language database query system for Firebird databases. The system uses LLM agents to generate SQL queries based on natural language input.
 
-## Key Architecture
+## Core Components
 
-The system uses a modular architecture with these critical components:
+1. **`firebird_sql_agent_direct.py`** - Main SQL agent with direct FDB integration
+2. **`fdb_direct_interface.py`** - Direct Firebird interface (bypasses SQLAlchemy SQLCODE -902 issues)
+3. **`enhanced_qa_ui.py`** - Streamlit UI for development/testing
+4. **`streamlit_qa_app.py`** - Clean production UI
+5. **`enhanced_retrievers.py`** - Multi-Stage RAG system with FAISS vectorization
+6. **`db_knowledge_compiler.py`** - Database knowledge compilation system
 
-1. **Direct FDB Interface** (`fdb_direct_interface.py`) - Bypasses SQLAlchemy to avoid lock issues (SQLCODE -902)
-2. **SQL Agent** (`firebird_sql_agent_direct.py`) - Converts natural language to SQL using LLM + RAG
-3. **FAISS Retriever** (`retrievers.py`) - Vector-based documentation search for context
-4. **Streamlit UI** (`streamlit_integration.py`, `enhanced_qa_ui.py`) - User interface
+## Available Interfaces
 
-## Common Commands
-
-### Running the Application
+### Web Interfaces
 ```bash
-# Main Streamlit app
-source .venv/bin/activate
-streamlit run streamlit_integration.py
+# Clean production UI
+./start_clean_qa.sh
+# Access: http://localhost:8502
 
-# Enhanced Q&A UI with direct FDB (recommended)
-./start_enhanced_qa_direct.sh
-# or manually:
-source .venv/bin/activate
+# Development UI (all features)
 streamlit run enhanced_qa_ui.py
+# Access: http://localhost:8501
 
-# Command-line query
+# Legacy production UI
+./start_enhanced_qa_direct.sh
+```
+
+### Command Line
+```bash
+# Direct CLI queries
 python run_llm_query.py
 ```
 
-### Testing
-```bash
-# Test direct FDB interface
-python test_fdb_direct_interface.py
+## Testing Framework
 
-# Test enhanced UI integration  
+### Basic System Tests
+```bash
+# Core integration test
 python test_enhanced_qa_ui_integration.py
 
-# Test Firebird SQL agent
+# Database interface test
+python test_fdb_direct_interface.py
+
+# Agent functionality test
 python test_firebird_sql_agent.py
-
-# Test retrievers
-python test_retrievers.py
 ```
 
-### Database Schema Export
+### Retrieval Mode Evaluation
 ```bash
-python extract_from_firebird.py
+# Optimized test framework (recommended)
+python optimized_retrieval_test.py
+
+# Concurrent testing (2 workers)
+python optimized_retrieval_test.py --concurrent --workers 2
+
+# Original test framework
+python automated_retrieval_test.py
 ```
 
-## Critical Technical Context
+## System Configuration
 
-1. **SQLAlchemy Lock Issue**: The project initially used SQLAlchemy but encountered persistent lock issues (SQLCODE -902) with Firebird Embedded. The solution was implementing a direct FDB interface that bypasses SQLAlchemy entirely. Always use `FirebirdDirectSQLAgent` instead of the original `FirebirdDocumentedSQLAgent`.
+### Database
+- **File**: `WINCASA2022.FDB` 
+- **Tables**: 151 user tables
+- **Data**: 517 apartments, 698 residents
 
-2. **Connection Management**: The direct FDB interface uses connection pooling and automatic server/embedded fallback. Never create raw FDB connections - always use `FDBDirectInterface` for database access.
+### API Configuration
+- **OpenAI**: `/home/envs/openai.env`
+- **OpenRouter**: `/home/envs/openrouter.env` (fallback)
 
-3. **Token Limits**: Document content is limited to 1500 characters to prevent token overflow. This is configured in the retriever classes.
+### Knowledge Base
+- **Compiled**: `/output/compiled_knowledge_base.json`
+- **Documentation**: `/output/yamls/` (248 YAML files)
 
-4. **Environment Setup**: 
-   - OpenAI API key must be in `/home/envs/openai.env`
-   - Firebird client library must be at `./lib/libfbclient.so`
-   - Database file `WINCASA2022.FDB` must be in project root
+## Retrieval Modes
 
-## Development Workflow
+The system supports three retrieval modes for context augmentation:
 
-When modifying the system:
+### 1. Enhanced Mode (`enhanced`)
+- Multi-stage RAG with business context
+- Uses compiled knowledge base and YAML documentation
+- 3-level retrieval: schema, relationships, business patterns
 
-1. **For SQL Agent changes**: Work with `firebird_sql_agent_direct.py` (not the original)
-2. **For UI changes**: Modify `enhanced_qa_ui.py` for the Q&A interface
-3. **For retrieval improvements**: Update `retrievers.py` (FAISS is primary, Neo4j is experimental)
-4. **For database access**: Always use `FDBDirectInterface` from `fdb_direct_interface.py`
+### 2. FAISS Mode (`faiss`)
+- Vector similarity search using FAISS
+- Basic document retrieval with embeddings
+- Standard vectorization approach
 
-## Testing Approach
+### 3. None Mode (`none`)
+- Direct SQL generation without retrieval augmentation
+- Baseline mode using only LLM knowledge
+- No additional context from documentation
 
-Always test database connections first:
+## Current Performance Data
+
+Based on comprehensive testing (11 queries × 3 modes = 33 tests):
+
+### Success Rates
+- Enhanced Mode: 63.6% (7/11 queries successful)
+- FAISS Mode: 63.6% (7/11 queries successful)  
+- None Mode: 63.6% (7/11 queries successful)
+
+### Average Execution Times
+- Enhanced Mode: 22.5 seconds
+- FAISS Mode: 34.6 seconds
+- None Mode: 20.8 seconds
+
+### Timeout Behavior
+- Enhanced Mode: 3 timeouts
+- FAISS Mode: 5 timeouts
+- None Mode: 0 timeouts
+
+## Known Issues
+
+### System-Level Errors
+- **SOLLSTELLUNG Error**: 2 queries fail across all modes with "Target SOLLSTELLUNG is not in G"
+- **Database Schema Issue**: Not retrieval-mode specific
+
+### Mode-Specific Issues
+- **FAISS Mode**: Prone to timeouts on complex queries
+- **Enhanced Mode**: Occasional incorrect table selection
+- **None Mode**: Limited business context understanding
+
+### Accuracy Limitations
+- Current success rate of 63.6% indicates significant room for improvement
+- Query results often do not match expected real-world data
+- Table selection and SQL generation require optimization
+
+## Development Notes
+
+### Database Lock Issues
+When running tests, the database may be locked by other processes. Symptoms:
+```
+SQLCODE: -902 - Database already opened with engine instance
+```
+
+Solution: Wait for running tests to complete or restart processes.
+
+### Testing Optimization
+The optimized test framework provides:
+- Agent reuse (13.6s initialization vs 45s+ repeated)
+- Real-time progress logging
+- Concurrent execution support
+
+### Log Monitoring
 ```bash
-python test_fdb_direct_interface.py
+# Monitor test progress
+tail -f optimized_retrieval_test_*.log
+
+# Check latest results
+ls -la optimized_retrieval_test_*.json
 ```
 
-Then test the complete flow:
+## Next Steps for Development
+
+### Immediate Improvements Needed
+1. Address SOLLSTELLUNG system error
+2. Improve query accuracy from current 63.6%
+3. Optimize table selection logic
+4. Reduce timeout frequency in FAISS/Enhanced modes
+
+### Testing Recommendations
+1. Use `optimized_retrieval_test.py` for performance testing
+2. Monitor logs for timeout patterns
+3. Analyze query comparison reports for accuracy issues
+4. Test with real user queries beyond current test set
+
+### Architecture Considerations
+1. Consider hybrid mode selection based on query type
+2. Implement timeout management and retry logic
+3. Improve business context integration
+4. Enhance error handling and user feedback
+
+## Monitoring & Observability Integration
+
+### Phoenix Integration (Arize-AI)
+Integration of Phoenix for comprehensive AI observability:
+
+#### Installation
 ```bash
-python test_enhanced_qa_ui_integration.py
+pip install arize-phoenix
 ```
-Write for each new item in the implemention_plan.md a unit test and verify the implemention
 
-## Important Files
+#### Integration Points
+- **LLM Tracing**: Track all OpenAI API calls and response quality
+- **Retrieval Evaluation**: Monitor RAG performance across Enhanced/FAISS/None modes
+- **Performance Monitoring**: Track query execution times and success rates
+- **Prompt Management**: Systematically test and version prompt variations
 
-- `implementation_status.md` - Current project status and phase completion
-- `plan.md` - Detailed implementation plan for Langchain SQL Agent with RAG approaches
-- `query_router.py` - Central database access component (legacy, replaced by direct FDB)
-- `db_executor.py` - Secure SQL execution with validation and caching
-- `query_memory.py` - Stores query history for context
+#### Implementation Plan
+1. **Core Integration**: Add Phoenix tracing to `firebird_sql_agent_direct.py`
+2. **Retrieval Monitoring**: Instrument `enhanced_retrievers.py` for RAG evaluation
+3. **UI Integration**: Add Phoenix dashboard links to `enhanced_qa_ui.py`
+4. **Testing Integration**: Enhance automated tests with Phoenix metrics
 
-## Current Implementation Status
+#### Configuration
+```python
+import phoenix as px
+px.launch_app()  # Launch Phoenix UI at http://localhost:6006
+```
 
-- **Phase 1 (FAISS RAG)**: ✅ Complete
-- **Phase 1.5 (Direct FDB)**: ✅ Complete - Critical solution for SQLAlchemy lock issues
-- **Phase 2 (Neo4j RAG)**: ✅ Implemented but optional/lower priority
-- **Phase 3 (Integration)**: ✅ Complete for FAISS
-- **Phase 4 (UI Integration)**: ✅ Complete
-- **Phase 5 (Extended Tests)**: ✅ Complete as of 3.6.2025
+## Development Workflow Requirements
 
-## Key Technical Solutions
+### Unit Testing Standards
+- **Coverage**: 100% unit test coverage for all new features
+- **Test Location**: Tests in `/tests/` directory with `test_*.py` naming
+- **Framework**: Use pytest for consistent testing approach
+- **Mocking**: Mock external dependencies (OpenAI API, database connections)
+- **Performance Tests**: Include performance benchmarks for critical paths
 
-1. **Direct FDB Interface**: Custom Langchain tools (`FDBQueryTool`, `FDBSchemaInfoTool`, `FDBListTablesTool`) that bypass SQLAlchemy
-2. **Connection Pooling**: Efficient connection management with automatic server/embedded fallback
-3. **Character Encoding**: Proper handling of WIN1252 to UTF-8 conversion for German text
+### Git Workflow Requirements
+- **Commit Strategy**: Each major change requires dedicated git commit
+- **Commit Messages**: Descriptive messages following conventional commits format
+- **Push Policy**: All commits must be pushed to remote repository
+- **Documentation Updates**: Every code change requires corresponding documentation update
 
+### Documentation Maintenance
+- **CLAUDE.md**: Update technical guidance for new features
+- **README.md**: Update user-facing documentation and examples
+- **implementation_status.md**: Track completion status of all features
+- **Code Comments**: Inline documentation for complex logic
 
-## Git
-
-Please commmit prior to any major change
+This system is functional but requires significant optimization before production deployment.
