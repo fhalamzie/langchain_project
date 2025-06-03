@@ -94,7 +94,7 @@ except Exception as e_global_init:
 
 
 # Assuming retrievers.py is in the same directory or accessible in PYTHONPATH
-from retrievers import FaissDocumentationRetriever, BaseDocumentationRetriever
+from retrievers import FaissDocumentationRetriever, BaseDocumentationRetriever, Neo4jDocumentationRetriever
 
 # Monkey-Patch für sqlalchemy-firebird Dialekt
 # Dieses Patch behebt ein Problem, bei dem der Dialekt versucht, 'WIN1252' (eine Kollation)

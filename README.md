@@ -3,7 +3,7 @@
 ## Projektübersicht
 
 Dieses Projekt ist ein umfassendes Tool zur automatisierten Dokumentation und intelligenten Abfrage einer Firebird-Datenbank (WINCASA2022.FDB). Es kombiniert traditionelle Datenbanktechnologien mit modernen LLM-basierten (Large Language Model) Methoden, um eine intuitive, natürlichsprachige Interaktion mit komplexen Datenbankstrukturen zu ermöglichen.
-Aktuell wird das System erweitert, um einen Langchain SQL Agent mit fortschrittlichen RAG-Techniken (FAISS und Neo4j) zu integrieren, um die Kontextualisierung und Genauigkeit von Abfragen weiter zu verbessern. Der detaillierte Implementierungsplan ist unter [`plan.md`](plan.md) und der aktuelle Fortschritt unter [`implementation_status.md`](implementation_status.md) zu finden.
+Das System integriert zwei parallele RAG-Ansätze (FAISS und Neo4j) für erweiterte Kontextualisierung und höhere Abfragegenauigkeit. Der detaillierte Implementierungsplan ist unter [`plan.md`](plan.md) und der aktuelle Fortschritt unter [`implementation_status.md`](implementation_status.md) zu finden.
 
 ## Hauptfunktionen
 
@@ -136,7 +136,7 @@ Der typische Ablauf einer natürlichsprachigen Datenbankabfrage wird derzeit üb
    ```
 3. Abhängigkeiten installieren:
    ```
-   pip install langchain langchain-community langchain-openai streamlit pandas numpy scikit-learn fdb faiss-cpu neo4j tiktoken PyYAML python-dotenv
+   pip install langchain langchain-community langchain-openai streamlit pandas numpy scikit-learn fdb faiss-cpu neo4j neo4j-graphrag tiktoken PyYAML python-dotenv
    ```
 4. OpenAI API-Schlüssel in `/home/envs/openai.env` hinterlegen:
    ```
@@ -195,6 +195,22 @@ streamlit run enhanced_qa_ui.py
 
 # Oder mit dem neuen Startskript:
 ./start_enhanced_qa_direct.sh
+
+### Neo4j-Integration
+
+Für die Nutzung des Neo4j RAG-Pfads:
+1. Neo4j-Instanz starten:
+```bash
+docker run -d --name neo4j -p 7474:7474 -p 7687:7687 -e NEO4J_AUTH=neo4j/password neo4j
+```
+2. Dokumentation importieren:
+```python
+from neo4j_importer import Neo4jImporter
+
+importer = Neo4jImporter("bolt://localhost:7687", "neo4j", "password", "doc_index")
+importer.create_index()
+importer.import_documents(docs)  # docs aus _load_and_parse_documentation
+```
 ```
 
 **🎉 Neue Features der direkten FDB-Schnittstelle:**
