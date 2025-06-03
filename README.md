@@ -184,15 +184,25 @@ source .venv/bin/activate
 python run_llm_query.py
 ```
 
-### Erweiterte Q&A-Benutzeroberfläche:
+### Erweiterte Q&A-Benutzeroberfläche (Direkte FDB-Schnittstelle):
 
 ```
 # Virtuelle Umgebung aktivieren
 source .venv/bin/activate
 
-# UI starten
+# UI mit direkter FDB-Schnittstelle starten
 streamlit run enhanced_qa_ui.py
+
+# Oder mit dem neuen Startskript:
+./start_enhanced_qa_direct.sh
 ```
+
+**🎉 Neue Features der direkten FDB-Schnittstelle:**
+- Umgeht SQLAlchemy-Sperrprobleme (SQLCODE -902)
+- Automatisches Server/Embedded-Fallback
+- Custom Langchain Tools für FDB-Operationen
+- Verbesserte Fehlerbehandlung und Performance
+- Detaillierte Agent-Schritte in der UI
 
 ### Lizenzinformationen prüfen:
 

@@ -1,8 +1,17 @@
 """
-enhanced_qa_ui.py - Integration der verbesserten Q&A-Funktionalität in die Streamlit-Oberfläche
+enhanced_qa_ui.py - Integration der direkten FDB-Schnittstelle in die Streamlit-Oberfläche
 
 Diese Datei erweitert die bestehende Streamlit-Anwendung um einen neuen Tab, der die
-verbesserte Q&A-Funktionalität mit SQL-Ausführung und Ergebnisaufbereitung nutzt.
+direkte Firebird-Datenbankschnittstelle (FDB) mit SQL-Ausführung und Ergebnisaufbereitung nutzt.
+
+WICHTIGE ÄNDERUNG: Diese Version verwendet FirebirdDirectSQLAgent anstatt FirebirdDocumentedSQLAgent,
+um SQLAlchemy-Sperrprobleme (SQLCODE -902) zu umgehen.
+
+Features der direkten FDB-Schnittstelle:
+- Direkte fdb-Treiber-Verbindung ohne SQLAlchemy
+- Automatisches Server/Embedded-Fallback
+- Custom Langchain Tools für FDB-Operationen
+- Verbesserte Fehlerbehandlung und Performance
 """
 
 import os
@@ -18,7 +27,7 @@ import random
 # Importiere lokale Module
 from qa_enhancer import QAEnhancer # Behalten wir vorerst für Feedback-Speicherung, falls nötig
 from db_executor import get_all_tables, execute_sql, results_to_dataframe # execute_sql für Rohdaten
-from firebird_sql_agent import FirebirdDocumentedSQLAgent
+from firebird_sql_agent_direct import FirebirdDirectSQLAgent
 
 # Konfiguration
 FEEDBACK_DIR = Path("./output/feedback")
@@ -40,47 +49,70 @@ LLM_MODEL_NAME = "gpt-4-1106-preview"
 
 @st.cache_resource
 def get_firebird_sql_agent(retrieval_mode: str = 'faiss'):
-    """Erzeugt eine zwischengespeicherte Instanz des FirebirdDocumentedSQLAgent."""
-    st.info(f"Initialisiere FirebirdDocumentedSQLAgent mit DB: {DB_CONNECTION_STRING} und Retrieval: {retrieval_mode}")
+    """Erzeugt eine zwischengespeicherte Instanz des FirebirdDirectSQLAgent."""
+    st.info(f"Initialisiere FirebirdDirectSQLAgent mit DB: {DB_CONNECTION_STRING} und Retrieval: {retrieval_mode}")
     try:
-        agent = FirebirdDocumentedSQLAgent(
+        agent = FirebirdDirectSQLAgent(
             db_connection_string=DB_CONNECTION_STRING,
             llm=LLM_MODEL_NAME,
             retrieval_mode=retrieval_mode
         )
-        st.success("FirebirdDocumentedSQLAgent erfolgreich initialisiert.")
+        st.success("FirebirdDirectSQLAgent erfolgreich initialisiert.")
         return agent
     except Exception as e:
-        st.error(f"Fehler bei der Initialisierung des FirebirdDocumentedSQLAgent: {e}")
+        st.error(f"Fehler bei der Initialisierung des FirebirdDirectSQLAgent: {e}")
+        import traceback
+        st.error(f"Detaillierter Fehler: {traceback.format_exc()}")
         return None
 
 def create_enhanced_qa_tab():
-    """Erstellt einen Tab für die erweiterte Q&A-Funktionalität mit dem SQL Agent."""
-    st.header("🚀 Intelligente Datenbankabfrage (SQL Agent)")
+    """Erstellt einen Tab für die erweiterte Q&A-Funktionalität mit dem direkten FDB SQL Agent."""
+    st.header("🚀 Intelligente Datenbankabfrage (Direkte FDB-Schnittstelle)")
     
     st.markdown("""
-    Dieser Tab nutzt einen intelligenten SQL-Agenten, um Ihre Fragen zu beantworten.
+    Dieser Tab nutzt einen intelligenten SQL-Agenten mit **direkter Firebird-Datenbankverbindung**, um Ihre Fragen zu beantworten.
+    
+    **🎉 Neue Features:**
+    - **Direkte FDB-Schnittstelle**: Umgeht SQLAlchemy-Sperrprobleme (SQLCODE -902)
+    - **Verbesserte Performance**: Keine Zwischenschicht mehr
+    - **Robuste Verbindung**: Automatisches Server/Embedded-Fallback
+    
     Stellen Sie eine Frage in natürlicher Sprache. Das System wird:
     1. Relevante Dokumentation und Schema-Informationen abrufen.
-    2. Eine SQL-Abfrage generieren und ausführen.
+    2. Eine SQL-Abfrage direkt auf der Firebird-Datenbank generieren und ausführen.
     3. Die Ergebnisse in mehreren Textvarianten präsentieren.
     """)
         
+    # Sidebar-Konfiguration
+    st.sidebar.markdown("### 🔧 Konfiguration")
+    
     # Auswahl des Retrieval-Modus
     retrieval_options = ['faiss', 'neo4j'] # Neo4j ist noch nicht voll implementiert im Agenten
     selected_retrieval_mode = st.sidebar.selectbox(
-        "Wählen Sie den Retrieval-Modus:",
+        "Retrieval-Modus:",
         retrieval_options,
         index=0, # Standardmäßig FAISS
         help="FAISS für Vektorsuche, Neo4j für Graph-basierte Suche (experimentell)."
     )
+    
+    # Status-Anzeige
+    st.sidebar.markdown("### 📊 System-Status")
+    st.sidebar.success("✅ Direkte FDB-Schnittstelle aktiv")
+    st.sidebar.info(f"🔍 Retrieval-Modus: {selected_retrieval_mode.upper()}")
+    
+    # Datenbankverbindung anzeigen
+    db_display = DB_CONNECTION_STRING.replace("masterkey", "***")  # Passwort verstecken
+    st.sidebar.text(f"🗄️ DB: {db_display}")
 
     # Lade Firebird SQL Agent
     agent = get_firebird_sql_agent(retrieval_mode=selected_retrieval_mode)
     
     if agent is None:
-        st.error("SQL Agent konnte nicht geladen werden. Bitte überprüfen Sie die Konfiguration und Fehlermeldungen.")
+        st.error("❌ Direkte FDB SQL Agent konnte nicht geladen werden. Bitte überprüfen Sie die Konfiguration und Fehlermeldungen.")
+        st.sidebar.error("❌ Agent nicht verfügbar")
         return
+    else:
+        st.sidebar.success("✅ Agent bereit")
 
     # Initialisiere Session State für die Chat-Historie
     if "enhanced_chat_history" not in st.session_state:
@@ -113,8 +145,20 @@ def create_enhanced_qa_tab():
                         st.text(entry['retrieved_context'][:1000] + "..." if len(entry['retrieved_context']) > 1000 else entry['retrieved_context'])
 
                     if 'agent_final_answer' in entry and entry['agent_final_answer']:
-                        st.markdown("**Antwort des SQL-Agenten (Roh):**")
+                        st.markdown("**Antwort des direkten FDB SQL-Agenten (Roh):**")
                         st.text(entry['agent_final_answer'])
+                    
+                    # Neue Funktion: Detaillierte Schritte der direkten FDB-Schnittstelle anzeigen
+                    if 'detailed_steps' in entry and entry['detailed_steps']:
+                        st.markdown("**🔧 Detaillierte Agent-Schritte (Direkte FDB-Schnittstelle):**")
+                        for i, step in enumerate(entry['detailed_steps']):
+                            with st.expander(f"Schritt {i+1}: {step.get('action', {}).get('tool', 'Unbekannt')}", expanded=False):
+                                if 'action' in step:
+                                    st.json(step['action'])
+                                if 'observation' in step:
+                                    st.text(f"Beobachtung: {step['observation']}")
+                                if 'error' in step:
+                                    st.error(f"Fehler: {step['error']}")
 
                 # Zeige Textvarianten der Antwort
                 if 'text_variants' in entry and entry['text_variants']:
@@ -190,22 +234,23 @@ def create_enhanced_qa_tab():
         
         if submit_button and user_query:
             if agent is None:
-                st.error("SQL Agent ist nicht verfügbar. Anfrage kann nicht bearbeitet werden.")
+                st.error("❌ Direkte FDB SQL Agent ist nicht verfügbar. Anfrage kann nicht bearbeitet werden.")
                 return
 
-            with st.spinner("Agent verarbeitet Ihre Anfrage... Bitte haben Sie einen Moment Geduld."):
-                # Verarbeite die Anfrage mit dem Agenten
+            with st.spinner("🔄 Direkte FDB Agent verarbeitet Ihre Anfrage... Bitte haben Sie einen Moment Geduld."):
+                # Verarbeite die Anfrage mit dem direkten FDB Agenten
                 # Der retrieval_mode wird beim Initialisieren des Agenten übergeben
                 agent_response = agent.query(user_query)
                 
                 # Füge das Ergebnis zur Chat-Historie hinzu
-                # Die Struktur von agent_response ist:
+                # Die Struktur von agent_response der direkten FDB-Schnittstelle ist:
                 # {
                 #     "natural_language_query": ...,
                 #     "retrieved_context": ...,
                 #     "agent_final_answer": ...,
                 #     "generated_sql": ...,
                 #     "text_variants": [{"variant_name": ..., "text": ...}, ...],
+                #     "detailed_steps": [...],  # Neue Eigenschaft der direkten FDB-Schnittstelle
                 #     "error": ... or None
                 # }
                 history_entry = {

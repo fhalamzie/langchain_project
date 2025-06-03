@@ -6,7 +6,16 @@ lib_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'lib'))
 os.environ['FIREBIRD_LIBRARY_PATH'] = os.path.join(lib_path, 'libfbclient.so')
 print(f"FIREBIRD_LIBRARY_PATH set to: {os.environ['FIREBIRD_LIBRARY_PATH']}")
 
-import fdb # FDB früh importieren
+# import fdb # FDB früh importieren - Wird jetzt später importiert, nach Setzen der Env-Vars
+
+# Die manuelle Registrierung wird entfernt, da sqlalchemy-firebird installiert ist
+# und seine Entry Points automatisch von SQLAlchemy erkannt werden sollten.
+# try:
+#     from sqlalchemy.dialects import registry
+#     registry.register("firebird.fdb", "fdb.sqlalchemy_dialect", "FBDialect")
+#     print("fdb dialect registered successfully for SQLAlchemy.")
+# except Exception as e:
+#     print(f"Warning: Could not register fdb dialect: {e}")
 import glob
 import yaml
 from typing import List, Dict, Any, Optional, Union # Added Optional and Union
@@ -20,14 +29,121 @@ from langchain_community.utilities import SQLDatabase
 from langchain_community.agent_toolkits.sql.base import create_sql_agent # Updated import
 from langchain_community.agent_toolkits.sql.toolkit import SQLDatabaseToolkit # Updated import
 import sqlite3
-import fdb # Hinzufügen für direkte fdb-Verbindung
-from sqlalchemy import create_engine, event # event für Ping
+# import fdb # Wird jetzt innerhalb der Creator-Funktion oder bei Bedarf importiert
+from sqlalchemy import create_engine, event, text # event für Ping, text für SQLAlchemy 2.0
 from sqlalchemy.engine.url import make_url # Zum Parsen des Connection Strings
-from sqlalchemy.pool import StaticPool
+from sqlalchemy.pool import StaticPool, NullPool # NullPool importieren
+
+# --- Globale Datenbankinitialisierung (Experiment) ---
+DB_CONNECTION_STRING_GLOBAL = "firebird+fdb://sysdba:masterkey@//home/projects/langchain_project/WINCASA2022.FDB"
+GLOBAL_ENGINE = None
+GLOBAL_DB = None
+
+def create_global_fdb_connection():
+    import fdb # Import hier, um sicherzustellen, dass es nach den Env-Vars geschieht
+    url_info = make_url(DB_CONNECTION_STRING_GLOBAL)
+    db_path_for_creator = str(url_info.database)
+    if db_path_for_creator.startswith("//"):
+        db_path_for_creator = db_path_for_creator[1:]
+    
+    print(f"Global Creator: Connecting to DSN: {db_path_for_creator}, User: {url_info.username or 'SYSDBA'}")
+    # Umgebungsvariablen hier explizit setzen, um sicherzugehen, dass sie vor fdb.connect aktiv sind
+    # Dies ist redundant, wenn sie bereits global gesetzt wurden, schadet aber nicht.
+    fb_temp_dir_g = Path("./fb_temp_global_init").absolute()
+    if not fb_temp_dir_g.exists():
+        fb_temp_dir_g.mkdir(exist_ok=True, parents=True)
+    os.environ["FIREBIRD_TMP"] = str(fb_temp_dir_g)
+    os.environ["FIREBIRD_TEMP"] = str(fb_temp_dir_g)
+    os.environ["FB_TMPDIR"] = str(fb_temp_dir_g)
+    os.environ["FIREBIRD_LOCK"] = str(fb_temp_dir_g)
+    os.environ["FB_HOME"] = str(fb_temp_dir_g)
+    os.environ["FIREBIRD_HOME"] = str(fb_temp_dir_g)
+    print(f"Global Creator: FIREBIRD_TMP set to {fb_temp_dir_g}")
+
+    return fdb.connect(
+        dsn=db_path_for_creator,
+        user=url_info.username or "SYSDBA",
+        password=url_info.password or "masterkey",
+        charset="WIN1252"
+    )
+
+try:
+    print("Attempting global engine and SQLDatabase initialization...")
+    GLOBAL_ENGINE = create_engine(
+        "firebird+fdb://",
+        creator=create_global_fdb_connection,
+        poolclass=NullPool, # Weiterhin NullPool verwenden
+        echo=False # True für Debugging des Engine-Verhaltens
+    )
+    # Der explizite Test mit GLOBAL_ENGINE.connect() wird entfernt,
+    # da die SQLDatabase-Initialisierung die Verbindung testen wird.
+    # with GLOBAL_ENGINE.connect() as conn_g_test:
+    #     print("✓ Global engine connection test successful.")
+    #     res_g = conn_g_test.execute(text("SELECT rdb$relation_id FROM rdb$database"))
+    #     print(f"✓ Global engine query successful: {res_g.fetchone()}")
+
+    GLOBAL_DB = SQLDatabase(GLOBAL_ENGINE)
+    print(f"✓ Global SQLDatabase initialized. Usable tables: {GLOBAL_DB.get_usable_table_names()}")
+except Exception as e_global_init:
+    print(f"✗ Error during global database initialization: {e_global_init}")
+    import traceback
+    traceback.print_exc()
+    GLOBAL_ENGINE = None
+    GLOBAL_DB = None
+# --- Ende Globale Datenbankinitialisierung ---
 
 
 # Assuming retrievers.py is in the same directory or accessible in PYTHONPATH
 from retrievers import FaissDocumentationRetriever, BaseDocumentationRetriever
+
+# Monkey-Patch für sqlalchemy-firebird Dialekt
+# Dieses Patch behebt ein Problem, bei dem der Dialekt versucht, 'WIN1252' (eine Kollation)
+# als Länge für VARCHAR-Felder zu interpretieren, was zu einem ValueError führt.
+try:
+    from sqlalchemy_firebird.base import FBTypeCompiler # Importiere den spezifischen Typ-Compiler
+    import sqlalchemy.sql.sqltypes as sqltypes
+
+    _original_render_string_type = FBTypeCompiler._render_string_type
+
+    def _patched_render_string_type(self, type_, *args, **kwargs): # Akzeptiere *args und **kwargs
+        # Diese gepatchte Methode wird anstelle der Originalmethode im FBTypeCompiler aufgerufen.
+        
+        if not isinstance(type_, (sqltypes.VARCHAR, sqltypes.CHAR)):
+            # Für andere Typen das Originalverhalten aufrufen und alle Argumente weitergeben
+            return _original_render_string_type(self, type_, *args, **kwargs)
+
+        # Behandlung für VARCHAR und CHAR
+        base_rendering = "VARCHAR" if isinstance(type_, sqltypes.VARCHAR) else "CHAR"
+        
+        length_suffix = ""
+        if getattr(type_, 'length', None) is not None:
+            try:
+                length_val = int(type_.length)
+                if length_val > 0: # Nur positive Längen hinzufügen
+                    length_suffix = f"({length_val})"
+            except ValueError:
+                # Ignoriere 'WIN1252' oder andere nicht-numerische Längen für den Suffix
+                print(f"MonkeyPatch (FBTypeCompiler._render_string_type): Konnte Länge '{type_.length}' für Typ {type_} nicht in int umwandeln. Lasse Suffix weg.")
+                pass # length_suffix bleibt ""
+        
+        # Kollationsteil (falls vorhanden und relevant, hier nicht direkt behandelt,
+        # da das Problem die Längenkonvertierung ist)
+        # collation = getattr(type_, 'collation', None)
+        # if collation:
+        #     ...
+
+        return base_rendering + length_suffix
+
+    FBTypeCompiler._render_string_type = _patched_render_string_type
+    print("MonkeyPatch für FBTypeCompiler._render_string_type angewendet.")
+
+except ImportError:
+    print("Konnte sqlalchemy_firebird.base.FBTypeCompiler nicht für Monkey-Patch importieren.")
+except AttributeError:
+    print("Konnte FBTypeCompiler._render_string_type nicht für Monkey-Patch finden/überschreiben.")
+except Exception as e_patch:
+    print(f"Fehler beim Anwenden des Monkey-Patches: {e_patch}")
+
 
 class SQLCaptureCallbackHandler(BaseCallbackHandler):
     """A callback handler to capture SQL queries and other agent actions."""
@@ -123,9 +239,9 @@ class FirebirdDocumentedSQLAgent:
         # Wir setzen sie auf das Projektverzeichnis, da dort ./lib/libfbclient.so liegt.
         # Wenn Firebird Server-Komponenten erwartet, ist dies ggf. nicht korrekt.
         # Für den reinen Client-Zugriff sollte es aber eher helfen als schaden.
-        project_root_for_fb_home = Path(os.path.dirname(__file__)).parent.absolute()
-        os.environ["FB_HOME"] = str(project_root_for_fb_home)
-        os.environ["FIREBIRD_HOME"] = str(project_root_for_fb_home)
+        # Anpassung an generate_yaml_ui.py: FB_HOME und FIREBIRD_HOME auch auf fb_temp_dir setzen.
+        os.environ["FB_HOME"] = str(fb_temp_dir)
+        os.environ["FIREBIRD_HOME"] = str(fb_temp_dir)
         os.environ["FIREBIRD_LOCK"] = str(fb_temp_dir)
 
 
@@ -387,54 +503,61 @@ class FirebirdDocumentedSQLAgent:
                     print(f"Could not create or verify TestTable in sqlite:///:memory: for test: {e_create}")
                     return None # Ensure agent setup fails if in-memory DB setup fails
             else:
-                # Für Firebird eine benutzerdefinierte Creator-Funktion verwenden
+                # Für Firebird: Verwende den ursprünglichen firebird+fdb:// Dialekt
                 try:
-                    url = make_url(self.db_connection_string)
+                    print(f"Attempting to connect using original connection string: {self.db_connection_string}")
                     
-                    db_path = str(url.database) # Der Pfad zur .fdb Datei
-                    # SQLAlchemy URL kann // für absolute Pfade haben, fdb.connect braucht nur /
-                    if db_path.startswith("//"):
-                        db_path = db_path[1:]
-
-                    print(f"Attempting to connect to Firebird DB: DSN='{db_path}', User='{url.username}', Host='{url.host}', Port='{url.port}'")
-
-                    def creator():
-                        # Setze hier die Umgebungsvariablen, die in db_executor.py verwendet werden,
-                        # falls sie für fdb.connect relevant sind und nicht global gesetzt werden können/sollen.
-                        # Fürs Erste verlassen wir uns auf die globalen Einstellungen am Anfang der Datei.
+                    # Erstelle die Engine direkt mit dem ursprünglichen Connection String
+                    # VERSUCH MIT CREATOR-FUNKTION
+                    def create_fdb_connection():
+                        import fdb # Import hier, um sicherzustellen, dass es verfügbar ist
+                        url_info = make_url(self.db_connection_string)
+                        db_path_for_creator = str(url_info.database)
+                        if db_path_for_creator.startswith("//"): # Korrektur für Pfad, falls nötig
+                             db_path_for_creator = db_path_for_creator[1:]
+                        
+                        print(f"Creator function: Connecting to DSN: {db_path_for_creator}, User: {url_info.username or 'SYSDBA'}")
                         return fdb.connect(
-                            dsn=db_path, # Oder host=url.host, database=url.database wenn getrennt
-                            user=url.username,
-                            password=url.password,
-                            port=url.port if url.port else 3050, # Standard-Firebird-Port
-                            charset="WIN1252" # Wieder hinzufügen, da der Server es erwarten könnte
+                            dsn=db_path_for_creator,
+                            user=url_info.username or "SYSDBA",
+                            password=url_info.password or "masterkey",
+                            charset="WIN1252" # Zeichensatz hier explizit für fdb.connect
                         )
 
                     engine = create_engine(
-                        self.db_connection_string, # Der ursprüngliche String für Dialekt-Auswahl
-                        creator=creator,
-                        poolclass=StaticPool # Wichtig bei benutzerdefiniertem Creator, um Pooling-Probleme zu vermeiden
+                        "firebird+fdb://", # Generischer DSN, da Creator verwendet wird
+                        creator=create_fdb_connection,
+                        poolclass=NullPool, # NullPool anstelle von StaticPool versuchen
+                        echo=False
                     )
                     
-                    # Optional: Teste die Verbindung direkt nach dem Erstellen der Engine
-                    with engine.connect() as connection_test:
-                        print("SQLAlchemy engine connected successfully via custom creator.")
+                    # Entferne den separaten Test-Verbindungsblock, um potenzielle Sperrkonflikte zu reduzieren.
+                    # Die Initialisierung von SQLDatabase wird die Verbindung testen.
                     
-                    self.db_engine = engine # Engine speichern
-                    db = SQLDatabase(self.db_engine)
-                    print("SQLDatabase initialized with custom Firebird creator function.")
-                except Exception as e_fdb_creator:
-                    print(f"Error setting up Firebird SQLDatabase with custom creator: {e_fdb_creator}")
+                    self.db_engine = engine
+                    # Explizit 'BEWOHNER' und andere potenziell wichtige Tabellen einbeziehen
+                    # Für den Test fokussieren wir uns auf BEWOHNER
+                    self.db = SQLDatabase(self.db_engine) # Zurücksetzen, um alle Tabellen zu laden
+                    # Teste die Verbindung durch Abrufen der Tabellennamen direkt nach der Initialisierung
+                    print(f"✓ SQLDatabase initialized. Usable tables: {self.db.get_usable_table_names()}")
+                    print("✓ SQLDatabase connection seems OK based on get_usable_table_names().")
+                    
+                except Exception as e_firebird:
+                    print(f"✗ Error with firebird+fdb dialect: {e_firebird}")
                     import traceback
                     traceback.print_exc()
-                    return None
+                    # Kein Fallback mehr, um das Firebird-Problem direkt zu adressieren
+                    print("SQLAgent setup: Firebird connection failed. No fallback to SQLite.")
+                    self.db_engine = None # Sicherstellen, dass keine alte Engine-Referenz bleibt
+                    self.db = None        # Sicherstellen, dass keine alte DB-Referenz bleibt
+                    return None # SQL Agent Initialisierung fehlschlagen lassen
 
 
-            if db is None: # Zusätzliche Prüfung, falls die Erstellung oben fehlschlägt
+            if self.db is None: # Zusätzliche Prüfung, falls die Erstellung oben fehlschlägt
                 print("SQLDatabase instance could not be created.")
                 return None
 
-            toolkit = SQLDatabaseToolkit(db=db, llm=self.llm)
+            toolkit = SQLDatabaseToolkit(db=self.db, llm=self.llm)
             
             # Define a more specific system message for the SQL agent
             # This can be further refined.
@@ -447,6 +570,11 @@ class FirebirdDocumentedSQLAgent:
             Never query for all the columns from a specific table, only ask for the relevant columns given the question.
             
             VERY IMPORTANT: Only use column names that you can explicitly see in the schema description for the respective tables. Do not invent column names or assume they exist.
+            
+            Before generating a query, if you are unsure about table names or column names, you MUST use the 'sql_db_list_tables' tool to see available tables or the 'sql_db_schema' tool to get the schema for specific tables.
+            When you use 'sql_db_schema', state clearly for which table(s) you are requesting the schema.
+            After obtaining the schema information, explicitly state what you have learned or if the information was sufficient before constructing the SQL query.
+            If the 'sql_db_schema' tool seems to not work or returns unexpected results, please state this in your thought process.
             Be careful to not query for columns that do not exist.
             Also, pay attention to which column is in which table. If the schema information is incomplete or seems to be missing for a table, state this and ask for clarification rather than guessing column names.
             If the schema information from the `sql_db_schema` tool is ambiguous or seems incomplete, prioritize the table and column information found in the supplementary documentation context (YAML, Markdown files) if available.
@@ -455,16 +583,18 @@ class FirebirdDocumentedSQLAgent:
             If a Stored Procedure seems relevant based on its name or description in the documentation, consider using it.
             For Firebird, Stored Procedures are often selected using a SELECT query, e.g., SELECT * FROM MY_PROCEDURE(param1, param2).
 
-            Always use the following format:
+            Always use the following format STRICTLY:
 
             Question: The input question you must answer
-            Thought: You should always think about what to do.
-            Action: The action to take, should be one of [sql_db_query, sql_db_schema, sql_db_list_tables, sql_db_query_checker]
-            Action Input: The input to the action
-            Observation: The result of the action
+            Thought: You should always think about what to do. Describe your thought process.
+            Action: The action to take. Must be one of [sql_db_query, sql_db_schema, sql_db_list_tables, sql_db_query_checker].
+            Action Input: The input to the action. For 'sql_db_schema', this should be a comma-separated list of table names, if querying multiple tables.
+            Observation: The result of the action.
             ... (this Thought/Action/Action Input/Observation can repeat N times)
             Thought: I now know the final answer.
             Final Answer: The final answer to the original input question.
+
+            Ensure your response for "Action" and "Action Input" are on separate lines and correctly labeled. Do not output just the tool name or tool name and input without the "Action:" and "Action Input:" prefixes.
             """
             # Note: The exact tools available (sql_db_query, etc.) depend on the SQLDatabaseToolkit.
             # The agent created by create_sql_agent with SQLDatabaseToolkit will have these.
@@ -476,9 +606,10 @@ class FirebirdDocumentedSQLAgent:
                 handle_parsing_errors=True, # Handles errors if LLM outputs non-SQL
                 max_iterations=10,
                 callbacks=[self.sql_callback_handler], # Pass the callback handler here
-                return_intermediate_steps=True # Hinzufügen, um Schritte zu erhalten
-                # agent_type=AgentType.OPENAI_FUNCTIONS, # Or other agent types if needed
-                # agent_kwargs={"system_message": system_message} # Pass system message if supported by agent type
+                return_intermediate_steps=True, # Hinzufügen, um Schritte zu erhalten
+                agent_kwargs={
+                    "handle_parsing_errors": True
+                }
             )
             # For some agent types, the system message is part of the prompt or passed differently.
             # The default create_sql_agent might not directly use "system_message" in agent_kwargs
@@ -816,20 +947,20 @@ class FirebirdDocumentedSQLAgent:
 
 # --- Main execution / Test section ---
 if __name__ == "__main__":
+    # Minimal FDB Connection Test ist jetzt Teil der globalen Initialisierung oben.
+    # Der Code hier wird nur ausgeführt, wenn die globale Initialisierung erfolgreich war
+    # oder wenn wir einen expliziten SQLite-Fallback für Tests ohne DB-Zugriff wollen.
+
     import shutil # For cleaning up dummy files/dirs
     # --- Configuration for Testing ---
-    # Option 1: Use a real Firebird connection string (replace with your actual string)
-    # TEST_DB_CONNECTION_STRING = "firebird+fdb://sysdba:masterkey@localhost:3050//path/to/your/database.fdb"
+    # TEST_DB_CONNECTION_STRING wird nicht mehr direkt hier verwendet, da die DB global initialisiert wird.
+    # Wir verwenden GLOBAL_DB für den Agenten, falls es erfolgreich initialisiert wurde.
     
-    # Option 2: Use SQLite in-memory for basic agent testing (no Firebird specifics)
-    # TEST_DB_CONNECTION_STRING = "sqlite:///:memory:"
-    TEST_DB_CONNECTION_STRING = "firebird+fdb://sysdba:masterkey@localhost:3050//home/projects/langchain_project/WINCASA2022.FDB" # Echte Wincasa DB (Server-Modus)
- 
     # LLM Configuration (using a placeholder model name, replace if needed)
     # Ensure OPENROUTER_API_KEY or OPENAI_API_KEY is set in your environment or .env file
     # For OpenRouter, model name might be like "openai/gpt-3.5-turbo"
     # For direct OpenAI, model name might be "gpt-3.5-turbo"
-    TEST_LLM_MODEL_NAME = "gpt-3.5-turbo" # Generic, will be prefixed if OpenRouter is used
+    TEST_LLM_MODEL_NAME = "openai/gpt-4.1-nano" # Vom Benutzer angefordertes Modell
 
     # --- Setup Dummy Documentation ---
     # Create dummy directories and files for documentation loading
@@ -922,21 +1053,130 @@ if __name__ == "__main__":
             backup_map
         )
 
-        # Initialize the agent
-        # The agent will now use 'output_dummy' (linked as 'output') for its _load_and_parse_documentation
-        print(f"\nInitializing FirebirdDocumentedSQLAgent with DB: {TEST_DB_CONNECTION_STRING} and LLM: {TEST_LLM_MODEL_NAME}")
+        print(f"\n=== TESTING DIRECT FDB INTERFACE ===")
+        print(f"Initializing FirebirdDirectSQLAgent with DB: {DB_CONNECTION_STRING_GLOBAL} and LLM: {TEST_LLM_MODEL_NAME}")
+        
+        # Teste zuerst die direkte FDB-Schnittstelle
+        try:
+            from firebird_sql_agent_direct import FirebirdDirectSQLAgent
+            
+            direct_agent = FirebirdDirectSQLAgent(
+                db_connection_string=DB_CONNECTION_STRING_GLOBAL,
+                llm=TEST_LLM_MODEL_NAME,
+                retrieval_mode='faiss'
+            )
+            
+            if direct_agent and direct_agent.sql_agent:
+                print("✓ Direct FDB Agent initialized successfully.")
+                
+                # Test-Abfragen für die direkte FDB-Schnittstelle
+                direct_test_queries = [
+                    "Zeige mir die ersten 5 Bewohner.",
+                    "Welche Spalten hat die Tabelle BEWOHNER?",
+                    "Liste alle verfügbaren Tabellen auf."
+                ]
+                
+                for i, test_query in enumerate(direct_test_queries, 1):
+                    print(f"\n--- Direct FDB Test Query {i}: \"{test_query}\" ---")
+                    try:
+                        response = direct_agent.query(test_query)
+                        
+                        print(f"Response for Direct FDB Query {i}:")
+                        print(f"  Natural Language Query: {response.get('natural_language_query')}")
+                        print(f"  Generated SQL: {response.get('generated_sql')}")
+                        print(f"  Agent Final Answer: {response.get('agent_final_answer')}")
+                        
+                        if response.get("text_variants"):
+                            for j, variant in enumerate(response["text_variants"]):
+                                print(f"  Text Variant {j+1} ({variant.get('variant_name')}):\n    {variant.get('text')[:200]}...")
+                        
+                        if response.get('error'):
+                            print(f"  Error: {response.get('error')}")
+                            
+                    except Exception as e_direct_query:
+                        print(f"Error in direct FDB query {i}: {e_direct_query}")
+                        import traceback
+                        traceback.print_exc()
+            else:
+                print("✗ Direct FDB Agent initialization failed.")
+                
+        except Exception as e_direct_agent:
+            print(f"✗ Error initializing Direct FDB Agent: {e_direct_agent}")
+            import traceback
+            traceback.print_exc()
+
+        print(f"\n=== TESTING ORIGINAL SQLALCHEMY APPROACH (for comparison) ===")
+        print(f"Initializing FirebirdDocumentedSQLAgent with DB from global config ({DB_CONNECTION_STRING_GLOBAL}) and LLM: {TEST_LLM_MODEL_NAME}")
         
         # Attempt to use a real LLM if API keys are available, otherwise it will use MagicMock
         # The __init__ method handles API key loading and LLM/Embedding initialization
-        agent = FirebirdDocumentedSQLAgent(
-            db_connection_string=TEST_DB_CONNECTION_STRING,
-            llm=TEST_LLM_MODEL_NAME, # Pass the model name string
-            retrieval_mode='faiss'   # Or 'neo4j' if you want to test that path (though it's a placeholder)
-        )
+        agent = None # Initialisiere agent mit None
+        if GLOBAL_DB: # Nur initialisieren, wenn die globale DB-Verbindung erfolgreich war
+            print(f"Using globally initialized SQLDatabase instance (GLOBAL_DB) for agent.")
+            agent = FirebirdDocumentedSQLAgent(
+                db_connection_string=DB_CONNECTION_STRING_GLOBAL,
+                llm=TEST_LLM_MODEL_NAME,
+                retrieval_mode='faiss'
+            )
+        else:
+            print("\nGlobal database initialization failed. Attempting Agent init with SQLite for non-DB tests.")
+            try:
+                print("Setting up fallback SQLite in-memory for agent testing...")
+                import sqlite3 # Sicherstellen, dass sqlite3 importiert ist
+                # Die SQLite Engine und DB-Erstellung muss hier erfolgen,
+                # da der Agent eine SQLDatabase-Instanz erwartet.
+                sqlite_engine_fallback = create_engine("sqlite:///:memory:", poolclass=NullPool)
+                with sqlite_engine_fallback.connect() as conn_fallback:
+                    conn_fallback.execute(text("CREATE TABLE TestTable (id INTEGER PRIMARY KEY, name VARCHAR(100));"))
+                    conn_fallback.execute(text("INSERT INTO TestTable (id, name) VALUES (1, 'SQLite Sample');"))
+                    conn_fallback.commit()
+                
+                # Wichtig: include_tables hier verwenden, da SQLDatabase sonst die Tabelle nicht kennt.
+                sqlite_db_fallback = SQLDatabase(sqlite_engine_fallback, include_tables=['TestTable'])
+                print("✓ Fallback SQLite DB created and initialized for agent.")
+                
+                # Der Konstruktor von FirebirdDocumentedSQLAgent erwartet eine SQLDatabase-Instanz.
+                # Die db_connection_string wird für den SQLite-Fall nicht mehr direkt übergeben.
+                agent = FirebirdDocumentedSQLAgent(
+                    db_connection_string=DB_CONNECTION_STRING_GLOBAL,
+                    llm=TEST_LLM_MODEL_NAME,
+                    retrieval_mode='faiss'
+                )
+            except Exception as e_sqlite_fallback_agent:
+                print(f"✗ Error creating SQLite fallback agent: {e_sqlite_fallback_agent}")
+                agent = None # Sicherstellen, dass Agent None ist
         
         # Check if the agent and its SQL sub-agent were initialized
         if agent and agent.sql_agent and agent.db_engine: # Prüfen, ob die Engine gespeichert wurde
             print("\nAgent and SQL sub-agent initialized successfully.")
+
+            # --- Direkter SQLDatabase Schema Test ---
+            # Sicherstellen, dass agent und agent.db existieren, bevor darauf zugegriffen wird.
+            # Dieser Test wird wahrscheinlich fehlschlagen, wenn der Agent aufgrund von DB-Problemen nicht initialisiert werden konnte.
+            if agent and hasattr(agent, 'db') and agent.db:
+                print(f"\n--- Attempting to get schema for BEWOHNER via SQLDatabase instance: {agent.db} ---")
+                try:
+                    # Zuerst prüfen, ob die Tabelle überhaupt in den bekannten Tabellen von SQLDatabase ist
+                    all_known_tables = agent.db.get_usable_table_names()
+                    print(f"All tables known to SQLDatabase: {all_known_tables}")
+                    # Verwende den kleingeschriebenen Namen, wie er von get_usable_table_names() zurückgegeben wird
+                    table_name_to_test = "bewohner"
+                    if table_name_to_test in all_known_tables:
+                        bewohner_schema = agent.db.get_table_info([table_name_to_test])
+                        print(f"\nSchema for {table_name_to_test.upper()} (via SQLDatabase.get_table_info):")
+                        print(bewohner_schema)
+                    else:
+                        print("Table BEWOHNER not found in SQLDatabase's usable table names.")
+                except Exception as e_schema_test:
+                    print(f"Error getting schema for BEWOHNER via SQLDatabase.get_table_info: {e_schema_test}")
+                    import traceback
+                    traceback.print_exc()
+                print("--- End of direct SQLDatabase Schema test ---")
+            elif agent:
+                 print("\nSQLDatabase instance (agent.db) not found or agent not fully initialized for direct schema test.")
+            else:
+                print("\nAgent not initialized, skipping direct SQLDatabase Schema test.")
+            # --- Ende Direkter SQLDatabase Schema Test ---
 
             # --- Direkter SQLAlchemy Inspector Test ---
             from sqlalchemy import inspect, text
