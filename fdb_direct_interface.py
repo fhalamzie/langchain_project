@@ -1,25 +1,110 @@
 import os
 import fdb
+import threading
+import time
 from typing import List, Tuple, Dict, Any, Optional
 from pathlib import Path
 from sqlalchemy.engine.url import make_url
+from collections import deque
 
+class ConnectionPool:
+    """Einfacher Thread-sicherer Verbindungspool für Firebird-Verbindungen."""
+    
+    def __init__(self, dsn: str, user: str, password: str, charset: str, max_size: int = 5):
+        self.dsn = dsn
+        self.user = user
+        self.password = password
+        self.charset = charset
+        self.max_size = max_size
+        self._pool = deque()
+        self._lock = threading.Lock()
+        self._active_connections = 0
+        
+    def get_connection(self, timeout: float = 5.0) -> fdb.Connection:
+        """Holt eine Verbindung aus dem Pool oder erstellt eine neue."""
+        start_time = time.time()
+        while time.time() - start_time < timeout:
+            with self._lock:
+                if self._pool:
+                    return self._pool.popleft()
+                if self._active_connections < self.max_size:
+                    self._active_connections += 1
+                    return self._create_new_connection()
+            time.sleep(0.1)
+        raise TimeoutError("Timeout beim Warten auf eine Datenbankverbindung")
+    
+    def release_connection(self, conn: fdb.Connection):
+        """Gibt eine Verbindung an den Pool zurück."""
+        with self._lock:
+            if len(self._pool) < self.max_size:
+                self._pool.append(conn)
+            else:
+                try:
+                    conn.close()
+                except:
+                    pass
+                self._active_connections -= 1
+    
+    def _create_new_connection(self) -> fdb.Connection:
+        """Erstellt eine neue Firebird-Verbindung."""
+        # Versuche Server-Verbindung
+        server_dsn = f"localhost:{self.dsn}"
+        server_credentials = [
+            (self.user, self.password),
+            ("SYSDBA", "masterkey"),
+            ("sysdba", "masterkey"),
+            ("SYSDBA", "masterkey123"),
+        ]
+        
+        for user, password in server_credentials:
+            try:
+                return fdb.connect(
+                    dsn=server_dsn,
+                    user=user,
+                    password=password,
+                    charset=self.charset
+                )
+            except:
+                continue
+        
+        # Fallback zu Embedded-Verbindung
+        try:
+            return fdb.connect(
+                dsn=self.dsn,
+                user=self.user,
+                password=self.password,
+                charset=self.charset
+            )
+        except Exception as e:
+            raise Exception(f"Weder Server- noch Embedded-Verbindung möglich: {e}")
+    
+    def close_all(self):
+        """Schließt alle Verbindungen im Pool."""
+        with self._lock:
+            while self._pool:
+                try:
+                    self._pool.popleft().close()
+                except:
+                    pass
+            self._active_connections = 0
 
 class FDBDirectInterface:
     """
     Direkte Firebird-Datenbankschnittstelle über den fdb-Treiber.
     Umgeht SQLAlchemy-Sperrprobleme durch direkte Verbindungshandhabung.
+    Implementiert einen Verbindungspool für bessere Performance.
     """
     
-    def __init__(self, dsn: str, user: str = "SYSDBA", password: str = "masterkey", charset: str = "WIN1252"):
+    def __init__(self, dsn: str, user: str = "SYSDBA", password: str = "masterkey", charset: str = "WIN1252", pool_size: int = 5):
         """
-        Initialisiert die direkte FDB-Schnittstelle.
+        Initialisiert die direkte FDB-Schnittstelle mit Verbindungspool.
         
         Args:
             dsn: Datenbankpfad (z.B. "/path/to/database.fdb")
             user: Benutzername (Standard: "SYSDBA")
             password: Passwort (Standard: "masterkey")
             charset: Zeichensatz (Standard: "WIN1252")
+            pool_size: Maximale Anzahl an Verbindungen im Pool (Standard: 5)
         """
         self.dsn = dsn
         self.user = user
@@ -29,8 +114,15 @@ class FDBDirectInterface:
         # Firebird-Umgebungsvariablen setzen
         self._setup_firebird_environment()
         
+        # Verbindungspool initialisieren
+        self.pool = ConnectionPool(dsn, user, password, charset, pool_size)
+        
         # Verbindung testen
         self._test_connection()
+        
+        # Metadaten-Cache initialisieren
+        self.table_names_cache = None
+        self.table_info_cache = {}
     
     def _setup_firebird_environment(self):
         """Setzt die notwendigen Firebird-Umgebungsvariablen."""
@@ -71,62 +163,31 @@ class FDBDirectInterface:
             raise
     
     def _get_connection(self):
-        """Erstellt eine neue Datenbankverbindung."""
-        try:
-            # Versuche zuerst Server-Verbindung mit verschiedenen Anmeldeinformationen
-            server_dsn = f"localhost:{self.dsn}"
-            print(f"FDBDirectInterface: Versuche Server-Verbindung mit DSN: {server_dsn}")
-            
-            # Versuche verschiedene Benutzer/Passwort-Kombinationen für den Server
-            server_credentials = [
-                (self.user, self.password),
-                ("SYSDBA", "masterkey"),
-                ("sysdba", "masterkey"),
-                ("SYSDBA", "masterkey123"),
-            ]
-            
-            for user, password in server_credentials:
-                try:
-                    print(f"FDBDirectInterface: Versuche Server-Anmeldung mit User: {user}")
-                    return fdb.connect(
-                        dsn=server_dsn,
-                        user=user,
-                        password=password,
-                        charset=self.charset
-                    )
-                except Exception as e_cred:
-                    print(f"Server-Anmeldung mit {user} fehlgeschlagen: {e_cred}")
-                    continue
-            
-            print("Alle Server-Anmeldeversuche fehlgeschlagen")
-            
-        except Exception as e_server:
-            print(f"Server-Verbindung generell fehlgeschlagen: {e_server}")
-        
-        # Fallback zu direkter Embedded-Verbindung (wird wahrscheinlich fehlschlagen)
-        try:
-            print(f"FDBDirectInterface: Versuche Embedded-Verbindung mit DSN: {self.dsn}")
-            return fdb.connect(
-                dsn=self.dsn,
-                user=self.user,
-                password=self.password,
-                charset=self.charset
-            )
-        except Exception as e_embedded:
-            print(f"Embedded-Verbindung fehlgeschlagen: {e_embedded}")
-            raise Exception(f"Weder Server- noch Embedded-Verbindung möglich. Letzter Fehler: {e_embedded}")
+        """Holt eine Verbindung aus dem Pool."""
+        return self.pool.get_connection()
     
-    def get_table_names(self) -> List[str]:
+    def _release_connection(self, conn):
+        """Gibt eine Verbindung an den Pool zurück."""
+        self.pool.release_connection(conn)
+    
+    def get_table_names(self, use_cache: bool = True) -> List[str]:
         """
         Gibt eine Liste aller Benutzertabellen zurück.
+        Verwendet Caching für bessere Performance.
         
+        Args:
+            use_cache: Ob der Cache verwendet werden soll (Standard: True)
+            
         Returns:
             Liste der Tabellennamen
         """
+        if use_cache and self.table_names_cache is not None:
+            return self.table_names_cache
+        
         query = """
         SELECT TRIM(rdb$relation_name) as table_name
         FROM rdb$relations
-        WHERE rdb$view_blr IS NULL 
+        WHERE rdb$view_blr IS NULL
         AND (rdb$system_flag IS NULL OR rdb$system_flag = 0)
         AND rdb$relation_name NOT STARTING WITH 'RDB$'
         AND rdb$relation_name NOT STARTING WITH 'MON$'
@@ -147,6 +208,9 @@ class FDBDirectInterface:
             
             cursor.close()
             print(f"FDBDirectInterface: {len(tables)} Benutzertabellen gefunden")
+            
+            # Cache aktualisieren
+            self.table_names_cache = tables
             return tables
             
         except Exception as e:
@@ -154,14 +218,16 @@ class FDBDirectInterface:
             return []
         finally:
             if conn:
-                conn.close()
+                self._release_connection(conn)
     
-    def get_table_info(self, table_names: List[str]) -> str:
+    def get_table_info(self, table_names: List[str], use_cache: bool = True) -> str:
         """
         Gibt DDL-ähnliche Beschreibung für die angegebenen Tabellen zurück.
+        Verwendet Caching für bessere Performance.
         
         Args:
             table_names: Liste der Tabellennamen
+            use_cache: Ob der Cache verwendet werden soll (Standard: True)
             
         Returns:
             Formatierte Tabellenbeschreibung für LLM
@@ -169,19 +235,32 @@ class FDBDirectInterface:
         if not table_names:
             return "Keine Tabellen angegeben."
         
-        conn = None
-        try:
-            conn = self._get_connection()
-            cursor = conn.cursor()
-            
-            table_info_parts = []
-            
+        # Nicht gecachte Tabellen identifizieren
+        uncached_tables = []
+        cached_info = []
+        
+        if use_cache:
             for table_name in table_names:
                 table_name_upper = table_name.upper().strip()
+                if table_name_upper in self.table_info_cache:
+                    cached_info.append(self.table_info_cache[table_name_upper])
+                else:
+                    uncached_tables.append(table_name_upper)
+        else:
+            uncached_tables = [table_name.upper().strip() for table_name in table_names]
+        
+        # Informationen für nicht gecachte Tabellen abrufen
+        if uncached_tables:
+            conn = None
+            try:
+                conn = self._get_connection()
+                cursor = conn.cursor()
                 
-                # Spalteninformationen abrufen
-                column_query = """
-                SELECT 
+                # Batch-Abfrage für Spalteninformationen
+                placeholders = ",".join(["?"] * len(uncached_tables))
+                column_query = f"""
+                SELECT
+                    TRIM(rf.rdb$relation_name) as table_name,
                     TRIM(rf.rdb$field_name) as column_name,
                     TRIM(f.rdb$field_type) as field_type,
                     f.rdb$field_length,
@@ -192,69 +271,82 @@ class FDBDirectInterface:
                     f.rdb$character_length
                 FROM rdb$relation_fields rf
                 JOIN rdb$fields f ON rf.rdb$field_source = f.rdb$field_name
-                WHERE TRIM(rf.rdb$relation_name) = ?
-                ORDER BY rf.rdb$field_position
+                WHERE TRIM(rf.rdb$relation_name) IN ({placeholders})
+                ORDER BY rf.rdb$relation_name, rf.rdb$field_position
                 """
                 
-                cursor.execute(column_query, (table_name_upper,))
+                cursor.execute(column_query, uncached_tables)
                 columns = cursor.fetchall()
                 
-                if not columns:
-                    table_info_parts.append(f"Tabelle {table_name_upper}: Keine Spalten gefunden oder Tabelle existiert nicht.")
-                    continue
-                
-                # Tabellenbeschreibung erstellen
-                table_desc = [f"\nTabelle: {table_name_upper}"]
-                table_desc.append("Spalten:")
-                
-                for col in columns:
-                    col_name = col[0].strip() if col[0] else "UNKNOWN"
-                    field_type = col[1]
-                    field_length = col[2]
-                    field_scale = col[3]
-                    field_sub_type = col[4]
-                    null_flag = col[5]
-                    charset_id = col[6]
-                    char_length = col[7]
-                    
-                    # Datentyp bestimmen
-                    data_type = self._get_firebird_data_type(
-                        field_type, field_length, field_scale, 
-                        field_sub_type, charset_id, char_length
-                    )
-                    
-                    # NULL/NOT NULL
-                    nullable = "NOT NULL" if null_flag == 1 else "NULL"
-                    
-                    table_desc.append(f"  - {col_name}: {data_type} ({nullable})")
-                
-                # Primärschlüssel abrufen
-                pk_query = """
-                SELECT TRIM(sg.rdb$field_name) as column_name
+                # Batch-Abfrage für Primärschlüssel
+                pk_query = f"""
+                SELECT
+                    TRIM(rc.rdb$relation_name) as table_name,
+                    TRIM(sg.rdb$field_name) as column_name
                 FROM rdb$relation_constraints rc
                 JOIN rdb$index_segments sg ON rc.rdb$index_name = sg.rdb$index_name
-                WHERE TRIM(rc.rdb$relation_name) = ?
+                WHERE TRIM(rc.rdb$relation_name) IN ({placeholders})
                 AND rc.rdb$constraint_type = 'PRIMARY KEY'
-                ORDER BY sg.rdb$field_position
+                ORDER BY rc.rdb$relation_name, sg.rdb$field_position
                 """
                 
-                cursor.execute(pk_query, (table_name_upper,))
-                pk_columns = [row[0].strip() for row in cursor.fetchall()]
+                cursor.execute(pk_query, uncached_tables)
+                pk_results = cursor.fetchall()
                 
-                if pk_columns:
-                    table_desc.append(f"Primärschlüssel: {', '.join(pk_columns)}")
+                # Ergebnisse gruppieren
+                table_columns = {}
+                for row in columns:
+                    table_name = row[0].strip()
+                    if table_name not in table_columns:
+                        table_columns[table_name] = []
+                    table_columns[table_name].append(row[1:])
                 
-                table_info_parts.append("\n".join(table_desc))
-            
-            cursor.close()
-            return "\n".join(table_info_parts)
-            
-        except Exception as e:
-            print(f"Fehler beim Abrufen der Tabelleninformationen: {e}")
-            return f"Fehler beim Abrufen der Tabelleninformationen: {e}"
-        finally:
-            if conn:
-                conn.close()
+                table_pks = {}
+                for row in pk_results:
+                    table_name = row[0].strip()
+                    column_name = row[1].strip()
+                    if table_name not in table_pks:
+                        table_pks[table_name] = []
+                    table_pks[table_name].append(column_name)
+                
+                # Tabellenbeschreibungen erstellen
+                for table_name in uncached_tables:
+                    table_desc = [f"\nTabelle: {table_name}"]
+                    table_desc.append("Spalten:")
+                    
+                    for col in table_columns.get(table_name, []):
+                        col_name = col[0].strip() if col[0] else "UNKNOWN"
+                        field_type = col[1]
+                        field_length = col[2]
+                        field_scale = col[3]
+                        field_sub_type = col[4]
+                        null_flag = col[5]
+                        charset_id = col[6]
+                        char_length = col[7]
+                        
+                        data_type = self._get_firebird_data_type(
+                            field_type, field_length, field_scale,
+                            field_sub_type, charset_id, char_length
+                        )
+                        
+                        nullable = "NOT NULL" if null_flag == 1 else "NULL"
+                        table_desc.append(f"  - {col_name}: {data_type} ({nullable})")
+                    
+                    if table_name in table_pks:
+                        table_desc.append(f"Primärschlüssel: {', '.join(table_pks[table_name])}")
+                    
+                    table_info = "\n".join(table_desc)
+                    self.table_info_cache[table_name] = table_info
+                    cached_info.append(table_info)
+                
+            except Exception as e:
+                print(f"Fehler beim Abrufen der Tabelleninformationen: {e}")
+                return f"Fehler beim Abrufen der Tabelleninformationen: {e}"
+            finally:
+                if conn:
+                    self._release_connection(conn)
+        
+        return "\n".join(cached_info)
     
     def _get_firebird_data_type(self, field_type: int, field_length: Optional[int], 
                                field_scale: Optional[int], field_sub_type: Optional[int],
@@ -369,7 +461,7 @@ class FDBDirectInterface:
             raise
         finally:
             if conn:
-                conn.close()
+                self._release_connection(conn)
     
     def get_column_names(self, query: str) -> List[str]:
         """
@@ -414,15 +506,16 @@ class FDBDirectInterface:
                 return []
         finally:
             if conn:
-                conn.close()
+                self._release_connection(conn)
 
     @classmethod
-    def from_connection_string(cls, connection_string: str) -> 'FDBDirectInterface':
+    def from_connection_string(cls, connection_string: str, pool_size: int = 5) -> 'FDBDirectInterface':
         """
         Erstellt eine FDBDirectInterface-Instanz aus einem SQLAlchemy-Connection-String.
         
         Args:
             connection_string: SQLAlchemy-Connection-String (z.B. "firebird+fdb://user:pass@//path/to/db.fdb")
+            pool_size: Größe des Verbindungspools (Standard: 5)
             
         Returns:
             FDBDirectInterface-Instanz
@@ -445,7 +538,7 @@ class FDBDirectInterface:
             
             print(f"FDBDirectInterface: Erstelle Instanz für DSN: {dsn}, User: {user}")
             
-            return cls(dsn=dsn, user=user, password=password, charset=charset)
+            return cls(dsn=dsn, user=user, password=password, charset=charset, pool_size=pool_size)
             
         except Exception as e:
             print(f"Fehler beim Parsen des Connection-Strings: {e}")

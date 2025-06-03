@@ -123,37 +123,65 @@ def test_fdb_direct_interface():
         return False
 
 
+def test_complex_queries():
+    """Testet komplexe SQL-Abfragen mit der FDBDirectInterface."""
+    
+    print("\n=== Test komplexer SQL-Abfragen ===")
+    
+    # Verbindungsparameter
+    db_connection_string = "firebird+fdb://sysdba:masterkey@//home/projects/langchain_project/WINCASA2022.FDB"
+    
+    try:
+        print(f"1. Initialisiere FDBDirectInterface für komplexe Abfragen")
+        fdb_interface = FDBDirectInterface.from_connection_string(db_connection_string)
+        
+        # Test 1: JOIN über mehrere Tabellen
+        print("\n2. Teste JOIN-Operation (BEWOHNER mit BEWADR)...")
+        join_query = """
+        SELECT b.BEWNR, b.NAME, b.VORNAME, a.STRASSE, a.HAUSNUMMER, a.PLZ, a.ORT
+        FROM BEWOHNER b
+        JOIN BEWADR a ON b.BEWNR = a.BEWNR
+        FETCH FIRST 5 ROWS ONLY
+        """
+        join_results = fdb_interface.run_sql(join_query)
+        print(f"✓ JOIN-Abfrage für BEWADR erfolgreich. {len(join_results)} Zeilen zurückgegeben")
+        
+        # Test 2: Aggregation mit GROUP BY
+        print("\n3. Teste Aggregation (Wohnungen pro Gebäude)...")
+        aggregation_query = """
+        SELECT g.GEBAEUDEBEZEICHNUNG, COUNT(w.ID) AS ANZAHL_WOHNUNGEN
+        FROM GEBAEUDE g
+        JOIN WOHNUNGEN w ON g.ID = w.ID_GEBAEUDE
+        GROUP BY g.GEBAEUDEBEZEICHNUNG
+        ORDER BY ANZAHL_WOHNUNGEN DESC
+        FETCH FIRST 5 ROWS ONLY
+        """
+        aggregation_results = fdb_interface.run_sql(aggregation_query)
+        print(f"✓ Aggregationsabfrage erfolgreich. {len(aggregation_results)} Zeilen zurückgegeben")
+        
+        # Test 3: Subquery
+        print("\n4. Teste Subquery (Bewohner mit hohen Mieten)...")
+        subquery = """
+        SELECT NAME, VORNAME, MIETE
+        FROM BEWOHNER
+        WHERE MIETE > (SELECT AVG(MIETE) FROM BEWOHNER)
+        FETCH FIRST 5 ROWS ONLY
+        """
+        subquery_results = fdb_interface.run_sql(subquery)
+        print(f"✓ Subquery erfolgreich. {len(subquery_results)} Zeilen zurückgegeben")
+        
+        print("\n=== Test komplexer SQL-Abfragen abgeschlossen ===")
+        return True
+        
+    except Exception as e:
+        print(f"✗ Fehler bei komplexen Abfragen: {e}")
+        import traceback
+        traceback.print_exc()
+        return False
+
+
 def test_connection_string_parsing():
     """Testet das Parsen verschiedener Connection-Strings."""
-    
-    print("\n=== Test des Connection-String-Parsings ===")
-    
-    test_strings = [
-        "firebird+fdb://sysdba:masterkey@//home/projects/langchain_project/WINCASA2022.FDB",
-        "firebird+fdb://user:pass@//path/to/database.fdb",
-        "firebird+fdb://sysdba@//database.fdb",  # Ohne Passwort
-    ]
-    
-    for i, conn_str in enumerate(test_strings, 1):
-        print(f"\n{i}. Teste Connection-String: {conn_str}")
-        try:
-            # Nur das Parsen testen, nicht die tatsächliche Verbindung
-            from sqlalchemy.engine.url import make_url
-            url_info = make_url(conn_str)
-            
-            dsn = str(url_info.database)
-            if dsn.startswith("//"):
-                dsn = dsn[1:]
-            
-            user = url_info.username or "SYSDBA"
-            password = url_info.password or "masterkey"
-            
-            print(f"   ✓ Geparst: DSN='{dsn}', User='{user}', Password='{'*' * len(password)}'")
-            
-        except Exception as e:
-            print(f"   ✗ Fehler beim Parsen: {e}")
-    
-    print("\n=== Connection-String-Parsing-Test abgeschlossen ===")
 
 
 if __name__ == "__main__":

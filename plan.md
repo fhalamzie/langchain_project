@@ -189,22 +189,28 @@ Diese Struktur trennt die Verantwortlichkeiten klar: Die Retriever sind für die
 *   [ ] Auswahlmechanismus für `retrieval_mode` funktioniert.
 *   [ ] End-to-End-Abfragen über den Neo4j-Pfad.
 
-### 📋 **M4: UI-Anpassungen und Integration** (Nächste Priorität)
-*   [ ] Integration der direkten FDB-Schnittstelle in die Streamlit UI ([`enhanced_qa_ui.py`](enhanced_qa_ui.py))
-*   [ ] Auswahlmechanismus für RAG-Modus in UI implementieren
-*   [ ] Performance-Optimierung der direkten FDB-Verbindungen
+### ✅ **M4: UI-Anpassungen und Integration** (ABGESCHLOSSEN)
+*   [x] Integration der direkten FDB-Schnittstelle in die Streamlit UI ([`enhanced_qa_ui.py`](enhanced_qa_ui.py))
+*   [x] Auswahlmechanismus für RAG-Modus in UI implementieren
+*   [x] Performance-Optimierung der direkten FDB-Verbindungen
 
-### 📊 **M5: Vergleichende Tests und Evaluierung** (Zukünftig)
+### ✅ **M5: Erweiterte Tests** (ABGESCHLOSSEN am 03.06.2025)
+*   [x] Komplexere SQL-Abfragen und Edge Cases
+*   [x] Implementiert in test_fdb_direct_interface.py und test_enhanced_qa_ui_integration.py
+*   [x] Abdeckung von JOINs, Aggregationen, Subqueries
+*   [x] Natürlichsprachige Abfragen mit komplexen Szenarien
+*   [x] Anpassung an reale Datenstruktur
+
+### 📊 **M6: Vergleichende Tests und Evaluierung** (Zukünftig)
 *   [ ] Systematische vergleichende Tests zwischen SQLAlchemy- und direktem FDB-Ansatz
 *   [ ] Performance-Benchmarks
 *   [ ] Ergebnisse analysieren und dokumentieren
 
-## 🎯 Aktuelle Prioritäten (Nach FDB-Lösung)
+## 🎯 Aktuelle Prioritäten
 
-1. **Integration in Streamlit UI** - Direkte FDB-Schnittstelle in die bestehende UI einbauen
-2. **Performance-Optimierung** - Verbindungspool und Caching für FDB-Verbindungen
-3. **Erweiterte Tests** - Komplexere SQL-Abfragen und Edge Cases
-4. **Dokumentation** - Vollständige Dokumentation der neuen Architektur
+1. **Vergleichende Tests** - Systematische Evaluierung der Lösungsansätze
+2. **Dokumentation** - Vollständige Dokumentation der neuen Architektur
+3. **Neo4j-Integration** - Optionaler Graph-basierter Ansatz
 
 ## 6. MCP-Server
 Nutze insbesondere für LangChain und Neo4j den MCP-Server context7

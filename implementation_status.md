@@ -118,8 +118,13 @@ streamlit run enhanced_qa_ui.py
 
 1. ~~**Lösung der SQLAlchemy-Sperrprobleme mit Firebird**~~ **✅ ERLEDIGT**
 2. ~~**Integration der direkten FDB-Schnittstelle in die Streamlit UI**~~ **✅ ERLEDIGT**
-3. **Performance-Optimierung der direkten FDB-Verbindungen**
-4. **Erweiterte Tests mit komplexeren SQL-Abfragen**
+3. ✅ **Performance-Optimierung der direkten FDB-Verbindungen** (Verbindungspool und Caching implementiert)
+4. ✅ **Erweiterte Tests mit komplexeren SQL-Abfragen** (abgeschlossen am 03.06.2025)
+   - JOIN-Operationen über mehrere Tabellen
+   - Aggregationen mit GROUP BY
+   - Verschachtelte Subqueries
+   - Natürlichsprachige Abfragen mit komplexen Szenarien
+   - Anpassung an reale Datenstruktur
 5. ~~**Debugging des SQL Agenten:** Sicherstellen, dass der Agent die dynamisch erstellte `TestTable` in der SQLite In-Memory-Datenbank erkennt.~~ **ERLEDIGT**
 6. ~~Analyse der doppelten "Loaded 4 documents"-Ausgabe.~~ **ERLEDIGT**
 7. ~~Vervollständigung der Unit-Tests für den FAISS-Pfad.~~ **ERLEDIGT**

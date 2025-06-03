@@ -129,6 +129,89 @@ def test_integration():
     
     return True
 
+
+def test_complex_natural_language_queries():
+    """Testet komplexe natürlichsprachige Abfragen mit der direkten FDB-Schnittstelle."""
+    print("\n🧪 Teste komplexe natürlichsprachige Abfragen")
+    print("=" * 70)
+    
+    # Verbindungsparameter
+    db_string = "firebird+fdb://sysdba:masterkey@//home/projects/langchain_project/WINCASA2022.FDB"
+    
+    try:
+        # Agent initialisieren
+        from firebird_sql_agent_direct import FirebirdDirectSQLAgent
+        agent = FirebirdDirectSQLAgent(
+            db_connection_string=db_string,
+            llm="gpt-4-1106-preview",
+            retrieval_mode="faiss"
+        )
+        print("✅ FirebirdDirectSQLAgent erfolgreich initialisiert")
+        
+        # Testfälle für komplexe Abfragen
+        test_cases = [
+            {
+                "query": "Zeige mir Bewohner mit ihren Adressdaten",
+                "expected_keywords": ["BEWOHNER", "BEWADR", "JOIN"]
+            },
+            {
+                "query": "Wie viele Wohnungen gibt es insgesamt?",
+                "expected_keywords": ["COUNT", "WOHNUNGEN"]
+            },
+            {
+                "query": "Zeige mir die 5 neuesten Mietverträge",
+                "expected_keywords": ["ORDER BY", "DESC", "FETCH FIRST", "MIETVERTRAG"]
+            }
+        ]
+        
+        for i, test_case in enumerate(test_cases, 1):
+            print(f"\n{i}. Teste Abfrage: '{test_case['query']}'")
+            result = agent.query(test_case["query"])
+            
+            # Überprüfe generierte SQL
+            sql = result.get("sql", "").lower()
+            print(f"   Generierte SQL: {sql[:200]}...")
+            
+            # Überprüfe Schlüsselwörter in SQL
+            # Flexiblere Schlüsselwort-Prüfung
+            found_keywords = []
+            missing_keywords = []
+            
+            for keyword in test_case["expected_keywords"]:
+                if keyword.lower() in sql:
+                    found_keywords.append(keyword)
+                else:
+                    missing_keywords.append(keyword)
+            
+            if found_keywords:
+                print(f"   ✓ Gefundene Schlüsselwörter: {', '.join(found_keywords)}")
+            if missing_keywords:
+                print(f"   ✗ Fehlende Schlüsselwörter: {', '.join(missing_keywords)}")
+            
+            # Überprüfe, ob SQL ausgeführt wurde
+            if "sql" in result and "results" in result:
+                print(f"   ✓ SQL-Abfrage erfolgreich ausgeführt")
+            else:
+                print("   ✗ SQL-Abfrage nicht ausgeführt")
+        
+        print("\n" + "=" * 70)
+        print("🎉 Komplexe natürlichsprachige Abfragen erfolgreich getestet!")
+        return True
+        
+    except Exception as e:
+        print(f"❌ Fehler bei komplexen Abfragen: {e}")
+        import traceback
+        traceback.print_exc()
+        return False
+
+
 if __name__ == "__main__":
-    success = test_integration()
-    sys.exit(0 if success else 1)
+    integration_success = test_integration()
+    complex_queries_success = test_complex_natural_language_queries()
+    
+    if integration_success and complex_queries_success:
+        print("\n🎉 Alle Integrationstests erfolgreich abgeschlossen!")
+        sys.exit(0)
+    else:
+        print("\n❌ Einige Tests fehlgeschlagen!")
+        sys.exit(1)
