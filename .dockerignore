@@ -1,0 +1,63 @@
+# Git
+.git
+.gitignore
+
+# Python
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+.pytest_cache
+.coverage
+
+# Virtual environments
+.venv
+venv/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/*
+
+# Temporary files
+*.tmp
+*.temp
+
+# Database temp files
+fb_temp*
+*.FDB.tmp
+
+# Documentation build
+site/
+docs/_build/
+
+# Node modules (if any)
+node_modules/
+
+# GitHub workflows (not needed in container)
+.github/
+
+# Test files
+test_*.py
+*_test.py
+
+# Large output files
+*.csv
+*.json
+retrieval_test_results*
+optimized_retrieval_test*
+
+# Environment files (should be mounted or passed as env vars)
+.env
+*.env

@@ -1,0 +1,145 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.8, 3.9, "3.10", "3.11"]
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: Cache pip packages
+      uses: actions/cache@v3
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
+
+    - name: Install system dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y firebird3.0-dev libfbclient2 firebird3.0-server-core
+
+    - name: Install Python dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install langchain langchain-community langchain-openai streamlit pandas numpy
+        pip install scikit-learn fdb faiss-cpu tiktoken PyYAML python-dotenv
+        pip install pytest pytest-cov flake8 black isort
+        pip install arize-phoenix || echo "Phoenix optional dependency failed"
+
+    - name: Lint with flake8
+      run: |
+        # Stop the build if there are Python syntax errors or undefined names
+        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+        # Exit-zero treats all errors as warnings
+        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+
+    - name: Format check with black
+      run: |
+        black --check --diff .
+
+    - name: Import sort check
+      run: |
+        isort --check-only --diff .
+
+    - name: Test with pytest
+      env:
+        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+      run: |
+        # Run only unit tests that don't require actual database
+        pytest test_phoenix_monitoring.py test_phoenix_agent_integration.py test_phoenix_ui_integration.py -v --cov=phoenix_monitoring
+        
+    - name: Integration tests (without database)
+      run: |
+        # Test imports and basic functionality
+        python -c "import phoenix_monitoring; print('Phoenix monitoring import successful')"
+        python -c "import firebird_sql_agent_direct; print('Agent import successful')"
+        python -c "import enhanced_retrievers; print('Retrievers import successful')"
+
+  security:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Run security scan
+      uses: pypa/gh-action-pip-audit@v1.0.8
+      with:
+        inputs: requirements.txt
+
+  documentation:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+        
+    - name: Install dependencies
+      run: |
+        pip install mkdocs mkdocs-material
+
+    - name: Build documentation
+      run: |
+        # Create docs directory structure if it doesn't exist
+        mkdir -p docs
+        
+        # Copy main documentation files
+        cp README.md docs/index.md
+        cp CLAUDE.md docs/technical-guide.md
+        cp implementation_status.md docs/implementation-status.md
+        cp architecture_documentation.md docs/architecture.md
+        
+        # Create mkdocs.yml if it doesn't exist
+        if [ ! -f mkdocs.yml ]; then
+          cat > mkdocs.yml << EOF
+        site_name: WINCASA - Intelligent Database Query System
+        site_description: Natural language database query system for Firebird databases
+        
+        nav:
+          - Home: index.md
+          - Technical Guide: technical-guide.md
+          - Implementation Status: implementation-status.md
+          - Architecture: architecture.md
+        
+        theme:
+          name: material
+          features:
+            - navigation.tabs
+            - navigation.sections
+            - toc.integrate
+          palette:
+            - scheme: default
+              primary: blue
+              accent: blue
+        EOF
+        fi
+        
+        # Build docs
+        mkdocs build
+
+    - name: Deploy to GitHub Pages
+      if: github.ref == 'refs/heads/main'
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./site
