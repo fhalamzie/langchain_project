@@ -140,7 +140,32 @@ pip install arize-phoenix
 - `enhanced_qa_ui.py`: Dashboard-Links und Live-Metriken
 - `automated_retrieval_test.py`: Test Framework mit Metrics Export
 
-## 💾 Backup & Versionskontrolle
+## 💡 Kontextstrategie und Retrieval
+
+Um die Genauigkeit und Effizienz der Datenbankabfragen weiter zu verbessern, wird eine hybride Kontextstrategie verfolgt. Diese kombiniert einen statischen, globalen Basiskontext mit dynamischem, anfragebasiertem Retrieval.
+
+### Hybride Kontextstrategie
+
+1.  **Globaler Basiskontext:**
+    *   **Beschreibung:** Ein sorgfältig ausgewählter Satz an Kerninformationen über das Datenbankschema, wichtige Entitäten, Schlüsselbeziehungen und grundlegende Geschäftsregeln.
+    *   **Zweck:** Stellt sicher, dass das LLM bei jeder Anfrage über ein fundamentales Verständnis der Datenbank verfügt.
+    *   **Quelle:** Extrakte aus `docs/index.md`, `output/schema/index.md`, `output/schema/db_overview.md` und anderen relevanten Dokumenten.
+
+2.  **Dynamisches Embedding-basiertes Retrieval:**
+    *   **Beschreibung:** Nutzt die bestehenden RAG-Mechanismen (z.B. "Enhanced Mode", FAISS), um detaillierte oder spezifische Informationen dynamisch basierend auf der Nutzeranfrage abzurufen.
+    *   **Zweck:** Ermöglicht den Zugriff auf eine umfangreiche Wissensbasis (`output/compiled_knowledge_base.json`, YAML-Detaildateien), ohne das Kontextfenster des LLMs bei jeder Anfrage zu überlasten.
+    *   **Funktionsweise:** Ergänzt den globalen Basiskontext mit spezifischen Details, die für die aktuelle Anfrage relevant sind.
+
+Diese Strategie zielt darauf ab, dem LLM stets den relevantesten Kontext zur Verfügung zu stellen, die Qualität der generierten SQL-Abfragen zu erhöhen und die Fehleranfälligkeit (z.B. Timeouts) zu reduzieren. Details zur Implementierung finden sich im [`implementation_plan.md`](implementation_plan.md).
+### Modell-Evaluierung und Embedding-Optimierung
+
+Zur weiteren Steigerung der Systemleistung wurden folgende Maßnahmen umgesetzt:
+
+*   **LLM-Modellvergleich:** Verschiedene LLMs (z.B. GPT-4-Varianten, Claude-Modelle, Gemini-Modelle) wurden systematisch evaluiert, um das optimale Modell für die spezifischen Anforderungen der WINCASA-Datenbankabfragen zu identifizieren. Die Ergebnisse dieser Vergleiche fließen kontinuierlich in die Modellauswahl ein. Das Skript [`automated_retrieval_test.py`](automated_retrieval_test.py) dient hierbei als zentrale Testumgebung.
+*   **Upgrade auf Large Embedding Modell:** Um die Qualität des semantischen Verständnisses und damit die Relevanz der abgerufenen Dokumente im RAG-Prozess zu verbessern, wurde auf ein leistungsfähigeres, größeres Embedding-Modell (z.B. `text-embedding-3-large` von OpenAI) umgestellt. Dies führt zu präziseren Kontextinformationen für das LLM.
+
+Diese Optimierungen sind Teil der kontinuierlichen Bemühungen, die Effektivität und Genauigkeit des WINCASA-Systems zu maximieren.
+## � Backup & Versionskontrolle
 
 ### GitHub Integration
 Das komplette Projekt ist auf GitHub gesichert:

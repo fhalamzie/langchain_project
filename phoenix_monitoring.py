@@ -17,13 +17,13 @@ import logging
 
 try:
     import phoenix as px
-    from phoenix.trace import trace
-    from phoenix.trace.langchain import LangChainInstrumentor
-    from phoenix.trace.openai import OpenAIInstrumentor
+    from phoenix.otel import register
+    from openinference.instrumentation.langchain import LangChainInstrumentor
+    from openinference.instrumentation.openai import OpenAIInstrumentor
     PHOENIX_AVAILABLE = True
 except ImportError:
     PHOENIX_AVAILABLE = False
-    logging.warning("Phoenix not installed. Install with: pip install arize-phoenix")
+    logging.warning("Phoenix not installed. Install with: pip install arize-phoenix arize-phoenix-otel")
 
 logger = logging.getLogger(__name__)
 
@@ -65,7 +65,14 @@ class PhoenixMonitor:
                 self.session = px.launch_app()
                 logger.info(f"Phoenix UI launched at: {self.session.url}")
             
-            # Initialize instrumentors
+            # Register OTEL tracer with Phoenix
+            self.tracer_provider = register(
+                project_name=self.project_name,
+                endpoint="http://localhost:6006/v1/traces",
+                auto_instrument=True
+            )
+            
+            # Initialize instrumentors with OTEL
             self.langchain_instrumentor = LangChainInstrumentor()
             self.openai_instrumentor = OpenAIInstrumentor()
             
@@ -73,7 +80,7 @@ class PhoenixMonitor:
             self.langchain_instrumentor.instrument()
             self.openai_instrumentor.instrument()
             
-            logger.info("Phoenix monitoring initialized successfully")
+            logger.info("Phoenix OTEL monitoring initialized successfully")
             
         except Exception as e:
             logger.error(f"Failed to initialize Phoenix: {e}")
@@ -89,10 +96,12 @@ class PhoenixMonitor:
         if not PHOENIX_AVAILABLE:
             return None
             
-        return px.trace.span(
+        from opentelemetry import trace
+        tracer = trace.get_tracer(__name__)
+        
+        return tracer.start_span(
             name="user_query",
-            kind="chain",
-            metadata={
+            attributes={
                 "query": query,
                 "timestamp": datetime.now().isoformat(),
                 "project": self.project_name,
@@ -117,18 +126,17 @@ class PhoenixMonitor:
         self.metrics["total_cost"] += cost
         
         if PHOENIX_AVAILABLE:
-            px.log_trace(
-                name="llm_call",
-                kind="llm",
-                metadata={
+            from opentelemetry import trace
+            tracer = trace.get_tracer(__name__)
+            with tracer.start_span("llm_call") as span:
+                span.set_attributes({
                     "model": model,
                     "prompt_length": len(prompt),
                     "response_length": len(response),
                     "tokens_used": tokens_used,
                     "cost_usd": cost,
                     "duration_seconds": duration
-                }
-            )
+                })
     
     def track_retrieval(self, retrieval_mode: str, query: str, 
                        documents_retrieved: int, relevance_scores: List[float],
@@ -172,10 +180,10 @@ class PhoenixMonitor:
         )
         
         if PHOENIX_AVAILABLE:
-            px.log_trace(
-                name="retrieval",
-                kind="retriever",
-                metadata={
+            from opentelemetry import trace
+            tracer = trace.get_tracer(__name__)
+            with tracer.start_span("retrieval") as span:
+                span.set_attributes({
                     "mode": retrieval_mode,
                     "query": query,
                     "documents_retrieved": documents_retrieved,
@@ -183,8 +191,7 @@ class PhoenixMonitor:
                     "avg_relevance": sum(relevance_scores) / len(relevance_scores) if relevance_scores else 0,
                     "duration_seconds": duration,
                     "success": success
-                }
-            )
+                })
     
     def track_query_execution(self, query: str, sql: str, execution_time: float,
                             rows_returned: int, success: bool, error: Optional[str] = None):
@@ -206,18 +213,17 @@ class PhoenixMonitor:
             self.metrics["failed_queries"] += 1
         
         if PHOENIX_AVAILABLE:
-            px.log_trace(
-                name="sql_execution",
-                kind="chain",
-                metadata={
+            from opentelemetry import trace
+            tracer = trace.get_tracer(__name__)
+            with tracer.start_span("sql_execution") as span:
+                span.set_attributes({
                     "user_query": query,
                     "generated_sql": sql,
                     "execution_time_seconds": execution_time,
                     "rows_returned": rows_returned,
                     "success": success,
-                    "error": error
-                }
-            )
+                    "error": error or ""
+                })
     
     def get_metrics_summary(self) -> Dict[str, Any]:
         """Get summary of all tracked metrics"""
@@ -280,17 +286,24 @@ class trace_query:
     def __enter__(self):
         self.start_time = time.time()
         if PHOENIX_AVAILABLE:
-            self.span = self.monitor.trace_query(self.query, self.metadata)
-            self.span.__enter__()
+            from opentelemetry import trace
+            tracer = trace.get_tracer(__name__)
+            self.span = tracer.start_span("user_query")
+            self.span.set_attributes({
+                "query": self.query,
+                "timestamp": datetime.now().isoformat(),
+                **self.metadata
+            })
         return self
     
     def __exit__(self, exc_type, exc_val, exc_tb):
         duration = time.time() - self.start_time
-        self.metadata["duration_seconds"] = duration
-        self.metadata["success"] = exc_type is None
-        
-        if exc_type:
-            self.metadata["error"] = str(exc_val)
+        success = exc_type is None
         
         if PHOENIX_AVAILABLE and hasattr(self, 'span'):
-            self.span.__exit__(exc_type, exc_val, exc_tb)
+            self.span.set_attributes({
+                "duration_seconds": duration,
+                "success": success,
+                "error": str(exc_val) if exc_type else ""
+            })
+            self.span.end()

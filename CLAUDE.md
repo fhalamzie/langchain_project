@@ -109,6 +109,37 @@ The system supports three retrieval modes for context augmentation:
 - Baseline mode using only LLM knowledge
 - No additional context from documentation
 
+## 💡 Hybride Kontextstrategie
+
+Zur Optimierung der LLM-Performanz und -Genauigkeit wird eine hybride Kontextstrategie implementiert. Diese Strategie kombiniert einen festen, globalen Basiskontext mit dynamischem, anfragebasiertem Retrieval.
+
+1.  **Globaler Basiskontext:**
+    *   **Definition:** Ein kompakter Satz essentieller Informationen (Kern-Datenbankschema, Hauptentitäten, kritische Beziehungen, grundlegende Geschäftsregeln), der jeder LLM-Anfrage standardmäßig mitgegeben wird.
+    *   **Ziel:** Sicherstellung eines grundlegenden Verständnisses der Datenbankstruktur und -logik für das LLM.
+    *   **Quellen (Beispiele):** Wichtige Auszüge aus `docs/index.md`, `output/schema/index.md`, `output/schema/db_overview.md`.
+
+2.  **Dynamisches Embedding-basiertes Retrieval:**
+    *   **Definition:** Nutzung der bestehenden RAG-Systeme (z.B. "Enhanced Mode", FAISS) zum Abruf detaillierterer oder spezifischer Informationen aus der umfangreichen Wissensbasis (`output/compiled_knowledge_base.json`, YAML-Dateien), basierend auf der konkreten Nutzeranfrage.
+    *   **Ziel:** Ergänzung des globalen Basiskontextes um spezifische, für die aktuelle Anfrage relevante Details, ohne das Kontextfenster des LLMs unnötig zu belasten.
+
+Diese zweistufige Herangehensweise soll die Relevanz des dem LLM bereitgestellten Kontexts maximieren, was zu präziseren SQL-Generierungen und einer Reduktion von Fehlern wie Timeouts führen soll. Weitere Details und der Implementierungsfortschritt sind im Dokument [`implementation_plan.md`](implementation_plan.md) festgehalten.
+### Modell-Evaluierung und Embedding-Optimierung
+
+Im Rahmen der kontinuierlichen Verbesserung des WINCASA-Systems wurden spezifische Maßnahmen zur Optimierung der Modellleistung und der Retrieval-Qualität durchgeführt:
+
+*   **Systematischer LLM-Modellvergleich:**
+    *   **Ziel:** Identifizierung des leistungsstärksten LLM für die Generierung von Firebird-SQL-Abfragen im WINCASA-Kontext.
+    *   **Methodik:** Durchführung standardisierter Tests mit verschiedenen Modellen (u.a. GPT-4-Turbo, Claude 3 Opus/Sonnet/Haiku, Gemini Pro) unter Verwendung des Test-Frameworks [`automated_retrieval_test.py`](automated_retrieval_test.py).
+    *   **Bewertungskriterien:** SQL-Korrektheit, Abfrageerfolgsrate, Ausführungsgeschwindigkeit, Timeout-Raten, Kosten.
+    *   **Ergebnis:** Die Ergebnisse fließen in die Auswahl des Standardmodells sowie in Empfehlungen für spezifische Anwendungsfälle ein.
+
+*   **Upgrade des Embedding-Modells:**
+    *   **Ziel:** Verbesserung der semantischen Ähnlichkeitssuche und somit der Relevanz der durch RAG bereitgestellten Kontextdokumente.
+    *   **Maßnahme:** Umstellung auf ein größeres und leistungsfähigeres Embedding-Modell (z.B. OpenAI `text-embedding-3-large` anstelle von `text-embedding-ada-002` oder kleineren Modellen).
+    *   **Erwarteter Nutzen:** Präzisere Einbettungen führen zu einer besseren Identifizierung relevanter Dokumentabschnitte, was die Qualität des dem LLM zur Verfügung gestellten Kontexts erhöht und die SQL-Generierung verbessert.
+    *   **Integration:** Anpassung in [`enhanced_retrievers.py`](enhanced_retrievers.py) und ggf. Neuberechnung der Vektorindizes.
+
+Diese Optimierungen sind entscheidend, um die Genauigkeit der Abfrageergebnisse zu maximieren und die Robustheit des Systems gegenüber komplexen Anfragen zu steigern.
 ## Current Performance Data
 
 Based on comprehensive testing (11 queries × 3 modes = 33 tests):
@@ -191,12 +222,13 @@ ls -la optimized_retrieval_test_*.json
 
 ## Monitoring & Observability Integration ✅
 
-### Phoenix Integration (Arize-AI) - COMPLETED
-Comprehensive AI observability has been successfully integrated into the WINCASA system.
+### Phoenix Integration (Arize-AI) - COMPLETED & UPGRADED TO OTEL
+Comprehensive AI observability has been successfully integrated into the WINCASA system with modern OpenTelemetry (OTEL) support.
 
 #### Installation
 ```bash
-pip install arize-phoenix
+pip install arize-phoenix arize-phoenix-otel
+pip install openinference-instrumentation-langchain openinference-instrumentation-openai
 ```
 
 #### Implemented Features
@@ -208,6 +240,9 @@ pip install arize-phoenix
 
 #### Integration Components
 1. **`phoenix_monitoring.py`**: Core monitoring infrastructure with PhoenixMonitor class
+   - ✅ **UPGRADED TO OTEL**: Modern OpenTelemetry integration
+   - ✅ **Auto-Instrumentation**: Automatic LangChain and OpenAI tracing
+   - ✅ **OTEL Tracer Provider**: Centralized trace management
 2. **`firebird_sql_agent_direct.py`**: 
    - LLM call tracking via DirectFDBCallbackHandler
    - SQL execution monitoring in FDBQueryTool
@@ -216,18 +251,25 @@ pip install arize-phoenix
    - Multi-stage retrieval performance tracking
    - FAISS retrieval monitoring with relevance scores
 4. **`enhanced_qa_ui.py`**: 
-   - Phoenix dashboard link in sidebar
-   - Live metrics display (queries, success rate, costs)
-   - Query-level monitoring in results
+   - ✅ **STREAMLINED UI**: Simplified sidebar with only retrieval method dropdown
+   - ✅ **OTEL INTEGRATION**: Phoenix OTEL registration at startup
+   - Phoenix tracing for all Streamlit UI queries
 5. **`automated_retrieval_test.py`**: 
    - Test framework with Phoenix metrics collection
    - Automated trace export for analysis
 
-#### Usage Example
+#### Usage Example (OTEL Integration)
 ```python
-from phoenix_monitoring import get_monitor
+# Phoenix OTEL registration (must be first)
+from phoenix.otel import register
+tracer_provider = register(
+    project_name="WINCASA",
+    endpoint="http://localhost:6006/v1/traces",
+    auto_instrument=True
+)
 
-# Initialize monitor (singleton)
+# Monitoring is now automatic for LangChain and OpenAI
+from phoenix_monitoring import get_monitor
 monitor = get_monitor(enable_ui=True)
 
 # Access dashboard

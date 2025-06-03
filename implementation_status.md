@@ -63,16 +63,19 @@ python automated_retrieval_test.py
 3. YAML-based business context over markdown
 4. Multi-stage RAG with 3-level retrieval
 
-## Phoenix Integration - ✅ COMPLETED (2025-01-03)
+## Phoenix Integration - ✅ COMPLETED & UPGRADED TO OTEL (2025-06-03)
 
-### Phoenix AI Observability 
+### Phoenix AI Observability with OpenTelemetry
 ```bash
-pip install arize-phoenix
+pip install arize-phoenix arize-phoenix-otel
+pip install openinference-instrumentation-langchain openinference-instrumentation-openai
 ```
 
 **Implemented Components:**
 
 #### 1. Core Monitoring Infrastructure (`phoenix_monitoring.py`)
+- ✅ **UPGRADED TO OTEL**: Modern OpenTelemetry integration
+- ✅ **Auto-Instrumentation**: Automatic LangChain and OpenAI tracing
 - PhoenixMonitor class with comprehensive metrics tracking
 - LLM call monitoring with token usage and cost estimation  
 - RAG retrieval performance tracking for all modes
@@ -92,10 +95,10 @@ pip install arize-phoenix
 - ✅ Error handling with failure tracking
 
 #### 4. UI Integration (`enhanced_qa_ui.py`)
-- ✅ Phoenix dashboard link in sidebar (http://localhost:6006)
-- ✅ Live metrics display: queries, success rate, costs
-- ✅ Per-query monitoring expandable section
-- ✅ Retrieval performance statistics visualization
+- ✅ **STREAMLINED UI**: Simplified sidebar with only retrieval method dropdown
+- ✅ **OTEL INTEGRATION**: Phoenix OTEL registration at startup
+- ✅ Phoenix tracing for all Streamlit UI queries
+- ✅ Enhanced Knowledge System always enabled
 
 #### 5. Test Framework Enhancement (`automated_retrieval_test.py`)
 - ✅ Phoenix metrics collection during test runs

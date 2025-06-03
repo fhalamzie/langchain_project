@@ -14,6 +14,18 @@ Features der direkten FDB-Schnittstelle:
 - Verbesserte Fehlerbehandlung und Performance
 """
 
+# Phoenix OTEL Integration - MUST BE FIRST
+try:
+    from phoenix.otel import register
+    tracer_provider = register(
+        project_name="WINCASA",
+        endpoint="http://localhost:6006/v1/traces",
+        auto_instrument=True
+    )
+    print("✅ Phoenix OTEL registered for Streamlit")
+except Exception as e:
+    print(f"⚠️ Phoenix OTEL registration failed: {e}")
+
 import os
 import streamlit as st
 import pandas as pd
@@ -102,7 +114,7 @@ def create_enhanced_qa_tab():
     st.sidebar.markdown("### 🔧 Konfiguration")
     
     # Auswahl des Retrieval-Modus
-    retrieval_options = ['faiss', 'enhanced', 'neo4j'] # Neo4j ist noch nicht voll implementiert im Agenten
+    retrieval_options = ['faiss', 'enhanced', 'neo4j']
     selected_retrieval_mode = st.sidebar.selectbox(
         "Retrieval-Modus:",
         retrieval_options,
@@ -110,42 +122,8 @@ def create_enhanced_qa_tab():
         help="FAISS für Vektorsuche, Enhanced für Multi-Stage-Retrieval, Neo4j für Graph-basierte Suche (experimentell)."
     )
     
-    # Enhanced Knowledge System Toggle
-    use_enhanced_knowledge = st.sidebar.checkbox(
-        "Enhanced Knowledge System",
-        value=True,
-        help="Aktiviert die erweiterte Wissensbasis mit Datenbankübersicht, Beziehungen und Query-Preprocessing."
-    )
-    
-    # Status-Anzeige
-    st.sidebar.markdown("### 📊 System-Status")
-    st.sidebar.success("✅ Direkte FDB-Schnittstelle aktiv")
-    if use_enhanced_knowledge:
-        st.sidebar.success("✅ Enhanced Knowledge System aktiv")
-        st.sidebar.info("📚 149 Beziehungen geladen")
-        st.sidebar.info("🔍 Query Preprocessor aktiv")
-    st.sidebar.info(f"🔍 Retrieval-Modus: {selected_retrieval_mode.upper()}")
-    
-    # Phoenix Monitoring
-    st.sidebar.markdown("### 🔍 AI Observability")
-    monitor = get_phoenix_monitor()
-    if monitor and hasattr(monitor, 'session') and monitor.session:
-        st.sidebar.success("✅ Phoenix Monitoring aktiv")
-        phoenix_url = monitor.session.url if monitor.session else "http://localhost:6006"
-        st.sidebar.markdown(f"[📊 Phoenix Dashboard öffnen]({phoenix_url})")
-        
-        # Display metrics if available
-        metrics = monitor.get_metrics_summary()
-        if metrics['total_queries'] > 0:
-            st.sidebar.metric("Queries", metrics['total_queries'])
-            st.sidebar.metric("Success Rate", f"{metrics['success_rate']*100:.1f}%")
-            st.sidebar.metric("Total Cost", f"${metrics['total_cost_usd']:.2f}")
-    else:
-        st.sidebar.warning("⚠️ Phoenix Monitoring nicht verfügbar")
-    
-    # Datenbankverbindung anzeigen
-    db_display = DB_CONNECTION_STRING.replace("masterkey", "***")  # Passwort verstecken
-    st.sidebar.text(f"🗄️ DB: {db_display}")
+    # Enhanced Knowledge System always enabled
+    use_enhanced_knowledge = True
 
     # Lade Firebird SQL Agent
     agent = get_firebird_sql_agent(retrieval_mode=selected_retrieval_mode, use_enhanced_knowledge=use_enhanced_knowledge)
