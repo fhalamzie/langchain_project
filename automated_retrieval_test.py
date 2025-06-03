@@ -23,6 +23,7 @@ load_dotenv('/home/envs/openai.env')
 
 # Import the main agent
 from firebird_sql_agent_direct import FirebirdDirectSQLAgent
+from phoenix_monitoring import get_monitor
 
 # Setup logging
 logging.basicConfig(
@@ -63,6 +64,10 @@ class RetrievalTestRunner:
         self.timeout_seconds = timeout_seconds
         self.results = []
         self.agents = {}
+        
+        # Initialize Phoenix monitoring
+        self.monitor = get_monitor(enable_ui=True)
+        logger.info(f"Phoenix monitoring initialized. Dashboard: {self.monitor.session.url if self.monitor and hasattr(self.monitor, 'session') else 'N/A'}")
         
     def initialize_agents(self):
         """Initialize agents for each retrieval mode."""
@@ -229,6 +234,14 @@ class RetrievalTestRunner:
         """Generate comprehensive test report."""
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         
+        # Get Phoenix monitoring metrics
+        phoenix_metrics = {}
+        if self.monitor:
+            phoenix_metrics = self.monitor.get_metrics_summary()
+            # Export traces for analysis
+            self.monitor.export_traces(f"phoenix_traces_{timestamp}.json")
+            logger.info(f"Phoenix traces exported to phoenix_traces_{timestamp}.json")
+        
         # Create summary statistics
         summary = {
             'test_date': datetime.now().isoformat(),
@@ -236,7 +249,8 @@ class RetrievalTestRunner:
             'total_tests': len(self.results),
             'modes_tested': RETRIEVAL_MODES,
             'overall_success_rate': sum(1 for r in self.results if r['success']) / len(self.results) * 100,
-            'mode_statistics': {}
+            'mode_statistics': {},
+            'phoenix_metrics': phoenix_metrics
         }
         
         # Calculate per-mode statistics
