@@ -2,6 +2,18 @@
 
 This file provides technical guidance for working with the WINCASA database query system.
 
+## 📂 GitHub Repository
+
+**Repository**: https://github.com/fhalamzie/langchain_project
+
+```bash
+# Code klonen und starten
+git clone https://github.com/fhalamzie/langchain_project.git
+cd langchain_project
+pip install -r requirements.txt
+./start_enhanced_qa_direct.sh
+```
+
 ## System Overview
 
 WINCASA is a natural language database query system for Firebird databases. The system uses LLM agents to generate SQL queries based on natural language input.

@@ -2,6 +2,8 @@
 
 **Status: ✅ COMPLETE**
 
+**GitHub Repository**: https://github.com/fhalamzie/langchain_project
+
 ## Core Components
 
 | Component | Status | Implementation |

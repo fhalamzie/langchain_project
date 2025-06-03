@@ -1,28 +1,58 @@
 # WINCASA - Intelligentes Datenbank-Abfrage-System
 
+[![GitHub Repository](https://img.shields.io/badge/GitHub-fhalamzie%2Flangchain__project-blue?logo=github)](https://github.com/fhalamzie/langchain_project)
+[![Phoenix Monitoring](https://img.shields.io/badge/Phoenix-AI%20Observability-green?logo=phoenix-framework)](http://localhost:6006)
+[![Production Ready](https://img.shields.io/badge/Status-Production%20Ready-success)]()
+
 ## Projektübersicht
 
 WINCASA ist ein produktionsbereites System zur natürlichsprachigen Abfrage von Firebird-Datenbanken. Das System nutzt moderne LLM-Technologie (GPT-4) in Kombination mit direkter Datenbankanbindung und erweiterten RAG-Verfahren (Retrieval Augmented Generation), um komplexe Datenbankabfragen in natürlicher Sprache zu ermöglichen.
 
 **Status: ✅ Produktionsbereit** - Alle Kernfunktionen implementiert und getestet.
 
+## 📂 GitHub Repository
+
+**Repository**: https://github.com/fhalamzie/langchain_project
+
+```bash
+# Code klonen
+git clone https://github.com/fhalamzie/langchain_project.git
+cd langchain_project
+```
+
 ## 🚀 Quick Start
 
 ### Produktions-Setup
+
+#### Option 1: Von GitHub klonen
 ```bash
-# 1. Umgebung vorbereiten
+# 1. Repository klonen
+git clone https://github.com/fhalamzie/langchain_project.git
+cd langchain_project
+
+# 2. Umgebung vorbereiten
 python3 -m venv .venv
 source .venv/bin/activate
 
-# 2. Dependencies installieren
-pip install langchain langchain-community langchain-openai streamlit pandas numpy \
-            scikit-learn fdb faiss-cpu tiktoken PyYAML python-dotenv
+# 3. Dependencies installieren
+pip install -r requirements.txt
 
-# 3. API-Schlüssel konfigurieren
+# 4. API-Schlüssel konfigurieren
+mkdir -p /home/envs
 echo "OPENAI_API_KEY=your_api_key_here" > /home/envs/openai.env
 
-# 4. System starten
+# 5. System starten
 ./start_enhanced_qa_direct.sh
+```
+
+#### Option 2: Docker Deployment
+```bash
+# Repository klonen
+git clone https://github.com/fhalamzie/langchain_project.git
+cd langchain_project
+
+# Mit Docker starten
+docker-compose up -d
 ```
 
 **URL**: `http://localhost:8501`
@@ -109,6 +139,33 @@ pip install arize-phoenix
 - `enhanced_retrievers.py`: RAG Performance Monitoring
 - `enhanced_qa_ui.py`: Dashboard-Links und Live-Metriken
 - `automated_retrieval_test.py`: Test Framework mit Metrics Export
+
+## 💾 Backup & Versionskontrolle
+
+### GitHub Integration
+Das komplette Projekt ist auf GitHub gesichert:
+- **Repository**: https://github.com/fhalamzie/langchain_project
+- **Backup-Status**: ✅ Alle Commits synchronisiert
+- **Versionskontrolle**: Git-Historie vollständig verfügbar
+
+### Code-Backup
+```bash
+# Änderungen sichern
+git add .
+git commit -m "Beschreibung der Änderungen"
+git push origin main
+```
+
+### Projekt wiederherstellen
+```bash
+# Von GitHub klonen
+git clone https://github.com/fhalamzie/langchain_project.git
+cd langchain_project
+
+# Setup durchführen
+pip install -r requirements.txt
+./start_enhanced_qa_direct.sh
+```
 
 ## 🧪 Entwicklungsstandards
 
