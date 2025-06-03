@@ -26,6 +26,7 @@ WINCASA is a natural language database query system for Firebird databases. The 
 4. **`streamlit_qa_app.py`** - Clean production UI
 5. **`enhanced_retrievers.py`** - Multi-Stage RAG system with FAISS vectorization
 6. **`db_knowledge_compiler.py`** - Database knowledge compilation system
+7. **[`generate_yaml_ui.py`](generate_yaml_ui.py)** - Hauptskript zur Generierung der detaillierten YAML-Dokumentationen für Tabellen und Prozeduren, sowie der darauf basierenden UI-Elemente und zusammenfassenden Schema-Berichte.
 
 ## Available Interfaces
 

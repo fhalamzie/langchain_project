@@ -83,11 +83,21 @@ Die hybride Kontextstrategie kombiniert einen direkten, globalen Basiskontext mi
 ## 7. Nächste Schritte (Priorisiert)
 
 1.  **[ ] Task 1:** Detaillierte Ausarbeitung des Inhalts für den "Direkten Globalen Basiskontext".
-    *   **Verantwortlich:** Entwicklungsteam
-    *   **Deadline:** TT.MM.JJJJ
+  
 2.  **[ ] Task 2:** Implementierung der Integration des Basiskontexts in die Prompt-Generierung.
-    *   **Verantwortlich:** Entwicklungsteam
-    *   **Deadline:** TT.MM.JJJJ
+  
 3.  **[ ] Task 3:** Durchführung erster Tests und Iteration am Basiskontext.
-    *   **Verantwortlich:** Entwicklungsteam
-    *   **Deadline:** TT.MM.JJJJ
+
+## 8. Zukünftige Überlegungen und mögliche Erweiterungen
+
+### 8.1. Nutzung einer Graphdatenbank (z.B. Neo4j) zur Kontextanreicherung
+
+*   **Idee:** Exploration der Integration einer Graphdatenbank zur expliziten Modellierung und Abfrage der komplexen Beziehungen zwischen den Firebird-Tabellen.
+*   **Potenzieller Nutzen:**
+    *   Verbessertes Verständnis von Multi-Hop-Beziehungen und komplexen Abhängigkeiten durch das LLM.
+    *   Präzisere Extraktion von relevanten Sub-Graphen als Kontext für die SQL-Generierung.
+    *   Formale Repräsentation der Wissensbasis als Wissensgraph.
+*   **Herausforderungen:**
+    *   Erhöhte Systemkomplexität (zusätzliche Datenbank, Synchronisationsaufwand).
+    *   Entwicklung von Mechanismen zur Kontext-Extraktion aus dem Graphen und Integration in den LLM-Prompt.
+*   **Status:** Eine konzeptionelle Überlegung für eine spätere Optimierungsphase, nachdem die aktuelle hybride Kontextstrategie vollständig implementiert und evaluiert wurde.

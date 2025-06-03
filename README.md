@@ -65,6 +65,7 @@ docker-compose up -d
 - **[`enhanced_qa_ui.py`](enhanced_qa_ui.py)** - Streamlit Web-Interface
 - **[`enhanced_retrievers.py`](enhanced_retrievers.py)** - Multi-Stage RAG-System
 - **[`db_knowledge_compiler.py`](db_knowledge_compiler.py)** - Database Knowledge System
+- **[`generate_yaml_ui.py`](generate_yaml_ui.py)** - Skript zur Generierung der YAML-basierten Wissensbasis und der zugehörigen UI-Komponenten (verantwortlich für aktuellen Output-Stil der YAMLs und Schema-Dokumentation).
 
 ## 🧪 Testing
 
