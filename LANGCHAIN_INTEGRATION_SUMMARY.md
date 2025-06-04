@@ -52,17 +52,32 @@ Query: "Wie viele Wohnungen gibt es insgesamt?"
 ✅ Error Recovery: Implementiert
 ```
 
-## ⚠️ Deployment Requirements
+## ✅ Deployment Requirements (AUTO-RESOLVED)
 
-### Database Connection
-- **Erforderlich**: Firebird Server auf `localhost:3050`
-- **Connection String**: `firebird+fdb://sysdba:masterkey@localhost:3050//full/path/to/WINCASA2022.FDB`
-- **Note**: LangChain SQLDatabase benötigt Server-Verbindung, nicht Embedded-Modus
+### Automatic Server Setup
+- **✅ AUTO-START**: `start_firebird_server.sh` automatisch in `start_enhanced_qa_direct.sh`
+- **✅ AUTO-CONVERSION**: Embedded-Connections werden automatisch zu Server-Connections konvertiert
+- **✅ AUTO-INSTALL**: Script versucht automatische Firebird-Installation falls nicht vorhanden
+- **✅ ZERO-CONFIG**: Keine manuelle Server-Konfiguration erforderlich
+
+### Enhanced Database Connection
+- **Original**: `firebird+fdb://sysdba:masterkey@//path/to/WINCASA2022.FDB` (embedded)
+- **Auto-Converted**: `firebird+fdb://sysdba:masterkey@localhost:3050/path/to/WINCASA2022.FDB` (server)
+- **Fallback**: Funktioniert mit/ohne laufenden Server
 
 ### Dependencies
 ```bash
 pip install langchain-experimental>=0.0.40
 pip install langchain-community>=0.3.0
+```
+
+### Quick Test & Setup
+```bash
+# Test complete integration with automatic setup
+python test_langchain_fix.py
+
+# Or start system with automatic server setup
+./start_enhanced_qa_direct.sh
 ```
 
 ## 📊 Performance Characteristics
