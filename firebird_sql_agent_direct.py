@@ -24,6 +24,8 @@ from enhanced_retrievers import EnhancedMultiStageRetriever, EnhancedFaissRetrie
 from langchain_sql_retriever_fixed import LangChainSQLRetriever, LangChainSQLRetrieverFallback
 from query_preprocessor import QueryPreprocessor
 from db_knowledge_compiler import DatabaseKnowledgeCompiler
+from business_glossar import WINCASA_GLOSSAR, extract_business_entities
+from global_context import get_query_specific_context
 
 # Phoenix monitoring import
 from phoenix_monitoring import get_monitor, trace_query
@@ -774,6 +776,16 @@ Thought:{agent_scratchpad}"""
         monitor = get_monitor(enable_ui=False)
         query_start_time = time.time()
         
+        # Business Glossar Term Extraction
+        print(f"🔍 Extracting business terms from query: \"{natural_language_query}\"")
+        business_extraction = extract_business_entities(natural_language_query, WINCASA_GLOSSAR)
+        
+        print(f"📋 Business Terms Found: {len(business_extraction['extracted_terms'])}")
+        if business_extraction['extracted_terms']:
+            print(f"   Terms: {', '.join(business_extraction['extracted_terms'])}")
+            print(f"   Tables involved: {', '.join(business_extraction['tables_involved'])}")
+            print(f"   Direct matches: {business_extraction['direct_matches']}, Fuzzy matches: {business_extraction['fuzzy_matches']}")
+        
         # Query Preprocessing (falls aktiviert)
         preprocessing_info = {}
         if self.use_enhanced_knowledge and self.query_preprocessor:
@@ -914,18 +926,39 @@ Thought:{agent_scratchpad}"""
                 print(f"⚠️ Could not load data patterns: {e}")
                 doc_context_str = ""
         
-        # Erweiterte Abfrage für den Agent mit Preprocessing-Informationen
+        # Erweiterte Abfrage für den Agent mit Business Glossar und Preprocessing-Informationen
         query_to_send = natural_language_query
         if preprocessing_info and preprocessing_info.get('enriched_query'):
             query_to_send = preprocessing_info['enriched_query']
         
+        # Build enhanced context with business glossar
+        enhanced_context_parts = []
+        
+        # Add business glossar context if terms were found
+        if business_extraction['business_terms']:
+            business_context = get_query_specific_context(natural_language_query, business_extraction['business_terms'])
+            enhanced_context_parts.append(f"--- BUSINESS CONTEXT ---\n{business_context}")
+        
+        # Add retrieved documentation context
+        if doc_context_str:
+            enhanced_context_parts.append(f"--- DOCUMENTATION CONTEXT ---\n{doc_context_str}")
+        
+        # Add business glossar mappings if available
+        if business_extraction['prompt_section']:
+            enhanced_context_parts.append(business_extraction['prompt_section'])
+        
+        # Combine all context
+        combined_context = "\n\n".join(enhanced_context_parts) if enhanced_context_parts else "Kein spezifischer Kontext abgerufen."
+        
         enhanced_query_for_agent = f"""
-Basierend auf dem folgenden Dokumentationskontext:
+Basierend auf dem folgenden Kontext:
 --- START OF CONTEXT ---
-{doc_context_str if doc_context_str else "Kein spezifischer Kontext abgerufen."}
+{combined_context}
 --- END OF CONTEXT ---
 
 {f"Zusätzliche Hinweise: {', '.join(preprocessing_info.get('suggestions', []))}" if preprocessing_info.get('suggestions') else ""}
+
+{f"JOIN-Hinweise: {', '.join(business_extraction['join_hints'])}" if business_extraction['join_hints'] else ""}
 
 Bitte beantworte die folgende Frage: {query_to_send}
 """
@@ -1036,7 +1069,16 @@ Bitte beantworte die folgende Frage: {query_to_send}
                 "text_variants": text_responses,
                 "detailed_steps": detailed_steps,
                 "success": True,
-                "error": None
+                "error": None,
+                # Business Glossar Information
+                "business_terms_extracted": business_extraction['extracted_terms'],
+                "business_categories": list(business_extraction['category_mappings'].keys()),
+                "tables_from_business_terms": business_extraction['tables_involved'],
+                "join_hints_applied": business_extraction['join_hints'],
+                "business_context_used": len(business_extraction['business_terms']) > 0,
+                "retrieval_mode": current_retrieval_mode,
+                "documents_retrieved": len(retrieved_docs) if retrieved_docs else 0,
+                "preprocessing_info": preprocessing_info
             }
             
         except Exception as e:

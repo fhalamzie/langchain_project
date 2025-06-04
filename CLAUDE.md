@@ -1,585 +1,386 @@
-# CLAUDE.md
+# LLM Development Guidelines - WINCASA System
 
-This file provides technical guidance for working with the WINCASA database query system.
+## Project Context
+Intelligent natural language database query system for Firebird databases using LLM agents. Processes SQL queries from German/English natural language input with multi-modal RAG retrieval and real-time monitoring.
 
-## 📂 GitHub Repository
+## Core Tech Stack
+- **Backend:** Python, Firebird FDB, LangChain, SQLAlchemy, Phoenix Monitoring, Context7 MCP
+- **LLM Integration:** OpenAI GPT-4, OpenRouter APIs, Local SQLCoder models
+- **RAG System:** FAISS vectorization, Multi-stage retrieval, Hybrid context strategy
+- **Infrastructure:** Streamlit UI, Direct FDB interface, SQLite monitoring backend
 
-**Repository**: https://github.com/fhalamzie/langchain_project
+---
 
+## Development Guidelines for LLM
+
+### 🧪 **MANDATORY: Testing Before Completion**
+**CRITICAL:** Every new feature MUST include comprehensive tests BEFORE marking as complete:
+- **Unit Tests** for all new functions and modules
+- **Integration Tests** for database connections and LLM integrations
+- **System Tests** for complete query workflows and retrieval modes
+- **Performance Tests** for query execution and retrieval benchmarks
+- **Execute test suites after every implementation**
+- **Tests must pass BEFORE git commit/push**
+- **Minimum 90% code coverage for new modules**
+
+### 🔧 **Testing Commands**
 ```bash
-# Code klonen und starten
+# Before every commit:
+python -m pytest tests/ -v                    # Unit tests (when available)
+python test_enhanced_qa_ui_integration.py     # Core integration test
+python test_fdb_direct_interface.py          # Database interface test
+python test_firebird_sql_agent.py            # Agent functionality test
+python test_business_glossar_simple.py       # Business glossar validation
+
+# System-level testing:
+python optimized_retrieval_test.py --concurrent --workers 2  # All modes
+python quick_hybrid_context_test.py --timeout 45            # Quick validation
+python test_langchain_fix.py                               # LangChain integration
+
+# Performance benchmarks:
+python automated_retrieval_test.py                         # Comprehensive evaluation
+python iterative_improvement_test.py                      # Context strategy testing
+
+# Coverage check (when pytest configured):
+pytest --cov=firebird_sql_agent_direct --cov-report=html
+```
+
+### 📝 **Git & Commits**
+- **Regular commits** with meaningful commit messages following conventional format
+- **Reference file locations** using pattern `file_path:line_number`
+- **Push to GitHub** regularly to maintain backup
+- **Test locally first, then commit** - no exceptions (no CI/CD, all testing done locally)
+- **Each retrieval mode change** requires dedicated commit
+- **Update CLAUDE.md** for all significant changes
+
+### 🏗️ **Code Structure Rules**
+- **Max 800 lines per .py file** (prefer 500 lines for complex SQL logic)
+- **Modular architecture** with clear separation between retrieval modes
+- **Every module starts** with descriptive docstring explaining purpose
+- **Use existing patterns** from `firebird_sql_agent_direct.py` and `enhanced_retrievers.py`
+- **Follow existing code conventions** especially for Firebird SQL generation
+- **Consistent error handling** patterns across all modes
+
+### 📚 **Documentation Requirements**
+- **Update CLAUDE.md** after every major change (retrieval modes, LLM integrations)
+- **README.md updates** for user-facing functionality changes
+- **Code documentation** for complex SQL generation logic
+- **Performance documentation** for new retrieval optimizations
+- **API key management** documentation updates
+
+### ⚙️ **Environment & Configuration**
+- **Primary config:** Environment variables in `/home/envs/`
+- **API Keys location:** `/home/envs/openai.env`, `/home/envs/openrouter.env`
+- **Database:** `WINCASA2022.FDB` (151 tables, 517 apartments, 698 residents)
+- **Firebird Server:** Port 3050 for LangChain mode
+- **Phoenix Monitoring:** SQLite backend at `localhost:6006`
+- **Test files:** Use `/logs/` for test outputs and analysis
+
+### 🔍 **Development Workflow**
+1. **Read existing code** to understand retrieval mode patterns
+2. **Write tests first** for new SQL agent functionality
+3. **Implement feature** following existing Firebird conventions
+4. **Run test suite** and ensure all retrieval modes pass
+5. **Update documentation** including performance metrics
+6. **Commit with clear message** referencing specific components
+7. **Verify in both server and embedded Firebird modes**
+
+### 📍 **File References**
+Always reference specific code locations as `file_path:line_number` for easy navigation.
+
+### 🚨 **Critical Paths**
+- **SQL Agent Core:** `firebird_sql_agent_direct.py:1-800`
+- **Retrieval System:** `enhanced_retrievers.py:1-600`
+- **Database Interface:** `fdb_direct_interface.py:1-400`
+- **LangChain Integration:** `langchain_sql_retriever_fixed.py:1-300`
+- **Global Context:** `global_context.py:1-200`
+- **Business Glossar:** `business_glossar.py:1-600`
+- **Phoenix Monitoring:** `phoenix_monitoring.py:1-400`
+
+---
+
+## 🚀 **Quick Project Status**
+
+### Current Implementation Status
+- ✅ **All 5 Retrieval Modes:** Enhanced, FAISS, None, SQLCoder, LangChain fully operational
+- ✅ **Firebird Integration:** Direct FDB interface + server mode for LangChain
+- ✅ **LLM Agents:** OpenAI GPT-4, OpenRouter fallback, local SQLCoder support
+- ✅ **MCP Context7:** Real-time LangChain documentation integration
+- ✅ **Phoenix Monitoring:** OTEL tracing with SQLite backend optimization
+- ✅ **Hybrid Context Strategy:** Global context + dynamic retrieval implemented
+
+### Active Interfaces & Deployment
+- **Development UI:** `http://localhost:8501` (Streamlit with all features)
+- **Production UI:** `http://localhost:8502` (Clean interface)
+- **Phoenix Dashboard:** `http://localhost:6006` (Performance monitoring)
+- **Command Line:** `python run_llm_query.py` (Direct queries)
+
+### Development Environment Setup
+```bash
+# Quick start:
 git clone https://github.com/fhalamzie/langchain_project.git
 cd langchain_project
 pip install -r requirements.txt
+
+# Server mode (for LangChain):
+sudo systemctl start firebird  # Automatic with start script
 ./start_enhanced_qa_direct.sh
-```
 
-## System Overview
-
-WINCASA is a natural language database query system for Firebird databases. The system uses LLM agents to generate SQL queries based on natural language input.
-
-## Core Components
-
-1. **`firebird_sql_agent_direct.py`** - Main SQL agent with direct FDB integration
-2. **`fdb_direct_interface.py`** - Direct Firebird interface (bypasses SQLAlchemy SQLCODE -902 issues)
-3. **`enhanced_qa_ui.py`** - Streamlit UI for development/testing
-4. **`streamlit_qa_app.py`** - Clean production UI
-5. **`enhanced_retrievers.py`** - Multi-Stage RAG system with FAISS vectorization
-6. **`db_knowledge_compiler.py`** - Database knowledge compilation system
-7. **[`generate_yaml_ui.py`](generate_yaml_ui.py)** - Hauptskript zur Generierung der detaillierten YAML-Dokumentationen für Tabellen und Prozeduren, sowie der darauf basierenden UI-Elemente und zusammenfassenden Schema-Berichte.
-
-## Available Interfaces
-
-### Web Interfaces
-```bash
-# Clean production UI
-./start_clean_qa.sh
-# Access: http://localhost:8502
-
-# Development UI (all features)
+# Development mode:
 streamlit run enhanced_qa_ui.py
-# Access: http://localhost:8501
 
-# Legacy production UI
-./start_enhanced_qa_direct.sh
+# Access: UI at :8501, Phoenix at :6006, Firebird at :3050
 ```
 
-### Command Line
-```bash
-# Direct CLI queries
-python run_llm_query.py
-```
+---
 
-## Firebird Server Setup (For LangChain Mode)
+## System Architecture & Components
 
-### Automatic Server Startup
-```bash
-# Automatic server startup (recommended)
-./start_enhanced_qa_direct.sh  # Includes automatic Firebird server startup
+### Core Components
+1. **`firebird_sql_agent_direct.py`** - Main SQL agent with 5 retrieval modes
+2. **`fdb_direct_interface.py`** - Direct Firebird interface (bypasses SQLAlchemy issues)
+3. **`enhanced_retrievers.py`** - Multi-stage RAG with FAISS vectorization
+4. **`langchain_sql_retriever_fixed.py`** - LangChain SQL Database Agent integration
+5. **`global_context.py`** - Hybrid context strategy implementation
+6. **`phoenix_monitoring.py`** - OTEL-based performance monitoring
+7. **`db_knowledge_compiler.py`** - Database schema compilation system
 
-# Manual server startup
-./start_firebird_server.sh
-```
+### Database Configuration
+- **File:** `WINCASA2022.FDB` (151 user tables)
+- **Server Mode:** Port 3050 with SYSDBA authentication
+- **Connection Auto-conversion:** Embedded ↔ Server format conversion
+- **Knowledge Base:** 248 YAML files, compiled JSON context
 
-### Server Requirements
-- **Port**: 3050 (standard Firebird port)
-- **Connection**: Server-style connections required for LangChain SQLDatabase
-- **Fallback**: System automatically converts embedded to server connections
-- **Auto-Install**: Script attempts automatic Firebird installation if not found
+### Retrieval Modes Comparison
 
-### Connection Conversion
-The system automatically converts connection strings:
-```python
-# Input (embedded format)
-"firebird+fdb://sysdba:masterkey@//home/projects/langchain_project/WINCASA2022.FDB"
+| Mode | Performance | Context Quality | Use Case |
+|------|-------------|-----------------|----------|
+| **Enhanced** | 1.3s, 9 docs | Multi-stage RAG | Complex business queries |
+| **FAISS** | 0.2s, 4 docs | Vector similarity | Standard semantic search |
+| **None** | 0.0s, fallback | Global context only | Simple queries, fallback |
+| **LangChain** | 10.3s, full schema | Native SQL agent | Schema introspection |
+| **SQLCoder** | Variable | Specialized SQL | Complex JOIN operations |
 
-# Converted (server format for LangChain)
-"firebird+fdb://sysdba:masterkey@localhost:3050/home/projects/langchain_project/WINCASA2022.FDB"
-```
+---
 
-### Testing Server Setup
-```bash
-# Test the complete LangChain integration with server setup
-python test_langchain_fix.py
+## Development Standards
 
-# Check server status manually
-netstat -ln | grep :3050
-```
+### Code Quality Requirements
+- **Type Hints:** Mandatory for all new functions dealing with LLM responses
+- **Docstrings:** Google-style docstrings required for SQL generation functions
+- **Formatting:** Black code formatter (line length: 88)
+- **Linting:** flake8 compliance with Firebird SQL exceptions
+- **Testing:** 90% minimum coverage for new retrieval mode implementations
+
+### Security Guidelines
+- **Database Access:** Always use parameterized queries for FDB operations
+- **API Keys:** Environment variables only (`/home/envs/`), never in code
+- **Logging:** Sanitize SQL connection strings and remove credentials
+- **Error Handling:** Never expose internal database schema to users
+- **Phoenix Data:** Ensure no API keys in monitoring traces
+
+### Documentation Standards
+- **Code Comments:** Explain Firebird SQL dialect specifics and retrieval logic
+- **CLAUDE.md Updates:** Required for any retrieval mode changes
+- **Performance Metrics:** Document query times and context retrieval stats
+- **Architecture Docs:** Update for significant RAG or LLM integration changes
+
+---
 
 ## Testing Framework
 
-### Basic System Tests
+### Test Hierarchy
+1. **Unit Tests** (`tests/unit/` - planned)
+   - Individual retriever component testing
+   - Mock LLM responses and database connections
+   - Fast execution (<1s per test)
+
+2. **Integration Tests** (`tests/integration/`)
+   - `test_enhanced_qa_ui_integration.py` - Full UI workflow
+   - `test_fdb_direct_interface.py` - Database connectivity
+   - `test_firebird_sql_agent.py` - Agent functionality
+   - `test_langchain_fix.py` - LangChain mode validation
+
+3. **System Tests** (`tests/system/`)
+   - `optimized_retrieval_test.py` - All mode comparison
+   - `automated_retrieval_test.py` - Comprehensive evaluation
+   - `quick_hybrid_context_test.py` - Performance validation
+
+### Performance Testing
 ```bash
-# Core integration test
-python test_enhanced_qa_ui_integration.py
-
-# Database interface test
-python test_fdb_direct_interface.py
-
-# Agent functionality test
-python test_firebird_sql_agent.py
-```
-
-### Retrieval Mode Evaluation
-```bash
-# Optimized test framework (recommended)
-python optimized_retrieval_test.py
-
-# Concurrent testing (2 workers)
-python optimized_retrieval_test.py --concurrent --workers 2
-
-# Test all 4 retrieval modes
-python optimized_retrieval_test.py --modes enhanced,faiss,none,langchain
-
-# Original test framework
-python automated_retrieval_test.py
-```
-
-## System Configuration
-
-### Database
-- **File**: `WINCASA2022.FDB` 
-- **Tables**: 151 user tables
-- **Data**: 517 apartments, 698 residents
-
-### API Configuration
-- **OpenAI**: `/home/envs/openai.env`
-- **OpenRouter**: `/home/envs/openrouter.env` (fallback)
-
-### Knowledge Base
-- **Compiled**: `/output/compiled_knowledge_base.json`
-- **Documentation**: `/output/yamls/` (248 YAML files)
-
-## Retrieval Modes
-
-The system supports four retrieval modes for context augmentation:
-
-### 1. Enhanced Mode (`enhanced`)
-- Multi-stage RAG with business context
-- Uses compiled knowledge base and YAML documentation
-- 3-level retrieval: schema, relationships, business patterns
-
-### 2. FAISS Mode (`faiss`)
-- Vector similarity search using FAISS
-- Basic document retrieval with embeddings
-- Standard vectorization approach
-
-### 3. None Mode (`none`)
-- Direct SQL generation without retrieval augmentation
-- Baseline mode using only LLM knowledge
-- No additional context from documentation
-
-### 4. LangChain SQL Agent Mode (`langchain`) - ✅ FULLY FUNCTIONAL
-- Native LangChain SQL Database Agent integration with automatic schema introspection
-- Built-in SQL execution and error recovery capabilities
-- Chain-of-thought SQL reasoning with step-by-step query construction
-- **Performance**: 10.34s average query time with 151 tables detected
-- Implementation: `langchain_sql_retriever_fixed.py`
-- **✅ SERVER SETUP**: Firebird server configured with SYSDBA authentication
-- **✅ CONNECTION AUTO-CONVERSION**: Embedded to server connection conversion
-- **✅ PRODUCTION READY**: Complete with permissions and sudoers configuration
-- **✅ TESTED**: Verified functionality with real database queries and schema introspection
-
-## 🌟 MCP Context7 Integration ✅ IMPLEMENTIERT
-
-### **Übersicht**
-Das WINCASA-System nutzt jetzt die MCP Context7 Tools für Zugriff auf aktuelle LangChain-Dokumentation und Best Practices.
-
-### **Implementierte Features:**
-
-1. **✅ Real-time Library Documentation Access**
-   - Zugriff auf aktuelle LangChain SQL Database Agent Dokumentation
-   - Context7 Tools: `resolve-library-id` und `get-library-docs`
-   - Über 12.000 Code-Snippets aus der offiziellen LangChain-Dokumentation
-
-2. **✅ Enhanced LangChain SQL Integration** ([`langchain_sql_retriever_fixed.py`](langchain_sql_retriever_fixed.py))
-   - LangChain Hub system prompts mit WINCASA-Anpassungen
-   - SQLDatabaseToolkit mit erweiterten Features
-   - Graceful fallbacks für optionale Dependencies (LangGraph, Hub)
-   - Verbesserte Firebird-Connection-String-Konvertierung
-
-3. **✅ Context7 Best Practices Implementation**
-   - System Prompt Templates basierend auf Context7 Dokumentation
-   - Enhanced error handling patterns
-   - Firebird SQL dialect optimizations
-   - Chain-of-thought SQL reasoning
-
-4. **✅ Optional Advanced Features**
-   - LangGraph ReAct Agent (wenn verfügbar)
-   - LangChain Hub prompts (mit Fallback)
-   - Auto-instrumentation für Monitoring
-
-### **Context7 Dokumentation Highlights:**
-```python
-# Aus Context7 SQL Agent Best Practices:
-system_message = \"\"\"You are an agent designed to interact with a SQL database.
-Given an input question, create a syntactically correct {dialect} query to run,
-then look at the results of the query and return the answer.
-You MUST double check your query before executing it.
-Always examine the table schema before querying.\"\"\"
-
-# WINCASA-Anpassungen:
-wincasa_instructions = \"\"\"
-- Use Firebird SQL syntax (FIRST instead of LIMIT)
-- Core entities: BEWOHNER, EIGENTUEMER, OBJEKTE, KONTEN
-- Key relationship: ONR connects residents to properties
-\"\"\"
-```
-
-### **Verwendung:**
-```bash
-# Context7 Tools nutzen (über MCP)
-resolve-library-id --library "langchain"
-get-library-docs --id "/langchain-ai/langchain" --topic "SQL database agents"
-
-# Erweiterte LangChain Integration testen
-python langchain_sql_retriever_fixed.py
-```
-
-### **Performance-Verbesserungen:**
-- **Prompts**: Context7-optimierte System-Prompts für bessere SQL-Generierung
-- **Error Recovery**: Verbesserte Fehlerbehandlung basierend auf Best Practices
-- **Fallback-Mechanismen**: Robuste Funktionalität auch ohne optionale Dependencies
-
-## 💡 Hybride Kontextstrategie ✅ IMPLEMENTIERT
-
-Die hybride Kontextstrategie ist **vollständig implementiert** und optimiert die LLM-Performanz durch Kombination eines globalen Basiskontexts mit dynamischem Retrieval.
-
-### **Implementierte Komponenten:**
-
-1.  **✅ Strukturierter Globaler Basiskontext** ([`global_context.py`](global_context.py))
-    *   **Kernentitäten:** BEWOHNER, EIGENTUEMER, OBJEKTE, KONTEN mit Beschreibungen
-    *   **Schlüsselbeziehungen:** ONR-basierte Verbindungen und JOIN-Pfade
-    *   **Kritische Muster:** Adresssuche, Finanzabfragen, Eigentümer-Immobilien-Zuordnungen
-    *   **Kompakte Version:** 671 Zeichen für token-bewusste Szenarien
-    *   **Vollversion:** 2819 Zeichen für detaillierte Kontexte
-
-2.  **✅ Daten-Pattern-Extraktion** ([`data_sampler.py`](data_sampler.py))
-    *   **18 Hochprioritätstabellen** erfolgreich gesampelt (460 Datensätze)
-    *   **Reale Datenpattern:** Feldtypen, Beispielwerte, Beziehungsstrukturen
-    *   **Fallback-Kontext:** Verfügbar bei fehlendem spezifischen Retrieval
-    *   **Output:** [`output/data_context_summary.txt`](output/data_context_summary.txt)
-
-3.  **✅ Integration in SQL-Agent** ([`firebird_sql_agent_direct.py`](firebird_sql_agent_direct.py))
-    *   **Automatische Kontextladung:** Globaler Kontext in Agent-Prompts eingebunden
-    *   **Fallback-Mechanismus:** Data Patterns bei fehlendem Retrieval-Context
-    *   **Hybride Strategie:** Statischer Basis + dynamisches Retrieval
-    *   **Backward-Kompatibilität:** Bestehende Funktionalität erhalten
-
-4.  **✅ Test-Framework** ([`iterative_improvement_test.py`](iterative_improvement_test.py))
-    *   **4 Kontext-Versionen:** Systematischer Vergleich verschiedener Ansätze
-    *   **Bewertungssystem:** 0-15 Punkte (SQL-Syntax, Tabellen, JOINs, Business-Logic)
-    *   **10 Test-Queries:** 4 Komplexitätskategorien (basic → complex)
-    *   **Feedback-Loop:** Automatische Verbesserungsempfehlungen
-
-5.  **✅ Quick-Test-Tool** ([`quick_hybrid_context_test.py`](quick_hybrid_context_test.py))
-    *   **Optimiert für Geschwindigkeit:** 5 Queries, 3 Worker, Single Model
-    *   **Performance-Fokus:** Hybrid Context Impact Analysis
-    *   **Production-Ready:** Concurrent testing mit GPT-4
-
-### **Verwendung:**
-
-```python
-# Global Context laden
-from global_context import get_compact_global_context, get_global_context_prompt
-
-# Kompakte Version (671 Zeichen)
-compact_context = get_compact_global_context()
-
-# Vollversion (2819 Zeichen)  
-full_context = get_global_context_prompt()
-
-# SQL Agent mit hybrider Kontextstrategie
-agent = FirebirdDirectSQLAgent(
-    db_connection_string="firebird+fdb://sysdba:masterkey@localhost/WINCASA2022.FDB",
-    llm=llm,
-    retrieval_mode="enhanced",  # enhanced, faiss, oder none
-    use_enhanced_knowledge=True  # Aktiviert globalen Kontext
-)
-```
-
-### **Testing:**
-
-```bash
-# Schneller Test der hybriden Strategie
+# Quick performance validation (recommended)
 python quick_hybrid_context_test.py --concurrent --workers 3 --timeout 45
 
-# Vollständiges iteratives Testing
-python iterative_improvement_test.py
+# Comprehensive mode comparison
+python optimized_retrieval_test.py --modes enhanced,faiss,none,langchain --concurrent
 
-# Integration-Tests
+# Specific component testing
+python test_phoenix_monitoring.py           # Monitoring integration
+python test_hybrid_context_integration.py  # Context strategy
+python iterative_improvement_test.py       # Context optimization
+```
+
+### Test Data Management
+```bash
+# Database status check
+python test_fdb_direct_interface.py
+
+# Server connectivity (LangChain mode)
+netstat -ln | grep :3050
+sudo systemctl status firebird
+
+# Knowledge base validation
+ls -la output/compiled_knowledge_base.json
+ls -la output/yamls/ | wc -l  # Should show 248 files
+```
+
+---
+
+## Debugging and Troubleshooting
+
+### Common Issues and Solutions
+
+#### Database Connection Issues
+```bash
+# Check Firebird server status
+sudo systemctl status firebird
+netstat -ln | grep :3050
+
+# Test direct connection
+python test_fdb_direct_interface.py
+
+# Validate connection string conversion
+python test_firebird_connection_formats.py
+
+# Fix SQLCODE -902 (database lock)
+# Wait for running tests to complete or restart Firebird service
+```
+
+#### LLM Integration Issues
+```bash
+# Test API connectivity
+python test_openrouter_auth.py
+python test_direct_openai.py
+
+# Validate headers configuration (LangChain)
+python test_headers_issue.py
+
+# Check MCP Context7 integration
+python test_langchain_context7_fix.py
+```
+
+#### Retrieval Performance Issues
+```bash
+# Profile retrieval modes
+python optimized_retrieval_test.py --modes enhanced,faiss --timeout 30
+
+# Check Phoenix monitoring
+# Access: http://localhost:6006
+
+# Analyze context quality
 python test_hybrid_context_integration.py
+
+# Validate knowledge compilation
+python db_knowledge_compiler.py --validate
 ```
 
-### **✅ Produktionstest-Ergebnisse:**
-- **Strukturierter Kontext:** Alle Kernentitäten und Beziehungen abgedeckt
-- **Reale Datenpattern:** 18 Tabellen, 460 Datensätze analysiert
-- **Performance-Optimierung:** Token-bewusste kompakte/vollständige Versionen
-- **Fallback-Sicherheit:** Data Patterns bei Retrieval-Fehlern verfügbar
-- **Phoenix-Unabhängigkeit:** System funktioniert robust mit/ohne Monitoring
+### Log Analysis
+- **Query Logs:** Located in `/logs/` directory with timestamped files
+- **Performance Metrics:** Phoenix dashboard provides detailed trace analysis
+- **Error Tracking:** Systematic error categorization in test output files
+- **Retrieval Analysis:** Context document relevance scoring in test logs
 
-#### Erfolgreiche Live-Tests (6.4.2025):
+---
+
+## Integration Guidelines
+
+### Adding New Retrieval Modes
+1. **Create Retriever Class:** Inherit from base retriever in `enhanced_retrievers.py`
+2. **Register Mode:** Add to mode selection in `firebird_sql_agent_direct.py:200-250`
+3. **Add Tests:** Create integration test for new mode functionality
+4. **Update Documentation:** Add mode description to CLAUDE.md and README.md
+5. **Performance Validation:** Benchmark against existing modes using test framework
+
+### Extending LLM Support
+1. **LLM Interface:** Implement in `llm_interface.py` with proper error handling
+2. **Agent Integration:** Update SQL agent configuration in main agent class
+3. **Cost Tracking:** Phoenix monitoring integration for new LLM provider
+4. **Fallback Logic:** Handle API failures gracefully with fallback models
+5. **Context7 Integration:** Use MCP tools for real-time documentation access
+
+### Database Schema Changes
+1. **Knowledge Update:** Regenerate YAML documentation using `generate_yaml_ui.py`
+2. **Context Refresh:** Update global context patterns in `global_context.py`
+3. **Test Validation:** Verify all retrieval modes with new schema
+4. **Cache Invalidation:** Clear compiled knowledge base and regenerate
+5. **Performance Impact:** Benchmark query performance after schema changes
+
+---
+
+## Monitoring & Observability
+
+### Phoenix Integration (Arize-AI) - OTEL Backend
 ```bash
-# Test 1: Wohnungen zählen
-Query: "Wie viele Wohnungen gibt es insgesamt?"
-✅ SQL: SELECT COUNT(*) FROM WOHNUNG
-✅ Result: 517 Wohnungen
-✅ Context: Enhanced Multi-Stage (9 docs)
+# Installation
+pip install arize-phoenix arize-phoenix-otel
+pip install openinference-instrumentation-langchain openinference-instrumentation-openai
 
-# Test 2: Eigentümer anzeigen  
-Query: "Zeige die ersten 2 Eigentümer"
-✅ SQL: SELECT FIRST 2 * FROM EIGENTUEMER
-✅ Result: 2 Eigentümer mit Details
-✅ Context: Enhanced Multi-Stage (9 docs)
-✅ Firebird-Syntax: Automatisch FIRST statt LIMIT verwendet
+# Usage
+from phoenix.otel import register
+tracer_provider = register(project_name="WINCASA", auto_instrument=True)
+
+# Dashboard access
+http://localhost:6006  # Real-time performance monitoring
 ```
 
-#### Bewiesene System-Features:
-- **Enhanced Multi-Stage Retrieval:** 9 relevante Dokumente pro Query
-- **Automatische SQL-Dialekt-Anpassung:** Firebird FIRST-Syntax korrekt verwendet
-- **Robuste Fehlerbehandlung:** Funktioniert ohne Phoenix-Monitoring
-- **Vollständige Integration:** GPT-4 + FDB + RAG + Hybrid Context
-### Modell-Evaluierung und Embedding-Optimierung
+### Performance Metrics Collected
+- **LLM Calls:** Model, prompts, tokens, costs, response time
+- **Retrievals:** Mode, documents retrieved, relevance scores, duration
+- **SQL Execution:** Query text, execution time, rows returned, errors
+- **End-to-End:** Total query time, success/failure, complete trace
 
-Im Rahmen der kontinuierlichen Verbesserung des WINCASA-Systems wurden spezifische Maßnahmen zur Optimierung der Modellleistung und der Retrieval-Qualität durchgeführt:
-
-*   **Systematischer LLM-Modellvergleich:**
-    *   **Ziel:** Identifizierung des leistungsstärksten LLM für die Generierung von Firebird-SQL-Abfragen im WINCASA-Kontext.
-    *   **Methodik:** Durchführung standardisierter Tests mit verschiedenen Modellen (u.a. GPT-4-Turbo, Claude 3 Opus/Sonnet/Haiku, Gemini Pro) unter Verwendung des Test-Frameworks [`automated_retrieval_test.py`](automated_retrieval_test.py).
-    *   **Bewertungskriterien:** SQL-Korrektheit, Abfrageerfolgsrate, Ausführungsgeschwindigkeit, Timeout-Raten, Kosten.
-    *   **Ergebnis:** Die Ergebnisse fließen in die Auswahl des Standardmodells sowie in Empfehlungen für spezifische Anwendungsfälle ein.
-
-*   **Upgrade des Embedding-Modells:**
-    *   **Ziel:** Verbesserung der semantischen Ähnlichkeitssuche und somit der Relevanz der durch RAG bereitgestellten Kontextdokumente.
-    *   **Maßnahme:** Umstellung auf ein größeres und leistungsfähigeres Embedding-Modell (z.B. OpenAI `text-embedding-3-large` anstelle von `text-embedding-ada-002` oder kleineren Modellen).
-    *   **Erwarteter Nutzen:** Präzisere Einbettungen führen zu einer besseren Identifizierung relevanter Dokumentabschnitte, was die Qualität des dem LLM zur Verfügung gestellten Kontexts erhöht und die SQL-Generierung verbessert.
-    *   **Integration:** Anpassung in [`enhanced_retrievers.py`](enhanced_retrievers.py) und ggf. Neuberechnung der Vektorindizes.
-
-Diese Optimierungen sind entscheidend, um die Genauigkeit der Abfrageergebnisse zu maximieren und die Robustheit des Systems gegenüber komplexen Anfragen zu steigern.
-## Current Performance Data
-
-**Latest Test Results (2025-06-04) - FINAL OPTIMIZATION**
-
-Major Phoenix performance optimization with SQLite backend implementation:
-
-### Test Environment
-- **Database**: WINCASA2022.FDB (server mode on localhost:3050)
-- **Test Query**: "Wie viele Wohnungen gibt es insgesamt?"
-- **Model**: OpenAI GPT-4 via OpenRouter
-- **Phoenix Monitoring**: ✅ SQLite backend (localhost:6006)
-
-### Performance Metrics - **ALL 4 MODES FULLY FUNCTIONAL** ✅
-- **Total Test Time**: **Optimized for 4 cloud API-based modes**
-- **Enhanced Mode**: 1.3s, 9 context docs retrieved ✅
-- **FAISS Mode**: 0.2s, 4 context docs retrieved ✅
-- **None Mode**: 0.0s, fallback context used ✅
-- **LangChain SQL Mode**: ✅ **FULLY FUNCTIONAL** (151 tables detected, SQL Agent working)
-
-### Retrieval Performance Analysis
-- **Enhanced Multi-Stage**: 9 docs in 1.26s with 3-stage retrieval
-- **FAISS Vector Search**: 4 docs in 0.20s with semantic similarity
-- **Global Context Fallback**: Instant with data patterns
-
-### Implementation Status - **4/4 MODES IMPLEMENTED AND FULLY FUNCTIONAL** ✅
-- **Enhanced Mode**: ✅ Multi-stage RAG with global context integration
-- **FAISS Mode**: ✅ Vector similarity search with optimized embeddings
-- **None Mode**: ✅ Direct generation with hybrid context strategy
-- **LangChain SQL Mode**: ✅ **FULLY FUNCTIONAL** with Context7 best practices integration
-
-## Server Setup & Configuration ✅
-
-### Firebird Server for LangChain Mode
+### Production Monitoring
 ```bash
-# Automatic server startup (configured)
-sudo systemctl start firebird
+# Start monitoring
+python phoenix_monitoring.py --enable-ui
 
-# Server configuration
-- Port: 3050 (standard Firebird port)
-- Authentication: SYSDBA/masterkey configured
-- Database permissions: Fixed for server access
-- Sudoers configuration: Password-less firebird service control
+# System metrics
+python production_monitoring.py --profile
+
+# Performance analysis
+python performance_analysis.py --generate-report
 ```
 
-### Connection Auto-Conversion
-The system automatically converts connection strings for LangChain compatibility:
-```python
-# Input (embedded format)
-"firebird+fdb://sysdba:masterkey@//home/projects/langchain_project/WINCASA2022.FDB"
+---
 
-# Auto-converted (server format for LangChain) - CORRECTED WITH CONTEXT7
-"firebird+fdb://sysdba:masterkey@localhost:3050//home/projects/langchain_project/WINCASA2022.FDB"
-```
+## 📚 **References**
+- **Technical Guide:** `README.md` (user documentation)
+- **Implementation Plan:** `plan.md` (development phases)
+- **Task Details:** `task.md` (feature breakdown)
+- **System Status:** `implementation_status.md` (completion tracking)
+- **Performance Data:** `test_analysis_summary.md` (benchmarks)
 
-## Current Status (2025-06-04) - **PRODUCTION READY WITH ALL 5 MODES** ✅
+---
 
-### ✅ **Fully Working Components:**
-- **MCP Context7 Integration**: ✅ Real-time library documentation access enabled breakthrough
-- **Enhanced LangChain SQL**: ✅ Context7 best practices solved connection string issues  
-- **Phoenix Monitoring**: ✅ OTEL tracing functional with SQLite backend optimization
-- **LangChain SQL Agent**: ✅ **BREAKTHROUGH**: Headers fix + Context7 connection string = FULLY FUNCTIONAL
-- **Firebird Server**: ✅ Configured with proper authentication and permissions
-- **5/5 Retrieval Modes**: Enhanced, FAISS, None, SQLCoder, and LangChain ALL FULLY OPERATIONAL
+## 🎯 **Current Production Status**
 
-### ✅ **Recently Resolved (Today's Breakthrough):**
-- **LangChain Headers Issue**: ✅ Fixed ChatOpenAI `model_kwargs` → `default_headers` configuration
-- **Firebird SQLAlchemy Connection**: ✅ Context7 revealed need for double slash `//` in server paths
-- **LangChain SQL Agent**: ✅ Complete integration with 151 tables detected and SQL Agent functional
-- **MCP Context7 Integration**: ✅ Used for real-time SQLAlchemy and LangChain documentation
-- **Connection String Conversion**: ✅ Fixed embedded-to-server conversion with proper Firebird syntax
+### ✅ **Fully Operational (2025-06-04)**
+- **All 5 Retrieval Modes:** Enhanced, FAISS, None, SQLCoder, LangChain
+- **MCP Context7 Integration:** Real-time LangChain documentation access
+- **Phoenix OTEL Monitoring:** SQLite backend optimization (400% faster)
+- **Firebird Server Setup:** Complete authentication and permission configuration
+- **Hybrid Context Strategy:** Global context + dynamic retrieval implementation
 
-### ✅ **All Critical Issues Resolved:**
-- **All 5 Retrieval Modes**: ✅ Enhanced, FAISS, None, SQLCoder, and LangChain fully functional
-- **Production Deployment**: ✅ System ready for production use
-
-### 🎯 **Test Coverage:**
-- **Basic Queries**: ✅ Tested and working across all functional modes
-- **Schema Introspection**: ✅ LangChain mode provides automatic schema discovery
-- **Complex Query Support**: ✅ LangChain agent handles multi-step reasoning
-
-## Development Notes
-
-### SQLCoder-2 Integration
-The SQLCoder-2 model has been integrated as the 4th retrieval mode:
-```python
-# Use SQLCoder mode for complex JOIN queries
-agent = FirebirdDirectSQLAgent(
-    retrieval_mode="sqlcoder",
-    # ... other parameters
-)
-```
-
-Features:
-- Specialized SQL generation model (defog/sqlcoder2)
-- 4-bit quantization for memory efficiency
-- Custom Firebird-specific prompt templates
-- JOIN-aware prompting for complex relationships
-
-### Database Lock Issues
-When running tests, the database may be locked by other processes. Symptoms:
-```
-SQLCODE: -902 - Database already opened with engine instance
-```
-
-Solution: Wait for running tests to complete or restart processes.
-
-### Testing Optimization
-The optimized test framework provides:
-- Agent reuse (13.6s initialization vs 45s+ repeated)
-- Real-time progress logging
-- Concurrent execution support
-
-### Log Monitoring
+### 🚀 **Ready for Production**
 ```bash
-# Monitor test progress
-tail -f optimized_retrieval_test_*.log
-
-# Check latest results
-ls -la optimized_retrieval_test_*.json
-```
-
-## Next Steps for Development
-
-### Immediate Improvements (Optional)
-1. **Phoenix UI**: Restore dashboard connection (monitoring works without UI)
-2. **Extended Testing**: Comprehensive multi-query validation across all modes
-
-### Production Deployment Ready ✅
-- **4/4 Retrieval Modes**: Enhanced, FAISS, None, and LangChain fully operational
-- **Firebird Server**: Configured with authentication and permissions
-- **Phoenix Monitoring**: OTEL tracing functional
-- **System Architecture**: Robust with fallback mechanisms
-
-### Recommended Usage
-```bash
-# Start system (production ready)
+# Production startup
 sudo systemctl start firebird
 ./start_enhanced_qa_direct.sh
 
-# Test all functional modes
-python quick_langchain_test.py  # LangChain mode
-python quick_hybrid_context_test.py  # Enhanced/FAISS/None modes
+# Monitoring access
+http://localhost:6006  # Phoenix dashboard
+http://localhost:8501  # Development UI
+http://localhost:8502  # Production UI
 ```
 
-### Performance Optimization Opportunities
-1. **Mode Selection**: Implement dynamic mode selection based on query complexity
-2. **Caching**: Enhance retrieval caching for repeated queries
-3. **Load Balancing**: Distribute queries across multiple modes for optimal performance
-4. **User Feedback Integration**: Implement learning from user corrections
-
-## Monitoring & Observability Integration ✅
-
-### Phoenix Integration (Arize-AI) - ✅ COMPLETED & OPTIMIZED WITH SQLITE
-Comprehensive AI observability has been successfully integrated into the WINCASA system with high-performance SQLite backend.
-
-#### Installation
-```bash
-pip install arize-phoenix arize-phoenix-otel
-pip install openinference-instrumentation-langchain openinference-instrumentation-openai
-```
-
-#### SQLite Backend Optimization (December 2025)
-- **Performance Breakthrough**: 400% faster than network-based monitoring
-- **Local Storage**: SQLite database for traces (no network delays)
-- **Real-time UI**: Phoenix dashboard available at http://localhost:6006
-- **Silent Operation**: No console spam, optimized for production use
-- **Full Features**: All traces visible, cost tracking, performance analytics
-
-#### Implemented Features
-- **LLM Tracing**: ✅ Full tracking of all OpenAI API calls with token usage and cost estimation
-- **Retrieval Evaluation**: ✅ Monitors RAG performance across Enhanced/FAISS/None modes
-- **Performance Monitoring**: ✅ Tracks query execution times, success rates, and SQL performance
-- **Cost Management**: ✅ Automatic cost calculation for all LLM API calls
-- **Phoenix Dashboard**: ✅ Interactive dashboard available at http://localhost:6006
-
-#### Integration Components
-1. **`phoenix_monitoring.py`**: Core monitoring infrastructure with PhoenixMonitor class
-   - ✅ **UPGRADED TO OTEL**: Modern OpenTelemetry integration
-   - ✅ **Auto-Instrumentation**: Automatic LangChain and OpenAI tracing
-   - ✅ **OTEL Tracer Provider**: Centralized trace management
-2. **`firebird_sql_agent_direct.py`**: 
-   - LLM call tracking via DirectFDBCallbackHandler
-   - SQL execution monitoring in FDBQueryTool
-   - End-to-end query performance tracking
-3. **`enhanced_retrievers.py`**: 
-   - Multi-stage retrieval performance tracking
-   - FAISS retrieval monitoring with relevance scores
-4. **`enhanced_qa_ui.py`**: 
-   - ✅ **STREAMLINED UI**: Simplified sidebar with only retrieval method dropdown
-   - ✅ **OTEL INTEGRATION**: Phoenix OTEL registration at startup
-   - Phoenix tracing for all Streamlit UI queries
-5. **`automated_retrieval_test.py`**: 
-   - Test framework with Phoenix metrics collection
-   - Automated trace export for analysis
-
-#### Usage Example (OTEL Integration)
-```python
-# Phoenix OTEL registration (must be first)
-from phoenix.otel import register
-tracer_provider = register(
-    project_name="WINCASA",
-    endpoint="http://localhost:6006/v1/traces",
-    auto_instrument=True
-)
-
-# Monitoring is now automatic for LangChain and OpenAI
-from phoenix_monitoring import get_monitor
-monitor = get_monitor(enable_ui=True)
-
-# Access dashboard
-print(f"Phoenix Dashboard: {monitor.session.url}")
-
-# Get metrics summary
-metrics = monitor.get_metrics_summary()
-print(f"Total Queries: {metrics['total_queries']}")
-print(f"Success Rate: {metrics['success_rate']*100:.1f}%")
-print(f"Total Cost: ${metrics['total_cost_usd']:.2f}")
-```
-
-#### Monitoring Data Collected
-- **LLM Calls**: Model, prompts, responses, tokens, costs, duration
-- **Retrievals**: Mode, documents retrieved, relevance scores, duration
-- **SQL Execution**: Query text, execution time, rows returned, errors
-- **End-to-End**: Total query time, success/failure, complete trace
-
-## Development Workflow Requirements
-
-### Unit Testing Standards
-- **Coverage**: 100% unit test coverage for all new features
-- **Test Location**: Tests in `/tests/` directory with `test_*.py` naming
-- **Framework**: Use pytest for consistent testing approach
-- **Mocking**: Mock external dependencies (OpenAI API, database connections)
-- **Performance Tests**: Include performance benchmarks for critical paths
-
-### Git Workflow Requirements
-- **Commit Strategy**: Each major change requires dedicated git commit
-- **Commit Messages**: Descriptive messages following conventional commits format
-- **Push Policy**: All commits must be pushed to remote repository
-- **Documentation Updates**: Every code change requires corresponding documentation update
-
-### Documentation Maintenance
-- **CLAUDE.md**: Update technical guidance for new features
-- **README.md**: Update user-facing documentation and examples
-- **plan.md**: Track completion status of all features
-- **Code Comments**: Inline documentation for complex logic
-
-This system is functional but requires significant optimization before production deployment.
+**📈 Performance:** Enhanced mode (1.3s), FAISS mode (0.2s), LangChain agent (10.3s with full schema introspection)

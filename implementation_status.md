@@ -16,6 +16,7 @@
 | **Automated Testing** | ✅ COMPLETE | Test suite with 11-query benchmark + hybrid context tests |
 | **Phoenix Observability** | ✅ UPGRADED TO OTEL | Modern OpenTelemetry integration with auto-instrumentation |
 | **SQLCoder-2 Integration** | ✅ COMPLETE | `sqlcoder_retriever.py` - JOIN-aware SQL generation |
+| **Business Glossar** | ✅ COMPLETE | `business_glossar.py` - Domain-specific term mapping (25+ terms) |
 
 ## Implementation Architecture
 
@@ -30,6 +31,7 @@ WINCASA Implementation
 ├── global_context.py               # ✨ NEW: Hybrid context strategy
 ├── data_sampler.py                 # ✨ NEW: Real data pattern extraction
 ├── sqlcoder_retriever.py           # ✨ NEW: SQLCoder-2 integration
+├── business_glossar.py             # ✨ NEW: Business term mapping system
 ├── phoenix_monitoring.py           # ✨ UPGRADED: OTEL-based monitoring
 └── llm_interface.py                # LLM abstraction layer
 ```

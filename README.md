@@ -64,6 +64,7 @@ docker-compose up -d
 - **[`fdb_direct_interface.py`](fdb_direct_interface.py)** - Direkte Firebird-Datenbankschnittstelle
 - **[`enhanced_qa_ui.py`](enhanced_qa_ui.py)** - Streamlit Web-Interface
 - **[`enhanced_retrievers.py`](enhanced_retrievers.py)** - Multi-Stage RAG-System
+- **[`business_glossar.py`](business_glossar.py)** - Business Term Mapping mit 25+ WINCASA-spezifischen Begriffen
 - **[`db_knowledge_compiler.py`](db_knowledge_compiler.py)** - Database Knowledge System
 - **[`generate_yaml_ui.py`](generate_yaml_ui.py)** - Skript zur Generierung der YAML-basierten Wissensbasis und der zugehörigen UI-Komponenten (verantwortlich für aktuellen Output-Stil der YAMLs und Schema-Dokumentation).
 
@@ -74,6 +75,7 @@ docker-compose up -d
 python test_enhanced_qa_ui_integration.py
 python test_fdb_direct_interface.py
 python test_firebird_sql_agent.py
+python test_business_glossar_simple.py
 python automated_retrieval_test.py
 ```
 

@@ -178,6 +178,78 @@ NAVIGATION: Most tables link via ONR (Object Number). KONTEN is central hub.
 """
     return compact
 
+# Integration with Business Glossar
+def get_business_enhanced_context(business_terms: list = None):
+    """
+    Get global context enhanced with business glossar terms.
+    
+    Args:
+        business_terms: List of resolved business terms from business_glossar.py
+        
+    Returns:
+        Enhanced context string with business term mappings
+    """
+    base_context = get_global_context_prompt()
+    
+    if not business_terms:
+        return base_context
+    
+    # Add business glossar section
+    business_section = ["", "=== BUSINESS TERM MAPPINGS ==="]
+    for term in business_terms:
+        business_section.append(f"• {term.term.upper()}: {term.description}")
+        business_section.append(f"  SQL Pattern: {term.sql_pattern}")
+        business_section.append(f"  Tables: {', '.join(term.tables_involved)}")
+    business_section.append("=== END BUSINESS TERMS ===")
+    
+    return base_context + "\n".join(business_section)
+
+
+def get_query_specific_context(query: str, business_terms: list = None):
+    """
+    Generate context specifically tailored for a given query.
+    
+    Args:
+        query: User's natural language query
+        business_terms: Resolved business terms from the query
+        
+    Returns:
+        Context string optimized for the specific query
+    """
+    # Start with compact context for efficiency
+    context_lines = [get_compact_global_context()]
+    
+    if business_terms:
+        context_lines.append("\n=== QUERY-SPECIFIC BUSINESS TERMS ===")
+        for term in business_terms:
+            context_lines.append(f"• {term.term}: {term.sql_pattern}")
+            if term.aliases:
+                context_lines.append(f"  Also known as: {', '.join(term.aliases)}")
+        context_lines.append("=== END QUERY TERMS ===")
+    
+    # Add query-specific guidance
+    query_lower = query.lower()
+    context_lines.append("\n=== QUERY GUIDANCE ===")
+    
+    if any(word in query_lower for word in ['adresse', 'straße', 'wohnt', 'address']):
+        context_lines.append("• Address queries: Use BEWOHNER + BEWADR, link via BEWNR")
+        context_lines.append("• Address format: BSTR (street + number), BPLZORT (postal + city)")
+    
+    if any(word in query_lower for word in ['miete', 'kosten', 'betrag', 'geld']):
+        context_lines.append("• Financial queries: Start with KONTEN, join to BUCHUNG/SOLLSTELLUNG")
+        context_lines.append("• Key fields: BETRAG (amount), OPBETRAG (open amount), KBRUTTO (gross)")
+    
+    if any(word in query_lower for word in ['eigentümer', 'besitzer', 'owner']):
+        context_lines.append("• Owner queries: EIGENTUEMER -> VEREIG -> OBJEKTE (via EIGNR/ONR)")
+    
+    if any(word in query_lower for word in ['wohnung', 'einheit', 'apartment']):
+        context_lines.append("• Unit queries: WOHNUNG table, connect to OBJEKTE via ONR")
+    
+    context_lines.append("=== END GUIDANCE ===")
+    
+    return "\n".join(context_lines)
+
+
 if __name__ == "__main__":
     print("Full Global Context:")
     print(get_global_context_prompt())
