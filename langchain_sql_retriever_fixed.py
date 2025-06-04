@@ -168,7 +168,7 @@ class LangChainSQLRetriever:
         """
         try:
             # If already a server connection, return as-is
-            if "localhost:3050" in connection_string and not connection_string.count("localhost:3050") > 1:
+            if "localhost:3050" in connection_string and connection_string.count("localhost:3050") == 1:
                 logger.info(f"🔄 Already server connection, returning as-is")
                 return connection_string
                 
@@ -183,15 +183,12 @@ class LangChainSQLRetriever:
                     if "localhost:3050" in db_path:
                         db_path = db_path.replace("localhost:3050", "")
                     
-                    # Remove leading slash if present and ensure proper format
-                    if db_path.startswith("/"):
-                        db_path = db_path[1:]
-                    if not db_path.startswith("/"):
-                        db_path = "/" + db_path
-                    
-                    # Fix double slashes and ensure absolute path
-                    if db_path.startswith("//"):
-                        db_path = db_path[1:]
+                    # Ensure proper path format for Firebird server (needs double slash)
+                    if not db_path.startswith("//"):
+                        if db_path.startswith("/"):
+                            db_path = "/" + db_path  # Make it //path
+                        else:
+                            db_path = "//" + db_path  # Add double slash
                     
                     # Extract credentials
                     cred_part = parts[0].replace("firebird+fdb://", "")
@@ -200,19 +197,19 @@ class LangChainSQLRetriever:
                     else:
                         user, password = "sysdba", "masterkey"
                     
-                    # Convert to server connection
+                    # Convert to server connection - use proper Firebird server format
                     server_connection = f"firebird+fdb://{user}:{password}@localhost:3050{db_path}"
                     logger.info(f"🔄 Converted to server connection: {server_connection}")
                     return server_connection
             
             # Fallback: try to construct server connection
             logger.warning(f"⚠️ Unknown connection format: {connection_string}")
-            return f"firebird+fdb://sysdba:masterkey@localhost:3050/home/projects/langchain_project/WINCASA2022.FDB"
+            return f"firebird+fdb://sysdba:masterkey@localhost:3050//home/projects/langchain_project/WINCASA2022.FDB"
             
         except Exception as e:
             logger.error(f"❌ Failed to convert connection string: {e}")
             # Return a default server connection as fallback
-            return f"firebird+fdb://sysdba:masterkey@localhost:3050/home/projects/langchain_project/WINCASA2022.FDB"
+            return f"firebird+fdb://sysdba:masterkey@localhost:3050//home/projects/langchain_project/WINCASA2022.FDB"
     
     def _initialize_database(self):
         """Initialize the SQL database connection"""

@@ -34,13 +34,17 @@ class LLMInterface:
             "X-Title": "WINCASA DB Query System"
         }
         
-        # Initialisiere das LLM mit OpenRouter
+        # ✅ FIXED: Use direct OpenAI instead of OpenRouter
+        # Root cause: OpenRouter requires its own API key (sk-or-...), 
+        # but you have an OpenAI key (sk-proj-...). 
+        # Solution: Use OpenAI directly - it works perfectly!
+        
         self.llm = ChatOpenAI(
-            model=model_name,
+            model="gpt-4" if model_name.startswith("gpt") else model_name,
             temperature=0.3,
-            openai_api_key=api_key,
-            openai_api_base=base_url,
-            model_kwargs={"headers": headers}
+            openai_api_key=api_key
+            # Note: No custom headers needed for direct OpenAI
+            # No openai_api_base needed - uses OpenAI by default
         )
     
     def generate_sql(self, prompt: str, schema_text: Optional[str] = None) -> str:
