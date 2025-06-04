@@ -82,16 +82,13 @@ class LangChainSQLCallbackHandler(BaseCallbackHandler):
         logger.info(f"⏱️ Chain completed in {duration:.2f}s")
         
         if self.monitor:
-            self.monitor.log_retrieval_event(
-                mode="langchain",
+            self.monitor.track_retrieval(
+                retrieval_mode="langchain",
                 query=str(outputs.get('input', 'unknown')),
                 documents_retrieved=len(self.agent_steps),
-                duration_seconds=duration,
-                success=True,
-                metadata={
-                    "agent_steps": len(self.agent_steps),
-                    "final_output": outputs.get('output', 'no output')
-                }
+                relevance_scores=[1.0] * len(self.agent_steps),  # Default relevance scores
+                duration=duration,
+                success=True
             )
     
     def on_chain_error(self, error, **kwargs):
@@ -100,16 +97,13 @@ class LangChainSQLCallbackHandler(BaseCallbackHandler):
         logger.error(f"❌ Chain Error after {duration:.2f}s: {error}")
         
         if self.monitor:
-            self.monitor.log_retrieval_event(
-                mode="langchain", 
+            self.monitor.track_retrieval(
+                retrieval_mode="langchain", 
                 query="error_query",
                 documents_retrieved=0,
-                duration_seconds=duration,
-                success=False,
-                metadata={
-                    "error": str(error),
-                    "agent_steps": len(self.agent_steps)
-                }
+                relevance_scores=[],
+                duration=duration,
+                success=False
             )
 
 
@@ -197,19 +191,19 @@ class LangChainSQLRetriever:
                     else:
                         user, password = "sysdba", "masterkey"
                     
-                    # Convert to server connection - use proper Firebird server format
-                    server_connection = f"firebird+fdb://{user}:{password}@localhost:3050{db_path}"
+                    # Convert to server connection - use firebird dialect instead of firebird+fdb
+                    server_connection = f"firebird://{user}:{password}@localhost:3050{db_path}"
                     logger.info(f"🔄 Converted to server connection: {server_connection}")
                     return server_connection
             
             # Fallback: try to construct server connection
             logger.warning(f"⚠️ Unknown connection format: {connection_string}")
-            return f"firebird+fdb://sysdba:masterkey@localhost:3050//home/projects/langchain_project/WINCASA2022.FDB"
+            return f"firebird://sysdba:masterkey@localhost:3050//home/projects/langchain_project/WINCASA2022.FDB"
             
         except Exception as e:
             logger.error(f"❌ Failed to convert connection string: {e}")
             # Return a default server connection as fallback
-            return f"firebird+fdb://sysdba:masterkey@localhost:3050//home/projects/langchain_project/WINCASA2022.FDB"
+            return f"firebird://sysdba:masterkey@localhost:3050//home/projects/langchain_project/WINCASA2022.FDB"
     
     def _initialize_database(self):
         """Initialize the SQL database connection"""
@@ -219,11 +213,52 @@ class LangChainSQLRetriever:
             langchain_connection = self._convert_to_server_connection(self.db_connection_string)
             
             logger.info(f"🔌 Connecting to database: {langchain_connection}")
-            self.db = SQLDatabase.from_uri(langchain_connection)
             
-            # Test the connection
-            table_names = self.db.get_usable_table_names()
-            logger.info(f"✅ Database connected. Found {len(table_names)} tables")
+            # Try with custom settings to avoid metadata introspection issues
+            from sqlalchemy import create_engine, text
+            
+            # Create engine with minimal reflection to avoid Firebird metadata issues
+            engine = create_engine(
+                langchain_connection,
+                pool_pre_ping=True,
+                # Use minimal reflection options
+                execution_options={
+                    "autocommit": False,
+                    "isolation_level": "READ_COMMITTED"
+                }
+            )
+            
+            # Test basic connection
+            with engine.connect() as conn:
+                # Simple test query
+                result = conn.execute(text("SELECT COUNT(*) FROM RDB$RELATIONS WHERE RDB$SYSTEM_FLAG = 0"))
+                table_count = result.scalar()
+                logger.info(f"✅ Basic database connection successful. Found ~{table_count} user tables")
+            
+            # Create SQLDatabase with custom settings
+            self.db = SQLDatabase(
+                engine=engine,
+                sample_rows_in_table_info=1,  # Minimal sampling
+                max_string_length=100,
+                lazy_table_reflection=True  # Don't reflect all tables immediately
+            )
+            
+            # Test basic functionality
+            try:
+                # Try to get a simple list of tables without full metadata
+                with engine.connect() as conn:
+                    result = conn.execute(text("""
+                        SELECT TRIM(RDB$RELATION_NAME) 
+                        FROM RDB$RELATIONS 
+                        WHERE RDB$SYSTEM_FLAG = 0 
+                        AND RDB$RELATION_TYPE = 0
+                        ORDER BY RDB$RELATION_NAME
+                        ROWS 10
+                    """))
+                    sample_tables = [row[0] for row in result]
+                    logger.info(f"✅ Found sample tables: {sample_tables[:5]}...")
+            except Exception as sample_error:
+                logger.warning(f"⚠️ Could not get sample tables: {sample_error}")
             
         except Exception as e:
             logger.error(f"❌ Database connection failed: {e}")
@@ -289,14 +324,16 @@ Always examine the table schema before querying. Do NOT make any DML statements.
             # Create ReAct agent with enhanced system prompt and tools
             if LANGGRAPH_AVAILABLE:
                 try:
+                    # Based on Context7 documentation, create_react_agent expects model, tools, prompt parameters
                     self.agent = create_react_agent(
-                        llm=self.llm,
+                        model=self.llm,  # Changed from 'llm' to 'model' 
                         tools=tools,
                         prompt=enhanced_system_message
                     )
                     logger.info("✅ Enhanced LangGraph ReAct SQL Agent created successfully")
                 except Exception as react_error:
                     logger.warning(f"⚠️ LangGraph ReAct agent failed: {react_error}")
+                    logger.warning(f"Error details: {react_error}")
                     self.agent = None
             else:
                 logger.info("⚠️ LangGraph not available, falling back to classic agent")
@@ -387,9 +424,28 @@ Please answer the user's query step by step.
             enhanced_query = self._enhance_query_with_context(query)
             
             # Execute query using the agent
-            result = self.agent.invoke({
-                "input": enhanced_query
-            })
+            # For LangGraph agents, use the messages format
+            if LANGGRAPH_AVAILABLE and hasattr(self.agent, 'invoke'):
+                try:
+                    # LangGraph ReAct agents expect messages format
+                    result = self.agent.invoke({
+                        "messages": [("user", enhanced_query)]
+                    })
+                    # Extract the final message for compatibility
+                    if "messages" in result and result["messages"]:
+                        agent_output = result["messages"][-1].content if hasattr(result["messages"][-1], 'content') else str(result["messages"][-1])
+                        result = {"output": agent_output, "intermediate_steps": []}
+                except Exception as langgraph_error:
+                    logger.warning(f"⚠️ LangGraph invocation failed, trying classic format: {langgraph_error}")
+                    # Fallback to classic format
+                    result = self.agent.invoke({
+                        "input": enhanced_query
+                    })
+            else:
+                # Classic agent format
+                result = self.agent.invoke({
+                    "input": enhanced_query
+                })
             
             # Extract results
             agent_output = result.get("output", "No output generated")
@@ -447,13 +503,13 @@ Please answer the user's query step by step.
             
             # Log error to monitoring
             if self.monitor:
-                self.monitor.log_retrieval_event(
-                    mode="langchain",
+                self.monitor.track_retrieval(
+                    retrieval_mode="langchain",
                     query=query,
                     documents_retrieved=0,
-                    duration_seconds=time.time() - start_time,
-                    success=False,
-                    metadata={"error": str(e)}
+                    relevance_scores=[],
+                    duration=time.time() - start_time,
+                    success=False
                 )
         
         return documents[:max_docs]  # Respect max_docs parameter
