@@ -22,7 +22,7 @@ from fdb_direct_interface import FDBDirectInterface
 from retrievers import FaissDocumentationRetriever, BaseDocumentationRetriever
 from enhanced_retrievers import EnhancedMultiStageRetriever, EnhancedFaissRetriever
 from sqlcoder_retriever import SQLCoderRetriever
-from langchain_sql_retriever_fixed import LangChainSQLRetriever
+from langchain_sql_retriever_fixed import LangChainSQLRetriever, LangChainSQLRetrieverFallback
 from query_preprocessor import QueryPreprocessor
 from db_knowledge_compiler import DatabaseKnowledgeCompiler
 
@@ -504,9 +504,19 @@ class FirebirdDirectSQLAgent:
                 print("LangChain SQL Database Agent initialized and set as active.")
             except Exception as e:
                 print(f"Error initializing LangChain SQL Agent: {e}")
-                print("Fallback: LangChain mode will not be available")
-                self.langchain_retriever = None
-                self.active_retriever = None
+                print("Creating fallback LangChain retriever for testing/documentation purposes")
+                # Create a fallback retriever that can still provide info but won't execute queries
+                try:
+                    self.langchain_retriever = LangChainSQLRetrieverFallback(
+                        db_connection_string=local_db_path,
+                        llm=self.llm,
+                        error_message=str(e)
+                    )
+                    self.active_retriever = self.langchain_retriever
+                    print("LangChain fallback retriever created.")
+                except:
+                    self.langchain_retriever = None
+                    self.active_retriever = None
         
         elif self.retrieval_mode == 'neo4j':
             print("Neo4j retrieval mode selected, but not yet implemented.")

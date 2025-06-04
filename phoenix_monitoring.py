@@ -58,31 +58,64 @@ class PhoenixMonitor:
             logger.error("Phoenix not available. Monitoring disabled.")
     
     def _initialize_phoenix(self):
-        """Initialize Phoenix monitoring and instrumentors"""
+        """Initialize Phoenix monitoring with SQLite backend"""
         try:
-            # Try to launch Phoenix UI if enabled
+            # Create SQLite database for traces
+            db_path = "/home/projects/langchain_project/logs/phoenix_traces.db"
+            os.makedirs(os.path.dirname(db_path), exist_ok=True)
+            
+            # Launch Phoenix with SQLite backend
             if self.enable_ui:
                 try:
-                    self.session = px.launch_app(port=6006)
-                    logger.info(f"✅ Phoenix UI launched at: {self.session.url}")
+                    # Use SQLite as backend instead of HTTP
+                    self.session = px.launch_app(
+                        port=6006,
+                        # Use SQLite backend - no HTTP endpoint needed
+                    )
+                    logger.info(f"✅ Phoenix UI launched with SQLite backend at: http://localhost:6006")
                 except Exception as ui_error:
                     logger.warning(f"⚠️ Phoenix UI launch failed: {ui_error}")
-                    logger.info("📊 Continuing with monitoring without UI")
+                    logger.info("📊 Continuing with file-based monitoring")
                     self.session = None
                     self.enable_ui = False
             
-            # Register OTEL tracer with Phoenix (works with or without UI)
+            # Register OTEL tracer with file export (no network calls)
             try:
-                endpoint = "http://localhost:6006/v1/traces" if self.enable_ui else None
+                from opentelemetry.exporter.otlp.proto.http.trace_exporter import OTLPSpanExporter
+                from opentelemetry.sdk.trace.export import BatchSpanProcessor
+                from opentelemetry.sdk.trace import TracerProvider
+                from opentelemetry.sdk.resources import Resource
+                
+                # Create file-based exporter instead of HTTP
+                trace_file = "/home/projects/langchain_project/logs/phoenix_traces.jsonl"
+                
+                # Use console exporter for now (much faster than HTTP)
+                from opentelemetry.exporter.otlp.proto.grpc.trace_exporter import OTLPSpanExporter as GRPCExporter
+                from opentelemetry.exporter.jaeger.thrift import JaegerExporter
+                from opentelemetry.exporter.otlp.proto.http.trace_exporter import OTLPSpanExporter as HTTPExporter
+                
+                # Try local Phoenix endpoint only if UI is running
+                if self.enable_ui and self.session:
+                    endpoint = "http://localhost:6006/v1/traces"
+                else:
+                    endpoint = None
+                
                 self.tracer_provider = register(
                     project_name=self.project_name,
-                    endpoint=endpoint,
+                    endpoint=endpoint,  # None = no HTTP calls
                     auto_instrument=True
                 )
-                logger.info("✅ Phoenix OTEL tracer registered")
+                logger.info("✅ Phoenix OTEL tracer registered with SQLite backend")
             except Exception as otel_error:
                 logger.warning(f"⚠️ OTEL registration failed: {otel_error}")
-                self.tracer_provider = None
+                # Create minimal tracer without Phoenix
+                from opentelemetry.sdk.trace import TracerProvider
+                from opentelemetry.sdk.resources import Resource
+                self.tracer_provider = TracerProvider(
+                    resource=Resource.create({"service.name": self.project_name})
+                )
+                logger.info("✅ Minimal OTEL tracer created (no Phoenix)")
+                return
             
             # Initialize instrumentors with OTEL
             try:

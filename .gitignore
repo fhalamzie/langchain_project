@@ -149,6 +149,12 @@ output/
 # Skipped items log
 skipped_items.json
 
+# Test result files with timestamps
+*_202*.json
+*_202*.txt
+*test_results*.json
+*test_summary*.txt
+
 # Test databases or temporary databases
 *.db
 *.sqlite

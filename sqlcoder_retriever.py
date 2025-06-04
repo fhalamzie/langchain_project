@@ -7,6 +7,7 @@ with enhanced JOIN-aware prompting strategies optimized for Firebird databases.
 """
 
 import os
+import re
 import json
 import time
 import logging
@@ -24,7 +25,7 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 
-class SQLCoderRetriever(BaseDocumentationRetriever):
+class SQLCoderRetriever:
     """
     SQLCoder-2 based retriever with JOIN-aware prompting for complex table relationships.
     Optimized for Firebird SQL dialect and WINCASA database schema.

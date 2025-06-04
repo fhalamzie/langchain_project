@@ -32,6 +32,10 @@ echo "  ✅ Verbesserte Fehlerbehandlung und Performance"
 echo "  ✅ Detaillierte Agent-Schritte in der UI"
 echo ""
 
+# Starte Firebird Server für LangChain Integration
+echo "🔥 Starte Firebird Server für LangChain Integration..."
+./start_firebird_server.sh
+
 # Aktiviere virtuelle Umgebung und starte Streamlit
 echo "🔄 Aktiviere virtuelle Umgebung und starte Streamlit..."
 .venv/bin/python -m streamlit run enhanced_qa_ui.py --server.port 8501 --server.address 0.0.0.0
