@@ -20,17 +20,33 @@ from datetime import datetime
 
 from langchain_experimental.sql import SQLDatabaseChain
 from langchain_community.agent_toolkits.sql.base import create_sql_agent
+from langchain_community.agent_toolkits import SQLDatabaseToolkit
 from langchain.agents import AgentType
 from langchain_community.utilities import SQLDatabase
 from langchain_core.documents import Document
 from langchain_core.language_models.base import BaseLanguageModel
 from langchain.callbacks.base import BaseCallbackHandler
+# Configure logging first
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+# Optional advanced imports
+try:
+    from langgraph.prebuilt import create_react_agent
+    LANGGRAPH_AVAILABLE = True
+except ImportError:
+    LANGGRAPH_AVAILABLE = False
+    logger.warning("LangGraph not available - using classic SQL agent")
+
+try:
+    from langchain import hub
+    HUB_AVAILABLE = True
+except ImportError:
+    HUB_AVAILABLE = False
+    logger.warning("LangChain Hub not available - using default prompts")
 
 from phoenix_monitoring import get_monitor
 from global_context import get_compact_global_context
-
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
 
 
 class LangChainSQLCallbackHandler(BaseCallbackHandler):
@@ -173,6 +189,10 @@ class LangChainSQLRetriever:
                     if not db_path.startswith("/"):
                         db_path = "/" + db_path
                     
+                    # Fix double slashes and ensure absolute path
+                    if db_path.startswith("//"):
+                        db_path = db_path[1:]
+                    
                     # Extract credentials
                     cred_part = parts[0].replace("firebird+fdb://", "")
                     if ":" in cred_part:
@@ -218,26 +238,90 @@ class LangChainSQLRetriever:
             self.fallback_mode = True
     
     def _create_agent(self):
-        """Create the LangChain SQL Database Agent"""
+        """Create the LangChain SQL Database Agent with enhanced Context7 best practices"""
         try:
-            logger.info("🤖 Creating LangChain SQL Database Agent...")
+            logger.info("🤖 Creating enhanced LangChain SQL Database Agent...")
+            
+            if not self.db:
+                logger.error("❌ Cannot create agent without database connection")
+                return
+            
+            # Create SQL Database Toolkit with enhanced features
+            toolkit = SQLDatabaseToolkit(db=self.db, llm=self.llm)
+            tools = toolkit.get_tools()
+            
+            # Get enhanced system prompt from LangChain Hub with WINCASA customizations
+            enhanced_system_message = None
+            
+            if HUB_AVAILABLE:
+                try:
+                    prompt_template = hub.pull("langchain-ai/sql-agent-system-prompt")
+                    system_message = prompt_template.format(
+                        dialect="Firebird",
+                        top_k=5
+                    )
+                    
+                    # Add WINCASA-specific instructions
+                    wincasa_instructions = """\n\nWINDASA Database Context:
+- Use Firebird SQL syntax (FIRST instead of LIMIT)
+- Core entities: BEWOHNER (residents), EIGENTUEMER (owners), OBJEKTE (properties), KONTEN (accounts)
+- Key relationship: ONR connects residents to properties
+- Always check table structure before querying
+- Use proper JOIN syntax for multi-table queries
+- Consider German language field names and business context
+"""
+                    
+                    enhanced_system_message = system_message + wincasa_instructions
+                    logger.info("✅ Using LangChain Hub system prompt")
+                    
+                except Exception as e:
+                    logger.warning(f"⚠️ Could not pull system prompt from hub: {e}")
+            
+            # Fallback to default system message if hub not available
+            if not enhanced_system_message:
+                enhanced_system_message = f"""You are an agent designed to interact with a Firebird SQL database for the WINCASA property management system.
+Given an input question, create a syntactically correct Firebird query to run, then look at the results and return the answer.
+Always limit your query to at most 5 results using FIRST instead of LIMIT.
+Core entities: BEWOHNER (residents), EIGENTUEMER (owners), OBJEKTE (properties), KONTEN (accounts).
+Always examine the table schema before querying. Do NOT make any DML statements."""
+                logger.info("✅ Using fallback system prompt")
             
             # Prepare callbacks
             callbacks = [self.callback_handler] if self.callback_handler else []
             
-            self.agent = create_sql_agent(
-                llm=self.llm,
-                db=self.db,
-                agent_type=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
-                verbose=True,
-                max_iterations=3,  # Limit iterations to prevent infinite loops
-                max_execution_time=30,  # 30 second timeout
-                callbacks=callbacks,
-                handle_parsing_errors=True,  # Handle LLM parsing errors gracefully
-                return_intermediate_steps=True  # For monitoring
-            )
+            # Create ReAct agent with enhanced system prompt and tools
+            if LANGGRAPH_AVAILABLE:
+                try:
+                    self.agent = create_react_agent(
+                        llm=self.llm,
+                        tools=tools,
+                        prompt=enhanced_system_message
+                    )
+                    logger.info("✅ Enhanced LangGraph ReAct SQL Agent created successfully")
+                except Exception as react_error:
+                    logger.warning(f"⚠️ LangGraph ReAct agent failed: {react_error}")
+                    self.agent = None
+            else:
+                logger.info("⚠️ LangGraph not available, falling back to classic agent")
             
-            logger.info("✅ LangChain SQL Agent created successfully")
+            # Fallback to traditional create_sql_agent if LangGraph not available
+            if not self.agent:
+                try:
+                    self.agent = create_sql_agent(
+                        llm=self.llm,
+                        db=self.db,
+                        agent_type=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
+                        verbose=True,
+                        max_iterations=3,
+                        max_execution_time=30,
+                        callbacks=callbacks,
+                        handle_parsing_errors=True,
+                        return_intermediate_steps=True
+                    )
+                    logger.info("✅ Classic SQL Agent created successfully")
+                except Exception as classic_error:
+                    logger.error(f"❌ Classic SQL Agent also failed: {classic_error}")
+                    raise
             
         except Exception as e:
             logger.error(f"❌ Failed to create SQL agent: {e}")
@@ -245,7 +329,7 @@ class LangChainSQLRetriever:
     
     def _enhance_query_with_context(self, user_query: str) -> str:
         """
-        Enhance user query with WINCASA-specific context for better understanding.
+        Enhance user query with WINCASA-specific context and Context7 best practices.
         
         Args:
             user_query: Original user query
@@ -256,16 +340,22 @@ class LangChainSQLRetriever:
         global_context = get_compact_global_context()
         
         enhanced_query = f"""
+WINDASA Property Management Database Context:
 {global_context}
 
-Based on the WINCASA database context above, please answer this query:
-{user_query}
+User Query: {user_query}
 
-Important guidelines:
-- Use Firebird SQL syntax (e.g., FIRST instead of LIMIT)
-- Focus on the core entities: BEWOHNER, EIGENTUEMER, OBJEKTE, KONTEN
-- Consider the key relationships shown in the context
-- Return practical, business-relevant results
+SQL Generation Guidelines:
+1. ALWAYS start by examining the table structure using schema tools
+2. Use Firebird SQL syntax (FIRST instead of LIMIT)
+3. Focus on core entities: BEWOHNER, EIGENTUEMER, OBJEKTE, KONTEN
+4. Key relationships: ONR connects residents to properties
+5. German field names - translate concepts appropriately
+6. Limit results to 5 unless user specifies otherwise
+7. Use proper JOINs for multi-table queries
+8. Return business-relevant, user-friendly results
+
+Please answer the user's query step by step.
 """
         
         return enhanced_query
@@ -387,11 +477,15 @@ Important guidelines:
             "database_connection": self.db_connection_string,
             "tables_available": table_count,
             "features": [
+                "Enhanced LangGraph ReAct Agent",
+                "Context7 best practices integration", 
                 "Automatic schema introspection",
                 "Built-in error recovery",
                 "Chain-of-thought SQL reasoning",
                 "Firebird SQL dialect support",
-                "WINCASA context integration"
+                "WINCASA context integration",
+                "LangChain Hub system prompts",
+                "SQLDatabaseToolkit integration"
             ],
             "monitoring_enabled": self.monitor is not None
         }
@@ -455,11 +549,12 @@ class LangChainSQLRetrieverFallback:
 
 
 def test_langchain_sql_retriever():
-    """Test the LangChain SQL retriever with sample queries"""
-    print("🧪 Testing LangChain SQL Database Agent Retriever...")
+    """Test the enhanced LangChain SQL retriever with Context7 best practices"""
+    print("🧪 Testing Enhanced LangChain SQL Database Agent Retriever...")
+    print("✨ Featuring Context7 best practices and LangGraph ReAct Agent")
     
-    # Setup (mock for testing - replace with actual config)
-    db_connection = "firebird+fdb://sysdba:masterkey@localhost/WINCASA2022.FDB"
+    # Setup (server connection required for LangChain)
+    db_connection = "firebird+fdb://sysdba:masterkey@localhost:3050/home/projects/langchain_project/WINCASA2022.FDB"
     
     try:
         from llm_interface import LLMInterface

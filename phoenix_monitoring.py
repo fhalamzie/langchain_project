@@ -60,30 +60,53 @@ class PhoenixMonitor:
     def _initialize_phoenix(self):
         """Initialize Phoenix monitoring and instrumentors"""
         try:
-            # Launch Phoenix UI if enabled
+            # Try to launch Phoenix UI if enabled
             if self.enable_ui:
-                self.session = px.launch_app()
-                logger.info(f"Phoenix UI launched at: {self.session.url}")
+                try:
+                    self.session = px.launch_app(port=6006)
+                    logger.info(f"✅ Phoenix UI launched at: {self.session.url}")
+                except Exception as ui_error:
+                    logger.warning(f"⚠️ Phoenix UI launch failed: {ui_error}")
+                    logger.info("📊 Continuing with monitoring without UI")
+                    self.session = None
+                    self.enable_ui = False
             
-            # Register OTEL tracer with Phoenix
-            self.tracer_provider = register(
-                project_name=self.project_name,
-                endpoint="http://localhost:6006/v1/traces",
-                auto_instrument=True
-            )
+            # Register OTEL tracer with Phoenix (works with or without UI)
+            try:
+                endpoint = "http://localhost:6006/v1/traces" if self.enable_ui else None
+                self.tracer_provider = register(
+                    project_name=self.project_name,
+                    endpoint=endpoint,
+                    auto_instrument=True
+                )
+                logger.info("✅ Phoenix OTEL tracer registered")
+            except Exception as otel_error:
+                logger.warning(f"⚠️ OTEL registration failed: {otel_error}")
+                self.tracer_provider = None
             
             # Initialize instrumentors with OTEL
-            self.langchain_instrumentor = LangChainInstrumentor()
-            self.openai_instrumentor = OpenAIInstrumentor()
+            try:
+                self.langchain_instrumentor = LangChainInstrumentor()
+                self.openai_instrumentor = OpenAIInstrumentor()
+                
+                # Start instrumentation
+                self.langchain_instrumentor.instrument()
+                self.openai_instrumentor.instrument()
+                
+                logger.info("✅ Phoenix instrumentors initialized successfully")
+            except Exception as instr_error:
+                logger.warning(f"⚠️ Instrumentation failed: {instr_error}")
+                self.langchain_instrumentor = None
+                self.openai_instrumentor = None
             
-            # Start instrumentation
-            self.langchain_instrumentor.instrument()
-            self.openai_instrumentor.instrument()
-            
-            logger.info("Phoenix OTEL monitoring initialized successfully")
+            logger.info("✅ Phoenix monitoring initialized (UI optional)")
             
         except Exception as e:
-            logger.error(f"Failed to initialize Phoenix: {e}")
+            logger.error(f"❌ Failed to initialize Phoenix: {e}")
+            # Set fallback mode
+            self.session = None
+            self.tracer_provider = None
+            self.enable_ui = False
     
     def trace_query(self, query: str, metadata: Optional[Dict] = None):
         """

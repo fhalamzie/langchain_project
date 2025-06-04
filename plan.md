@@ -295,16 +295,88 @@ python comparative_sql_analysis.py --detailed-metrics
 - Automatische Error-Recovery bei SQL-Syntax-Fehlern
 - Erhöhte Robustheit bei unbekannten Query-Patterns
 
-## 9. Zukünftige Überlegungen und mögliche Erweiterungen
+## 9. Aktuelle Issues und Next Steps (2025-06-04)
 
-### 9.1. Nutzung einer Graphdatenbank (z.B. Neo4j) zur Kontextanreicherung
+### 9.1. Identified Issues from Testing
 
-*   **Idee:** Exploration der Integration einer Graphdatenbank zur expliziten Modellierung und Abfrage der komplexen Beziehungen zwischen den Firebird-Tabellen.
-*   **Potenzieller Nutzen:**
-    *   Verbessertes Verständnis von Multi-Hop-Beziehungen und komplexen Abhängigkeiten durch das LLM.
-    *   Präzisere Extraktion von relevanten Sub-Graphen als Kontext für die SQL-Generierung.
-    *   Formale Repräsentation der Wissensbasis als Wissensgraph.
-*   **Herausforderungen:**
-    *   Erhöhte Systemkomplexität (zusätzliche Datenbank, Synchronisationsaufwand).
-    *   Entwicklung von Mechanismen zur Kontext-Extraktion aus dem Graphen und Integration in den LLM-Prompt.
-*   **Status:** Eine konzeptionelle Überlegung für eine spätere Optimierungsphase, nachdem SQLCoder-2 und LangChain SQL Agent implementiert und evaluiert wurden.
+**Minor Issues (Non-Critical):**
+- **Phoenix UI Connection**: Connection refused to localhost:6006 (doesn't affect core functionality)
+- **Different SQL Strategies**: None mode uses DISTINCT ONR vs Enhanced/FAISS using COUNT(*)
+- **Test Framework**: Response extraction needs improvement for better result parsing
+
+**Areas for Extended Testing:**
+- **SQLCoder & LangChain Modes**: Full validation pending (implementation complete)
+- **Complex Query Testing**: Current validation limited to simple count queries
+- **Multi-Query Performance**: Extended test suite needed for production validation
+
+### 9.2. Immediate Next Steps (Priority)
+
+**1. Phoenix UI Fix**
+- Investigate Phoenix monitoring dashboard connection issues
+- Ensure localhost:6006 service is running or disable UI mode
+- Alternative: Use Phoenix logging without UI
+
+**2. SQLCoder & LangChain Mode Testing**
+- Run comprehensive tests for all 5 retrieval modes
+- Validate SQLCoder-2 model loading and SQL generation
+- Test LangChain SQL Database Agent integration
+
+**3. Extended Test Suite**
+```bash
+# Target test commands
+python optimized_retrieval_test.py --modes enhanced,faiss,none,sqlcoder,langchain
+python comprehensive_query_test.py  # multiple query types
+python accuracy_validation_test.py  # result correctness
+```
+
+**4. Test Framework Improvements**
+- Fix response parsing in test scripts
+- Better result extraction and validation
+- Standardized success/failure criteria
+
+### 9.3. Testing Requirements
+
+**Query Coverage:**
+- Address lookups: "Wer wohnt in der Marienstraße 26?"
+- JOIN operations: "Bewohner mit Adressdaten für Objekt 5"
+- Aggregations: "Durchschnittliche Miete pro Objekt"
+- Complex business logic: "Eigentümer mit mehr als 2 Wohnungen"
+
+**Performance Validation:**
+- Response time targets: <30s per query
+- Success rate targets: Document actual rates, not assumed percentages
+- Memory usage monitoring
+- Error rate tracking
+
+**Accuracy Testing:**
+- SQL syntax validation
+- Result correctness verification
+- Business logic compliance
+- Firebird dialect compatibility
+
+### 9.4. Documentation Tasks
+
+**Update Required:**
+- Remove inflated success rate claims
+- Document actual test results factually
+- Update performance baselines with real data
+- Clarify testing limitations and scope
+
+**File Updates:**
+- `CLAUDE.md`: ✅ Updated with factual test results
+- `plan.md`: ✅ Updated with current issues
+- Test result files: Need comprehensive validation data
+
+### 9.5. Future Considerations
+
+**Post-Validation Tasks:**
+- Production deployment guidelines
+- Performance optimization opportunities
+- Extended query pattern support
+- Real user feedback integration
+
+**Technical Debt:**
+- Code cleanup and documentation
+- Test framework standardization
+- Error handling improvements
+- Monitoring system fixes
