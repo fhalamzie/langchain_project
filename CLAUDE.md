@@ -72,7 +72,7 @@ python optimized_retrieval_test.py
 # Concurrent testing (2 workers)
 python optimized_retrieval_test.py --concurrent --workers 2
 
-# Test all 5 retrieval modes (planned)
+# Test all 5 retrieval modes
 python optimized_retrieval_test.py --modes enhanced,faiss,none,sqlcoder,langchain
 
 # Original test framework
@@ -113,11 +113,14 @@ The system supports five retrieval modes for context augmentation:
 - Baseline mode using only LLM knowledge
 - No additional context from documentation
 
-### 4. SQLCoder Mode (`sqlcoder`) - ✅ PLANNED
-- Specialized SQL generation using SQLCoder-2 model
+### 4. SQLCoder Mode (`sqlcoder`) - ✅ IMPLEMENTIERT
+- Specialized SQL generation using SQLCoder-2 model (defog/sqlcoder2)
 - JOIN-aware prompting for complex table relationships
 - Optimized for Firebird SQL dialect and syntax
 - Combines hybrid context strategy with SQL-specific model
+- 4-bit quantization for memory efficiency
+- Custom Firebird-specific prompt templates
+- Implementation: `sqlcoder_retriever.py`
 
 ### 5. LangChain SQL Agent Mode (`langchain`) - ✅ PLANNED
 - Native LangChain SQL Database Agent integration
@@ -259,9 +262,9 @@ Based on comprehensive testing (11 queries × 3 modes = 33 tests):
 - FAISS Mode: 5 timeouts
 - None Mode: 0 timeouts
 
-### Expected Performance Improvements with New Modes
-- **SQLCoder Mode**: Target >75% success rate with SQL-specific model
-- **LangChain SQL Mode**: Target >70% success rate with built-in error recovery
+### Performance with New Modes
+- **SQLCoder Mode**: ✅ IMPLEMENTED - Specialized SQL generation with JOIN-aware prompting
+- **LangChain SQL Mode**: 🚧 IN PROGRESS - Target >70% success rate with built-in error recovery
 - **Combined Analysis**: Goal to identify optimal mode per query type
 
 ## Known Issues
@@ -281,6 +284,22 @@ Based on comprehensive testing (11 queries × 3 modes = 33 tests):
 - Table selection and SQL generation require optimization
 
 ## Development Notes
+
+### SQLCoder-2 Integration
+The SQLCoder-2 model has been integrated as the 4th retrieval mode:
+```python
+# Use SQLCoder mode for complex JOIN queries
+agent = FirebirdDirectSQLAgent(
+    retrieval_mode="sqlcoder",
+    # ... other parameters
+)
+```
+
+Features:
+- Specialized SQL generation model (defog/sqlcoder2)
+- 4-bit quantization for memory efficiency
+- Custom Firebird-specific prompt templates
+- JOIN-aware prompting for complex relationships
 
 ### Database Lock Issues
 When running tests, the database may be locked by other processes. Symptoms:
@@ -327,7 +346,7 @@ ls -la optimized_retrieval_test_*.json
 
 ## Monitoring & Observability Integration ✅
 
-### Phoenix Integration (Arize-AI) - COMPLETED & UPGRADED TO OTEL
+### Phoenix Integration (Arize-AI) - ✅ COMPLETED & UPGRADED TO OTEL
 Comprehensive AI observability has been successfully integrated into the WINCASA system with modern OpenTelemetry (OTEL) support.
 
 #### Installation
@@ -335,6 +354,12 @@ Comprehensive AI observability has been successfully integrated into the WINCASA
 pip install arize-phoenix arize-phoenix-otel
 pip install openinference-instrumentation-langchain openinference-instrumentation-openai
 ```
+
+#### OTEL Upgrade Details (June 2025)
+- **Migration**: Von klassischem Phoenix zu OpenTelemetry-basiertem Tracing
+- **Auto-Instrumentation**: Automatisches Tracing ohne Code-Änderungen
+- **Standards-konform**: OTEL ist der Industry-Standard für Observability
+- **Verbesserte Performance**: Effizientere Trace-Collection und -Export
 
 #### Implemented Features
 - **LLM Tracing**: ✅ Full tracking of all OpenAI API calls with token usage and cost estimation

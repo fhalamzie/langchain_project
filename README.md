@@ -103,10 +103,10 @@ python run_llm_query.py
 ## 📊 Performance
 
 - **Database**: 151 Tabellen, 517 Wohnungen, 698 Bewohner
-- **Current Retrieval Modi**: Enhanced (22.5s), None (20.8s), FAISS (34.6s)
-- **Current Erfolgsrate**: 63.6% über alle Modi
-- **Planned Improvements**: SQLCoder-2 (>75% target), LangChain SQL Agent (>70% target)
-- **Total Modi**: 5 (Enhanced, FAISS, None, SQLCoder, LangChain)
+- **Verfügbare Retrieval Modi**: Enhanced (22.5s), None (20.8s), FAISS (34.6s), SQLCoder (✅ NEU)
+- **Current Erfolgsrate**: 63.6% über klassische Modi
+- **Implementierte Verbesserungen**: SQLCoder-2 (✅ IMPLEMENTIERT), LangChain SQL Agent (🚧 In Arbeit)
+- **Total Modi**: 5 (Enhanced, FAISS, None, SQLCoder ✅, LangChain 🚧)
 
 ## 🔧 Systemanforderungen
 
@@ -124,16 +124,19 @@ python run_llm_query.py
 - **`/output/compiled_knowledge_base.json`**: Kompilierte Wissensbasis
 - **`/home/envs/`**: API-Konfigurationsdateien
 
-## 📊 AI Observability (✅ Implementiert)
+## 📊 AI Observability (✅ UPGRADED TO OTEL)
 
-### Phoenix Integration
+### Phoenix Integration mit OpenTelemetry
 ```bash
-pip install arize-phoenix
+pip install arize-phoenix arize-phoenix-otel
+pip install openinference-instrumentation-langchain openinference-instrumentation-openai
 ```
 
 **Features:**
+- ✅ **OTEL Integration**: Moderne OpenTelemetry-basierte Tracing-Architektur
+- ✅ **Auto-Instrumentation**: Automatisches Tracing für LangChain und OpenAI
 - ✅ **LLM Tracing**: Vollständige Überwachung aller OpenAI API-Aufrufe
-- ✅ **RAG Evaluation**: Performance-Tracking für Enhanced/FAISS/None Modi
+- ✅ **RAG Evaluation**: Performance-Tracking für Enhanced/FAISS/None/SQLCoder Modi
 - ✅ **Query Analytics**: End-to-End Query-Execution-Metriken
 - ✅ **Cost Tracking**: Automatische Kostenberechnung pro Query
 - ✅ **Phoenix Dashboard**: Interaktives Dashboard unter http://localhost:6006
@@ -219,6 +222,37 @@ Zur weiteren Steigerung der Systemleistung wurden folgende Maßnahmen umgesetzt:
 *   **Upgrade auf Large Embedding Modell:** Um die Qualität des semantischen Verständnisses und damit die Relevanz der abgerufenen Dokumente im RAG-Prozess zu verbessern, wurde auf ein leistungsfähigeres, größeres Embedding-Modell (z.B. `text-embedding-3-large` von OpenAI) umgestellt. Dies führt zu präziseren Kontextinformationen für das LLM.
 
 Diese Optimierungen sind Teil der kontinuierlichen Bemühungen, die Effektivität und Genauigkeit des WINCASA-Systems zu maximieren.
+
+## 🚀 SQLCoder-2 Integration (✅ IMPLEMENTIERT)
+
+### Spezialisiertes SQL-Modell für verbesserte Abfragen
+
+**Implementierung:** [`sqlcoder_retriever.py`](sqlcoder_retriever.py)
+
+**Features:**
+- ✅ **SQLCoder-2 Modell**: Spezialisiertes LLM für SQL-Generierung (defog/sqlcoder2)
+- ✅ **JOIN-Aware Prompting**: Optimiert für komplexe Tabellenbeziehungen
+- ✅ **Firebird-Dialekt**: Angepasst an Firebird-spezifische SQL-Syntax
+- ✅ **4-bit Quantization**: Speichereffiziente Modellnutzung
+- ✅ **Hybrid Context**: Integration mit globalem Kontext und RAG
+
+**Verwendung:**
+```python
+# Als Retrieval-Modus in firebird_sql_agent_direct.py
+agent = FirebirdDirectSQLAgent(
+    retrieval_mode="sqlcoder",  # NEU: SQLCoder-2 Modus
+    # ... andere Parameter
+)
+```
+
+**Testing:**
+```bash
+# SQLCoder Integration testen
+python test_sqlcoder_integration.py
+
+# Performance-Vergleich
+python optimized_retrieval_test.py --modes enhanced,faiss,none,sqlcoder
+```
 ## � Backup & Versionskontrolle
 
 ### GitHub Integration

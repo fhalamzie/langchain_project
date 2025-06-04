@@ -14,7 +14,8 @@
 | **Multi-Stage RAG** | ✅ COMPLETE | `enhanced_retrievers.py` - FAISS vectorization |
 | **Production UI** | ✅ COMPLETE | `enhanced_qa_ui.py`, `streamlit_qa_app.py` |
 | **Automated Testing** | ✅ COMPLETE | Test suite with 11-query benchmark + hybrid context tests |
-| **Phoenix Observability** | ✅ COMPLETE | Full AI observability with dashboard |
+| **Phoenix Observability** | ✅ UPGRADED TO OTEL | Modern OpenTelemetry integration with auto-instrumentation |
+| **SQLCoder-2 Integration** | ✅ COMPLETE | `sqlcoder_retriever.py` - JOIN-aware SQL generation |
 
 ## Implementation Architecture
 
@@ -28,6 +29,8 @@ WINCASA Implementation
 ├── db_knowledge_compiler.py        # Database knowledge compiler
 ├── global_context.py               # ✨ NEW: Hybrid context strategy
 ├── data_sampler.py                 # ✨ NEW: Real data pattern extraction
+├── sqlcoder_retriever.py           # ✨ NEW: SQLCoder-2 integration
+├── phoenix_monitoring.py           # ✨ UPGRADED: OTEL-based monitoring
 └── llm_interface.py                # LLM abstraction layer
 ```
 
@@ -40,6 +43,8 @@ WINCASA Implementation
 | Enhanced | 63.6% (7/11) | 22.5s | ✅ Primary |
 | None | 63.6% (7/11) | 20.8s | ✅ Backup |
 | FAISS | 63.6% (7/11) | 34.6s | ⚠️ Specialist |
+| SQLCoder | ✅ IMPLEMENTED | TBD | ✅ SQL-Specialist |
+| LangChain | 🚧 IN PROGRESS | TBD | 🚧 Development |
 
 ## Testing Framework
 
@@ -55,6 +60,14 @@ python automated_retrieval_test.py
 python test_hybrid_context_integration.py        # Integration validation
 python iterative_improvement_test.py             # Full 4-version analysis
 python quick_hybrid_context_test.py --concurrent # Quick performance test
+
+# ✨ NEW: SQLCoder-2 integration test
+python test_sqlcoder_integration.py              # SQLCoder model testing
+
+# ✨ NEW: Phoenix OTEL monitoring tests
+python test_phoenix_monitoring.py                # Core monitoring tests
+python test_phoenix_agent_integration.py         # Agent integration tests
+python test_phoenix_ui_integration.py            # UI integration tests
 ```
 
 ## ✨ NEW: Hybrid Context Strategy (Dec 2024)
@@ -172,10 +185,51 @@ pip install openinference-instrumentation-langchain openinference-instrumentatio
 - Push all commits to remote
 - Update documentation with code changes
 
+## SQLCoder-2 Integration - ✅ COMPLETED (2025-06-04)
+
+### Specialized SQL Generation Model
+```bash
+# Model: defog/sqlcoder2 via HuggingFace
+# Features: JOIN-aware prompting, Firebird dialect optimization
+```
+
+**Implemented Components:**
+
+#### 1. SQLCoder Retriever (`sqlcoder_retriever.py`)
+- ✅ HuggingFace model integration with 4-bit quantization
+- ✅ Custom Firebird-specific prompt templates
+- ✅ JOIN-aware prompting for complex relationships
+- ✅ Schema context integration with hybrid strategy
+- ✅ Memory-efficient model loading with BitsAndBytesConfig
+
+#### 2. Agent Integration
+- ✅ Added as 4th retrieval mode in `firebird_sql_agent_direct.py`
+- ✅ Seamless mode switching: `retrieval_mode="sqlcoder"`
+- ✅ Compatible with existing monitoring and logging
+
+#### 3. Testing (`test_sqlcoder_integration.py`)
+- ✅ Model initialization and loading tests
+- ✅ Prompt generation validation
+- ✅ SQL output format verification
+- ✅ Integration with Phoenix monitoring
+
+### Key Features:
+- **Specialized Model**: Purpose-built for SQL generation vs general LLMs
+- **JOIN Optimization**: Enhanced handling of multi-table relationships
+- **Memory Efficient**: 4-bit quantization reduces GPU memory usage
+- **Firebird Dialect**: Custom prompts for FIRST/SKIP syntax
+- **Hybrid Context**: Leverages global context + schema information
+
 ---
 
-**Status: ✅ COMPLETE - Phoenix integration successfully implemented**
+**Status: ✅ COMPLETE - All major components implemented**
 
-## Summary of Phoenix Integration
+## Summary
 
-The WINCASA system now includes comprehensive AI observability through Phoenix (Arize-AI) integration. All LLM calls, RAG retrievals, and SQL executions are monitored with detailed metrics including costs, performance, and success rates. The Phoenix dashboard provides real-time visibility into system performance at http://localhost:6006.
+The WINCASA system now includes:
+1. **Hybrid Context Strategy** - Global context + dynamic retrieval
+2. **Phoenix OTEL Monitoring** - Modern observability with auto-instrumentation
+3. **SQLCoder-2 Integration** - Specialized SQL generation model
+4. **Multi-Mode Retrieval** - 4 active modes (Enhanced, FAISS, None, SQLCoder)
+
+The Phoenix dashboard provides real-time visibility into system performance at http://localhost:6006.
