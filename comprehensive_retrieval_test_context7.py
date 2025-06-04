@@ -2,11 +2,11 @@
 """
 Comprehensive Retrieval Test with Context7 Integration
 
-This script tests all 5 retrieval modes with Context7 enhancements:
+This script tests all 4 retrieval modes with Context7 enhancements:
 1. Enhanced Mode (Multi-stage RAG)
 2. FAISS Mode (Vector similarity) 
 3. None Mode (Direct generation with fallback)
-4. SQLCoder Mode (Specialized SQL model)
+4. LangChain Mode (SQL Database Agent)
 5. LangChain Mode (SQL Database Agent with Context7)
 
 Features:
@@ -135,7 +135,7 @@ class ComprehensiveRetrievalTester:
             raise
     
     def _initialize_retrieval_agents(self):
-        """Initialize all 5 retrieval mode agents"""
+        """Initialize all 4 retrieval mode agents"""
         try:
             logger.info("🤖 Initializing all retrieval mode agents...")
             
@@ -181,19 +181,7 @@ class ComprehensiveRetrievalTester:
                 logger.error(f"❌ None mode failed: {e}")
                 self.agents['none'] = None
             
-            # 4. SQLCoder Mode Agent
-            try:
-                self.agents['sqlcoder'] = FirebirdDirectSQLAgent(
-                    db_connection_string=self.db_connection,
-                    llm=self.llm_interface.llm,
-                    retrieval_mode="sqlcoder",
-                    use_enhanced_knowledge=True,
-                    enable_monitoring=self.enable_monitoring
-                )
-                logger.info("✅ SQLCoder mode agent initialized")
-            except Exception as e:
-                logger.warning(f"⚠️ SQLCoder mode failed (known issue): {e}")
-                self.agents['sqlcoder'] = None
+            # SQLCoder mode removed - using cloud APIs only
             
             # 5. LangChain Context7 Integration
             try:
@@ -282,7 +270,7 @@ class ComprehensiveRetrievalTester:
                 result["execution_time"] = time.time() - start_time
                 
             else:
-                # Use standard Firebird agents (enhanced, faiss, none, sqlcoder)
+                # Use standard Firebird agents (enhanced, faiss, none)
                 response = agent.query(query_data["query"])
                 result["response"] = response.get("answer", "No answer")
                 result["sql_generated"] = response.get("sql_query", "No SQL")

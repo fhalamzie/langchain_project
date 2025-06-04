@@ -108,8 +108,8 @@ python optimized_retrieval_test.py
 # Concurrent testing (2 workers)
 python optimized_retrieval_test.py --concurrent --workers 2
 
-# Test all 5 retrieval modes
-python optimized_retrieval_test.py --modes enhanced,faiss,none,sqlcoder,langchain
+# Test all 4 retrieval modes
+python optimized_retrieval_test.py --modes enhanced,faiss,none,langchain
 
 # Original test framework
 python automated_retrieval_test.py
@@ -132,7 +132,7 @@ python automated_retrieval_test.py
 
 ## Retrieval Modes
 
-The system supports five retrieval modes for context augmentation:
+The system supports four retrieval modes for context augmentation:
 
 ### 1. Enhanced Mode (`enhanced`)
 - Multi-stage RAG with business context
@@ -149,16 +149,7 @@ The system supports five retrieval modes for context augmentation:
 - Baseline mode using only LLM knowledge
 - No additional context from documentation
 
-### 4. SQLCoder Mode (`sqlcoder`) - ✅ IMPLEMENTIERT
-- Specialized SQL generation using SQLCoder-2 model (defog/sqlcoder2)
-- JOIN-aware prompting for complex table relationships
-- Optimized for Firebird SQL dialect and syntax
-- Combines hybrid context strategy with SQL-specific model
-- 4-bit quantization for memory efficiency
-- Custom Firebird-specific prompt templates
-- Implementation: `sqlcoder_retriever.py`
-
-### 5. LangChain SQL Agent Mode (`langchain`) - ✅ FULLY FUNCTIONAL
+### 4. LangChain SQL Agent Mode (`langchain`) - ✅ FULLY FUNCTIONAL
 - Native LangChain SQL Database Agent integration with automatic schema introspection
 - Built-in SQL execution and error recovery capabilities
 - Chain-of-thought SQL reasoning with step-by-step query construction
@@ -357,25 +348,22 @@ Major Phoenix performance optimization with SQLite backend implementation:
 - **Model**: OpenAI GPT-4 via OpenRouter
 - **Phoenix Monitoring**: ✅ SQLite backend (localhost:6006)
 
-### Performance Metrics - **ALL 5 MODES FULLY FUNCTIONAL** ✅
-- **Total Test Time**: **28.0s for all 5 modes** (vs. 120s+ previously)
+### Performance Metrics - **ALL 4 MODES FULLY FUNCTIONAL** ✅
+- **Total Test Time**: **Optimized for 4 cloud API-based modes**
 - **Enhanced Mode**: 1.3s, 9 context docs retrieved ✅
 - **FAISS Mode**: 0.2s, 4 context docs retrieved ✅
 - **None Mode**: 0.0s, fallback context used ✅
-- **SQLCoder Mode**: 0.0s, model fallback mode ✅
 - **LangChain SQL Mode**: ✅ **FULLY FUNCTIONAL** (151 tables detected, SQL Agent working)
 
 ### Retrieval Performance Analysis
 - **Enhanced Multi-Stage**: 9 docs in 1.26s with 3-stage retrieval
 - **FAISS Vector Search**: 4 docs in 0.20s with semantic similarity
 - **Global Context Fallback**: Instant with data patterns
-- **SQLCoder Retrieval**: Hardware limitations but functional fallback
 
-### Implementation Status - **5/5 MODES IMPLEMENTED AND FULLY FUNCTIONAL** ✅
+### Implementation Status - **4/4 MODES IMPLEMENTED AND FULLY FUNCTIONAL** ✅
 - **Enhanced Mode**: ✅ Multi-stage RAG with global context integration
 - **FAISS Mode**: ✅ Vector similarity search with optimized embeddings
 - **None Mode**: ✅ Direct generation with hybrid context strategy
-- **SQLCoder Mode**: ✅ Implemented with CPU fallback (hardware dependency)
 - **LangChain SQL Mode**: ✅ **FULLY FUNCTIONAL** with Context7 best practices integration
 
 ## Server Setup & Configuration ✅
@@ -472,12 +460,11 @@ ls -la optimized_retrieval_test_*.json
 ## Next Steps for Development
 
 ### Immediate Improvements (Optional)
-1. **SQLCoder Mode**: Fix Pydantic model loading issues for full functionality
-2. **Phoenix UI**: Restore dashboard connection (monitoring works without UI)
-3. **Extended Testing**: Comprehensive multi-query validation across all modes
+1. **Phoenix UI**: Restore dashboard connection (monitoring works without UI)
+2. **Extended Testing**: Comprehensive multi-query validation across all modes
 
 ### Production Deployment Ready ✅
-- **4/5 Retrieval Modes**: Enhanced, FAISS, None, and LangChain fully operational
+- **4/4 Retrieval Modes**: Enhanced, FAISS, None, and LangChain fully operational
 - **Firebird Server**: Configured with authentication and permissions
 - **Phoenix Monitoring**: OTEL tracing functional
 - **System Architecture**: Robust with fallback mechanisms

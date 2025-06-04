@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Quick test for all 5 retrieval modes without Phoenix monitoring
+Quick test for all 4 retrieval modes without Phoenix monitoring
 """
 
 import os
@@ -92,32 +92,6 @@ def test_none_mode():
         print(f"❌ None Mode failed: {e}")
         return False
 
-def test_sqlcoder_mode():
-    """Test SQLCoder retrieval mode"""
-    try:
-        from firebird_sql_agent_direct import FirebirdDirectSQLAgent
-        from llm_interface import LLMInterface
-        
-        print("🧪 Testing SQLCoder Mode...")
-        llm = LLMInterface().llm
-        agent = FirebirdDirectSQLAgent(
-            db_connection_string="firebird+fdb://sysdba:masterkey@//home/projects/langchain_project/WINCASA2022.FDB",
-            llm=llm,
-            retrieval_mode="sqlcoder",
-            use_enhanced_knowledge=True,
-        )
-        
-        start_time = time.time()
-        result = agent.process_query("Wie viele Wohnungen gibt es insgesamt?")
-        duration = time.time() - start_time
-        
-        print(f"✅ SQLCoder Mode: {duration:.2f}s")
-        print(f"   Result: {result[:100]}...")
-        return True
-        
-    except Exception as e:
-        print(f"❌ SQLCoder Mode failed: {e}")
-        return False
 
 def test_langchain_mode():
     """Test LangChain retrieval mode"""
@@ -155,7 +129,6 @@ def main():
         "enhanced": test_enhanced_mode(),
         "faiss": test_faiss_mode(), 
         "none": test_none_mode(),
-        "sqlcoder": test_sqlcoder_mode(),
         "langchain": test_langchain_mode()
     }
     

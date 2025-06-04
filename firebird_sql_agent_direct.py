@@ -21,7 +21,6 @@ from langchain_core.callbacks.manager import CallbackManagerForToolRun
 from fdb_direct_interface import FDBDirectInterface
 from retrievers import FaissDocumentationRetriever, BaseDocumentationRetriever
 from enhanced_retrievers import EnhancedMultiStageRetriever, EnhancedFaissRetriever
-from sqlcoder_retriever import SQLCoderRetriever
 from langchain_sql_retriever_fixed import LangChainSQLRetriever, LangChainSQLRetrieverFallback
 from query_preprocessor import QueryPreprocessor
 from db_knowledge_compiler import DatabaseKnowledgeCompiler
@@ -288,7 +287,7 @@ class FirebirdDirectSQLAgent:
         Args:
             db_connection_string: SQLAlchemy-Connection-String für Firebird
             llm: Language Model Instanz
-            retrieval_mode: 'faiss', 'enhanced', 'sqlcoder', 'langchain', 'neo4j', oder 'none'
+            retrieval_mode: 'faiss', 'enhanced', 'langchain', 'neo4j', oder 'none'
             neo4j_config: Neo4j-Konfiguration (falls verwendet)
             use_enhanced_knowledge: Aktiviert das erweiterte Wissenssystem
             doc_mode: 'yaml_only' (default), 'all', 'markdown_only' - controls which docs to load
@@ -321,7 +320,6 @@ class FirebirdDirectSQLAgent:
         self.faiss_retriever: Optional[FaissDocumentationRetriever] = None
         self.neo4j_retriever: Optional[BaseDocumentationRetriever] = None
         self.enhanced_retriever: Optional[EnhancedMultiStageRetriever] = None
-        self.sqlcoder_retriever: Optional[SQLCoderRetriever] = None
         self.langchain_retriever: Optional[LangChainSQLRetriever] = None
         self.active_retriever: Optional[BaseDocumentationRetriever] = None
         
@@ -468,26 +466,6 @@ class FirebirdDirectSQLAgent:
                 self.enhanced_retriever = None
                 self.active_retriever = None
         
-        elif self.retrieval_mode == 'sqlcoder':
-            # SQLCoder-2 Retriever with JOIN-aware prompting
-            if not self.parsed_docs:
-                print("Warning: No documents loaded. SQLCoder retriever will have limited schema context.")
-            try:
-                self.sqlcoder_retriever = SQLCoderRetriever(
-                    model_name="defog/sqlcoder2",
-                    parsed_docs=self.parsed_docs,
-                    openai_api_key=os.getenv("OPENAI_API_KEY", ""),
-                    use_quantization=True,  # Use 4-bit quantization for memory efficiency
-                    max_new_tokens=512,
-                    temperature=0.1
-                )
-                self.active_retriever = self.sqlcoder_retriever
-                print("SQLCoder-2 retriever initialized and set as active.")
-            except Exception as e:
-                print(f"Error initializing SQLCoder retriever: {e}")
-                print("Fallback: SQLCoder mode will work with basic prompting")
-                self.sqlcoder_retriever = None
-                self.active_retriever = None
         
         elif self.retrieval_mode == 'langchain':
             # LangChain SQL Database Agent
@@ -818,9 +796,6 @@ Thought:{agent_scratchpad}"""
         elif current_retrieval_mode == 'enhanced' and self.enhanced_retriever:
             active_retriever = self.enhanced_retriever
             print("Using Enhanced Multi-Stage retriever")
-        elif current_retrieval_mode == 'sqlcoder' and self.sqlcoder_retriever:
-            active_retriever = self.sqlcoder_retriever
-            print("Using SQLCoder-2 retriever with JOIN-aware prompting")
         elif current_retrieval_mode == 'langchain' and self.langchain_retriever:
             active_retriever = self.langchain_retriever
             print("Using LangChain SQL Database Agent")
@@ -1022,13 +997,45 @@ Bitte beantworte die folgende Frage: {query_to_send}
                     success=True
                 )
             
+            # Extract query results for row count
+            query_results = []
+            row_count = 0
+            if detailed_steps:
+                for step in detailed_steps:
+                    if step.get("observation"):
+                        # Try to extract query results from observation
+                        obs = step["observation"]
+                        if isinstance(obs, str) and "rows" in obs.lower():
+                            import re
+                            match = re.search(r'(\d+)\s*rows?', obs.lower())
+                            if match:
+                                row_count = int(match.group(1))
+                        # For actual data results, try to parse formatted table
+                        if "|" in str(obs) and "-" in str(obs):
+                            lines = str(obs).split('\n')
+                            if len(lines) > 2:  # Header, separator, data
+                                try:
+                                    headers = [h.strip() for h in lines[0].split('|')]
+                                    for line in lines[2:]:  # Skip separator
+                                        if line.strip() and '|' in line:
+                                            values = [v.strip() for v in line.split('|')]
+                                            if len(values) == len(headers):
+                                                query_results.append(dict(zip(headers, values)))
+                                except:
+                                    pass
+            
             return {
                 "natural_language_query": natural_language_query,
                 "retrieved_context": doc_context_str,
                 "agent_final_answer": agent_final_answer,
+                "output": agent_final_answer,  # Backward compatibility
                 "generated_sql": generated_sql,
+                "sql_query": generated_sql,  # Backward compatibility
+                "query_results": query_results,
+                "row_count": row_count,
                 "text_variants": text_responses,
                 "detailed_steps": detailed_steps,
+                "success": True,
                 "error": None
             }
             
@@ -1059,9 +1066,14 @@ Bitte beantworte die folgende Frage: {query_to_send}
                 "natural_language_query": natural_language_query,
                 "retrieved_context": doc_context_str,
                 "agent_final_answer": None,
+                "output": None,  # Backward compatibility
                 "generated_sql": None,
+                "sql_query": None,  # Backward compatibility
+                "query_results": [],
+                "row_count": 0,
                 "text_variants": error_text_variants,
                 "detailed_steps": self.callback_handler.full_log if hasattr(self, 'callback_handler') else [],
+                "success": False,
                 "error": str(e)
             }
     
@@ -1250,7 +1262,7 @@ if __name__ == "__main__":
         agent = FirebirdDirectSQLAgent(
             db_connection_string=DB_CONNECTION_STRING,
             llm=TEST_LLM_MODEL_NAME,
-            retrieval_mode='faiss'  # Can be changed to 'sqlcoder' for testing
+            retrieval_mode='faiss'  # Can be changed to 'enhanced', 'langchain', or 'none' for testing
         )
 
         if agent and agent.sql_agent:
