@@ -20,6 +20,16 @@ faiss-cpu>=1.7.4
 # LLM utilities
 tiktoken>=0.5.0
 
+# SQL-specific LLMs and Tools
+transformers>=4.35.0
+torch>=2.0.0
+accelerate>=0.24.0
+bitsandbytes>=0.41.0
+
+# LangChain SQL Agent Tools
+langchain-experimental>=0.0.40
+sqlalchemy>=2.0.0
+
 # Configuration
 PyYAML>=6.0
 python-dotenv>=1.0.0

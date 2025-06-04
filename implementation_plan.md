@@ -193,9 +193,111 @@ class StructuralRetriever:
 - Business-Logic (0-3)
 - Ergebnis-Genauigkeit (0-3)
 
-## 8. Zukünftige Überlegungen und mögliche Erweiterungen
+## 8. Erweiterte SQL-Spezialisierung: SQLCoder-2 & LangChain Integration
 
-### 8.1. Nutzung einer Graphdatenbank (z.B. Neo4j) zur Kontextanreicherung
+### 8.1. SQLCoder-2 mit JOIN-Aware Prompting
+
+**Zielsetzung:** Integration eines SQL-spezialisierten LLM-Modells zur Verbesserung der SQL-Generierung in komplexen Szenarien.
+
+**Technische Details:**
+- **Modell**: SQLCoder-2 (7B/15B Parameter) via HuggingFace Transformers
+- **Spezialisierung**: Optimiert für SQL-Generierung mit besserer Dialekt-Unterstützung
+- **JOIN-Awareness**: Erweiterte Prompting-Techniken für komplexe Tabellenbeziehungen
+- **Integration**: Als 4. Retrieval-Modus `sqlcoder` in bestehende Architektur
+
+**Implementierungsplan:**
+```python
+# sqlcoder_retriever.py
+class SQLCoderRetriever:
+    def __init__(self, model_name="defog/sqlcoder2"):
+        self.model = AutoModelForCausalLM.from_pretrained(model_name)
+        self.tokenizer = AutoTokenizer.from_pretrained(model_name)
+        
+    def generate_sql(self, query, schema_context, join_hints):
+        # JOIN-aware prompting with schema context
+        prompt = self._build_join_aware_prompt(query, schema_context, join_hints)
+        return self._generate_with_model(prompt)
+```
+
+**Performance-Ziele:**
+- Erfolgsrate: >75% (vs. 63.6% aktuell)
+- Bessere Firebird-SQL-Dialekt-Unterstützung
+- Reduzierte Timeouts bei komplexen JOINs
+
+### 8.2. LangChain SQL Database Agent Integration
+
+**Zielsetzung:** Nutzung der nativen LangChain SQL-Tools für verbesserte Error-Recovery und Schema-Introspection.
+
+**Technische Details:**
+- **Framework**: LangChain SQL Database Agent mit React-Pattern
+- **Tools**: Automatische Schema-Introspection, SQL-Execution, Error-Recovery
+- **Integration**: Als 5. Retrieval-Modus `langchain` mit separatem Agent
+
+**Implementierungsplan:**
+```python
+# langchain_sql_agent.py
+from langchain_experimental.sql import SQLDatabaseChain
+from langchain.agents import create_sql_agent
+
+class LangChainSQLAgent:
+    def __init__(self, db_connection, llm):
+        self.db = SQLDatabase.from_uri(db_connection)
+        self.agent = create_sql_agent(
+            llm=llm,
+            db=self.db,
+            agent_type=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
+            verbose=True
+        )
+```
+
+**Performance-Ziele:**
+- Erfolgsrate: >70% mit automatischer Error-Recovery
+- Bessere Fehlerbehandlung und Debugging
+- Chain-of-Thought SQL-Reasoning
+
+### 8.3. Implementierungsroadmap
+
+**Phase 1: SQLCoder-2 Integration (Woche 1-2)**
+1. Model Setup und Testing
+2. JOIN-Aware Prompting entwickeln
+3. Integration in `firebird_sql_agent_direct.py`
+4. Initiale Performance-Tests
+
+**Phase 2: LangChain SQL Agent (Woche 3-4)**
+1. LangChain SQL Agent Setup
+2. Firebird-Kompatibilität testen
+3. Error-Recovery-Mechanismen implementieren
+4. Performance-Vergleich mit bestehenden Modi
+
+**Phase 3: Vergleichende Evaluation (Woche 5)**
+1. Erweiterte Test-Suite für 5 Modi
+2. Performance-Benchmarking
+3. Dokumentation und Best-Practice-Guides
+4. Produktions-Deployment-Vorbereitung
+
+**Testing-Framework:**
+```bash
+# Vergleichstests aller 5 Modi
+python optimized_retrieval_test.py --modes enhanced,faiss,none,sqlcoder,langchain
+python comparative_sql_analysis.py --detailed-metrics
+```
+
+### 8.4. Erwartete Systemverbesserungen
+
+**Quantitative Ziele:**
+- Gesamt-Erfolgsrate: >75% (vs. 63.6% aktuell)
+- Timeout-Reduktion: <5% (vs. 27% bei FAISS aktuell)
+- Durchschnittliche Ausführungszeit: <20s über alle Modi
+
+**Qualitative Verbesserungen:**
+- Bessere SQL-Dialekt-Anpassung (Firebird FIRST vs. LIMIT)
+- Verbesserte JOIN-Generierung für komplexe Beziehungen
+- Automatische Error-Recovery bei SQL-Syntax-Fehlern
+- Erhöhte Robustheit bei unbekannten Query-Patterns
+
+## 9. Zukünftige Überlegungen und mögliche Erweiterungen
+
+### 9.1. Nutzung einer Graphdatenbank (z.B. Neo4j) zur Kontextanreicherung
 
 *   **Idee:** Exploration der Integration einer Graphdatenbank zur expliziten Modellierung und Abfrage der komplexen Beziehungen zwischen den Firebird-Tabellen.
 *   **Potenzieller Nutzen:**
@@ -205,4 +307,4 @@ class StructuralRetriever:
 *   **Herausforderungen:**
     *   Erhöhte Systemkomplexität (zusätzliche Datenbank, Synchronisationsaufwand).
     *   Entwicklung von Mechanismen zur Kontext-Extraktion aus dem Graphen und Integration in den LLM-Prompt.
-*   **Status:** Eine konzeptionelle Überlegung für eine spätere Optimierungsphase, nachdem die aktuelle hybride Kontextstrategie vollständig implementiert und evaluiert wurde.
+*   **Status:** Eine konzeptionelle Überlegung für eine spätere Optimierungsphase, nachdem SQLCoder-2 und LangChain SQL Agent implementiert und evaluiert wurden.

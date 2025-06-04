@@ -21,6 +21,7 @@ from langchain_core.callbacks.manager import CallbackManagerForToolRun
 from fdb_direct_interface import FDBDirectInterface
 from retrievers import FaissDocumentationRetriever, BaseDocumentationRetriever
 from enhanced_retrievers import EnhancedMultiStageRetriever, EnhancedFaissRetriever
+from sqlcoder_retriever import SQLCoderRetriever
 from query_preprocessor import QueryPreprocessor
 from db_knowledge_compiler import DatabaseKnowledgeCompiler
 
@@ -319,6 +320,7 @@ class FirebirdDirectSQLAgent:
         self.faiss_retriever: Optional[FaissDocumentationRetriever] = None
         self.neo4j_retriever: Optional[BaseDocumentationRetriever] = None
         self.enhanced_retriever: Optional[EnhancedMultiStageRetriever] = None
+        self.sqlcoder_retriever: Optional[SQLCoderRetriever] = None
         self.active_retriever: Optional[BaseDocumentationRetriever] = None
         
         # SQL Agent und Callback Handler
@@ -462,6 +464,27 @@ class FirebirdDirectSQLAgent:
             except Exception as e:
                 print(f"Error initializing Enhanced retriever: {e}")
                 self.enhanced_retriever = None
+                self.active_retriever = None
+        
+        elif self.retrieval_mode == 'sqlcoder':
+            # SQLCoder-2 Retriever with JOIN-aware prompting
+            if not self.parsed_docs:
+                print("Warning: No documents loaded. SQLCoder retriever will have limited schema context.")
+            try:
+                self.sqlcoder_retriever = SQLCoderRetriever(
+                    model_name="defog/sqlcoder2",
+                    parsed_docs=self.parsed_docs,
+                    openai_api_key=os.getenv("OPENAI_API_KEY", ""),
+                    use_quantization=True,  # Use 4-bit quantization for memory efficiency
+                    max_new_tokens=512,
+                    temperature=0.1
+                )
+                self.active_retriever = self.sqlcoder_retriever
+                print("SQLCoder-2 retriever initialized and set as active.")
+            except Exception as e:
+                print(f"Error initializing SQLCoder retriever: {e}")
+                print("Fallback: SQLCoder mode will work with basic prompting")
+                self.sqlcoder_retriever = None
                 self.active_retriever = None
         
         elif self.retrieval_mode == 'neo4j':
@@ -764,6 +787,9 @@ Thought:{agent_scratchpad}"""
         elif current_retrieval_mode == 'enhanced' and self.enhanced_retriever:
             active_retriever = self.enhanced_retriever
             print("Using Enhanced Multi-Stage retriever")
+        elif current_retrieval_mode == 'sqlcoder' and self.sqlcoder_retriever:
+            active_retriever = self.sqlcoder_retriever
+            print("Using SQLCoder-2 retriever with JOIN-aware prompting")
         elif current_retrieval_mode == 'neo4j' and self.neo4j_retriever:
             active_retriever = self.neo4j_retriever
             print("Using Neo4j retriever")
@@ -1135,7 +1161,7 @@ if __name__ == "__main__":
         agent = FirebirdDirectSQLAgent(
             db_connection_string=DB_CONNECTION_STRING,
             llm=TEST_LLM_MODEL_NAME,
-            retrieval_mode='faiss'
+            retrieval_mode='faiss'  # Can be changed to 'sqlcoder' for testing
         )
 
         if agent and agent.sql_agent:

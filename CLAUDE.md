@@ -72,6 +72,9 @@ python optimized_retrieval_test.py
 # Concurrent testing (2 workers)
 python optimized_retrieval_test.py --concurrent --workers 2
 
+# Test all 5 retrieval modes (planned)
+python optimized_retrieval_test.py --modes enhanced,faiss,none,sqlcoder,langchain
+
 # Original test framework
 python automated_retrieval_test.py
 ```
@@ -93,7 +96,7 @@ python automated_retrieval_test.py
 
 ## Retrieval Modes
 
-The system supports three retrieval modes for context augmentation:
+The system supports five retrieval modes for context augmentation:
 
 ### 1. Enhanced Mode (`enhanced`)
 - Multi-stage RAG with business context
@@ -109,6 +112,18 @@ The system supports three retrieval modes for context augmentation:
 - Direct SQL generation without retrieval augmentation
 - Baseline mode using only LLM knowledge
 - No additional context from documentation
+
+### 4. SQLCoder Mode (`sqlcoder`) - ✅ PLANNED
+- Specialized SQL generation using SQLCoder-2 model
+- JOIN-aware prompting for complex table relationships
+- Optimized for Firebird SQL dialect and syntax
+- Combines hybrid context strategy with SQL-specific model
+
+### 5. LangChain SQL Agent Mode (`langchain`) - ✅ PLANNED
+- Native LangChain SQL Database Agent integration
+- Built-in SQL execution and schema introspection
+- Automatic error recovery and query correction
+- Chain-of-thought SQL reasoning approach
 
 ## 💡 Hybride Kontextstrategie ✅ IMPLEMENTIERT
 
@@ -229,20 +244,25 @@ Diese Optimierungen sind entscheidend, um die Genauigkeit der Abfrageergebnisse 
 
 Based on comprehensive testing (11 queries × 3 modes = 33 tests):
 
-### Success Rates
+### Success Rates (Current Implementation)
 - Enhanced Mode: 63.6% (7/11 queries successful)
 - FAISS Mode: 63.6% (7/11 queries successful)  
 - None Mode: 63.6% (7/11 queries successful)
 
-### Average Execution Times
+### Average Execution Times (Current Implementation)
 - Enhanced Mode: 22.5 seconds
 - FAISS Mode: 34.6 seconds
 - None Mode: 20.8 seconds
 
-### Timeout Behavior
+### Timeout Behavior (Current Implementation)
 - Enhanced Mode: 3 timeouts
 - FAISS Mode: 5 timeouts
 - None Mode: 0 timeouts
+
+### Expected Performance Improvements with New Modes
+- **SQLCoder Mode**: Target >75% success rate with SQL-specific model
+- **LangChain SQL Mode**: Target >70% success rate with built-in error recovery
+- **Combined Analysis**: Goal to identify optimal mode per query type
 
 ## Known Issues
 

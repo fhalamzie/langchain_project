@@ -103,8 +103,10 @@ python run_llm_query.py
 ## 📊 Performance
 
 - **Database**: 151 Tabellen, 517 Wohnungen, 698 Bewohner
-- **Retrieval Modi**: Enhanced (22.5s), None (20.8s), FAISS (34.6s)
-- **Erfolgsrate**: 63.6% über alle Modi
+- **Current Retrieval Modi**: Enhanced (22.5s), None (20.8s), FAISS (34.6s)
+- **Current Erfolgsrate**: 63.6% über alle Modi
+- **Planned Improvements**: SQLCoder-2 (>75% target), LangChain SQL Agent (>70% target)
+- **Total Modi**: 5 (Enhanced, FAISS, None, SQLCoder, LangChain)
 
 ## 🔧 Systemanforderungen
 
@@ -112,6 +114,8 @@ python run_llm_query.py
 - **Firebird-Datenbank** (WINCASA2022.FDB)
 - **OpenAI API-Schlüssel**
 - **Dependencies**: langchain, streamlit, faiss-cpu, fdb, PyYAML
+- **SQL-LLM Dependencies**: transformers, torch, sqlalchemy (für SQLCoder-2)
+- **LangChain SQL Tools**: langchain-experimental (für SQL Database Agent)
 - **Monitoring**: arize-phoenix (für AI Observability)
 
 ## 📁 Datenorganisation
