@@ -122,11 +122,13 @@ The system supports five retrieval modes for context augmentation:
 - Custom Firebird-specific prompt templates
 - Implementation: `sqlcoder_retriever.py`
 
-### 5. LangChain SQL Agent Mode (`langchain`) - ✅ PLANNED
+### 5. LangChain SQL Agent Mode (`langchain`) - ✅ IMPLEMENTIERT
 - Native LangChain SQL Database Agent integration
 - Built-in SQL execution and schema introspection
 - Automatic error recovery and query correction
 - Chain-of-thought SQL reasoning approach
+- Implementation: `langchain_sql_retriever_fixed.py`
+- **Note**: Requires Firebird server connection (localhost:3050)
 
 ## 💡 Hybride Kontextstrategie ✅ IMPLEMENTIERT
 
@@ -264,7 +266,7 @@ Based on comprehensive testing (11 queries × 3 modes = 33 tests):
 
 ### Performance with New Modes
 - **SQLCoder Mode**: ✅ IMPLEMENTED - Specialized SQL generation with JOIN-aware prompting
-- **LangChain SQL Mode**: 🚧 IN PROGRESS - Target >70% success rate with built-in error recovery
+- **LangChain SQL Mode**: ✅ IMPLEMENTED - Native SQL agent with error recovery and schema introspection
 - **Combined Analysis**: Goal to identify optimal mode per query type
 
 ## Known Issues
@@ -436,7 +438,7 @@ print(f"Total Cost: ${metrics['total_cost_usd']:.2f}")
 ### Documentation Maintenance
 - **CLAUDE.md**: Update technical guidance for new features
 - **README.md**: Update user-facing documentation and examples
-- **implementation_status.md**: Track completion status of all features
+- **plan.md**: Track completion status of all features
 - **Code Comments**: Inline documentation for complex logic
 
 This system is functional but requires significant optimization before production deployment.

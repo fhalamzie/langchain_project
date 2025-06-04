@@ -1,173 +1,310 @@
-# WINCASA Implementation Plan & Future Roadmap
+# Implementierungsplan: Hybride Kontextstrategie
 
-**Status: ✅ PRODUCTION-READY** - All core development completed successfully.
+## 1. Zielsetzung
 
-**📋 PROJECT SUMMARY:** Comprehensive natural language database query system for Firebird databases, fully implemented and validated.
+Verbesserung der Kontextqualität und -relevanz für den LLM-Agenten, um die Genauigkeit von Datenbankabfragen zu erhöhen und Fehler (z.B. Timeouts, falsche SQL-Generierung) zu reduzieren.
 
----
+## 2. Problembeschreibung
 
-## 🎯 Production System Achieved
+Die aktuelle Kontextbereitstellung für den LLM-Agenten ist möglicherweise unzureichend oder nicht optimal priorisiert. Dies kann dazu führen, dass der Agent wichtige Informationen übersieht oder von weniger relevanten Details abgelenkt wird, was die Performanz und Genauigkeit beeinträchtigt.
 
-### **Core Deliverables Completed**
-1. **✅ Direct FDB Integration**: 100% SQLAlchemy SQLCODE -902 problem resolution
-2. **✅ Enhanced Knowledge System**: 152 tables, 149 relationships, 248 YAML business context documents  
-3. **✅ Multi-Stage RAG**: Production-grade retrieval with FAISS vectorization
-4. **✅ Production Performance**: <1ms overhead, 100% success rate validated
-5. **✅ Comprehensive UI**: Complete Streamlit interface with monitoring
-6. **✅ Automated Testing**: 11-query evaluation framework with mode comparison
+## 3. Vorgeschlagene Lösung: Hybride Kontextstrategie
 
-### **Technical Achievements**
-- **[`fdb_direct_interface.py`](fdb_direct_interface.py)**: Custom FDB interface bypassing SQLAlchemy completely
-- **[`enhanced_retrievers.py`](enhanced_retrievers.py)**: Multi-stage RAG system (**production-standard**)
-- **[`db_knowledge_compiler.py`](db_knowledge_compiler.py)**: Intelligent database knowledge compilation
-- **[`automated_retrieval_test.py`](automated_retrieval_test.py)**: Comprehensive evaluation framework
+Die hybride Kontextstrategie kombiniert einen direkten, globalen Basiskontext mit einem dynamischen, embedding-basierten Retrieval-Mechanismus.
 
----
+### 3.1. Direkter Globaler Basiskontext
 
-## 🏗️ Production Architecture
+*   **Beschreibung:** Essentielle, hoch-priorisierte Informationen, die jeder LLM-Anfrage direkt als Teil des Prompts mitgegeben werden.
+*   **Zweck:** Sicherstellung, dass der LLM immer über ein grundlegendes Verständnis der Datenbankstruktur, der Kernentitäten und der wichtigsten Geschäftsregeln verfügt.
+*   **Inhalte (Beispiele, müssen verfeinert werden):**
+    *   **Kern-Schema-Informationen:** Wichtigste Tabellen, kritische Spalten und deren Datentypen.
+    *   **Kernentitäten und Hauptbeziehungen:** Definition der zentralen Geschäftsobjekte (z.B. Bewohner, Wohnungen, Verträge) und deren primäre Verknüpfungen.
+    *   **Top-Level Geschäftsregeln:** Kritische operative Logik oder häufig benötigte Definitionen.
+    *   **Abgeleitet aus Dokumenten wie:**
+        *   `docs/index.md` (Projektübersicht)
+        *   `output/schema/index.md` (Schema-Übersicht)
+        *   `output/schema/db_overview.md` (Datenbank-Übersicht)
+        *   Auszüge aus `output/schema/relation_report.md` (wichtigste Beziehungen)
+        *   Auszüge aus `output/schema/table_clusters.md` (Tabellengruppierungen)
+*   **Implementierungsansatz:**
+    *   Identifikation und Extraktion der relevantesten Informationen aus den genannten Quelldokumenten.
+    *   Erstellung einer kompakten, präzisen Zusammenfassung dieser Informationen.
+    *   Integration dieser Zusammenfassung in die Prompt-Generierung für den LLM-Agenten.
 
-### **Core System Stack**
+### 3.2. Embedding-basiertes Dynamisches Retrieval
+
+*   **Beschreibung:** Nutzung der bestehenden RAG-Mechanismen (z.B. FAISS, "Enhanced Mode") für detailliertere oder spezifischere Informationen, die dynamisch basierend auf der Nutzeranfrage abgerufen werden.
+*   **Zweck:** Ermöglicht den Zugriff auf eine umfangreiche Wissensbasis, ohne das Kontextfenster des LLM bei jeder Anfrage zu überlasten.
+*   **Inhalte (Beispiele):**
+    *   Detaillierte Tabellenbeschreibungen und Spaltendefinitionen.
+    *   Vollständige Beziehungsdetails zwischen allen Tabellen.
+    *   Spezifische Geschäftslogik, Fallbeispiele, komplexe Abfragemuster.
+    *   Inhalte aus `output/compiled_knowledge_base.json` und detaillierten YAML-Dateien (`output/yamls/`).
+*   **Implementierungsansatz:**
+    *   Weiterentwicklung und Optimierung der bestehenden Retrieval-Methoden.
+    *   Sicherstellung, dass die Retrieval-Ergebnisse gut mit dem globalen Basiskontext harmonieren.
+
+## 4. Implementierungsschritte
+
+1.  **Analyse und Auswahl des globalen Basiskontexts:**
+    *   Sichtung der relevanten Dokumente (`docs/index.md`, `output/schema/*` etc.).
+    *   Definition der Kriterien für "essentielle" Informationen.
+    *   Erstellung eines ersten Entwurfs des globalen Basiskontexts (max. Token-Anzahl festlegen).
+2.  **Integration des Basiskontexts in den Prompt:**
+    *   Anpassung der Prompt-Engineering-Logik in `firebird_sql_agent_direct.py` oder verwandten Modulen.
+    *   Strategie zur Platzierung des Basiskontexts im Prompt (z.B. vor dem Schema, nach der User-Frage).
+3.  **Anpassung der Retrieval-Modi:**
+    *   Überprüfung, wie die bestehenden Modi (`enhanced`, `faiss`, `none`) mit dem neuen Basiskontext interagieren.
+    *   Der Modus "none" könnte zu einem "base_context_only"-Modus werden.
+    *   Sicherstellen, dass dynamisch abgerufener Kontext den Basiskontext ergänzt und nicht redundant ist.
+4.  **Überarbeitung der Wissensbasis-Dokumente (optional):**
+    *   Prüfung, ob einige Dokumente für die Nutzung im direkten oder abgerufenen Kontext neu strukturiert werden müssen.
+5.  **Testing und Evaluierung:**
+    *   Durchführung von Tests mit `automated_retrieval_test.py` unter Verwendung der neuen Kontextstrategie.
+    *   Vergleich der Ergebnisse (Genauigkeit, Timeouts, SQL-Qualität) mit der bisherigen Methode.
+    *   Analyse der LLM-Traces (Phoenix) zur Bewertung der Kontextnutzung.
+6.  **Dokumentation:**
+    *   Aktualisierung von `README.md` und `CLAUDE.md` mit der Beschreibung der neuen Strategie.
+
+## 5. Zu erwartende Ergebnisse
+
+*   Verbesserte Genauigkeit der generierten SQL-Abfragen.
+*   Reduktion von Timeouts durch relevanteren und präziseren Kontext.
+*   Besseres Verständnis komplexer Anfragen durch den LLM.
+*   Konsistentere Performance über verschiedene Abfragetypen hinweg.
+
+## 6. Risiken und Herausforderungen
+
+*   **Balance finden:** Der globale Basiskontext darf nicht zu umfangreich werden, um das Kontextfenster nicht unnötig zu füllen.
+*   **Redundanz vermeiden:** Sicherstellen, dass der dynamisch abgerufene Kontext den Basiskontext sinnvoll ergänzt.
+*   **Komplexität der Implementierung:** Die Anpassung der Prompt-Logik und der Retrieval-Modi erfordert sorgfältige Planung.
+*   **Evaluierungsaufwand:** Umfassende Tests sind notwendig, um die Wirksamkeit der neuen Strategie nachzuweisen.
+
+## 7. Überarbeitete Implementierungsstrategie (Januar 2025)
+
+### **7.1. Neue Drei-Phasen-Roadmap**
+
+#### **Phase 1: Foundation + Baseline (Sofort umsetzbar)**
+
+**1.1 Strukturierten Global-Context erstellen**
+```python
+GLOBAL_CONTEXT = {
+    "core_entities": {
+        "people": ["BEWOHNER", "EIGENTUEMER"],
+        "properties": ["OBJEKTE", "WOHNUNG"], 
+        "finance": ["KONTEN", "BUCHUNG", "SOLLSTELLUNG"]
+    },
+    "key_relationships": {
+        "BEWOHNER -> OBJEKTE": "BWO = ONR",
+        "EIGENTUEMER -> OBJEKTE": "via VEREIG table",
+        "KONTEN -> BUCHUNG": "KNR = BKNR"
+    },
+    "critical_patterns": {
+        "address_search": "BEWOHNER: BSTR + BPLZORT",
+        "financial_lookup": "KONTEN -> BUCHUNG -> SOLLSTELLUNG"
+    }
+}
 ```
-WINCASA Production System
-├── firebird_sql_agent_direct.py    # Main SQL agent (Langchain ReAct)
-├── fdb_direct_interface.py         # Direct Firebird interface  
-├── enhanced_qa_ui.py               # Production Streamlit UI
-├── enhanced_retrievers.py          # Multi-Stage RAG (RECOMMENDED)
-├── db_knowledge_compiler.py        # Enhanced database knowledge
-└── automated_retrieval_test.py     # Evaluation framework
+
+**1.2 Echte Datenextraktion für Kontextanreicherung**
+- Top 30 Zeilen pro High-Priority-Tabelle extrahieren
+- Irrelevante Spalten filtern (NULL, 0, leer)
+- Datenpattern und -formate erkennen
+- Komprimierte Samples in Kontext integrieren
+
+**1.3 Iterativer Testparcours implementieren**
+```python
+# iterative_improvement_test.py
+TEST_QUERIES = {
+    "basic_lookups": ["Wer wohnt in der Marienstraße 26?"],
+    "joins_required": ["Welche Bewohner wohnen in Objekt ONR 1001?"],
+    "complex_business": ["Welche Eigentümer haben mehr als 2 Wohnungen?"],
+    "aggregations": ["Durchschnittliche Miete pro Objekt"]
+}
+
+FEEDBACK_FORMAT = {
+    "iteration_X": {
+        "context_version": "...",
+        "success_rate": 0.xx,
+        "user_feedback": "...",
+        "improvements_needed": ["..."],
+        "best_practices_learned": ["..."]
+    }
+}
 ```
 
-### **Custom Langchain Tools**
-- **`FDBQueryTool`**: Direct SQL execution with validation
-- **`FDBSchemaInfoTool`**: Dynamic schema inspection  
-- **`FDBListTablesTool`**: Table discovery and listing
-- **`DirectFDBCallbackHandler`**: Production monitoring
+#### **Phase 2: Strukturelle Verbesserungen (Kurzfristig)**
 
-### **Data & Configuration**
-- **Database**: `WINCASA2022.FDB` (151 tables, 517 apartments, 698 residents)
-- **Knowledge Base**: `/output/compiled_knowledge_base.json` (auto-generated)
-- **Business Context**: `/output/yamls/` (248 YAML files with domain knowledge)
-- **API Configuration**: `/home/envs/openai.env` + `/home/envs/openrouter.env`
+**2.1 Schema-Graph-Representation entwickeln**
+```python
+class SchemaGraph:
+    def get_relevant_subgraph(self, query_entities):
+        # Relevante Tabellen für Query finden
+        # Kürzeste Pfade zwischen Entitäten
+        # Kompakte Sub-Schema zurückgeben
+```
 
----
+**2.2 Join-Path-Finder implementieren**
+```python
+def find_join_path(from_table, to_table, schema_graph):
+    # Automatische JOIN-Generierung basierend auf Pfad
+    # Beispiel: BEWOHNER -> KONTEN via OBJEKTE
+```
 
-## 📊 Retrieval Mode Evaluation Results
+**2.3 Retrieval auf Struktur statt Text umstellen**
+```python
+class StructuralRetriever:
+    def retrieve_context(self, user_query):
+        # 1. Entitäten extrahieren
+        # 2. Relevante Tabellen finden  
+        # 3. Schema-Subgraph erstellen
+        # 4. Samples + Patterns laden
+```
 
-### **Production Validation: Enhanced Mode Superior**
+#### **Phase 3: Erweiterte Optimierungen (Mittelfristig)**
 
-| Mode | Success Rate | Avg Execution Time | Accuracy | Production Status |
-|------|--------------|-------------------|----------|-------------------|
-| **Enhanced** | **100%** | **11.8s** | ✅ **Petra Nabakowski found** | ✅ **RECOMMENDED** |
-| FAISS | 0% | 28.7s | ❌ Incorrect table selection | ⚠️ Debugging required |
-| None | 0% | 18.5s | ❌ No context | 🔵 Baseline only |
+**3.1 Neo4j-Integration evaluieren**
+- Firebird-Schema als Cypher-Graph
+- Multi-Hop-Beziehungen modellieren
+- Cypher-zu-SQL-Translation
 
-**Key Finding**: Enhanced Mode provides 100% accuracy for address queries with optimal performance.
+**3.2 LLM-Fine-Tuning vorbereiten**
+- Erfolgreiche Query-SQL-Paare sammeln
+- User-Feedback als Quality-Score
+- Training-Dataset erstellen
 
----
+**3.3 Automatisierter Feedback-Loop**
+- Erfolgreiche Patterns extrahieren
+- Fehlermuster identifizieren
+- Kontext automatisch anpassen
 
-## 🚀 Production Deployment
+### **7.2. Testgetriebene Entwicklung**
 
-### **Primary Application**
+**Test-Framework**: `comprehensive_improvement_test.py`
+- GPT-4o-mini als konsistenter Test-Agent
+- Feedback-JSON für jede Iteration
+- Automatischer Vergleich zwischen Phasen
+- Ziel: >85% Erfolgsrate
+
+**Bewertungskriterien** (0-15 Punkte pro Query):
+- SQL-Syntax (0-3)
+- Tabellen-Selektion (0-3) 
+- JOIN-Logik (0-3)
+- Business-Logic (0-3)
+- Ergebnis-Genauigkeit (0-3)
+
+## 8. Erweiterte SQL-Spezialisierung: SQLCoder-2 & LangChain Integration
+
+### 8.1. SQLCoder-2 mit JOIN-Aware Prompting
+
+**Zielsetzung:** Integration eines SQL-spezialisierten LLM-Modells zur Verbesserung der SQL-Generierung in komplexen Szenarien.
+
+**Technische Details:**
+- **Modell**: SQLCoder-2 (7B/15B Parameter) via HuggingFace Transformers
+- **Spezialisierung**: Optimiert für SQL-Generierung mit besserer Dialekt-Unterstützung
+- **JOIN-Awareness**: Erweiterte Prompting-Techniken für komplexe Tabellenbeziehungen
+- **Integration**: Als 4. Retrieval-Modus `sqlcoder` in bestehende Architektur
+
+**Implementierungsplan:**
+```python
+# sqlcoder_retriever.py
+class SQLCoderRetriever:
+    def __init__(self, model_name="defog/sqlcoder2"):
+        self.model = AutoModelForCausalLM.from_pretrained(model_name)
+        self.tokenizer = AutoTokenizer.from_pretrained(model_name)
+        
+    def generate_sql(self, query, schema_context, join_hints):
+        # JOIN-aware prompting with schema context
+        prompt = self._build_join_aware_prompt(query, schema_context, join_hints)
+        return self._generate_with_model(prompt)
+```
+
+**Performance-Ziele:**
+- Erfolgsrate: >75% (vs. 63.6% aktuell)
+- Bessere Firebird-SQL-Dialekt-Unterstützung
+- Reduzierte Timeouts bei komplexen JOINs
+
+### 8.2. LangChain SQL Database Agent Integration
+
+**Zielsetzung:** Nutzung der nativen LangChain SQL-Tools für verbesserte Error-Recovery und Schema-Introspection.
+
+**Technische Details:**
+- **Framework**: LangChain SQL Database Agent mit React-Pattern
+- **Tools**: Automatische Schema-Introspection, SQL-Execution, Error-Recovery
+- **Integration**: Als 5. Retrieval-Modus `langchain` mit separatem Agent
+
+**Implementierungsplan:**
+```python
+# langchain_sql_agent.py
+from langchain_experimental.sql import SQLDatabaseChain
+from langchain.agents import create_sql_agent
+
+class LangChainSQLAgent:
+    def __init__(self, db_connection, llm):
+        self.db = SQLDatabase.from_uri(db_connection)
+        self.agent = create_sql_agent(
+            llm=llm,
+            db=self.db,
+            agent_type=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
+            verbose=True
+        )
+```
+
+**Performance-Ziele:**
+- Erfolgsrate: >70% mit automatischer Error-Recovery
+- Bessere Fehlerbehandlung und Debugging
+- Chain-of-Thought SQL-Reasoning
+
+### 8.3. Implementierungsroadmap
+
+**Phase 1: SQLCoder-2 Integration (Woche 1-2)**
+1. Model Setup und Testing
+2. JOIN-Aware Prompting entwickeln
+3. Integration in `firebird_sql_agent_direct.py`
+4. Initiale Performance-Tests
+
+**Phase 2: LangChain SQL Agent (Woche 3-4)**
+1. LangChain SQL Agent Setup
+2. Firebird-Kompatibilität testen
+3. Error-Recovery-Mechanismen implementieren
+4. Performance-Vergleich mit bestehenden Modi
+
+**Phase 3: Vergleichende Evaluation (Woche 5)**
+1. Erweiterte Test-Suite für 5 Modi
+2. Performance-Benchmarking
+3. Dokumentation und Best-Practice-Guides
+4. Produktions-Deployment-Vorbereitung
+
+**Testing-Framework:**
 ```bash
-# Production startup (recommended)
-source .venv/bin/activate
-./start_enhanced_qa_direct.sh
-# Access: http://localhost:8501
+# Vergleichstests aller 5 Modi
+python optimized_retrieval_test.py --modes enhanced,faiss,none,sqlcoder,langchain
+python comparative_sql_analysis.py --detailed-metrics
 ```
 
-### **Essential Production Tests**
-```bash
-# Core system integration
-python test_enhanced_qa_ui_integration.py
+### 8.4. Erwartete Systemverbesserungen
 
-# Database connectivity validation
-python test_fdb_direct_interface.py
+**Quantitative Ziele:**
+- Gesamt-Erfolgsrate: >75% (vs. 63.6% aktuell)
+- Timeout-Reduktion: <5% (vs. 27% bei FAISS aktuell)
+- Durchschnittliche Ausführungszeit: <20s über alle Modi
 
-# Performance verification
-python test_firebird_sql_agent.py
+**Qualitative Verbesserungen:**
+- Bessere SQL-Dialekt-Anpassung (Firebird FIRST vs. LIMIT)
+- Verbesserte JOIN-Generierung für komplexe Beziehungen
+- Automatische Error-Recovery bei SQL-Syntax-Fehlern
+- Erhöhte Robustheit bei unbekannten Query-Patterns
 
-# Retrieval mode evaluation (baseline)
-python automated_retrieval_test.py
-```
+## 9. Zukünftige Überlegungen und mögliche Erweiterungen
 
-### **Production-Validated Queries**
-- *"Wer wohnt in der Marienstraße 26, 45307 Essen?"* → **Petra Nabakowski** ✅
-- *"Wie viele Wohnungen gibt es insgesamt?"* → **517 apartments** ✅  
-- *"Durchschnittliche Miete in Essen"* → Aggregated calculations ✅
-- Complex property management queries with business context ✅
+### 9.1. Nutzung einer Graphdatenbank (z.B. Neo4j) zur Kontextanreicherung
 
----
-
-## 🎯 Development Milestones Completed
-
-| Phase | Component | Status | Achievement |
-|-------|-----------|--------|-------------|
-| **Phase 1** | FAISS RAG | ✅ COMPLETE | Standard retrieval implementation |
-| **Phase 1.5** | Direct FDB | ✅ COMPLETE | **Critical breakthrough** - SQLAlchemy bypass |
-| **Phase 2** | Neo4j RAG | ✅ COMPLETE | Optional advanced retrieval (not production) |
-| **Phase 3** | Integration | ✅ COMPLETE | Unified system architecture |
-| **Phase 4** | UI Integration | ✅ COMPLETE | Production Streamlit interface |
-| **Phase 5** | Extended Testing | ✅ COMPLETE | Comprehensive validation framework |
-| **Phase 6** | Enhanced Knowledge | ✅ COMPLETE | **Production-grade** intelligent system |
-| **Phase 6.1** | Documentation Quality | ✅ COMPLETE | YAML-based business context (superior) |
-
-**🏆 Result**: All development phases successfully completed. System exceeds original specifications.
-
----
-
-## 🚀 Future Roadmap
-
-### **Phase 7: Advanced Production Monitoring (Planned)**
-
-#### **Monitoring & Observability Enhancement**
-- **LLM Call Tracking**: Comprehensive API usage monitoring
-- **Performance Analytics**: Detailed execution metrics and optimization  
-- **Cost Management**: Budget tracking and usage optimization
-- **User Experience**: Query pattern analysis and behavior insights
-- **Error Monitoring**: Proactive issue detection and alerting
-
-#### **Planned Components**
-- **Advanced Monitoring SDK**: Enterprise-grade observability solution
-- **Agent Instrumentation**: Enhanced callback and metrics integration
-- **Performance Dashboards**: Real-time system health visualization
-- **Cost Analytics**: API usage optimization and budget management
-
-#### **Expected Benefits**
-- **Operational Excellence**: Real-time production monitoring
-- **Cost Optimization**: Intelligent API usage and budget management
-- **Enhanced Debugging**: Advanced troubleshooting capabilities  
-- **User Insights**: Behavioral analytics for system improvement
-- **Proactive Maintenance**: Predictive issue detection
-
-### **Operational Enhancements**
-- **Security Hardening**: Enhanced access controls and audit trails
-- **Performance Tuning**: Continuous query optimization
-- **Scalability Planning**: Multi-instance deployment preparation
-- **Documentation Expansion**: User guides and operational runbooks
-
----
-
-## 📈 Continuous Improvement
-
-### **Automated Quality Assurance**
-- **Standard 11-Query Benchmark**: Continuous evaluation across all retrieval modes
-- **Performance Regression Testing**: Automated performance monitoring
-- **Accuracy Validation**: Business context and result correctness verification
-- **System Health Checks**: Automated validation of core components
-
-### **Enhancement Pipeline**
-1. **Current State**: Production-ready with Enhanced Mode as standard
-2. **Continuous Testing**: Automated evaluation with `automated_retrieval_test.py`
-3. **Performance Optimization**: Based on real-world usage patterns
-4. **Future Enhancements**: Phase 7 advanced monitoring implementation
-
----
-
-**✅ WINCASA PRODUCTION STATUS: MISSION ACCOMPLISHED**
-
-System fully implemented, comprehensively tested, and production-validated. Enhanced Mode established as the superior retrieval standard with automated evaluation framework ensuring continuous quality.
-
-**📋 Technical Documentation:**
-- [`README.md`](README.md) - Complete system architecture and component documentation
-- [`implementation_status.md`](implementation_status.md) - Detailed implementation status and validation results
-- [`CLAUDE.md`](CLAUDE.md) - Technical guidance and production workflow recommendations
+*   **Idee:** Exploration der Integration einer Graphdatenbank zur expliziten Modellierung und Abfrage der komplexen Beziehungen zwischen den Firebird-Tabellen.
+*   **Potenzieller Nutzen:**
+    *   Verbessertes Verständnis von Multi-Hop-Beziehungen und komplexen Abhängigkeiten durch das LLM.
+    *   Präzisere Extraktion von relevanten Sub-Graphen als Kontext für die SQL-Generierung.
+    *   Formale Repräsentation der Wissensbasis als Wissensgraph.
+*   **Herausforderungen:**
+    *   Erhöhte Systemkomplexität (zusätzliche Datenbank, Synchronisationsaufwand).
+    *   Entwicklung von Mechanismen zur Kontext-Extraktion aus dem Graphen und Integration in den LLM-Prompt.
+*   **Status:** Eine konzeptionelle Überlegung für eine spätere Optimierungsphase, nachdem SQLCoder-2 und LangChain SQL Agent implementiert und evaluiert wurden.

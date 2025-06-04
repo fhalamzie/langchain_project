@@ -103,10 +103,10 @@ python run_llm_query.py
 ## 📊 Performance
 
 - **Database**: 151 Tabellen, 517 Wohnungen, 698 Bewohner
-- **Verfügbare Retrieval Modi**: Enhanced (22.5s), None (20.8s), FAISS (34.6s), SQLCoder (✅ NEU)
+- **Verfügbare Retrieval Modi**: Enhanced (22.5s), None (20.8s), FAISS (34.6s), SQLCoder (✅ NEU), LangChain (✅ NEU)
 - **Current Erfolgsrate**: 63.6% über klassische Modi
-- **Implementierte Verbesserungen**: SQLCoder-2 (✅ IMPLEMENTIERT), LangChain SQL Agent (🚧 In Arbeit)
-- **Total Modi**: 5 (Enhanced, FAISS, None, SQLCoder ✅, LangChain 🚧)
+- **Implementierte Verbesserungen**: SQLCoder-2 (✅ IMPLEMENTIERT), LangChain SQL Agent (✅ IMPLEMENTIERT)
+- **Total Modi**: 5 (Enhanced, FAISS, None, SQLCoder ✅, LangChain ✅)
 
 ## 🔧 Systemanforderungen
 
@@ -297,4 +297,4 @@ pip install -r requirements.txt
 
 **Status: ✅ PRODUCTION-READY**
 
-Details: [`CLAUDE.md`](CLAUDE.md) | [`implementation_status.md`](implementation_status.md)
+Details: [`CLAUDE.md`](CLAUDE.md) | [`plan.md`](plan.md)
