@@ -275,14 +275,15 @@ Key Columns: {', '.join([col['name'] for col in entity_info.get('columns', [])[:
             
             # Track successful retrieval
             duration = time.time() - start_time
-            monitor.track_retrieval(
-                retrieval_mode="enhanced",
-                query=query,
-                documents_retrieved=len(final_docs),
-                relevance_scores=relevance_scores[:15],  # Match the number of returned docs
-                duration=duration,
-                success=True
-            )
+            if monitor:  # Check if monitor exists
+                monitor.track_retrieval(
+                    retrieval_mode="enhanced",
+                    query=query,
+                    documents_retrieved=len(final_docs),
+                    relevance_scores=relevance_scores[:15],  # Match the number of returned docs
+                    duration=duration,
+                    success=True
+                )
             
             logger.info(f"Enhanced retrieval completed: {len(final_docs)} docs in {duration:.2f}s")
             return final_docs
@@ -290,14 +291,15 @@ Key Columns: {', '.join([col['name'] for col in entity_info.get('columns', [])[:
         except Exception as e:
             # Track failed retrieval
             duration = time.time() - start_time
-            monitor.track_retrieval(
-                retrieval_mode="enhanced",
-                query=query,
-                documents_retrieved=0,
-                relevance_scores=[],
-                duration=duration,
-                success=False
-            )
+            if monitor:  # Check if monitor exists
+                monitor.track_retrieval(
+                    retrieval_mode="enhanced",
+                    query=query,
+                    documents_retrieved=0,
+                    relevance_scores=[],
+                    duration=duration,
+                    success=False
+                )
             logger.error(f"Enhanced retrieval failed: {e}")
             raise
     
@@ -534,14 +536,15 @@ class EnhancedFaissRetriever(FaissDocumentationRetriever):
             
             # Track successful retrieval
             duration = time.time() - start_time
-            monitor.track_retrieval(
-                retrieval_mode="faiss",
-                query=query,
-                documents_retrieved=len(docs),
-                relevance_scores=relevance_scores,
-                duration=duration,
-                success=True
-            )
+            if monitor:  # Check if monitor exists
+                monitor.track_retrieval(
+                    retrieval_mode="faiss",
+                    query=query,
+                    documents_retrieved=len(docs),
+                    relevance_scores=relevance_scores,
+                    duration=duration,
+                    success=True
+                )
             
             logger.info(f"FAISS retrieval completed: {len(docs)} docs in {duration:.2f}s")
             return docs
@@ -549,14 +552,15 @@ class EnhancedFaissRetriever(FaissDocumentationRetriever):
         except Exception as e:
             # Track failed retrieval
             duration = time.time() - start_time
-            monitor.track_retrieval(
-                retrieval_mode="faiss",
-                query=query,
-                documents_retrieved=0,
-                relevance_scores=[],
-                duration=duration,
-                success=False
-            )
+            if monitor:  # Check if monitor exists
+                monitor.track_retrieval(
+                    retrieval_mode="faiss",
+                    query=query,
+                    documents_retrieved=0,
+                    relevance_scores=[],
+                    duration=duration,
+                    success=False
+                )
             logger.error(f"FAISS retrieval failed: {e}")
             raise
 

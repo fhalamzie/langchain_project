@@ -180,11 +180,34 @@ python iterative_improvement_test.py
 python test_hybrid_context_integration.py
 ```
 
-### **Ergebnisse:**
+### **✅ Produktionstest-Ergebnisse:**
 - **Strukturierter Kontext:** Alle Kernentitäten und Beziehungen abgedeckt
 - **Reale Datenpattern:** 18 Tabellen, 460 Datensätze analysiert
 - **Performance-Optimierung:** Token-bewusste kompakte/vollständige Versionen
 - **Fallback-Sicherheit:** Data Patterns bei Retrieval-Fehlern verfügbar
+- **Phoenix-Unabhängigkeit:** System funktioniert robust mit/ohne Monitoring
+
+#### Erfolgreiche Live-Tests (6.4.2025):
+```bash
+# Test 1: Wohnungen zählen
+Query: "Wie viele Wohnungen gibt es insgesamt?"
+✅ SQL: SELECT COUNT(*) FROM WOHNUNG
+✅ Result: 517 Wohnungen
+✅ Context: Enhanced Multi-Stage (9 docs)
+
+# Test 2: Eigentümer anzeigen  
+Query: "Zeige die ersten 2 Eigentümer"
+✅ SQL: SELECT FIRST 2 * FROM EIGENTUEMER
+✅ Result: 2 Eigentümer mit Details
+✅ Context: Enhanced Multi-Stage (9 docs)
+✅ Firebird-Syntax: Automatisch FIRST statt LIMIT verwendet
+```
+
+#### Bewiesene System-Features:
+- **Enhanced Multi-Stage Retrieval:** 9 relevante Dokumente pro Query
+- **Automatische SQL-Dialekt-Anpassung:** Firebird FIRST-Syntax korrekt verwendet
+- **Robuste Fehlerbehandlung:** Funktioniert ohne Phoenix-Monitoring
+- **Vollständige Integration:** GPT-4 + FDB + RAG + Hybrid Context
 ### Modell-Evaluierung und Embedding-Optimierung
 
 Im Rahmen der kontinuierlichen Verbesserung des WINCASA-Systems wurden spezifische Maßnahmen zur Optimierung der Modellleistung und der Retrieval-Qualität durchgeführt:

@@ -91,27 +91,29 @@ class FDBQueryTool(BaseTool):
                 
                 # Track successful SQL execution
                 execution_time = time.time() - start_time
-                monitor.track_query_execution(
-                    query="",  # Original user query not available here
-                    sql=query,
-                    execution_time=execution_time,
-                    rows_returned=len(results),
-                    success=True
-                )
+                if monitor:  # Check if monitor exists
+                    monitor.track_query_execution(
+                        query="",  # Original user query not available here
+                        sql=query,
+                        execution_time=execution_time,
+                        rows_returned=len(results),
+                        success=True
+                    )
                 
                 return result_str
                 
         except Exception as e:
             # Track failed SQL execution
             execution_time = time.time() - start_time
-            monitor.track_query_execution(
-                query="",
-                sql=query,
-                execution_time=execution_time,
-                rows_returned=0,
-                success=False,
-                error=str(e)
-            )
+            if monitor:  # Check if monitor exists
+                monitor.track_query_execution(
+                    query="",
+                    sql=query,
+                    execution_time=execution_time,
+                    rows_returned=0,
+                    success=False,
+                    error=str(e)
+                )
             return f"Fehler beim Ausführen der Abfrage: {str(e)}"
 
 
@@ -782,24 +784,26 @@ Thought:{agent_scratchpad}"""
                     score = doc.metadata.get('score', 1.0)
                     relevance_scores.append(float(score) if score else 1.0)
                 
-                monitor.track_retrieval(
-                    retrieval_mode=current_retrieval_mode,
-                    query=natural_language_query,
-                    documents_retrieved=len(retrieved_docs),
-                    relevance_scores=relevance_scores,
-                    duration=retrieval_duration,
-                    success=True
-                )
+                if monitor:  # Check if monitor exists
+                    monitor.track_retrieval(
+                        retrieval_mode=current_retrieval_mode,
+                        query=natural_language_query,
+                        documents_retrieved=len(retrieved_docs),
+                        relevance_scores=relevance_scores,
+                        duration=retrieval_duration,
+                        success=True
+                    )
             except Exception as e:
                 print(f"Error during retrieval: {e}")
-                monitor.track_retrieval(
-                    retrieval_mode=current_retrieval_mode,
-                    query=natural_language_query,
-                    documents_retrieved=0,
-                    relevance_scores=[],
-                    duration=time.time() - retrieval_start,
-                    success=False
-                )
+                if monitor:  # Check if monitor exists
+                    monitor.track_retrieval(
+                        retrieval_mode=current_retrieval_mode,
+                        query=natural_language_query,
+                        documents_retrieved=0,
+                        relevance_scores=[],
+                        duration=time.time() - retrieval_start,
+                        success=False
+                    )
                 retrieved_docs = []
         
         if retrieved_docs:
@@ -841,16 +845,23 @@ Bitte beantworte die folgende Frage: {query_to_send}
         try:
             self.callback_handler.clear_log()
             
-            # Wrap agent execution with Phoenix tracing
-            with trace_query(natural_language_query, {
-                "retrieval_mode": current_retrieval_mode,
-                "documents_retrieved": len(retrieved_docs) if retrieved_docs else 0
-            }) as trace_ctx:
-                # Agent ausführen
+            # Agent ausführen (with optional Phoenix tracing)
+            if monitor and hasattr(trace_query, '__enter__'):  # Check if trace_query is a context manager
+                with trace_query(natural_language_query, {
+                    "retrieval_mode": current_retrieval_mode,
+                    "documents_retrieved": len(retrieved_docs) if retrieved_docs else 0
+                }) as trace_ctx:
+                    agent_start_time = time.time()
+                    agent_response_dict = self.sql_agent.invoke({"input": enhanced_query_for_agent})
+                    agent_execution_time = time.time() - agent_start_time
+            else:
+                # Run without tracing
                 agent_start_time = time.time()
                 agent_response_dict = self.sql_agent.invoke({"input": enhanced_query_for_agent})
                 agent_execution_time = time.time() - agent_start_time
-                agent_final_answer = agent_response_dict.get("output", "No output from agent.")
+            
+            # Extract agent response
+            agent_final_answer = agent_response_dict.get("output", "No output from agent.")
             
             # SQL aus dem Callback Handler abrufen
             generated_sql = self.callback_handler.sql_query
@@ -887,13 +898,14 @@ Bitte beantworte die folgende Frage: {query_to_send}
             
             # Track complete query execution
             total_execution_time = time.time() - query_start_time
-            monitor.track_query_execution(
-                query=natural_language_query,
-                sql=generated_sql if generated_sql else "N/A",
-                execution_time=total_execution_time,
-                rows_returned=-1,  # We don't have row count at this level
-                success=True
-            )
+            if monitor:  # Check if monitor exists
+                monitor.track_query_execution(
+                    query=natural_language_query,
+                    sql=generated_sql if generated_sql else "N/A",
+                    execution_time=total_execution_time,
+                    rows_returned=-1,  # We don't have row count at this level
+                    success=True
+                )
             
             return {
                 "natural_language_query": natural_language_query,
@@ -912,14 +924,15 @@ Bitte beantworte die folgende Frage: {query_to_send}
             
             # Track failed query execution
             total_execution_time = time.time() - query_start_time
-            monitor.track_query_execution(
-                query=natural_language_query,
-                sql="N/A",
-                execution_time=total_execution_time,
-                rows_returned=0,
-                success=False,
-                error=str(e)
-            )
+            if monitor:  # Check if monitor exists
+                monitor.track_query_execution(
+                    query=natural_language_query,
+                    sql="N/A",
+                    execution_time=total_execution_time,
+                    rows_returned=0,
+                    success=False,
+                    error=str(e)
+                )
             
             error_text_variants = [
                 {"variant_name": "Error Variant 1", "text": f"Direct FDB SQL Agent execution failed: {e}"},

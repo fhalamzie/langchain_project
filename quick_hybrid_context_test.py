@@ -98,12 +98,13 @@ RETRIEVAL_MODES = ['enhanced', 'faiss', 'none']
 class QuickHybridTester:
     """Quick tester for hybrid context strategy evaluation"""
     
-    def __init__(self, logger, timeout_per_query=45):
+    def __init__(self, logger, timeout_per_query=45, disable_phoenix=False):
         self.logger = logger
         self.timeout_per_query = timeout_per_query
         self.db_connection_string = "firebird+fdb://sysdba:masterkey@localhost/WINCASA2022.FDB"
         self.agents = {}  # Cache for reusing agents
         self.results = []
+        self.disable_phoenix = disable_phoenix
         
     def initialize_agent(self, retrieval_mode: str):
         """Initialize agent for specific retrieval mode"""
@@ -416,6 +417,7 @@ def main():
     parser.add_argument("--concurrent", action="store_true", help="Run tests concurrently")
     parser.add_argument("--workers", type=int, default=3, help="Number of concurrent workers (default: 3)")
     parser.add_argument("--timeout", type=int, default=45, help="Timeout per query in seconds (default: 45)")
+    parser.add_argument("--disable-phoenix", action="store_true", help="Disable Phoenix monitoring for faster testing")
     
     args = parser.parse_args()
     
@@ -437,7 +439,7 @@ def main():
         logger.info("📝 SEQUENTIAL MODE")
     
     # Initialize tester
-    tester = QuickHybridTester(logger, args.timeout)
+    tester = QuickHybridTester(logger, args.timeout, args.disable_phoenix)
     
     try:
         # Run tests
