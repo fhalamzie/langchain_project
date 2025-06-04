@@ -248,9 +248,12 @@ class PhoenixMonitor:
             return
         
         try:
-            traces = px.Client().get_traces()
+            # Attempt to get spans as a DataFrame
+            spans_df = px.get_spans_dataframe()
+            # Convert DataFrame to a list of dictionaries for JSON serialization
+            traces_list = spans_df.to_dict(orient='records')
             with open(filepath, 'w') as f:
-                json.dump(traces, f, indent=2, default=str)
+                json.dump(traces_list, f, indent=2, default=str)
             logger.info(f"Traces exported to {filepath}")
         except Exception as e:
             logger.error(f"Failed to export traces: {e}")

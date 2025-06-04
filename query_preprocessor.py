@@ -93,12 +93,12 @@ class QueryPreprocessor:
             'konten': 'KONTEN',
             'zahlung': 'ZAHLUNG',
             'zahlungen': 'ZAHLUNG',
-            'miete': 'SOLLSTELLUNG',
-            'mieten': 'SOLLSTELLUNG',
-            'vertrag': 'VERTRAEGE',
-            'verträge': 'VERTRAEGE',
-            'rechnung': 'SOLLSTELLUNG',
-            'rechnungen': 'SOLLSTELLUNG',
+            'miete': 'SOLLGEST',
+            'mieten': 'SOLLGEST',
+            'vertrag': 'SEVERTRAG',
+            'verträge': 'SEVERTRAG',
+            'rechnung': 'SOLLGEST',
+            'rechnungen': 'SOLLGEST',
             'nebenkosten': 'NKMASTER',
             'abrechnung': 'ABRECHNUNG',
             'abrechnungen': 'ABRECHNUNG',
@@ -128,6 +128,14 @@ class QueryPreprocessor:
         # Add all tables from top_20
         for table_info in self.knowledge_base.get('top_20_tables', []):
             self.relationship_graph.add_node(table_info['table'])
+        
+        # Add critical tables that might be missing
+        critical_tables = ['BEWOHNER', 'EIGENTUEMER', 'OBJEKTE', 'WOHNUNG', 'KONTEN', 
+                          'SOLLGEST', 'SEVERTRAG', 'BANKEN', 'PERSONEN', 'NKMASTER',
+                          'ABRECHNUNG', 'ZAHLUNG', 'VERWALTER', 'ZAEHLERSTAMM', 
+                          'ZAEHLERSTAND', 'HK_KOSTEN', 'HK_WOHN']
+        for table in critical_tables:
+            self.relationship_graph.add_node(table)
         
         # Add relationships as edges
         for rel in self.knowledge_base.get('relationships', []):
@@ -165,6 +173,14 @@ class QueryPreprocessor:
             (r'\b(dieses jahr|this year)\b', 'this_year'),
             (r'\b(\d{4})\b', 'year'),
             (r'\b(\d{1,2})[./](\d{1,2})[./](\d{2,4})\b', 'date')
+        ]
+        
+        # Patterns for addresses and locations
+        self.address_patterns = [
+            (r'\b([a-zA-ZäöüÄÖÜß]+str\.?|[a-zA-ZäöüÄÖÜß]+straße)\s*(\d+[a-z]?)\b', 'street_number'),
+            (r'\b(\d{5})\s+([a-zA-ZäöüÄÖÜß]+)\b', 'postal_city'),
+            (r'\b([a-zA-ZäöüÄÖÜß]+weg|[a-zA-ZäöüÄÖÜß]+platz|[a-zA-ZäöüÄÖÜß]+gasse)\s*(\d+[a-z]?)\b', 'address_type'),
+            (r'\b(MARIE\d+|[A-Z]{4,6}\d+)\b', 'internal_code')
         ]
         
         # Query intent patterns
@@ -260,6 +276,36 @@ class QueryPreprocessor:
                     'term': match.group(0),
                     'type': f'time_{time_type}'
                 })
+        
+        # Extract address information
+        for pattern, addr_type in self.address_patterns:
+            matches = re.finditer(pattern, query, re.IGNORECASE)
+            for match in matches:
+                if addr_type == 'street_number':
+                    entities.append({
+                        'term': match.group(0),
+                        'street': match.group(1),
+                        'number': match.group(2),
+                        'type': 'address_street_number',
+                        'table': 'BEWOHNER',
+                        'field_hints': ['BSTR', 'OBEZ']
+                    })
+                elif addr_type == 'postal_city':
+                    entities.append({
+                        'term': match.group(0),
+                        'postal': match.group(1),
+                        'city': match.group(2),
+                        'type': 'address_postal_city',
+                        'table': 'BEWOHNER',
+                        'field_hints': ['BPLZORT']
+                    })
+                elif addr_type == 'internal_code':
+                    entities.append({
+                        'term': match.group(0),
+                        'type': 'address_internal_code',
+                        'table': 'BEWOHNER',
+                        'field_hints': ['OBEZ']
+                    })
         
         return entities
     

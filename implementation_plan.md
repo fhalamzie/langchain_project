@@ -80,13 +80,118 @@ Die hybride Kontextstrategie kombiniert einen direkten, globalen Basiskontext mi
 *   **Komplexität der Implementierung:** Die Anpassung der Prompt-Logik und der Retrieval-Modi erfordert sorgfältige Planung.
 *   **Evaluierungsaufwand:** Umfassende Tests sind notwendig, um die Wirksamkeit der neuen Strategie nachzuweisen.
 
-## 7. Nächste Schritte (Priorisiert)
+## 7. Überarbeitete Implementierungsstrategie (Januar 2025)
 
-1.  **[ ] Task 1:** Detaillierte Ausarbeitung des Inhalts für den "Direkten Globalen Basiskontext".
-  
-2.  **[ ] Task 2:** Implementierung der Integration des Basiskontexts in die Prompt-Generierung.
-  
-3.  **[ ] Task 3:** Durchführung erster Tests und Iteration am Basiskontext.
+### **7.1. Neue Drei-Phasen-Roadmap**
+
+#### **Phase 1: Foundation + Baseline (Sofort umsetzbar)**
+
+**1.1 Strukturierten Global-Context erstellen**
+```python
+GLOBAL_CONTEXT = {
+    "core_entities": {
+        "people": ["BEWOHNER", "EIGENTUEMER"],
+        "properties": ["OBJEKTE", "WOHNUNG"], 
+        "finance": ["KONTEN", "BUCHUNG", "SOLLSTELLUNG"]
+    },
+    "key_relationships": {
+        "BEWOHNER -> OBJEKTE": "BWO = ONR",
+        "EIGENTUEMER -> OBJEKTE": "via VEREIG table",
+        "KONTEN -> BUCHUNG": "KNR = BKNR"
+    },
+    "critical_patterns": {
+        "address_search": "BEWOHNER: BSTR + BPLZORT",
+        "financial_lookup": "KONTEN -> BUCHUNG -> SOLLSTELLUNG"
+    }
+}
+```
+
+**1.2 Echte Datenextraktion für Kontextanreicherung**
+- Top 30 Zeilen pro High-Priority-Tabelle extrahieren
+- Irrelevante Spalten filtern (NULL, 0, leer)
+- Datenpattern und -formate erkennen
+- Komprimierte Samples in Kontext integrieren
+
+**1.3 Iterativer Testparcours implementieren**
+```python
+# iterative_improvement_test.py
+TEST_QUERIES = {
+    "basic_lookups": ["Wer wohnt in der Marienstraße 26?"],
+    "joins_required": ["Welche Bewohner wohnen in Objekt ONR 1001?"],
+    "complex_business": ["Welche Eigentümer haben mehr als 2 Wohnungen?"],
+    "aggregations": ["Durchschnittliche Miete pro Objekt"]
+}
+
+FEEDBACK_FORMAT = {
+    "iteration_X": {
+        "context_version": "...",
+        "success_rate": 0.xx,
+        "user_feedback": "...",
+        "improvements_needed": ["..."],
+        "best_practices_learned": ["..."]
+    }
+}
+```
+
+#### **Phase 2: Strukturelle Verbesserungen (Kurzfristig)**
+
+**2.1 Schema-Graph-Representation entwickeln**
+```python
+class SchemaGraph:
+    def get_relevant_subgraph(self, query_entities):
+        # Relevante Tabellen für Query finden
+        # Kürzeste Pfade zwischen Entitäten
+        # Kompakte Sub-Schema zurückgeben
+```
+
+**2.2 Join-Path-Finder implementieren**
+```python
+def find_join_path(from_table, to_table, schema_graph):
+    # Automatische JOIN-Generierung basierend auf Pfad
+    # Beispiel: BEWOHNER -> KONTEN via OBJEKTE
+```
+
+**2.3 Retrieval auf Struktur statt Text umstellen**
+```python
+class StructuralRetriever:
+    def retrieve_context(self, user_query):
+        # 1. Entitäten extrahieren
+        # 2. Relevante Tabellen finden  
+        # 3. Schema-Subgraph erstellen
+        # 4. Samples + Patterns laden
+```
+
+#### **Phase 3: Erweiterte Optimierungen (Mittelfristig)**
+
+**3.1 Neo4j-Integration evaluieren**
+- Firebird-Schema als Cypher-Graph
+- Multi-Hop-Beziehungen modellieren
+- Cypher-zu-SQL-Translation
+
+**3.2 LLM-Fine-Tuning vorbereiten**
+- Erfolgreiche Query-SQL-Paare sammeln
+- User-Feedback als Quality-Score
+- Training-Dataset erstellen
+
+**3.3 Automatisierter Feedback-Loop**
+- Erfolgreiche Patterns extrahieren
+- Fehlermuster identifizieren
+- Kontext automatisch anpassen
+
+### **7.2. Testgetriebene Entwicklung**
+
+**Test-Framework**: `comprehensive_improvement_test.py`
+- GPT-4o-mini als konsistenter Test-Agent
+- Feedback-JSON für jede Iteration
+- Automatischer Vergleich zwischen Phasen
+- Ziel: >85% Erfolgsrate
+
+**Bewertungskriterien** (0-15 Punkte pro Query):
+- SQL-Syntax (0-3)
+- Tabellen-Selektion (0-3) 
+- JOIN-Logik (0-3)
+- Business-Logic (0-3)
+- Ergebnis-Genauigkeit (0-3)
 
 ## 8. Zukünftige Überlegungen und mögliche Erweiterungen
 

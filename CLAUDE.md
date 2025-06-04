@@ -110,20 +110,81 @@ The system supports three retrieval modes for context augmentation:
 - Baseline mode using only LLM knowledge
 - No additional context from documentation
 
-## 💡 Hybride Kontextstrategie
+## 💡 Hybride Kontextstrategie ✅ IMPLEMENTIERT
 
-Zur Optimierung der LLM-Performanz und -Genauigkeit wird eine hybride Kontextstrategie implementiert. Diese Strategie kombiniert einen festen, globalen Basiskontext mit dynamischem, anfragebasiertem Retrieval.
+Die hybride Kontextstrategie ist **vollständig implementiert** und optimiert die LLM-Performanz durch Kombination eines globalen Basiskontexts mit dynamischem Retrieval.
 
-1.  **Globaler Basiskontext:**
-    *   **Definition:** Ein kompakter Satz essentieller Informationen (Kern-Datenbankschema, Hauptentitäten, kritische Beziehungen, grundlegende Geschäftsregeln), der jeder LLM-Anfrage standardmäßig mitgegeben wird.
-    *   **Ziel:** Sicherstellung eines grundlegenden Verständnisses der Datenbankstruktur und -logik für das LLM.
-    *   **Quellen (Beispiele):** Wichtige Auszüge aus `docs/index.md`, `output/schema/index.md`, `output/schema/db_overview.md`.
+### **Implementierte Komponenten:**
 
-2.  **Dynamisches Embedding-basiertes Retrieval:**
-    *   **Definition:** Nutzung der bestehenden RAG-Systeme (z.B. "Enhanced Mode", FAISS) zum Abruf detaillierterer oder spezifischer Informationen aus der umfangreichen Wissensbasis (`output/compiled_knowledge_base.json`, YAML-Dateien), basierend auf der konkreten Nutzeranfrage.
-    *   **Ziel:** Ergänzung des globalen Basiskontextes um spezifische, für die aktuelle Anfrage relevante Details, ohne das Kontextfenster des LLMs unnötig zu belasten.
+1.  **✅ Strukturierter Globaler Basiskontext** ([`global_context.py`](global_context.py))
+    *   **Kernentitäten:** BEWOHNER, EIGENTUEMER, OBJEKTE, KONTEN mit Beschreibungen
+    *   **Schlüsselbeziehungen:** ONR-basierte Verbindungen und JOIN-Pfade
+    *   **Kritische Muster:** Adresssuche, Finanzabfragen, Eigentümer-Immobilien-Zuordnungen
+    *   **Kompakte Version:** 671 Zeichen für token-bewusste Szenarien
+    *   **Vollversion:** 2819 Zeichen für detaillierte Kontexte
 
-Diese zweistufige Herangehensweise soll die Relevanz des dem LLM bereitgestellten Kontexts maximieren, was zu präziseren SQL-Generierungen und einer Reduktion von Fehlern wie Timeouts führen soll. Weitere Details und der Implementierungsfortschritt sind im Dokument [`implementation_plan.md`](implementation_plan.md) festgehalten.
+2.  **✅ Daten-Pattern-Extraktion** ([`data_sampler.py`](data_sampler.py))
+    *   **18 Hochprioritätstabellen** erfolgreich gesampelt (460 Datensätze)
+    *   **Reale Datenpattern:** Feldtypen, Beispielwerte, Beziehungsstrukturen
+    *   **Fallback-Kontext:** Verfügbar bei fehlendem spezifischen Retrieval
+    *   **Output:** [`output/data_context_summary.txt`](output/data_context_summary.txt)
+
+3.  **✅ Integration in SQL-Agent** ([`firebird_sql_agent_direct.py`](firebird_sql_agent_direct.py))
+    *   **Automatische Kontextladung:** Globaler Kontext in Agent-Prompts eingebunden
+    *   **Fallback-Mechanismus:** Data Patterns bei fehlendem Retrieval-Context
+    *   **Hybride Strategie:** Statischer Basis + dynamisches Retrieval
+    *   **Backward-Kompatibilität:** Bestehende Funktionalität erhalten
+
+4.  **✅ Test-Framework** ([`iterative_improvement_test.py`](iterative_improvement_test.py))
+    *   **4 Kontext-Versionen:** Systematischer Vergleich verschiedener Ansätze
+    *   **Bewertungssystem:** 0-15 Punkte (SQL-Syntax, Tabellen, JOINs, Business-Logic)
+    *   **10 Test-Queries:** 4 Komplexitätskategorien (basic → complex)
+    *   **Feedback-Loop:** Automatische Verbesserungsempfehlungen
+
+5.  **✅ Quick-Test-Tool** ([`quick_hybrid_context_test.py`](quick_hybrid_context_test.py))
+    *   **Optimiert für Geschwindigkeit:** 5 Queries, 3 Worker, Single Model
+    *   **Performance-Fokus:** Hybrid Context Impact Analysis
+    *   **Production-Ready:** Concurrent testing mit GPT-4
+
+### **Verwendung:**
+
+```python
+# Global Context laden
+from global_context import get_compact_global_context, get_global_context_prompt
+
+# Kompakte Version (671 Zeichen)
+compact_context = get_compact_global_context()
+
+# Vollversion (2819 Zeichen)  
+full_context = get_global_context_prompt()
+
+# SQL Agent mit hybrider Kontextstrategie
+agent = FirebirdDirectSQLAgent(
+    db_connection_string="firebird+fdb://sysdba:masterkey@localhost/WINCASA2022.FDB",
+    llm=llm,
+    retrieval_mode="enhanced",  # enhanced, faiss, oder none
+    use_enhanced_knowledge=True  # Aktiviert globalen Kontext
+)
+```
+
+### **Testing:**
+
+```bash
+# Schneller Test der hybriden Strategie
+python quick_hybrid_context_test.py --concurrent --workers 3 --timeout 45
+
+# Vollständiges iteratives Testing
+python iterative_improvement_test.py
+
+# Integration-Tests
+python test_hybrid_context_integration.py
+```
+
+### **Ergebnisse:**
+- **Strukturierter Kontext:** Alle Kernentitäten und Beziehungen abgedeckt
+- **Reale Datenpattern:** 18 Tabellen, 460 Datensätze analysiert
+- **Performance-Optimierung:** Token-bewusste kompakte/vollständige Versionen
+- **Fallback-Sicherheit:** Data Patterns bei Retrieval-Fehlern verfügbar
 ### Modell-Evaluierung und Embedding-Optimierung
 
 Im Rahmen der kontinuierlichen Verbesserung des WINCASA-Systems wurden spezifische Maßnahmen zur Optimierung der Modellleistung und der Retrieval-Qualität durchgeführt:

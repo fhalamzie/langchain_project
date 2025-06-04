@@ -71,7 +71,16 @@ TEST_QUERIES = [
     "Durchschnittliche Miete in der Schmiedestr. 8, 47055 Duisburg"
 ]
 
-RETRIEVAL_MODES = ['enhanced', 'faiss', 'none']  # Reordered: Enhanced first (fastest)
+# Modelle für A/B-Tests
+MODEL_NAMES = [
+    "openai/gpt-4.1-nano",
+    "openai/gpt-4.1",
+    "deepseek/deepseek-r1-0528",
+    "google/gemini-2.5-pro-preview",
+    "anthropic/claude-3.5-haiku:beta"
+]
+
+RETRIEVAL_MODES = ['enhanced', 'faiss', 'none']
 
 class OptimizedRetrievalTestRunner:
     """
@@ -91,64 +100,60 @@ class OptimizedRetrievalTestRunner:
         self.total_test_time = 0
         
     def initialize_agents_with_cache(self):
-        """Initialize agents once with persistent retriever caching."""
+        """Initialize agents for all model-mode combinations with caching."""
         start_time = time.time()
-        logger.info("Initializing agents with retriever caching...")
+        logger.info("Initializing agents for A/B testing...")
         
         db_connection_string = "firebird+fdb://sysdba:masterkey@localhost:3050//home/projects/langchain_project/WINCASA2022.FDB"
+        total_agents = len(MODEL_NAMES) * len(RETRIEVAL_MODES)
+        agent_count = 0
         
-        # Pre-warm caches
-        logger.info("Pre-warming retriever caches...")
-        
-        for mode in RETRIEVAL_MODES:
-            try:
-                logger.info(f"Initializing {mode} agent with caching...")
+        for model_name in MODEL_NAMES:
+            for mode in RETRIEVAL_MODES:
+                agent_key = f"{model_name}_{mode}"
+                agent_count += 1
                 
-                agent = FirebirdDirectSQLAgent(
-                    db_connection_string=db_connection_string,
-                    llm="gpt-4o-mini",
-                    retrieval_mode=mode,
-                    use_enhanced_knowledge=True
-                )
-                
-                # Force initialization of retrievers to cache them
-                if hasattr(agent, 'retriever') and agent.retriever:
-                    logger.info(f"  Pre-loading {mode} retriever cache...")
-                    # Trigger retriever initialization
-                    try:
-                        agent.retriever.similarity_search("test", k=1)
-                        logger.info(f"  ✓ {mode} retriever cache loaded")
-                    except Exception as e:
-                        logger.warning(f"  ⚠ {mode} retriever cache failed: {e}")
-                
-                self.agents[mode] = agent
-                logger.info(f"✓ {mode} agent initialized successfully")
-                
-            except Exception as e:
-                logger.error(f"✗ Failed to initialize {mode} agent: {e}")
-                self.agents[mode] = None
+                try:
+                    logger.info(f"Initializing agent {agent_count}/{total_agents}: {model_name} ({mode})")
+                    
+                    agent = FirebirdDirectSQLAgent(
+                        db_connection_string=db_connection_string,
+                        llm=model_name,
+                        retrieval_mode=mode,
+                        use_enhanced_knowledge=True
+                    )
+                    
+                    # Cache retriever
+                    if hasattr(agent, 'retriever') and agent.retriever:
+                        try:
+                            agent.retriever.similarity_search("test", k=1)
+                        except Exception as e:
+                            logger.warning(f"  ⚠ Retriever cache failed: {e}")
+                    
+                    self.agents[agent_key] = agent
+                    logger.info(f"✓ Agent initialized: {model_name} ({mode})")
+                    
+                except Exception as e:
+                    logger.error(f"✗ Failed to initialize {model_name} ({mode}): {e}")
+                    self.agents[agent_key] = None
         
         self.initialization_time = time.time() - start_time
         logger.info(f"Agent initialization completed in {self.initialization_time:.2f}s")
-        
-        # Verify agents
-        active_agents = sum(1 for agent in self.agents.values() if agent is not None)
-        logger.info(f"Active agents: {active_agents}/{len(RETRIEVAL_MODES)}")
-        
-        return active_agents > 0
+        logger.info(f"Active agents: {sum(1 for a in self.agents.values() if a)}/{total_agents}")
+        return any(self.agents.values())
     
-    def test_single_query(self, agent, query: str, mode: str) -> Dict[str, Any]:
-        """Test a single query with an agent (optimized for reuse)."""
+    def test_single_query(self, agent, query: str, model_name: str, mode: str) -> Dict[str, Any]:
+        """Test a single query with an agent."""
         result = {
             'query': query,
+            'model': model_name,
             'mode': mode,
             'success': False,
             'sql_query': None,
             'answer': None,
             'execution_time': None,
             'error': None,
-            'row_count': 0,
-            'agent_reused': True  # Flag to indicate agent reuse
+            'row_count': 0
         }
         
         if agent is None:
@@ -198,16 +203,21 @@ class OptimizedRetrievalTestRunner:
             logger.info(f"📋 QUERY {i}/{total_queries}: {query}")
             logger.info(f"{'='*80}")
             
-            for j, mode in enumerate(RETRIEVAL_MODES, 1):
-                completed_tests += 1
-                progress_pct = (completed_tests / total_tests) * 100
-                
-                logger.info(f"\n🧪 Testing {mode.upper()} mode ({j}/{len(RETRIEVAL_MODES)})")
-                logger.info(f"📊 Overall progress: {completed_tests}/{total_tests} ({progress_pct:.1f}%)")
-                
-                start_query_time = time.time()
-                result = self.test_single_query(self.agents[mode], query, mode)
-                query_duration = time.time() - start_query_time
+            for model_name in MODEL_NAMES:
+                for mode in RETRIEVAL_MODES:
+                    agent_key = f"{model_name}_{mode}"
+                    completed_tests += 1
+                    progress_pct = (completed_tests / total_tests) * 100
+                    
+                    logger.info(f"\n🧪 Testing {model_name} ({mode}) - {completed_tests}/{total_tests} ({progress_pct:.1f}%)")
+                    
+                    start_query_time = time.time()
+                    result = self.test_single_query(
+                        self.agents[agent_key],
+                        query,
+                        model_name,
+                        mode
+                    )
                 
                 all_results.append(result)
                 
@@ -240,8 +250,9 @@ class OptimizedRetrievalTestRunner:
         # Create all test tasks
         test_tasks = []
         for query in TEST_QUERIES:
-            for mode in RETRIEVAL_MODES:
-                test_tasks.append((query, mode))
+            for model_name in MODEL_NAMES:
+                for mode in RETRIEVAL_MODES:
+                    test_tasks.append((query, model_name, mode))
         
         logger.info(f"Total test tasks: {len(test_tasks)}")
         
@@ -249,14 +260,21 @@ class OptimizedRetrievalTestRunner:
         with concurrent.futures.ThreadPoolExecutor(max_workers=self.max_workers) as executor:
             # Submit all tasks
             future_to_task = {}
-            for query, mode in test_tasks:
-                future = executor.submit(self.test_single_query, self.agents[mode], query, mode)
-                future_to_task[future] = (query, mode)
+            for query, model_name, mode in test_tasks:
+                agent_key = f"{model_name}_{mode}"
+                future = executor.submit(
+                    self.test_single_query,
+                    self.agents[agent_key],
+                    query,
+                    model_name,
+                    mode
+                )
+                future_to_task[future] = (query, model_name, mode)
             
             # Collect results as they complete
             completed = 0
             for future in concurrent.futures.as_completed(future_to_task):
-                query, mode = future_to_task[future]
+                query, model_name, mode = future_to_task[future]
                 completed += 1
                 
                 try:
@@ -272,11 +290,16 @@ class OptimizedRetrievalTestRunner:
                 except Exception as e:
                     logger.error(f"Task failed for {query} ({mode}): {e}")
         
-        # Sort results by original query order for consistency
+        # Sort results by query, model, mode
         query_order = {query: i for i, query in enumerate(TEST_QUERIES)}
+        model_order = {model: i for i, model in enumerate(MODEL_NAMES)}
         mode_order = {mode: i for i, mode in enumerate(RETRIEVAL_MODES)}
         
-        all_results.sort(key=lambda r: (query_order[r['query']], mode_order[r['mode']]))
+        all_results.sort(key=lambda r: (
+            query_order[r['query']],
+            model_order[r['model']],
+            mode_order[r['mode']]
+        ))
         
         return all_results
     
@@ -384,48 +407,51 @@ class OptimizedRetrievalTestRunner:
         print(f"\nPER-MODE PERFORMANCE:")
         print("-"*60)
         
-        for mode in RETRIEVAL_MODES:
-            mode_results = [r for r in results if r['mode'] == mode]
-            successful = [r for r in mode_results if r['success']]
+        # Per-model performance
+        print(f"\nPER-MODEL PERFORMANCE:")
+        print("-"*60)
+        
+        for model_name in MODEL_NAMES:
+            model_results = [r for r in results if r['model'] == model_name]
+            successful = [r for r in model_results if r['success']]
             
             if successful:
                 avg_time = sum(r['execution_time'] for r in successful) / len(successful)
-                total_time = sum(r['execution_time'] for r in successful)
-                success_rate = len(successful) / len(mode_results) * 100
+                success_rate = len(successful) / len(model_results) * 100
                 
-                print(f"\n{mode.upper()} Mode:")
-                print(f"  Success Rate: {len(successful)}/{len(mode_results)} ({success_rate:.1f}%)")
+                print(f"\n{model_name}:")
+                print(f"  Success Rate: {len(successful)}/{len(model_results)} ({success_rate:.1f}%)")
                 print(f"  Avg Execution Time: {avg_time:.2f}s")
-                print(f"  Total Time: {total_time:.1f}s")
                 
-                # Check for correct answers (Petra Nabakowski)
-                correct_answers = 0
-                for r in successful:
-                    if "Marienstr" in r['query'] and "Petra Nabakowski" in str(r.get('answer', '')):
-                        correct_answers += 1
-                
-                if correct_answers > 0:
-                    print(f"  Correct Address Results: {correct_answers}")
-            else:
-                print(f"\n{mode.upper()} Mode: No successful results")
+                # Per-mode breakdown
+                for mode in RETRIEVAL_MODES:
+                    mode_results = [r for r in model_results if r['mode'] == mode]
+                    if mode_results:
+                        mode_success = sum(1 for r in mode_results if r['success'])
+                        mode_rate = mode_success / len(mode_results) * 100
+                        print(f"    {mode.upper()}: {mode_success}/{len(mode_results)} ({mode_rate:.1f}%)")
         
         # Performance comparison
         print(f"\nPERFORMANCE RANKING:")
         print("-"*40)
         
-        mode_performance = []
-        for mode in RETRIEVAL_MODES:
-            mode_results = [r for r in results if r['mode'] == mode and r['success']]
-            if mode_results:
-                avg_time = sum(r['execution_time'] for r in mode_results) / len(mode_results)
-                success_rate = len(mode_results) / len([r for r in results if r['mode'] == mode])
-                score = success_rate / max(avg_time, 1)  # Success rate per second
-                mode_performance.append((mode, avg_time, success_rate, score))
+        # Performance ranking
+        print(f"\nOVERALL RANKING:")
+        print("-"*40)
         
-        mode_performance.sort(key=lambda x: x[3], reverse=True)  # Sort by score
+        model_performance = []
+        for model_name in MODEL_NAMES:
+            model_results = [r for r in results if r['model'] == model_name and r['success']]
+            if model_results:
+                avg_time = sum(r['execution_time'] for r in model_results) / len(model_results)
+                success_rate = len(model_results) / len([r for r in results if r['model'] == model_name])
+                score = success_rate / max(avg_time, 0.1)  # Vermeide Division durch Null
+                model_performance.append((model_name, avg_time, success_rate, score))
         
-        for i, (mode, avg_time, success_rate, score) in enumerate(mode_performance, 1):
-            print(f"{i}. {mode.upper()}: {avg_time:.1f}s avg, {success_rate*100:.0f}% success, {score:.3f} score")
+        model_performance.sort(key=lambda x: x[3], reverse=True)
+        
+        for i, (model, avg_time, success_rate, score) in enumerate(model_performance, 1):
+            print(f"{i}. {model}: {success_rate*100:.1f}% success, {avg_time:.1f}s avg")
 
 def main():
     """Main function with configuration options."""

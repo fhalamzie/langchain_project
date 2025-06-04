@@ -380,7 +380,19 @@ class FDBDirectInterface:
             261: "BLOB"
         }
         
-        base_type = type_mapping.get(field_type, f"UNKNOWN_TYPE_{field_type}")
+        original_field_type_for_debug = field_type  # For logging
+        try:
+            # Ensure field_type is an integer for dictionary lookup
+            lookup_field_type = int(field_type)
+        except (ValueError, TypeError):
+            lookup_field_type = field_type # Keep original if conversion fails, will likely lead to UNKNOWN
+            print(f"DEBUG FDB TYPE: Could not convert field_type '{original_field_type_for_debug}' to int. Using original for lookup.")
+
+        base_type = type_mapping.get(lookup_field_type, f"UNKNOWN_TYPE_{original_field_type_for_debug}")
+        
+        # Debugging log
+        if "UNKNOWN_TYPE" in base_type:
+            print(f"DEBUG FDB TYPE: Original field_type='{original_field_type_for_debug}', Lookup field_type='{lookup_field_type}', Result='{base_type}'")
         
         # Spezielle Behandlung für verschiedene Typen
         if field_type == 14:  # CHAR

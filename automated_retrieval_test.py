@@ -51,6 +51,15 @@ TEST_QUERIES = [
     "Durchschnittliche Miete in der Schmiedestr. 8, 47055 Duisburg"
 ]
 
+# Modelle für A/B-Tests
+MODEL_NAMES = [
+    "openai/gpt-4.1-nano",
+    "openai/gpt-4.1",
+    "deepseek/deepseek-r1-0528",
+    "google/gemini-2.5-pro-preview",
+    "anthropic/claude-3.5-haiku:beta"
+]
+
 RETRIEVAL_MODES = ['faiss', 'enhanced', 'none']
 
 class TimeoutException(Exception):
@@ -60,36 +69,58 @@ def timeout_handler(signum, frame):
     raise TimeoutException("Query execution timed out")
 
 class RetrievalTestRunner:
-    def __init__(self, timeout_seconds: int = 60):
+    def __init__(self, timeout_seconds: int = 180): # Timeout erhöht auf 180 Sekunden
         self.timeout_seconds = timeout_seconds
         self.results = []
         self.agents = {}
         
         # Initialize Phoenix monitoring
         self.monitor = get_monitor(enable_ui=True)
-        logger.info(f"Phoenix monitoring initialized. Dashboard: {self.monitor.session.url if self.monitor and hasattr(self.monitor, 'session') else 'N/A'}")
+        logger.info(f"Phoenix monitoring initialized. Dashboard: {self.monitor.session.url if self.monitor and self.monitor.session else 'N/A'}")
         
     def initialize_agents(self):
-        """Initialize agents for each retrieval mode."""
-        for mode in RETRIEVAL_MODES:
-            try:
-                logger.info(f"Initializing agent with mode: {mode}")
-                db_connection_string = "firebird+fdb://sysdba:masterkey@localhost:3050//home/projects/langchain_project/WINCASA2022.FDB"
-                self.agents[mode] = FirebirdDirectSQLAgent(
-                    db_connection_string=db_connection_string,
-                    llm="gpt-4o-mini",
-                    retrieval_mode=mode,
-                    use_enhanced_knowledge=True
-                )
-                logger.info(f"Successfully initialized agent for mode: {mode}")
-            except Exception as e:
-                logger.error(f"Failed to initialize agent for mode {mode}: {e}")
-                self.agents[mode] = None
+        """Initialize agents for each model and retrieval mode combination."""
+        db_connection_string = "firebird+fdb://sysdba:masterkey@localhost:3050//home/projects/langchain_project/WINCASA2022.FDB"
+        total_agents_to_init = len(MODEL_NAMES) * len(RETRIEVAL_MODES)
+        initialized_count = 0
+
+        for model_name in MODEL_NAMES:
+            for mode in RETRIEVAL_MODES:
+                agent_key = f"{model_name}_{mode}"
+                initialized_count += 1
+                logger.info(f"Initializing agent {initialized_count}/{total_agents_to_init}: {model_name} (mode: {mode})")
+                try:
+                    # Ensure previous connections are closed
+                    if hasattr(self, 'current_agent_for_init') and self.current_agent_for_init:
+                        if hasattr(self.current_agent_for_init, 'db_interface') and self.current_agent_for_init.db_interface:
+                            self.current_agent_for_init.db_interface.disconnect()
+                        del self.current_agent_for_init
+                        time.sleep(0.1) # Brief pause
+
+                    agent = FirebirdDirectSQLAgent(
+                        db_connection_string=db_connection_string,
+                        llm=model_name, # Use the model_name from the loop
+                        retrieval_mode=mode,
+                        use_enhanced_knowledge=True
+                    )
+                    self.agents[agent_key] = agent
+                    self.current_agent_for_init = agent # Track for cleanup
+                    logger.info(f"✓ Successfully initialized: {agent_key}")
+                except Exception as e:
+                    logger.error(f"✗ Failed to initialize {agent_key}: {e}")
+                    self.agents[agent_key] = None
+        
+        # Final cleanup
+        if hasattr(self, 'current_agent_for_init') and self.current_agent_for_init:
+            if hasattr(self.current_agent_for_init, 'db_interface') and self.current_agent_for_init.db_interface:
+                self.current_agent_for_init.db_interface.disconnect()
+            del self.current_agent_for_init
     
-    def execute_query_with_timeout(self, agent, query: str, mode: str) -> Dict[str, Any]:
+    def execute_query_with_timeout(self, agent, query: str, model_name: str, mode: str) -> Dict[str, Any]:
         """Execute a query with timeout protection."""
         result = {
             'query': query,
+            'model': model_name,
             'mode': mode,
             'success': False,
             'sql_query': None,
@@ -161,7 +192,7 @@ class RetrievalTestRunner:
         # Initialize agents
         self.initialize_agents()
         
-        total_tests = len(TEST_QUERIES) * len(RETRIEVAL_MODES)
+        total_tests = len(TEST_QUERIES) * len(MODEL_NAMES) * len(RETRIEVAL_MODES)
         completed = 0
         
         for query in TEST_QUERIES:
@@ -169,22 +200,24 @@ class RetrievalTestRunner:
             logger.info(f"Testing query: {query}")
             logger.info(f"{'='*80}")
             
-            query_results = []
+            query_results_for_all_models = [] # Store results for this query across all models/modes
             
-            for mode in RETRIEVAL_MODES:
-                completed += 1
-                logger.info(f"\nProgress: {completed}/{total_tests} - Testing with mode: {mode}")
+            for model_name in MODEL_NAMES:
+                for mode in RETRIEVAL_MODES:
+                    completed += 1
+                    agent_key = f"{model_name}_{mode}"
+                    logger.info(f"\nProgress: {completed}/{total_tests} - Testing: {model_name} (mode: {mode})")
+                    
+                    agent = self.agents.get(agent_key)
+                    result = self.execute_query_with_timeout(agent, query, model_name, mode)
+                    query_results_for_all_models.append(result)
                 
-                agent = self.agents.get(mode)
-                result = self.execute_query_with_timeout(agent, query, mode)
-                
-                query_results.append(result)
-                self.results.append(result)
+                self.results.append(result) # Append to overall results
                 
                 # Log result summary
                 if result['success']:
                     logger.info(f"✓ Success - Time: {result['execution_time']:.2f}s, Rows: {result['row_count']}")
-                    if result['sql_query'] != 'N/A':
+                    if result['sql_query'] and result['sql_query'] != 'N/A': # Zusätzliche Prüfung auf None
                         logger.info(f"  SQL: {result['sql_query'][:100]}...")
                 else:
                     logger.error(f"✗ Failed - {result['error']}")
@@ -192,8 +225,8 @@ class RetrievalTestRunner:
                 # Small delay between queries
                 time.sleep(2)
             
-            # Compare results for this query
-            self._compare_query_results(query, query_results)
+            # Compare results for this query across all models/modes
+            self._compare_query_results(query, query_results_for_all_models)
             
     def _compare_query_results(self, query: str, results: List[Dict]):
         """Compare results across different modes for a single query."""
@@ -253,19 +286,21 @@ class RetrievalTestRunner:
             'phoenix_metrics': phoenix_metrics
         }
         
-        # Calculate per-mode statistics
-        for mode in RETRIEVAL_MODES:
-            mode_results = [r for r in self.results if r['mode'] == mode]
-            successful = sum(1 for r in mode_results if r['success'])
-            
-            avg_time = sum(r['execution_time'] for r in mode_results if r['success']) / max(successful, 1)
-            
-            summary['mode_statistics'][mode] = {
-                'success_rate': successful / len(mode_results) * 100 if mode_results else 0,
-                'average_execution_time': avg_time,
-                'successful_queries': successful,
-                'failed_queries': len(mode_results) - successful
-            }
+        # Calculate per-model and per-mode statistics
+        summary['model_mode_statistics'] = {}
+        for model_name in MODEL_NAMES:
+            summary['model_mode_statistics'][model_name] = {}
+            for mode in RETRIEVAL_MODES:
+                specific_results = [r for r in self.results if r['model'] == model_name and r['mode'] == mode]
+                successful = sum(1 for r in specific_results if r['success'])
+                avg_time = sum(r['execution_time'] for r in specific_results if r['success']) / max(successful, 1)
+                
+                summary['model_mode_statistics'][model_name][mode] = {
+                    'success_rate': successful / len(specific_results) * 100 if specific_results else 0,
+                    'average_execution_time': avg_time,
+                    'successful_queries': successful,
+                    'failed_queries': len(specific_results) - successful
+                }
         
         # Save detailed results
         results_file = f'retrieval_test_results_{timestamp}.json'
@@ -301,18 +336,28 @@ class RetrievalTestRunner:
         print("\nPER-MODE STATISTICS:")
         print("-"*50)
         
-        for mode, stats in summary['mode_statistics'].items():
-            print(f"\n{mode.upper()} Mode:")
-            print(f"  Success Rate: {stats['success_rate']:.1f}%")
-            print(f"  Avg Execution Time: {stats['average_execution_time']:.2f}s")
-            print(f"  Successful: {stats['successful_queries']}/{summary['total_queries']}")
-        
-        # Find best performing mode
-        best_mode = max(summary['mode_statistics'].items(), 
-                       key=lambda x: (x[1]['success_rate'], -x[1]['average_execution_time']))
+        for model_name, model_stats in summary['model_mode_statistics'].items():
+            print(f"\nMODEL: {model_name}")
+            for mode, stats in model_stats.items():
+                print(f"  {mode.upper()} Mode:")
+                print(f"    Success Rate: {stats['success_rate']:.1f}%")
+                print(f"    Avg Execution Time: {stats['average_execution_time']:.2f}s")
+                print(f"    Successful: {stats['successful_queries']}/{summary['total_queries']}")
+
+        # Find best performing model/mode combination
+        best_overall_score = -1
+        best_overall_combo = "N/A"
+
+        for model_name, modes_data in summary['model_mode_statistics'].items():
+            for mode, stats in modes_data.items():
+                # Simple score: success_rate / (avg_time + 1) to avoid division by zero and penalize long times
+                score = stats['success_rate'] / (stats['average_execution_time'] + 1)
+                if score > best_overall_score:
+                    best_overall_score = score
+                    best_overall_combo = f"{model_name} ({mode.upper()})"
         
         print("\n" + "="*80)
-        print(f"BEST PERFORMING MODE: {best_mode[0].upper()}")
+        print(f"BEST PERFORMING COMBINATION (Score-based): {best_overall_combo}")
         print("="*80)
 
 

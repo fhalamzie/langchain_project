@@ -488,13 +488,19 @@ class FirebirdDirectSQLAgent:
             
             # System-Nachricht für den Agent mit erweitertem Datenbankwissen
             if self.use_enhanced_knowledge:
-                # Lade kompakten Datenbankkontext
-                kb_path = Path("output/database_context_prompt.txt")
-                if kb_path.exists():
-                    with open(kb_path, 'r', encoding='utf-8') as f:
-                        db_context = f.read()
-                else:
-                    db_context = "Datenbank: WINCASA Property Management System"
+                # Lade kompakten Datenbankkontext - jetzt mit hybridem Ansatz
+                try:
+                    from global_context import get_compact_global_context
+                    db_context = get_compact_global_context()
+                    print("✅ Loaded hybrid global context for SQL agent")
+                except ImportError:
+                    print("⚠️ Global context module not available, using fallback")
+                    kb_path = Path("output/database_context_prompt.txt")
+                    if kb_path.exists():
+                        with open(kb_path, 'r', encoding='utf-8') as f:
+                            db_context = f.read()
+                    else:
+                        db_context = "Datenbank: WINCASA Property Management System"
                 
                 system_message = f"""
 Du bist ein Experte für das WINCASA Property Management Firebird SQL-Datenbanksystem.
@@ -801,6 +807,18 @@ Thought:{agent_scratchpad}"""
             print(f"Retrieved context ({len(retrieved_docs)} docs):\n{doc_context_str[:500]}...")
         else:
             print("No relevant documentation context found.")
+            # Fallback: add data patterns if available for query understanding
+            try:
+                data_patterns_file = Path("output/data_context_summary.txt")
+                if data_patterns_file.exists():
+                    data_patterns = data_patterns_file.read_text(encoding='utf-8')
+                    doc_context_str = f"--- Source: Data Patterns (Fallback) ---\n{data_patterns[:1000]}..."
+                    print("✅ Using data patterns as fallback context")
+                else:
+                    doc_context_str = ""
+            except Exception as e:
+                print(f"⚠️ Could not load data patterns: {e}")
+                doc_context_str = ""
         
         # Erweiterte Abfrage für den Agent mit Preprocessing-Informationen
         query_to_send = natural_language_query

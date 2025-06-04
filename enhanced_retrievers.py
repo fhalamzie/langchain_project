@@ -114,7 +114,11 @@ class EnhancedMultiStageRetriever(BaseDocumentationRetriever):
         self.model_name = model_name
         
         # Initialize embeddings model
-        self.embeddings_model = OpenAIEmbeddings(openai_api_key=openai_api_key)
+        self.embeddings_model = OpenAIEmbeddings(
+            model="text-embedding-3-large",
+            openai_api_key=openai_api_key,
+            dimensions=3072  # Maximale Dimensionen für bessere Leistung
+        )
         
         # Initialize base retriever
         self.base_retriever = FaissDocumentationRetriever(
