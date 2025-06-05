@@ -19,11 +19,16 @@ from pathlib import Path
 archive_path = Path(__file__).parent / "archive"
 sys.path.insert(0, str(archive_path))
 
-from tag_synthesizer import QuerySynthesizer, SynthesisResult
+# Import adaptive components
+from adaptive_tag_synthesizer import AdaptiveTAGSynthesizer, AdaptiveSynthesisResult
+
+# Fallback imports from archive
 from tag_generator import ResponseGenerator, GenerationResult
-from sql_validator import SQLValidator, ValidationResult
 from optimized_system_prompt import OPTIMIZED_SYSTEM_PROMPT
 from focused_embeddings import FocusedEmbeddingSystem
+
+# Use simple SQL validator instead of sqlglot-dependent one
+from simple_sql_validator import SimpleSQLValidator, ValidationResult
 
 logger = logging.getLogger(__name__)
 
@@ -35,7 +40,7 @@ class TAGResult:
     sql: str
     raw_results: List[Dict]
     response: str
-    synthesis_info: SynthesisResult
+    synthesis_info: AdaptiveSynthesisResult
     validation_info: Optional[ValidationResult] = None
     execution_time: float = 0.0
     error: Optional[str] = None
@@ -43,15 +48,18 @@ class TAGResult:
 
 class TAGPipeline:
     """
-    TAG Pipeline orchestrates the complete query processing flow.
+    Adaptive TAG Pipeline with ML-based classification and dynamic schema discovery.
     
-    Key innovation: Replaces overwhelming 498 YAML context with
-    focused, query-type-specific schemas delivered precisely when needed.
+    Key innovations:
+    1. ML-based query classification instead of rule-based patterns
+    2. Dynamic schema discovery that learns from successful queries
+    3. Extended query type coverage (10+ types vs original 5)
+    4. Confidence-based fallback strategies
     """
     
     def __init__(self, llm, db_executor, available_tables: List[str]):
         """
-        Initialize TAG Pipeline with required components.
+        Initialize Adaptive TAG Pipeline with enhanced components.
         
         Args:
             llm: Language model for SQL generation
@@ -62,13 +70,16 @@ class TAGPipeline:
         self.db_executor = db_executor
         self.available_tables = available_tables
         
-        # Initialize TAG components
-        self.synthesizer = QuerySynthesizer()
-        self.validator = SQLValidator()
+        # Create schema info for adaptive components
+        schema_info = {"tables": {table: {} for table in available_tables}}
+        
+        # Initialize adaptive TAG components
+        self.synthesizer = AdaptiveTAGSynthesizer(schema_info)
+        self.validator = SimpleSQLValidator()
         self.generator = ResponseGenerator()
         self.embedding_system = FocusedEmbeddingSystem()
         
-        logger.info("TAG Pipeline initialized with %d available tables", 
+        logger.info("Adaptive TAG Pipeline initialized with %d available tables", 
                    len(available_tables))
     
     def process(self, query: str) -> TAGResult:
@@ -85,20 +96,20 @@ class TAGPipeline:
         start_time = time.time()
         
         try:
-            # Phase 1: SYN (Synthesis) - Classify and get targeted context
-            logger.info("TAG Phase 1: Synthesis for query: %s", query)
+            # Phase 1: Adaptive SYN (Synthesis) - ML classification and dynamic schema discovery
+            logger.info("Adaptive TAG Phase 1: ML Synthesis for query: %s", query)
             synthesis = self.synthesizer.synthesize(query)
             
-            # Get focused context for needed tables only
-            needed_tables = synthesis.schema_context.get("primary_tables", [])
+            # Get dynamically discovered relevant tables
+            needed_tables = synthesis.dynamic_tables
             detailed_context = self.embedding_system.retrieve_table_details(needed_tables)
             
-            # Generate SQL with focused prompt + targeted details
-            focused_prompt = OPTIMIZED_SYSTEM_PROMPT + "\n\nRELEVANT TABLE DETAILS:\n" + detailed_context
+            # Generate enhanced prompt with ML insights
+            enhanced_prompt = self._build_enhanced_prompt(synthesis, detailed_context)
             
-            # Use LLM to generate SQL
+            # Use LLM to generate SQL with enhanced context
             messages = [
-                {"role": "system", "content": focused_prompt},
+                {"role": "system", "content": enhanced_prompt},
                 {"role": "user", "content": f"Generate SQL for: {query}"}
             ]
             
@@ -125,7 +136,7 @@ class TAGPipeline:
             results = self._execute_sql(final_sql)
             
             # Phase 3: GEN (Generation) - Format response
-            logger.info("TAG Phase 3: Generating response")
+            logger.info("Adaptive TAG Phase 3: Generating response")
             response = self.generator.generate(
                 results, 
                 synthesis.query_type, 
@@ -133,6 +144,10 @@ class TAGPipeline:
             )
             
             execution_time = time.time() - start_time
+            
+            # Learn from this execution for future improvements
+            success = len(results) > 0 and not validation or validation.valid
+            self.synthesizer.learn_from_success(query, synthesis.query_type, final_sql, success)
             
             return TAGResult(
                 query=query,
@@ -148,19 +163,24 @@ class TAGPipeline:
             logger.error("TAG Pipeline error: %s", str(e))
             execution_time = time.time() - start_time
             
-            # Return error result
+            # Return error result with adaptive synthesis structure
+            from adaptive_tag_synthesizer import AdaptiveSynthesisResult
+            
             return TAGResult(
                 query=query,
                 sql="",
                 raw_results=[],
                 response=f"Fehler bei der Verarbeitung: {str(e)}",
-                synthesis_info=SynthesisResult(
+                synthesis_info=AdaptiveSynthesisResult(
                     sql="",
                     query_type="error",
                     entities=[],
                     schema_context={},
                     confidence=0.0,
-                    reasoning="Pipeline error"
+                    reasoning="Pipeline error",
+                    alternatives=[],
+                    dynamic_tables=[],
+                    relationship_map={}
                 ),
                 execution_time=execution_time,
                 error=str(e)
@@ -203,15 +223,60 @@ class TAGPipeline:
             logger.error("SQL execution error: %s", str(e))
             raise
     
+    def _build_enhanced_prompt(self, synthesis: AdaptiveSynthesisResult, detailed_context: str) -> str:
+        """
+        Build enhanced prompt with ML classification insights and dynamic schema discovery.
+        
+        Args:
+            synthesis: Adaptive synthesis result with ML classification
+            detailed_context: Retrieved table details
+            
+        Returns:
+            Enhanced system prompt
+        """
+        base_prompt = OPTIMIZED_SYSTEM_PROMPT
+        
+        # Add ML classification insights
+        ml_insights = f"""
+ML CLASSIFICATION INSIGHTS:
+- Query Type: {synthesis.query_type} (confidence: {synthesis.confidence:.3f})
+- Extracted Entities: {', '.join(synthesis.entities)}
+- Alternative Classifications: {', '.join([f"{alt[0]}({alt[1]:.2f})" for alt in synthesis.alternatives[:2]])}
+- Reasoning: {synthesis.reasoning}
+
+DYNAMIC SCHEMA DISCOVERY:
+- Relevant Tables: {', '.join(synthesis.dynamic_tables)}
+- Table Relationships: {synthesis.relationship_map}
+- Query Type Schema: {synthesis.schema_context.get('description', 'N/A')}
+
+CRITICAL RULES FROM ML ANALYSIS:
+{chr(10).join(f"- {rule}" for rule in synthesis.schema_context.get('critical_rules', []))}
+"""
+        
+        # Add focused table details
+        table_details = f"\nRELEVANT TABLE DETAILS:\n{detailed_context}"
+        
+        # Combine all components
+        enhanced_prompt = base_prompt + ml_insights + table_details
+        
+        return enhanced_prompt
+    
     def get_performance_metrics(self) -> Dict[str, Any]:
-        """Get performance metrics for monitoring."""
-        return {
-            "pipeline": "TAG",
+        """Get enhanced performance metrics for adaptive TAG pipeline."""
+        base_metrics = {
+            "pipeline": "Adaptive TAG",
             "components": {
-                "synthesizer": "active",
+                "synthesizer": "adaptive_ml",
                 "validator": "active", 
                 "generator": "active",
                 "embedding_system": "focused"
             },
             "tables_available": len(self.available_tables)
         }
+        
+        # Add adaptive synthesizer metrics
+        if hasattr(self.synthesizer, 'classifier'):
+            classifier_metrics = self.synthesizer.classifier.get_performance_metrics()
+            base_metrics["ml_classification"] = classifier_metrics
+        
+        return base_metrics

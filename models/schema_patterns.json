@@ -1,0 +1,15 @@
+{
+  "relationships": {
+    "BEWOHNER": [],
+    "WOHNUNG": []
+  },
+  "patterns": {
+    "resident_lookup": [
+      "BEWOHNER"
+    ],
+    "count_queries": [
+      "WOHNUNG"
+    ]
+  },
+  "updated_at": "None"
+}
