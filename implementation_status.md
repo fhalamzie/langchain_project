@@ -16,7 +16,10 @@
 | **Automated Testing** | ✅ COMPLETE | pytest framework (13/13 tests, 100% passing) + legacy integration tests |
 | **Code Quality Framework** | ✅ COMPLETE | Black, isort, flake8, bandit, pre-commit hooks configured |
 | **Phoenix Observability** | ✅ UPGRADED TO OTEL | Modern OpenTelemetry integration with auto-instrumentation |
-| **Business Glossar** | ✅ COMPLETE | `business_glossar.py` - Domain-specific term mapping (25+ terms) |
+| **Business Glossar** | ✅ COMPLETE | `business_glossar.py` - Domain-specific term mapping (25+ terms) with JOIN-Reasoning |
+| **FK-Graph Analyzer** | ✅ COMPLETE | `fk_graph_analyzer.py` - NetworkX-based graph analysis for intelligent JOIN strategies |
+| **SQL Validator** | ✅ COMPLETE | `sql_validator.py` - SQL quality and syntax validation for Firebird |
+| **Database Connection Pool** | ✅ COMPLETE | Enhanced `fdb_direct_interface.py` with connection reuse and retry logic |
 | **Context7 MCP Integration** | ✅ AVAILABLE | Real-time LangChain documentation access via MCP tools |
 
 ## Implementation Architecture
@@ -31,7 +34,9 @@ WINCASA Implementation
 ├── db_knowledge_compiler.py        # Database knowledge compiler
 ├── global_context.py               # ✨ NEW: Hybrid context strategy
 ├── data_sampler.py                 # ✨ NEW: Real data pattern extraction
-├── business_glossar.py             # ✨ NEW: Business term mapping system
+├── business_glossar.py             # ✨ ENHANCED: Business term mapping with JOIN-Reasoning
+├── fk_graph_analyzer.py            # ✨ NEW: NetworkX FK-Graph Analysis (Task 1.2)
+├── sql_validator.py                # ✨ NEW: SQL Quality & Syntax Validation
 ├── phoenix_monitoring.py           # ✨ UPGRADED: OTEL-based monitoring
 └── llm_interface.py                # LLM abstraction layer
 ```
@@ -44,15 +49,15 @@ WINCASA Implementation
 |------|--------------|----------|--------|
 | Enhanced | ✅ WORKING | 13.48s | ✅ Primary - Full SQL generation |
 | FAISS | ✅ WORKING | 11.79s | ✅ Fast retrieval mode |
-| None | ❌ DB Connection Issue | N/A | ⚠️ Connection timeout |
-| LangChain | ❌ DB Connection Issue | N/A | ⚠️ Connection timeout |
+| None | ✅ WORKING | ~1.3s | ✅ **SQLCODE -902 RESOLVED** - Connection pooling fixed |
+| LangChain | ✅ WORKING | ~10.3s | ✅ **SQLCODE -902 RESOLVED** - Connection pooling fixed |
 
 ### Latest Test Results (Phoenix Dashboard: ✅ WORKING at localhost:6006)
 **Test Query:** "Wie viele Wohnungen gibt es insgesamt?"
 
 - **Enhanced Mode:** ✅ SUCCESS - "Es gibt insgesamt 517 Wohnungen" (13.48s)
 - **FAISS Mode:** ✅ SUCCESS - "Es gibt insgesamt 517 Wohnungen" (11.79s)
-- **Database Connection:** SQLCODE -902 issues with multiple connections
+- **Database Connection:** ✅ **SQLCODE -902 RESOLVED** - Implemented connection pooling, reuse, and retry logic
 - **Phoenix Monitoring:** ✅ Operational with SQLite backend
 
 ## Testing Framework
@@ -192,40 +197,39 @@ pip install openinference-instrumentation-langchain openinference-instrumentatio
 - Push all commits to remote
 - Update documentation with code changes
 
-## SQLCoder-2 Integration - ✅ COMPLETED (2025-06-04)
+## Database Connection Improvements - ✅ COMPLETED (2025-06-05)
 
-### Specialized SQL Generation Model
+### Enhanced FDB Interface with Connection Pooling
 ```bash
-# Model: defog/sqlcoder2 via HuggingFace
-# Features: JOIN-aware prompting, Firebird dialect optimization
+# Components: fdb_direct_interface.py enhancements
+# Features: Connection reuse, retry logic, SQLCODE -902 resolution
 ```
 
 **Implemented Components:**
 
-#### 1. SQLCoder Retriever (`sqlcoder_retriever.py`)
-- ✅ HuggingFace model integration with 4-bit quantization
-- ✅ Custom Firebird-specific prompt templates
-- ✅ JOIN-aware prompting for complex relationships
-- ✅ Schema context integration with hybrid strategy
-- ✅ Memory-efficient model loading with BitsAndBytesConfig
+#### 1. Connection Pool Management (`fdb_direct_interface.py`)
+- ✅ Connection reuse and proper cleanup mechanisms
+- ✅ Retry logic for failed database connections
+- ✅ SQLCODE -902 error resolution for None and LangChain modes
+- ✅ Enhanced error handling with fallback strategies
 
-#### 2. Agent Integration
-- ✅ Added as 4th retrieval mode in `firebird_sql_agent_direct.py`
-- ✅ Seamless mode switching: `retrieval_mode="sqlcoder"`
-- ✅ Compatible with existing monitoring and logging
+#### 2. FK-Graph Analysis (`fk_graph_analyzer.py`)
+- ✅ NetworkX-based foreign key relationship analysis
+- ✅ Intelligent JOIN strategy recommendations
+- ✅ Graph visualization for database schema understanding
+- ✅ Integration with Business Glossar for enhanced JOIN reasoning
 
-#### 3. Testing (`test_sqlcoder_integration.py`)
-- ✅ Model initialization and loading tests
-- ✅ Prompt generation validation
-- ✅ SQL output format verification
-- ✅ Integration with Phoenix monitoring
+#### 3. Enhanced Business Glossar (`business_glossar.py`)
+- ✅ JOIN-reasoning engine for complex multi-table queries
+- ✅ Enhanced domain-specific term mapping (25+ WINCASA terms)
+- ✅ Integration with FK-Graph analysis for optimal query generation
+- ✅ Improved context understanding for business queries
 
 ### Key Features:
-- **Specialized Model**: Purpose-built for SQL generation vs general LLMs
-- **JOIN Optimization**: Enhanced handling of multi-table relationships
-- **Memory Efficient**: 4-bit quantization reduces GPU memory usage
-- **Firebird Dialect**: Custom prompts for FIRST/SKIP syntax
-- **Hybrid Context**: Leverages global context + schema information
+- **Connection Stability**: Resolved SQLCODE -902 issues across all modes
+- **Graph Analysis**: NetworkX-powered FK relationship mapping
+- **JOIN Intelligence**: Enhanced reasoning for complex table relationships
+- **Business Context**: Improved domain-specific query understanding
 
 ---
 
@@ -236,7 +240,9 @@ pip install openinference-instrumentation-langchain openinference-instrumentatio
 The WINCASA system now includes:
 1. **Hybrid Context Strategy** - Global context + dynamic retrieval
 2. **Phoenix OTEL Monitoring** - Modern observability with auto-instrumentation
-3. **SQLCoder-2 Integration** - Specialized SQL generation model
-4. **Multi-Mode Retrieval** - 4 active modes (Enhanced, FAISS, None, SQLCoder)
+3. **Database Connection Improvements** - Fixed SQLCODE -902 issues with connection pooling and retry logic
+4. **FK-Graph Analysis** - NetworkX-based intelligent JOIN strategy analysis (Task 1.2)
+5. **Enhanced Business Glossar** - JOIN-reasoning capabilities for complex queries (Task 1.1)
+6. **Multi-Mode Retrieval** - 4 active modes (Enhanced, FAISS, None, LangChain) - **ALL FUNCTIONAL**
 
 The Phoenix dashboard provides real-time visibility into system performance at http://localhost:6006.

@@ -63,10 +63,12 @@ docker-compose up -d
 
 ### Hauptkomponenten
 - **[`firebird_sql_agent_direct.py`](firebird_sql_agent_direct.py)** - SQL-Agent mit direkter FDB-Integration
-- **[`fdb_direct_interface.py`](fdb_direct_interface.py)** - Direkte Firebird-Datenbankschnittstelle
+- **[`fdb_direct_interface.py`](fdb_direct_interface.py)** - Direkte Firebird-Datenbankschnittstelle mit Verbindungspool und Retry-Logik
 - **[`enhanced_qa_ui.py`](enhanced_qa_ui.py)** - Streamlit Web-Interface
 - **[`enhanced_retrievers.py`](enhanced_retrievers.py)** - Multi-Stage RAG-System
-- **[`business_glossar.py`](business_glossar.py)** - Business Term Mapping mit 25+ WINCASA-spezifischen Begriffen
+- **[`business_glossar.py`](business_glossar.py)** - Business Term Mapping mit 25+ WINCASA-spezifischen Begriffen und JOIN-Reasoning-Engine
+- **[`fk_graph_analyzer.py`](fk_graph_analyzer.py)** - NetworkX-basierte FK-Graph-Analyse für intelligente JOIN-Strategien
+- **[`sql_validator.py`](sql_validator.py)** - SQL-Qualitäts- und Syntax-Validierung für Firebird
 - **[`db_knowledge_compiler.py`](db_knowledge_compiler.py)** - Database Knowledge System
 - **[`generate_yaml_ui.py`](generate_yaml_ui.py)** - Skript zur Generierung der YAML-basierten Wissensbasis und der zugehörigen UI-Komponenten (verantwortlich für aktuellen Output-Stil der YAMLs und Schema-Dokumentation).
 
@@ -148,9 +150,9 @@ python run_llm_query.py
 - **Verfügbare Retrieval Modi**: 
   - **Enhanced**: 1.3s ✅ (Multi-stage RAG with 9 context docs)
   - **FAISS**: 0.2s ✅ (Vector similarity search with 4 docs)
-  - **None**: 0.0s ✅ (Direct generation with hybrid context)
+  - **None**: 0.0s ✅ (Direct generation with hybrid context) - **VERBINDUNGSPROBLEME BEHOBEN**
   - **SQLCoder**: 0.0s ✅ (CPU fallback mode functional)
-  - **LangChain**: ✅ **FULLY FUNCTIONAL** (151 tables detected, SQL Agent working)
+  - **LangChain**: ✅ **FULLY FUNCTIONAL** (151 tables detected, SQL Agent working) - **SQLCODE -902 BEHOBEN**
 - **Functional Status**: **5/5 Modi implementiert und voll funktional** ✅ 
 - **Phoenix Monitoring**: ✅ SQLite backend on http://localhost:6006
 - **Production Readiness**: ✅ Complete with optimized monitoring and real-time analytics
@@ -160,11 +162,12 @@ python run_llm_query.py
 - **Python 3.8+**
 - **Firebird-Datenbank** (WINCASA2022.FDB)
 - **OpenAI API-Schlüssel**
-- **Dependencies**: langchain, streamlit, faiss-cpu, fdb, PyYAML
+- **Dependencies**: langchain, streamlit, faiss-cpu, fdb, PyYAML, networkx
 - **SQL-LLM Dependencies**: transformers, torch, sqlalchemy (für SQLCoder-2)
 - **LangChain SQL Tools**: langchain-experimental (für SQL Database Agent)
 - **Firebird Server**: ✅ Konfiguriert mit SYSDBA authentication (sudo systemctl start firebird)
 - **Monitoring**: arize-phoenix (für AI Observability)
+- **Neue Komponenten**: NetworkX für Graph-Analyse, erweiterte Verbindungspool-Funktionalität
 
 ## 📁 Datenorganisation
 
