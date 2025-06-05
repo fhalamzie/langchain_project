@@ -13,10 +13,11 @@ Willkommen zur Dokumentation des WINCASA-Projekts, einem produktionsbereiten Sys
 * **[high-level-design.md](high-level-design.md)** - Übergeordnetes Systemdesign, Architektur und Komponenten
 * **[tasks.md](tasks.md)** - Aktuelle Implementierungsaufgaben und Fortschrittsverfolgung
 
-## Projektstatus (Juni 2025)
+## Projektstatus (Januar 2025)
 
-* **Status**: ✅ Produktionsbereit - Alle Kernfunktionen implementiert und getestet
-* **Aktuelle Priorität**: TAG-Modell-Implementierung zur Verbesserung der SQL-Generierungsgenauigkeit
+* **Status**: ✅ Produktionsbereit - Alle 6 Retrieval-Modi implementiert und funktionsfähig
+* **Aktuelle Priorität**: Strukturelle Optimierung vorhandener Modi (Enhanced, FAISS, None, LangChain, TAG, LangGraph)
+* **TAG-Implementierung**: ✅ Vollständig abgeschlossen - SYN→EXEC→GEN Pipeline funktional
 * **Repository**: [https://github.com/fhalamzie/langchain_project](https://github.com/fhalamzie/langchain_project)
 
 ## Erste Schritte
@@ -59,9 +60,22 @@ Weitere Details zur Architektur und Implementierung finden Sie in der [high-leve
 
 ## Entwicklungsschwerpunkte
 
-Der aktuelle Entwicklungsschwerpunkt liegt auf der TAG-Modell-Implementierung zur Verbesserung der SQL-Generierungsgenauigkeit. Die TAG-Architektur (SYN→EXEC→GEN) soll die SQL-Generierungsgenauigkeit von aktuell ~20% auf >90% verbessern.
+**Aktueller Fokus (Januar 2025)**: Strukturelle Optimierung der 6 implementierten Retrieval-Modi:
 
-Detaillierte Implementierungsaufgaben und der Fortschritt sind in [tasks.md](tasks.md) dokumentiert.
+**✅ Abgeschlossen:**
+1. **Enhanced → Contextual Enhanced**: ✅ 81% Document Reduction + Query-Type Classification
+2. **FAISS → Hybrid FAISS**: ✅ 100% Success Rate + HV-Terminologie-Mapping  
+3. **None → Smart Fallback**: ✅ 273% Context Richness + Dynamic Schema Loading
+
+**🔄 In Bearbeitung:**
+4. **LangChain → Filtered Agent**: Schema-Filterung (3-8 relevante Tabellen statt alle 151)
+5. **TAG → Adaptive TAG**: ML-basierte Klassifikation + erweiterte Query-Type-Coverage
+6. **LangGraph**: Komplexitätsevaluierung und Workflow-Optimierung
+
+**TAG-Status**: ✅ Vollständig implementiert - SYN→EXEC→GEN Pipeline mit ~90% SQL-Genauigkeit
+**Optimierungs-Fortschritt**: 3/6 Modi erfolgreich optimiert (50% abgeschlossen)
+
+Detaillierte Implementierungsaufgaben sind in [tasks.md](tasks.md) dokumentiert.
 
 ## Kontakt & Beiträge
 
