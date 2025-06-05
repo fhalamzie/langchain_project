@@ -16,8 +16,8 @@
 | **Automated Testing** | ✅ COMPLETE | pytest framework (13/13 tests, 100% passing) + legacy integration tests |
 | **Code Quality Framework** | ✅ COMPLETE | Black, isort, flake8, bandit, pre-commit hooks configured |
 | **Phoenix Observability** | ✅ UPGRADED TO OTEL | Modern OpenTelemetry integration with auto-instrumentation |
-| **SQLCoder-2 Integration** | ✅ COMPLETE | `sqlcoder_retriever.py` - JOIN-aware SQL generation |
 | **Business Glossar** | ✅ COMPLETE | `business_glossar.py` - Domain-specific term mapping (25+ terms) |
+| **Context7 MCP Integration** | ✅ AVAILABLE | Real-time LangChain documentation access via MCP tools |
 
 ## Implementation Architecture
 
@@ -31,23 +31,29 @@ WINCASA Implementation
 ├── db_knowledge_compiler.py        # Database knowledge compiler
 ├── global_context.py               # ✨ NEW: Hybrid context strategy
 ├── data_sampler.py                 # ✨ NEW: Real data pattern extraction
-├── sqlcoder_retriever.py           # ✨ NEW: SQLCoder-2 integration
 ├── business_glossar.py             # ✨ NEW: Business term mapping system
 ├── phoenix_monitoring.py           # ✨ UPGRADED: OTEL-based monitoring
 └── llm_interface.py                # LLM abstraction layer
 ```
 
-## Test Results
+## Test Results (Updated 2025-06-05)
 
 ### Retrieval Mode Performance
 
 | Mode | Success Rate | Avg Time | Status |
 |------|--------------|----------|--------|
-| Enhanced | 63.6% (7/11) | 22.5s | ✅ Primary |
-| None | 63.6% (7/11) | 20.8s | ✅ Backup |
-| FAISS | 63.6% (7/11) | 34.6s | ⚠️ Specialist |
-| SQLCoder | ✅ IMPLEMENTED | TBD | ✅ SQL-Specialist |
-| LangChain | 🚧 IN PROGRESS | TBD | 🚧 Development |
+| Enhanced | ✅ WORKING | 13.48s | ✅ Primary - Full SQL generation |
+| FAISS | ✅ WORKING | 11.79s | ✅ Fast retrieval mode |
+| None | ❌ DB Connection Issue | N/A | ⚠️ Connection timeout |
+| LangChain | ❌ DB Connection Issue | N/A | ⚠️ Connection timeout |
+
+### Latest Test Results (Phoenix Dashboard: ✅ WORKING at localhost:6006)
+**Test Query:** "Wie viele Wohnungen gibt es insgesamt?"
+
+- **Enhanced Mode:** ✅ SUCCESS - "Es gibt insgesamt 517 Wohnungen" (13.48s)
+- **FAISS Mode:** ✅ SUCCESS - "Es gibt insgesamt 517 Wohnungen" (11.79s)
+- **Database Connection:** SQLCODE -902 issues with multiple connections
+- **Phoenix Monitoring:** ✅ Operational with SQLite backend
 
 ## Testing Framework
 
@@ -64,8 +70,6 @@ python test_hybrid_context_integration.py        # Integration validation
 python iterative_improvement_test.py             # Full 4-version analysis
 python quick_hybrid_context_test.py --concurrent # Quick performance test
 
-# ✨ NEW: SQLCoder-2 integration test
-python test_sqlcoder_integration.py              # SQLCoder model testing
 
 # ✨ NEW: Phoenix OTEL monitoring tests
 python test_phoenix_monitoring.py                # Core monitoring tests
