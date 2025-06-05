@@ -180,7 +180,7 @@ def pytest_configure(config):
     config.addinivalue_line("markers", "llm: Tests requiring LLM API access")
     config.addinivalue_line("markers", "phoenix: Tests for Phoenix monitoring")
     config.addinivalue_line("markers", "retrieval: Tests for retrieval modes")
-    config.addinivalue_line("markers", "context7: Tests for MCP Context7 integration")
+    config.addinivalue_line("markers", "langchain: Tests for LangChain integration")
 
 
 # Skip slow tests by default

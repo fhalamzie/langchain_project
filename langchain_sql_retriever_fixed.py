@@ -299,7 +299,7 @@ class LangChainSQLRetriever:
             self.fallback_mode = True
 
     def _create_agent(self):
-        """Create the LangChain SQL Database Agent with enhanced Context7 best practices"""
+        """Create the LangChain SQL Database Agent with enhanced LangChain best practices"""
         try:
             logger.info("🤖 Creating enhanced LangChain SQL Database Agent...")
 
@@ -350,7 +350,7 @@ Always examine the table schema before querying. Do NOT make any DML statements.
             # Create ReAct agent with enhanced system prompt and tools
             if LANGGRAPH_AVAILABLE:
                 try:
-                    # Based on Context7 documentation, create_react_agent expects model, tools, prompt parameters
+                    # Based on LangChain documentation, create_react_agent expects model, tools, prompt parameters
                     self.agent = create_react_agent(
                         model=self.llm,  # Changed from 'llm' to 'model'
                         tools=tools,
@@ -391,7 +391,7 @@ Always examine the table schema before querying. Do NOT make any DML statements.
 
     def _enhance_query_with_context(self, user_query: str) -> str:
         """
-        Enhance user query with WINCASA-specific context and Context7 best practices.
+        Enhance user query with WINCASA-specific context and LangChain best practices.
 
         Args:
             user_query: Original user query
@@ -563,7 +563,7 @@ Please answer the user's query step by step.
             "tables_available": table_count,
             "features": [
                 "Enhanced LangGraph ReAct Agent",
-                "Context7 best practices integration",
+                "LangChain best practices integration",
                 "Automatic schema introspection",
                 "Built-in error recovery",
                 "Chain-of-thought SQL reasoning",
@@ -634,9 +634,9 @@ class LangChainSQLRetrieverFallback:
 
 
 def test_langchain_sql_retriever():
-    """Test the enhanced LangChain SQL retriever with Context7 best practices"""
+    """Test the enhanced LangChain SQL retriever with LangChain best practices"""
     print("🧪 Testing Enhanced LangChain SQL Database Agent Retriever...")
-    print("✨ Featuring Context7 best practices and LangGraph ReAct Agent")
+    print("✨ Featuring LangChain best practices and LangGraph ReAct Agent")
 
     # Setup (server connection required for LangChain)
     db_connection = "firebird+fdb://sysdba:masterkey@localhost:3050/home/projects/langchain_project/WINCASA2022.FDB"

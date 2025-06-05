@@ -30,9 +30,13 @@ sqlalchemy>=2.0.0
 PyYAML>=6.0
 python-dotenv>=1.0.0
 networkx>=3.0
+sqlglot>=25.0.0
 
 # AI Observability
 arize-phoenix>=1.0.0
+
+# LangGraph for advanced workflows
+langgraph>=0.1.0
 
 # Development dependencies (optional)
 pytest>=7.0.0

@@ -4,16 +4,25 @@ import time
 from collections import deque
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
+import weakref
+import atexit
+import gc
 
-import fdb
+try:
+    import fdb
+    FDB_AVAILABLE = True
+except ImportError:
+    FDB_AVAILABLE = False
+    print("⚠️ FDB not available - Firebird interface will be disabled")
 from sqlalchemy.engine.url import make_url
 
 
-class ConnectionPool:
-    """Einfacher Thread-sicherer Verbindungspool für Firebird-Verbindungen."""
+if FDB_AVAILABLE:
+    class ConnectionPool:
+        """Enhanced thread-safe connection pool for Firebird connections with proper cleanup."""
 
     def __init__(
-        self, dsn: str, user: str, password: str, charset: str, max_size: int = 5
+        self, dsn: str, user: str, password: str, charset: str, max_size: int = 3
     ):
         self.dsn = dsn
         self.user = user
@@ -23,24 +32,57 @@ class ConnectionPool:
         self._pool = deque()
         self._lock = threading.Lock()
         self._active_connections = 0
+        self._connection_refs = weakref.WeakSet()  # Track connections for cleanup
+        self._closed = False
+        
+        # Register cleanup on process exit
+        atexit.register(self.close_all)
 
-    def get_connection(self, timeout: float = 5.0) -> fdb.Connection:
-        """Holt eine Verbindung aus dem Pool oder erstellt eine neue."""
+    def get_connection(self, timeout: float = 10.0) -> fdb.Connection:
+        """Gets a connection from pool or creates new one with enhanced error handling."""
+        if self._closed:
+            raise RuntimeError("Connection pool has been closed")
+            
         start_time = time.time()
         while time.time() - start_time < timeout:
             with self._lock:
-                if self._pool:
-                    return self._pool.popleft()
+                # Try to get a healthy connection from pool
+                while self._pool:
+                    conn = self._pool.popleft()
+                    if self._is_connection_healthy(conn):
+                        return conn
+                    else:
+                        # Connection is stale, close it
+                        try:
+                            conn.close()
+                        except:
+                            pass
+                        self._active_connections -= 1
+                
+                # Create new connection if under limit
                 if self._active_connections < self.max_size:
-                    self._active_connections += 1
-                    return self._create_new_connection()
-            time.sleep(0.1)
-        raise TimeoutError("Timeout beim Warten auf eine Datenbankverbindung")
+                    try:
+                        conn = self._create_new_connection()
+                        self._active_connections += 1
+                        self._connection_refs.add(conn)
+                        return conn
+                    except Exception as e:
+                        print(f"Failed to create new connection: {e}")
+                        
+            time.sleep(0.2)
+        raise TimeoutError(f"Timeout after {timeout}s waiting for database connection")
 
     def release_connection(self, conn: fdb.Connection):
-        """Gibt eine Verbindung an den Pool zurück."""
+        """Returns a connection to the pool with health checking."""
+        if self._closed:
+            try:
+                conn.close()
+            except:
+                pass
+            return
+            
         with self._lock:
-            if len(self._pool) < self.max_size:
+            if self._is_connection_healthy(conn) and len(self._pool) < self.max_size:
                 self._pool.append(conn)
             else:
                 try:
@@ -79,15 +121,42 @@ class ConnectionPool:
         except Exception as e:
             raise Exception(f"Weder Server- noch Embedded-Verbindung möglich: {e}")
 
+    def _is_connection_healthy(self, conn: fdb.Connection) -> bool:
+        """Checks if a connection is still healthy."""
+        try:
+            # Simple test query to check connection health
+            cursor = conn.cursor()
+            cursor.execute("SELECT 1 FROM RDB$DATABASE")
+            cursor.fetchone()
+            cursor.close()
+            return True
+        except:
+            return False
+    
     def close_all(self):
-        """Schließt alle Verbindungen im Pool."""
+        """Closes all connections in the pool and tracked connections."""
         with self._lock:
+            self._closed = True
+            
+            # Close pooled connections
             while self._pool:
                 try:
                     self._pool.popleft().close()
                 except:
                     pass
+            
+            # Close tracked connections
+            for conn in list(self._connection_refs):
+                try:
+                    conn.close()
+                except:
+                    pass
+            
             self._active_connections = 0
+            self._connection_refs.clear()
+            
+        # Force garbage collection
+        gc.collect()
 
 
 class FDBDirectInterface:
@@ -123,8 +192,8 @@ class FDBDirectInterface:
         # Firebird-Umgebungsvariablen setzen
         self._setup_firebird_environment()
 
-        # Verbindungspool initialisieren
-        self.pool = ConnectionPool(dsn, user, password, charset, pool_size)
+        # Verbindungspool initialisieren (reduced default pool size)
+        self.pool = ConnectionPool(dsn, user, password, charset, min(pool_size, 3))
 
         # Verbindung testen
         self._test_connection()
@@ -176,12 +245,21 @@ class FDBDirectInterface:
             raise
 
     def _get_connection(self):
-        """Holt eine Verbindung aus dem Pool."""
-        return self.pool.get_connection()
+        """Gets a connection from the pool with retry logic."""
+        max_retries = 3
+        for attempt in range(max_retries):
+            try:
+                return self.pool.get_connection(timeout=15.0)
+            except Exception as e:
+                if attempt == max_retries - 1:
+                    raise
+                print(f"Connection attempt {attempt + 1} failed: {e}. Retrying...")
+                time.sleep(1.0)
 
     def _release_connection(self, conn):
-        """Gibt eine Verbindung an den Pool zurück."""
-        self.pool.release_connection(conn)
+        """Releases a connection back to the pool."""
+        if conn:
+            self.pool.release_connection(conn)
 
     def get_table_names(self, use_cache: bool = True) -> List[str]:
         """
@@ -600,3 +678,15 @@ class FDBDirectInterface:
         except Exception as e:
             print(f"Fehler beim Parsen des Connection-Strings: {e}")
             raise
+    
+    def close(self):
+        """Closes the connection pool and all connections."""
+        if hasattr(self, 'pool'):
+            self.pool.close_all()
+    
+    def __del__(self):
+        """Destructor to ensure connections are closed."""
+        try:
+            self.close()
+        except:
+            pass
