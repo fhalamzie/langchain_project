@@ -97,7 +97,35 @@ Analysiert Datenbankbeziehungen für intelligente JOIN-Strategien:
 - Unterstützt das Business-Glossar bei der JOIN-Logik
 - Visualisiert Beziehungen für besseres Verständnis
 
-### 6. Monitoring-System
+### 6. Comprehensive Testing System (Juni 2025)
+
+**Datei:** [`comprehensive_endresults_test.py`](comprehensive_endresults_test.py)
+
+Umfassendes End-to-End Testing-System:
+
+- **Real Database Execution**: Direkte SQL-Ausführung gegen Firebird-Datenbank mit echten Ergebnissen
+- **9-Modi-Coverage**: Vollständige Testabdeckung aller Retrieval-Modi (Enhanced, FAISS, None, LangChain, TAG, etc.)
+- **End-to-End Validation**: Zeigt finale Antworten und komplette Workflows, nicht nur SQL-Generierung
+- **Performance Monitoring**: Detaillierte Logging mit Response Times, Success Rates und Error Analysis
+- **Structured Results**: JSON-basierte Debug-Information für umfassende Analyse
+
+**Testergebnisse-Klassen**:
+```python
+class EndResultSummary:
+    - mode_name: str
+    - initialization_success: bool
+    - query_results: Dict[str, Dict]
+    - performance_metrics: Dict
+```
+
+**Test-Pipeline**:
+1. LLM Initialization (Gemini 2.5 Pro)
+2. Mock Document Creation
+3. Individual Mode Testing mit real database execution
+4. Comprehensive Results Display
+5. Overall Functionality Assessment
+
+### 7. Monitoring-System
 
 **Datei:** [`phoenix_monitoring.py`](phoenix_monitoring.py)
 

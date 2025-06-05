@@ -6,10 +6,19 @@
 2. **Code-Analyse**: Bestehenden Code analysieren, um Retrieval-Mode-Muster zu verstehen
 3. **Test-First**: Tests für neue SQL-Agent-Funktionalität vor der Implementierung erstellen
 4. **Feature-Implementierung**: Funktionen unter Einhaltung der bestehenden Firebird-Konventionen implementieren
-5. **Testsuite ausführen**: Alle Retrieval-Modi testen und sicherstellen, dass sie bestanden werden
-6. **Dokumentation aktualisieren**: task.md mit Fortschritt und Implementierungsdetails aktualisieren
-7. **Commit mit klarer Nachricht**: Auf spezifische Komponenten verweisen
-8. **Regelmäßig zu GitHub pushen**: Backup aufrechterhalten
+5. **End-to-End Testing**: Comprehensive tests mit echten Datenbank-Ergebnissen ausführen (`comprehensive_endresults_test.py`)
+6. **Real Database Validation**: Sicherstellen dass alle Modi echte SQL-Ausführung und finale Antworten liefern
+7. **Dokumentation aktualisieren**: tasks.md mit Fortschritt und Implementierungsdetails aktualisieren
+8. **Commit mit klarer Nachricht**: Auf spezifische Komponenten verweisen
+9. **Regelmäßig zu GitHub pushen**: Backup aufrechterhalten
+
+## Testing-Strategie (Juni 2025)
+
+**Primärer Test-Ansatz**: End-to-End Results mit echter Datenbank-Ausführung
+- **comprehensive_endresults_test.py**: Haupttest-Suite für alle 9 Modi
+- **test_real_database_results.py**: Direct SQL execution und Database validation
+- **Focus**: Finale Antworten und komplette Workflows, nicht nur SQL-Generierung
+- **Real Data**: Echte Firebird-Datenbank-Abfragen mit strukturierten Ergebnissen
 
 ## Dokumentationsrichtlinien
 
