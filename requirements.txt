@@ -35,8 +35,11 @@ sqlglot>=25.0.0
 # AI Observability
 arize-phoenix>=1.0.0
 
-# LangGraph for advanced workflows
-langgraph>=0.1.0
+# LangGraph for advanced workflows  
+langgraph>=0.4.8
+
+# SQL parsing and validation
+sqlglot>=26.25.0
 
 # Development dependencies (optional)
 pytest>=7.0.0

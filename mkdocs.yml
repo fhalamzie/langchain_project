@@ -44,8 +44,6 @@ theme:
 # Plugins
 plugins:
   - search
-  - minify:
-      minify_html: true
 
 # Extensions
 markdown_extensions:
@@ -65,8 +63,8 @@ markdown_extensions:
   - pymdownx.caret
   - pymdownx.details
   - pymdownx.emoji:
-      emoji_generator: !!python/name:materialx.emoji.to_svg
-      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - pymdownx.highlight:
       anchor_linenums: true
   - pymdownx.inlinehilite
@@ -91,28 +89,16 @@ markdown_extensions:
 # Page tree
 nav:
   - Home: index.md
-  - Getting Started:
-    - Quick Start: getting-started/quick-start.md
-    - Installation: getting-started/installation.md
-    - Configuration: getting-started/configuration.md
-  - User Guide:
-    - Web Interface: user-guide/web-interface.md
-    - Command Line: user-guide/command-line.md
-    - Query Examples: user-guide/query-examples.md
   - Technical Documentation:
-    - Architecture: technical/architecture.md
     - Technical Guide: technical/technical-guide.md
-    - Phoenix Monitoring: technical/phoenix-monitoring.md
-    - API Reference: technical/api-reference.md
   - Development:
     - Implementation Status: development/implementation-status.md
-    - Testing: development/testing.md
-    - Contributing: development/contributing.md
-    - Performance: development/performance.md
-  - Deployment:
-    - Production Setup: deployment/production.md
-    - Docker: deployment/docker.md
-    - Monitoring: deployment/monitoring.md
+  - Code Quality: ./code-quality.md
+  - Testing: ./testing.md
+  - High-Level Design: ./high-level-design.md
+  - Development Guidelines: ./development-guidelines.md
+  - README: ./readme.md
+  - Tasks: ./tasks.md
 
 # Extra
 extra:

@@ -6,13 +6,16 @@ including database connections, mock configurations, and test data setup.
 """
 
 import os
-import pytest
 import tempfile
+from typing import Any, Dict, Generator
 from unittest.mock import Mock, patch
-from typing import Dict, Any, Generator
+
+import pytest
+
 # Import responses only if available
 try:
     import responses
+
     RESPONSES_AVAILABLE = True
 except ImportError:
     RESPONSES_AVAILABLE = False
@@ -39,9 +42,9 @@ def setup_test_environment(test_env_vars):
     for key, value in test_env_vars.items():
         original_env[key] = os.environ.get(key)
         os.environ[key] = value
-    
+
     yield
-    
+
     # Cleanup
     for key in test_env_vars:
         if original_env[key] is not None:
@@ -61,7 +64,7 @@ def temp_dir():
 def mock_firebird_connection():
     """Mock Firebird database connection."""
     try:
-        with patch('fdb.connect') as mock_connect:
+        with patch("fdb.connect") as mock_connect:
             mock_conn = Mock()
             mock_cursor = Mock()
             mock_conn.cursor.return_value = mock_cursor
@@ -79,7 +82,7 @@ def mock_firebird_connection():
 def mock_openai_client():
     """Mock OpenAI client for LLM testing."""
     try:
-        with patch('openai.OpenAI') as mock_client_class:
+        with patch("openai.OpenAI") as mock_client_class:
             mock_client = Mock()
             mock_response = Mock()
             mock_response.choices = [
@@ -103,7 +106,7 @@ def mock_openai_client():
 def mock_phoenix_tracer():
     """Mock Phoenix tracer for monitoring tests."""
     try:
-        with patch('phoenix.otel.register') as mock_register:
+        with patch("phoenix.otel.register") as mock_register:
             mock_tracer = Mock()
             mock_register.return_value = mock_tracer
             yield mock_tracer
@@ -125,17 +128,17 @@ def sample_database_schema():
                     {"name": "APARTMENT_NUMBER", "type": "VARCHAR(10)"},
                     {"name": "BUILDING_ID", "type": "INTEGER"},
                     {"name": "AREA_SQM", "type": "DECIMAL(10,2)"},
-                ]
+                ],
             },
             {
-                "name": "RESIDENTS", 
+                "name": "RESIDENTS",
                 "columns": [
                     {"name": "ID", "type": "INTEGER", "primary_key": True},
                     {"name": "FIRST_NAME", "type": "VARCHAR(50)"},
                     {"name": "LAST_NAME", "type": "VARCHAR(50)"},
                     {"name": "APARTMENT_ID", "type": "INTEGER"},
-                ]
-            }
+                ],
+            },
         ]
     }
 
@@ -147,15 +150,15 @@ def sample_retrieval_context():
         "documents": [
             {
                 "content": "APARTMENTS table contains apartment information",
-                "metadata": {"table": "APARTMENTS", "relevance": 0.9}
+                "metadata": {"table": "APARTMENTS", "relevance": 0.9},
             },
             {
-                "content": "RESIDENTS table contains resident information", 
-                "metadata": {"table": "RESIDENTS", "relevance": 0.8}
-            }
+                "content": "RESIDENTS table contains resident information",
+                "metadata": {"table": "RESIDENTS", "relevance": 0.8},
+            },
         ],
         "mode": "enhanced",
-        "total_docs": 2
+        "total_docs": 2,
     }
 
 
@@ -173,7 +176,9 @@ def responses_mock():
 def pytest_configure(config):
     """Configure custom pytest markers."""
     config.addinivalue_line("markers", "unit: Unit tests for individual components")
-    config.addinivalue_line("markers", "integration: Integration tests with external services")
+    config.addinivalue_line(
+        "markers", "integration: Integration tests with external services"
+    )
     config.addinivalue_line("markers", "system: End-to-end system tests")
     config.addinivalue_line("markers", "slow: Tests that take more than 1 second")
     config.addinivalue_line("markers", "firebird: Tests requiring Firebird database")
