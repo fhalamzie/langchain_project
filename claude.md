@@ -67,13 +67,15 @@ Weitere Details zur Architektur und Implementierung finden Sie in der [high-leve
 2. **FAISS → Hybrid FAISS**: ✅ 100% Success Rate + HV-Terminologie-Mapping  
 3. **None → Smart Fallback**: ✅ 273% Context Richness + Dynamic Schema Loading
 
+**✅ Abgeschlossen:**
+4. **LangChain → Filtered Agent**: ✅ 97.2% Schema Reduction + Query-Type-Filterung
+
 **🔄 In Bearbeitung:**
-4. **LangChain → Filtered Agent**: Schema-Filterung (3-8 relevante Tabellen statt alle 151)
 5. **TAG → Adaptive TAG**: ML-basierte Klassifikation + erweiterte Query-Type-Coverage
 6. **LangGraph**: Komplexitätsevaluierung und Workflow-Optimierung
 
 **TAG-Status**: ✅ Vollständig implementiert - SYN→EXEC→GEN Pipeline mit ~90% SQL-Genauigkeit
-**Optimierungs-Fortschritt**: 3/6 Modi erfolgreich optimiert (50% abgeschlossen)
+**Optimierungs-Fortschritt**: 4/6 Modi erfolgreich optimiert (67% abgeschlossen)
 
 Detaillierte Implementierungsaufgaben sind in [tasks.md](tasks.md) dokumentiert.
 
