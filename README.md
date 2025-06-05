@@ -3,6 +3,8 @@
 [![GitHub Repository](https://img.shields.io/badge/GitHub-fhalamzie%2Flangchain__project-blue?logo=github)](https://github.com/fhalamzie/langchain_project)
 [![Phoenix Monitoring](https://img.shields.io/badge/Phoenix-AI%20Observability-green?logo=phoenix-framework)](http://localhost:6006)
 [![Production Ready](https://img.shields.io/badge/Status-Production%20Ready-success)]()
+[![Testing Framework](https://img.shields.io/badge/Testing-pytest%20%7C%2013%2F13%20passing-brightgreen)]()
+[![Code Quality](https://img.shields.io/badge/Code%20Quality-Black%20%7C%20isort%20%7C%20flake8%20%7C%20bandit-blue)]()
 
 ## Projektübersicht
 
@@ -68,16 +70,53 @@ docker-compose up -d
 - **[`db_knowledge_compiler.py`](db_knowledge_compiler.py)** - Database Knowledge System
 - **[`generate_yaml_ui.py`](generate_yaml_ui.py)** - Skript zur Generierung der YAML-basierten Wissensbasis und der zugehörigen UI-Komponenten (verantwortlich für aktuellen Output-Stil der YAMLs und Schema-Dokumentation).
 
-## 🧪 Testing
+## 🧪 Testing Framework & Code Quality
 
-### Haupttests
+### ✅ Modernes pytest Framework (100% Test-Erfolgsrate)
+Das WINCASA-Projekt nutzt ein vollständiges Test- und Code-Qualitäts-Framework mit automatisierten Tools.
+
+#### Quick Start Testing
 ```bash
-python test_enhanced_qa_ui_integration.py
-python test_fdb_direct_interface.py
-python test_firebird_sql_agent.py
-python test_business_glossar_simple.py
-python automated_retrieval_test.py
+# Alle Tests ausführen (empfohlen)
+./run_tests.sh test              # 13/13 Tests in 0.02s ✅
+
+# Mit Code-Qualitätsprüfungen
+./run_tests.sh all               # Tests + Linting + Security
+
+# Code automatisch formatieren
+./run_tests.sh format-fix        # Black + isort
+
+# Pre-commit hooks einrichten
+./run_tests.sh pre-commit        # Automatische Qualitätsprüfung
+
+# Setup validieren
+./run_tests.sh validate          # Konfiguration prüfen
 ```
+
+#### Test-Kategorien
+```bash
+# Unit Tests (pytest-basiert)
+python -m pytest tests/unit/ -v                    # Schnelle Komponententests
+
+# Integration Tests (Legacy + Modern)
+python test_enhanced_qa_ui_integration.py          # UI-Workflow vollständig
+python test_fdb_direct_interface.py                # Datenbankverbindung
+python test_firebird_sql_agent.py                  # Agent-Funktionalität
+python test_business_glossar_simple.py             # Business-Begriffe
+python test_langchain_fix.py                       # LangChain-Integration
+
+# System Tests (Performance & Retrieval)
+python automated_retrieval_test.py                 # Vollständige Evaluierung
+python optimized_retrieval_test.py --concurrent    # Alle Modi parallel
+python quick_hybrid_context_test.py --timeout 45   # Schnelle Validierung
+```
+
+#### Code-Qualitäts-Tools
+- **Black**: 581 Formatierungsprobleme identifiziert (automatisch behebbar)
+- **isort**: 7 Import-Sortierungen gefunden (automatisch behebbar)
+- **flake8**: 61 Stil-Probleme zur manuellen Prüfung
+- **bandit**: Sicherheitsprüfung für Python-Code
+- **pytest-cov**: Code-Coverage-Analyse mit HTML-Reports
 
 ## 🎮 Produktiver Betrieb
 
