@@ -491,6 +491,134 @@ def test_tag_mode() -> EndResultSummary:
     summary.calculate_summary()
     return summary
 
+def test_smart_enhanced_mode(llm, mock_docs: List[Document]) -> EndResultSummary:
+    """Test Smart Enhanced mode (Enhanced + TAG combination)."""
+    summary = EndResultSummary("Smart Enhanced")
+    
+    try:
+        retriever = SmartEnhancedRetriever(mock_docs)
+        summary.initialization_success = True
+        log_debug_info("smart_enhanced_init", {"status": "success"})
+        
+        for test_case in TEST_QUERIES:
+            query = test_case["query"]
+            start_time = time.time()
+            
+            try:
+                # Retrieve with Smart Enhanced approach
+                result_docs = retriever.retrieve(query)
+                
+                # Generate final answer
+                final_answer = generate_final_answer(llm, query, result_docs)
+                
+                response_time = time.time() - start_time
+                summary.add_query_result(query, True, response_time, final_answer)
+                log_performance("Smart Enhanced", query, response_time, True, final_answer)
+                
+            except Exception as e:
+                response_time = time.time() - start_time
+                summary.add_query_result(query, False, response_time, error=str(e))
+                log_performance("Smart Enhanced", query, response_time, False)
+                
+    except Exception as e:
+        log_debug_info("smart_enhanced_init", {"status": "error", "error": str(e)})
+        summary.error_messages.append(f"Initialization failed: {str(e)}")
+    
+    summary.calculate_summary()
+    return summary
+
+def test_contextual_vector_mode(llm, mock_docs: List[Document]) -> EndResultSummary:
+    """Test Contextual Vector mode (FAISS + TAG combination)."""
+    summary = EndResultSummary("Contextual Vector")
+    
+    try:
+        retriever = ContextualVectorRetriever(mock_docs)
+        summary.initialization_success = True
+        log_debug_info("contextual_vector_init", {"status": "success"})
+        
+        for test_case in TEST_QUERIES:
+            query = test_case["query"]
+            start_time = time.time()
+            
+            try:
+                # Retrieve with Contextual Vector approach
+                result_docs = retriever.retrieve(query)
+                
+                # Generate final answer
+                final_answer = generate_final_answer(llm, query, result_docs)
+                
+                response_time = time.time() - start_time
+                summary.add_query_result(query, True, response_time, final_answer)
+                log_performance("Contextual Vector", query, response_time, True, final_answer)
+                
+            except Exception as e:
+                response_time = time.time() - start_time
+                summary.add_query_result(query, False, response_time, error=str(e))
+                log_performance("Contextual Vector", query, response_time, False)
+                
+    except Exception as e:
+        log_debug_info("contextual_vector_init", {"status": "error", "error": str(e)})
+        summary.error_messages.append(f"Initialization failed: {str(e)}")
+    
+    summary.calculate_summary()
+    return summary
+
+def test_smart_fallback_mode(llm) -> EndResultSummary:
+    """Test Smart Fallback mode (Dynamic Schema + Pattern Learning)."""
+    summary = EndResultSummary("Smart Fallback")
+    
+    try:
+        retriever = SmartFallbackRetriever()
+        summary.initialization_success = True
+        log_debug_info("smart_fallback_init", {"status": "success"})
+        
+        for test_case in TEST_QUERIES:
+            query = test_case["query"]
+            start_time = time.time()
+            
+            try:
+                # Get context from Smart Fallback
+                context = retriever.get_context(query)
+                
+                # Create document from context
+                context_docs = [Document(page_content=context, metadata={"source": "smart_fallback"})]
+                
+                # Generate final answer
+                final_answer = generate_final_answer(llm, query, context_docs)
+                
+                response_time = time.time() - start_time
+                summary.add_query_result(query, True, response_time, final_answer)
+                log_performance("Smart Fallback", query, response_time, True, final_answer)
+                
+            except Exception as e:
+                response_time = time.time() - start_time
+                summary.add_query_result(query, False, response_time, error=str(e))
+                log_performance("Smart Fallback", query, response_time, False)
+                
+    except Exception as e:
+        log_debug_info("smart_fallback_init", {"status": "error", "error": str(e)})
+        summary.error_messages.append(f"Initialization failed: {str(e)}")
+    
+    summary.calculate_summary()
+    return summary
+
+def test_langgraph_mode(llm) -> EndResultSummary:
+    """Test LangGraph mode (workflow-based approach)."""
+    summary = EndResultSummary("LangGraph")
+    
+    try:
+        # For now, mark as not implemented since it's pending evaluation
+        summary.initialization_success = False
+        summary.error_messages.append("LangGraph mode pending complexity evaluation (Task 1.6)")
+        log_debug_info("langgraph_init", {"status": "pending", "reason": "complexity_evaluation"})
+        
+    except Exception as e:
+        log_debug_info("langgraph_init", {"status": "error", "error": str(e)})
+        summary.error_messages.append(f"Initialization failed: {str(e)}")
+    
+    summary.calculate_summary()
+    return summary
+
 # ============================================================================
 # COMPREHENSIVE TEST EXECUTION
 # ============================================================================
@@ -521,7 +649,7 @@ def run_comprehensive_end_results_test():
     # Test all modes
     mode_results = {}
     
-    print("\n🔬 TESTING INDIVIDUAL MODES WITH END RESULTS")
+    print("\n🔬 TESTING ALL 9 MODES WITH END RESULTS")
     print("-" * 60)
     
     # 1. Contextual Enhanced
@@ -543,6 +671,22 @@ def run_comprehensive_end_results_test():
     # 5. TAG Classifier
     print("\n5️⃣  Testing TAG Classifier Mode...")
     mode_results['tag_classifier'] = test_tag_mode()
+    
+    # 6. Smart Enhanced (NEW)
+    print("\n6️⃣  Testing Smart Enhanced Mode...")
+    mode_results['smart_enhanced'] = test_smart_enhanced_mode(llm, mock_docs)
+    
+    # 7. Contextual Vector (NEW)
+    print("\n7️⃣  Testing Contextual Vector Mode...")
+    mode_results['contextual_vector'] = test_contextual_vector_mode(llm, mock_docs)
+    
+    # 8. Smart Fallback (NEW)
+    print("\n8️⃣  Testing Smart Fallback Mode...")
+    mode_results['smart_fallback'] = test_smart_fallback_mode(llm)
+    
+    # 9. LangGraph (NEW)
+    print("\n9️⃣  Testing LangGraph Mode...")
+    mode_results['langgraph'] = test_langgraph_mode(llm)
     
     # Display comprehensive results
     display_comprehensive_results(mode_results)
@@ -638,7 +782,9 @@ def assess_overall_functionality(mode_results: Dict[str, EndResultSummary]) -> b
     
     if success:
         print(f"\n🎉 SUCCESS! System demonstrates complete end-to-end functionality")
-        print("✅ Ready for production use with 9/9 mode capability")
+        print(f"✅ Ready for production use with {working_modes}/9 modes fully operational")
+        if working_modes < 9:
+            print(f"ℹ️  Note: LangGraph mode pending complexity evaluation (Task 1.6)")
     else:
         print(f"\n⚠️  PARTIAL SUCCESS: Some modes need additional work")
         print("🔧 Focus on critical database connectivity issues")
