@@ -1,27 +1,54 @@
-# WINCASA Development Guidelines for Claude AI
-# ✅ Production-Ready System Documentation (June 2025)
+# CLAUDE.md - Implementation Railways for Claude AI
+# ✅ Critical Implementation Guide (June 2025)
+
+## 🚂 Purpose: Implementation Railways
+
+This document provides **EXACT PATTERNS** for Claude AI to implement solutions correctly. These are the tested, working patterns that must be followed to maintain system stability.
 
 ## 📋 Current System Status
 
 **ALL 9/9 RETRIEVAL MODES OPERATIONAL** ✅
 
-The WINCASA system is now fully production-ready with all 9 retrieval modes successfully implemented and tested. This document serves as a comprehensive guide for future development and maintenance.
+The system is a **benchmarking platform** with 9 different retrieval modes for testing which approach works best. This is NOT a final product but a comparison system.
 
-## 🎯 Critical Success Metrics Achieved
+## 🎯 MANDATORY: First Command Always
+
+**BEFORE ANY CHANGES**, run this verification:
 
 ```bash
-# Verification Command
+# Standard timeout (may timeout after 2min due to 27 tests)
 source venv/bin/activate && python quick_3question_benchmark_final.py
 
-# Expected Output:
+# OR with extended timeout (recommended for full test)
+source venv/bin/activate && timeout 900 python quick_3question_benchmark_final.py
+```
+
+**⚠️ TIMEOUT INFO:**
+- **3 questions × 9 modes = 27 tests**
+- **Estimated time: 13-15 minutes** (due to LLM calls and database queries)
+- **Standard Bash timeout: 2 minutes** → Use `timeout 900` for full test
+- **Real database verified: 517 apartments** (not 1250 mock data)
+
+**REQUIRED OUTPUT**:
+```
 🎯 Working Modes: 9/9
 ✅ Functional: Enhanced, Contextual Enhanced, Hybrid FAISS, Filtered LangChain, TAG Classifier, Smart Fallback, Smart Enhanced, Guided Agent, Contextual Vector
 🎉 EXCELLENT! System ready for production!
 ```
 
-## 🏗️ Retriever Initialization Patterns
+**IF NOT 9/9**: STOP. Fix before proceeding.
 
-**CRITICAL: All retrievers now require specific initialization parameters. Use these exact patterns:**
+## ⚠️ CRITICAL WARNINGS - READ FIRST
+
+1. **NEVER modify initialization patterns** - They are tested and working
+2. **ALWAYS test after ANY change** - Run benchmark script immediately  
+3. **Database format is critical** - Double slash required for absolute paths
+4. **All 9 modes must work** - No breaking changes allowed
+5. **This is benchmarking** - Not final product, just comparing approaches
+
+## 🏗️ EXACT Retriever Initialization Patterns
+
+**COPY THESE PATTERNS EXACTLY:**
 
 ### Document-Based Retrievers
 These retrievers require `documents` and `openai_api_key` parameters:
