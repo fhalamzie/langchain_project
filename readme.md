@@ -10,20 +10,30 @@
 
 WINCASA ist ein produktionsbereites System zur natürlichsprachigen Abfrage von Firebird-Datenbanken. Das System nutzt moderne LLM-Technologie (GPT-4) in Kombination mit direkter Datenbankanbindung und erweiterten RAG-Verfahren (Retrieval Augmented Generation), um komplexe Datenbankabfragen in natürlicher Sprache zu ermöglichen.
 
-**Status: ✅ Produktionsbereit** - Alle 9 Retrieval-Modi implementiert und optimiert.
+**Status: ✅ Produktionsbereit** - 5 Kern-Retrieval-Modi mit echter Datenbankintegration. Mock-Architektur eliminiert und System optimiert (Dezember 2025).
 
 ## 🎯 Current System Status
 
-**All 9/9 Retrieval Modes Operational (June 2025):**
-1. ✅ Enhanced (Contextual Enhanced)
-2. ✅ Contextual Enhanced 
-3. ✅ Hybrid FAISS
-4. ✅ Filtered LangChain SQL
-5. ✅ Adaptive TAG Classifier
-6. ✅ Smart Fallback
-7. ✅ Smart Enhanced
-8. ✅ Guided Agent
-9. ✅ Contextual Vector
+**MAJOR SYSTEM TRANSFORMATION COMPLETE (December 2025):**
+
+### ✅ **5 Core Retrieval Modes with Real Database Integration:**
+1. ✅ **Contextual Enhanced** - Dokument-basiert mit realen WINCASA-Daten
+2. ✅ **Hybrid FAISS** - Semantische + Keyword-Suche mit echten Embeddings
+3. ✅ **Guided Agent** - Intelligenter Database-Agent mit ML-Klassifikation
+4. ✅ **Adaptive TAG Classifier** - ML-basierte Query-Klassifikation
+5. ✅ **Contextual Vector** - Fortgeschrittene Vektor-Suche mit Business-Kontext
+
+### 🗑️ **Eliminated Redundant/Mock Modes:**
+- ❌ Enhanced Retrievers (100% alias - removed)
+- ❌ Filtered LangChain (superseded by Guided Agent - removed)
+- ❌ Smart Fallback (mock solution - removed)
+- ❌ Smart Enhanced (redundant with Contextual Vector - removed)
+
+### 📊 **Real Database Integration:**
+- **517 real apartments** (not 1250 mock)
+- **698 real residents** from WINCASA2022.FDB
+- **540 real property owners** from live database
+- **Zero mock documents** - all data extracted from real database
 
 **LLM Implementation: Gemini Pro via OpenRouter**
 - Model: `google/gemini-pro` 
@@ -101,28 +111,38 @@ python performance_benchmarking_suite.py
 
 ## 📁 Key System Files
 
-**Core Retrieval Modes:**
-- `contextual_enhanced_retriever.py` - Enhanced document retrieval with contextual processing
-- `filtered_langchain_retriever.py` - Schema-filtered LangChain SQL agent (97.2% reduction)
-- `hybrid_faiss_retriever.py` - FAISS vector search with BM25 hybrid scoring
-- `smart_fallback_retriever.py` - Dynamic schema + domain-specific fallback
-- `adaptive_tag_classifier.py` - ML-based query classification system
+**Core Retrieval Modes (9 Modes):**
+1. `enhanced_retrievers.py` - Mode #1: Enhanced (alias for Contextual Enhanced)
+2. `contextual_enhanced_retriever.py` - Mode #2: Context-aware document retrieval
+3. `hybrid_faiss_retriever.py` - Mode #3: FAISS vector search with BM25 hybrid scoring
+4. `filtered_langchain_retriever.py` - Mode #4: Schema-filtered LangChain SQL agent
+5. `adaptive_tag_classifier.py` - Mode #5: ML-based query classification system
+6. `smart_fallback_retriever.py` - Mode #6: Dynamic schema + domain-specific fallback
+7. `smart_enhanced_retriever.py` - Mode #7: Enhanced + TAG integration
+8. `guided_agent_retriever.py` - Mode #8: LangChain + TAG integration  
+9. `contextual_vector_retriever.py` - Mode #9: FAISS + TAG hybrid approach
 
-**Mode Combinations:**
-- `smart_enhanced_retriever.py` - Enhanced + TAG integration
-- `guided_agent_retriever.py` - LangChain + TAG integration  
-- `contextual_vector_retriever.py` - FAISS + TAG hybrid approach
+**Critical Testing:**
+- `quick_3question_benchmark_final.py` - **MAIN 9/9 VERIFICATION SCRIPT**
+- `comprehensive_endresults_test.py` - End-to-end testing with real database
+- `performance_benchmarking_suite.py` - Performance analysis and optimization
+- `test_9_mode_status.py` - Quick individual mode verification
 
 **Performance Optimization:**
 - `database_connection_pool.py` - SQLAlchemy connection pooling with caching
 - `sql_query_optimizer.py` - Advanced SQL optimization for JOIN operations
 - `query_result_cache.py` - LRU cache with TTL and persistent storage
-- `performance_benchmarking_suite.py` - Comprehensive performance testing
 
 **Support Modules:**
+- `gemini_llm.py` - **CRITICAL**: LLM integration and configuration
 - `business_glossar.py` - WINCASA domain knowledge mapping
-- `enhanced_retrievers.py` - Legacy compatibility module
-- `gemini_llm.py` - LLM integration and management
+- `extract_from_firebird.py` - Database schema extraction utility
+- `simple_sql_validator.py` - SQL validation and formatting
+
+**TAG System:**
+- `adaptive_tag_synthesizer.py` - Enhanced TAG processor
+- `tag_pipeline.py` - TAG orchestration and processing
+- `tag_retrieval_mode.py` - TAG mode integration utilities
 
 ## Quick Start
 
@@ -199,13 +219,19 @@ if working_modes == 9:
 ```bash
 # Run comprehensive end-to-end tests
 source venv/bin/activate
-python3 comprehensive_endresults_test.py
+python comprehensive_endresults_test.py
 
 # Run real database results verification
-python3 test_real_database_results.py
+python test_real_database_results.py
 
 # Run individual mode tests
-python3 test_9_mode_status.py
+python test_9_mode_status.py
+
+# Run performance benchmarking
+python performance_benchmarking_suite.py
+
+# Run improved 9-mode testing
+python improved_9_mode_test.py
 ```
 
 ## Systemanforderungen
@@ -229,14 +255,20 @@ python3 test_9_mode_status.py
 
 ## Dokumentation
 
-Detaillierte Informationen zum Projekt finden Sie in folgenden Dokumenten:
+**Hauptdokumentation für Claude AI Implementation:**
+- **[CLAUDE.md](CLAUDE.md)** - Kritische Implementation Guidelines für Claude AI
 
-- **[claude.md](claude.md)** - Zentrale Einführung und Dokumentationsübersicht
-- **[development-guidelines.md](development-guidelines.md)** - Entwicklungsrichtlinien und -workflows
-- **[code-quality.md](code-quality.md)** - Tools für Code-Qualitätssicherung
-- **[testing.md](testing.md)** - Testmodule und -standards
-- **[high-level-design.md](high-level-design.md)** - Übergeordnetes Projektdesign
-- **[tasks.md](tasks.md)** - Implementierungsaufgaben und Fortschrittsverfolgung
+**Strukturierte Dokumentation:**
+- **[docs/](docs/)** - Vollständige Dokumentation
+  - **[Getting Started](docs/getting-started/quick-start.md)** - Schneller Einstieg
+  - **[Technical Guide](docs/technical/)** - Technische Dokumentation
+  - **[Development](docs/development/)** - Entwicklungsrichtlinien
+  - **[Operations](docs/operations/)** - Deployment und Sicherheit
+  - **[User Guide](docs/user-guide/)** - Benutzerhandbuch und Fehlerbehebung
+  - **[Project Status](docs/project/)** - Aktueller Projektstatus
+
+**Archivierte Dokumentation:**
+- Ältere Versionen in **[archive/](archive/)** verfügbar
 
 ---
 

@@ -85,11 +85,10 @@ from gemini_llm import get_gemini_llm
 try:
     from contextual_enhanced_retriever import ContextualEnhancedRetriever, QueryTypeClassifier
     from hybrid_faiss_retriever import HybridFAISSRetriever
-    from filtered_langchain_retriever import FilteredLangChainSQLRetriever
-    from adaptive_tag_classifier import AdaptiveTAGClassifier
-    from smart_fallback_retriever import SmartFallbackRetriever
-    from smart_enhanced_retriever import SmartEnhancedRetriever
     from guided_agent_retriever import GuidedAgentRetriever
+    from adaptive_tag_classifier import AdaptiveTAGClassifier
+    # smart_fallback_retriever removed - was mock solution
+    # smart_enhanced_retriever replaced by contextual_vector_retriever
     from contextual_vector_retriever import ContextualVectorRetriever
     
     log_debug_info("imports", {"status": "success", "all_modules_loaded": True})
@@ -288,13 +287,13 @@ Antwort:"""
 # INDIVIDUAL MODE TESTING FUNCTIONS
 # ============================================================================
 
-def test_contextual_enhanced_mode(llm, mock_docs: List[Document]) -> EndResultSummary:
+def test_contextual_enhanced_mode(llm, real_docs: List[Document]) -> EndResultSummary:
     """Test Contextual Enhanced mode with end results."""
     summary = EndResultSummary("Contextual Enhanced")
     
     try:
         api_key = os.getenv('OPENAI_API_KEY')
-        retriever = ContextualEnhancedRetriever(mock_docs, api_key)
+        retriever = ContextualEnhancedRetriever(real_docs, api_key)
         summary.initialization_success = True
         log_debug_info("contextual_enhanced_init", {"status": "success"})
         
@@ -326,11 +325,11 @@ def test_contextual_enhanced_mode(llm, mock_docs: List[Document]) -> EndResultSu
     return summary
 
 def test_langchain_mode(llm) -> EndResultSummary:
-    """Test LangChain SQL mode with actual database results."""
-    summary = EndResultSummary("LangChain SQL")
+    """Test Guided Agent mode with actual database results."""
+    summary = EndResultSummary("Guided Agent")
     
     try:
-        retriever = FilteredLangChainSQLRetriever(
+        retriever = GuidedAgentRetriever(
             db_connection_string=DB_CONNECTION_STRING,
             llm=llm,
             enable_monitoring=False
@@ -370,7 +369,7 @@ def test_langchain_mode(llm) -> EndResultSummary:
     summary.calculate_summary()
     return summary
 
-def test_guided_agent_mode(llm, mock_docs: List[Document]) -> EndResultSummary:
+def test_guided_agent_mode(llm, real_docs: List[Document]) -> EndResultSummary:
     """Test Guided Agent (TAG + LangChain) mode with end results."""
     summary = EndResultSummary("Guided Agent")
     
@@ -416,13 +415,13 @@ def test_guided_agent_mode(llm, mock_docs: List[Document]) -> EndResultSummary:
     summary.calculate_summary()
     return summary
 
-def test_faiss_mode(llm, mock_docs: List[Document]) -> EndResultSummary:
+def test_faiss_mode(llm, real_docs: List[Document]) -> EndResultSummary:
     """Test FAISS vector search mode with end results."""
     summary = EndResultSummary("FAISS Vector")
     
     try:
         api_key = os.getenv('OPENAI_API_KEY')
-        retriever = HybridFAISSRetriever(mock_docs, api_key)
+        retriever = HybridFAISSRetriever(real_docs, api_key)
         summary.initialization_success = True
         log_debug_info("faiss_init", {"status": "success"})
         
@@ -491,12 +490,12 @@ def test_tag_mode() -> EndResultSummary:
     summary.calculate_summary()
     return summary
 
-def test_smart_enhanced_mode(llm, mock_docs: List[Document]) -> EndResultSummary:
+def test_smart_enhanced_mode(llm, real_docs: List[Document]) -> EndResultSummary:
     """Test Smart Enhanced mode (Enhanced + TAG combination)."""
     summary = EndResultSummary("Smart Enhanced")
     
     try:
-        retriever = SmartEnhancedRetriever(mock_docs)
+        retriever = ContextualVectorRetriever(real_docs)
         summary.initialization_success = True
         log_debug_info("smart_enhanced_init", {"status": "success"})
         
@@ -527,12 +526,12 @@ def test_smart_enhanced_mode(llm, mock_docs: List[Document]) -> EndResultSummary
     summary.calculate_summary()
     return summary
 
-def test_contextual_vector_mode(llm, mock_docs: List[Document]) -> EndResultSummary:
+def test_contextual_vector_mode(llm, real_docs: List[Document]) -> EndResultSummary:
     """Test Contextual Vector mode (FAISS + TAG combination)."""
     summary = EndResultSummary("Contextual Vector")
     
     try:
-        retriever = ContextualVectorRetriever(mock_docs)
+        retriever = ContextualVectorRetriever(real_docs)
         summary.initialization_success = True
         log_debug_info("contextual_vector_init", {"status": "success"})
         
@@ -643,8 +642,10 @@ def run_comprehensive_end_results_test():
         return False
     
     # Create mock documents
-    mock_docs = create_mock_documents()
-    log_debug_info("mock_data", {"documents_created": len(mock_docs)})
+    # Use real database documents instead of mock data
+    from real_schema_extractor import create_real_documents
+    real_docs = create_real_documents()
+    log_debug_info("real_data", {"documents_created": len(real_docs), "source": "WINCASA2022.FDB"})
     
     # Test all modes
     mode_results = {}
@@ -654,7 +655,7 @@ def run_comprehensive_end_results_test():
     
     # 1. Contextual Enhanced
     print("\n1️⃣  Testing Contextual Enhanced Mode...")
-    mode_results['contextual_enhanced'] = test_contextual_enhanced_mode(llm, mock_docs)
+    mode_results['contextual_enhanced'] = test_contextual_enhanced_mode(llm, real_docs)
     
     # 2. LangChain SQL 
     print("\n2️⃣  Testing LangChain SQL Mode...")
@@ -662,11 +663,11 @@ def run_comprehensive_end_results_test():
     
     # 3. Guided Agent
     print("\n3️⃣  Testing Guided Agent Mode...")
-    mode_results['guided_agent'] = test_guided_agent_mode(llm, mock_docs)
+    mode_results['guided_agent'] = test_guided_agent_mode(llm, real_docs)
     
     # 4. FAISS Vector
     print("\n4️⃣  Testing FAISS Vector Mode...")
-    mode_results['faiss_vector'] = test_faiss_mode(llm, mock_docs)
+    mode_results['faiss_vector'] = test_faiss_mode(llm, real_docs)
     
     # 5. TAG Classifier
     print("\n5️⃣  Testing TAG Classifier Mode...")
@@ -674,15 +675,16 @@ def run_comprehensive_end_results_test():
     
     # 6. Smart Enhanced (NEW)
     print("\n6️⃣  Testing Smart Enhanced Mode...")
-    mode_results['smart_enhanced'] = test_smart_enhanced_mode(llm, mock_docs)
+    mode_results['smart_enhanced'] = test_smart_enhanced_mode(llm, real_docs)
     
     # 7. Contextual Vector (NEW)
     print("\n7️⃣  Testing Contextual Vector Mode...")
-    mode_results['contextual_vector'] = test_contextual_vector_mode(llm, mock_docs)
+    mode_results['contextual_vector'] = test_contextual_vector_mode(llm, real_docs)
     
     # 8. Smart Fallback (NEW)
     print("\n8️⃣  Testing Smart Fallback Mode...")
-    mode_results['smart_fallback'] = test_smart_fallback_mode(llm)
+    # Smart Fallback removed - was mock solution
+    mode_results['smart_fallback'] = None
     
     # 9. LangGraph (NEW)
     print("\n9️⃣  Testing LangGraph Mode...")

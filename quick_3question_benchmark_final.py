@@ -25,81 +25,10 @@ TEST_QUESTIONS = [
     "Bewohner Marienstr. 26"
 ]
 
-def create_mock_documents():
-    """Create mock documents for retrievers that need document collections."""
-    return [
-        Document(
-            page_content="""
-table_name: WOHNUNG
-description: Apartment/housing units database
-columns:
-  - WHG_NR: Apartment number
-  - ONR: Object number
-  - QMWFL: Living space in square meters
-  - ZIMMER: Number of rooms
-sample_data:
-  - Total apartments: 1250 units
-  - Average rent: €850/month
-            """,
-            metadata={"table_name": "WOHNUNG", "query_type": "property_count", "source": "WOHNUNG.yaml"}
-        ),
-        Document(
-            page_content="""
-table_name: BEWOHNER
-description: Residents and tenants database
-columns:
-  - BNAME: Last name
-  - BVNAME: First name
-  - BSTR: Street address
-  - BPLZORT: Postal code and city
-  - ONR: Object number
-sample_data:
-  - "Petra Nabakowski" lives at "Marienstr. 26, 45307 Essen"
-            """,
-            metadata={"table_name": "BEWOHNER", "query_type": "address_lookup", "source": "BEWOHNER.yaml"}
-        ),
-        Document(
-            page_content="""
-table_name: EIGENTUEMER
-description: Property owners database
-columns:
-  - NAME: Owner name
-  - VNAME: First name
-  - ORT: City
-  - EMAIL: Contact email
-sample_data:
-  - "Immobilien GmbH" from "Köln"
-  - "Weber, Klaus" from "Düsseldorf"
-            """,
-            metadata={"table_name": "EIGENTUEMER", "query_type": "owner_lookup", "source": "EIGENTUEMER.yaml"}
-        ),
-        Document(
-            page_content="""
-table_name: OBJEKTE
-description: Property objects and buildings
-columns:
-  - ONR: Object number (primary key)
-  - ONAME: Object name/address
-  - ORT: City location
-sample_data:
-  - Various residential buildings across multiple cities
-            """,
-            metadata={"table_name": "OBJEKTE", "query_type": "general_property", "source": "OBJEKTE.yaml"}
-        ),
-        Document(
-            page_content="""
-table_name: KONTEN
-description: Financial accounts for properties
-columns:
-  - KONTO_NR: Account number
-  - ONR: Object number
-  - SALDO: Account balance
-sample_data:
-  - Property management financial data
-            """,
-            metadata={"table_name": "KONTEN", "query_type": "financial_query", "source": "KONTEN.yaml"}
-        )
-    ]
+def create_real_documents():
+    """Create real documents extracted from WINCASA2022.FDB database."""
+    from real_schema_extractor import create_real_documents
+    return create_real_documents()
 
 def test_mode_with_questions(mode_name: str, retriever, questions: list, llm):
     """Test a mode with all questions."""
@@ -172,15 +101,15 @@ def run_benchmark():
     llm = get_gemini_llm()
     db_connection = "firebird+fdb://sysdba:masterkey@localhost:3050//home/projects/langchain_project/WINCASA2022.FDB"
     openai_api_key = os.getenv('OPENAI_API_KEY')
-    mock_docs = create_mock_documents()
+    real_docs = create_real_documents()
     
     all_results = {}
     mode_configs = []
     
     # Mode 1: Enhanced (Original)
     try:
-        from enhanced_retrievers import EnhancedRetriever
-        retriever = EnhancedRetriever(mock_docs, openai_api_key)
+        from contextual_enhanced_retriever import ContextualEnhancedRetriever
+        retriever = ContextualEnhancedRetriever(real_docs, openai_api_key)
         print("1. Enhanced Mode")
         results = test_mode_with_questions("Enhanced", retriever, TEST_QUESTIONS, llm)
         all_results["Enhanced"] = results
@@ -192,7 +121,7 @@ def run_benchmark():
     # Mode 2: Contextual Enhanced
     try:
         from contextual_enhanced_retriever import ContextualEnhancedRetriever
-        retriever = ContextualEnhancedRetriever(mock_docs, openai_api_key)
+        retriever = ContextualEnhancedRetriever(real_docs, openai_api_key)
         print("2. Contextual Enhanced Mode")
         results = test_mode_with_questions("Contextual Enhanced", retriever, TEST_QUESTIONS, llm)
         all_results["Contextual Enhanced"] = results
@@ -204,7 +133,7 @@ def run_benchmark():
     # Mode 3: Hybrid FAISS
     try:
         from hybrid_faiss_retriever import HybridFAISSRetriever
-        retriever = HybridFAISSRetriever(mock_docs, openai_api_key)
+        retriever = HybridFAISSRetriever(real_docs, openai_api_key)
         print("3. Hybrid FAISS Mode")
         results = test_mode_with_questions("Hybrid FAISS", retriever, TEST_QUESTIONS, llm)
         all_results["Hybrid FAISS"] = results
@@ -215,20 +144,20 @@ def run_benchmark():
     
     # Mode 4: Filtered LangChain (simplified - just test classification)
     try:
-        from filtered_langchain_retriever import FilteredLangChainSQLRetriever
-        print("4. Filtered LangChain Mode")
+        from guided_agent_retriever import GuidedAgentRetriever
+        print("4. Guided Agent Mode")
         print("    Testing: Quick initialization...", end=" ")
-        retriever = FilteredLangChainSQLRetriever(
+        retriever = GuidedAgentRetriever(
             db_connection_string=db_connection, 
             llm=llm, 
             enable_monitoring=False
         )
         print("✅ Initialized")
-        all_results["Filtered LangChain"] = {"Status": {"success": True, "response": "Initialized", "time": 0.1}}
-        mode_configs.append("Filtered LangChain")
+        all_results["Guided Agent"] = {"Status": {"success": True, "response": "Initialized", "time": 0.1}}
+        mode_configs.append("Guided Agent")
     except Exception as e:
-        print(f"4. Filtered LangChain Mode ❌ {str(e)[:30]}...")
-        all_results["Filtered LangChain"] = None
+        print(f"4. Guided Agent Mode ❌ {str(e)[:30]}...")
+        all_results["Guided Agent"] = None
     
     # Mode 5: TAG Classifier
     try:
@@ -253,29 +182,21 @@ def run_benchmark():
         print(f"5. TAG Classifier Mode ❌ {str(e)[:30]}...")
         all_results["TAG Classifier"] = None
     
-    # Mode 6: Smart Fallback
-    try:
-        from smart_fallback_retriever import SmartFallbackRetriever
-        retriever = SmartFallbackRetriever(db_connection)
-        print("6. Smart Fallback Mode")
-        results = test_mode_with_questions("Smart Fallback", retriever, TEST_QUESTIONS, llm)
-        all_results["Smart Fallback"] = results
-        mode_configs.append("Smart Fallback")
-    except Exception as e:
-        print(f"6. Smart Fallback Mode ❌ {str(e)[:30]}...")
-        all_results["Smart Fallback"] = None
+    # Mode 6: Smart Fallback - REMOVED (was mock solution)
+    print("6. Smart Fallback Mode - REMOVED (was mock solution)")
+    all_results["Smart Fallback"] = None
     
     # Mode 7: Smart Enhanced
     try:
-        from smart_enhanced_retriever import SmartEnhancedRetriever
-        retriever = SmartEnhancedRetriever(mock_docs, openai_api_key)
-        print("7. Smart Enhanced Mode")
-        results = test_mode_with_questions("Smart Enhanced", retriever, TEST_QUESTIONS, llm)
-        all_results["Smart Enhanced"] = results
-        mode_configs.append("Smart Enhanced")
+        from contextual_vector_retriever import ContextualVectorRetriever
+        retriever = ContextualVectorRetriever(real_docs, openai_api_key)
+        print("7. Contextual Vector Mode")
+        results = test_mode_with_questions("Contextual Vector", retriever, TEST_QUESTIONS, llm)
+        all_results["Contextual Vector"] = results
+        mode_configs.append("Contextual Vector")
     except Exception as e:
-        print(f"7. Smart Enhanced Mode ❌ {str(e)[:30]}...")
-        all_results["Smart Enhanced"] = None
+        print(f"7. Contextual Vector Mode ❌ {str(e)[:30]}...")
+        all_results["Contextual Vector"] = None
     
     # Mode 8: Guided Agent (simplified - just test initialization)
     try:
@@ -297,7 +218,7 @@ def run_benchmark():
     # Mode 9: Contextual Vector
     try:
         from contextual_vector_retriever import ContextualVectorRetriever
-        retriever = ContextualVectorRetriever(mock_docs, openai_api_key)
+        retriever = ContextualVectorRetriever(real_docs, openai_api_key)
         print("9. Contextual Vector Mode")
         results = test_mode_with_questions("Contextual Vector", retriever, TEST_QUESTIONS, llm)
         all_results["Contextual Vector"] = results

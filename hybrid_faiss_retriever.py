@@ -410,6 +410,71 @@ class HybridFAISSRetriever:
                 matched.append(term)
         
         return matched
+    
+    def retrieve_documents(self, query: str, max_docs: int = 10) -> List[Document]:
+        """
+        Standard retrieve_documents interface for compatibility.
+        
+        Args:
+            query: Natural language query
+            max_docs: Maximum number of documents to return
+            
+        Returns:
+            List of Document objects
+        """
+        # Use hybrid retrieval and convert to Document format
+        hybrid_results = self.retrieve_hybrid(query, k=max_docs)
+        
+        # Extract documents and add hybrid metadata
+        documents = []
+        for result in hybrid_results:
+            doc = result.document
+            # Add hybrid scoring metadata
+            doc.metadata.update({
+                "hybrid_combined_score": result.combined_score,
+                "hybrid_semantic_score": result.semantic_score,
+                "hybrid_keyword_score": result.keyword_score,
+                "hybrid_matched_terms": result.matched_terms,
+                "hybrid_expansion_terms": result.expansion_terms,
+                "retrieval_mode": "hybrid_faiss"
+            })
+            documents.append(doc)
+        
+        return documents
+    
+    def retrieve(self, query: str, k: int = 4) -> List[Document]:
+        """
+        Standard retrieve method for compatibility with benchmark framework.
+        
+        Args:
+            query: Natural language query
+            k: Number of documents to retrieve
+            
+        Returns:
+            List of relevant documents
+        """
+        return self.retrieve_documents(query, k)
+
+    def get_retriever_info(self) -> Dict[str, Any]:
+        """Get information about this retriever."""
+        return {
+            "mode": "hybrid_faiss",
+            "type": "Hybrid FAISS Retriever",
+            "description": "Combines semantic search (FAISS) with keyword search (BM25) and HV business terminology mapping",
+            "documents_available": len(self.documents),
+            "features": [
+                "HV Business Terminology Dictionary",
+                "Semantic search via FAISS",
+                "Keyword search via BM25",
+                "Domain-enhanced embeddings",
+                "Weighted hybrid scoring"
+            ],
+            "weights": {
+                "semantic": self.semantic_weight,
+                "keyword": self.keyword_weight
+            },
+            "status": "active"
+        }
 
 
 def create_hybrid_faiss_retriever(documents: List[Document], 

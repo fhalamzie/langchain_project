@@ -368,6 +368,19 @@ class ContextualEnhancedRetriever:
                    len(docs), retrieval_time, query_context.query_type)
         
         return docs
+    
+    def retrieve(self, query: str, k: int = 4) -> List[Document]:
+        """
+        Standard retrieve method for compatibility with benchmark framework.
+        
+        Args:
+            query: Natural language query
+            k: Number of documents to retrieve
+            
+        Returns:
+            List of relevant documents
+        """
+        return self.retrieve_contextual_documents(query, k)
 
 
 def create_contextual_enhanced_retriever(documents: List[Document], 

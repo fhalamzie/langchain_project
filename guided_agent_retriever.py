@@ -22,10 +22,71 @@ from langchain_core.language_models.base import BaseLanguageModel
 
 # Import our optimized components
 from adaptive_tag_classifier import AdaptiveTAGClassifier, ClassificationResult
-from filtered_langchain_retriever import FilteredLangChainSQLRetriever, QueryTableClassifier
+# QueryTableClassifier moved here from deleted filtered_langchain_retriever
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
+
+
+class QueryTableClassifier:
+    """
+    Simplified QueryTableClassifier for GuidedAgentRetriever.
+    Classifies queries to determine relevant database tables.
+    """
+    
+    def __init__(self):
+        """Initialize query table classifier."""
+        self.table_mappings = {
+            "address_lookup": ["BEWOHNER", "BEWADR", "OBJEKTE"],
+            "owner_lookup": ["EIGENTUEMER", "EIGADR", "VEREIG", "OBJEKTE"],
+            "financial_query": ["KONTEN", "BUCHUNG", "SOLLSTELLUNG"],
+            "property_count": ["WOHNUNG", "OBJEKTE"],
+            "core_entities": ["BEWOHNER", "EIGENTUEMER", "OBJEKTE", "WOHNUNG"]
+        }
+    
+    def classify_query(self, query: str) -> str:
+        """
+        Classify query to determine query type.
+        
+        Args:
+            query: Natural language query
+            
+        Returns:
+            Query type string
+        """
+        query_lower = query.lower()
+        
+        # Address/resident queries
+        if any(word in query_lower for word in ["wohnt", "adresse", "straße", "str.", "bewohner"]):
+            return "address_lookup"
+            
+        # Owner queries  
+        if any(word in query_lower for word in ["eigentümer", "besitzer", "verwalter"]):
+            return "owner_lookup"
+            
+        # Financial queries
+        if any(word in query_lower for word in ["miete", "zahlung", "konto", "buchung", "euro", "€"]):
+            return "financial_query"
+            
+        # Count queries
+        if any(word in query_lower for word in ["anzahl", "viele", "count", "wie viel"]):
+            return "property_count"
+            
+        # Default
+        return "core_entities"
+    
+    def get_relevant_tables(self, query: str) -> List[str]:
+        """
+        Get relevant tables for query.
+        
+        Args:
+            query: Natural language query
+            
+        Returns:
+            List of relevant table names
+        """
+        query_type = self.classify_query(query)
+        return self.table_mappings.get(query_type, self.table_mappings["core_entities"])
 
 
 @dataclass
@@ -205,7 +266,7 @@ class GuidedAgentRetriever:
             # Step 4: Extract agent execution steps for analysis
             agent_steps = []
             for doc in documents:
-                if doc.metadata.get("source") == "filtered_langchain_step":
+                if doc.metadata.get("source") == "guided_agent_step":
                     agent_steps.append({
                         "step": doc.metadata.get("step_number"),
                         "tool": doc.metadata.get("tool"),
