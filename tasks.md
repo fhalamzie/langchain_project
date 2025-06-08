@@ -6,14 +6,46 @@
 
 ### 🎯 **Nächste Entwicklungsschritte (Priorität)**
 
-#### **1. Response Format Standardization (HIGH PRIORITY)**
+#### **🚨 1. CRITICAL: SQL Generation Reliability Fix (HÖCHSTE PRIORITÄT)**
+- **Ziel**: SQL-Generierungsfehler beheben (45% Fehlerrate reduzieren)
+- **Status**: 🚨 KRITISCH - Live-Test zeigt "SQL Validation Error: Only SELECT queries are allowed"
+- **Problem**: LLM generiert erklärenden Text statt saubere SQL-Abfragen
+
+**Sofortige Aufgaben**:
+- [ ] **IMMEDIATE**: Strikte SQL-only Prompt-Templates implementieren
+  - [ ] `STRICT_SQL_PROMPT` Template erstellen mit "Return ONLY SQL code, no explanations"
+  - [ ] Explizite Regeln hinzufügen: Muss mit SELECT beginnen, mit Semikolon enden
+  - [ ] Format-Beispiele hinzufügen für sauberes SQL vs. ungültige Responses
+  - [ ] Verbose Schema-Beschreibungen aus Prompts entfernen
+
+- [ ] **QUICK WIN**: SQL Response Post-Processing hinzufügen
+  - [ ] `extract_clean_sql()` Funktion mit Regex-Parsing implementieren
+  - [ ] SQL aus gemischtem Content extrahieren mit `SELECT.*?(?:;|$)` Pattern
+  - [ ] Automatische Semikolon-Vervollständigung für gültige Queries
+  - [ ] Parsing-Fehler für Analyse protokollieren
+
+- [ ] **ROBUST**: Validation & Retry Mechanismus implementieren
+  - [ ] `validate_sql_syntax()` Funktion für Pre-Execution Validation
+  - [ ] `generate_sql_with_retry()` mit max 3 Versuchen implementieren
+  - [ ] Fallback SQL-Generierung für häufige Query-Patterns hinzufügen
+  - [ ] Retry-Statistiken für Prompt-Optimierung verfolgen
+
+- [ ] **OPTIMIZATION**: Template-basierte Generierung für häufige Patterns
+  - [ ] SQL-Templates für count_queries, list_queries, join_queries erstellen
+  - [ ] Template-Auswahl basierend auf TAG-Klassifikation implementieren
+  - [ ] LLM nur für komplexe Edge Cases verwenden
+  - [ ] Performance-Vergleich: Templates vs LLM-Generierung
+
+**Erwartete Verbesserung**: Erfolgsrate von 55% auf 85-90% (9-10/11 Fragen pro Modus)
+
+#### **2. Response Format Standardization (HIGH PRIORITY)**
 - **Ziel**: Einheitliche Response-Struktur für alle 6 Modi
 - **Aufgaben**:
   - Standardisiertes Result-Format definieren 
   - Alle Modi auf einheitliche Response-Methoden umstellen
   - Benchmark-Framework für einheitliche Schnittstelle aktualisieren
 
-#### **2. Enhanced Learning Implementation (MEDIUM PRIORITY)**
+#### **3. Enhanced Learning Implementation (MEDIUM PRIORITY)**
 - **Ziel**: Verbesserte Lernfähigkeit für document-basierte Modi
 - **Aufgaben**:
   - Schema-Dokument-Relevanz-Learning implementieren
@@ -296,10 +328,92 @@
 
 **Erfolgskriterium**: Klare Production-Architektur-Entscheidung
 
+## 🚨 **LIVE TEST RESULTS & ANALYSIS (8. Dezember 2024)**
+
+### **Aktuelle System-Performance**
+- **29/55 Fragen abgeschlossen** (53% Fortschritt)
+- **2/5 Modi vollständig getestet** (TAG Classifier ✅, Contextual Enhanced ✅)
+- **SQL Erfolgsrate**: ~55% (aufgrund LLM-Generierungsprobleme)
+- **Antwortzeiten**: 
+  - TAG Classifier: 0.000s (sofortige Klassifikation)
+  - Contextual Enhanced: 18.6s Durchschnitt pro Frage
+  - Hybrid FAISS: Bessere SQL-Generierung, weniger Fehler
+- **Datenbank-Performance**: 0.015-0.039s pro SQL-Query-Ausführung (exzellent)
+- **Real Data bestätigt**: 517 Wohnungen, 698 Bewohner, 540 Eigentümer, 80 Objekte, 3595 Konten
+
+### **SQL-Generierung Problem-Analyse**
+
+**❌ Fehlschlagende SQL-Beispiele (aus Logs):**
+```
+Generated SQL for owner_lookup: and `VEREIG`, as . The selected columns provide a good overview: owner ID, name, address...
+Generated SQL for property_count: is a strong hint. "Anzahl der Bewohner" like: `SELECT T1.ONR, T1.OBEZ, COUNT(T2.BNR) FROM OBJEKTE T1 JOIN BEWOHNER T2
+Generated SQL for general_property: apartments (`WOHNUNG`). . The first query I designed seems more aligned with "general_property" context...
+```
+
+**✅ Funktionierende SQL-Beispiele:**
+```sql
+SELECT COUNT(*) FROM WOHNUNG                    -- ✅ Sauber, einfach
+SELECT COUNT(*) FROM BEWOHNER                   -- ✅ Sauber, einfach  
+SELECT T2.EANREDE, T2.EVNAME, T2.ENAME... FROM EIGENTUEMER AS T1 JOIN EIGADR AS T2...  -- ✅ Komplex aber gültig
+```
+
+### **Identifizierte Grundursachen**
+1. **LLM "Thinking Out Loud"**: Generiert erklärenden Text gemischt mit SQL
+2. **Unvollständige SQL-Fragmente**: Gibt partielle Queries zurück oder bricht mitten ab
+3. **Context-Kontamination**: Schema-Beschreibungen bluten in SQL-Output ein
+4. **Prompt Engineering Schwäche**: Keine Durchsetzung von strikt SQL-only Output
+
+### **Lösungsstrategie (implementierungsbereit)**
+
+#### **Phase 1: Sofortige Fixes (1-2 Stunden)**
+```python
+STRICT_SQL_PROMPT = """
+Generate ONLY a valid Firebird SQL SELECT query. 
+RULES:
+- Return ONLY SQL code, no explanations
+- Must start with SELECT
+- Must end with semicolon
+- No markdown, no comments, no text
+
+Query: {question}
+SQL:"""
+```
+
+#### **Phase 2: Response Processing (2-4 Stunden)**
+```python
+def extract_clean_sql(llm_response):
+    sql_pattern = r'SELECT.*?(?:;|$)'
+    matches = re.findall(sql_pattern, llm_response, re.IGNORECASE | re.DOTALL)
+    if matches:
+        sql = matches[0].strip()
+        if not sql.endswith(';'):
+            sql += ';'
+        return sql
+    return None
+```
+
+#### **Phase 3: Validation & Retry (4-6 Stunden)**
+```python
+def generate_sql_with_retry(question, max_attempts=3):
+    for attempt in range(max_attempts):
+        sql = llm.generate_sql(question)
+        if validate_sql_syntax(sql):
+            return sql
+    return fallback_sql_generation(question)
+```
+
+**Erwartete Ergebnisse**: 
+- **Aktuelle Erfolgsrate**: ~55% (6/11 Fragen pro Modus)
+- **Ziel Erfolgsrate**: 85-90% (9-10/11 Fragen pro Modus)
+- **Implementierungsaufwand**: Niedrig (Prompt-Updates, einfaches Regex-Parsing)
+- **Performance-Impact**: Minimal (gleiche LLM-Aufrufe, bessere Prompts)
+
 ## 🎯 Erfolgskriterien
 
-- SQL-Generierungsgenauigkeit: 20% → 90%
-- Tabellenauswahl: >95% korrekte Identifikation
-- Adressabfragen: 100% korrekte LIKE-Muster-Verwendung statt exakter Übereinstimmung
-- Geschäftslogik: >90% korrekte Begriff-zu-Tabelle-Zuordnung
-- Antwortzeit: <10s für komplexe Abfragen, <5s für einfache Abfragen
+**Aktualisierte Ziele basierend auf Live-Test Ergebnissen:**
+- **SQL-Generierungsgenauigkeit**: 55% → 90% (Hauptpriorität)
+- **Tabellenauswahl**: >95% korrekte Identifikation
+- **Adressabfragen**: 100% korrekte LIKE-Muster-Verwendung statt exakter Übereinstimmung
+- **Geschäftslogik**: >90% korrekte Begriff-zu-Tabelle-Zuordnung
+- **Antwortzeit**: <10s für komplexe Abfragen, <5s für einfache Abfragen
+- **System-Stabilität**: 5/5 Modi funktional mit >85% Erfolgsrate pro Modus
