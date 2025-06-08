@@ -28,53 +28,21 @@ sys.path.append('/home/projects/langchain_project')
 # ============================================================================
 
 def execute_sql_direct(sql_query: str) -> Tuple[bool, List[Dict], str]:
-    """Execute SQL directly against database and return actual results."""
+    """Execute SQL using standardized database interface."""
     try:
-        import fdb
+        from standard_db_interface import execute_sql
         
-        # Database connection
-        conn = fdb.connect(
-            host='localhost',
-            port=3050,
-            database='/home/projects/langchain_project/WINCASA2022.FDB',
-            user='sysdba',
-            password='masterkey',
-            charset='UTF8'
-        )
-        
-        cursor = conn.cursor()
         print(f"🔍 Executing SQL: {sql_query}")
         
-        cursor.execute(sql_query)
+        # Use standardized database interface
+        success, results, message = execute_sql(sql_query)
         
-        # Get column names
-        column_names = [desc[0] for desc in cursor.description] if cursor.description else []
-        
-        # Fetch results
-        rows = cursor.fetchall()
-        
-        # Convert to list of dictionaries
-        results = []
-        for row in rows:
-            row_dict = {}
-            for i, value in enumerate(row):
-                col_name = column_names[i] if i < len(column_names) else f"col_{i}"
-                # Handle encoding issues
-                if isinstance(value, bytes):
-                    try:
-                        value = value.decode('utf-8')
-                    except UnicodeDecodeError:
-                        value = value.decode('latin-1', errors='replace')
-                elif isinstance(value, str):
-                    value = value.strip()
-                row_dict[col_name] = value
-            results.append(row_dict)
-        
-        cursor.close()
-        conn.close()
-        
-        print(f"✅ Query successful: {len(results)} rows returned")
-        return True, results, f"Found {len(results)} rows"
+        if success:
+            print(f"✅ Query successful: {len(results)} rows returned")
+        else:
+            print(f"❌ {message}")
+            
+        return success, results, message
         
     except Exception as e:
         error_msg = f"Database error: {str(e)}"

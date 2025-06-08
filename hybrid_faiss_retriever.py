@@ -25,8 +25,13 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
 from langchain_core.documents import Document
+from langchain_core.language_models.base import BaseLanguageModel
 from langchain_openai import OpenAIEmbeddings
 from langchain_community.vectorstores import FAISS
+
+# Import SQL execution components
+from sql_execution_engine import SQLExecutionEngine, SQLExecutionResult
+from adaptive_tag_classifier import AdaptiveTAGClassifier
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -41,6 +46,17 @@ class HybridSearchResult:
     combined_score: float
     matched_terms: List[str]
     expansion_terms: List[str]
+
+
+@dataclass
+class HybridFAISSResult:
+    """Result from Hybrid FAISS Retriever with SQL execution."""
+    documents: List[Document]
+    hybrid_results: List[HybridSearchResult]
+    sql_query: str
+    execution_result: SQLExecutionResult
+    retrieval_time: float
+    terminology_expansions: Dict[str, List[str]]
 
 
 class HVBusinessTerminologyMapper:
@@ -270,7 +286,8 @@ class HybridFAISSRetriever:
     """
     
     def __init__(self, documents: List[Document], openai_api_key: str, 
-                 semantic_weight: float = 0.6, keyword_weight: float = 0.4):
+                 semantic_weight: float = 0.6, keyword_weight: float = 0.4,
+                 db_connection_string: str = None, llm: BaseLanguageModel = None):
         """
         Initialize Hybrid FAISS Retriever.
         
@@ -279,10 +296,14 @@ class HybridFAISSRetriever:
             openai_api_key: OpenAI API key
             semantic_weight: Weight for semantic similarity (default 0.6)
             keyword_weight: Weight for keyword matching (default 0.4)
+            db_connection_string: Database connection for SQL execution
+            llm: Language model for SQL generation
         """
         self.documents = documents
         self.semantic_weight = semantic_weight
         self.keyword_weight = keyword_weight
+        self.db_connection_string = db_connection_string or "firebird+fdb://sysdba:masterkey@localhost:3050//home/projects/langchain_project/WINCASA2022.FDB"
+        self.llm = llm
         
         # Initialize components
         self.terminology_mapper = HVBusinessTerminologyMapper()
@@ -304,6 +325,12 @@ class HybridFAISSRetriever:
         )
         
         self.faiss_store = FAISS.from_documents(enhanced_docs, base_embeddings)
+        
+        # Initialize SQL execution engine
+        self.sql_engine = SQLExecutionEngine(self.db_connection_string)
+        
+        # Initialize learning components
+        self.tag_classifier = AdaptiveTAGClassifier()
         
         logger.info("Hybrid FAISS Retriever initialized with %d documents", 
                    len(documents))
@@ -442,18 +469,269 @@ class HybridFAISSRetriever:
         
         return documents
     
-    def retrieve(self, query: str, k: int = 4) -> List[Document]:
+    def retrieve(self, query: str, k: int = 4) -> HybridFAISSResult:
         """
-        Standard retrieve method for compatibility with benchmark framework.
+        Complete retrieval with hybrid search, SQL generation and execution.
         
         Args:
             query: Natural language query
             k: Number of documents to retrieve
             
         Returns:
-            List of relevant documents
+            HybridFAISSResult with hybrid search results, SQL, and database results
         """
-        return self.retrieve_documents(query, k)
+        start_time = time.time()
+        
+        try:
+            # Step 1: Hybrid document retrieval for SQL generation context
+            hybrid_results = self.retrieve_hybrid(query, k)
+            retrieved_docs = [result.document for result in hybrid_results]
+            
+            if not retrieved_docs:
+                raise Exception("No relevant documents found for query")
+            
+            # Step 2: Extract terminology expansions for context
+            expanded_terms, expansion_mapping = self.terminology_mapper.expand_query_terms(query)
+            
+            # Step 3: Generate SQL using hybrid-retrieved schema documents and LLM
+            sql_query = self._generate_sql_from_hybrid_documents(query, hybrid_results, expanded_terms)
+            
+            # Step 4: Execute SQL against real database
+            execution_result = self.sql_engine.execute_query(sql_query)
+            
+            # Step 5: Learn from execution results
+            self._learn_from_execution(query, sql_query, execution_result.success, hybrid_results)
+            
+            retrieval_time = time.time() - start_time
+            
+            return HybridFAISSResult(
+                documents=retrieved_docs,
+                hybrid_results=hybrid_results,
+                sql_query=sql_query,
+                execution_result=execution_result,
+                retrieval_time=retrieval_time,
+                terminology_expansions=expansion_mapping
+            )
+            
+        except Exception as e:
+            logger.error(f"Hybrid FAISS retrieval failed: {e}")
+            retrieval_time = time.time() - start_time
+            
+            # Return error result
+            error_result = SQLExecutionResult(
+                success=False,
+                query="",
+                data=[],
+                columns=[],
+                row_count=0,
+                execution_time=0.0,
+                formatted_answer=f"Error: {str(e)}",
+                error=str(e)
+            )
+            
+            return HybridFAISSResult(
+                documents=[],
+                hybrid_results=[],
+                sql_query="",
+                execution_result=error_result,
+                retrieval_time=retrieval_time,
+                terminology_expansions={}
+            )
+    
+    def _generate_sql_from_hybrid_documents(self, query: str, hybrid_results: List[HybridSearchResult], 
+                                          expanded_terms: List[str]) -> str:
+        """
+        Generate SQL query using hybrid-retrieved schema documents and terminology mapping.
+        
+        Args:
+            query: Original natural language query
+            hybrid_results: Hybrid search results with documents and scoring
+            expanded_terms: HV terminology expansions
+            
+        Returns:
+            Generated SQL query string
+        """
+        if not self.llm:
+            raise Exception("LLM not provided for SQL generation")
+        
+        # Build enhanced context from hybrid results
+        schema_context = ""
+        terminology_context = ""
+        
+        for i, result in enumerate(hybrid_results):
+            schema_context += f"\nRELEVANT SCHEMA {i+1} (Score: {result.combined_score:.3f}):\n"
+            schema_context += f"Content: {result.document.page_content}\n"
+            schema_context += f"Matched Terms: {', '.join(result.matched_terms)}\n"
+            schema_context += f"HV Expansions: {', '.join(result.expansion_terms)}\n"
+        
+        # Build terminology mapping context
+        if expanded_terms:
+            terminology_context = f"\nHV TERMINOLOGY MAPPINGS:\n"
+            terminology_context += f"Expanded Query Terms: {', '.join(expanded_terms)}\n"
+        
+        # Create enhanced prompt for SQL generation
+        sql_generation_prompt = f"""
+You are a SQL expert for WINCASA Hausverwaltung database queries. Generate accurate Firebird SQL.
+
+HYBRID SEARCH CONTEXT:
+- Original Query: {query}
+- Semantic + Keyword Hybrid Results: {len(hybrid_results)} relevant schema documents
+{schema_context}{terminology_context}
+
+HV BUSINESS LOGIC:
+- "Mieter" maps to BEWOHNER table (residents)
+- "Eigentümer" maps to EIGENTUEMER table (owners)
+- "Wohnung" maps to WOHNUNG table (apartments)
+- Address searches use BSTR (street+number) and BPLZORT (postal+city)
+- Use LIKE '%pattern%' for flexible text matching
+
+FIREBIRD SQL RULES:
+- Use SELECT for all queries
+- Use LIKE '%pattern%' for text searches
+- Table/column names are case-sensitive
+- Use proper JOINs for relationships
+- Use FIRST n instead of LIMIT n
+- For address searches: BSTR contains 'street number', BPLZORT contains 'postal city'
+
+GENERATE SQL FOR: {query}
+
+Return only the SQL query, no explanations:"""
+        
+        # Generate SQL using LLM
+        messages = [
+            {"role": "system", "content": "You are a SQL expert. Generate only valid Firebird SQL queries."},
+            {"role": "user", "content": sql_generation_prompt}
+        ]
+        
+        llm_response = self.llm.invoke(messages)
+        sql_query = self._extract_sql_from_response(llm_response.content)
+        
+        logger.info(f"Generated SQL using hybrid context: {sql_query}")
+        return sql_query
+    
+    def _extract_sql_from_response(self, response: str) -> str:
+        """
+        Extract clean SQL from LLM response.
+        
+        Args:
+            response: LLM response containing SQL
+            
+        Returns:
+            Clean SQL query
+        """
+        # Remove markdown code blocks
+        if "```sql" in response:
+            sql = response.split("```sql")[1].split("```")[0].strip()
+        elif "```" in response:
+            sql = response.split("```")[1].split("```")[0].strip()
+        else:
+            sql = response.strip()
+        
+        # Clean up the SQL
+        lines = [line.strip() for line in sql.split('\n') if line.strip()]
+        sql = ' '.join(lines)
+        
+        return sql
+    
+    def _learn_from_execution(self, query: str, sql: str, success: bool, 
+                            hybrid_results: List[HybridSearchResult]):
+        """
+        Learn from SQL execution results to improve future retrievals.
+        
+        Args:
+            query: Original query
+            sql: Generated SQL
+            success: Whether execution was successful
+            hybrid_results: Hybrid search results used for SQL generation
+        """
+        # Feed learning back to TAG classifier
+        if hasattr(self.tag_classifier, 'learn_from_success'):
+            # Classify query for learning (simple classification based on terminology)
+            query_type = self._classify_query_for_learning(query, hybrid_results)
+            self.tag_classifier.learn_from_success(query, query_type, sql, success)
+        
+        # Learn which document combinations worked well for SQL generation
+        if success:
+            logger.info(f"Learning: Hybrid search successfully generated SQL for '{query}'")
+            for result in hybrid_results:
+                logger.debug(f"Successful hybrid combination: {result.matched_terms} + {result.expansion_terms}")
+        else:
+            logger.warning(f"Learning: Hybrid search failed for '{query}' - may need better terminology mapping")
+    
+    def _classify_query_for_learning(self, query: str, hybrid_results: List[HybridSearchResult]) -> str:
+        """
+        Simple query classification based on hybrid search results for learning.
+        
+        Args:
+            query: Original query
+            hybrid_results: Hybrid search results
+            
+        Returns:
+            Query type string
+        """
+        query_lower = query.lower()
+        
+        # Check expansion terms to determine query type
+        expansion_terms = []
+        for result in hybrid_results:
+            expansion_terms.extend(result.expansion_terms)
+        
+        expansion_str = ' '.join(expansion_terms).lower()
+        
+        if any(term in query_lower or term in expansion_str for term in ['bewohner', 'mieter', 'wohnt']):
+            return 'address_lookup'
+        elif any(term in query_lower or term in expansion_str for term in ['eigentuemer', 'eigentümer', 'besitzer']):
+            return 'owner_lookup'
+        elif any(term in query_lower or term in expansion_str for term in ['konten', 'miete', 'zahlung', 'kosten']):
+            return 'financial_queries'
+        elif any(term in query_lower or term in expansion_str for term in ['anzahl', 'viele', 'count']):
+            return 'count_queries'
+        else:
+            return 'general_property'
+    
+    def get_response(self, query: str) -> str:
+        """
+        Get formatted response for compatibility with benchmark framework.
+        
+        Args:
+            query: Natural language query
+            
+        Returns:
+            Formatted response string
+        """
+        result = self.retrieve(query)
+        return result.execution_result.formatted_answer
+    
+    def retrieve_documents(self, query: str, max_docs: int = 10) -> List[Document]:
+        """
+        Standard retrieve_documents interface for compatibility.
+        
+        Args:
+            query: Natural language query
+            max_docs: Maximum number of documents to return
+            
+        Returns:
+            List of Document objects from hybrid search (for SQL generation context)
+        """
+        # Use hybrid retrieval and convert to Document format
+        hybrid_results = self.retrieve_hybrid(query, k=max_docs)
+        
+        # Extract documents and add hybrid metadata
+        documents = []
+        for result in hybrid_results:
+            doc = result.document
+            # Add hybrid scoring metadata
+            doc.metadata.update({
+                "hybrid_combined_score": result.combined_score,
+                "hybrid_semantic_score": result.semantic_score,
+                "hybrid_keyword_score": result.keyword_score,
+                "hybrid_matched_terms": result.matched_terms,
+                "hybrid_expansion_terms": result.expansion_terms,
+                "retrieval_mode": "hybrid_faiss"
+            })
+            documents.append(doc)
+        
+        return documents
 
     def get_retriever_info(self) -> Dict[str, Any]:
         """Get information about this retriever."""
@@ -478,18 +756,22 @@ class HybridFAISSRetriever:
 
 
 def create_hybrid_faiss_retriever(documents: List[Document], 
-                                 openai_api_key: str) -> HybridFAISSRetriever:
+                                 openai_api_key: str,
+                                 db_connection_string: str = None,
+                                 llm: BaseLanguageModel = None) -> HybridFAISSRetriever:
     """
     Factory function to create Hybrid FAISS Retriever.
     
     Args:
         documents: Document collection
         openai_api_key: OpenAI API key
+        db_connection_string: Database connection for SQL execution
+        llm: Language model for SQL generation
         
     Returns:
         Configured HybridFAISSRetriever instance
     """
-    return HybridFAISSRetriever(documents, openai_api_key)
+    return HybridFAISSRetriever(documents, openai_api_key, db_connection_string=db_connection_string, llm=llm)
 
 
 if __name__ == "__main__":

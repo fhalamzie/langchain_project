@@ -1,5 +1,5 @@
-site_name: WINCASA - Intelligent Database Query System
-site_description: Production-ready natural language database query system for Firebird databases with AI observability
+site_name: WINCASA - Claude AI Implementation Guide
+site_description: Implementation railways and documentation for Claude AI to build solutions correctly
 site_author: WINCASA Team
 site_url: https://fhalamzie.github.io/langchain_project
 
@@ -89,16 +89,30 @@ markdown_extensions:
 # Page tree
 nav:
   - Home: index.md
-  - Technical Documentation:
+  - Getting Started:
+    - Quick Start: getting-started/quick-start.md
+    - Configuration: getting-started/configuration.md
+  - Technical:
+    - Architecture: technical/architecture.md
+    - Retriever Modes: technical/retriever-modes.md
+    - Modules: technical/modules.md
     - Technical Guide: technical/technical-guide.md
   - Development:
+    - Implementation Guide: development/implementation-guide.md
+    - Guidelines: development/guidelines.md
+    - Testing: development/testing.md
     - Implementation Status: development/implementation-status.md
-  - Code Quality: ./code-quality.md
-  - Testing: ./testing.md
-  - High-Level Design: ./high-level-design.md
-  - Development Guidelines: ./development-guidelines.md
-  - README: ./readme.md
-  - Tasks: ./tasks.md
+  - User Guide:
+    - Query Examples: user-guide/query-examples.md
+    - Troubleshooting: user-guide/troubleshooting.md
+  - Operations:
+    - Deployment: operations/deployment.md
+    - Security: operations/security.md
+  - Project:
+    - Status: project/status.md
+    - Roadmap: project/roadmap.md
+  - Reference:
+    - README: ./readme.md
 
 # Extra
 extra:

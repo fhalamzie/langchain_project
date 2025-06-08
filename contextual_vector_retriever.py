@@ -231,16 +231,20 @@ class ContextualVectorRetriever:
     1. TAG's ML Classifier analyzes query and generates business context
     2. Query is enhanced with domain-specific context and terminology
     3. FAISS performs semantic search with context-primed query
-    4. Results are ranked with business logic boosting
+    4. LLM generates SQL using contextual documents
+    5. SQL is executed against real database
+    6. Results are ranked with business logic boosting
     
     Benefits:
     - Better semantic understanding through business context
     - Domain-aware vector search with TAG's query intelligence
     - Combines structured classification with semantic discovery
+    - Real database execution with contextual SQL generation
     - Improved relevance for property management queries
     """
     
-    def __init__(self, documents: List[Document], openai_api_key: str):
+    def __init__(self, documents: List[Document], openai_api_key: str,
+                 db_connection_string: str = None, llm: BaseLanguageModel = None):
         """
         Initialize Contextual Vector Retriever.
         
@@ -362,6 +366,132 @@ class ContextualVectorRetriever:
                 context_boost_applied=False,
                 retrieval_stats={"error": str(e), "execution_time": time.time() - start_time}
             )
+    
+    def _generate_sql_from_contextual_documents(self, query: str, documents: List[Document], 
+                                              classification: ClassificationResult, enhanced_query: str) -> str:
+        \"\"\"
+        Generate SQL query using contextual documents and TAG classification.
+        
+        Args:
+            query: Original natural language query
+            documents: Contextual documents from FAISS search
+            classification: TAG classification result
+            enhanced_query: Context-enhanced query used for search
+            
+        Returns:
+            Generated SQL query string
+        \"\"\"
+        if not self.llm:
+            raise Exception(\"LLM not provided for SQL generation\")
+        
+        # Build contextual context from retrieved documents
+        contextual_context = \"\"
+        for i, doc in enumerate(documents):
+            contextual_context += f\"\\nCONTEXTUAL SCHEMA {i+1}:\\n\"
+            contextual_context += f\"Content: {doc.page_content}\\n\"
+            if doc.metadata:
+                contextual_context += f\"Metadata: {doc.metadata}\\n\"
+        
+        # Create enhanced prompt for SQL generation
+        sql_generation_prompt = f\"\"\"
+You are a SQL expert for WINCASA Hausverwaltung database queries. Generate accurate Firebird SQL.
+
+CONTEXTUAL VECTOR ANALYSIS:
+- Original Query: {query}
+- Enhanced Query: {enhanced_query}
+- TAG Classification: {classification.query_type} (confidence: {classification.confidence:.3f})
+- Entities Detected: {', '.join(classification.entities)}
+- Classification Reasoning: {classification.reasoning}
+
+CONTEXTUAL SCHEMA INFORMATION:
+{contextual_context}
+
+HV BUSINESS LOGIC:
+- \"Mieter\" maps to BEWOHNER table (residents)
+- \"Eigentümer\" maps to EIGENTUEMER table (owners)
+- \"Wohnung\" maps to WOHNUNG table (apartments)
+- Address searches use BSTR (street+number) and BPLZORT (postal+city)
+- Use LIKE '%pattern%' for flexible text matching
+
+FIREBIRD SQL RULES:
+- Use SELECT for all queries
+- Use LIKE '%pattern%' for text searches
+- Table/column names are case-sensitive
+- Use proper JOINs for relationships
+- Use FIRST n instead of LIMIT n
+- For address searches: BSTR contains 'street number', BPLZORT contains 'postal city'
+
+GENERATE SQL FOR: {query}
+
+Return only the SQL query, no explanations:\"\"\"
+        
+        # Generate SQL using LLM
+        messages = [
+            {\"role\": \"system\", \"content\": \"You are a SQL expert. Generate only valid Firebird SQL queries.\"},
+            {\"role\": \"user\", \"content\": sql_generation_prompt}
+        ]
+        
+        llm_response = self.llm.invoke(messages)
+        sql_query = self._extract_sql_from_response(llm_response.content)
+        
+        logger.info(f\"Generated SQL using contextual vector approach: {sql_query}\")
+        return sql_query
+    
+    def _extract_sql_from_response(self, response: str) -> str:
+        \"\"\"
+        Extract clean SQL from LLM response.
+        
+        Args:
+            response: LLM response containing SQL
+            
+        Returns:
+            Clean SQL query
+        \"\"\"
+        # Remove markdown code blocks
+        if \"```sql\" in response:
+            sql = response.split(\"```sql\")[1].split(\"```\")[0].strip()
+        elif \"```\" in response:
+            sql = response.split(\"```\")[1].split(\"```\")[0].strip()
+        else:
+            sql = response.strip()
+        
+        # Clean up the SQL
+        lines = [line.strip() for line in sql.split('\\n') if line.strip()]
+        sql = ' '.join(lines)
+        
+        return sql
+    
+    def _learn_from_execution(self, query: str, query_type: str, sql: str, success: bool):
+        \"\"\"
+        Learn from SQL execution results to improve future retrievals.
+        
+        Args:
+            query: Original query
+            query_type: TAG classified query type
+            sql: Generated SQL
+            success: Whether execution was successful
+        \"\"\"
+        # Feed learning back to TAG classifier
+        if hasattr(self.tag_classifier, 'learn_from_success'):
+            self.tag_classifier.learn_from_success(query, query_type, sql, success)
+            
+        logger.info(f\"Learning: Contextual Vector {query_type} query {'succeeded' if success else 'failed'}\")
+    
+    def get_response(self, query: str) -> str:
+        \"\"\"
+        Get formatted response for compatibility with benchmark framework.
+        
+        Args:
+            query: Natural language query
+            
+        Returns:
+            Formatted response string
+        \"\"\"
+        result = self.retrieve(query)
+        if result.execution_result:
+            return result.execution_result.formatted_answer
+        else:
+            return \"Error: No execution result available\"
     
     def learn_from_feedback(self, query: str, relevant_docs: List[str], success: bool):
         """

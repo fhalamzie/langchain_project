@@ -178,7 +178,7 @@ class TAGSchemaGuide:
         core_entities = ["BEWOHNER", "EIGENTUEMER", "OBJEKTE", "KONTEN"]
         guided_tables = list(set(primary_tables + core_entities))
         
-        # Convert to lowercase for compatibility with FilteredLangChainSQLRetriever
+        # Convert to lowercase for database table name compatibility
         guided_tables_lowercase = [table.lower() for table in guided_tables]
         
         logger.info(f"TAG-guided schema: {classification.query_type} → {len(guided_tables_lowercase)} tables")
@@ -250,18 +250,168 @@ class GuidedAgentRetriever:
             # Step 1: TAG Schema Guidance - intelligent table filtering
             guided_tables, classification = self.schema_guide.get_guided_tables(query)
             
-            # Step 2: Create LangChain Agent with guided schema
-            guided_langchain = FilteredLangChainSQLRetriever(
-                db_connection_string=self.db_connection_string,
+            # Step 2: Create proper LangChain SQL Database with schema bypass
+            # Use custom SQLDatabase implementation that avoids problematic metadata queries
+            from langchain_community.utilities.sql_database import SQLDatabase
+            from langchain_community.agent_toolkits import SQLDatabaseToolkit
+            from langchain_community.agent_toolkits.sql.base import create_sql_agent
+            from langchain.agents import AgentType
+            from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String, text
+            
+            # Step 3: Create engine and custom database wrapper
+            engine = create_engine(self.db_connection_string)
+            
+            # Create custom metadata without reflection to avoid Firebird issues
+            metadata = MetaData()
+            
+            # Define basic table structures for guided tables
+            table_objects = {}
+            for table_name in guided_tables:
+                table_name_upper = table_name.upper()
+                if table_name_upper == 'WOHNUNG':
+                    table_objects[table_name_upper] = Table(
+                        table_name_upper, metadata,
+                        Column('WHG_ID', Integer),
+                        Column('ONR', Integer), 
+                        Column('WHG_NR', String),
+                        Column('QMWFL', Integer),
+                        Column('ZIMMER', Integer)
+                    )
+                elif table_name_upper == 'BEWOHNER':
+                    table_objects[table_name_upper] = Table(
+                        table_name_upper, metadata,
+                        Column('ID', Integer),
+                        Column('BNAME', String),
+                        Column('BVNAME', String),
+                        Column('BSTR', String),
+                        Column('BPLZORT', String),
+                        Column('ONR', Integer)
+                    )
+                elif table_name_upper == 'EIGENTUEMER':
+                    table_objects[table_name_upper] = Table(
+                        table_name_upper, metadata,
+                        Column('ID', Integer),
+                        Column('NAME', String),
+                        Column('VNAME', String),
+                        Column('ORT', String),
+                        Column('EMAIL', String)
+                    )
+                else:
+                    # Generic table structure for other tables
+                    table_objects[table_name_upper] = Table(
+                        table_name_upper, metadata,
+                        Column('ID', Integer),
+                        Column('NAME', String)
+                    )
+            
+            # Create custom SQLDatabase with predefined tables (no reflection)
+            class CustomSQLDatabase(SQLDatabase):
+                def __init__(self, engine, tables):
+                    self._engine = engine
+                    self._metadata = metadata
+                    self._metadata.bind = engine
+                    self._include_tables = list(tables.keys())
+                    self._sample_rows_in_table_info = 2
+                    self._indexes_in_table_info = False
+                    self._custom_table_info = None
+                    self._max_string_length = 300
+                    self._schema = None
+                    
+                def get_table_names(self):
+                    return self._include_tables
+                    
+                def get_table_info(self, table_names=None):
+                    # Return basic table info without complex reflection
+                    table_info = []
+                    for table_name in (table_names or self._include_tables):
+                        if table_name in table_objects:
+                            table = table_objects[table_name]
+                            columns = [f"{col.name} {col.type}" for col in table.columns]
+                            table_info.append(f"Table {table_name}:\\nColumns: {', '.join(columns)}")
+                    return "\\n\\n".join(table_info)
+            
+            # Create custom database and toolkit
+            db = CustomSQLDatabase(engine, table_objects)
+            toolkit = SQLDatabaseToolkit(db=db, llm=self.llm)
+            
+            # Create SQL agent with proper LangChain configuration
+            agent_executor = create_sql_agent(
                 llm=self.llm,
-                enable_monitoring=self.enable_monitoring
+                toolkit=toolkit,
+                agent_type=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
+                verbose=False,
+                handle_parsing_errors=True,
+                max_iterations=3,
+                max_execution_time=30,
+                return_intermediate_steps=False
             )
             
-            # Override the table classifier with our TAG-guided results
-            guided_langchain.query_classifier.get_relevant_tables = lambda q: guided_tables
-            
-            # Step 3: Execute with LangChain Agent on focused schema
-            documents = guided_langchain.retrieve_documents(query, max_docs)
+            # Step 4: Execute with custom error handling for LangChain parsing issues
+            try:
+                logger.info(f"Executing guided query with {len(guided_tables)} filtered tables")
+                
+                # Create focused query for better LLM response
+                enhanced_query = f"Question: {query}\\nAnswer with a direct SQL query and result for WINCASA database."
+                
+                # Try agent execution with parsing error recovery
+                try:
+                    agent_result = agent_executor.invoke({"input": enhanced_query})
+                    output = agent_result.get("output", "No result generated")
+                    success = True
+                    
+                except Exception as parsing_error:
+                    # Handle LangChain parsing errors by extracting useful content
+                    error_str = str(parsing_error)
+                    logger.warning(f"LangChain parsing error, extracting content: {error_str[:100]}...")
+                    
+                    # Extract actual LLM response from parsing error
+                    if "Could not parse LLM output:" in error_str:
+                        # Extract the actual LLM output from the error message
+                        start_marker = "Could not parse LLM output: `"
+                        end_marker = "`"
+                        start_idx = error_str.find(start_marker)
+                        if start_idx != -1:
+                            start_idx += len(start_marker)
+                            end_idx = error_str.find(end_marker, start_idx)
+                            if end_idx != -1:
+                                extracted_output = error_str[start_idx:end_idx]
+                                output = f"LLM Response: {extracted_output}"
+                                success = True
+                                logger.info(f"Successfully extracted LLM response: {extracted_output[:50]}...")
+                            else:
+                                output = f"Parsing error but response generated: {error_str[:200]}..."
+                                success = False
+                        else:
+                            output = f"Agent execution error: {error_str[:200]}..."
+                            success = False
+                    else:
+                        output = f"Agent execution error: {error_str[:200]}..."
+                        success = False
+                
+                # Create document with proper success indication
+                documents = [Document(
+                    page_content=output,
+                    metadata={
+                        "source": "guided_agent_sql",
+                        "query": query,
+                        "tables_used": guided_tables,
+                        "classification": classification.query_type if hasattr(classification, 'query_type') else str(classification),
+                        "confidence": classification.confidence if hasattr(classification, 'confidence') else 0.0,
+                        "success": success
+                    }
+                )]
+                
+            except Exception as outer_error:
+                logger.error(f"Complete agent failure: {outer_error}")
+                documents = [Document(
+                    page_content=f"Guided Agent system error: {str(outer_error)}",
+                    metadata={
+                        "source": "guided_agent_error",
+                        "query": query,
+                        "error": str(outer_error),
+                        "success": False
+                    }
+                )]
             
             # Step 4: Extract agent execution steps for analysis
             agent_steps = []

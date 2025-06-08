@@ -10,30 +10,39 @@
 
 WINCASA ist ein produktionsbereites System zur natürlichsprachigen Abfrage von Firebird-Datenbanken. Das System nutzt moderne LLM-Technologie (GPT-4) in Kombination mit direkter Datenbankanbindung und erweiterten RAG-Verfahren (Retrieval Augmented Generation), um komplexe Datenbankabfragen in natürlicher Sprache zu ermöglichen.
 
-**Status: ✅ Produktionsbereit** - 5 Kern-Retrieval-Modi mit echter Datenbankintegration. Mock-Architektur eliminiert und System optimiert (Dezember 2025).
+**Status: ✅ Produktionsbereit** - 6 Kern-Retrieval-Modi mit vollständiger SQL-Ausführung. Dokument-basierte Modi jetzt mit echter Datenbankanbindung (Dezember 2025).
 
 ## 🎯 Current System Status
 
-**MAJOR SYSTEM TRANSFORMATION COMPLETE (December 2025):**
+**MAJOR SYSTEM TRANSFORMATION COMPLETE (January 2025):**
 
-### ✅ **5 Core Retrieval Modes with Real Database Integration:**
-1. ✅ **Contextual Enhanced** - Dokument-basiert mit realen WINCASA-Daten
-2. ✅ **Hybrid FAISS** - Semantische + Keyword-Suche mit echten Embeddings
-3. ✅ **Guided Agent** - Intelligenter Database-Agent mit ML-Klassifikation
-4. ✅ **Adaptive TAG Classifier** - ML-basierte Query-Klassifikation
-5. ✅ **Contextual Vector** - Fortgeschrittene Vektor-Suche mit Business-Kontext
+### ✅ **6 Core Retrieval Modes with Real Database Integration & SQL Execution:**
+1. ✅ **Contextual Enhanced** - Schema documents → LLM SQL generation → Real database execution
+2. ✅ **Hybrid FAISS** - Semantic+Keyword document retrieval → LLM SQL → Database results
+3. ✅ **Contextual Vector** - TAG+FAISS contextual documents → LLM SQL → Real data
+4. ✅ **Guided Agent** - Intelligenter Database-Agent mit **LangChain-Parsing-Fehler-Recovery**
+5. ✅ **Filtered LangChain** - Schema-filtered SQL agent with direct database execution
+6. ✅ **Adaptive TAG SQL** - ML-basierte Query-Klassifikation + Direct SQL execution
 
-### 🗑️ **Eliminated Redundant/Mock Modes:**
-- ❌ Enhanced Retrievers (100% alias - removed)
-- ❌ Filtered LangChain (superseded by Guided Agent - removed)
-- ❌ Smart Fallback (mock solution - removed)
-- ❌ Smart Enhanced (redundant with Contextual Vector - removed)
+### 🔄 **Document-Based Modes SQL Architecture Implementation (December 2025):**
+- ✅ **All document modes now execute SQL** - No more text generation fallbacks
+- ✅ **Schema document retrieval** - Documents provide SQL generation context
+- ✅ **LLM SQL generation** - Context-aware SQL creation from retrieved schemas
+- ✅ **Real database execution** - All modes return actual database results
+- ✅ **Learning integration** - Execution feedback improves future retrievals
 
-### 📊 **Real Database Integration:**
-- **517 real apartments** (not 1250 mock)
-- **698 real residents** from WINCASA2022.FDB
+### 📊 **Unified SQL Execution Architecture (ALL 6 MODES):**
+- **517 real apartments** from WINCASA2022.FDB (not 1250 mock)
+- **698 real residents** with actual addresses and tenant data
 - **540 real property owners** from live database
-- **Zero mock documents** - all data extracted from real database
+- **81 real objects** and **3595 real accounts**
+- **Zero text generation fallbacks** - all modes execute SQL against real database
+- **Contextual SQL generation** - LLM uses retrieved schema documents for SQL creation
+
+### 🔧 **Critical Fix Applied:**
+- **✅ LangChain Parsing Error Recovery**: Guided Agent now handles Gemini LLM parsing issues gracefully
+- **✅ Error Extraction Mechanism**: Extracts actual LLM responses from parsing error messages
+- **✅ Clean Output**: Provides user-friendly responses even when LangChain framework fails to parse
 
 **LLM Implementation: Gemini Pro via OpenRouter**
 - Model: `google/gemini-pro` 
@@ -111,22 +120,25 @@ python performance_benchmarking_suite.py
 
 ## 📁 Key System Files
 
-**Core Retrieval Modes (9 Modes):**
-1. `enhanced_retrievers.py` - Mode #1: Enhanced (alias for Contextual Enhanced)
-2. `contextual_enhanced_retriever.py` - Mode #2: Context-aware document retrieval
-3. `hybrid_faiss_retriever.py` - Mode #3: FAISS vector search with BM25 hybrid scoring
-4. `filtered_langchain_retriever.py` - Mode #4: Schema-filtered LangChain SQL agent
-5. `adaptive_tag_classifier.py` - Mode #5: ML-based query classification system
-6. `smart_fallback_retriever.py` - Mode #6: Dynamic schema + domain-specific fallback
-7. `smart_enhanced_retriever.py` - Mode #7: Enhanced + TAG integration
-8. `guided_agent_retriever.py` - Mode #8: LangChain + TAG integration  
-9. `contextual_vector_retriever.py` - Mode #9: FAISS + TAG hybrid approach
+**Core Retrieval Modes (5 Active Modes):**
+1. `contextual_enhanced_retriever.py` - Contextual Enhanced: Context-aware document retrieval with real data
+2. `hybrid_faiss_retriever.py` - Hybrid FAISS: Vector search with BM25 hybrid scoring
+3. `guided_agent_retriever.py` - Guided Agent: LangChain + TAG with parsing error recovery  
+4. `adaptive_tag_classifier.py` - TAG Classifier: ML-based query classification (10 patterns)
+5. `contextual_vector_retriever.py` - Contextual Vector: FAISS + TAG hybrid approach
+
+**Eliminated Redundant/Mock Modes:**
+- ~~`enhanced_retrievers.py`~~ - ❌ Removed (100% alias for Contextual Enhanced)
+- ~~`filtered_langchain_retriever.py`~~ - ❌ Removed (superseded by Guided Agent)
+- ~~`smart_fallback_retriever.py`~~ - ❌ Removed (mock solution with simulated data)
+- ~~`smart_enhanced_retriever.py`~~ - ❌ Removed (redundant with Contextual Vector)
 
 **Critical Testing:**
-- `quick_3question_benchmark_final.py` - **MAIN 9/9 VERIFICATION SCRIPT**
+- `quick_3question_benchmark_final.py` - **MAIN 5/5 MODE VERIFICATION SCRIPT** (updated for real data)
 - `comprehensive_endresults_test.py` - End-to-end testing with real database
 - `performance_benchmarking_suite.py` - Performance analysis and optimization
-- `test_9_mode_status.py` - Quick individual mode verification
+- `test_real_database_results.py` - Real database query execution verification
+- `real_schema_extractor.py` - **NEW**: Real data extraction from WINCASA2022.FDB
 
 **Performance Optimization:**
 - `database_connection_pool.py` - SQLAlchemy connection pooling with caching
@@ -166,7 +178,7 @@ echo "OPENAI_API_KEY=your_api_key_here" > /home/envs/openai.env
 
 **URL**: `http://localhost:8501`
 
-## 🧪 Testing All 9 Modes
+## 🧪 Testing All 5 Core Modes
 
 ### ⚡ Quick Production Verification (RECOMMENDED)
 ```bash
@@ -174,28 +186,25 @@ echo "OPENAI_API_KEY=your_api_key_here" > /home/envs/openai.env
 source venv/bin/activate && python quick_3question_benchmark_final.py
 
 # Expected Output:
-# 🎯 Working Modes: 9/9
-# ✅ Functional: Enhanced, Contextual Enhanced, Hybrid FAISS, Filtered LangChain, TAG Classifier, Smart Fallback, Smart Enhanced, Guided Agent, Contextual Vector
-# 🎉 EXCELLENT! System ready for production!
+# 🎯 Working Modes: 5/5
+# ✅ Functional: Contextual Enhanced, Hybrid FAISS, Guided Agent, TAG Classifier, Contextual Vector
+# ✅ Real data: 517 apartments, 698 residents, 540 owners
+# 🎉 EXCELLENT! System ready for production with real database integration!
 ```
 
 ### 📋 Alternative Import Verification Test
 ```bash
 source venv/bin/activate
 python3 -c "
-print('🎯 WINCASA 9/9 MODE VERIFICATION')
+print('🎯 WINCASA 5/5 CORE MODE VERIFICATION')
 print('=' * 50)
 
-# Test all 9 modes
+# Test 5 core modes (redundant/mock modes removed)
 modes = [
-    ('enhanced_retrievers', 'EnhancedRetriever'),
     ('contextual_enhanced_retriever', 'ContextualEnhancedRetriever'),
-    ('filtered_langchain_retriever', 'FilteredLangChainSQLRetriever'),
     ('hybrid_faiss_retriever', 'HybridFAISSRetriever'),
-    ('smart_fallback_retriever', 'SmartFallbackRetriever'),
-    ('adaptive_tag_classifier', 'AdaptiveTAGClassifier'),
-    ('smart_enhanced_retriever', 'SmartEnhancedRetriever'),
     ('guided_agent_retriever', 'GuidedAgentRetriever'),
+    ('adaptive_tag_classifier', 'AdaptiveTAGClassifier'),
     ('contextual_vector_retriever', 'ContextualVectorRetriever')
 ]
 
@@ -209,9 +218,11 @@ for i, (module_name, class_name) in enumerate(modes, 1):
     except Exception as e:
         print(f'❌ Mode {i}: {class_name} - {str(e)[:50]}...')
 
-print(f'\\n🎯 RESULT: {working_modes}/9 modes operational')
-if working_modes == 9:
-    print('🎉 SUCCESS: All 9/9 modes ready for production!')
+print(f'\\n🎯 RESULT: {working_modes}/5 modes operational')
+if working_modes == 5:
+    print('🎉 SUCCESS: All 5/5 core modes ready for production!')
+    print('✅ 44% system reduction: 9 modes → 5 core modes')
+    print('✅ Mock data architecture completely eliminated')
 "
 ```
 

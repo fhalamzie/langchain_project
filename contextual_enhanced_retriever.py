@@ -20,8 +20,13 @@ from typing import Any, Dict, List, Optional, Tuple, Set
 from pathlib import Path
 
 from langchain_core.documents import Document
+from langchain_core.language_models.base import BaseLanguageModel
 from langchain_openai import OpenAIEmbeddings
 from langchain_community.vectorstores import FAISS
+
+# Import SQL execution components
+from sql_execution_engine import SQLExecutionEngine, SQLExecutionResult
+from adaptive_tag_classifier import AdaptiveTAGClassifier
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -46,6 +51,16 @@ class ContextualChunk:
     technical_details: str
     relationships: List[str]
     query_types: List[str]  # Which query types this chunk is relevant for
+
+
+@dataclass
+class ContextualEnhancedResult:
+    """Result from Contextual Enhanced Retriever with SQL execution."""
+    documents: List[Document]
+    sql_query: str
+    execution_result: SQLExecutionResult
+    query_context: QueryContext
+    retrieval_time: float
 
 
 class QueryTypeClassifier:
@@ -241,19 +256,33 @@ class ContextualEnhancedRetriever:
     1. Query-type classification for targeted document selection
     2. Business-context-enriched chunks instead of raw technical docs
     3. 3-5 relevant docs instead of overwhelming 9-document selection
+    4. SQL generation and execution using retrieved schema documents
+    5. Real database results instead of text generation
     """
     
-    def __init__(self, documents: List[Document], openai_api_key: str):
+    def __init__(self, documents: List[Document], openai_api_key: str, 
+                 db_connection_string: str = None, llm: BaseLanguageModel = None):
         """
         Initialize Contextual Enhanced Retriever.
         
         Args:
             documents: Original document collection
             openai_api_key: OpenAI API key for embeddings
+            db_connection_string: Database connection for SQL execution
+            llm: Language model for SQL generation
         """
         self.openai_api_key = openai_api_key
+        self.db_connection_string = db_connection_string or "firebird+fdb://sysdba:masterkey@localhost:3050//home/projects/langchain_project/WINCASA2022.FDB"
+        self.llm = llm
+        
         self.classifier = QueryTypeClassifier()
         self.enricher = HVDomainChunkEnricher()
+        
+        # Initialize SQL execution engine
+        self.sql_engine = SQLExecutionEngine(self.db_connection_string)
+        
+        # Initialize learning components
+        self.tag_classifier = AdaptiveTAGClassifier()
         
         # Initialize embeddings
         self.embeddings = OpenAIEmbeddings(
@@ -369,33 +398,241 @@ class ContextualEnhancedRetriever:
         
         return docs
     
-    def retrieve(self, query: str, k: int = 4) -> List[Document]:
+    def retrieve(self, query: str, k: int = 4) -> ContextualEnhancedResult:
         """
-        Standard retrieve method for compatibility with benchmark framework.
+        Complete retrieval with SQL generation and execution.
         
         Args:
             query: Natural language query
             k: Number of documents to retrieve
             
         Returns:
-            List of relevant documents
+            ContextualEnhancedResult with documents, SQL, and database results
         """
-        return self.retrieve_contextual_documents(query, k)
+        start_time = time.time()
+        
+        try:
+            # Step 1: Retrieve relevant schema documents
+            retrieved_docs = self.retrieve_contextual_documents(query, k)
+            query_context = self.classifier.classify_query(query)
+            
+            if not retrieved_docs:
+                raise Exception("No relevant documents found for query")
+            
+            # Step 2: Generate SQL using retrieved schema documents and LLM
+            sql_query = self._generate_sql_from_documents(query, retrieved_docs, query_context)
+            
+            # Step 3: Execute SQL against real database
+            execution_result = self.sql_engine.execute_query(sql_query)
+            
+            # Step 4: Learn from execution results
+            self._learn_from_execution(query, query_context.query_type, sql_query, execution_result.success)
+            
+            retrieval_time = time.time() - start_time
+            
+            return ContextualEnhancedResult(
+                documents=retrieved_docs,
+                sql_query=sql_query,
+                execution_result=execution_result,
+                query_context=query_context,
+                retrieval_time=retrieval_time
+            )
+            
+        except Exception as e:
+            logger.error(f"Contextual Enhanced retrieval failed: {e}")
+            retrieval_time = time.time() - start_time
+            
+            # Return error result
+            error_result = SQLExecutionResult(
+                success=False,
+                query="",
+                data=[],
+                columns=[],
+                row_count=0,
+                execution_time=0.0,
+                formatted_answer=f"Error: {str(e)}",
+                error=str(e)
+            )
+            
+            return ContextualEnhancedResult(
+                documents=[],
+                sql_query="",
+                execution_result=error_result,
+                query_context=QueryContext("error", [], [], str(e), 0.0),
+                retrieval_time=retrieval_time
+            )
+    
+    def _generate_sql_from_documents(self, query: str, documents: List[Document], 
+                                   query_context: QueryContext) -> str:
+        """
+        Generate SQL query using retrieved schema documents and LLM.
+        
+        Args:
+            query: Original natural language query
+            documents: Retrieved schema documents
+            query_context: Query classification context
+            
+        Returns:
+            Generated SQL query string
+        """
+        if not self.llm:
+            raise Exception("LLM not provided for SQL generation")
+        
+        # Build context from retrieved documents
+        schema_context = "\n\n".join([
+            f"SCHEMA INFO: {doc.page_content}" for doc in documents
+        ])
+        
+        # Create enhanced prompt for SQL generation
+        sql_generation_prompt = f"""
+You are a SQL expert for WINCASA Hausverwaltung database queries. Generate accurate Firebird SQL.
+
+QUERY CONTEXT:
+- Query Type: {query_context.query_type}
+- Required Tables: {', '.join(query_context.required_tables)}
+- Business Context: {query_context.business_context}
+- Confidence: {query_context.confidence_score:.2f}
+
+RELEVANT SCHEMA INFORMATION:
+{schema_context}
+
+FIREBIRD SQL RULES:
+- Use SELECT for all queries
+- Use LIKE '%pattern%' for text searches
+- Table/column names are case-sensitive
+- Use proper JOINs for relationships
+- Use FIRST n instead of LIMIT n
+- For address searches: BSTR contains 'street number', BPLZORT contains 'postal city'
+
+GENERATE SQL FOR: {query}
+
+Return only the SQL query, no explanations:"""
+        
+        # Generate SQL using LLM
+        messages = [
+            {"role": "system", "content": "You are a SQL expert. Generate only valid Firebird SQL queries."},
+            {"role": "user", "content": sql_generation_prompt}
+        ]
+        
+        llm_response = self.llm.invoke(messages)
+        sql_query = self._extract_sql_from_response(llm_response.content)
+        
+        logger.info(f"Generated SQL for {query_context.query_type}: {sql_query}")
+        return sql_query
+    
+    def _extract_sql_from_response(self, response: str) -> str:
+        """
+        Extract clean SQL from LLM response.
+        
+        Args:
+            response: LLM response containing SQL
+            
+        Returns:
+            Clean SQL query
+        """
+        # Remove markdown code blocks
+        if "```sql" in response:
+            sql = response.split("```sql")[1].split("```")[0].strip()
+        elif "```" in response:
+            sql = response.split("```")[1].split("```")[0].strip()
+        else:
+            sql = response.strip()
+        
+        # Clean up the SQL
+        lines = [line.strip() for line in sql.split('\n') if line.strip()]
+        sql = ' '.join(lines)
+        
+        return sql
+    
+    def _learn_from_execution(self, query: str, query_type: str, sql: str, success: bool):
+        """
+        Learn from SQL execution results to improve future retrievals.
+        
+        Args:
+            query: Original query
+            query_type: Classified query type
+            sql: Generated SQL
+            success: Whether execution was successful
+        """
+        # Feed learning back to TAG classifier
+        if hasattr(self.tag_classifier, 'learn_from_success'):
+            self.tag_classifier.learn_from_success(query, query_type, sql, success)
+            
+        logger.info(f"Learning: {query_type} query {'succeeded' if success else 'failed'}")
+    
+    def get_response(self, query: str) -> str:
+        """
+        Get formatted response for compatibility with benchmark framework.
+        
+        Args:
+            query: Natural language query
+            
+        Returns:
+            Formatted response string
+        """
+        result = self.retrieve(query)
+        return result.execution_result.formatted_answer
+    
+    def retrieve_contextual_documents(self, query: str, k: int = 4) -> List[Document]:
+        """
+        Retrieve contextually relevant schema documents for SQL generation.
+        
+        This is the baseline document retrieval that feeds the LLM to formulate SQL queries.
+        
+        Args:
+            query: Natural language query
+            k: Number of schema documents to retrieve for SQL context
+            
+        Returns:
+            List of most relevant schema documents for SQL generation
+        """
+        start_time = time.time()
+        
+        # Classify query
+        query_context = self.classifier.classify_query(query)
+        
+        logger.info("Query classified as: %s (confidence: %.2f)", 
+                   query_context.query_type, query_context.confidence_score)
+        
+        # Get specialized store for query type
+        store = self.query_type_stores.get(query_context.query_type)
+        
+        if not store:
+            logger.warning("No specialized store for %s, using general_property", 
+                          query_context.query_type)
+            store = self.query_type_stores.get("general_property")
+        
+        if not store:
+            logger.error("No stores available for retrieval")
+            return []
+        
+        # Retrieve targeted schema documents for SQL generation
+        docs = store.similarity_search(query, k=k)
+        
+        retrieval_time = time.time() - start_time
+        logger.info("Retrieved %d schema documents in %.2fs for SQL generation",
+                   len(docs), retrieval_time)
+        
+        return docs
 
 
 def create_contextual_enhanced_retriever(documents: List[Document], 
-                                       openai_api_key: str) -> ContextualEnhancedRetriever:
+                                       openai_api_key: str,
+                                       db_connection_string: str = None,
+                                       llm: BaseLanguageModel = None) -> ContextualEnhancedRetriever:
     """
     Factory function to create Contextual Enhanced Retriever.
     
     Args:
         documents: Document collection
         openai_api_key: OpenAI API key
+        db_connection_string: Database connection for SQL execution
+        llm: Language model for SQL generation
         
     Returns:
         Configured ContextualEnhancedRetriever instance
     """
-    return ContextualEnhancedRetriever(documents, openai_api_key)
+    return ContextualEnhancedRetriever(documents, openai_api_key, db_connection_string, llm)
 
 
 if __name__ == "__main__":

@@ -13,11 +13,21 @@ from typing import List, Dict, Any
 from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI
 from langchain_core.documents import Document
+from gemini_llm import get_gemini_llm
 
 from contextual_enhanced_retriever import (
     ContextualEnhancedRetriever, 
     QueryTypeClassifier
 )
+
+# Additional imports for benchmark
+from hybrid_faiss_retriever import HybridFAISSRetriever
+from filtered_langchain_retriever import FilteredLangChainSQLRetriever  
+from adaptive_tag_classifier import AdaptiveTAGClassifier
+from smart_fallback_retriever import SmartFallbackRetriever
+from smart_enhanced_retriever import SmartEnhancedRetriever
+from guided_agent_retriever import GuidedAgentRetriever
+from contextual_vector_retriever import ContextualVectorRetriever
 
 # Load environment
 load_dotenv('/home/envs/openai.env')
@@ -219,6 +229,27 @@ def test_contextual_enhanced_retrieval(query: str, retriever: ContextualEnhanced
     }
 
 
+def get_final_answer(llm, query, context_docs):
+    """
+    Generate a final answer using Gemini 2.5 Pro (OpenRouter) given the query and context documents.
+    """
+    context = "\n\n".join([doc.page_content for doc in context_docs]) if context_docs else ""
+    prompt = f"""Du bist ein WINCASA-Datenbank-Experte. Beantworte die folgende Frage möglichst präzise und stichhaltig auf Basis des bereitgestellten Kontextes. Antworte auf Deutsch.
+
+Frage: {query}
+
+Kontext:
+{context}
+
+Antwort:"""
+    messages = [
+        {"role": "system", "content": "Du bist ein WINCASA-Datenbank-Experte."},
+        {"role": "user", "content": prompt}
+    ]
+    response = llm.invoke(messages)
+    return response.content.strip()
+
+
 def run_comparison_test():
     """Run comparison between original Enhanced and Contextual Enhanced."""
     print("🔬 CONTEXTUAL ENHANCED vs ORIGINAL ENHANCED COMPARISON")
@@ -316,5 +347,111 @@ def run_comparison_test():
     print(f"   ✅ Information overload von statischer 9-Dokument-Auswahl gelöst")
 
 
+# --- PHASE 3: Benchmark aller aktuellen Modi mit 11 Standardfragen ---
+# Für jede Frage alle Modi durchlaufen lassen und Antworten tabellarisch ausgeben
+
+def benchmark_all_modes_on_standard_queries():
+    """Benchmark: Für jede Standardfrage alle Modi durchlaufen und Antworten ausgeben."""
+    from contextual_enhanced_retriever import ContextualEnhancedRetriever, QueryTypeClassifier
+    from adaptive_tag_classifier import AdaptiveTAGClassifier
+    from filtered_langchain_retriever import FilteredLangChainSQLRetriever
+    from hybrid_faiss_retriever import HybridFAISSRetriever
+    from smart_fallback_retriever import SmartFallbackRetriever
+    from smart_enhanced_retriever import SmartEnhancedRetriever
+    from guided_agent_retriever import GuidedAgentRetriever
+    from contextual_vector_retriever import ContextualVectorRetriever
+    import os
+    import time
+
+    # 1. Standard-Testabfragen (11 Fragen)
+    test_queries = [
+        "Wer wohnt in der Marienstr. 26, 45307 Essen",
+        "Wer wohnt in der Marienstraße 26",
+        "Wer wohnt in der Bäuminghausstr. 41, Essen",
+        "Wer wohnt in der Schmiedestr. 8, 47055 Duisburg",
+        "Alle Mieter der MARIE26",
+        "Alle Eigentümer vom Haager Weg bitte",
+        "Liste aller Eigentümer",
+        "Liste aller Eigentümer aus Köln",
+        "Liste aller Mieter in Essen",
+        "Durchschnittliche Miete in Essen",
+        "Wie viele Wohnungen gibt es insgesamt?"
+    ]
+
+    # 2. Initialisiere alle Modi (ggf. mit Mock-Daten)
+    api_key = os.getenv('OPENAI_API_KEY')
+    mock_docs = create_mock_documents()
+    llm = get_gemini_llm()
+    retrievers = {
+        'Enhanced (Original)': None,  # handled separately
+        'Contextual Enhanced': ContextualEnhancedRetriever(mock_docs, api_key),
+        'FAISS': HybridFAISSRetriever(mock_docs, api_key),
+        'LangChain': FilteredLangChainSQLRetriever(
+            db_connection_string="firebird+fdb://sysdba:masterkey@localhost:3050//home/projects/langchain_project/WINCASA2022.FDB",
+            llm=llm,
+            enable_monitoring=False
+        ),
+        'TAG': AdaptiveTAGClassifier(),
+        'Smart Fallback': SmartFallbackRetriever(),
+        'Smart Enhanced (Enhanced + TAG)': SmartEnhancedRetriever(mock_docs, api_key),
+        'Guided Agent (LangChain + TAG)': GuidedAgentRetriever(mock_docs, api_key),
+        'Contextual Vector (FAISS + TAG)': ContextualVectorRetriever(mock_docs, api_key),
+    }
+
+    # 3. Benchmark: Für jede Frage alle Modi durchlaufen
+    print("\n================ BENCHMARK: ALLE 9 MODI AUF 11 FRAGEN ================\n")
+    for idx, query in enumerate(test_queries, 1):
+        print(f"\n{'='*100}\nFrage {idx}: {query}\n{'='*100}")
+        for mode, retriever in retrievers.items():
+            try:
+                start = time.time()
+                context_docs = []
+                final_answer = None
+                if mode == 'Enhanced (Original)':
+                    result = simulate_original_enhanced_retrieval(query, mock_docs)
+                    # Simulate context docs for LLM
+                    context_docs = [Document(page_content=result['context_preview'])]
+                elif mode == 'Contextual Enhanced':
+                    context_docs = retriever.retrieve_contextual_documents(query, k=4)
+                elif mode == 'FAISS':
+                    # Use retrieve_documents method for FAISS
+                    context_docs = retriever.retrieve_documents(query, max_docs=4) if hasattr(retriever, 'retrieve_documents') else []
+                elif mode == 'LangChain':
+                    context_docs = retriever.retrieve_documents(query, max_docs=4) if hasattr(retriever, 'retrieve_documents') else []
+                elif mode == 'TAG':
+                    result = retriever.classify_query(query)
+                    answer = f"Query Type: {getattr(result, 'query_type', result)}\nRelevante Tabellen: {getattr(result, 'required_tables', getattr(result, 'entities', []))}"
+                    print(f"\n--- {mode} ---\nAntwort ({time.time()-start:.2f}s):\n{answer[:800]}\n")
+                    continue
+                elif mode == 'Smart Fallback':
+                    context = retriever.get_smart_context(query)
+                    context_docs = [Document(page_content=context)]
+                elif mode == 'Smart Enhanced (Enhanced + TAG)':
+                    context_docs = retriever.retrieve_documents(query, max_docs=4) if hasattr(retriever, 'retrieve_documents') else []
+                elif mode == 'Guided Agent (LangChain + TAG)':
+                    from guided_agent_retriever import run_guided_agent
+                    answer = run_guided_agent(query, db_connection_string="firebird+fdb://sysdba:masterkey@localhost:3050//home/projects/langchain_project/WINCASA2022.FDB", llm=llm)
+                    print(f"\n--- {mode} ---\nAntwort ({time.time()-start:.2f}s):\n{answer[:800]}\n")
+                    continue
+                elif mode == 'Contextual Vector (FAISS + TAG)':
+                    result = retriever.retrieve(query, k=4) if hasattr(retriever, 'retrieve') else None
+                    if result and hasattr(result, 'documents'):
+                        context_docs = result.documents
+                    else:
+                        context_docs = []
+                # LLM-Antwort generieren, wenn Kontext vorhanden
+                if context_docs:
+                    final_answer = get_final_answer(llm, query, context_docs)
+                    answer = f"Finale Antwort (Gemini 2.5 Pro):\n{final_answer}\n\nKontextauszug:\n" + '\n---\n'.join([doc.page_content[:200] for doc in context_docs])
+                else:
+                    answer = 'No docs.'
+                elapsed = time.time() - start
+                print(f"\n--- {mode} ---\nAntwort ({elapsed:.2f}s):\n{answer[:800]}\n")
+            except Exception as e:
+                print(f"\n--- {mode} ---\nFehler: {e}\n")
+        print(f"{'='*100}")
+
+
 if __name__ == "__main__":
     run_comparison_test()
+    benchmark_all_modes_on_standard_queries()

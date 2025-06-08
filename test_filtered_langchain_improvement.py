@@ -230,7 +230,7 @@ def test_integration_compatibility():
         
         # Test basic initialization
         retriever = FilteredLangChainSQLRetriever(
-            db_connection_string="firebird+fdb://sysdba:masterkey@localhost:3050/home/projects/langchain_project/WINCASA2022.FDB",
+            db_connection_string="firebird+fdb://sysdba:masterkey@localhost:3050//home/projects/langchain_project/WINCASA2022.FDB",
             llm=None,  # Mock LLM for testing
             enable_monitoring=False
         )

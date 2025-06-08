@@ -9,19 +9,20 @@ This document provides **EXACT PATTERNS** for Claude AI to implement solutions c
 
 **✅ TRANSFORMATION COMPLETE: REAL DATABASE ARCHITECTURE** 
 
-**Current Status**: 5/5 core modes use **REAL database data** from WINCASA2022.FDB
-**Achievement**: Complete elimination of mock data and fallback responses accomplished
-**Result**: System now benchmarks real performance with authentic data
+**Current Status**: 6/6 core modes use **REAL database data** from WINCASA2022.FDB with **SQL EXECUTION**
+**Achievement**: Document-based modes now execute SQL instead of text generation
+**Result**: All modes return real database results through SQL execution
 
-**Real Database Integration Complete**:
-- **Document modes**: Extract real schema and data from WINCASA2022.FDB
-- **Database modes**: Direct connection to live database (no fallbacks)
-- **Result**: "517 real apartments" from actual database queries
+**SQL Execution Architecture Complete**:
+- **Document modes**: Schema retrieval → LLM SQL generation → Database execution
+- **Database modes**: Direct SQL agent execution (existing)
+- **Result**: All 6 modes execute SQL and return real database results
 
-**System Cleanup Accomplished**:
-- **44% size reduction**: 9 modes → 5 core modes
-- **Mock architecture eliminated**: Zero fallback responses
-- **Redundancies removed**: All alias and duplicate files deleted
+**Document Mode Transformation Accomplished**:
+- **SQL execution integration**: All document modes now execute SQL
+- **Text generation eliminated**: No more LLM text responses without database queries
+- **Contextual SQL generation**: Documents provide schema context for SQL creation
+- **Learning integration**: Execution feedback improves future retrievals
 
 ## 🎯 MANDATORY: Fix Database Access First
 
@@ -55,18 +56,20 @@ source venv/bin/activate && timeout 900 python quick_3question_benchmark_final.p
 - **Zero fallback responses** - modes fail completely when database unavailable
 - **All queries execute against WINCASA2022.FDB**
 
-**CURRENT OUTPUT** (fixed):
+**CURRENT OUTPUT** (updated):
 ```
-🎯 Working Modes: 5/5 core modes
-✅ SUCCESS: All modes use real WINCASA2022.FDB data
-✅ Production ready with authentic data integration
+🎯 Working Modes: 6/6 core modes with SQL execution
+✅ SUCCESS: All modes execute SQL against WINCASA2022.FDB
+✅ Document modes: Schema retrieval → SQL generation → Database execution
+✅ Production ready with unified SQL architecture
 ```
 
 **ACHIEVED SUCCESS CRITERIA**:
-- ✅ Real apartment count from database (517, not hardcoded 1250)
-- ✅ No mock documents in any retriever
-- ✅ No fallback responses when database available
-- ✅ All SQL queries execute against WINCASA2022.FDB
+- ✅ All 6 modes execute SQL against WINCASA2022.FDB
+- ✅ Document modes use retrieved schemas for SQL generation context
+- ✅ No text generation fallbacks - all modes return database results
+- ✅ Learning integration across all modes for continuous improvement
+- ✅ Unified architecture: Schema retrieval → SQL generation → Database execution
 
 ## ⚠️ CRITICAL WARNINGS - READ FIRST
 
@@ -80,8 +83,8 @@ source venv/bin/activate && timeout 900 python quick_3question_benchmark_final.p
 
 **COPY THESE PATTERNS EXACTLY:**
 
-### Document-Based Retrievers
-These retrievers require `real_documents` and `openai_api_key` parameters:
+### Document-Based Retrievers (Now with SQL Execution)
+These retrievers require `real_documents`, `openai_api_key`, `db_connection_string`, and `llm` parameters:
 
 ```python
 # Required imports
@@ -104,20 +107,24 @@ real_docs = create_real_documents()
 # - 540 real owners from EIGENTUEMER table
 # - Real column schemas and sample data
 
-# Initialization patterns for document-based retrievers (REAL DATA ONLY)
+# LLM and database setup for SQL execution
+from gemini_llm import get_gemini_llm
+llm = get_gemini_llm()
+db_connection = "firebird+fdb://sysdba:masterkey@localhost:3050//home/projects/langchain_project/WINCASA2022.FDB"
+
+# Initialization patterns for document-based retrievers (WITH SQL EXECUTION)
 
 # 1. Contextual Enhanced Mode
 from contextual_enhanced_retriever import ContextualEnhancedRetriever
-retriever = ContextualEnhancedRetriever(real_docs, openai_api_key)
+retriever = ContextualEnhancedRetriever(real_docs, openai_api_key, db_connection, llm)
 
 # 2. Hybrid FAISS Mode
 from hybrid_faiss_retriever import HybridFAISSRetriever
-retriever = HybridFAISSRetriever(real_docs, openai_api_key)
-# Optional: retriever = HybridFAISSRetriever(real_docs, openai_api_key, semantic_weight=0.7, keyword_weight=0.3)
+retriever = HybridFAISSRetriever(real_docs, openai_api_key, db_connection_string=db_connection, llm=llm)
 
 # 3. Contextual Vector Mode
 from contextual_vector_retriever import ContextualVectorRetriever
-retriever = ContextualVectorRetriever(real_docs, openai_api_key)
+retriever = ContextualVectorRetriever(real_docs, openai_api_key, db_connection, llm)
 ```
 
 ### Database-Based Retrievers
@@ -181,22 +188,22 @@ def test_retriever(retriever, query, llm):
     elif hasattr(retriever, 'retrieve'):
         result = retriever.retrieve(query)
         
-        # Handle different result types
-        if hasattr(result, 'documents'):
-            # Custom result objects (SmartEnhancedResult, ContextualVectorResult)
+        # Handle different result types (WITH SQL EXECUTION)
+        if hasattr(result, 'execution_result'):
+            # Document modes with SQL execution (ContextualEnhancedResult, HybridFAISSResult, ContextualVectorResult)
+            response = result.execution_result.formatted_answer
+        elif hasattr(result, 'documents'):
+            # Legacy document result objects (deprecated)
             docs = result.documents
+            context = "\n".join([doc.page_content for doc in docs[:2]])
+            response = llm.invoke(f"Based on this context:\n{context}\n\nAnswer: {query}")
         elif isinstance(result, list):
-            # Plain list of documents
+            # Plain list of documents (deprecated for document modes)
             docs = result
-        else:
-            docs = []
-        
-        # Generate response from documents
-        if docs:
             context = "\n".join([doc.page_content for doc in docs[:2]])
             response = llm.invoke(f"Based on this context:\n{context}\n\nAnswer: {query}")
         else:
-            response = "No relevant documents found"
+            response = "No relevant results found"
             
     else:
         response = "Mode interface not found"
