@@ -1,419 +1,191 @@
-# WINCASA Implementierungsaufgaben
+# WINCASA Development Task Backlog
 
-## ✅ MAJOR MILESTONE COMPLETED: Document-Based SQL Execution (Dezember 2025)
-
-**TRANSFORMATION COMPLETE:** All document-based modes now execute SQL instead of text generation
-
-### 🎯 **Nächste Entwicklungsschritte (Priorität)**
-
-#### **🚨 1. CRITICAL: SQL Generation Reliability Fix (HÖCHSTE PRIORITÄT)**
-- **Ziel**: SQL-Generierungsfehler beheben (45% Fehlerrate reduzieren)
-- **Status**: 🚨 KRITISCH - Live-Test zeigt "SQL Validation Error: Only SELECT queries are allowed"
-- **Problem**: LLM generiert erklärenden Text statt saubere SQL-Abfragen
-
-**Sofortige Aufgaben**:
-- [ ] **IMMEDIATE**: Strikte SQL-only Prompt-Templates implementieren
-  - [ ] `STRICT_SQL_PROMPT` Template erstellen mit "Return ONLY SQL code, no explanations"
-  - [ ] Explizite Regeln hinzufügen: Muss mit SELECT beginnen, mit Semikolon enden
-  - [ ] Format-Beispiele hinzufügen für sauberes SQL vs. ungültige Responses
-  - [ ] Verbose Schema-Beschreibungen aus Prompts entfernen
-
-- [ ] **QUICK WIN**: SQL Response Post-Processing hinzufügen
-  - [ ] `extract_clean_sql()` Funktion mit Regex-Parsing implementieren
-  - [ ] SQL aus gemischtem Content extrahieren mit `SELECT.*?(?:;|$)` Pattern
-  - [ ] Automatische Semikolon-Vervollständigung für gültige Queries
-  - [ ] Parsing-Fehler für Analyse protokollieren
-
-- [ ] **ROBUST**: Validation & Retry Mechanismus implementieren
-  - [ ] `validate_sql_syntax()` Funktion für Pre-Execution Validation
-  - [ ] `generate_sql_with_retry()` mit max 3 Versuchen implementieren
-  - [ ] Fallback SQL-Generierung für häufige Query-Patterns hinzufügen
-  - [ ] Retry-Statistiken für Prompt-Optimierung verfolgen
-
-- [ ] **OPTIMIZATION**: Template-basierte Generierung für häufige Patterns
-  - [ ] SQL-Templates für count_queries, list_queries, join_queries erstellen
-  - [ ] Template-Auswahl basierend auf TAG-Klassifikation implementieren
-  - [ ] LLM nur für komplexe Edge Cases verwenden
-  - [ ] Performance-Vergleich: Templates vs LLM-Generierung
-
-**Erwartete Verbesserung**: Erfolgsrate von 55% auf 85-90% (9-10/11 Fragen pro Modus)
-
-#### **2. Response Format Standardization (HIGH PRIORITY)**
-- **Ziel**: Einheitliche Response-Struktur für alle 6 Modi
-- **Aufgaben**:
-  - Standardisiertes Result-Format definieren 
-  - Alle Modi auf einheitliche Response-Methoden umstellen
-  - Benchmark-Framework für einheitliche Schnittstelle aktualisieren
-
-#### **3. Enhanced Learning Implementation (MEDIUM PRIORITY)**
-- **Ziel**: Verbesserte Lernfähigkeit für document-basierte Modi
-- **Aufgaben**:
-  - Schema-Dokument-Relevanz-Learning implementieren
-  - Query-SQL-Erfolgs-Pattern-Learning erweitern
-  - Cross-Mode-Learning zwischen verschiedenen Retrieval-Ansätzen
-
-#### **3. Comprehensive Testing & Validation (HIGH PRIORITY)**
-- **Ziel**: Vollständige End-to-End Tests aller 6 Modi mit SQL-Ausführung
-- **Aufgaben**:
-  - Test-Framework für SQL-Execution erweitern
-  - Performance-Benchmarking aller Modi durchführen
-  - Regression-Tests für alle SQL-Generation-Pipelines
-
-#### **4. Performance Optimization (MEDIUM PRIORITY)**
-- **Ziel**: Optimierung der neuen SQL-Generation-Pipelines
-- **Aufgaben**:
-  - Caching für SQL-Generation implementieren
-  - Vector-Store-Performance für Schema-Retrieval optimieren
-  - Connection-Pooling für alle Modi standardisieren
-
-#### **5. Documentation & Deployment (LOW PRIORITY)**
-- **Ziel**: Aktualisierte Dokumentation und Deployment-Guides
-- **Aufgaben**:
-  - API-Dokumentation für neue SQL-Execution-Modi
-  - Deployment-Guides für alle 6 Modi aktualisieren
-  - User-Guide für neue unified SQL architecture
+**Last Updated**: January 9, 2025  
+**System Status**: 6 modes operational + Phoenix monitoring + organized codebase
 
 ---
 
-### ✅ **GERADE ABGESCHLOSSEN: Document-Based SQL Execution**
+## 🔥 High Priority Tasks
 
-#### **Document-Based Modes SQL Architecture Implementation**
-**Status**: ✅ Abgeschlossen (Dezember 2025)
-- **Contextual Enhanced**: Schema documents → LLM SQL generation → Database execution  
-- **Hybrid FAISS**: Semantic+Keyword retrieval → LLM SQL → Real database results
-- **Contextual Vector**: TAG+FAISS context → LLM SQL → Database execution
-- **Learning Integration**: All document modes now feed execution results to TAG classifier
-- **Unified Architecture**: All 6 modes now execute SQL against real database
+### Documentation & Codebase Organization
+- [ ] **Archive old documentation files** - Move `/docs` content to `/archive/docs`
+- [ ] **Test script consolidation** - Move specialized test files to `/temp/specialized_tests`
+- [ ] **Code quality improvements** - Address naming inconsistencies and duplications
+- [ ] **Performance documentation** - Document Phoenix analytics and optimization patterns
 
----
+### System Optimization
+- [ ] **Cache management optimization** - Enhance vector store and database caching strategies
+- [ ] **SQL pattern learning enhancement** - Improve adaptive pattern selection algorithms
+- [ ] **Response time optimization** - Target sub-100ms response times
+- [ ] **Memory usage optimization** - Reduce memory footprint and improve resource management
 
-### ✅ Vollständig Implementiert
-
-#### TAG-Modell (SYN→EXEC→GEN Pipeline)
-**Status**: ✅ Abgeschlossen
-- TAG Synthesizer für Query-Klassifikation und SQL-Schema-Erkennung  
-- SQL-Validator mit sqlglot für Firebird-Syntax-Prüfung
-- TAG Generator für strukturierte deutsche Antworten
-- TAG Pipeline mit fokussiertem Embedding-System  
-- LangGraph Workflow für komplexe Multi-Step-Queries
-- ~90% SQL-Generierungsgenauigkeit erreicht
-
-#### Core System Features
-**Status**: ✅ Abgeschlossen  
-- 6 Retrieval-Modi: Enhanced, FAISS, None, LangChain, TAG, LangGraph
-- Direct FDB Interface mit Connection Pooling
-- Phoenix OTEL Monitoring mit SQLite Backend
-- Business Glossar mit JOIN-Reasoning
-- Testing Framework (13/13 Tests, 0.02s Ausführung)
-- Code Quality Tools (Black, isort, flake8, bandit)
+### Error Recovery & Reliability
+- [ ] **Enhanced fallback strategies** - Improve error recovery mechanisms across all modes
+- [ ] **Connection pool optimization** - Better database connection handling and recovery
+- [ ] **Automatic error diagnosis** - AI-powered error pattern detection and resolution
+- [ ] **System health monitoring** - Automated monitoring and alerting for system issues
 
 ---
 
-### 🔧 Aktuelle Entwicklungsphase: Strukturelle Modi-Optimierung
+## 📋 Medium Priority Tasks
 
-**Fortschritt**: 5/6 Modi erfolgreich optimiert (83% abgeschlossen)
+### Feature Enhancements
+- [ ] **Multi-language support** - Extend beyond German queries to English and other languages
+- [ ] **Batch query processing** - Support for processing multiple queries simultaneously
+- [ ] **Advanced analytics** - Enhanced query pattern analysis and reporting
+- [ ] **Export functionality** - Enhanced data export capabilities (CSV, Excel, PDF)
+- [ ] **Query history tracking** - User query history and analytics
+- [ ] **Custom pattern creation** - Allow users to define custom WINCASA patterns
 
-**✅ Optimierte Modi:**
-- **Enhanced**: ✅ Information Overload gelöst (81% Document Reduction)
-- **FAISS**: ✅ Semantic Gap behoben (100% Success Rate + HV-Terminologie-Mapping)
-- **None**: ✅ Statischer Context ersetzt (273% Context Richness + Dynamic Schema)
-- **LangChain**: ✅ Schema Overload behoben (97.2% Schema Reduction + Filtered Agent)
-- **TAG**: ✅ Statische Regeln ersetzt (ML-Klassifikation + 100% Query-Type-Erweiterung)
+### Development Infrastructure
+- [ ] **Pre-commit hooks implementation** - Automated code quality enforcement
+- [ ] **CI/CD pipeline setup** - Automated testing and deployment pipeline
+- [ ] **Container optimization** - Docker image optimization and Kubernetes support
+- [ ] **Backup automation** - Automated data backup and recovery procedures
+- [ ] **Development environment standardization** - Docker dev environment setup
 
-**🔄 Ausstehende Modi:**
-- **LangGraph**: Over-Engineering → Komplexitätsevaluierung + Workflow-Optimierung
-
-## ✅ Abgeschlossen
-
-- Core System mit 5 Retrieval-Modi implementiert und funktionsfähig
-- Testing Framework mit 13/13 bestandenen Tests (0,02s Ausführung)
-- Datenbank-Integration mit direkter FDB-Schnittstelle und Connection-Pooling
-- Business-Logik mit erweitertem Business-Glossar und JOIN-Reasoning
-- Schema-Analyse mit FK-Graph-Analyzer und NetworkX
-- Monitoring mit Phoenix OTEL-Integration und SQLite-Backend
-- Code-Qualität mit Black, isort, flake8, bandit konfiguriert
-
-## ⏳ Ausstehend
-
-### 🔧 Phase 1: Strukturelle Modi-Optimierung (6 Modi)
-
-#### Aufgabe 1.1: Enhanced → Contextual Enhanced ⚡ HOHE PRIORITÄT
-**Problem**: Information Overload durch statische 9-Dokument-Auswahl
-**Lösung**: Query-Type + Contextual Retrieval + Business Context
-**Geschätzt**: 5 Tage
-**Status**: ✅ **ABGESCHLOSSEN**
-
-**✅ Implementierte Verbesserungen**:
-- **81.2% Document Reduction**: Von 9 statischen auf 1-2 relevante Dokumente
-- **59.5% Context Reduction**: Information Overload gelöst
-- **Query-Type Classification**: address_lookup, owner_lookup, financial_query, property_count
-- **HV-Domain Contextual Chunks**: Business-Kontext angereicherte Dokumentation
-- **Anthropic-style Enrichment**: Technische Details + Business Purpose + Relationships
-
-**Erfolgskriterium**: ✅ **ERREICHT** - Bessere Präzision bei reduziertem Kontext
+### Monitoring & Analytics
+- [ ] **Performance trend analysis** - Long-term performance monitoring and reporting
+- [ ] **Cost optimization** - API usage optimization and cost tracking
+- [ ] **User behavior analytics** - Query pattern analysis and user insights
+- [ ] **System metrics dashboard** - Real-time system health and performance dashboard
+- [ ] **Alert system** - Automated alerting for system issues and performance degradation
 
 ---
 
-#### Aufgabe 1.2: FAISS → Hybrid FAISS ⚡ HOHE PRIORITÄT
-**Problem**: Semantic Gap - versteht HV-Business-Logic nicht
-**Lösung**: Semantic + Keyword + HV-Terminologie-Mapping
-**Geschätzt**: 5 Tage
-**Status**: ✅ **ABGESCHLOSSEN**
+## 📝 Low Priority Tasks
 
-**✅ Implementierte Verbesserungen**:
-- **100% Success Rate**: Alle Queries finden korrekte Tabellen
-- **30% Faster Retrieval**: Optimierte Performance (0.895s vs 1.280s)
-- **HV-Terminologie-Mapping**: "Mieter"→BEWOHNER, "Eigentümer"→EIGENTUEMER funktional
-- **Hybrid Search**: BM25 Keyword + FAISS Semantic Search optimal kombiniert
-- **Domain-Enhanced Embeddings**: HV-spezifische Terms integriert
-- **Semantic Gap gelöst**: Versteht jetzt Hausverwaltungs-Business-Logic
+### Research & Development
+- [ ] **New retrieval mode exploration** - Research and prototype additional retrieval strategies
+- [ ] **Alternative LLM integration** - Test integration with Claude, GPT-4, and other models
+- [ ] **Advanced vector store options** - Explore Pinecone, Weaviate, and other vector databases
+- [ ] **Schema evolution capabilities** - Dynamic schema adaptation and migration
+- [ ] **Performance benchmarking suite** - Comprehensive performance analysis framework
 
-**Erfolgskriterium**: ✅ **ERREICHT** - Findet "BEWOHNER" perfekt bei Query "Mieter"
+### User Experience Improvements
+- [ ] **Query suggestion system** - AI-powered query completion and suggestions
+- [ ] **Natural language explanation** - Explain SQL queries in natural language
+- [ ] **Interactive query builder** - Visual query building interface
+- [ ] **Result visualization** - Charts, graphs, and visual data representation
+- [ ] **Mobile-responsive interface** - Mobile and tablet support
 
----
-
-#### Aufgabe 1.3: None → Smart Fallback ⚡ HOHE PRIORITÄT
-**Problem**: Zu statisch, veralteter Global Context
-**Lösung**: Dynamic Schema + HV-Domain Prompt + Pattern Learning
-**Geschätzt**: 5 Tage
-**Status**: ✅ **ABGESCHLOSSEN**
-
-**✅ Implementierte Verbesserungen**:
-- **273% Context Richness**: Von statischen 484 auf durchschnittlich 1806 Zeichen relevanter Kontext
-- **Live Dynamic Schema**: Aktuelles Schema mit Zeilenzahlen statt veralteter statischer Info
-- **HV-Domain System Prompt**: WINCASA-spezifische Geschäftslogik integriert
-- **Pattern Learning Active**: Erfolgreiche Query-SQL-Pairs als Fallback-Examples
-- **6/6 Features verbessert**: Alle geplanten Verbesserungen implementiert
-- **Firebird-Specific Rules**: FIRST statt LIMIT, etc.
-
-**Erfolgskriterium**: ✅ **ERREICHT** - Robuster Fallback mit aktuellem Schema-Wissen
+### Integration & APIs
+- [ ] **REST API development** - Comprehensive API for third-party integration
+- [ ] **Webhook support** - Real-time notifications and integrations
+- [ ] **Single sign-on (SSO)** - Authentication and authorization improvements
+- [ ] **Third-party integrations** - Integration with popular property management systems
+- [ ] **Data synchronization** - Real-time data sync with external systems
 
 ---
 
-#### Aufgabe 1.4: LangChain → Filtered Agent ⚡ HOHE PRIORITÄT
-**Problem**: Schema Overload - lädt alle 151 Tabellen
-**Lösung**: Query-Type-spezifische Schema-Filterung + Business Logic
-**Geschätzt**: 5 Tage
-**Status**: ✅ **ABGESCHLOSSEN**
+## ✅ Completed Tasks (January 2025)
 
-**✅ Implementierte Verbesserungen**:
-- **97.2% Schema Reduction**: Von 151 auf durchschnittlich 4.2 relevante Tabellen
-- **94.4% Query Classification Accuracy**: 6 Query-Types (address_lookup, owner_lookup, financial_query, property_count, resident_info, maintenance_requests)
-- **Business Logic Integration**: HV-spezifische SQL-Patterns in Agent Prompt integriert
-- **Connection Pooling**: QueuePool mit 5+10 Connections, 1h Recycle-Zeit
-- **Firebird Optimizations**: UTF8 Charset, Dialect 3, 30s Timeout, Retry Logic
-- **100% Test Success Rate**: Alle 5 Tests bestanden (Query Classification, Table Filtering, Business Logic, Integration, Performance)
+### Phoenix Integration
+- [x] **Phoenix AI observability integration** - Complete monitoring platform setup
+- [x] **OpenTelemetry tracing** - All LLM calls and SQL generation traced
+- [x] **Performance analytics** - Real-time performance monitoring and cost tracking
+- [x] **Dashboard setup** - Phoenix dashboard accessible at http://localhost:6006
 
-**Erfolgskriterium**: ✅ **ERREICHT** - Agent Power ohne Schema Overwhelm
+### SQL Execution & Schema Discovery
+- [x] **Real SQL execution** - All 6 modes now execute real SQL against WINCASA database
+- [x] **Dynamic schema discovery** - Eliminated hardcoded mappings, LLM learns schema
+- [x] **Pattern learning integration** - Adaptive pattern selection based on query success
+- [x] **Database permission automation** - Automatic Firebird permission fixes
 
----
+### Testing & Validation
+- [x] **Comprehensive testing framework** - 11 standardized test questions across all modes
+- [x] **Quick verification system** - 3-question fast system check
+- [x] **Performance benchmarking** - Response time and success rate monitoring
+- [x] **Test result organization** - Automated result file management
 
-#### Aufgabe 1.5: TAG → Adaptive TAG ⚡ HOHE PRIORITÄT
-**Problem**: Statische Regeln, begrenzte Query-Type-Coverage
-**Lösung**: ML-basierte Klassifikation + Dynamic Schema Discovery
-**Geschätzt**: 7 Tage
-**Status**: ✅ **ABGESCHLOSSEN**
+### Documentation & Organization
+- [x] **Documentation consolidation** - Merged 21+ docs into 3 comprehensive files
+- [x] **File organization system** - Organized output structure for results and analysis
+- [x] **AI instruction system** - Comprehensive CLAUDE.md for AI sessions
+- [x] **Architecture documentation** - Complete system architecture and progress documentation
 
-**✅ Implementierte Verbesserungen**:
-- **ML-basierte Query-Klassifikation**: TF-IDF + Naive Bayes mit 70-95% Confidence Scores
-- **100% Coverage-Erweiterung**: Von 5 auf 10 Query-Types (address_lookup, resident_lookup, owner_lookup, property_queries, financial_queries, count_queries, relationship_queries, temporal_queries, comparison_queries, business_logic_queries)
-- **Dynamic Schema Discovery**: Automatische Tabellen-Relationship-Erkennung aus erfolgreichen SQL-Ausführungen
-- **Self-Learning System**: Kontinuierliche Verbesserung durch Query-Success/Failure-Feedback
-- **Enhanced Entity Extraction**: Deutsche HV-spezifische Begriffe (Straßennamen, PLZ, Eigentümer, etc.)
-- **Confidence-based Fallback**: Automatische Fallback-Strategien bei niedrigen Confidence-Scores
-
-**✅ Teilaufgaben abgeschlossen**:
-1. **ML-basierte Query-Klassifikation** ✅ - scikit-learn Pipeline mit TF-IDF Vectorizer + MultinomialNB
-2. **Dynamic Schema Discovery** ✅ - Lernt Tabellen-Beziehungen aus SQL-Patterns und speichert für Wiederverwendung  
-3. **Extended Query-Type Coverage** ✅ - 10 Query-Types mit spezialisierten SQL-Templates
-
-**Erfolgskriterium**: ✅ **ERREICHT** - Adaptive Classification + umfassende Coverage funktional
+### Core System Implementation
+- [x] **6 retrieval modes operational** - All modes working with real data
+- [x] **WINCASA business logic** - German property management domain integration
+- [x] **Pattern matching system** - Sophisticated SQL pattern matching
+- [x] **Error handling & recovery** - Robust error recovery and fallback mechanisms
+- [x] **German NLP specialization** - German address and query processing
 
 ---
 
-#### Aufgabe 1.6: LangGraph → Complexity Evaluation ⚡ MITTLERE PRIORITÄT
-**Problem**: Over-Engineering für meist einfache SQL-Queries
-**Lösung**: Evaluate ob Workflow-Komplexität gerechtfertigt ist
-**Geschätzt**: 4 Tage
-**Status**: Ausstehend
+## 🔧 Maintenance Tasks
 
-**Teilaufgaben**:
-1. **Use Case Analysis** (1 Tag)
-   - Welche Queries profitieren wirklich von Workflows?
-   - Multi-Step vs. Single-Step Query Classification
-2. **Workflow Simplification** (2 Tage)
-   - Minimale notwendige States definieren
-   - Unnötige Workflow-Komplexität entfernen
-3. **Integration Decision** (1 Tag)
-   - Entweder: Simplify zu nützlichen Workflows
-   - Oder: In LangChain Modus integrieren
+### Daily Maintenance
+- [ ] **Database permission check** - Verify database permissions after system restarts
+- [ ] **Result file organization** - Move scattered result files to organized directories
+- [ ] **System health verification** - Quick system check with benchmark script
+- [ ] **Phoenix dashboard monitoring** - Check for performance issues and errors
 
-**Erfolgskriterium**: Klare Entscheidung über LangGraph's Zukunft
+### Weekly Maintenance
+- [ ] **Comprehensive system testing** - Full 11-question validation across all modes
+- [ ] **Performance analysis** - Review Phoenix traces for optimization opportunities
+- [ ] **File cleanup** - Archive old results and clean temporary files
+- [ ] **Environment verification** - Check API keys, database, and dependencies
 
----
-
-### 🤝 Phase 2: Modi-Kombinationen (Modi 7-9)
-
-#### Aufgabe 2.1: Modus 7 - Smart Enhanced (Enhanced + TAG) ⚡ HOHE PRIORITÄT
-**Konzept**: TAG's Query-Classification + Enhanced's Multi-Document Retrieval
-**Geschätzt**: 3 Tage
-**Status**: Ausstehend
-**Abhängigkeiten**: Aufgaben 1.1, 1.5
-
-**Teilaufgaben**:
-1. **TAG-Enhanced Integration** (2 Tage)
-   - TAG's Query-Classification für Enhanced-Doc-Auswahl
-   - 3-4 relevante Docs statt 9 laden
-2. **Performance Validation** (1 Tag)
-   - A/B Test gegen Enhanced und TAG einzeln
-   - Synergieeffekte messen
-
-**Erfolgskriterium**: Präzision von TAG + Content-Reichtum von Enhanced
+### Monthly Maintenance
+- [ ] **Deep performance analysis** - Long-term trend analysis and optimization
+- [ ] **Pattern effectiveness review** - Analyze and optimize query patterns
+- [ ] **Documentation updates** - Keep technical documentation current
+- [ ] **Backup verification** - Verify data backup and recovery procedures
+- [ ] **Security review** - Review security settings and best practices
 
 ---
 
-#### Aufgabe 2.2: Modus 8 - Guided Agent (LangChain + TAG) ⚡ HOHE PRIORITÄT
-**Konzept**: TAG's Schema-Filtering + LangChain's Agent-Reasoning
-**Geschätzt**: 3 Tage
-**Status**: Ausstehend
-**Abhängigkeiten**: Aufgaben 1.4, 1.5
+## 🤖 Notes for New AI Sessions
 
-**Teilaufgaben**:
-1. **TAG-LangChain Integration** (2 Tage)
-   - TAG's Schema-Filtering für LangChain Agent
-   - Nur relevante Tabellen an Agent weitergeben
-2. **Business Logic Bridge** (1 Tag)
-   - TAG's Business Context in Agent Prompt
-   - Seamless integration testen
+### Essential First Steps
+1. **Read CLAUDE.md** - Complete AI instructions and development guidelines
+2. **Read readme.md** - System architecture and technical details
+3. **Fix database permissions** - Run `python fix_database_permissions.py`
+4. **Quick verification** - Run `python quick_3question_benchmark_final.py`
 
-**Erfolgskriterium**: Agent Power ohne Schema Overload
+### Main Test Scripts
+- **`quick_3question_benchmark_final.py`** - Fast verification (2-3 minutes)
+- **`test_all_6_modes_11_questions.py`** - Comprehensive testing (5-10 minutes)
+- **`phoenix_enabled_benchmark.py`** - Phoenix monitoring demonstration
 
----
+### Critical System Knowledge
+- **Database Fix Required** - After every system restart, run database permission fix
+- **Dynamic Schema Discovery** - System learns database structure, no hardcoded mappings
+- **Phoenix Monitoring** - Full AI observability at http://localhost:6006
+- **6 Operational Modes** - All retrieval modes working with real WINCASA data
+- **German Business Domain** - Specialized in German property management (Hausverwaltung)
 
-#### Aufgabe 2.3: Modus 9 - Contextual Vector (FAISS + TAG) ⚡ HOHE PRIORITÄT
-**Konzept**: TAG's Schema-Context + FAISS's Vector Similarity
-**Geschätzt**: 3 Tage
-**Status**: Ausstehend
-**Abhängigkeiten**: Aufgaben 1.2, 1.5
-
-**Teilaufgaben**:
-1. **Context-Enhanced Vector Search** (2 Tage)
-   - TAG's Query-Context als FAISS-Priming
-   - Context-biased similarity search
-2. **Hybrid Context Integration** (1 Tag)
-   - TAG-Schema + FAISS-Docs kombinieren
-   - Optimal weighting strategy
-
-**Erfolgskriterium**: Strukturiertes + Emergentes Wissen
+### File Organization
+- **Source Code** - Root directory (retriever files, core components)
+- **Results** - `output/results/` for JSON, `output/analysis/` for markdown
+- **Tests** - Main tests in root, specialized tests in `/temp/specialized_tests`
+- **Documentation** - CLAUDE.md (AI instructions), readme.md (architecture), tasks.md (this file)
 
 ---
 
-### 🧪 Phase 3: Evaluation & Architektur-Entscheidung
+## 📋 Task Categories
 
-#### Aufgabe 3.1: Comprehensive 9-Modi Testing ⚡ HOHE PRIORITÄT
-**Geschätzt**: 5 Tage
-**Status**: Ausstehend
-**Abhängigkeiten**: Alle Phase 1 & 2 Aufgaben
+### Implementation Tasks
+Tasks involving actual code development, new features, and system improvements.
 
-**Teilaufgaben**:
-1. **9-Modi Performance Matrix** (2 Tage)
-   - Alle 11 Standardabfragen gegen alle 9 Modi
-   - SQL-Genauigkeit, Response-Zeit, Business Logic
-2. **Business Scenario Testing** (2 Tage)
-   - HV-spezifische komplexe Szenarien
-   - Real-world Query patterns
-3. **Architektur-Empfehlung** (1 Tag)
-   - Finale Ranking und Empfehlung für Production
-   - Trade-off Analyse: Performance vs. Komplexität
+### Maintenance Tasks  
+Regular upkeep, monitoring, cleanup, and system health activities.
 
-**Erfolgskriterium**: Klare Production-Architektur-Entscheidung
+### Research Tasks
+Exploration, prototyping, and investigation of new technologies or approaches.
 
-## 🚨 **LIVE TEST RESULTS & ANALYSIS (8. Dezember 2024)**
+### Documentation Tasks
+Writing, updating, and organizing documentation and knowledge base.
 
-### **Aktuelle System-Performance**
-- **29/55 Fragen abgeschlossen** (53% Fortschritt)
-- **2/5 Modi vollständig getestet** (TAG Classifier ✅, Contextual Enhanced ✅)
-- **SQL Erfolgsrate**: ~55% (aufgrund LLM-Generierungsprobleme)
-- **Antwortzeiten**: 
-  - TAG Classifier: 0.000s (sofortige Klassifikation)
-  - Contextual Enhanced: 18.6s Durchschnitt pro Frage
-  - Hybrid FAISS: Bessere SQL-Generierung, weniger Fehler
-- **Datenbank-Performance**: 0.015-0.039s pro SQL-Query-Ausführung (exzellent)
-- **Real Data bestätigt**: 517 Wohnungen, 698 Bewohner, 540 Eigentümer, 80 Objekte, 3595 Konten
+### Infrastructure Tasks
+Development environment, deployment, monitoring, and operational improvements.
 
-### **SQL-Generierung Problem-Analyse**
+---
 
-**❌ Fehlschlagende SQL-Beispiele (aus Logs):**
-```
-Generated SQL for owner_lookup: and `VEREIG`, as . The selected columns provide a good overview: owner ID, name, address...
-Generated SQL for property_count: is a strong hint. "Anzahl der Bewohner" like: `SELECT T1.ONR, T1.OBEZ, COUNT(T2.BNR) FROM OBJEKTE T1 JOIN BEWOHNER T2
-Generated SQL for general_property: apartments (`WOHNUNG`). . The first query I designed seems more aligned with "general_property" context...
-```
-
-**✅ Funktionierende SQL-Beispiele:**
-```sql
-SELECT COUNT(*) FROM WOHNUNG                    -- ✅ Sauber, einfach
-SELECT COUNT(*) FROM BEWOHNER                   -- ✅ Sauber, einfach  
-SELECT T2.EANREDE, T2.EVNAME, T2.ENAME... FROM EIGENTUEMER AS T1 JOIN EIGADR AS T2...  -- ✅ Komplex aber gültig
-```
-
-### **Identifizierte Grundursachen**
-1. **LLM "Thinking Out Loud"**: Generiert erklärenden Text gemischt mit SQL
-2. **Unvollständige SQL-Fragmente**: Gibt partielle Queries zurück oder bricht mitten ab
-3. **Context-Kontamination**: Schema-Beschreibungen bluten in SQL-Output ein
-4. **Prompt Engineering Schwäche**: Keine Durchsetzung von strikt SQL-only Output
-
-### **Lösungsstrategie (implementierungsbereit)**
-
-#### **Phase 1: Sofortige Fixes (1-2 Stunden)**
-```python
-STRICT_SQL_PROMPT = """
-Generate ONLY a valid Firebird SQL SELECT query. 
-RULES:
-- Return ONLY SQL code, no explanations
-- Must start with SELECT
-- Must end with semicolon
-- No markdown, no comments, no text
-
-Query: {question}
-SQL:"""
-```
-
-#### **Phase 2: Response Processing (2-4 Stunden)**
-```python
-def extract_clean_sql(llm_response):
-    sql_pattern = r'SELECT.*?(?:;|$)'
-    matches = re.findall(sql_pattern, llm_response, re.IGNORECASE | re.DOTALL)
-    if matches:
-        sql = matches[0].strip()
-        if not sql.endswith(';'):
-            sql += ';'
-        return sql
-    return None
-```
-
-#### **Phase 3: Validation & Retry (4-6 Stunden)**
-```python
-def generate_sql_with_retry(question, max_attempts=3):
-    for attempt in range(max_attempts):
-        sql = llm.generate_sql(question)
-        if validate_sql_syntax(sql):
-            return sql
-    return fallback_sql_generation(question)
-```
-
-**Erwartete Ergebnisse**: 
-- **Aktuelle Erfolgsrate**: ~55% (6/11 Fragen pro Modus)
-- **Ziel Erfolgsrate**: 85-90% (9-10/11 Fragen pro Modus)
-- **Implementierungsaufwand**: Niedrig (Prompt-Updates, einfaches Regex-Parsing)
-- **Performance-Impact**: Minimal (gleiche LLM-Aufrufe, bessere Prompts)
-
-## 🎯 Erfolgskriterien
-
-**Aktualisierte Ziele basierend auf Live-Test Ergebnissen:**
-- **SQL-Generierungsgenauigkeit**: 55% → 90% (Hauptpriorität)
-- **Tabellenauswahl**: >95% korrekte Identifikation
-- **Adressabfragen**: 100% korrekte LIKE-Muster-Verwendung statt exakter Übereinstimmung
-- **Geschäftslogik**: >90% korrekte Begriff-zu-Tabelle-Zuordnung
-- **Antwortzeit**: <10s für komplexe Abfragen, <5s für einfache Abfragen
-- **System-Stabilität**: 5/5 Modi funktional mit >85% Erfolgsrate pro Modus
+**Task Management Notes:**
+- High priority tasks should be addressed first
+- Medium priority tasks can be worked on when high priority is complete
+- Low priority tasks are for future consideration and planning
+- Maintenance tasks should be integrated into regular development workflow
+- Completed tasks are kept for reference and progress tracking
