@@ -46,6 +46,8 @@ Format: type(scope): message
 
 Docstrings pflegen, Sphinx-Build muss sauber durchlaufen
 
+Live-Dokumentation für Entwicklung: ./docs-live.sh
+
 5. Keine externe CI/CD
 
 Lokaler Sync mit sync-project.sh
@@ -72,7 +74,7 @@ Tests schreiben → Commit
 
 Code schreiben → Commit
 
-Docs aktualisieren → Commit
+Docs aktualisieren (./update-docs.sh) → Commit
 
 Push als Backup
 

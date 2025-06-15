@@ -156,6 +156,14 @@ Tier 3: Legacy Fallback (500-2000ms)
 - **wincasa_query_logger.py**: SQLite-basierte Historie
 - **Query Path Tracking**: Template/Search/Legacy Decision
 
+### 7. Documentation Infrastructure
+
+**Sphinx Documentation System**
+- **docs/**: Professional HTML documentation with RTD theme
+- **sync-project.sh**: Complete system synchronization including docs
+- **update-docs.sh**: Centralized documentation pipeline
+- **docs-live.sh**: Live documentation server (localhost:8000)
+
 ```python
 # Structured Logging Format
 {
@@ -168,6 +176,11 @@ Tier 3: Legacy Fallback (500-2000ms)
     "response_time_ms": 3.1
 }
 ```
+
+**Self-Updating Stack (SAD.md)**
+- **Schema → Code → Tests → Docs** Pipeline
+- **Automatic synchronization** of all layers
+- **Zero-drift architecture** with validation
 
 ## Security & Deployment
 
