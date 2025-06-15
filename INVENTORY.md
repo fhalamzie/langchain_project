@@ -62,12 +62,13 @@
 - wincasa_data/query_logs.db - SQLite Logs
 
 ### Documentation
+- SAD.md - Self-Updating Stack (inkl. sync-project.sh & update-docs.sh)
 - ARCHITECTURE.md - System-Architektur
 - CLAUDE.md - Entwickler-Manual
-- SAD.md - Self-Updating Stack
 - LOGGING.md - Logging-Standards
 - TESTING.md - Test-Strategie
 - TASKS.md - Aufgaben-Backlog
 - API.md - API-Spezifikation
 - CHANGELOG.md - Session-History
 - readme.md - Projektübersicht
+- docs/ - Sphinx HTML-Dokumentation

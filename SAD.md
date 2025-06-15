@@ -151,9 +151,22 @@ class InvoiceFactory(SQLAlchemyModelFactory):
 
 - Volle Synchronisationsroutine:
   1. Migrationen anwenden (`alembic upgrade head`)
-  2. Schema-Dump erzeugen (`schema_dump.py`)
+  2. Schema-Dump erzeugen (`schema_dump.py`) 
   3. Artefakte generieren (UI, Models, DTOs, Fixtures)
-  4. Tests ausführen (`pytest --cov`)
+  4. Knowledge Base Update (`knowledge_extractor.py`)
+  5. Dokumentation Update (`./update-docs.sh`)
+  6. Tests ausführen (`./run-tests.sh`)
+  7. Code Quality Checks (`ruff check`)
+  8. Systemvalidierung
+
+### 📚 `update-docs.sh`
+
+- Zentrale Dokumentations-Pipeline:
+  1. Sphinx HTML-Dokumentation generieren (`make html`)
+  2. API-Dokumentation aus Docstrings extrahieren
+  3. INVENTORY.md mit aktuellen Modulen aktualisieren
+  4. Dokumentations-Konsistenz validieren
+  5. CHANGELOG.md mit Build-Timestamp ergänzen
 
 **Claude-Regel:** Verwende **ausschließlich** diese Skripte für Umschaltung und Rebuild. Niemals manuell eingreifen.
 
@@ -161,9 +174,10 @@ class InvoiceFactory(SQLAlchemyModelFactory):
 
 ## 🚀 Zielverhalten
 
-- 1 Commit → alle Layer synchron (Schema, Code, Tests, UI)
+- 1 Commit → alle Layer synchron (Schema, Code, Tests, UI, Docs)
 - Keine Redundanz, keine Drift, keine Überraschungen
 - Vollautomatisierbar mit Claude CLI und `/commit`, `/gitpush`, `/review`-Anweisungen
+- Sphinx-Dokumentation automatisch aktuell mit jedem Sync-Lauf
 
 ---
 
