@@ -83,7 +83,7 @@ Wichtige Regeln:
 
     def _load_system_prompt_for_mode(self, mode: str) -> str:
         """Lädt System-Prompt für spezifischen Mode ohne Config neu zu laden"""
-        base_path = Path(__file__).parent
+        base_path = Path(__file__).parent.parent / 'utils'
         
         # Check for Enhanced Layer 4 prompts first, fall back to standard Layer 4, then Layer 2
         prompt_files = {

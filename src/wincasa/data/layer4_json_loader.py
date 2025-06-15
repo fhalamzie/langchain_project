@@ -23,8 +23,9 @@ class Layer4JSONLoader:
         with open(config_path, 'r') as f:
             path_config = config_json.load(f)
         
-        # Path to Layer 4 JSON exports
-        self.json_dir = Path(path_config['json_exports_dir'])
+        # Path to Layer 4 JSON exports - resolve relative to project root
+        project_root = Path(__file__).parent.parent.parent.parent
+        self.json_dir = project_root / path_config['json_exports_dir']
         self.data_cache = {}
         
         # Load metadata

@@ -1,6 +1,6 @@
 {
   "sql_queries_dir": "SQL_QUERIES",
-  "json_exports_dir": "exports",
+  "json_exports_dir": "data/exports",
   "database_path": "wincasa_data/WINCASA2022.FDB",
   "source_data_dir": "wincasa_data/source",
   "streamlit_config": "config/.env"
