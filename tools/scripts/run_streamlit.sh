@@ -2,8 +2,8 @@
 # WINCASA Layer 4 Streamlit Launcher with Clean Restart
 # Usage: ./run_streamlit.sh [port] [address] [--restart] [--debug] [--test] [--dev]
 
-# Change to script directory to ensure correct paths
-cd "$(dirname "$0")"
+# Change to project root directory
+cd "$(dirname "$0")/../.."
 
 echo "🏠 Starting WINCASA Layer 4 Streamlit App..."
 echo "📂 Working directory: $(pwd)"
@@ -89,8 +89,8 @@ if [ ! -f "venv/installed" ]; then
     touch venv/installed
 fi
 
-# Set environment variables
-export PYTHONPATH="${PYTHONPATH}:$(pwd)"
+# Set environment variables for new package structure
+export PYTHONPATH="${PYTHONPATH}:$(pwd)/src"
 
 # Check configuration
 echo "Checking .env configuration..."
@@ -111,7 +111,7 @@ echo "✅ Configuration loaded"
 # Run tests if test mode enabled
 if [ "$TEST_MODE" = true ]; then
     echo "🧪 Running quick tests before starting..."
-    python test_suite_quick.py
+    python tests/unit/test_suite_quick.py
     if [ $? -ne 0 ]; then
         echo "❌ Tests failed! Fix tests before starting server."
         exit 1
@@ -176,7 +176,7 @@ if [ "$DEBUG_MODE" = true ]; then
 fi
 
 echo "🚀 Starting Streamlit server..."
-streamlit run streamlit_app.py \
+streamlit run src/wincasa/core/streamlit_app.py \
     --server.port $PORT \
     --server.address 0.0.0.0 \
     --server.enableCORS false \

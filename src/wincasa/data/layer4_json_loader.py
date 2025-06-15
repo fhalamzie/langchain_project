@@ -18,7 +18,9 @@ class Layer4JSONLoader:
     def __init__(self):
         # Load path configuration
         import json as config_json
-        with open('config/sql_paths.json', 'r') as f:
+        from pathlib import Path
+        config_path = Path(__file__).parent.parent.parent.parent / 'config' / 'sql_paths.json'
+        with open(config_path, 'r') as f:
             path_config = config_json.load(f)
         
         # Path to Layer 4 JSON exports

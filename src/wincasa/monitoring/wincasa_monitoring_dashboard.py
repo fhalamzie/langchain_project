@@ -13,9 +13,9 @@ from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Any, Callable, Dict, List, Optional
 
-from wincasa_query_engine import QueryEngineResult, WincasaQueryEngine
+from wincasa.core.wincasa_query_engine import QueryEngineResult, WincasaQueryEngine
 # Shadow mode removed
-from wincasa_query_logger import QueryLogEntry, get_query_logger
+from wincasa.monitoring.wincasa_query_logger import QueryLogEntry, get_query_logger
 
 
 @dataclass

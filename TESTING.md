@@ -1,6 +1,25 @@
 # TESTING.md
 
-## Test-Strategie
+## Test-Strategie & E2E Testing
+
+### Test-Pyramid Architecture
+
+**4-Layer Test Strategy**:
+```
+┌─────────────────────────────────┐
+│        Pipeline Tests           │ ← tests/pipeline/
+│      (SAD System Validation)    │
+├─────────────────────────────────┤
+│          E2E Tests              │ ← tests/e2e/
+│    (Playwright UI Automation)   │
+├─────────────────────────────────┤  
+│      Integration Tests          │ ← tests/integration/
+│    (Real System Components)     │
+├─────────────────────────────────┤
+│         Unit Tests              │ ← tests/unit/
+│    (src/wincasa/* modules)      │
+└─────────────────────────────────┘
+```
 
 ### Test-Suiten
 - ID: test_suite_phase2.py
@@ -54,16 +73,70 @@
   Improvement: 1000x (1-5ms vs 300-2000ms)
   SessionID: benchmark-20250614
 
+### E2E Testing with Playwright
+
+**End-to-End Test Suite (tests/e2e/)**:
+```python
+# test_wincasa_complete_e2e.py
+class TestWincasaE2E:
+    async def test_complete_workflow_cycle(self):
+        """Full user workflow: start → query → results → comparison"""
+        await page.navigate_to_streamlit_app()
+        await page.select_mode("🚀 Unified Engine (Phase 2 - intelligent)")
+        await page.enter_query("Zeige alle Mieter in Berlin")
+        await page.click_search()
+        await page.verify_results_displayed()
+        
+    async def test_multi_mode_comparison(self):
+        """Test all 5 modes with same query"""
+        query = "Portfolio Übersicht alle Eigentümer"
+        for mode in ["json_vanilla", "json_system", "sql_vanilla", "sql_system", "unified"]:
+            results = await self.run_mode_test(mode, query)
+            assert results.success == True
+            
+    async def test_ui_responsiveness(self):
+        """Verify UI interactions and state management"""
+        await page.test_checkbox_interactions()
+        await page.test_session_state_preservation()
+        await page.test_error_handling()
+```
+
+**Pipeline Validation Tests (tests/pipeline/)**:
+```python
+# test_sad_system.py  
+class TestSADPipeline:
+    def test_project_structure_integrity(self):
+        """Validate src/wincasa/ package structure"""
+        
+    def test_import_paths_work(self):
+        """Test all wincasa.module.submodule imports"""
+        
+    def test_config_loading_works(self):
+        """Validate configuration from new paths"""
+        
+    def test_system_prompts_exist(self):
+        """Check VERSION_*.md files in utils/"""
+```
+
 ### Test Execution
 ```bash
+# All tests with coverage
+./tools/scripts/run-tests.sh
+
+# E2E tests only  
+pytest tests/e2e/ -v
+
+# Integration tests
+pytest tests/integration/ -v
+
+# Pipeline validation
+pytest tests/pipeline/ -v
+
+# Unit tests
+pytest tests/unit/ -v
+
 # Quick tests (no LLM)
 python test_suite_quick.py
-
-# Full test suite
-python test_suite_phase2.py
-
-# Specific module
-python test_layer4.py
 
 # Performance benchmark
 python benchmark_current_modes.py

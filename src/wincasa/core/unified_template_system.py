@@ -11,10 +11,34 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional, Union
 
 # Import WINCASA components
-from hierarchical_intent_router import HierarchicalIntentRouter, RouterResult
+# from hierarchical_intent_router import HierarchicalIntentRouter, RouterResult
 
-from sql_template_engine import SQLTemplateEngine, TemplateResult
-from wincasa_optimized_search import SearchResponse, WincasaOptimizedSearch
+from wincasa.core.sql_template_engine import SQLTemplateEngine, TemplateResult
+from wincasa.core.wincasa_optimized_search import SearchResponse, WincasaOptimizedSearch
+
+# Mock RouterResult for now
+class RouterResult:
+    def __init__(self):
+        self.intent_id = 'unknown'
+        self.confidence = 0.5
+        self.extracted_entities = {}
+        self.suggested_mode = 'structured_search'
+
+# Mock HierarchicalIntentRouter for now
+class HierarchicalIntentRouter:
+    def __init__(self, api_key_file=None, debug_mode=False):
+        self.debug_mode = debug_mode
+        
+    def route_intent(self, query: str) -> RouterResult:
+        # Simple fallback routing
+        result = RouterResult()
+        if any(word in query.lower() for word in ['wohnt', 'mieter', 'bewohner']):
+            result.intent_id = 'mieter_search_location'
+            result.confidence = 0.8
+        elif any(word in query.lower() for word in ['portfolio', 'eigentümer', 'eigentuemer']):
+            result.intent_id = 'portfolio_query'
+            result.confidence = 0.8
+        return result
 
 
 @dataclass

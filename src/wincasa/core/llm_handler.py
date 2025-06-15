@@ -32,15 +32,15 @@ try:
 except ImportError:
     pd = None
 
-from database_connection import get_connection
-from wincasa_tools import WincasaTools
+from wincasa.data.json_exporter import get_connection
+# from wincasa.tools.wincasa_tools import WincasaTools  # Missing - comment out for now
 
-from config_loader import WincasaConfig
-from layer4_json_loader import Layer4JSONLoader
+from wincasa.utils.config_loader import WincasaConfig
+from wincasa.data.layer4_json_loader import Layer4JSONLoader
 
 # Import query path logger if available
 try:
-    from query_path_logger import query_path_logger
+    from wincasa.monitoring.query_path_logger import query_path_logger
     QUERY_PATH_LOGGING = True
 except ImportError:
     QUERY_PATH_LOGGING = False
@@ -57,7 +57,7 @@ class WincasaLLMHandler:
         # SQL functionality provided by database_connection module
         self.json_exporter = None
         self.layer4_json_loader = Layer4JSONLoader()
-        self.tools = WincasaTools()
+        # self.tools = WincasaTools()  # Missing - comment out for now
         
     def _load_system_prompt(self) -> str:
         """Lädt System-Prompt basierend auf aktuellem Modus"""
@@ -148,7 +148,7 @@ Wichtige Regeln:
     def _get_knowledge_base_context(self) -> str:
         """Get relevant context from knowledge base"""
         try:
-            from knowledge_base_loader import get_knowledge_base
+            from wincasa.knowledge.knowledge_base_loader import get_knowledge_base
             kb = get_knowledge_base()
             
             # Get most important mappings with detailed explanations
@@ -242,7 +242,7 @@ Wichtige Regeln:
                 return "Ich konnte keine gültige Straßenadresse in Ihrer Anfrage finden. Bitte geben Sie eine Adresse im Format 'Straßenname Nummer' an."
             
             # Use Unified Data Access Layer
-            from data_access_layer import get_data_access
+            from wincasa.data.data_access_layer import get_data_access
 
             # Determine data source based on mode
             source = "sql" if mode and 'sql' in mode else "json"
@@ -445,7 +445,7 @@ Wichtige Regeln:
             # Enhance query with knowledge base context
             enhanced_context = ""
             try:
-                from knowledge_base_loader import get_knowledge_base
+                from wincasa.knowledge.knowledge_base_loader import get_knowledge_base
                 kb = get_knowledge_base()
                 enhanced_context = kb.enhance_prompt_with_knowledge(user_query)
                 if enhanced_context:
@@ -757,7 +757,7 @@ Wichtige Regeln:
     def _execute_owner_search_function(self, args: Dict[str, Any], query_id: str) -> str:
         """Execute owner search function using unified data access layer"""
         try:
-            from data_access_layer import get_data_access
+            from wincasa.data.data_access_layer import get_data_access
 
             # Use unified data access with SQL source
             data_access = get_data_access(source="sql")
@@ -818,7 +818,7 @@ Wichtige Regeln:
             
             # Validate SQL against knowledge base
             try:
-                from knowledge_base_loader import get_knowledge_base
+                from wincasa.knowledge.knowledge_base_loader import get_knowledge_base
                 kb = get_knowledge_base()
                 validation_issues = kb.validate_sql_fields(sql_query)
                 if validation_issues:

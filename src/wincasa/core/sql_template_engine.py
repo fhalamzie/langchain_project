@@ -19,7 +19,7 @@ try:
 except ImportError:
     JINJA2_AVAILABLE = False
 
-from database_connection import execute_query
+from wincasa.data.json_exporter import get_connection
 
 
 @dataclass

@@ -16,12 +16,12 @@ from typing import Any, Dict, List, Optional, Union
 logger = logging.getLogger(__name__)
 
 # Import WINCASA Phase 2 Components
-from unified_template_system import UnifiedResponse, UnifiedTemplateSystem
-from wincasa_optimized_search import SearchResponse, WincasaOptimizedSearch
+from wincasa.core.unified_template_system import UnifiedResponse, UnifiedTemplateSystem
+from wincasa.core.wincasa_optimized_search import SearchResponse, WincasaOptimizedSearch
 
 # Legacy Mode Integration
 try:
-    from llm_handler import WincasaLLMHandler
+    from wincasa.core.llm_handler import WincasaLLMHandler
 
     # Create a wrapper function to match expected interface
     def query_wincasa_system(query: str, mode: str) -> Dict[str, Any]:

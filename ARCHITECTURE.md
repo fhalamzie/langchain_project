@@ -55,17 +55,39 @@ WINCASA implementiert eine Dual-Engine Architecture mit intelligentem Query-Rout
 
 ### 1. Presentation Layer
 
-**streamlit_app.py**
+**src/wincasa/core/streamlit_app.py**
 - Session State Management mit unique button keys
-- Full-width Container Layout für Ergebnisse
+- Full-width Container Layout für Ergebnisse  
 - 5-Modi Checkbox System
 - Tab-basierte Ergebnisanzeige
+
+**Package Structure (src/wincasa/)**:
+```
+src/wincasa/
+├── core/                  # Core application modules
+│   ├── streamlit_app.py   # Main Streamlit application
+│   └── wincasa_query_engine.py  # Unified query engine
+├── data/                  # Data processing layer
+│   ├── layer4_json_loader.py    # JSON data handling
+│   └── sql/               # SQL query definitions
+├── knowledge/             # Knowledge base system
+│   ├── knowledge_extractor.py   # Auto field mapping
+│   └── knowledge_base_loader.py # Runtime injection
+├── monitoring/            # Analytics and logging
+│   ├── wincasa_analytics_system.py
+│   ├── wincasa_query_logger.py
+│   └── wincasa_unified_logger.py
+└── utils/                 # Utilities and configuration
+    ├── config_loader.py   # Configuration management
+    ├── llm_handler.py     # LLM interaction
+    └── VERSION_*.md       # System prompt templates
+```
 
 ### 2. Intelligence Layer
 
 #### Unified Engine (Modus 5)
 ```python
-# wincasa_query_engine.py
+# src/wincasa/core/wincasa_query_engine.py
 def route_query(query: str) -> ExecutionPath:
     """Intelligente 3-Pfad Routing Logic"""
     if simple_lookup_pattern(query):
@@ -101,8 +123,8 @@ Mode 4: SQL_SYSTEM   → llm_handler → database   (~2000ms)
 ### 3. Knowledge Base Architecture
 
 **Zero-Hardcoding System**
-- **knowledge_extractor.py**: Parst 35 SQL-Dateien
-- **knowledge_base_loader.py**: Runtime Context Injection
+- **src/wincasa/knowledge/knowledge_extractor.py**: Parst 35 SQL-Dateien
+- **src/wincasa/knowledge/knowledge_base_loader.py**: Runtime Context Injection
 
 ```
 knowledge_base/
@@ -152,17 +174,23 @@ Tier 3: Legacy Fallback (500-2000ms)
 ### 6. Logging & Analytics
 
 **Multi-Layer Logging**
-- **wincasa_unified_logger.py**: Zentrales Framework
-- **wincasa_query_logger.py**: SQLite-basierte Historie
+- **src/wincasa/monitoring/wincasa_unified_logger.py**: Zentrales Framework
+- **src/wincasa/monitoring/wincasa_query_logger.py**: SQLite-basierte Historie
 - **Query Path Tracking**: Template/Search/Legacy Decision
 
 ### 7. Documentation Infrastructure
 
 **Sphinx Documentation System**
 - **docs/**: Professional HTML documentation with RTD theme
-- **sync-project.sh**: Complete system synchronization including docs
-- **update-docs.sh**: Centralized documentation pipeline
-- **docs-live.sh**: Live documentation server (localhost:8000)
+- **tools/scripts/sync-project.sh**: Complete system synchronization including docs
+- **tools/scripts/update-docs.sh**: Centralized documentation pipeline
+- **tools/scripts/docs-live.sh**: Live documentation server (localhost:8000)
+
+**Test Architecture**
+- **tests/unit/**: Unit tests for src/wincasa/* modules
+- **tests/integration/**: Integration tests against real system
+- **tests/e2e/**: End-to-end tests with Playwright UI automation
+- **tests/pipeline/**: SAD system validation tests
 
 ```python
 # Structured Logging Format

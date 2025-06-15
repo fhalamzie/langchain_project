@@ -23,7 +23,7 @@ class WincasaConfig:
             env_file: Pfad zur .env Datei (optional)
         """
         if env_file is None:
-            env_file = Path(__file__).parent / 'config' / '.env'
+            env_file = Path(__file__).parent.parent.parent.parent / 'config' / '.env'
         
         # Lade .env Datei
         load_dotenv(env_file)

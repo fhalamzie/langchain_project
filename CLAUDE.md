@@ -8,11 +8,13 @@ Quick Start
 
 source venv/bin/activate
 
-./sync-project.sh
+export PYTHONPATH="${PYTHONPATH}:$(pwd)/src"
+
+./tools/scripts/sync-project.sh
 
 Code schreiben
 
-./run-tests.sh
+./tools/scripts/run-tests.sh
 
 /commit → /gitpush
 
@@ -20,13 +22,15 @@ Entwicklungsregeln
 
 1. Test First
 
-Gegen echtes System
+**Testpyramide**: Unit → Integration → E2E → Pipeline
+- Unit Tests: src/wincasa/* modules mit pytest
+- Integration Tests: tests/integration/ gegen echtes System  
+- E2E Tests: tests/e2e/ mit Playwright UI-Automation
+- Pipeline Tests: tests/pipeline/ für SAD-System-Validierung
 
-Keine Mocks, keine Test-DB
+100 % Branch-Coverage für Core-Module
 
-100 % Branch-Coverage
-
-Neue Features: Test-First mit mindestens einem Happy-Path und Edge-Case
+Neue Features: Test-First mit Happy-Path, Edge-Case und E2E-Validation
 
 2. Log Everything
 

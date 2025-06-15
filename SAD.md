@@ -105,12 +105,15 @@ class InvoiceFactory(SQLAlchemyModelFactory):
 ## 🔹 7. Sync-Prozess & Change Detection
 
 ```bash
-./sync-project.sh
+./tools/scripts/sync-project.sh
 # Ablauf:
-# 1. alembic upgrade head
-# 2. schema_dump.py
-# 3. codegen (TS + PY + Fixtures)
-# 4. pytest --cov
+# 1. Python path setup (export PYTHONPATH="${PYTHONPATH}:$(pwd)/src")
+# 2. config validation from config/
+# 3. src/wincasa/ module imports validation  
+# 4. knowledge base update from data/sql/
+# 5. documentation update (./tools/scripts/update-docs.sh)
+# 6. test execution (./tools/scripts/run-tests.sh)
+# 7. system validation tests (tests/pipeline/)
 ```
 
 - **Git Hook (optional):**
@@ -147,34 +150,37 @@ class InvoiceFactory(SQLAlchemyModelFactory):
 - Beispiel: `APP_CONFIG_SOURCE=yaml|env|db`
 - Wird automatisch in `.env` oder Deployment-Umgebung gesetzt
 
-### 🛠️ `sync-project.sh`
+### 🛠️ `tools/scripts/sync-project.sh`
 
-- Volle Synchronisationsroutine:
-  1. Migrationen anwenden (`alembic upgrade head`)
-  2. Schema-Dump erzeugen (`schema_dump.py`) 
-  3. Artefakte generieren (UI, Models, DTOs, Fixtures)
-  4. Knowledge Base Update (`knowledge_extractor.py`)
-  5. Dokumentation Update (`./update-docs.sh`)
-  6. Tests ausführen (`./run-tests.sh`)
-  7. Code Quality Checks (`ruff check`)
-  8. Systemvalidierung
+- Volle Synchronisationsroutine für WINCASA Package Structure:
+  1. Python Path Setup (`export PYTHONPATH="${PYTHONPATH}:$(pwd)/src"`)
+  2. Config Validation (`config/.env`, `config/sql_paths.json`)
+  3. Package Import Tests (`src/wincasa/core/`, `src/wincasa/utils/`, etc.)
+  4. Knowledge Base Update (`src/wincasa/knowledge/knowledge_extractor.py`)
+  5. System Prompt Validation (`src/wincasa/utils/VERSION_*.md`)
+  6. Dokumentation Update (`./tools/scripts/update-docs.sh`)
+  7. Test Execution (`./tools/scripts/run-tests.sh`)
+  8. Pipeline Validation (`tests/pipeline/test_sad_system.py`)
+  9. E2E Test Validation (`tests/e2e/test_wincasa_complete_e2e.py`)
 
-### 📚 `update-docs.sh`
+### 📚 `tools/scripts/update-docs.sh`
 
 - Zentrale Dokumentations-Pipeline:
-  1. Sphinx HTML-Dokumentation generieren (`make html`)
-  2. API-Dokumentation aus Docstrings extrahieren
-  3. INVENTORY.md mit aktuellen Modulen aktualisieren
-  4. Dokumentations-Konsistenz validieren
-  5. CHANGELOG.md mit Build-Timestamp ergänzen
+  1. Sphinx HTML-Dokumentation generieren (`make html` in docs/)
+  2. API-Dokumentation aus src/wincasa/* Docstrings extrahieren
+  3. INVENTORY.md mit src/wincasa/* Struktur aktualisieren
+  4. ARCHITECTURE.md mit Package-Struktur aktualisieren
+  5. TESTING.md mit E2E-Testing-Strategy aktualisieren
+  6. CHANGELOG.md mit Session-Updates ergänzen
 
-### 🌐 `docs-live.sh`
+### 🌐 `tools/scripts/docs-live.sh`
 
 - Live-Dokumentations-Server für Entwicklung:
   1. Startet `sphinx-autobuild` auf http://localhost:8000
   2. Überwacht Änderungen in docs/ und Root-Markdown-Dateien
   3. Automatische Browser-Aktualisierung bei Änderungen
   4. Ignoriert temporäre und Backup-Dateien
+  5. Live-Reload für ARCHITECTURE.md, TESTING.md, CLAUDE.md
 
 **Claude-Regel:** Verwende **ausschließlich** diese Skripte für Umschaltung und Rebuild. Niemals manuell eingreifen.
 

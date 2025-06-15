@@ -16,14 +16,14 @@ from typing import Any, Dict, List
 import streamlit as st
 
 # Custom imports
-from config_loader import WincasaConfig
-from layer4_json_loader import Layer4JSONLoader
+from wincasa.utils.config_loader import WincasaConfig
+from wincasa.data.layer4_json_loader import Layer4JSONLoader
 # json_exporter is not needed for the streamlit app
-from llm_handler import WincasaLLMHandler
-from wincasa_monitoring_dashboard import WincasaMonitoringDashboard
+from wincasa.core.llm_handler import WincasaLLMHandler
+from wincasa.monitoring.wincasa_monitoring_dashboard import WincasaMonitoringDashboard
 # Phase 2 imports
-from wincasa_query_engine import WincasaQueryEngine
-from wincasa_unified_logger import (QueryLogEntry, get_query_logger,
+from wincasa.core.wincasa_query_engine import WincasaQueryEngine
+from wincasa.monitoring.wincasa_unified_logger import (QueryLogEntry, get_query_logger,
                                     query_path_logger)
 
 # Configure logging
@@ -49,7 +49,7 @@ class WincasaStreamlitApp:
         
         # Initialize unified query engine
         try:
-            from wincasa_query_engine import WincasaQueryEngine
+            from wincasa.core.wincasa_query_engine import WincasaQueryEngine
             self.query_engine = WincasaQueryEngine(debug_mode=False)
             logger.info("✅ WincasaQueryEngine initialized successfully")
         except Exception as e:
