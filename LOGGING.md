@@ -44,7 +44,12 @@
 
 - wincasa_query_engine: logger.getLogger(__name__)
   Level: INFO  
-  Content: Routing-Entscheidungen, Mode-Selection
+  Content: Routing-Entscheidungen, Mode-Selection, 4-Path-Routing
+
+- semantic_template_engine: logger.getLogger(__name__) [NEW - Session 12]
+  Level: INFO
+  Content: Pattern-Recognition, Intent-Extraction, Template-Matching, Confidence-Scores
+  SessionID: quality-focus-20250615
 
 #### Data Layer  
 - layer4_json_loader: logger.getLogger(__name__)

@@ -2,7 +2,7 @@ CLAUDE.md – Dev Manual
 
 ## Projekt
 
-WINCASA ist ein AI-powered Property Management Query System mit Dual-Engine Architecture. Das System bietet intelligentes Query-Routing zwischen Optimized Search (deterministische Genauigkeit), Template Engine (100% validierte SQL) und Legacy Fallback (vollständige Abdeckung). Eine Knowledge Base mit 226 automatisch extrahierten Field-Mappings ermöglicht Zero-Hardcoding für Business-SQL-Generierung. Production-ready mit 100% Test Coverage und Sphinx-Dokumentation.
+WINCASA ist ein AI-powered Property Management Query System mit Dual-Engine Architecture. Das System bietet intelligentes Query-Routing zwischen 1-5ms Optimized Search, Template Engine (~100ms), Legacy Fallback (500-2000ms) und neu Mode 6: Semantic Template Engine (~50ms). Eine Knowledge Base mit 400+ automatisch extrahierten Field-Mappings und 41 German Business Terms ermöglicht Zero-Hardcoding für Business-SQL-Generierung. Production-ready mit 100% Test Coverage und Sphinx-Dokumentation.
 
 Quick Start
 

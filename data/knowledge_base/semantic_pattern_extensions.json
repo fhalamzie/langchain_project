@@ -1,0 +1,79 @@
+{
+  "advanced_patterns": {
+    "multi_entity_portfolio": {
+      "name": "Multi-Entity Portfolio Analysis",
+      "patterns": [
+        "analysiere portfolio von (.+) mit (.+) und (.+)",
+        "zeige (.+) für (.+) mit (.+) details",
+        "vergleiche (.+) zwischen (.+) und (.+)"
+      ],
+      "parameters": [
+        "entity1",
+        "entity2",
+        "entity3"
+      ],
+      "complexity": "high",
+      "description": "Complex analysis across multiple business entities"
+    },
+    "temporal_kpi_analysis": {
+      "name": "Temporal KPI Analysis",
+      "patterns": [
+        "entwicklung von (.+) über (.+) für (.+)",
+        "trend (.+) letzten? (.+) bei (.+)",
+        "vergleiche (.+) zwischen (.+) und (.+) zeitraum"
+      ],
+      "parameters": [
+        "kpi",
+        "timeframe",
+        "entity"
+      ],
+      "complexity": "high",
+      "description": "Time-based KPI analysis and trends"
+    },
+    "compliance_analysis": {
+      "name": "Compliance Analysis",
+      "patterns": [
+        "prüfe (.+) konformität für (.+)",
+        "compliance (.+) nach (.+) für (.+)",
+        "rechtliche prüfung (.+) bezüglich (.+)"
+      ],
+      "parameters": [
+        "compliance_type",
+        "regulation",
+        "entity"
+      ],
+      "complexity": "high",
+      "description": "Legal and regulatory compliance analysis"
+    },
+    "predictive_modeling": {
+      "name": "Predictive Modeling",
+      "patterns": [
+        "prognostiziere (.+) für (.+) basierend auf (.+)",
+        "vorhersage (.+) unter (.+) bedingungen",
+        "schätze (.+) entwicklung bei (.+)"
+      ],
+      "parameters": [
+        "target_metric",
+        "entity",
+        "factors"
+      ],
+      "complexity": "high",
+      "description": "Predictive analysis and forecasting"
+    },
+    "optimization_analysis": {
+      "name": "Optimization Analysis",
+      "patterns": [
+        "optimiere (.+) für (.+) unter (.+) constraints",
+        "beste (.+) strategie für (.+)",
+        "maximiere (.+) bei (.+) durch (.+)"
+      ],
+      "parameters": [
+        "target",
+        "entity",
+        "constraints"
+      ],
+      "complexity": "high",
+      "description": "Optimization and strategy analysis"
+    }
+  }
+}

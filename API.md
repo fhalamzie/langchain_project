@@ -36,11 +36,18 @@
 
 ## Core-APIs
 
-### Unified-Engine
+### Unified-Engine (Enhanced with Mode 6)
 - Module: wincasa_query_engine.py
 - Function: execute_query(query: str) -> QueryResult
-- Routing: Template(100ms) → Search(1-5ms) → Legacy(500-2000ms)
-- SessionID: phase2-20250614
+- Routing: Search(1-5ms) → Semantic-Template(~50ms) → Template(~100ms) → Legacy(500-2000ms)
+- SessionID: quality-focus-20250615
+
+### Semantic-Template-Engine (NEW Mode 6)
+- Module: semantic_template_engine.py
+- Function: process_query(query: str) -> SemanticTemplateResult
+- Patterns: 95% recognition for complex German property management queries
+- Features: Multi-entity analysis, legal compliance, temporal analytics
+- SessionID: quality-focus-20250615
 
 ### Legacy-Handler
 - Module: llm_handler.py

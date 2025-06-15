@@ -100,10 +100,12 @@ if [ ! -f "config/.env" ]; then
 fi
 
 # Check API keys file
-API_KEYS_FILE=$(grep "^API_KEYS_FILE=" config/.env | cut -d'=' -f2)
+API_KEYS_FILE=$(grep "^OPENAI_API_KEYS_FILE=" config/.env | cut -d'=' -f2)
 if [ ! -f "$API_KEYS_FILE" ]; then
     echo "⚠️  Warning: API keys file not found: $API_KEYS_FILE"
     echo "   App will work but LLM calls will be mocked"
+else
+    echo "✅ API keys file found: $API_KEYS_FILE"
 fi
 
 echo "✅ Configuration loaded"

@@ -47,7 +47,7 @@ class QueryEngineResult:
     """Einheitliches Ergebnis des Query Engines"""
     query: str
     user_id: Optional[str]
-    processing_mode: str  # "template", "structured_search", "legacy_json"
+    processing_mode: str  # "template", "structured_search", "semantic_template", "legacy_json"
     engine_version: str  # "unified_v2", "legacy_v1"
     
     # Results
@@ -98,6 +98,18 @@ class WincasaQueryEngine:
             debug_mode=debug_mode
         )
         
+        # Initialize Semantic Template Engine (Phase 2.6 - Mode 6)
+        try:
+            from wincasa.core.semantic_template_engine import SemanticTemplateEngine
+            self.semantic_engine = SemanticTemplateEngine(
+                api_key_file=api_key_file,
+                debug_mode=debug_mode
+            )
+            print("🧩 Semantic Template Engine (Mode 6) initialized")
+        except ImportError as e:
+            print(f"⚠️ Semantic Template Engine not available: {e}")
+            self.semantic_engine = None
+        
         # Initialize Structured Search (Phase 2.2)
         self.search_system = WincasaOptimizedSearch(debug_mode=debug_mode)
         
@@ -105,6 +117,7 @@ class WincasaQueryEngine:
         self.query_stats = {
             "total_queries": 0,
             "unified_queries": 0,
+            "semantic_queries": 0,  # Mode 6 tracking
             "legacy_queries": 0,
             "avg_processing_time": 0.0,
             "avg_cost_per_query": 0.0
@@ -246,6 +259,8 @@ class WincasaQueryEngine:
             return 0.05  # Legacy LLM cost
         elif unified_response.processing_path == "template":
             return 0.01  # Small LLM cost for intent classification
+        elif unified_response.processing_path == "semantic_template":
+            return 0.01  # Lightweight LLM cost for intent extraction
         else:
             return 0.0   # Pure structured search - no LLM cost
     
@@ -285,33 +300,61 @@ class WincasaQueryEngine:
         
         # Main processing path
         if use_unified:
-            # Use Unified Template System
-            try:
-                unified_response = self.unified_system.process_query(query)
-                
-                answer = unified_response.final_answer
-                confidence = unified_response.confidence
-                result_count = unified_response.result_count
-                processing_mode = unified_response.processing_path
-                engine_version = "unified_v2"
-                cost_estimate = self._estimate_unified_cost(unified_response)
-                
-                self.query_stats["unified_queries"] += 1
-                
-            except Exception as e:
-                if self.debug_mode:
-                    print(f"   ❌ Unified system error: {e}")
-                
-                # Fallback to legacy
-                legacy_result = self._process_legacy_query(query)
-                answer = legacy_result["answer"]
-                confidence = 0.3  # Low confidence due to fallback
-                result_count = legacy_result["result_count"]
-                processing_mode = "legacy_fallback"
-                engine_version = "legacy_v1"
-                cost_estimate = legacy_result["cost_estimate"]
-                
-                self.query_stats["legacy_queries"] += 1
+            # NEW: Check for Semantic Template patterns first (Mode 6)
+            semantic_result = None
+            if self.semantic_engine:
+                can_handle, semantic_confidence = self.semantic_engine.can_handle_query(query)
+                if can_handle and semantic_confidence > 0.7:
+                    # Process with Semantic Template Engine
+                    try:
+                        semantic_result = self.semantic_engine.process_query(query)
+                        
+                        if semantic_result.success:
+                            answer = semantic_result.answer
+                            confidence = semantic_result.confidence
+                            result_count = semantic_result.result_count
+                            processing_mode = "semantic_template"
+                            engine_version = "unified_v2_mode6"
+                            cost_estimate = 0.01  # Lightweight LLM cost for intent extraction
+                            
+                            self.query_stats["semantic_queries"] += 1
+                            
+                            if self.debug_mode:
+                                print(f"   ✅ Semantic Template successful: {semantic_result.pattern.pattern_id}")
+                        
+                    except Exception as e:
+                        if self.debug_mode:
+                            print(f"   ⚠️ Semantic Template failed: {e}")
+                        semantic_result = None
+            
+            # If semantic processing failed or not applicable, use Unified Template System
+            if not semantic_result or not semantic_result.success:
+                try:
+                    unified_response = self.unified_system.process_query(query)
+                    
+                    answer = unified_response.final_answer
+                    confidence = unified_response.confidence
+                    result_count = unified_response.result_count
+                    processing_mode = unified_response.processing_path
+                    engine_version = "unified_v2"
+                    cost_estimate = self._estimate_unified_cost(unified_response)
+                    
+                    self.query_stats["unified_queries"] += 1
+                    
+                except Exception as e:
+                    if self.debug_mode:
+                        print(f"   ❌ Unified system error: {e}")
+                    
+                    # Fallback to legacy
+                    legacy_result = self._process_legacy_query(query)
+                    answer = legacy_result["answer"]
+                    confidence = 0.3  # Low confidence due to fallback
+                    result_count = legacy_result["result_count"]
+                    processing_mode = "legacy_fallback"
+                    engine_version = "legacy_v1"
+                    cost_estimate = legacy_result["cost_estimate"]
+                    
+                    self.query_stats["legacy_queries"] += 1
         
         else:
             # Use Legacy System

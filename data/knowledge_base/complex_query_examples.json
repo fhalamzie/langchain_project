@@ -1,0 +1,384 @@
+{
+  "cross_entity_analysis": {
+    "category": "Cross-Entity Analysis",
+    "description": "Complex queries spanning multiple business entities",
+    "examples": [
+      {
+        "query": "Zeige mir alle WEG-Objekte von Fahim Halamzie mit Beiratsmitgliedern und aktuellen Beschlüssen aus 2024",
+        "intent": "Multi-entity governance analysis",
+        "entities": [
+          "eigentuemer",
+          "weg",
+          "beirat",
+          "beschluss"
+        ],
+        "complexity": "high",
+        "expected_joins": [
+          "OBJEKTE",
+          "EIGENTUEMER",
+          "BEIRAETE",
+          "BESCHLUESSE"
+        ],
+        "business_value": "Complete governance overview for WEG properties"
+      },
+      {
+        "query": "Welche Mieter von Susanne Wagner haben Mietschulden über 1000€ und wohnen in Objekten mit laufenden Instandhaltungsmaßnahmen?",
+        "intent": "Risk analysis across tenant payments and maintenance",
+        "entities": [
+          "mieter",
+          "eigentuemer",
+          "mietschulden",
+          "instandhaltung"
+        ],
+        "complexity": "high",
+        "expected_joins": [
+          "BEWOHNER",
+          "KONTEN",
+          "BUCHUNG",
+          "OBJEKTE"
+        ],
+        "business_value": "Identify high-risk tenant situations"
+      },
+      {
+        "query": "Analysiere alle Sozialwohnungen in München mit WBS-pflichtigen Mietern und deren Nebenkostenabrechnungen für 2023",
+        "intent": "Social housing compliance analysis",
+        "entities": [
+          "sozialwohnung",
+          "wbs",
+          "nebenkosten",
+          "location"
+        ],
+        "complexity": "high",
+        "expected_joins": [
+          "WOHNUNG",
+          "BEWOHNER",
+          "KONTEN",
+          "OBJEKTE"
+        ],
+        "business_value": "Ensure social housing compliance"
+      }
+    ]
+  },
+  "financial_analytics": {
+    "category": "Financial Analytics & KPIs",
+    "description": "Complex financial analysis and performance metrics",
+    "examples": [
+      {
+        "query": "Berechne die Eigenkapitalrendite aller Objekte von Maria Huber und vergleiche mit Marktmieten in der Region",
+        "intent": "Investment performance analysis",
+        "entities": [
+          "eigenkapitalrendite",
+          "eigentuemer",
+          "marktmiete"
+        ],
+        "complexity": "high",
+        "expected_calculations": [
+          "ROE",
+          "market_comparison",
+          "performance_metrics"
+        ],
+        "business_value": "Investment performance optimization"
+      },
+      {
+        "query": "Zeige Cashflow-Entwicklung und Mietausfallrisiko für alle Objekte in Berlin mit Leerstandsquote über 10%",
+        "intent": "Risk-adjusted financial analysis",
+        "entities": [
+          "cashflow",
+          "mietausfall",
+          "leerstand",
+          "location"
+        ],
+        "complexity": "high",
+        "expected_calculations": [
+          "cashflow_trend",
+          "vacancy_impact",
+          "risk_metrics"
+        ],
+        "business_value": "Proactive risk management"
+      },
+      {
+        "query": "Analysiere Betriebskosteneffizienz nach BetrKV für alle WEG-Objekte mit mehr als 20 Einheiten",
+        "intent": "Operating cost efficiency analysis",
+        "entities": [
+          "betriebskosten",
+          "betrkv",
+          "weg",
+          "einheiten"
+        ],
+        "complexity": "high",
+        "expected_calculations": [
+          "cost_per_unit",
+          "efficiency_ratios",
+          "benchmark_comparison"
+        ],
+        "business_value": "Cost optimization and legal compliance"
+      }
+    ]
+  },
+  "temporal_analysis": {
+    "category": "Temporal & Trend Analysis",
+    "description": "Time-based patterns and historical analysis",
+    "examples": [
+      {
+        "query": "Vergleiche Mietpreisentwicklung der letzten 5 Jahre mit Instandhaltungskosten für alle Objekte von Wolfgang Bauer",
+        "intent": "Long-term investment analysis",
+        "entities": [
+          "mietpreisentwicklung",
+          "instandhaltungskosten",
+          "eigentuemer"
+        ],
+        "complexity": "high",
+        "temporal_scope": "5_years",
+        "business_value": "Strategic investment planning"
+      },
+      {
+        "query": "Identifiziere saisonale Leerstandsmuster und deren Auswirkung auf die Liquidität bei allen Münchener Objekten",
+        "intent": "Seasonal pattern analysis",
+        "entities": [
+          "leerstand",
+          "liquidität",
+          "location"
+        ],
+        "complexity": "high",
+        "temporal_scope": "seasonal",
+        "business_value": "Seasonal planning and liquidity management"
+      },
+      {
+        "query": "Analysiere Mieterwechselhäufigkeit und Kündigungsmuster nach Wohnungsgröße und Mietpreiskategorie",
+        "intent": "Tenant turnover analysis",
+        "entities": [
+          "mieterwechsel",
+          "kündigung",
+          "wohnungsgröße",
+          "mietpreis"
+        ],
+        "complexity": "high",
+        "temporal_scope": "multi_year",
+        "business_value": "Tenant retention strategy"
+      }
+    ]
+  },
+  "legal_compliance": {
+    "category": "Legal Compliance & Regulatory",
+    "description": "German property law and regulatory compliance queries",
+    "examples": [
+      {
+        "query": "Prüfe Mietpreisbremse-Konformität für alle Neuvermietungen seit 2023 in angespannten Wohnungsmärkten",
+        "intent": "Rent cap compliance analysis",
+        "entities": [
+          "mietpreisbremse",
+          "neuvermietung",
+          "angespannter_markt"
+        ],
+        "complexity": "high",
+        "legal_scope": "mietrecht",
+        "business_value": "Legal compliance assurance"
+      },
+      {
+        "query": "Analysiere WEG-Beschlussfähigkeit und Stimmenverteilung für alle anstehenden Modernisierungsbeschlüsse",
+        "intent": "WEG governance compliance",
+        "entities": [
+          "weg",
+          "beschlussfähigkeit",
+          "modernisierung",
+          "stimmenverteilung"
+        ],
+        "complexity": "high",
+        "legal_scope": "weg_recht",
+        "business_value": "Governance compliance and decision making"
+      },
+      {
+        "query": "Überprüfe Kündigungsschutz-Status aller Mieter mit Mietdauer über 5 Jahre und identifiziere erhöhte Schutzfristen",
+        "intent": "Tenant protection analysis",
+        "entities": [
+          "kündigungsschutz",
+          "mietdauer",
+          "schutzfristen"
+        ],
+        "complexity": "high",
+        "legal_scope": "mieterschutz",
+        "business_value": "Legal risk management"
+      }
+    ]
+  },
+  "portfolio_optimization": {
+    "category": "Portfolio Optimization",
+    "description": "Strategic portfolio management and optimization",
+    "examples": [
+      {
+        "query": "Identifiziere Objekte mit suboptimaler Flächennutzung und Potenzial für Grundrissoptimierung oder Teilung",
+        "intent": "Space utilization optimization",
+        "entities": [
+          "flächennutzung",
+          "grundriss",
+          "optimierung"
+        ],
+        "complexity": "high",
+        "optimization_type": "space_efficiency",
+        "business_value": "Maximize rental income through space optimization"
+      },
+      {
+        "query": "Analysiere Diversifikationsgrad des Portfolios nach Objekttyp, Lage und Mieterstruktur für Risikostreuung",
+        "intent": "Portfolio risk diversification",
+        "entities": [
+          "diversifikation",
+          "objekttyp",
+          "lage",
+          "mieterstruktur"
+        ],
+        "complexity": "high",
+        "optimization_type": "risk_distribution",
+        "business_value": "Portfolio risk management"
+      },
+      {
+        "query": "Berechne optimale Instandhaltungsrücklage pro WEG basierend auf Gebäudealter, Zustand und geplanten Modernisierungen",
+        "intent": "Maintenance reserve optimization",
+        "entities": [
+          "instandhaltungsrücklage",
+          "weg",
+          "gebäudealter",
+          "modernisierung"
+        ],
+        "complexity": "high",
+        "optimization_type": "financial_planning",
+        "business_value": "Optimal financial planning"
+      }
+    ]
+  },
+  "sustainability_esg": {
+    "category": "Sustainability & ESG",
+    "description": "Environmental, social, and governance analysis",
+    "examples": [
+      {
+        "query": "Analysiere CO2-Fußabdruck und Energieeffizienz-Potential aller Objekte für EU-Taxonomie-Konformität",
+        "intent": "ESG compliance analysis",
+        "entities": [
+          "co2_fußabdruck",
+          "energieeffizienz",
+          "eu_taxonomie"
+        ],
+        "complexity": "high",
+        "esg_scope": "environmental",
+        "business_value": "ESG compliance and sustainability reporting"
+      },
+      {
+        "query": "Bewerte soziale Nachhaltigkeit durch Mieterdemografie, Barrierefreiheit und Sozialwohnungsquote",
+        "intent": "Social sustainability assessment",
+        "entities": [
+          "mieterdemografie",
+          "barrierefreiheit",
+          "sozialwohnung"
+        ],
+        "complexity": "high",
+        "esg_scope": "social",
+        "business_value": "Social impact measurement"
+      },
+      {
+        "query": "Identifiziere Objekte mit Smart-Home-Potential für Digitalisierung und Energieeinsparung",
+        "intent": "Technology integration analysis",
+        "entities": [
+          "smart_home",
+          "digitalisierung",
+          "energieeinsparung"
+        ],
+        "complexity": "high",
+        "esg_scope": "technology",
+        "business_value": "Future-proofing and efficiency gains"
+      }
+    ]
+  },
+  "predictive_analytics": {
+    "category": "Predictive Analytics",
+    "description": "Forward-looking analysis and predictions",
+    "examples": [
+      {
+        "query": "Prognostiziere Leerstandsentwicklung basierend auf Markttrends, Objektzustand und lokaler Nachfrage",
+        "intent": "Vacancy prediction modeling",
+        "entities": [
+          "leerstand",
+          "markttrends",
+          "objektzustand",
+          "nachfrage"
+        ],
+        "complexity": "high",
+        "prediction_type": "vacancy_forecast",
+        "business_value": "Proactive vacancy management"
+      },
+      {
+        "query": "Schätze zukünftige Instandhaltungskosten basierend auf Gebäudealter, Nutzungsintensität und Wartungshistorie",
+        "intent": "Maintenance cost prediction",
+        "entities": [
+          "instandhaltungskosten",
+          "gebäudealter",
+          "wartungshistorie"
+        ],
+        "complexity": "high",
+        "prediction_type": "cost_forecast",
+        "business_value": "Budget planning and financial forecasting"
+      },
+      {
+        "query": "Modelliere Mietpreisentwicklung unter verschiedenen Marktszenarien und regulatorischen Änderungen",
+        "intent": "Rent development scenario analysis",
+        "entities": [
+          "mietpreisentwicklung",
+          "marktszenarien",
+          "regulatorisch"
+        ],
+        "complexity": "high",
+        "prediction_type": "scenario_modeling",
+        "business_value": "Strategic planning under uncertainty"
+      }
+    ]
+  },
+  "external_integration": {
+    "category": "External Data Integration",
+    "description": "Queries incorporating external market and regulatory data",
+    "examples": [
+      {
+        "query": "Vergleiche Portfolio-Performance mit regionalen Immobilienindices und Benchmark-Portfolios",
+        "intent": "Benchmark comparison analysis",
+        "entities": [
+          "portfolio_performance",
+          "immobilienindex",
+          "benchmark"
+        ],
+        "complexity": "high",
+        "external_data": [
+          "market_indices",
+          "benchmark_data"
+        ],
+        "business_value": "Competitive positioning analysis"
+      },
+      {
+        "query": "Integriere lokale Stadtentwicklungspläne für Bewertung von Standortpotenzial und Wertentwicklung",
+        "intent": "Urban development impact analysis",
+        "entities": [
+          "stadtentwicklung",
+          "standortpotenzial",
+          "wertentwicklung"
+        ],
+        "complexity": "high",
+        "external_data": [
+          "city_planning",
+          "development_data"
+        ],
+        "business_value": "Location-based investment decisions"
+      },
+      {
+        "query": "Analysiere Auswirkungen neuer Gesetzgebung (z.B. WEG-Reform) auf Portfolio-Management und Compliance-Anforderungen",
+        "intent": "Regulatory impact analysis",
+        "entities": [
+          "gesetzgebung",
+          "weg_reform",
+          "compliance"
+        ],
+        "complexity": "high",
+        "external_data": [
+          "legal_updates",
+          "regulatory_changes"
+        ],
+        "business_value": "Regulatory preparedness and compliance"
+      }
+    ]
+  }
+}

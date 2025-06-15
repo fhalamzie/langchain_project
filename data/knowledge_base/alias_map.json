@@ -170,9 +170,10 @@
     "is_computed": false
   },
   "DURCHLAUF_BETRAG": {
-    "canonical": "EXPRESSION: R.POS5, 0) AS NUMERIC(15,2...",
-    "source_file": "33_ruecklagen_management.sql",
-    "is_computed": true
+    "canonical": "DP.DURCHLAUFENDER_BETRAG",
+    "source_file": "31_durchlaufende_posten.sql",
+    "is_computed": false,
+    "description": "Pass-through amount for accounting"
   },
   "DURCHLAUF_BEZEICHNUNG": {
     "canonical": "EXPRESSION: R.POS5NAME...",
@@ -240,9 +241,10 @@
     "is_computed": false
   },
   "EMAIL": {
-    "canonical": "EXPRESSION: E.EEMAIL...",
-    "source_file": "15_eigentuemer_op_zusammenfassung.sql",
-    "is_computed": false
+    "canonical": "EIGENTUEMER.EMAIL",
+    "source_file": "01_eigentuemer.sql",
+    "is_computed": false,
+    "description": "Email address"
   },
   "ENDSTAND": {
     "canonical": "EXPRESSION: R.ENDSTAND, 0) AS NUMERIC(15,2...",
@@ -870,9 +872,10 @@
     "is_computed": true
   },
   "SONDER_ENTNAHME_BETRAG": {
-    "canonical": "EXPRESSION: R.SONDERENTN, 0) AS NUMERIC(15,2...",
+    "canonical": "SONDER.ENTNAHME_BETRAG",
     "source_file": "32_sonderentnahmen.sql",
-    "is_computed": true
+    "is_computed": false,
+    "description": "Special withdrawal amount from reserves"
   },
   "SONDER_ENTNAHME_KONTO": {
     "canonical": "EXPRESSION: R.KSONDERENTN...",
@@ -960,9 +963,10 @@
     "is_computed": false
   },
   "UMLAGESCHLUESSEL": {
-    "canonical": "EXPRESSION: R.USCHL...",
-    "source_file": "33_ruecklagen_management.sql",
-    "is_computed": false
+    "canonical": "SK.UMLAGEBASIS",
+    "source_file": "25_objektbezogene_sachkonten.sql",
+    "is_computed": false,
+    "description": "Cost allocation key (area, units, shares)"
   },
   "UMLAGESCHLUESSEL_1": {
     "canonical": "EXPRESSION: K.KUSCHLNR1...",
@@ -1128,5 +1132,1049 @@
     "canonical": "RP.ZUF",
     "source_file": "24_ruecklagenanalyse.sql",
     "is_computed": false
+  },
+  "MIETAUSFALLQUOTE_PROZENT": {
+    "canonical": "EXPRESSION: CASE WHEN GESAMTPOTENZIAL > 0 THEN (MIETAUSFALL_GESAMT / GESAMTPOTENZIAL) * 100 ELSE 0 END",
+    "source_file": "22_leerstandsanalyse.sql",
+    "is_computed": true,
+    "description": "Mietausfallquote in Prozent - Critical German property KPI"
+  },
+  "ZAHLUNGSQUOTE_PROZENT": {
+    "canonical": "EXPRESSION: CASE WHEN SOLL_GESAMT > 0 THEN (EINGEGANGEN_GESAMT / SOLL_GESAMT) * 100 ELSE 0 END",
+    "source_file": "29_eigentuemer_zahlungshistorie.sql",
+    "is_computed": true,
+    "description": "Payment rate percentage for owners"
+  },
+  "PUENKTLICHE_ZAHLER": {
+    "canonical": "EXPRESSION: COUNT(CASE WHEN ZAHLUNGSTAGE <= 5 THEN 1 END)",
+    "source_file": "29_eigentuemer_zahlungshistorie.sql",
+    "is_computed": true,
+    "description": "Count of punctual payers (within 5 days)"
+  },
+  "VERSPAETETE_ZAHLER": {
+    "canonical": "EXPRESSION: COUNT(CASE WHEN ZAHLUNGSTAGE BETWEEN 6 AND 30 THEN 1 END)",
+    "source_file": "29_eigentuemer_zahlungshistorie.sql",
+    "is_computed": true,
+    "description": "Count of late payers (6-30 days)"
+  },
+  "SEHR_SPAETE_ZAHLER": {
+    "canonical": "EXPRESSION: COUNT(CASE WHEN ZAHLUNGSTAGE > 30 THEN 1 END)",
+    "source_file": "29_eigentuemer_zahlungshistorie.sql",
+    "is_computed": true,
+    "description": "Count of very late payers (>30 days)"
+  },
+  "MITEIGENTUMSANTEIL": {
+    "canonical": "EIGENTUEMER.Z1",
+    "source_file": "01_eigentuemer.sql",
+    "is_computed": false,
+    "description": "Co-ownership share according to WEG law"
+  },
+  "ANTEIL_IN_PROZENT": {
+    "canonical": "EXPRESSION: (EIGENTUEMER.Z1 / SUM(EIGENTUEMER.Z1) OVER()) * 100",
+    "source_file": "01_eigentuemer.sql",
+    "is_computed": true,
+    "description": "Ownership percentage for cost allocation"
+  },
+  "BESCHLUSSFAEHIGKEIT": {
+    "canonical": "EXPRESSION: CASE WHEN ANWESENDE_ANTEILE >= 50 THEN 'JA' ELSE 'NEIN' END",
+    "source_file": "17_beschluesse.sql",
+    "is_computed": true,
+    "description": "Quorum validation for WEG assemblies"
+  },
+  "STIMMEN_JA": {
+    "canonical": "BESCHL.ZUSTIMMUNG",
+    "source_file": "17_beschluesse.sql",
+    "is_computed": false,
+    "description": "Yes votes for resolutions"
+  },
+  "STIMMEN_NEIN": {
+    "canonical": "BESCHL.ABLEHNUNG",
+    "source_file": "17_beschluesse.sql",
+    "is_computed": false,
+    "description": "No votes for resolutions"
+  },
+  "BEIRAT_NAME": {
+    "canonical": "EXPRESSION: TRIM(B.BVORNAME || ' ' || B.BNAME)",
+    "source_file": "16_beiraete.sql",
+    "is_computed": true,
+    "description": "Full name of board member"
+  },
+  "AMTSZEIT_STATUS": {
+    "canonical": "EXPRESSION: CASE WHEN B.BANDSDATUM IS NULL THEN 'AKTIV' ELSE 'BEENDET' END",
+    "source_file": "16_beiraete.sql",
+    "is_computed": true,
+    "description": "Board member term status"
+  },
+  "BETRKV_PARAGRAPH": {
+    "canonical": "SK.BETRKV_REF",
+    "source_file": "25_objektbezogene_sachkonten.sql",
+    "is_computed": false,
+    "description": "Reference to German Operating Cost Ordinance paragraph"
+  },
+  "UMLAGEFAEHIGKEIT": {
+    "canonical": "EXPRESSION: CASE WHEN SK.UMLAGEFAEHIG = 1 THEN 'JA' ELSE 'NEIN' END",
+    "source_file": "25_objektbezogene_sachkonten.sql",
+    "is_computed": true,
+    "description": "Cost apportionability per German law"
+  },
+  "KOSTEN_PRO_QM": {
+    "canonical": "EXPRESSION: CASE WHEN QM_GESAMT > 0 THEN KOSTEN_GESAMT / QM_GESAMT ELSE 0 END",
+    "source_file": "23_instandhaltungskosten.sql",
+    "is_computed": true,
+    "description": "Cost per square meter"
+  },
+  "KOSTEN_PRO_EINHEIT": {
+    "canonical": "EXPRESSION: CASE WHEN ANZAHL_EINHEITEN > 0 THEN KOSTEN_GESAMT / ANZAHL_EINHEITEN ELSE 0 END",
+    "source_file": "23_instandhaltungskosten.sql",
+    "is_computed": true,
+    "description": "Cost per residential unit"
+  },
+  "LEERSTAND_TAGE": {
+    "canonical": "EXPRESSION: CURRENT_DATE - FREIGEWORDEN_AM",
+    "source_file": "22_leerstandsanalyse.sql",
+    "is_computed": true,
+    "description": "Days vacant since becoming available"
+  },
+  "LEERSTAND_MONATE": {
+    "canonical": "EXPRESSION: ROUND((CURRENT_DATE - FREIGEWORDEN_AM) / 30.0, 1)",
+    "source_file": "22_leerstandsanalyse.sql",
+    "is_computed": true,
+    "description": "Months vacant for reporting"
+  },
+  "LEERSTANDSKATEGORIE": {
+    "canonical": "EXPRESSION: CASE WHEN LEERSTAND_TAGE <= 30 THEN 'KURZ' WHEN LEERSTAND_TAGE <= 90 THEN 'MITTEL' ELSE 'LANG' END",
+    "source_file": "22_leerstandsanalyse.sql",
+    "is_computed": true,
+    "description": "Vacancy duration category"
+  },
+  "MIETAUSFALL_GESAMT": {
+    "canonical": "EXPRESSION: SOLLMIETE * LEERSTAND_MONATE",
+    "source_file": "22_leerstandsanalyse.sql",
+    "is_computed": true,
+    "description": "Total rental loss due to vacancy"
+  },
+  "JAHRESPOTENZIAL": {
+    "canonical": "EXPRESSION: SOLLMIETE * 12",
+    "source_file": "22_leerstandsanalyse.sql",
+    "is_computed": true,
+    "description": "Annual rental potential if occupied"
+  },
+  "VERMIETUNGSPRIORITAET": {
+    "canonical": "EXPRESSION: CASE WHEN MIETAUSFALL_GESAMT > 5000 THEN 'HOCH' WHEN MIETAUSFALL_GESAMT > 2000 THEN 'MITTEL' ELSE 'NIEDRIG' END",
+    "source_file": "22_leerstandsanalyse.sql",
+    "is_computed": true,
+    "description": "Rental priority based on financial impact"
+  },
+  "RUECKLAGE_PRO_EINHEIT": {
+    "canonical": "EXPRESSION: CASE WHEN ANZAHL_EINHEITEN > 0 THEN RUECKLAGEN_SALDO / ANZAHL_EINHEITEN ELSE 0 END",
+    "source_file": "33_ruecklagen_management.sql",
+    "is_computed": true,
+    "description": "Reserve fund per residential unit"
+  },
+  "DECKUNGSGRAD_PROZENT": {
+    "canonical": "EXPRESSION: CASE WHEN SOLL_RUECKLAGE > 0 THEN (RUECKLAGEN_SALDO / SOLL_RUECKLAGE) * 100 ELSE 0 END",
+    "source_file": "33_ruecklagen_management.sql",
+    "is_computed": true,
+    "description": "Reserve fund coverage percentage"
+  },
+  "LIQUIDITAETS_STATUS": {
+    "canonical": "EXPRESSION: CASE WHEN DECKUNGSGRAD_PROZENT >= 100 THEN 'VOLLSTAENDIG' WHEN DECKUNGSGRAD_PROZENT >= 50 THEN 'TEILWEISE' ELSE 'UNZUREICHEND' END",
+    "source_file": "33_ruecklagen_management.sql",
+    "is_computed": true,
+    "description": "Liquidity status for reserves"
+  },
+  "MIETDAUER_JAHRE": {
+    "canonical": "EXPRESSION: ROUND((CURRENT_DATE - EINZUGSDATUM) / 365.25, 1)",
+    "source_file": "03_aktuelle_mieter.sql",
+    "is_computed": true,
+    "description": "Tenancy duration in years"
+  },
+  "BRUTTOMIETE": {
+    "canonical": "EXPRESSION: B.Z1 + B.Z2 + B.Z3",
+    "source_file": "03_aktuelle_mieter.sql",
+    "is_computed": true,
+    "description": "Total gross rent including utilities"
+  },
+  "AKTUELLE_NETTOMIETE": {
+    "canonical": "B.Z1",
+    "source_file": "03_aktuelle_mieter.sql",
+    "is_computed": false,
+    "description": "Current net rent amount"
+  },
+  "NEBENKOSTENVORAUSZAHLUNG": {
+    "canonical": "B.Z2",
+    "source_file": "03_aktuelle_mieter.sql",
+    "is_computed": false,
+    "description": "Utility cost advance payment"
+  },
+  "HEIZUNGSVORAUSZAHLUNG": {
+    "canonical": "B.Z3",
+    "source_file": "03_aktuelle_mieter.sql",
+    "is_computed": false,
+    "description": "Heating cost advance payment"
+  },
+  "ALTERSKLASSE": {
+    "canonical": "EXPRESSION: CASE WHEN TAGE_OFFEN <= 30 THEN '1-30 TAGE' WHEN TAGE_OFFEN <= 60 THEN '31-60 TAGE' WHEN TAGE_OFFEN <= 90 THEN '61-90 TAGE' ELSE '>90 TAGE' END",
+    "source_file": "21_forderungsalterung.sql",
+    "is_computed": true,
+    "description": "Receivables aging category"
+  },
+  "INKASSO_RISIKO": {
+    "canonical": "EXPRESSION: CASE WHEN TAGE_OFFEN > 90 THEN 'HOCH' WHEN TAGE_OFFEN > 60 THEN 'MITTEL' ELSE 'NIEDRIG' END",
+    "source_file": "21_forderungsalterung.sql",
+    "is_computed": true,
+    "description": "Collection risk assessment"
+  },
+  "EINZUGSEFFIZIENZ_PROZENT": {
+    "canonical": "EXPRESSION: CASE WHEN FORDERUNG_URSPRUENGLICH > 0 THEN ((FORDERUNG_URSPRUENGLICH - FORDERUNG_OFFEN) / FORDERUNG_URSPRUENGLICH) * 100 ELSE 100 END",
+    "source_file": "21_forderungsalterung.sql",
+    "is_computed": true,
+    "description": "Collection efficiency percentage"
+  },
+  "MONATS_SALDO": {
+    "canonical": "EXPRESSION: COALESCE(SOLL_MONAT, 0) - COALESCE(HABEN_MONAT, 0)",
+    "source_file": "27_konten_saldenliste.sql",
+    "is_computed": true,
+    "description": "Monthly account balance"
+  },
+  "KUMULIERTES_SOLL": {
+    "canonical": "EXPRESSION: SUM(SOLL_BETRAG) OVER (ORDER BY BUCHUNGSDATUM)",
+    "source_file": "26_detaillierte_buchungen.sql",
+    "is_computed": true,
+    "description": "Cumulative debit amount"
+  },
+  "KUMULIERTES_HABEN": {
+    "canonical": "EXPRESSION: SUM(HABEN_BETRAG) OVER (ORDER BY BUCHUNGSDATUM)",
+    "source_file": "26_detaillierte_buchungen.sql",
+    "is_computed": true,
+    "description": "Cumulative credit amount"
+  },
+  "HEIZUNG_SANITAER": {
+    "canonical": "EXPRESSION: SUM(CASE WHEN KOSTENKATEGORIE = 'HEIZUNG_SANITAER' THEN BETRAG ELSE 0 END)",
+    "source_file": "23_instandhaltungskosten.sql",
+    "is_computed": true,
+    "description": "Heating and plumbing maintenance costs"
+  },
+  "ELEKTRIK": {
+    "canonical": "EXPRESSION: SUM(CASE WHEN KOSTENKATEGORIE = 'ELEKTRIK' THEN BETRAG ELSE 0 END)",
+    "source_file": "23_instandhaltungskosten.sql",
+    "is_computed": true,
+    "description": "Electrical maintenance costs"
+  },
+  "DACH": {
+    "canonical": "EXPRESSION: SUM(CASE WHEN KOSTENKATEGORIE = 'DACH' THEN BETRAG ELSE 0 END)",
+    "source_file": "23_instandhaltungskosten.sql",
+    "is_computed": true,
+    "description": "Roof maintenance costs"
+  },
+  "AUFZUG": {
+    "canonical": "EXPRESSION: SUM(CASE WHEN KOSTENKATEGORIE = 'AUFZUG' THEN BETRAG ELSE 0 END)",
+    "source_file": "23_instandhaltungskosten.sql",
+    "is_computed": true,
+    "description": "Elevator maintenance costs"
+  },
+  "KOSTENNIVEAU": {
+    "canonical": "EXPRESSION: CASE WHEN KOSTEN_PRO_QM < 5 THEN 'NIEDRIG' WHEN KOSTEN_PRO_QM < 15 THEN 'NORMAL' ELSE 'HOCH' END",
+    "source_file": "23_instandhaltungskosten.sql",
+    "is_computed": true,
+    "description": "Cost level classification"
+  },
+  "VOLLER_NAME": {
+    "canonical": "EXPRESSION: TRIM(COALESCE(VORNAME, '') || ' ' || COALESCE(NAME, ''))",
+    "source_file": "01_eigentuemer.sql",
+    "is_computed": true,
+    "description": "Full formatted name"
+  },
+  "VOLLE_ADRESSE": {
+    "canonical": "EXPRESSION: TRIM(COALESCE(STRASSE, '') || ' ' || COALESCE(HAUSNUMMER, '') || ', ' || COALESCE(PLZ, '') || ' ' || COALESCE(ORT, ''))",
+    "source_file": "01_eigentuemer.sql",
+    "is_computed": true,
+    "description": "Complete formatted address"
+  },
+  "TELEFON_MOBIL": {
+    "canonical": "EIGENTUEMER.MOBILTELEFON",
+    "source_file": "01_eigentuemer.sql",
+    "is_computed": false,
+    "description": "Mobile phone number"
+  },
+  "NETTO_EINNAHMEN": {
+    "canonical": "EXPRESSION: MIETEINNAHMEN_BRUTTO - UMLAGEN_RUECKERSTATTUNG",
+    "source_file": "20_monatliche_mieteinnahmen.sql",
+    "is_computed": true,
+    "description": "Net rental income after utility refunds"
+  },
+  "MIETEINNAHMEN": {
+    "canonical": "EXPRESSION: SUM(CASE WHEN KONTOART = 'MIETE' THEN BETRAG ELSE 0 END)",
+    "source_file": "20_monatliche_mieteinnahmen.sql",
+    "is_computed": true,
+    "description": "Total rental income"
+  },
+  "NK_NACHZAHLUNGEN": {
+    "canonical": "EXPRESSION: SUM(CASE WHEN KONTOART = 'NK_NACHZAHLUNG' THEN BETRAG ELSE 0 END)",
+    "source_file": "20_monatliche_mieteinnahmen.sql",
+    "is_computed": true,
+    "description": "Utility cost additional payments"
+  },
+  "GESAMTEINNAHMEN": {
+    "canonical": "EXPRESSION: MIETEINNAHMEN + NK_NACHZAHLUNGEN + SONSTIGE_EINNAHMEN",
+    "source_file": "20_monatliche_mieteinnahmen.sql",
+    "is_computed": true,
+    "description": "Total monthly income"
+  },
+  "REVENUE_RECOVERY_SCORE": {
+    "canonical": "EXPRESSION: CASE WHEN MIETAUSFALL_GESAMT > 0 THEN 100 - ((LEERSTAND_TAGE * 10) / 365) ELSE 100 END",
+    "source_file": "22_leerstandsanalyse.sql",
+    "is_computed": true,
+    "description": "Revenue recovery score for prioritization"
+  },
+  "MARKTUEBLICHE_MIETE": {
+    "canonical": "EXPRESSION: SOLLMIETE * 1.1",
+    "source_file": "22_leerstandsanalyse.sql",
+    "is_computed": true,
+    "description": "Market-rate rent estimation"
+  },
+  "ABWEICHUNG_MARKTMIETE": {
+    "canonical": "EXPRESSION: ((MARKTUEBLICHE_MIETE - SOLLMIETE) / SOLLMIETE) * 100",
+    "source_file": "22_leerstandsanalyse.sql",
+    "is_computed": true,
+    "description": "Deviation from market rent in percent"
+  },
+  "ABSCHREIBUNGSKANDIDATEN": {
+    "canonical": "EXPRESSION: CASE WHEN TAGE_OFFEN > 365 THEN 'JA' ELSE 'NEIN' END",
+    "source_file": "21_forderungsalterung.sql",
+    "is_computed": true,
+    "description": "Write-off candidates for old receivables"
+  },
+  "SCHLUSSBILANZ_SOLL": {
+    "canonical": "EXPRESSION: SUM(CASE WHEN BUCHUNGSART = 'SOLL' THEN BETRAG ELSE 0 END)",
+    "source_file": "27_konten_saldenliste.sql",
+    "is_computed": true,
+    "description": "Year-end balance sheet debit total"
+  },
+  "SCHLUSSBILANZ_HABEN": {
+    "canonical": "EXPRESSION: SUM(CASE WHEN BUCHUNGSART = 'HABEN' THEN BETRAG ELSE 0 END)",
+    "source_file": "27_konten_saldenliste.sql",
+    "is_computed": true,
+    "description": "Year-end balance sheet credit total"
+  },
+  "NUTZUNGSART": {
+    "canonical": "EXPRESSION: CASE WHEN W.ART = 'W' THEN 'WOHNUNG' WHEN W.ART = 'G' THEN 'GEWERBE' ELSE 'SONSTIGE' END",
+    "source_file": "07_wohnungen.sql",
+    "is_computed": true,
+    "description": "Usage type classification"
+  },
+  "VERMIETUNGSSTATUS": {
+    "canonical": "EXPRESSION: CASE WHEN B.BNR IS NOT NULL THEN 'VERMIETET' ELSE 'LEER' END",
+    "source_file": "08_wohnungen_leerstand.sql",
+    "is_computed": true,
+    "description": "Current rental status"
+  },
+  "VERMIETUNGSGRAD_PROZENT": {
+    "canonical": "EXPRESSION: (COUNT(VERMIETETE_EINHEITEN) * 100.0) / COUNT(GESAMT_EINHEITEN)",
+    "source_file": "22_leerstandsanalyse.sql",
+    "is_computed": true,
+    "description": "Occupancy rate percentage"
+  },
+  "OBJEKTKATEGORIE": {
+    "canonical": "EXPRESSION: CASE WHEN O.OANZEINH <= 5 THEN 'KLEIN' WHEN O.OANZEINH <= 20 THEN 'MITTEL' ELSE 'GROSS' END",
+    "source_file": "05_objekte.sql",
+    "is_computed": true,
+    "description": "Property size category"
+  },
+  "BAUJAHR": {
+    "canonical": "OBJEKTE.BAUJAHR",
+    "source_file": "05_objekte.sql",
+    "is_computed": false,
+    "description": "Construction year"
+  },
+  "GEBAEUDEALTER_JAHRE": {
+    "canonical": "EXPRESSION: EXTRACT(YEAR FROM CURRENT_DATE) - BAUJAHR",
+    "source_file": "05_objekte.sql",
+    "is_computed": true,
+    "description": "Building age in years"
+  },
+  "SANIERUNGSBEDARF": {
+    "canonical": "EXPRESSION: CASE WHEN GEBAEUDEALTER_JAHRE > 40 THEN 'HOCH' WHEN GEBAEUDEALTER_JAHRE > 20 THEN 'MITTEL' ELSE 'NIEDRIG' END",
+    "source_file": "05_objekte.sql",
+    "is_computed": true,
+    "description": "Renovation needs assessment"
+  },
+  "KOSTENKATEGORIE": {
+    "canonical": "EXPRESSION: CASE WHEN K.KKLASSE BETWEEN 400 AND 499 THEN 'BETRIEBSKOSTEN' WHEN K.KKLASSE BETWEEN 500 AND 599 THEN 'INSTANDHALTUNG' ELSE 'SONSTIGE' END",
+    "source_file": "25_objektbezogene_sachkonten.sql",
+    "is_computed": true,
+    "description": "Cost category classification"
+  },
+  "UMLAGEFAEHIGE_KOSTEN": {
+    "canonical": "EXPRESSION: SUM(CASE WHEN UMLAGEFAEHIG = 1 THEN BETRAG ELSE 0 END)",
+    "source_file": "25_objektbezogene_sachkonten.sql",
+    "is_computed": true,
+    "description": "Total apportionable costs"
+  },
+  "NICHT_UMLAGEFAEHIGE_KOSTEN": {
+    "canonical": "EXPRESSION: SUM(CASE WHEN UMLAGEFAEHIG = 0 THEN BETRAG ELSE 0 END)",
+    "source_file": "25_objektbezogene_sachkonten.sql",
+    "is_computed": true,
+    "description": "Total non-apportionable costs"
+  },
+  "ANTEIL_UMLAGEFAEHIG_PROZENT": {
+    "canonical": "EXPRESSION: (UMLAGEFAEHIGE_KOSTEN * 100.0) / (UMLAGEFAEHIGE_KOSTEN + NICHT_UMLAGEFAEHIGE_KOSTEN)",
+    "source_file": "25_objektbezogene_sachkonten.sql",
+    "is_computed": true,
+    "description": "Percentage of apportionable costs"
+  },
+  "KOSTENVERTEILUNGSSCHLUESSEL": {
+    "canonical": "EXPRESSION: CASE WHEN UMLAGE_BASIS = 'QM' THEN 'FLAECHENSCHLUESSEL' WHEN UMLAGE_BASIS = 'EINHEIT' THEN 'EINHEITENSCHLUESSEL' ELSE 'ANTEILSSCHLUESSEL' END",
+    "source_file": "25_objektbezogene_sachkonten.sql",
+    "is_computed": true,
+    "description": "Cost distribution method"
+  },
+  "GESAMTKOSTEN_PRO_LIEGENSCHAFT": {
+    "canonical": "EXPRESSION: SUM(BETRAG)",
+    "source_file": "23_instandhaltungskosten.sql",
+    "is_computed": true,
+    "description": "Total costs per property"
+  },
+  "ANTEIL_AN_GESAMTKOSTEN": {
+    "canonical": "EXPRESSION: (BETRAG * 100.0) / SUM(BETRAG) OVER()",
+    "source_file": "23_instandhaltungskosten.sql",
+    "is_computed": true,
+    "description": "Share of total costs percentage"
+  },
+  "VERSAMMLUNG_ART": {
+    "canonical": "EXPRESSION: CASE WHEN VD.VERART = 'O' THEN 'ORDENTLICH' WHEN VD.VERART = 'A' THEN 'AUSSERORDENTLICH' ELSE 'SONSTIGE' END",
+    "source_file": "18_versammlungen.sql",
+    "is_computed": true,
+    "description": "Assembly type classification"
+  },
+  "ANWESENDE_ANTEILE": {
+    "canonical": "EXPRESSION: SUM(CASE WHEN ANWESEND = 1 THEN EIGENTUMSANTEIL ELSE 0 END)",
+    "source_file": "18_versammlungen.sql",
+    "is_computed": true,
+    "description": "Present ownership shares"
+  },
+  "TEILNAHMEQUOTE_PROZENT": {
+    "canonical": "EXPRESSION: (ANWESENDE_ANTEILE * 100.0) / GESAMT_EIGENTUMSANTEILE",
+    "source_file": "18_versammlungen.sql",
+    "is_computed": true,
+    "description": "Participation rate percentage"
+  },
+  "BESCHLUSS_TITEL": {
+    "canonical": "BESCHL.TITEL",
+    "source_file": "17_beschluesse.sql",
+    "is_computed": false,
+    "description": "Resolution title"
+  },
+  "BESCHLUSS_ART": {
+    "canonical": "EXPRESSION: CASE WHEN BESCHL.ART = 'E' THEN 'EINFACH' WHEN BESCHL.ART = 'Q' THEN 'QUALIFIZIERT' ELSE 'EINSTIMMIG' END",
+    "source_file": "17_beschluesse.sql",
+    "is_computed": true,
+    "description": "Resolution type classification"
+  },
+  "UMSETZUNGSSTATUS": {
+    "canonical": "EXPRESSION: CASE WHEN BESCHL.UMGESETZT = 1 THEN 'UMGESETZT' ELSE 'OFFEN' END",
+    "source_file": "17_beschluesse.sql",
+    "is_computed": true,
+    "description": "Implementation status"
+  },
+  "FUNKTION": {
+    "canonical": "EXPRESSION: CASE WHEN B.FUNKTIONSTYP = 'V' THEN 'VORSITZENDER' WHEN B.FUNKTIONSTYP = 'S' THEN 'STELLVERTRETER' ELSE 'BEIRAT' END",
+    "source_file": "16_beiraete.sql",
+    "is_computed": true,
+    "description": "Board member function"
+  },
+  "AMTSZEIT_JAHRE": {
+    "canonical": "EXPRESSION: ROUND((COALESCE(B.BANDSDATUM, CURRENT_DATE) - B.BANFANGSDATUM) / 365.25, 1)",
+    "source_file": "16_beiraete.sql",
+    "is_computed": true,
+    "description": "Term duration in years"
+  },
+  "MIETER_STATUS": {
+    "canonical": "EXPRESSION: CASE WHEN B.VENDE < CURRENT_DATE THEN 'AUSGEZOGEN' WHEN B.VBEGINN > CURRENT_DATE THEN 'ZUKUENFTIG' ELSE 'AKTIV' END",
+    "source_file": "04_alle_mieter.sql",
+    "is_computed": true,
+    "description": "Tenant status classification"
+  },
+  "SALDO_STATUS": {
+    "canonical": "EXPRESSION: CASE WHEN K.KBRUTTO > 100 THEN 'GUTHABEN' WHEN K.KBRUTTO < -100 THEN 'SCHULDEN' ELSE 'AUSGEGLICHEN' END",
+    "source_file": "11_mieter_konten.sql",
+    "is_computed": true,
+    "description": "Account balance status"
+  },
+  "MAHNSTUFE_BESCHREIBUNG": {
+    "canonical": "EXPRESSION: CASE WHEN K.KMAHNSTUFE = 0 THEN 'KEINE' WHEN K.KMAHNSTUFE = 1 THEN 'ERSTE' WHEN K.KMAHNSTUFE = 2 THEN 'ZWEITE' ELSE 'DRITTE+' END",
+    "source_file": "11_mieter_konten.sql",
+    "is_computed": true,
+    "description": "Reminder level description"
+  },
+  "ZAHLUNGSVERHALTEN": {
+    "canonical": "EXPRESSION: CASE WHEN AVG_ZAHLUNGSTAGE <= 5 THEN 'EXCELLENT' WHEN AVG_ZAHLUNGSTAGE <= 15 THEN 'GUT' WHEN AVG_ZAHLUNGSTAGE <= 30 THEN 'NORMAL' ELSE 'PROBLEMATISCH' END",
+    "source_file": "29_eigentuemer_zahlungshistorie.sql",
+    "is_computed": true,
+    "description": "Payment behavior classification"
+  },
+  "KAUTION_STATUS": {
+    "canonical": "EXPRESSION: CASE WHEN B.KAUT_ERHALTEN >= B.KAUT_VEREINBART THEN 'VOLLSTAENDIG' WHEN B.KAUT_ERHALTEN > 0 THEN 'TEILWEISE' ELSE 'AUSSTEHEND' END",
+    "source_file": "03_aktuelle_mieter.sql",
+    "is_computed": true,
+    "description": "Security deposit status"
+  },
+  "VERTRAGSLAENGE_MONATE": {
+    "canonical": "EXPRESSION: ROUND((B.VENDE - B.VBEGINN) / 30.0, 0)",
+    "source_file": "04_alle_mieter.sql",
+    "is_computed": true,
+    "description": "Contract duration in months"
+  },
+  "EIGENTUEMER_TYP": {
+    "canonical": "EXPRESSION: CASE WHEN E.EFIRMA IS NOT NULL AND E.EFIRMA != '' THEN 'UNTERNEHMEN' ELSE 'PRIVATPERSON' END",
+    "source_file": "01_eigentuemer.sql",
+    "is_computed": true,
+    "description": "Owner type classification"
+  },
+  "PORTFOLIO_GROESSE": {
+    "canonical": "EXPRESSION: COUNT(DISTINCT O.ONR)",
+    "source_file": "06_objekte_portfolio.sql",
+    "is_computed": true,
+    "description": "Portfolio size in properties"
+  },
+  "EINHEITEN_GESAMT": {
+    "canonical": "EXPRESSION: SUM(O.OANZEINH)",
+    "source_file": "06_objekte_portfolio.sql",
+    "is_computed": true,
+    "description": "Total units owned"
+  },
+  "DURCHSCHNITTLICHE_MIETE": {
+    "canonical": "EXPRESSION: AVG(B.Z1)",
+    "source_file": "06_objekte_portfolio.sql",
+    "is_computed": true,
+    "description": "Average rent per unit"
+  },
+  "GESAMTMIETEINNAHMEN_POTENZIAL": {
+    "canonical": "EXPRESSION: SUM(B.Z1) * 12",
+    "source_file": "06_objekte_portfolio.sql",
+    "is_computed": true,
+    "description": "Annual rental income potential"
+  },
+  "EIGENTUEMER_KATEGORIE": {
+    "canonical": "EXPRESSION: CASE WHEN EINHEITEN_GESAMT >= 20 THEN 'GROSSVERMIETER' WHEN EINHEITEN_GESAMT >= 5 THEN 'KLEINVERMIETER' ELSE 'SELBSTNUTZER' END",
+    "source_file": "06_objekte_portfolio.sql",
+    "is_computed": true,
+    "description": "Owner category by portfolio size"
+  },
+  "LIQUIDITAETSGRAD": {
+    "canonical": "EXPRESSION: CASE WHEN VERBINDLICHKEITEN > 0 THEN GUTHABEN / VERBINDLICHKEITEN ELSE 999 END",
+    "source_file": "27_konten_saldenliste.sql",
+    "is_computed": true,
+    "description": "Liquidity ratio"
+  },
+  "CASHFLOW_MONATLICH": {
+    "canonical": "EXPRESSION: (MIETEINNAHMEN - BETRIEBSKOSTEN - INSTANDHALTUNG) / 12",
+    "source_file": "20_monatliche_mieteinnahmen.sql",
+    "is_computed": true,
+    "description": "Monthly cash flow"
+  },
+  "RENTABILITAET_PROZENT": {
+    "canonical": "EXPRESSION: (NETTO_JAHRESERTRAG * 100.0) / IMMOBILIENWERT",
+    "source_file": "20_monatliche_mieteinnahmen.sql",
+    "is_computed": true,
+    "description": "Return on investment percentage"
+  },
+  "KOSTENDECKUNGSGRAD": {
+    "canonical": "EXPRESSION: (MIETEINNAHMEN * 100.0) / GESAMTKOSTEN",
+    "source_file": "20_monatliche_mieteinnahmen.sql",
+    "is_computed": true,
+    "description": "Cost coverage ratio"
+  },
+  "BETRIEBSKOSTENQUOTE": {
+    "canonical": "EXPRESSION: (BETRIEBSKOSTEN * 100.0) / MIETEINNAHMEN",
+    "source_file": "20_monatliche_mieteinnahmen.sql",
+    "is_computed": true,
+    "description": "Operating cost ratio"
+  },
+  "WARTUNGSINTENSITAET": {
+    "canonical": "EXPRESSION: CASE WHEN WARTUNGSKOSTEN_PRO_QM > 20 THEN 'HOCH' WHEN WARTUNGSKOSTEN_PRO_QM > 10 THEN 'MITTEL' ELSE 'NIEDRIG' END",
+    "source_file": "23_instandhaltungskosten.sql",
+    "is_computed": true,
+    "description": "Maintenance intensity classification"
+  },
+  "WARTUNGSKOSTEN_PRO_QM": {
+    "canonical": "EXPRESSION: WARTUNGSKOSTEN_GESAMT / WOHNFLAECHE_QM",
+    "source_file": "23_instandhaltungskosten.sql",
+    "is_computed": true,
+    "description": "Maintenance costs per square meter"
+  },
+  "PRAEVENTION_QUOTE": {
+    "canonical": "EXPRESSION: (PRAEVENTION_KOSTEN * 100.0) / GESAMTWARTUNGSKOSTEN",
+    "source_file": "23_instandhaltungskosten.sql",
+    "is_computed": true,
+    "description": "Preventive maintenance percentage"
+  },
+  "NOTFALL_QUOTE": {
+    "canonical": "EXPRESSION: (NOTFALL_KOSTEN * 100.0) / GESAMTWARTUNGSKOSTEN",
+    "source_file": "23_instandhaltungskosten.sql",
+    "is_computed": true,
+    "description": "Emergency maintenance percentage"
+  },
+  "WARTUNGSPRIORITAET": {
+    "canonical": "EXPRESSION: CASE WHEN GEBAEUDEALTER_JAHRE > 30 AND WARTUNGSRUECKSTAND > 5000 THEN 'HOCH' WHEN WARTUNGSRUECKSTAND > 2000 THEN 'MITTEL' ELSE 'NIEDRIG' END",
+    "source_file": "23_instandhaltungskosten.sql",
+    "is_computed": true,
+    "description": "Maintenance priority classification"
+  },
+  "BUCHUNGSPERIODE": {
+    "canonical": "EXPRESSION: EXTRACT(YEAR FROM B.DATUM) || '-' || LPAD(EXTRACT(MONTH FROM B.DATUM), 2, '0')",
+    "source_file": "26_detaillierte_buchungen.sql",
+    "is_computed": true,
+    "description": "Booking period YYYY-MM"
+  },
+  "QUARTAL": {
+    "canonical": "EXPRESSION: EXTRACT(YEAR FROM B.DATUM) || '-Q' || CEIL(EXTRACT(MONTH FROM B.DATUM) / 3.0)",
+    "source_file": "26_detaillierte_buchungen.sql",
+    "is_computed": true,
+    "description": "Quarter classification"
+  },
+  "GESCHAEFTSJAHR": {
+    "canonical": "EXPRESSION: EXTRACT(YEAR FROM B.DATUM)",
+    "source_file": "26_detaillierte_buchungen.sql",
+    "is_computed": true,
+    "description": "Business year"
+  },
+  "BUCHUNGSART_KATEGORIE": {
+    "canonical": "EXPRESSION: CASE WHEN B.BETRAG > 0 THEN 'EINNAHME' ELSE 'AUSGABE' END",
+    "source_file": "26_detaillierte_buchungen.sql",
+    "is_computed": true,
+    "description": "Transaction type category"
+  },
+  "STEUERLICHE_KATEGORIE": {
+    "canonical": "EXPRESSION: CASE WHEN K.KKLASSE BETWEEN 100 AND 199 THEN 'UMSATZ' WHEN K.KKLASSE BETWEEN 400 AND 499 THEN 'BETRIEBSAUSGABE' ELSE 'NEUTRAL' END",
+    "source_file": "26_detaillierte_buchungen.sql",
+    "is_computed": true,
+    "description": "Tax category classification"
+  },
+  "KONTAKT_VOLLSTAENDIGKEIT": {
+    "canonical": "EXPRESSION: CASE WHEN EMAIL IS NOT NULL AND TELEFON IS NOT NULL THEN 'VOLLSTAENDIG' WHEN EMAIL IS NOT NULL OR TELEFON IS NOT NULL THEN 'TEILWEISE' ELSE 'UNVOLLSTAENDIG' END",
+    "source_file": "01_eigentuemer.sql",
+    "is_computed": true,
+    "description": "Contact information completeness"
+  },
+  "BEVORZUGTE_KOMMUNIKATION": {
+    "canonical": "EXPRESSION: CASE WHEN EMAIL IS NOT NULL THEN 'EMAIL' WHEN TELEFON_MOBIL IS NOT NULL THEN 'MOBIL' WHEN TELEFON IS NOT NULL THEN 'FESTNETZ' ELSE 'POST' END",
+    "source_file": "01_eigentuemer.sql",
+    "is_computed": true,
+    "description": "Preferred communication method"
+  },
+  "ADRESS_VOLLSTAENDIGKEIT": {
+    "canonical": "EXPRESSION: CASE WHEN STRASSE IS NOT NULL AND PLZ IS NOT NULL AND ORT IS NOT NULL THEN 'VOLLSTAENDIG' ELSE 'UNVOLLSTAENDIG' END",
+    "source_file": "01_eigentuemer.sql",
+    "is_computed": true,
+    "description": "Address completeness status"
+  },
+  "WEG_GESETZ_KONFORM": {
+    "canonical": "EXPRESSION: CASE WHEN BESCHLUSSFAEHIGKEIT = 'JA' AND ANWESENDE_ANTEILE >= 50 THEN 'JA' ELSE 'NEIN' END",
+    "source_file": "17_beschluesse.sql",
+    "is_computed": true,
+    "description": "WEG law compliance status"
+  },
+  "KUENDIGUNGSSCHUTZ": {
+    "canonical": "EXPRESSION: CASE WHEN MIETDAUER_JAHRE >= 5 THEN 'VERSTAERKT' WHEN MIETDAUER_JAHRE >= 2 THEN 'STANDARD' ELSE 'REDUZIERT' END",
+    "source_file": "03_aktuelle_mieter.sql",
+    "is_computed": true,
+    "description": "Tenant protection level"
+  },
+  "MIETPREISBREMSE_RELEVANT": {
+    "canonical": "EXPRESSION: CASE WHEN NETTOMIETE_PRO_QM > ORTSUEBLICHE_MIETE * 1.1 THEN 'JA' ELSE 'NEIN' END",
+    "source_file": "03_aktuelle_mieter.sql",
+    "is_computed": true,
+    "description": "Rent cap relevance"
+  },
+  "TAGE_SEIT_LETZTER_ZAHLUNG": {
+    "canonical": "EXPRESSION: CURRENT_DATE - LETZTE_ZAHLUNG",
+    "source_file": "21_forderungsalterung.sql",
+    "is_computed": true,
+    "description": "Days since last payment"
+  },
+  "WOCHEN_SEIT_EINZUG": {
+    "canonical": "EXPRESSION: ROUND((CURRENT_DATE - EINZUGSDATUM) / 7.0, 0)",
+    "source_file": "03_aktuelle_mieter.sql",
+    "is_computed": true,
+    "description": "Weeks since move-in"
+  },
+  "MONATE_BIS_VERTRAGSENDE": {
+    "canonical": "EXPRESSION: ROUND((VERTRAGSENDE - CURRENT_DATE) / 30.0, 0)",
+    "source_file": "04_alle_mieter.sql",
+    "is_computed": true,
+    "description": "Months until contract end"
+  },
+  "JAHRE_SEIT_LETZTE_SANIERUNG": {
+    "canonical": "EXPRESSION: ROUND((CURRENT_DATE - LETZTE_SANIERUNG) / 365.25, 1)",
+    "source_file": "05_objekte.sql",
+    "is_computed": true,
+    "description": "Years since last renovation"
+  },
+  "STADTTEIL": {
+    "canonical": "OBJEKTE.STADTTEIL",
+    "source_file": "05_objekte.sql",
+    "is_computed": false,
+    "description": "District or neighborhood"
+  },
+  "LAGE_KATEGORIE": {
+    "canonical": "EXPRESSION: CASE WHEN LAGE_BEWERTUNG >= 8 THEN 'PREMIUM' WHEN LAGE_BEWERTUNG >= 6 THEN 'GUT' WHEN LAGE_BEWERTUNG >= 4 THEN 'DURCHSCHNITT' ELSE 'EINFACH' END",
+    "source_file": "05_objekte.sql",
+    "is_computed": true,
+    "description": "Location category classification"
+  },
+  "VERKEHRSANBINDUNG": {
+    "canonical": "EXPRESSION: CASE WHEN NAEHE_OEPNV <= 500 THEN 'EXCELLENT' WHEN NAEHE_OEPNV <= 1000 THEN 'GUT' ELSE 'MAESSIG' END",
+    "source_file": "05_objekte.sql",
+    "is_computed": true,
+    "description": "Public transport accessibility"
+  },
+  "ENERGIEEFFIZIENZ_KLASSE": {
+    "canonical": "OBJEKTE.ENERGIEAUSWEIS_KLASSE",
+    "source_file": "05_objekte.sql",
+    "is_computed": false,
+    "description": "Energy efficiency class"
+  },
+  "HEIZUNGSART": {
+    "canonical": "OBJEKTE.HEIZUNGSTYP",
+    "source_file": "05_objekte.sql",
+    "is_computed": false,
+    "description": "Heating system type"
+  },
+  "UMWELTFREUNDLICHKEIT": {
+    "canonical": "EXPRESSION: CASE WHEN ENERGIEEFFIZIENZ_KLASSE IN ('A+', 'A', 'B') THEN 'HOCH' WHEN ENERGIEEFFIZIENZ_KLASSE IN ('C', 'D') THEN 'MITTEL' ELSE 'NIEDRIG' END",
+    "source_file": "05_objekte.sql",
+    "is_computed": true,
+    "description": "Environmental friendliness rating"
+  },
+  "AUSFALLRISIKO": {
+    "canonical": "EXPRESSION: CASE WHEN MAHNSTUFE >= 2 AND SALDO < -1000 THEN 'HOCH' WHEN MAHNSTUFE >= 1 OR SALDO < -500 THEN 'MITTEL' ELSE 'NIEDRIG' END",
+    "source_file": "11_mieter_konten.sql",
+    "is_computed": true,
+    "description": "Default risk assessment"
+  },
+  "INVESTITIONSRISIKO": {
+    "canonical": "EXPRESSION: CASE WHEN GEBAEUDEALTER_JAHRE > 40 AND WARTUNGSRUECKSTAND > 10000 THEN 'HOCH' WHEN GEBAEUDEALTER_JAHRE > 25 THEN 'MITTEL' ELSE 'NIEDRIG' END",
+    "source_file": "23_instandhaltungskosten.sql",
+    "is_computed": true,
+    "description": "Investment risk level"
+  },
+  "MARKTRISIKO": {
+    "canonical": "EXPRESSION: CASE WHEN LEERSTANDSQUOTE_GEBIET > 15 THEN 'HOCH' WHEN LEERSTANDSQUOTE_GEBIET > 8 THEN 'MITTEL' ELSE 'NIEDRIG' END",
+    "source_file": "22_leerstandsanalyse.sql",
+    "is_computed": true,
+    "description": "Market risk assessment"
+  },
+  "MIETERSCHUTZ_KATEGORIE": {
+    "canonical": "EXPRESSION: CASE WHEN MIETDAUER_JAHRE >= 8 THEN 'BESONDERS_GESCHUETZT' WHEN MIETDAUER_JAHRE >= 5 THEN 'GESCHUETZT' ELSE 'STANDARD' END",
+    "source_file": "03_aktuelle_mieter.sql",
+    "is_computed": true,
+    "description": "Tenant protection category under German law"
+  },
+  "KUENDIGUNGSFRIST_MONATE": {
+    "canonical": "EXPRESSION: CASE WHEN MIETDAUER_JAHRE >= 8 THEN 9 WHEN MIETDAUER_JAHRE >= 5 THEN 6 ELSE 3 END",
+    "source_file": "03_aktuelle_mieter.sql",
+    "is_computed": true,
+    "description": "Notice period in months per German law"
+  },
+  "BETRKV_KONFORM": {
+    "canonical": "EXPRESSION: CASE WHEN BETRKV_PARAGRAPH IS NOT NULL THEN 'JA' ELSE 'NEIN' END",
+    "source_file": "25_objektbezogene_sachkonten.sql",
+    "is_computed": true,
+    "description": "Compliance with German Operating Cost Ordinance"
+  },
+  "HEIZKOSTENVERORDNUNG_KONFORM": {
+    "canonical": "EXPRESSION: CASE WHEN HEIZKOSTEN_ABRECHNUNG_ART = 'VERBRAUCHSBASIERT' THEN 'JA' ELSE 'NEIN' END",
+    "source_file": "25_objektbezogene_sachkonten.sql",
+    "is_computed": true,
+    "description": "Compliance with German Heating Cost Ordinance"
+  },
+  "WEG_BESCHLUSS_GUELTIGKEIT": {
+    "canonical": "EXPRESSION: CASE WHEN BESCHLUSSFAEHIGKEIT = 'JA' AND STIMMEN_VERHAELTNIS >= ERFORDERLICHE_MEHRHEIT THEN 'GUELTIG' ELSE 'UNGUELTIG' END",
+    "source_file": "17_beschluesse.sql",
+    "is_computed": true,
+    "description": "WEG resolution validity status"
+  },
+  "EIGENKAPITALRENDITE_PROZENT": {
+    "canonical": "EXPRESSION: (JAHRESUEBERSCHUSS * 100.0) / EIGENKAPITAL",
+    "source_file": "20_monatliche_mieteinnahmen.sql",
+    "is_computed": true,
+    "description": "Return on equity percentage"
+  },
+  "FREMDKAPITALQUOTE_PROZENT": {
+    "canonical": "EXPRESSION: (FREMDKAPITAL * 100.0) / GESAMTKAPITAL",
+    "source_file": "27_konten_saldenliste.sql",
+    "is_computed": true,
+    "description": "Debt to total capital ratio"
+  },
+  "MIETMULTIPLIKATOR": {
+    "canonical": "EXPRESSION: IMMOBILIENWERT / (JAHRESMIETE * 12)",
+    "source_file": "20_monatliche_mieteinnahmen.sql",
+    "is_computed": true,
+    "description": "Price to annual rent ratio"
+  },
+  "KAPITALDIENST_DECKUNG": {
+    "canonical": "EXPRESSION: CASHFLOW_OPERATIV / KAPITALDIENST_GESAMT",
+    "source_file": "20_monatliche_mieteinnahmen.sql",
+    "is_computed": true,
+    "description": "Debt service coverage ratio"
+  },
+  "INSTANDHALTUNGSRUECKLAGE_SOLL": {
+    "canonical": "EXPRESSION: (IMMOBILIENWERT * 0.01) / 12",
+    "source_file": "33_ruecklagen_management.sql",
+    "is_computed": true,
+    "description": "Required monthly maintenance reserve"
+  },
+  "MODERNISIERUNGSGRAD": {
+    "canonical": "EXPRESSION: CASE WHEN LETZTE_MODERNISIERUNG >= DATE_SUB(CURRENT_DATE, INTERVAL 10 YEAR) THEN 'MODERN' WHEN LETZTE_MODERNISIERUNG >= DATE_SUB(CURRENT_DATE, INTERVAL 20 YEAR) THEN 'TEILMODERNISIERT' ELSE 'SANIERUNGSBEDARF' END",
+    "source_file": "05_objekte.sql",
+    "is_computed": true,
+    "description": "Modernization level assessment"
+  },
+  "AUSSTATTUNGSSTANDARD": {
+    "canonical": "EXPRESSION: CASE WHEN AUSSTATTUNG_PUNKTE >= 80 THEN 'GEHOBEN' WHEN AUSSTATTUNG_PUNKTE >= 60 THEN 'MITTEL' ELSE 'EINFACH' END",
+    "source_file": "05_objekte.sql",
+    "is_computed": true,
+    "description": "Equipment standard classification"
+  },
+  "BARRIEREFREIHEIT": {
+    "canonical": "EXPRESSION: CASE WHEN AUFZUG_VORHANDEN = 1 AND SCHWELLENLOS = 1 THEN 'VOLLSTAENDIG' WHEN AUFZUG_VORHANDEN = 1 OR SCHWELLENLOS = 1 THEN 'TEILWEISE' ELSE 'NICHT_GEGEBEN' END",
+    "source_file": "05_objekte.sql",
+    "is_computed": true,
+    "description": "Accessibility level"
+  },
+  "SICHERHEITSSTANDARD": {
+    "canonical": "EXPRESSION: CASE WHEN RAUCHMELDER = 1 AND BRANDSCHUTZTUER = 1 AND NOTAUSGANG = 1 THEN 'HOCH' WHEN RAUCHMELDER = 1 THEN 'STANDARD' ELSE 'NIEDRIG' END",
+    "source_file": "05_objekte.sql",
+    "is_computed": true,
+    "description": "Safety standard level"
+  },
+  "BALKON_TERRASSE_VORHANDEN": {
+    "canonical": "EXPRESSION: CASE WHEN BALKON_QM > 0 OR TERRASSE_QM > 0 THEN 'JA' ELSE 'NEIN' END",
+    "source_file": "07_wohnungen.sql",
+    "is_computed": true,
+    "description": "Balcony or terrace availability"
+  },
+  "MARKTPOSITION": {
+    "canonical": "EXPRESSION: CASE WHEN NETTOMIETE_PRO_QM > MARKTMIETE_DURCHSCHNITT * 1.1 THEN 'PREMIUM' WHEN NETTOMIETE_PRO_QM > MARKTMIETE_DURCHSCHNITT * 0.9 THEN 'MARKTKONFORM' ELSE 'GUENSTIG' END",
+    "source_file": "22_leerstandsanalyse.sql",
+    "is_computed": true,
+    "description": "Market position classification"
+  },
+  "KONKURRENZFAEHIGKEIT": {
+    "canonical": "EXPRESSION: CASE WHEN LEERSTANDSZEIT_TAGE <= DURCHSCHNITT_GEBIET THEN 'HOCH' WHEN LEERSTANDSZEIT_TAGE <= DURCHSCHNITT_GEBIET * 1.5 THEN 'MITTEL' ELSE 'NIEDRIG' END",
+    "source_file": "22_leerstandsanalyse.sql",
+    "is_computed": true,
+    "description": "Competitiveness assessment"
+  },
+  "NACHFRAGE_INDIKATOR": {
+    "canonical": "EXPRESSION: CASE WHEN ANFRAGEN_PRO_INSERAT >= 10 THEN 'HOCH' WHEN ANFRAGEN_PRO_INSERAT >= 5 THEN 'MITTEL' ELSE 'NIEDRIG' END",
+    "source_file": "22_leerstandsanalyse.sql",
+    "is_computed": true,
+    "description": "Demand indicator level"
+  },
+  "ZIELGRUPPE_EIGNUNG": {
+    "canonical": "EXPRESSION: CASE WHEN WOHNUNGSGROESSE_QM <= 40 THEN 'SINGLES' WHEN WOHNUNGSGROESSE_QM <= 80 THEN 'PAARE' ELSE 'FAMILIEN' END",
+    "source_file": "07_wohnungen.sql",
+    "is_computed": true,
+    "description": "Target group suitability"
+  },
+  "KUENDIGUNGSRISIKO": {
+    "canonical": "EXPRESSION: CASE WHEN MIETDAUER_JAHRE < 1 AND SALDO_STATUS = 'SCHULDEN' THEN 'HOCH' WHEN MIETDAUER_JAHRE < 2 THEN 'MITTEL' ELSE 'NIEDRIG' END",
+    "source_file": "03_aktuelle_mieter.sql",
+    "is_computed": true,
+    "description": "Termination risk assessment"
+  },
+  "MIETERBINDUNG": {
+    "canonical": "EXPRESSION: CASE WHEN MIETDAUER_JAHRE >= 5 AND ZAHLUNGSVERHALTEN = 'EXCELLENT' THEN 'STARK' WHEN MIETDAUER_JAHRE >= 2 THEN 'MITTEL' ELSE 'SCHWACH' END",
+    "source_file": "03_aktuelle_mieter.sql",
+    "is_computed": true,
+    "description": "Tenant loyalty level"
+  },
+  "MIETZUFRIEDENHEIT_INDIKATOR": {
+    "canonical": "EXPRESSION: CASE WHEN BESCHWERDEN_ANZAHL = 0 AND MIETDAUER_JAHRE >= 2 THEN 'HOCH' WHEN BESCHWERDEN_ANZAHL <= 2 THEN 'MITTEL' ELSE 'NIEDRIG' END",
+    "source_file": "03_aktuelle_mieter.sql",
+    "is_computed": true,
+    "description": "Tenant satisfaction indicator"
+  },
+  "SOZIALBINDUNG": {
+    "canonical": "EXPRESSION: CASE WHEN SOZIALWOHNUNG = 1 THEN 'SOZIAL_GEBUNDEN' ELSE 'FREI_FINANZIERT' END",
+    "source_file": "07_wohnungen.sql",
+    "is_computed": true,
+    "description": "Social housing status"
+  },
+  "VERWALTUNGSKOSTEN_PRO_EINHEIT": {
+    "canonical": "EXPRESSION: VERWALTUNGSKOSTEN_GESAMT / ANZAHL_EINHEITEN",
+    "source_file": "25_objektbezogene_sachkonten.sql",
+    "is_computed": true,
+    "description": "Management costs per unit"
+  },
+  "VERSICHERUNGSKOSTEN_PRO_QM": {
+    "canonical": "EXPRESSION: VERSICHERUNGSKOSTEN_GESAMT / WOHNFLAECHE_QM",
+    "source_file": "25_objektbezogene_sachkonten.sql",
+    "is_computed": true,
+    "description": "Insurance costs per square meter"
+  },
+  "GRUNDSTEUER_PRO_EINHEIT": {
+    "canonical": "EXPRESSION: GRUNDSTEUER_GESAMT / ANZAHL_EINHEITEN",
+    "source_file": "25_objektbezogene_sachkonten.sql",
+    "is_computed": true,
+    "description": "Property tax per unit"
+  },
+  "MUELLKOSTEN_PRO_PERSON": {
+    "canonical": "EXPRESSION: MUELLKOSTEN_GESAMT / ANZAHL_BEWOHNER",
+    "source_file": "25_objektbezogene_sachkonten.sql",
+    "is_computed": true,
+    "description": "Waste disposal costs per resident"
+  },
+  "HAUSMEISTERKOSTEN_PRO_QM": {
+    "canonical": "EXPRESSION: HAUSMEISTERKOSTEN_GESAMT / WOHNFLAECHE_QM",
+    "source_file": "25_objektbezogene_sachkonten.sql",
+    "is_computed": true,
+    "description": "Caretaker costs per square meter"
+  },
+  "HEIZKOSTEN_PRO_QM": {
+    "canonical": "EXPRESSION: HEIZKOSTEN_GESAMT / WOHNFLAECHE_QM",
+    "source_file": "25_objektbezogene_sachkonten.sql",
+    "is_computed": true,
+    "description": "Heating costs per square meter"
+  },
+  "WASSERKOSTEN_PRO_PERSON": {
+    "canonical": "EXPRESSION: WASSERKOSTEN_GESAMT / ANZAHL_BEWOHNER",
+    "source_file": "25_objektbezogene_sachkonten.sql",
+    "is_computed": true,
+    "description": "Water costs per resident"
+  },
+  "STROMKOSTEN_ALLGEMEIN_PRO_EINHEIT": {
+    "canonical": "EXPRESSION: STROMKOSTEN_ALLGEMEIN / ANZAHL_EINHEITEN",
+    "source_file": "25_objektbezogene_sachkonten.sql",
+    "is_computed": true,
+    "description": "Common area electricity costs per unit"
+  },
+  "ENERGIEAUSWEIS_WERT": {
+    "canonical": "OBJEKTE.ENERGIEAUSWEIS_KWH",
+    "source_file": "05_objekte.sql",
+    "is_computed": false,
+    "description": "Energy certificate kWh value"
+  },
+  "CO2_AUSSTOSS_KG": {
+    "canonical": "OBJEKTE.CO2_AUSSTOSS_JAEHRLICH",
+    "source_file": "05_objekte.sql",
+    "is_computed": false,
+    "description": "Annual CO2 emissions in kg"
+  },
+  "DIGITALISIERUNGSGRAD": {
+    "canonical": "EXPRESSION: CASE WHEN SMART_METER = 1 AND ONLINE_ZAHLUNGEN = 1 AND DIGITAL_KOMMUNIKATION = 1 THEN 'HOCH' WHEN SMART_METER = 1 OR ONLINE_ZAHLUNGEN = 1 THEN 'MITTEL' ELSE 'NIEDRIG' END",
+    "source_file": "05_objekte.sql",
+    "is_computed": true,
+    "description": "Digitalization level"
+  },
+  "SMART_HOME_INTEGRATION": {
+    "canonical": "EXPRESSION: CASE WHEN SMART_THERMOSTAT = 1 AND SMART_BELEUCHTUNG = 1 THEN 'VOLLSTAENDIG' WHEN SMART_THERMOSTAT = 1 OR SMART_BELEUCHTUNG = 1 THEN 'TEILWEISE' ELSE 'NICHT_VORHANDEN' END",
+    "source_file": "07_wohnungen.sql",
+    "is_computed": true,
+    "description": "Smart home integration level"
+  },
+  "INTERNET_VERFUEGBARKEIT": {
+    "canonical": "EXPRESSION: CASE WHEN GLASFASER_VERFUEGBAR = 1 THEN 'GLASFASER' WHEN DSL_50_VERFUEGBAR = 1 THEN 'DSL_SCHNELL' ELSE 'BASIS' END",
+    "source_file": "05_objekte.sql",
+    "is_computed": true,
+    "description": "Internet availability level"
+  },
+  "NAECHSTE_HAUPTWARTUNG": {
+    "canonical": "EXPRESSION: LETZTE_HAUPTWARTUNG + INTERVAL 5 YEAR",
+    "source_file": "23_instandhaltungskosten.sql",
+    "is_computed": true,
+    "description": "Next major maintenance due date"
+  },
+  "WARTUNGSPLAN_STATUS": {
+    "canonical": "EXPRESSION: CASE WHEN WARTUNGSPLAN_AKTIV = 1 THEN 'AKTIV' ELSE 'INAKTIV' END",
+    "source_file": "23_instandhaltungskosten.sql",
+    "is_computed": true,
+    "description": "Maintenance plan status"
+  },
+  "WARTUNGSRUECKSTAND_TAGE": {
+    "canonical": "EXPRESSION: CURRENT_DATE - GEPLANTE_WARTUNG",
+    "source_file": "23_instandhaltungskosten.sql",
+    "is_computed": true,
+    "description": "Maintenance backlog in days"
+  },
+  "SCHADENSMELDUNGEN_ANZAHL": {
+    "canonical": "EXPRESSION: COUNT(CASE WHEN SCHADENSMELDUNG_STATUS = 'OFFEN' THEN 1 END)",
+    "source_file": "23_instandhaltungskosten.sql",
+    "is_computed": true,
+    "description": "Number of open damage reports"
+  },
+  "KUNDENZUFRIEDENHEIT_SCORE": {
+    "canonical": "EXPRESSION: (POSITIVE_BEWERTUNGEN * 100.0) / GESAMT_BEWERTUNGEN",
+    "source_file": "06_objekte_portfolio.sql",
+    "is_computed": true,
+    "description": "Customer satisfaction score percentage"
+  },
+  "VERWALTUNGSEFFIZIENZ": {
+    "canonical": "EXPRESSION: VERWALTETE_EINHEITEN / VERWALTUNGSPERSONAL_ANZAHL",
+    "source_file": "06_objekte_portfolio.sql",
+    "is_computed": true,
+    "description": "Management efficiency ratio"
+  },
+  "REAKTIONSZEIT_DURCHSCHNITT": {
+    "canonical": "EXPRESSION: AVG(BEARBEITUNGSZEIT_STUNDEN)",
+    "source_file": "23_instandhaltungskosten.sql",
+    "is_computed": true,
+    "description": "Average response time in hours"
+  },
+  "QUALITAETSKENNZAHL": {
+    "canonical": "EXPRESSION: (KUNDENZUFRIEDENHEIT_SCORE + VERWALTUNGSEFFIZIENZ + (100 - BESCHWERDENQUOTE)) / 3",
+    "source_file": "06_objekte_portfolio.sql",
+    "is_computed": true,
+    "description": "Overall quality indicator"
+  },
+  "WOHNBERECHTIGUNGSSCHEIN_ERFORDERLICH": {
+    "canonical": "EXPRESSION: CASE WHEN WBS_ERFORDERLICH = 1 THEN 'JA' ELSE 'NEIN' END",
+    "source_file": "07_wohnungen.sql",
+    "is_computed": true,
+    "description": "Housing permit required (WBS)"
+  },
+  "MIETPREISBINDUNG_ENDE": {
+    "canonical": "SOZIALWOHNUNG.BINDUNGSENDE",
+    "source_file": "07_wohnungen.sql",
+    "is_computed": false,
+    "description": "End of rent price binding"
+  },
+  "FOERDERUNG_AKTIV": {
+    "canonical": "EXPRESSION: CASE WHEN FOERDERUNG_ENDE > CURRENT_DATE THEN 'JA' ELSE 'NEIN' END",
+    "source_file": "05_objekte.sql",
+    "is_computed": true,
+    "description": "Active subsidies status"
+  },
+  "DENKMALSCHUTZ": {
+    "canonical": "EXPRESSION: CASE WHEN DENKMALSCHUTZ_STATUS = 1 THEN 'JA' ELSE 'NEIN' END",
+    "source_file": "05_objekte.sql",
+    "is_computed": true,
+    "description": "Historical preservation status"
+  },
+  "MILIEUSCHUTZ_GEBIET": {
+    "canonical": "EXPRESSION: CASE WHEN MILIEUSCHUTZ_AKTIV = 1 THEN 'JA' ELSE 'NEIN' END",
+    "source_file": "05_objekte.sql",
+    "is_computed": true,
+    "description": "Milieu protection area status"
+  },
+  "GESAMTPERFORMANCE_INDEX": {
+    "canonical": "EXPRESSION: (RENDITE_PROZENT + AUSLASTUNG_PROZENT + QUALITAETSKENNZAHL) / 3",
+    "source_file": "06_objekte_portfolio.sql",
+    "is_computed": true,
+    "description": "Overall performance index for properties"
+  },
+  "ESG_BEWERTUNG": {
+    "canonical": "EXPRESSION: CASE WHEN ENERGIEEFFIZIENZ_KLASSE IN (\"A+\", \"A\") AND CO2_AUSSTOSS_KG < 1000 THEN \"EXCELLENT\" WHEN ENERGIEEFFIZIENZ_KLASSE IN (\"B\", \"C\") THEN \"GUT\" ELSE \"VERBESSERUNGSBEDARF\" END",
+    "source_file": "05_objekte.sql",
+    "is_computed": true,
+    "description": "Environmental, Social, Governance rating"
+  },
+  "STRATEGISCHE_BEDEUTUNG": {
+    "canonical": "EXPRESSION: CASE WHEN PORTFOLIO_GROESSE >= 10 AND RENDITE_PROZENT >= 6 THEN \"KERN_ASSET\" WHEN RENDITE_PROZENT >= 4 THEN \"STANDARD_ASSET\" ELSE \"ENTWICKLUNG_ERFORDERLICH\" END",
+    "source_file": "06_objekte_portfolio.sql",
+    "is_computed": true,
+    "description": "Strategic importance classification"
   }
 }

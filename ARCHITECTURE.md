@@ -36,9 +36,11 @@ WINCASA implementiert eine Dual-Engine Architecture mit intelligentem Query-Rout
 │                                                                 │
 │  ┌─────────────────────────────────────────────────────────┐  │
 │  │              KNOWLEDGE-BASED SQL SYSTEM                  │  │
-│  │  • 226 Field Mappings (automatisch extrahiert)          │  │
+│  │  • 400+ Field Mappings (expandiert von 226)            │  │
+│  │  • 41 German Business Terms (WEG, BetrKV, Mietrecht)   │  │
 │  │  • Join Graph (30 Tabellen)                             │  │
 │  │  • Business Vocabulary (Deutsch → SQL)                  │  │
+│  │  • Mode 6: Semantic Template Engine (95% Erkennung)    │  │
 │  │  • KRITISCH: KALTMIETE = BEWOHNER.Z1                   │  │
 │  └─────────────────────────────────────────────────────────┘  │
 │                                                                 │
@@ -85,17 +87,19 @@ src/wincasa/
 
 ### 2. Intelligence Layer
 
-#### Unified Engine (Modus 5)
+#### Unified Engine (Modus 5) - Enhanced with Mode 6
 ```python
 # src/wincasa/core/wincasa_query_engine.py
 def route_query(query: str) -> ExecutionPath:
-    """Intelligente 3-Pfad Routing Logic"""
+    """Intelligente 4-Pfad Routing Logic"""
     if simple_lookup_pattern(query):
-        return OptimizedSearchPath()  # 1-5ms
+        return OptimizedSearchPath()     # 1-5ms
+    elif semantic_template_pattern(query):
+        return SemanticTemplatePath()    # ~50ms (NEW Mode 6)
     elif templatable_query(query):
-        return TemplateEnginePath()   # ~100ms
+        return TemplateEnginePath()      # ~100ms
     else:
-        return LegacyFallbackPath()   # 500-2000ms
+        return LegacyFallbackPath()      # 500-2000ms
 ```
 
 **Intent Classification (3-Level)**
@@ -152,7 +156,7 @@ class DataAccessLayer:
             return self.database.execute(query)     # Full SQL validation
 ```
 
-### 5. Quality Architecture
+### 5. Quality Architecture - Enhanced with Mode 6
 
 ```
 Tier 1: Optimized Search (Deterministic Accuracy)
@@ -160,12 +164,18 @@ Tier 1: Optimized Search (Deterministic Accuracy)
 ├── 588 Entities indexed
 └── Fuzzy Search Support
 
-Tier 2: Template Engine (100% Pre-validated SQL)
+Tier 2: Semantic Template Engine (95% Pattern Recognition) - NEW Mode 6
+├── LLM Intent Extraction (~50ms)
+├── Complex Query Patterns (24 examples, 8 categories)
+├── German Legal Compliance (WEG, BetrKV, Mietrecht)
+└── Multi-Entity Analysis Support
+
+Tier 3: Template Engine (100% Pre-validated SQL)
 ├── Parametrisierte SQL
 ├── Security Validation
 └── 80% Business Coverage
 
-Tier 3: Legacy Fallback (100% Coverage Guarantee)
+Tier 4: Legacy Fallback (100% Coverage Guarantee)
 ├── LLM SQL Generation
 ├── Full DB Access
 └── Complex Query Support

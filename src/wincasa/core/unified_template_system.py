@@ -23,11 +23,15 @@ class RouterResult:
         self.confidence = 0.5
         self.extracted_entities = {}
         self.suggested_mode = 'structured_search'
+        self.template_available = False
+        self.processing_time_ms = 1.0
 
 # Mock HierarchicalIntentRouter for now
 class HierarchicalIntentRouter:
     def __init__(self, api_key_file=None, debug_mode=False):
         self.debug_mode = debug_mode
+        self.regex_patterns = []  # Mock attribute for compatibility
+        self.client = None  # Mock LLM client availability
         
     def route_intent(self, query: str) -> RouterResult:
         # Simple fallback routing

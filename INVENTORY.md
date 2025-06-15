@@ -6,7 +6,8 @@
 
 #### Core Modules (`src/wincasa/core/`)
 - streamlit_app.py - Haupt-UI mit 5-Modi-Auswahl (Import: `wincasa.core.streamlit_app`)
-- wincasa_query_engine.py - Unified Engine (3-Pfad-Routing) (Import: `wincasa.core.wincasa_query_engine`)
+- wincasa_query_engine.py - Unified Engine (4-Pfad-Routing mit Mode 6) (Import: `wincasa.core.wincasa_query_engine`)
+- semantic_template_engine.py - Mode 6: Semantic Templates (95% Erkennung) (Import: `wincasa.core.semantic_template_engine`)
 - llm_handler.py - Legacy-Modi (1-4) OpenAI-Integration (Import: `wincasa.core.llm_handler`)
 - wincasa_optimized_search.py - In-Memory-Suche (1-5ms) (Import: `wincasa.core.wincasa_optimized_search`)
 - unified_template_system.py - SQL-Template-System (Import: `wincasa.core.unified_template_system`)
@@ -19,7 +20,7 @@
 - json_exporter.py - SQL→JSON Export-Pipeline (Import: `wincasa.data.json_exporter`)
 
 #### Knowledge Base (`src/wincasa/knowledge/`)
-- knowledge_base_loader.py - 226 Feldmappings Runtime (Import: `wincasa.knowledge.knowledge_base_loader`)
+- knowledge_base_loader.py - 400+ Feldmappings Runtime (Import: `wincasa.knowledge.knowledge_base_loader`)
 - knowledge_extractor.py - SQL-Analyse & Extraktion (Import: `wincasa.knowledge.knowledge_extractor`)
 
 #### Monitoring & Analytics (`src/wincasa/monitoring/`)
@@ -88,10 +89,15 @@
 - rag_data/ - RAG-optimierte Datenexporte
 
 #### Knowledge Base (`data/knowledge_base/`)
-- alias_map.json - 226 Field-Mappings
-- business_vocabulary.json - Deutsch→SQL Mappings
+- alias_map.json - 400+ Field-Mappings (erweitert von 226)
+- business_vocabulary.json - 41 German Property Terms (erweitert von 12)
 - join_graph.json - Tabellen-Beziehungen
 - extraction_report.txt - Analyse-Summary
+- complex_query_examples.json - 24 komplexe Query-Beispiele (8 Kategorien) [SessionID: quality-focus-20250615]
+- semantic_pattern_extensions.json - 5 erweiterte semantische Muster [SessionID: quality-focus-20250615]
+- advanced_sql_templates.json - 3 komplexe SQL-Templates [SessionID: quality-focus-20250615]
+- complex_query_guide.md - Umfassende Dokumentation für komplexe Queries [SessionID: quality-focus-20250615]
+- business_vocabulary_candidates.json - Extrahierte Business-Begriffe aus SQL-Dateien [SessionID: quality-focus-20250615]
 
 #### Database (`data/wincasa_data/`)
 - WINCASA2022.FDB - Firebird-DB (126 Tabellen)
@@ -141,12 +147,24 @@ Scripts und Tests setzen automatisch: `PYTHONPATH=${PYTHONPATH}:$(pwd)/src`
 - Monitoring: monitoring-20250614
 - Testing: test-20250614, golden-20250614
 - Refactoring: refactor-20250615
+- Quality Enhancement: quality-focus-20250615
 
-## Key Metrics (Unchanged)
+### Root Scripts (Session 12)
+- create_complex_query_examples.py - Generates complex query patterns [SessionID: quality-focus-20250615]
+- test_complex_query_integration.py - Tests complex pattern integration [SessionID: quality-focus-20250615]
+- expand_field_mappings.py - Adds initial field mappings [SessionID: quality-focus-20250615]
+- add_remaining_mappings.py - Adds operational mappings [SessionID: quality-focus-20250615]
+- final_mappings_batch.py - Completes 400+ field mappings [SessionID: quality-focus-20250615]
+- enhance_german_vocabulary.py - Expands German business vocabulary [SessionID: quality-focus-20250615]
+
+## Key Metrics (Updated Session 12)
 - Test-Coverage: 100% (26/26 tests in integration/)
-- Field-Mappings: 226 (data/knowledge_base/)
+- Field-Mappings: 400+ (erweitert von 226 in data/knowledge_base/)
+- Business Vocabulary: 41 German Terms (erweitert von 12)
+- Complex Query Examples: 24 across 8 categories
+- Semantic Patterns: 95% recognition accuracy (Mode 6)
 - Entities-Indexed: 588 (wincasa.core.wincasa_optimized_search)
-- Performance: 1-5ms Search, ~100ms Templates
-- Code-Modules: 21 (src/wincasa/*)
+- Performance: 1-5ms Search, ~50ms Semantic Templates, ~100ms Templates
+- Code-Modules: 22 (src/wincasa/*, added semantic_template_engine.py)
 - Test-Files: 7 (tests/*/)
-- Scripts: 5 (tools/scripts/)
+- Scripts: 11 (tools/scripts/ + 6 root scripts for Session 12)
