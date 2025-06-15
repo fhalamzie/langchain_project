@@ -182,9 +182,9 @@ class InvoiceFactory(SQLAlchemyModelFactory):
   4. Ignoriert temporäre und Backup-Dateien
   5. Live-Reload für ARCHITECTURE.md, TESTING.md, CLAUDE.md
 
-### 🚀 `tools/scripts/run_streamlit.sh`
+### 🚀 `tools/scripts/run_streamlit.sh` (DEPRECATED)
 
-- WINCASA Streamlit Server Management:
+- WINCASA Streamlit Server Management (alt):
   1. **Default**: Startet mit `nohup` im Hintergrund (Production-Modus)
   2. **Port-spezifische Prozessverwaltung**: Killt nur Prozesse auf dem Zielport (default: 8667)
   3. **Logging**: Server-Output in `logs/streamlit_YYYYMMDD_HHMMSS.log`
@@ -197,6 +197,30 @@ class InvoiceFactory(SQLAlchemyModelFactory):
      - Zeigt PID bei Start an
      - Stop via: `kill PID` oder `./tools/scripts/run_streamlit.sh --restart`
      - Prüft nur spezifischen Port, lässt andere Streamlit-Prozesse laufen
+
+### 🚀 `tools/scripts/pm2-wincasa.sh` (EMPFOHLEN)
+
+- WINCASA PM2 Server Management:
+  1. **Process Manager**: PM2 für stabiles Process Management
+  2. **Environment Setup**:
+     - PYTHONPATH korrekt gesetzt
+     - PYTHONUNBUFFERED=1 für sofortige Log-Ausgabe
+  3. **Logging**: 
+     - Timestamped logs in `logs/pm2/`
+     - Separate stdout/stderr logs
+     - Log rotation konfiguriert
+  4. **Commands**:
+     - `start`: Server starten mit PM2
+     - `stop`: Server sauber stoppen
+     - `restart`: Server neustarten
+     - `logs`: Live-Logs streamen
+     - `status`: Detaillierten Status anzeigen
+     - `info`: Konfiguration anzeigen
+  5. **Features**:
+     - Automatischer Restart bei Crashes
+     - Exponential Backoff bei Fehlern
+     - CPU/Memory Monitoring
+     - `pm2 monit` für Live-Dashboard
 
 **Claude-Regel:** Verwende **ausschließlich** diese Skripte für Umschaltung und Rebuild. Niemals manuell eingreifen.
 

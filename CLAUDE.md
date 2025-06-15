@@ -12,11 +12,16 @@ export PYTHONPATH="${PYTHONPATH}:$(pwd)/src"
 
 ./tools/scripts/sync-project.sh
 
-# Start server (runs with nohup in background)
-./tools/scripts/run_streamlit.sh
+# Server Management (Mit PM2 für besseres Logging)
+./tools/scripts/pm2-wincasa.sh start    # Server starten
+./tools/scripts/pm2-wincasa.sh status   # Status anzeigen
+./tools/scripts/pm2-wincasa.sh logs     # Live-Logs streamen
+./tools/scripts/pm2-wincasa.sh restart  # Server neustarten
+./tools/scripts/pm2-wincasa.sh stop     # Server stoppen
 
-# For development/debugging (runs in foreground)
-./tools/scripts/run_streamlit.sh --debug
+# PM2 Monitoring
+pm2 monit                              # Live Dashboard
+pm2 logs wincasa --lines 100           # Letzte 100 Log-Zeilen
 
 Code schreiben
 
@@ -72,6 +77,16 @@ mcp-zen → Debugging / Review
 
 7. Jede Codedatei / Test / .py sollte maximal ~ 1500 token lang sein. Im Zweifel modularisier den Code weiter. Vergiss nicht zu dokumentieren.!
 
+8. Server Management
+
+IMPORTANT: Verwende IMMER `./tools/scripts/pm2-wincasa.sh` für Server-Operationen!
+- PM2 Process Manager mit exzellentem Logging
+- PYTHONUNBUFFERED=1 für sofortige Python-Logs
+- Automatisches Restart bei Crashes mit Backoff
+- Logs mit Timestamps in logs/pm2/
+- Live-Monitoring mit `pm2 monit`
+- Farbige Log-Ausgabe mit `./tools/scripts/pm2-wincasa.sh logs`
+
 Vorgehen:
 
 TASKS.md prüfen
@@ -107,6 +122,8 @@ update-docs.sh: Sphinx Documentation Update
 run-tests.sh: pytest mit Coverage
 
 sphinx-autobuild: Live-Doku im Browser
+
+pm2-wincasa.sh: Server-Management mit PM2 (besseres Logging)
 
 Dokumente
 

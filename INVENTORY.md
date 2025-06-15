@@ -64,7 +64,9 @@
 ### Development Tools (`tools/`)
 
 #### Scripts (`tools/scripts/`)
-- run_streamlit.sh - Server-Start (aktualisiert für src/ Struktur)
+- run_streamlit.sh - Server-Start (deprecated, use pm2-wincasa.sh)
+- pm2-wincasa.sh - PM2 Server Management (empfohlen) [SessionID: server-pm2-20250615]
+- wincasa-server.sh - Supervisord Server Management (Alternative, nicht verwendet) [SessionID: server-pm2-20250615]
 - export_json.sh - SQL→JSON Export
 - sync-project.sh - Self-Updating Stack Sync (SAD.md)
 - update-docs.sh - Sphinx Documentation Update
@@ -122,6 +124,11 @@
 - CHANGELOG.md - Session-History
 - INVENTORY.md - Dieses Dokument
 - readme.md - Projektübersicht
+
+### Process Management [SessionID: server-pm2-20250615]
+- ecosystem.config.js - PM2 Konfiguration für WINCASA Server
+- supervisord.conf - Alternative Supervisord Konfiguration (nicht verwendet)
+- server_control.sh - Einfaches Server Control Script (deprecated)
 
 ### Archive (`archive/`)
 - Historische Dateien und veraltete Implementierungen

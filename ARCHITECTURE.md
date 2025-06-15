@@ -228,6 +228,24 @@ Tier 4: Legacy Fallback (100% Coverage Guarantee)
 - SQL Injection Prevention via Parameter-Substitution
 - 100k Row Limit für Query Protection
 
+### Process Management Layer (NEW)
+**PM2 Process Manager Integration**
+- **ecosystem.config.js**: PM2 configuration with environment setup
+- **tools/scripts/pm2-wincasa.sh**: Unified server management script
+- **Features**:
+  - Automatic restart with exponential backoff
+  - PYTHONUNBUFFERED=1 for immediate log visibility
+  - Timestamped logging with rotation
+  - CPU/Memory monitoring via `pm2 monit`
+  - Port-specific process management
+- **Commands**:
+  ```bash
+  ./tools/scripts/pm2-wincasa.sh start    # Start server
+  ./tools/scripts/pm2-wincasa.sh logs     # Stream logs
+  ./tools/scripts/pm2-wincasa.sh status   # Check status
+  pm2 monit                               # Live dashboard
+  ```
+
 ### Feature Flag System
 ```python
 def should_use_unified_engine(user_id: str) -> bool:
