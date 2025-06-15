@@ -66,11 +66,11 @@
   Status: Validated
   SessionID: kb-test-20250614
 
-### Performance Tests
+### Quality Tests
 - ID: benchmark_current_modes.py
   Modi: All 5
   Baseline: Established
-  Improvement: 1000x (1-5ms vs 300-2000ms)
+  Focus: Accuracy and correctness validation
   SessionID: benchmark-20250614
 
 ### E2E Testing with Playwright
@@ -138,7 +138,7 @@ pytest tests/unit/ -v
 # Quick tests (no LLM)
 python test_suite_quick.py
 
-# Performance benchmark
+# Quality benchmark
 python benchmark_current_modes.py
 ```
 
@@ -158,15 +158,15 @@ python benchmark_current_modes.py
 ### CI/CD Integration
 - Pre-commit: test_suite_quick.py
 - Pre-deployment: test_suite_phase2.py
-- Post-deployment: benchmark_current_modes.py
+- Post-deployment: benchmark_current_modes.py (quality validation)
 
 ### Test Patterns
 ```python
 # Unit Test Pattern
-def test_optimized_search_performance():
+def test_optimized_search_accuracy():
     search = WincasaOptimizedSearch()
     result = search.search("Müller")
-    assert result.response_time_ms < 5
+    assert result.accuracy == 100.0
 
 # Integration Test Pattern  
 def test_unified_engine_routing():

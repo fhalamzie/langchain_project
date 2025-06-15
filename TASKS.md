@@ -2,7 +2,42 @@
 
 ## Aktuelle Tasks
 
-### P0: Critical Production
+### P0: Critical Production - Quality Focus
+- ID: T12.001
+  Title: Remove-Performance-Speed-Metrics
+  Effort: 2h
+  Status: pending
+  Description: Remove all speed/performance references from documentation. Focus purely on 100% correctness
+  Dependencies: Documentation
+  
+- ID: T12.002
+  Title: Enhanced-Field-Mappings-Expansion
+  Effort: 24h
+  Status: pending  
+  Description: Expand Knowledge Base field mappings from 226 to 400+ mappings for complete coverage
+  Dependencies: Knowledge-System
+
+- ID: T12.003
+  Title: German-Business-Context-Enhancement
+  Effort: 16h
+  Status: pending
+  Description: Add comprehensive domain-specific German property management vocabulary
+  Dependencies: Knowledge-System
+
+- ID: T12.004
+  Title: Few-Shot-Examples-Complex-Patterns
+  Effort: 12h
+  Status: pending
+  Description: Include more complex query patterns and edge cases in system prompts
+  Dependencies: LLM-Handler
+
+- ID: T12.005
+  Title: Semantic-Template-Engine-Mode-6
+  Effort: 20h
+  Status: pending
+  Description: Implement Mode 6 - Semantic Template Engine for parameterized business patterns (e.g., "Alle Mieter von [ENTITY]"). LLM intent extraction + SQL templates for 100% correctness with personalization
+  Dependencies: Query-Engine, Knowledge-System
+
 - ID: T9.002
   Title: Knowledge-Base-Auto-Update
   Effort: 12h
@@ -149,5 +184,5 @@ Total: 34h
 ### Success-Metrics
 - Velocity: ~35h/Session
 - Quality: >95% Test-Coverage
-- Performance: <100ms Average
+- **Accuracy: 100% Correct Results** (contextually and actual values)
 - Reliability: <1% Error-Rate
