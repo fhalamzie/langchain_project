@@ -71,7 +71,7 @@ Development Cycle
    ./run-tests.sh
    
    # 5. Update docs
-   cd docs && make html
+   ./update-docs.sh
    
    # 6. Commit
    git add -A
@@ -86,7 +86,7 @@ Session End
    ./run-tests.sh
    
    # 2. Check Sphinx build
-   cd docs && make html
+   ./update-docs.sh
    
    # 3. Update CHANGELOG.md
    
@@ -181,6 +181,23 @@ Running Tests
    
    # Performance benchmark
    python benchmark_current_modes.py
+
+Live Documentation
+------------------
+
+For development with live documentation updates:
+
+.. code-block:: bash
+
+   # Start live documentation server
+   ./docs-live.sh
+
+This starts sphinx-autobuild on http://localhost:8000 with:
+
+- Auto-reload on file changes
+- Watches all .rst and .md files
+- Browser refresh on updates
+- Ignores temporary files
 
 Debugging
 ---------

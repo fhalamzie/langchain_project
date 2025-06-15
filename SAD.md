@@ -168,6 +168,14 @@ class InvoiceFactory(SQLAlchemyModelFactory):
   4. Dokumentations-Konsistenz validieren
   5. CHANGELOG.md mit Build-Timestamp ergänzen
 
+### 🌐 `docs-live.sh`
+
+- Live-Dokumentations-Server für Entwicklung:
+  1. Startet `sphinx-autobuild` auf http://localhost:8000
+  2. Überwacht Änderungen in docs/ und Root-Markdown-Dateien
+  3. Automatische Browser-Aktualisierung bei Änderungen
+  4. Ignoriert temporäre und Backup-Dateien
+
 **Claude-Regel:** Verwende **ausschließlich** diese Skripte für Umschaltung und Rebuild. Niemals manuell eingreifen.
 
 ---

@@ -46,6 +46,7 @@
 - export_json.sh - SQL→JSON Export
 - sync-project.sh - Self-Updating Stack Sync (SAD.md)
 - update-docs.sh - Sphinx Documentation Update
+- docs-live.sh - Live Sphinx Documentation Server
 - run-tests.sh - Test-Runner (aus CLAUDE.md)
 
 ### Configuration
