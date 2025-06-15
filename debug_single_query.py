@@ -6,11 +6,12 @@ Interactive tool for debugging specific queries across all modes.
 Usage: python debug_single_query.py "Your query" --mode=UNIFIED --trace
 """
 
-import sys
 import argparse
-import time
 import logging
-from typing import Dict, Any
+import sys
+import time
+from typing import Any, Dict
+
 
 def setup_debug_logging():
     """Setup detailed logging for debugging"""

@@ -5,25 +5,26 @@ Production-ready UI für alle 4 Modi mit Layer 4 JSON Integration
 Enhanced with Phase 2 Features: Unified Engine, Feature Flags
 """
 
-import streamlit as st
-import os
 import json
+import logging
+import os
 import time
 from datetime import datetime
 from pathlib import Path
-import logging
-from typing import Dict, List, Any
+from typing import Any, Dict, List
+
+import streamlit as st
 
 # Custom imports
 from config_loader import WincasaConfig
+from layer4_json_loader import Layer4JSONLoader
 # json_exporter is not needed for the streamlit app
 from llm_handler import WincasaLLMHandler
-from layer4_json_loader import Layer4JSONLoader
-from wincasa_unified_logger import QueryLogEntry, get_query_logger, query_path_logger
 from wincasa_monitoring_dashboard import WincasaMonitoringDashboard
-
 # Phase 2 imports
 from wincasa_query_engine import WincasaQueryEngine
+from wincasa_unified_logger import (QueryLogEntry, get_query_logger,
+                                    query_path_logger)
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -690,7 +691,7 @@ class WincasaStreamlitApp:
             
             if trends and len(trends) > 1:
                 import pandas as pd
-                
+
                 # Create trend dataframe
                 trend_df = pd.DataFrame(trends)
                 trend_df['date'] = pd.to_datetime(trend_df['date'])

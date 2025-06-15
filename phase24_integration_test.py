@@ -4,16 +4,19 @@ WINCASA Phase 2.4 - Integration Test
 Comprehensive test aller Phase 2.4 Komponenten zusammen
 """
 
-import time
 import json
-from pathlib import Path
+import time
 from datetime import datetime
+from pathlib import Path
 
-# Import all Phase 2.4 components
-from wincasa_query_engine import WincasaQueryEngine
+from wincasa_feature_flags import (FeatureFlag, FlagType,
+                                   WincasaFeatureFlagManager)
+
 # Shadow mode removed
 from wincasa_monitoring_dashboard import WincasaMonitoringDashboard
-from wincasa_feature_flags import WincasaFeatureFlagManager, FeatureFlag, FlagType
+# Import all Phase 2.4 components
+from wincasa_query_engine import WincasaQueryEngine
+
 
 class Phase24IntegrationTest:
     """

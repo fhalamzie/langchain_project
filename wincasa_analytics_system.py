@@ -5,13 +5,14 @@ Query-Pattern Analysis, User-Journey Tracking, and Business Metrics
 """
 
 import json
-import time
-from pathlib import Path
-from dataclasses import dataclass, asdict
-from typing import Dict, List, Optional, Any, Set, Tuple
-from datetime import datetime, timedelta
-from collections import defaultdict, Counter
 import re
+import time
+from collections import Counter, defaultdict
+from dataclasses import asdict, dataclass
+from datetime import datetime, timedelta
+from pathlib import Path
+from typing import Any, Dict, List, Optional, Set, Tuple
+
 
 @dataclass
 class QueryPattern:

@@ -4,12 +4,12 @@ WINCASA Layer 2 LLM Handler
 Echte LLM-Integration für alle Provider
 """
 
-import os
-import time
 import json
 import logging
-from typing import Dict, Any, Optional
+import os
+import time
 from pathlib import Path
+from typing import Any, Dict, Optional
 
 # LLM Provider Imports
 try:
@@ -32,10 +32,11 @@ try:
 except ImportError:
     pd = None
 
-from config_loader import WincasaConfig
 from database_connection import get_connection
-from layer4_json_loader import Layer4JSONLoader
 from wincasa_tools import WincasaTools
+
+from config_loader import WincasaConfig
+from layer4_json_loader import Layer4JSONLoader
 
 # Import query path logger if available
 try:
@@ -197,7 +198,7 @@ Wichtige Regeln:
     def _extract_address_from_query(self, query: str) -> Dict[str, str]:
         """Extrahiert Adressinformationen aus der Anfrage"""
         import re
-        
+
         # Einfache Regex-Patterns für deutsche Adressen
         street_pattern = r'(\w+(?:str\.|straße)\.?\s*\d+)'
         plz_pattern = r'(\d{5})'
@@ -242,7 +243,7 @@ Wichtige Regeln:
             
             # Use Unified Data Access Layer
             from data_access_layer import get_data_access
-            
+
             # Determine data source based on mode
             source = "sql" if mode and 'sql' in mode else "json"
             data_access = get_data_access(source=source)
@@ -757,7 +758,7 @@ Wichtige Regeln:
         """Execute owner search function using unified data access layer"""
         try:
             from data_access_layer import get_data_access
-            
+
             # Use unified data access with SQL source
             data_access = get_data_access(source="sql")
             

@@ -5,17 +5,18 @@ Real-time Metrics und Performance Monitoring für Query Engine
 """
 
 import json
-import time
 import threading
-from pathlib import Path
-from dataclasses import dataclass, asdict
-from typing import Dict, List, Optional, Any, Callable
-from datetime import datetime, timedelta
+import time
 from collections import defaultdict, deque
+from dataclasses import asdict, dataclass
+from datetime import datetime, timedelta
+from pathlib import Path
+from typing import Any, Callable, Dict, List, Optional
 
-from wincasa_query_engine import WincasaQueryEngine, QueryEngineResult
+from wincasa_query_engine import QueryEngineResult, WincasaQueryEngine
 # Shadow mode removed
 from wincasa_query_logger import QueryLogEntry, get_query_logger
+
 
 @dataclass
 class MetricSnapshot:

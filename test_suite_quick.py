@@ -4,16 +4,19 @@ WINCASA Phase 2 - Quick Test Suite
 Focused unit tests without LLM calls for fast execution
 """
 
-import unittest
 import json
 import time
-from pathlib import Path
+import unittest
 from datetime import datetime
+from pathlib import Path
 
+from wincasa_feature_flags import (FeatureFlag, FlagType,
+                                   WincasaFeatureFlagManager)
+
+from sql_template_engine import SQLTemplateEngine
 # Import Phase 2 components
 from wincasa_optimized_search import WincasaOptimizedSearch
-from sql_template_engine import SQLTemplateEngine
-from wincasa_feature_flags import WincasaFeatureFlagManager, FeatureFlag, FlagType
+
 
 class QuickTestSuite(unittest.TestCase):
     """Quick tests for Phase 2 components"""

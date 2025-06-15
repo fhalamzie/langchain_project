@@ -4,11 +4,13 @@ WINCASA Layer 2 Configuration Loader
 Zentrale Konfiguration für alle Modi aus .env Datei
 """
 
+import logging
 import os
 from pathlib import Path
+from typing import Any, Dict
+
 from dotenv import load_dotenv
-import logging
-from typing import Dict, Any
+
 
 class WincasaConfig:
     """Zentrale Konfigurationsklasse für alle WINCASA Layer 2 Modi"""

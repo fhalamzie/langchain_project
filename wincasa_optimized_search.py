@@ -6,12 +6,12 @@ Hochperformante Alternative zu RAG für strukturierte Business Queries
 
 import json
 import os
-import time
 import re
-from pathlib import Path
+import time
 from dataclasses import dataclass
-from typing import Dict, List, Optional, Any, Set
 from datetime import datetime
+from pathlib import Path
+from typing import Any, Dict, List, Optional, Set
 
 # Load OpenAI client
 try:

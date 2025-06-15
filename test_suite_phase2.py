@@ -4,24 +4,27 @@ WINCASA Phase 2 - Automated Testing Suite
 Comprehensive unit, integration, and regression tests for all Phase 2 components
 """
 
-import unittest
 import json
-import time
-import tempfile
 import shutil
-from pathlib import Path
+import tempfile
+import time
+import unittest
 from datetime import datetime, timedelta
-from unittest.mock import Mock, patch, MagicMock
+from pathlib import Path
+from unittest.mock import MagicMock, Mock, patch
 
-# Import all Phase 2 components
-from wincasa_optimized_search import WincasaOptimizedSearch
 from hierarchical_intent_router import HierarchicalIntentRouter
+from shadow_mode_manager import ShadowModeConfig, ShadowModeManager
+from wincasa_feature_flags import (FeatureFlag, FlagType,
+                                   WincasaFeatureFlagManager)
+
 from sql_template_engine import SQLTemplateEngine, TemplateResult
 from unified_template_system import UnifiedTemplateSystem
-from wincasa_query_engine import WincasaQueryEngine
-from shadow_mode_manager import ShadowModeManager, ShadowModeConfig
 from wincasa_monitoring_dashboard import WincasaMonitoringDashboard
-from wincasa_feature_flags import WincasaFeatureFlagManager, FeatureFlag, FlagType
+# Import all Phase 2 components
+from wincasa_optimized_search import WincasaOptimizedSearch
+from wincasa_query_engine import WincasaQueryEngine
+
 
 class TestWincasaOptimizedSearch(unittest.TestCase):
     """Unit tests for WincasaOptimizedSearch"""

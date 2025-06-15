@@ -4,6 +4,7 @@ Test Knowledge Base Integration
 """
 
 import logging
+
 from knowledge_base_loader import get_knowledge_base
 
 logging.basicConfig(level=logging.INFO)

@@ -4,6 +4,7 @@ Test specific KALTMIETE query with Knowledge Base
 """
 
 import logging
+
 from llm_handler import WincasaLLMHandler
 
 logging.basicConfig(level=logging.INFO)

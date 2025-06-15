@@ -4,15 +4,16 @@ WINCASA Central Query Logger
 Persistent storage and analytics for all system queries
 """
 
-import os
 import json
+import os
 import sqlite3
-from datetime import datetime, timedelta
-from pathlib import Path
-from typing import Dict, List, Any, Optional, Tuple
-from dataclasses import dataclass, asdict
 import threading
 from collections import defaultdict
+from dataclasses import asdict, dataclass
+from datetime import datetime, timedelta
+from pathlib import Path
+from typing import Any, Dict, List, Optional, Tuple
+
 
 @dataclass
 class QueryLogEntry:

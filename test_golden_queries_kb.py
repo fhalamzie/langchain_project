@@ -8,8 +8,9 @@ import logging
 import time
 from datetime import datetime
 from pathlib import Path
-from llm_handler import WincasaLLMHandler
+
 from config_loader import WincasaConfig
+from llm_handler import WincasaLLMHandler
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)

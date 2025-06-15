@@ -5,18 +5,19 @@ Testet alle 4 Modi gegen das Golden Set für Baseline-Metriken
 """
 
 import json
-import time
 import logging
+import subprocess
+import sys
+import time
 import traceback
 from datetime import datetime
 from pathlib import Path
-from typing import Dict, List, Any
-import subprocess
-import sys
+from typing import Any, Dict, List
 
 # Import WINCASA modules
 sys.path.append('.')
 import os
+
 
 def setup_logging():
     """Setup Logging für Benchmark"""
@@ -47,7 +48,7 @@ def test_streamlit_mode(query: str, mode: str) -> Dict[str, Any]:
         
         # Echte LLM-Handler Implementierung
         from llm_handler import WincasaLLMHandler
-        
+
         # Temporär SYSTEM_MODE für diesen Test setzen
         original_mode = os.environ.get('SYSTEM_MODE')
         

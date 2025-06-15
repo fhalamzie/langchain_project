@@ -4,25 +4,25 @@ WINCASA Phase 2.4 - Unified Query Engine
 Hauptklasse die alle Query-Modi intelligent routet und verwaltet
 """
 
-import json
-import time
 import hashlib
+import json
 import logging
-from pathlib import Path
+import time
 from dataclasses import dataclass
-from typing import Dict, List, Optional, Any, Union
 from datetime import datetime
+from pathlib import Path
+from typing import Any, Dict, List, Optional, Union
 
 logger = logging.getLogger(__name__)
 
 # Import WINCASA Phase 2 Components
-from unified_template_system import UnifiedTemplateSystem, UnifiedResponse
-from wincasa_optimized_search import WincasaOptimizedSearch, SearchResponse
+from unified_template_system import UnifiedResponse, UnifiedTemplateSystem
+from wincasa_optimized_search import SearchResponse, WincasaOptimizedSearch
 
 # Legacy Mode Integration
 try:
     from llm_handler import WincasaLLMHandler
-    
+
     # Create a wrapper function to match expected interface
     def query_wincasa_system(query: str, mode: str) -> Dict[str, Any]:
         handler = WincasaLLMHandler()

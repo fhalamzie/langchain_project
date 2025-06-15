@@ -4,15 +4,16 @@ Knowledge Extractor for WINCASA System
 Extracts field mappings, join relationships, and business vocabulary from SQL files
 """
 
-import os
-import re
 import json
 import logging
-from pathlib import Path
-from typing import Dict, List, Set, Tuple, Optional
+import os
+import re
 from collections import defaultdict
+from pathlib import Path
+from typing import Dict, List, Optional, Set, Tuple
+
 import sqlparse
-from sqlparse.sql import IdentifierList, Identifier, Token
+from sqlparse.sql import Identifier, IdentifierList, Token
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)

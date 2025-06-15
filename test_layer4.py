@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
 """Consolidated test for Layer 4 queries - combines best of comprehensive and final tests"""
 
-import os
-import sys
-import re
 import json
+import os
+import re
+import sys
 from datetime import datetime
-from database_connection import get_connection
+
 import firebird.driver
+from database_connection import get_connection
 
 # Load path configuration
 with open('config/sql_paths.json', 'r') as f:

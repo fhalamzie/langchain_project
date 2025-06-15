@@ -6,14 +6,16 @@ Integriert Intent Router + Template Engine + Optimized Search
 
 import json
 import time
-from pathlib import Path
 from dataclasses import dataclass
-from typing import Dict, List, Optional, Any, Union
+from pathlib import Path
+from typing import Any, Dict, List, Optional, Union
 
 # Import WINCASA components
 from hierarchical_intent_router import HierarchicalIntentRouter, RouterResult
+
 from sql_template_engine import SQLTemplateEngine, TemplateResult
-from wincasa_optimized_search import WincasaOptimizedSearch, SearchResponse
+from wincasa_optimized_search import SearchResponse, WincasaOptimizedSearch
+
 
 @dataclass
 class UnifiedResponse:

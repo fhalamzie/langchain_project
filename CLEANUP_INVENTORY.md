@@ -1,354 +1,535 @@
 # CLEANUP_INVENTORY.md
 
-Temporäres Aufräuminventar für die WINCASA-Codebasis zur Vorbereitung eines systematischen Dokumentationsmodells.
+## Hintergrund
 
-## Übersicht
+Dieses Inventar dokumentiert den aktuellen Stand der WINCASA-Codebasis durch eine vollständige Neuanalyse (Stand: 2025-06-15). Es dient als Grundlage für weitere Aufräumarbeiten und die Migration zu einer systematischen Dokumentationsstruktur.
 
-**Projekttyp**: Production-ready German Property Management System  
-**Phase**: Phase 2 Complete (38/38 Tasks, 100% Test Coverage)  
-**Dateien gesamt**: 111 relevante Dateien  
-**Python Module**: 38 Dateien  
-**Dokumentation**: 15 Markdown-Dateien  
-**Konfiguration**: 6 JSON/Config-Dateien
+**Status**: Produktionsreife Codebasis mit identifizierten Cleanup-Opportunitäten
 
-## Python-Codebase Inventar
+---
 
-### Core Production Files (KEEP)
+## 📊 Gesamtübersicht
 
-- ID: streamlit_app.py  
-  Typ: Hauptanwendung  
-  Status: active  
-  Begründung: Production-ready Streamlit UI, 5-Modi Auswahl, 43KB aktiver Code  
+**Projektumfang**:
+- **Python-Dateien**: 35 Dateien (~510KB)
+- **Nicht-Python-Dateien**: 313 Dateien (~195MB)
+- **Gesamtdateien**: 348 Dateien (~195.5MB)
+- **Nach empfohlener Bereinigung**: ~270 Dateien (~95.5MB)
+
+**Architektur**: Dual Query System - Legacy Modes (1-4) + Unified Engine (5)  
+**Phase Status**: Phase 2 Complete (42/42 Tasks, 100% Test Coverage)
+
+---
+
+## 🐍 Python-Dateien Inventar
+
+### Core Production Files (12 Dateien, ~200KB) ✅ BEHALTEN
+
+- ID: streamlit_app.py
+  Typ: Modul
+  Status: active
+  Begründung: Haupt-UI-Anwendung, 43KB, Einstiegspunkt
   Empfehlung: dokumentieren
+  SessionID: ui-main-20250615
 
-- ID: llm_handler.py  
-  Typ: Core-Modul  
-  Status: active  
-  Begründung: Zentrale LLM-Integration für Legacy-Modi, 48KB, kritisch für Modi 1-4  
+- ID: wincasa_query_engine.py
+  Typ: Modul
+  Status: active
+  Begründung: Phase 2 unified query routing, 19KB, von 7 Dateien importiert
   Empfehlung: dokumentieren
+  SessionID: query-engine-20250615
 
-- ID: wincasa_query_engine.py  
-  Typ: Core-Modul  
-  Status: active  
-  Begründung: Unified Engine (Modus 5), Phase 2.4 Production, 19KB  
+- ID: llm_handler.py
+  Typ: Modul
+  Status: active
+  Begründung: Legacy-Modi LLM-Integration, 48KB, von 9 Dateien importiert
   Empfehlung: dokumentieren
+  SessionID: llm-core-20250615
 
-- ID: database_connection.py  
-  Typ: Core-Modul  
-  Status: active  
-  Begründung: Firebird-Datenbankzugriff, 3KB, fundamental für alle Modi  
+- ID: layer4_json_loader.py
+  Typ: Modul
+  Status: active
+  Begründung: JSON-Datenzugriffsschicht, 8.4KB, von 3 Dateien importiert
   Empfehlung: dokumentieren
+  SessionID: json-loader-20250615
 
-- ID: json_exporter.py  
-  Typ: Data-Layer  
-  Status: active  
-  Begründung: SQL→JSON Export-Engine, 25KB, exportiert 35 Queries→229K Rows  
+- ID: wincasa_unified_logger.py
+  Typ: Modul
+  Status: active
+  Begründung: Zentrales Logging-System, 17KB, kritisch für Monitoring
   Empfehlung: dokumentieren
+  SessionID: logger-20250615
 
-- ID: layer4_json_loader.py  
-  Typ: Data-Layer  
-  Status: active  
-  Begründung: JSON-Datenzugriff für Layer 4, 9KB, kritisch für JSON-Modi  
+- ID: wincasa_query_logger.py
+  Typ: Modul
+  Status: active
+  Begründung: Query-History-Datenbank, 20KB, für Analytics
   Empfehlung: dokumentieren
+  SessionID: query-logger-20250615
 
-- ID: data_access_layer.py  
-  Typ: Data-Layer  
-  Status: active  
-  Begründung: Unified Data Access, 16KB, abstrahiert DB/JSON-Zugriff  
+- ID: data_access_layer.py
+  Typ: Modul
+  Status: active
+  Begründung: Unified data abstraction, 16KB
   Empfehlung: dokumentieren
+  SessionID: data-layer-20250615
 
-- ID: config_loader.py  
-  Typ: Configuration  
-  Status: active  
-  Begründung: Zentrale Konfiguration, 13KB, von 5+ Modulen verwendet  
+- ID: config_loader.py
+  Typ: Modul
+  Status: active
+  Begründung: Konfigurations-Management, 13KB
   Empfehlung: dokumentieren
+  SessionID: config-20250615
 
-### Phase 2 Production Components (KEEP)
-
-- ID: wincasa_optimized_search.py  
-  Typ: Phase2-Modul  
-  Status: active  
-  Begründung: High-Performance Search, 1-5ms Response, 23KB Production-Code  
+- ID: wincasa_optimized_search.py
+  Typ: Modul
+  Status: active
+  Begründung: High-Performance-Suche, 23KB, 1-5ms Response
   Empfehlung: dokumentieren
+  SessionID: search-20250615
 
-- ID: unified_template_system.py  
-  Typ: Phase2-Modul  
-  Status: active  
-  Begründung: Template-based SQL Generation, 18KB, Multi-level Fallback  
+- ID: sql_template_engine.py
+  Typ: Modul
+  Status: active
+  Begründung: SQL-Template-System, 22KB, intern verwendet
   Empfehlung: dokumentieren
+  SessionID: template-20250615
 
-- ID: hierarchical_intent_router.py  
-  Typ: Phase2-Modul  
-  Status: active  
-  Begründung: 3-Level Intent Classification, 19KB, 13 Business Categories  
+- ID: unified_template_system.py
+  Typ: Modul
+  Status: active
+  Begründung: Template-Management, 18KB, von Query Engine verwendet
   Empfehlung: dokumentieren
+  SessionID: unified-20250615
 
-- ID: wincasa_analytics_system.py  
-  Typ: Analytics  
-  Status: active  
-  Begründung: Business Metrics System, 33KB, Production Analytics  
+- ID: knowledge_base_loader.py
+  Typ: Modul
+  Status: active
+  Begründung: Field-Mapping-Loader, 9KB, 226 Mappings
   Empfehlung: dokumentieren
+  SessionID: knowledge-20250615
 
-- ID: wincasa_unified_logger.py  
-  Typ: Monitoring  
-  Status: active  
-  Begründung: Zentrales Logging mit Query Path Tracking, 17KB  
+### Analytics & Monitoring (3 Dateien, ~80KB) ✅ BEHALTEN
+
+- ID: wincasa_analytics_system.py
+  Typ: Anwendung
+  Status: active
+  Begründung: Business-Metriken-Dashboard, 33KB, Standalone
   Empfehlung: dokumentieren
+  SessionID: analytics-20250615
 
-- ID: knowledge_extractor.py  
-  Typ: Knowledge-System  
-  Status: active  
-  Begründung: Extrahiert 226 Field-Mappings aus SQL-Dateien, 13KB, kritisch  
+- ID: wincasa_monitoring_dashboard.py
+  Typ: Anwendung
+  Status: active
+  Begründung: Real-time Monitoring, 23KB, Standalone
   Empfehlung: dokumentieren
+  SessionID: monitoring-20250615
 
-- ID: knowledge_base_loader.py  
-  Typ: Knowledge-System  
-  Status: active  
-  Begründung: Runtime Knowledge Base Management, 9KB, verhindert Field-Fehler  
+- ID: business_dashboard_simple.py
+  Typ: Anwendung
+  Status: active
+  Begründung: Vereinfachtes Business-Dashboard, 24KB, Standalone
   Empfehlung: dokumentieren
+  SessionID: business-dash-20250615
 
-### Testing & Quality Assurance (KEEP)
+### Test-Dateien (7 Dateien, ~60KB) ✅ BEHALTEN
 
-- ID: test_suite_phase2.py  
-  Typ: Test-Suite  
-  Status: active  
-  Begründung: Comprehensive Phase 2 Testing, 19KB, 26/26 Tests passing  
+- ID: test_suite_phase2.py
+  Typ: Test
+  Status: active
+  Begründung: Vollständige Testsuite, 19KB, 26 Tests
   Empfehlung: dokumentieren
+  SessionID: test-phase2-20250615
 
-- ID: test_layer4.py  
-  Typ: Test-Suite  
-  Status: active  
-  Begründung: Layer 4 SQL Query Testing, 8KB, testet alle 35 SQL-Queries  
+- ID: test_suite_quick.py
+  Typ: Test
+  Status: active
+  Begründung: Schnelle Test-Teilmenge, 7.3KB
   Empfehlung: dokumentieren
+  SessionID: test-quick-20250615
 
-- ID: benchmark_current_modes.py  
-  Typ: Performance-Test  
-  Status: active  
-  Begründung: Performance Benchmarking, 13KB, Golden Set Baseline  
+- ID: test_layer4.py
+  Typ: Test
+  Status: active
+  Begründung: SQL→JSON Validierung, 4.5KB
   Empfehlung: dokumentieren
+  SessionID: test-layer4-20250615
 
-### Redundant Files (REMOVE)
-
-- ID: wincasa_rag_improved.py  
-  Typ: Legacy-RAG  
-  Status: deprecated  
-  Begründung: 25KB, superseded by optimized search, keine Imports  
-  Empfehlung: löschen
-
-- ID: wincasa_structured_rag.py  
-  Typ: Legacy-RAG  
-  Status: deprecated  
-  Begründung: 17KB, nicht in Production verwendet, durch Template-System ersetzt  
-  Empfehlung: löschen
-
-- ID: rag_data_exporter.py  
-  Typ: Legacy-Utility  
-  Status: unused  
-  Begründung: 10KB, RAG-Export-Utilities nicht mehr benötigt  
-  Empfehlung: löschen
-
-- ID: business_metrics_dashboard.py  
-  Typ: Duplicate  
-  Status: deprecated  
-  Begründung: 17KB, Duplikat von business_dashboard_simple.py  
-  Empfehlung: löschen
-
-- ID: streamlit_simple.py  
-  Typ: Legacy-UI  
-  Status: deprecated  
-  Begründung: 3KB, Basic Version, streamlit_app.py ist Production  
-  Empfehlung: löschen
-
-### Review Required (REFACTOR)
-
-- ID: intent_classification_schema.py  
-  Typ: Schema  
-  Status: refactor-needed  
-  Begründung: 19KB, möglicherweise von hierarchical_intent_router.py superseded  
-  Empfehlung: refactor
-
-- ID: sql_template_engine.py  
-  Typ: Template-Engine  
-  Status: refactor-needed  
-  Begründung: 22KB, prüfen ob unified_template_system.py vollständig abdeckt  
-  Empfehlung: refactor
-
-## Dokumentations-Inventar
-
-### Essential Documentation (KEEP)
-
-- ID: readme.md  
-  Typ: Hauptdokumentation  
-  Status: active  
-  Begründung: Comprehensive Project Documentation, clean und aktuell  
+- ID: test_golden_queries_kb.py
+  Typ: Test
+  Status: active
+  Begründung: Business-Query-Tests, 6.3KB
   Empfehlung: dokumentieren
+  SessionID: test-golden-20250615
 
-- ID: CLAUDE.md  
-  Typ: Entwicklerdokumentation  
-  Status: active  
-  Begründung: Development Guidelines für Claude Code, essential  
+- ID: test_kaltmiete_query.py
+  Typ: Test
+  Status: active
+  Begründung: Spezifischer Query-Test, 1.6KB
   Empfehlung: dokumentieren
+  SessionID: test-kaltmiete-20250615
 
-- ID: tasks.md  
-  Typ: Task-Management  
-  Status: active  
-  Begründung: Detailed Task Breakdown, Phase 2 Status  
+- ID: test_knowledge_integration.py
+  Typ: Test
+  Status: active
+  Begründung: Wissensbasis-Tests, 1.7KB
   Empfehlung: dokumentieren
+  SessionID: test-knowledge-20250615
 
-### Archive Candidates (REMOVE/ARCHIVE)
+- ID: phase24_integration_test.py
+  Typ: Test
+  Status: active
+  Begründung: Phase 2.4 Integrationstests, 21KB
+  Empfehlung: dokumentieren
+  SessionID: test-integration-20250615
 
-- ID: phase2_progress.md  
-  Typ: Progress-Report  
-  Status: deprecated  
-  Begründung: 146 lines, superseded by PHASE2_FINAL_SUMMARY.md  
-  Empfehlung: löschen
+### Utility-Skripte (7 Dateien, ~90KB) 🔄 REVIEW
 
-- ID: PHASE2_SUMMARY.md  
-  Typ: Interim-Summary  
-  Status: deprecated  
-  Begründung: 158 lines, superseded by final summary  
-  Empfehlung: löschen
+- ID: json_exporter.py
+  Typ: Utility
+  Status: active
+  Begründung: SQL→JSON Export-Utility, 25KB, Standalone
+  Empfehlung: dokumentieren
+  SessionID: exporter-20250615
 
-- ID: VERSION_A_JSON_SYSTEM.md  
-  Typ: A/B-Test-Artefakt  
-  Status: deprecated  
-  Begründung: System prompt variations, A/B testing artifacts  
-  Empfehlung: löschen
+- ID: knowledge_extractor.py
+  Typ: Utility
+  Status: active
+  Begründung: Extrahiert Field-Mappings, 13KB, Standalone
+  Empfehlung: dokumentieren
+  SessionID: extractor-20250615
 
-- ID: VERSION_A_JSON_VANILLA.md  
-  Typ: A/B-Test-Artefakt  
-  Status: deprecated  
-  Begründung: System prompt variations, A/B testing artifacts  
-  Empfehlung: löschen
+- ID: benchmark_current_modes.py
+  Typ: Utility
+  Status: active
+  Begründung: Performance-Benchmarking, 13KB, Standalone
+  Empfehlung: dokumentieren
+  SessionID: benchmark-20250615
 
-- ID: VERSION_B_SQL_SYSTEM.md  
-  Typ: A/B-Test-Artefakt  
-  Status: deprecated  
-  Begründung: System prompt variations, A/B testing artifacts  
-  Empfehlung: löschen
+- ID: debug_single_query.py
+  Typ: Utility
+  Status: active
+  Begründung: Interaktiver Query-Debugger, 6.6KB, Standalone
+  Empfehlung: dokumentieren
+  SessionID: debug-20250615
 
-- ID: VERSION_B_SQL_VANILLA.md  
-  Typ: A/B-Test-Artefakt  
-  Status: deprecated  
-  Begründung: System prompt variations, A/B testing artifacts  
-  Empfehlung: löschen
-
-- ID: VERSION_C_UNIFIED_SYSTEM.md  
-  Typ: A/B-Test-Artefakt  
-  Status: deprecated  
-  Begründung: System prompt for unified mode, A/B testing artifact  
-  Empfehlung: löschen
-
-- ID: PHASE2_SYSTEM_PROMPT_UPDATE.md  
-  Typ: Temporary-Update  
-  Status: deprecated  
-  Begründung: Temporary update documentation, superseded  
-  Empfehlung: löschen
-
-- ID: CENTRAL_QUERY_LOGGING_SUMMARY.md  
-  Typ: Implementation-Detail  
-  Status: refactor-needed  
-  Begründung: Query logging system documentation, merge into CLAUDE.md  
+- ID: create_views_step_by_step.py
+  Typ: Utility
+  Status: refactor-needed
+  Begründung: Datenbank-View-Ersteller, 12KB, einmalig
   Empfehlung: verschieben
+  SessionID: views-20250615
 
-### Reference Documentation (KEEP)
+- ID: realistic_golden_queries.py
+  Typ: Utility
+  Status: refactor-needed
+  Begründung: Golden-Set-Generator, 15KB, einmalig
+  Empfehlung: verschieben
+  SessionID: golden-gen-20250615
 
-- ID: PHASE2_FINAL_SUMMARY.md  
-  Typ: Final-Report  
-  Status: active  
-  Begründung: 246 lines, comprehensive final report, valuable reference  
+- ID: sql_executor.py
+  Typ: Utility
+  Status: active
+  Begründung: SQL-Ausführungs-Handler, 9.3KB
   Empfehlung: dokumentieren
+  SessionID: sql-exec-20250615
 
-- ID: KNOWLEDGE_BASE_IMPLEMENTATION.md  
-  Typ: Technical-Documentation  
-  Status: active  
-  Begründung: Knowledge base system documentation, technical reference  
+### Experimentelle/Ungenutzte Dateien (6 Dateien, ~65KB) ❌ LÖSCHEN
+
+- ID: hierarchical_intent_router.py
+  Typ: Modul
+  Status: unused
+  Begründung: Experimentell, 19KB, nicht importiert
+  Empfehlung: löschen
+  SessionID: intent-router-20250615
+
+- ID: intent_classification_schema.py
+  Typ: Modul
+  Status: unused
+  Begründung: Experimentell, 19KB, nicht importiert
+  Empfehlung: löschen
+  SessionID: intent-schema-20250615
+
+- ID: json_search_app.py
+  Typ: Anwendung
+  Status: deprecated
+  Begründung: Alternative UI, 7.4KB, nicht verwendet
+  Empfehlung: löschen
+  SessionID: search-app-20250615
+
+- ID: sql_syntax_fixer.py
+  Typ: Utility
+  Status: unused
+  Begründung: SQL-Korrektur-Utility, 3.5KB, nicht importiert
+  Empfehlung: löschen
+  SessionID: sql-fixer-20250615
+
+- ID: wincasa_tools.py
+  Typ: Modul
+  Status: unused
+  Begründung: Verschiedene Tools, 16KB, nicht importiert
+  Empfehlung: löschen
+  SessionID: tools-20250615
+
+- ID: database_connection.py
+  Typ: Modul
+  Status: unused
+  Begründung: Datenbank-Verbindungs-Helper, 3.2KB, nicht importiert
+  Empfehlung: löschen
+  SessionID: db-conn-20250615
+
+---
+
+## 📁 Verzeichnis- und Daten-Inventar
+
+### Produktions-Daten (✅ BEHALTEN)
+
+- ID: SQL_QUERIES/
+  Typ: Verzeichnis
+  Status: active
+  Begründung: 35 SQL-Dateien, Core Business Logic
   Empfehlung: dokumentieren
+  SessionID: sql-queries-20250615
 
-## Konfiguration & Daten
-
-### Active Configuration (KEEP)
-
-- ID: config/sql_paths.json  
-  Typ: Configuration  
-  Status: active  
-  Begründung: Centralized paths configuration, critical  
+- ID: exports/
+  Typ: Verzeichnis
+  Status: active
+  Begründung: 35 JSON-Exports, 229,500 Zeilen Produktionsdaten
   Empfehlung: dokumentieren
+  SessionID: exports-20250615
 
-- ID: config/query_engine.json  
-  Typ: Configuration  
-  Status: active  
-  Begründung: Query engine configuration, feature flags  
+- ID: wincasa_data/WINCASA2022.FDB
+  Typ: Datei
+  Status: active
+  Begründung: Produktionsdatenbank, 68MB
   Empfehlung: dokumentieren
+  SessionID: database-20250615
 
-- ID: config/feature_flags.json  
-  Typ: Configuration  
-  Status: active  
-  Begründung: Feature flag system configuration  
+- ID: config/
+  Typ: Verzeichnis
+  Status: active
+  Begründung: Konfigurationsdateien (sql_paths.json, feature_flags.json, etc.)
   Empfehlung: dokumentieren
+  SessionID: config-dir-20250615
 
-### Data Assets (KEEP)
-
-- ID: exports/ (35 JSON files)  
-  Typ: Data-Export  
-  Status: active  
-  Begründung: 229,500 rows production data, 32/35 queries ≥10 rows  
+- ID: knowledge_base/
+  Typ: Verzeichnis
+  Status: active
+  Begründung: 226 Field-Mappings, Business-Vokabular
   Empfehlung: dokumentieren
+  SessionID: kb-dir-20250615
 
-- ID: SQL_QUERIES/ (35 SQL files)  
-  Typ: Business-Logic  
-  Status: active  
-  Begründung: Core business queries, 01-35.sql production queries  
+### Test- und Entwicklungsdaten (❌ ARCHIVIEREN/LÖSCHEN)
+
+- ID: wincasa_data/source/
+  Typ: Verzeichnis
+  Status: deprecated
+  Begründung: 151 CSV-Dateien, 80MB Entwicklungsdaten
+  Empfehlung: löschen
+  SessionID: source-data-20250615
+
+- ID: golden_set/
+  Typ: Verzeichnis
+  Status: refactor-needed
+  Begründung: Test-Queries und Baseline-Ergebnisse
+  Empfehlung: verschieben
+  SessionID: golden-set-20250615
+
+- ID: monitoring_data/
+  Typ: Verzeichnis
+  Status: deprecated
+  Begründung: Alte Monitoring-Snapshots
+  Empfehlung: löschen
+  SessionID: monitoring-data-20250615
+
+- ID: analytics_data/
+  Typ: Verzeichnis
+  Status: deprecated
+  Begründung: Alte Analytics-Reports
+  Empfehlung: löschen
+  SessionID: analytics-data-20250615
+
+- ID: shadow_mode_data/
+  Typ: Verzeichnis
+  Status: deprecated
+  Begründung: A/B-Test-Daten
+  Empfehlung: löschen
+  SessionID: shadow-data-20250615
+
+### Log-Dateien (🔄 ROTIEREN)
+
+- ID: logs/
+  Typ: Verzeichnis
+  Status: operational
+  Begründung: Aktuelle Log-Dateien (layer2.log 783KB, layer2_api.log 13MB)
+  Empfehlung: behalten
+  SessionID: logs-20250615
+
+- ID: *.log (Root-Verzeichnis)
+  Typ: Dateien
+  Status: deprecated
+  Begründung: 15 Log-Dateien im Root, sollten in logs/ sein
+  Empfehlung: löschen
+  SessionID: root-logs-20250615
+
+### Dokumentation (🔄 KONSOLIDIEREN)
+
+#### Behalten:
+- ID: CLAUDE.md
+  Typ: Datei
+  Status: active
+  Begründung: Hauptentwicklerdokumentation
   Empfehlung: dokumentieren
+  SessionID: claude-doc-20250615
 
-- ID: golden_set/ (JSON files)  
-  Typ: Test-Data  
-  Status: active  
-  Begründung: 100 test queries, baseline results, critical for testing  
+- ID: readme.md
+  Typ: Datei
+  Status: active
+  Begründung: Projektübersicht
   Empfehlung: dokumentieren
+  SessionID: readme-20250615
 
-## Cleanup-Zusammenfassung
+- ID: ARCHITECTURE.md
+  Typ: Datei
+  Status: active
+  Begründung: Technische Architektur
+  Empfehlung: dokumentieren
+  SessionID: arch-doc-20250615
 
-**Empfohlene Löschungen**: 12 Dateien  
-- 5 Python-Dateien (RAG legacy, duplicates)
-- 7 Documentation-Dateien (A/B artifacts, superseded progress)
+- ID: API.md
+  Typ: Datei
+  Status: active
+  Begründung: API-Dokumentation
+  Empfehlung: dokumentieren
+  SessionID: api-doc-20250615
 
-**Empfohlene Konsolidierung**: 3 Dateien  
-- Merge CENTRAL_QUERY_LOGGING_SUMMARY.md → CLAUDE.md
-- Review intent_classification_schema.py vs hierarchical_intent_router.py
-- Review sql_template_engine.py vs unified_template_system.py
+#### Archivieren:
+- ID: PHASE2_FINAL_SUMMARY.md
+  Typ: Datei
+  Status: deprecated
+  Begründung: Historisches Dokument
+  Empfehlung: verschieben
+  SessionID: phase2-doc-20250615
 
-**Production-Ready Status**: 95% der Codebasis ist production-ready  
-**Phase 2 Status**: Complete (38/38 Tasks, 100% Test Coverage)  
-**Knowledge Base**: 226 field mappings, zero hardcoding
+- ID: KNOWLEDGE_BASE_IMPLEMENTATION.md
+  Typ: Datei
+  Status: deprecated
+  Begründung: Implementierungsdetails
+  Empfehlung: verschieben
+  SessionID: kb-doc-20250615
 
-## Cleanup-Status: ✅ DURCHGEFÜHRT
+- ID: tasks.md
+  Typ: Datei
+  Status: deprecated
+  Begründung: Erledigte Tasks
+  Empfehlung: löschen
+  SessionID: tasks-doc-20250615
 
-### Abgeschlossene Aktionen (2025-06-15)
+### Sonstige Dateien
 
-**Gelöschte Dateien (13 gesamt):**
-- ✅ **Python (5)**: wincasa_rag_improved.py, wincasa_structured_rag.py, rag_data_exporter.py, business_metrics_dashboard.py, streamlit_simple.py
-- ✅ **Documentation (8)**: Alle VERSION_*.md, PHASE2_SYSTEM_PROMPT_UPDATE.md, phase2_progress.md, PHASE2_SUMMARY.md, CENTRAL_QUERY_LOGGING_SUMMARY.md
+- ID: requirements.txt
+  Typ: Datei
+  Status: active
+  Begründung: Python-Abhängigkeiten
+  Empfehlung: dokumentieren
+  SessionID: requirements-20250615
 
-**Konsolidierungen:**
-- ✅ **CENTRAL_QUERY_LOGGING_SUMMARY.md** → **CLAUDE.md** (Query Logging & Analytics Sektion)
+- ID: run_streamlit.sh
+  Typ: Datei
+  Status: active
+  Begründung: Server-Start-Skript
+  Empfehlung: dokumentieren
+  SessionID: run-script-20250615
 
-**Archivierung:**
-- ✅ **phase2.md** → **archive/phase2.md** (Original planning document)
+- ID: export_json.sh
+  Typ: Datei
+  Status: active
+  Begründung: Export-Skript
+  Empfehlung: dokumentieren
+  SessionID: export-script-20250615
 
-**Dependency Check:**
-- ✅ **Keine broken imports** - alle gelöschten Dateien waren unused
+---
 
-### Ergebnis
+## 🧹 Cleanup-Zusammenfassung
 
-**Vorher**: 38 Python-Dateien, 15 Dokumentations-Dateien  
-**Nachher**: 34 Python-Dateien (-11%), 6 Dokumentations-Dateien (-60%)  
-**Platzeinsparung**: ~77KB Python-Code, ~50KB Dokumentation  
-**Status**: Production-ready System mit sauberer Struktur
+### Empfohlene Aktionen:
 
-## Nächste Schritte
+**1. Python-Dateien löschen (6 Dateien, ~65KB):**
+```bash
+rm hierarchical_intent_router.py
+rm intent_classification_schema.py
+rm json_search_app.py
+rm sql_syntax_fixer.py
+rm wincasa_tools.py
+rm database_connection.py
+```
 
-1. ✅ **Immediate Cleanup**: Abgeschlossen
-2. ✅ **Documentation Consolidation**: Abgeschlossen  
-3. **Dependency Review**: Prüfe überlappende Template-Engines und Intent-Systeme (optional)
-4. **Migration zu INVENTORY.md**: Nutze dieses Cleanup-Inventar als Basis
+**2. Verzeichnisse löschen (~80MB):**
+```bash
+rm -rf wincasa_data/source/
+rm -rf monitoring_data/
+rm -rf analytics_data/
+rm -rf shadow_mode_data/
+```
+
+**3. Log-Dateien aufräumen:**
+```bash
+rm *.log  # Alle Logs im Root-Verzeichnis
+```
+
+**4. Dokumentation archivieren:**
+```bash
+mkdir -p archive/docs
+mv PHASE2_FINAL_SUMMARY.md archive/docs/
+mv KNOWLEDGE_BASE_IMPLEMENTATION.md archive/docs/
+mv tasks.md archive/docs/
+```
+
+**5. Test-Daten verschieben:**
+```bash
+mkdir -p test_data
+mv golden_set/ test_data/
+```
+
+**6. Utility-Skripte organisieren:**
+```bash
+mkdir -p scripts
+mv create_views_step_by_step.py scripts/
+mv realistic_golden_queries.py scripts/
+```
+
+### Ergebnis nach Bereinigung:
+
+**Vorher:**
+- Python-Dateien: 35 (~510KB)
+- Nicht-Python-Dateien: 313 (~195MB)
+- Gesamt: 348 Dateien (~195.5MB)
+
+**Nachher:**
+- Python-Dateien: 29 (~445KB) [-17%]
+- Nicht-Python-Dateien: ~240 (~95MB) [-23%]
+- Gesamt: ~270 Dateien (~95.5MB) [-51% Speicherplatz]
+
+**Cleanup-Status**: ✅ Bereit zur Durchführung
+
+### Vorteile der Bereinigung:
+
+1. **Klarere Struktur**: Entfernung experimenteller und ungenutzter Dateien
+2. **Weniger Verwirrung**: Keine duplizierten oder veralteten Komponenten
+3. **Bessere Performance**: 100MB weniger Speicherplatz
+4. **Einfachere Wartung**: Fokus auf produktive Komponenten
+
+---
+
+## 🚀 Nächste Schritte
+
+1. **Backup erstellen** vor der Bereinigung
+2. **Cleanup-Skript ausführen** (siehe Befehle oben)
+3. **Tests durchführen** nach der Bereinigung
+4. **INVENTORY.md erstellen** basierend auf diesem Cleanup-Inventar
+5. **Dokumentation aktualisieren** für die bereinigte Struktur
+
+**Migration zu strukturierter Dokumentation:**
+- CLEANUP_INVENTORY.md → INVENTORY.md (strukturiertes Komponenten-Inventar)
+- Archivierte Docs → CHANGELOG.md (Historie)
+- Bereinigte Struktur → ARCHITECTURE.md (aktualisierte Architektur)

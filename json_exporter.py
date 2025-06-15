@@ -5,14 +5,15 @@ Handles Decimal types properly and exports query results to JSON
 Enhanced with UTF-8 support, streaming for large datasets, and parameterization
 """
 
-import os
-import json
 import csv
-from datetime import datetime, date, time
-from decimal import Decimal
-import firebird.driver
+import json
 import logging
+import os
 from collections import Counter
+from datetime import date, datetime, time
+from decimal import Decimal
+
+import firebird.driver
 
 # Configure logging
 logging.basicConfig(
@@ -27,6 +28,7 @@ logger = logging.getLogger(__name__)
 
 # Load path configuration
 import json as config_json
+
 with open('config/sql_paths.json', 'r') as f:
     PATH_CONFIG = config_json.load(f)
 

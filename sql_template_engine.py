@@ -4,22 +4,23 @@ WINCASA Phase 2.3 - SQL Template Engine
 Sichere SQL-Template-Generierung mit Jinja2 und Injection-Schutz
 """
 
-import re
 import json
+import re
 import time
-from pathlib import Path
 from dataclasses import dataclass
-from typing import Dict, List, Optional, Any, Union
 from datetime import datetime
+from pathlib import Path
+from typing import Any, Dict, List, Optional, Union
 
 # Jinja2 für Template-Engine
 try:
-    from jinja2 import Environment, BaseLoader, meta, exceptions
+    from jinja2 import BaseLoader, Environment, exceptions, meta
     JINJA2_AVAILABLE = True
 except ImportError:
     JINJA2_AVAILABLE = False
 
 from database_connection import execute_query
+
 
 @dataclass
 class TemplateResult:

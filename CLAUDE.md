@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 WINCASA is a production-ready German property management system with AI-powered query interface, knowledge-based SQL generation, and comprehensive data exports. The system features dual architecture: legacy modes (1-4) and unified intelligent engine (mode 5).
 
-**Current Status**: Cleaned, production-ready codebase (34 Python files, 6 documentation files) with 100% Phase 2 completion.
+**Current Status**: Cleaned, production-ready codebase with 100% Phase 2 completion.
 
 ## Core Architecture
 
@@ -189,6 +189,10 @@ User → llm_handler → layer4_json → Formatted Results
 ./run_streamlit.sh --debug       # Debug mode (with breakpoint instructions)
 ./run_streamlit.sh --test        # Test mode (runs tests before starting)
 ./run_streamlit.sh --restart --debug  # Clean restart in debug mode
+
+# Environment setup
+# Script automatically creates venv/ and installs dependencies from requirements.txt
+# Run ./run_streamlit.sh on first setup - handles everything automatically
 ```
 
 ### 🧪 Testing Commands
@@ -240,6 +244,11 @@ tail -f logs/query_paths.log     # Query routing decisions
 # Clean development environment
 find . -name "*.pyc" -delete     # Clear Python cache
 find . -name "__pycache__" -delete # Clear cache directories
+
+# Server restart procedures (if experiencing issues)
+./run_streamlit.sh --restart     # Recommended: Clean restart with cache clearing
+pkill -f "streamlit"             # Manual: Kill all streamlit processes
+lsof -ti:8667 | xargs kill       # Manual: Kill process on specific port
 ```
 
 ### Data Operations
@@ -406,7 +415,7 @@ logger.log_query(entry)
 ## Phase 2 Status: COMPLETE
 
 All Phase 2 components are production-ready:
-- ✅ **38/38 tasks completed** (106h actual vs 186h estimate)  
+- ✅ **42/42 tasks completed** (107h actual vs 200h estimate)  
 - ✅ **100% test coverage** (26/26 tests passing)
 - ✅ **Knowledge-based SQL system** with 226 field mappings
 - ✅ **Unified query engine** with intelligent routing

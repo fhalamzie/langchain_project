@@ -6,10 +6,11 @@ WINCASA Business Metrics Dashboard - Simple HTML Version
 import json
 from datetime import datetime, timedelta
 from pathlib import Path
-from typing import Dict, List, Any
+from typing import Any, Dict, List
 
-from wincasa_analytics_system import WincasaAnalyticsSystem, BusinessMetric
+from wincasa_analytics_system import BusinessMetric, WincasaAnalyticsSystem
 from wincasa_query_engine import WincasaQueryEngine
+
 
 class SimpleBusinessDashboard:
     """Simple HTML Business Dashboard Generator"""
