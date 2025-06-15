@@ -1,0 +1,219 @@
+{
+  "verification_time": "2025-06-12T14:41:29.885916",
+  "total_files": 35,
+  "successful_exports": 35,
+  "exports_meeting_minimum": 32,
+  "minimum_rows_required": 10,
+  "detailed_results": {
+    "11_mieter_konten.json": {
+      "success": true,
+      "row_count": 17630,
+      "meets_minimum": true,
+      "error": null
+    },
+    "01_eigentuemer.json": {
+      "success": true,
+      "row_count": 311,
+      "meets_minimum": true,
+      "error": null
+    },
+    "08_wohnungen_leerstand.json": {
+      "success": true,
+      "row_count": 509,
+      "meets_minimum": true,
+      "error": null
+    },
+    "06_objekte_portfolio.json": {
+      "success": true,
+      "row_count": 76,
+      "meets_minimum": true,
+      "error": null
+    },
+    "17_beschluesse.json": {
+      "success": true,
+      "row_count": 3184,
+      "meets_minimum": true,
+      "error": null
+    },
+    "32_sonderentnahmen.json": {
+      "success": true,
+      "row_count": 5,
+      "meets_minimum": false,
+      "error": null
+    },
+    "23_instandhaltungskosten.json": {
+      "success": true,
+      "row_count": 229,
+      "meets_minimum": true,
+      "error": null
+    },
+    "14_eigentuemer_op.json": {
+      "success": true,
+      "row_count": 359,
+      "meets_minimum": true,
+      "error": null
+    },
+    "10_eigentuemer_konten.json": {
+      "success": true,
+      "row_count": 10092,
+      "meets_minimum": true,
+      "error": null
+    },
+    "33_ruecklagen_management.json": {
+      "success": true,
+      "row_count": 75,
+      "meets_minimum": true,
+      "error": null
+    },
+    "13_weg_eigentuemer.json": {
+      "success": true,
+      "row_count": 363,
+      "meets_minimum": true,
+      "error": null
+    },
+    "15_eigentuemer_op_zusammenfassung.json": {
+      "success": true,
+      "row_count": 0,
+      "meets_minimum": false,
+      "error": null
+    },
+    "03_aktuelle_mieter.json": {
+      "success": true,
+      "row_count": 16538,
+      "meets_minimum": true,
+      "error": null
+    },
+    "31_durchlaufende_posten.json": {
+      "success": true,
+      "row_count": 79,
+      "meets_minimum": true,
+      "error": null
+    },
+    "22_leerstandsanalyse.json": {
+      "success": true,
+      "row_count": 435,
+      "meets_minimum": true,
+      "error": null
+    },
+    "19_etv_presence.json": {
+      "success": true,
+      "row_count": 52,
+      "meets_minimum": true,
+      "error": null
+    },
+    "02_mieter.json": {
+      "success": true,
+      "row_count": 189,
+      "meets_minimum": true,
+      "error": null
+    },
+    "24_ruecklagenanalyse.json": {
+      "success": true,
+      "row_count": 81,
+      "meets_minimum": true,
+      "error": null
+    },
+    "04_alle_mieter.json": {
+      "success": true,
+      "row_count": 698,
+      "meets_minimum": true,
+      "error": null
+    },
+    "05_objekte.json": {
+      "success": true,
+      "row_count": 77,
+      "meets_minimum": true,
+      "error": null
+    },
+    "34_spezielle_kontenklassen.json": {
+      "success": true,
+      "row_count": 1332,
+      "meets_minimum": true,
+      "error": null
+    },
+    "25_objektbezogene_sachkonten.json": {
+      "success": true,
+      "row_count": 1192,
+      "meets_minimum": true,
+      "error": null
+    },
+    "27_konten_saldenliste.json": {
+      "success": true,
+      "row_count": 398,
+      "meets_minimum": true,
+      "error": null
+    },
+    "18_versammlungen.json": {
+      "success": true,
+      "row_count": 52,
+      "meets_minimum": true,
+      "error": null
+    },
+    "35_buchungskonten_uebersicht.json": {
+      "success": true,
+      "row_count": 48226,
+      "meets_minimum": true,
+      "error": null
+    },
+    "12_bank_konten.json": {
+      "success": true,
+      "row_count": 122,
+      "meets_minimum": true,
+      "error": null
+    },
+    "28_nebenkostenkonten_matrix.json": {
+      "success": true,
+      "row_count": 458,
+      "meets_minimum": true,
+      "error": null
+    },
+    "09_konten.json": {
+      "success": true,
+      "row_count": 3556,
+      "meets_minimum": true,
+      "error": null
+    },
+    "30_weg_zahlungsuebersicht.json": {
+      "success": true,
+      "row_count": 6256,
+      "meets_minimum": true,
+      "error": null
+    },
+    "16_beiraete.json": {
+      "success": true,
+      "row_count": 34,
+      "meets_minimum": true,
+      "error": null
+    },
+    "29_eigentuemer_zahlungshistorie.json": {
+      "success": true,
+      "row_count": 100000,
+      "meets_minimum": true,
+      "error": null
+    },
+    "26_detaillierte_buchungen.json": {
+      "success": true,
+      "row_count": 16340,
+      "meets_minimum": true,
+      "error": null
+    },
+    "20_monatliche_mieteinnahmen.json": {
+      "success": true,
+      "row_count": 13,
+      "meets_minimum": true,
+      "error": null
+    },
+    "21_forderungsalterung.json": {
+      "success": true,
+      "row_count": 0,
+      "meets_minimum": false,
+      "error": null
+    },
+    "07_wohnungen.json": {
+      "success": true,
+      "row_count": 539,
+      "meets_minimum": true,
+      "error": null
+    }
+  }
+}

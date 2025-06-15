@@ -1,0 +1,27 @@
+{
+  "feature_flags": {
+    "unified_system_enabled": true,
+    "shadow_mode_enabled": false,
+    "monitoring_enabled": true,
+    "cost_tracking_enabled": true
+  },
+  "shadow_mode": {
+    "enabled": false,
+    "sample_percentage": 0,
+    "max_comparisons": 0
+  },
+  "rollout": {
+    "unified_percentage": 100,
+    "hash_salt": "wincasa_phase2_2024",
+    "override_users": ["admin", "test_user", "developer"]
+  },
+  "performance": {
+    "max_processing_time_ms": 10000,
+    "cost_alert_threshold": 0.10,
+    "quality_threshold": 0.7
+  },
+  "legacy_modes": {
+    "default_mode": "JSON_VANILLA",
+    "fallback_mode": "JSON_SYSTEM"
+  }
+}

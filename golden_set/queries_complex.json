@@ -1,0 +1,457 @@
+[
+  {
+    "id": "M006",
+    "query": "Alle aktuellen Mieter mit Mietdauer über 5 Jahre",
+    "category": "mieter_analyse",
+    "intent": "complex",
+    "expected_data": "mieter_komplett"
+  },
+  {
+    "id": "M007",
+    "query": "Mieter ohne Email-Adresse",
+    "category": "mieter_analyse",
+    "intent": "complex",
+    "expected_data": "mieter_komplett"
+  },
+  {
+    "id": "M010",
+    "query": "Mieterwechsel im letzten Jahr",
+    "category": "mieter_historie",
+    "intent": "complex",
+    "expected_data": "mieter_komplett"
+  },
+  {
+    "id": "M012",
+    "query": "Mieter mit ausstehenden Zahlungen",
+    "category": "zahlungen",
+    "intent": "complex",
+    "expected_data": "mieter_konten"
+  },
+  {
+    "id": "M015",
+    "query": "Mieter ohne Telefonnummer",
+    "category": "kontakt_analyse",
+    "intent": "complex",
+    "expected_data": "mieter_komplett"
+  },
+  {
+    "id": "M017",
+    "query": "Mieter mit negativem Kontosaldo",
+    "category": "rueckstaende",
+    "intent": "complex",
+    "expected_data": "mieter_konten"
+  },
+  {
+    "id": "M018",
+    "query": "Zahlungshistorie der letzten 6 Monate",
+    "category": "zahlungshistorie",
+    "intent": "complex",
+    "expected_data": "eigentuemer_zahlungshistorie"
+  },
+  {
+    "id": "M019",
+    "query": "Welche Mieter haben Vorauszahlungen geleistet?",
+    "category": "vorauszahlungen",
+    "intent": "complex",
+    "expected_data": "mieter_konten"
+  },
+  {
+    "id": "M020",
+    "query": "Offene Forderungen nach Mieter",
+    "category": "forderungen",
+    "intent": "complex",
+    "expected_data": "mieter_konten"
+  },
+  {
+    "id": "M021",
+    "query": "Mieter mit besonderen Vereinbarungen",
+    "category": "sondervereinbarungen",
+    "intent": "complex",
+    "expected_data": "mieter_komplett"
+  },
+  {
+    "id": "M022",
+    "query": "Alle Mieter mit Haustieren",
+    "category": "haustiere",
+    "intent": "complex",
+    "expected_data": "mieter_komplett"
+  },
+  {
+    "id": "M023",
+    "query": "Gewerbliche Mieter",
+    "category": "gewerbemieter",
+    "intent": "complex",
+    "expected_data": "mieter_komplett"
+  },
+  {
+    "id": "M024",
+    "query": "Mieter nach Anzahl Personen im Haushalt",
+    "category": "haushalt_groesse",
+    "intent": "complex",
+    "expected_data": "mieter_komplett"
+  },
+  {
+    "id": "M025",
+    "query": "Kündigungen in den letzten 12 Monaten",
+    "category": "kuendigungen",
+    "intent": "complex",
+    "expected_data": "mieter_komplett"
+  },
+  {
+    "id": "M026",
+    "query": "Mieterübersicht für Hausverwaltung",
+    "category": "mieter_report",
+    "intent": "complex",
+    "expected_data": "mieter_komplett"
+  },
+  {
+    "id": "M028",
+    "query": "Mietvertragsdauer Statistik",
+    "category": "statistik",
+    "intent": "complex",
+    "expected_data": "mieter_komplett"
+  },
+  {
+    "id": "M030",
+    "query": "Notfallkontakte aller Mieter",
+    "category": "notfallkontakte",
+    "intent": "complex",
+    "expected_data": "mieter_komplett"
+  },
+  {
+    "id": "E004",
+    "query": "Eigentümer ohne Email-Adresse",
+    "category": "kontakt_analyse",
+    "intent": "complex",
+    "expected_data": "eigentuemer_portfolio"
+  },
+  {
+    "id": "E007",
+    "query": "Größte Eigentümer nach Anzahl Objekten",
+    "category": "portfolio_ranking",
+    "intent": "complex",
+    "expected_data": "eigentuemer_portfolio"
+  },
+  {
+    "id": "E008",
+    "query": "Eigentümer nur mit gewerblichen Objekten",
+    "category": "gewerbeeigentuemer",
+    "intent": "complex",
+    "expected_data": "eigentuemer_portfolio"
+  },
+  {
+    "id": "E009",
+    "query": "Neue Eigentümer in den letzten 2 Jahren",
+    "category": "neue_eigentuemer",
+    "intent": "complex",
+    "expected_data": "eigentuemer_portfolio"
+  },
+  {
+    "id": "E010",
+    "query": "Eigentümer mit ausstehenden Zahlungen",
+    "category": "eigentuemer_schulden",
+    "intent": "complex",
+    "expected_data": "eigentuemer_konten"
+  },
+  {
+    "id": "E011",
+    "query": "Kontosaldo aller Eigentümer",
+    "category": "kontostaende",
+    "intent": "complex",
+    "expected_data": "eigentuemer_konten"
+  },
+  {
+    "id": "E012",
+    "query": "Eigentümer mit positivem Kontosaldo",
+    "category": "guthaben",
+    "intent": "complex",
+    "expected_data": "eigentuemer_konten"
+  },
+  {
+    "id": "E014",
+    "query": "Hausgeld-Zahlungen der letzten 6 Monate",
+    "category": "hausgeld",
+    "intent": "complex",
+    "expected_data": "eigentuemer_zahlungshistorie"
+  },
+  {
+    "id": "E015",
+    "query": "Sonderumlagen nach Eigentümer",
+    "category": "sonderumlagen",
+    "intent": "complex",
+    "expected_data": "eigentuemer_konten"
+  },
+  {
+    "id": "E019",
+    "query": "Stimmrechte nach Miteigentumsanteilen",
+    "category": "stimmrechte",
+    "intent": "complex",
+    "expected_data": "weg_eigentuemer"
+  },
+  {
+    "id": "E020",
+    "query": "Teilnehmer der letzten Versammlung",
+    "category": "versammlungsteilnahme",
+    "intent": "complex",
+    "expected_data": "versammlungen"
+  },
+  {
+    "id": "E021",
+    "query": "Eigentümer mit mehreren WEG-Anteilen",
+    "category": "mehrfacheigentuemer",
+    "intent": "complex",
+    "expected_data": "weg_eigentuemer"
+  },
+  {
+    "id": "E022",
+    "query": "Bankverbindungen aller Eigentümer",
+    "category": "bankdaten",
+    "intent": "complex",
+    "expected_data": "eigentuemer_portfolio"
+  },
+  {
+    "id": "E023",
+    "query": "Eigentümer-Vollmachten und Vertretungen",
+    "category": "vollmachten",
+    "intent": "complex",
+    "expected_data": "eigentuemer_portfolio"
+  },
+  {
+    "id": "E025",
+    "query": "Verstorbene Eigentümer / Nachlässe",
+    "category": "nachlaesse",
+    "intent": "complex",
+    "expected_data": "eigentuemer_portfolio"
+  },
+  {
+    "id": "O004",
+    "query": "Baujahr der Objekte",
+    "category": "baujahr_analyse",
+    "intent": "complex",
+    "expected_data": "objekte_details"
+  },
+  {
+    "id": "O005",
+    "query": "Sanierungsbedürftige Objekte",
+    "category": "sanierung",
+    "intent": "complex",
+    "expected_data": "objekte_details"
+  },
+  {
+    "id": "O008",
+    "query": "Wohnungen mit Balkon oder Terrasse",
+    "category": "wohnung_ausstattung",
+    "intent": "complex",
+    "expected_data": "wohnungen"
+  },
+  {
+    "id": "O009",
+    "query": "Durchschnittliche Wohnungsgröße pro Objekt",
+    "category": "groessen_statistik",
+    "intent": "complex",
+    "expected_data": "wohnungen"
+  },
+  {
+    "id": "O010",
+    "query": "Wohnungen mit besonderen Merkmalen",
+    "category": "sonderausstattung",
+    "intent": "complex",
+    "expected_data": "wohnungen"
+  },
+  {
+    "id": "O012",
+    "query": "Objekte nach Verwaltungstyp",
+    "category": "verwaltungsart",
+    "intent": "complex",
+    "expected_data": "objekte_details"
+  },
+  {
+    "id": "O013",
+    "query": "Mieteinnahmen pro Objekt",
+    "category": "mieteinnahmen",
+    "intent": "complex",
+    "expected_data": "monatliche_mieteinnahmen"
+  },
+  {
+    "id": "O014",
+    "query": "Instandhaltungskosten nach Objekten",
+    "category": "instandhaltung",
+    "intent": "complex",
+    "expected_data": "instandhaltungskosten"
+  },
+  {
+    "id": "O015",
+    "query": "Vermietungsgrad pro Objekt",
+    "category": "vermietungsgrad",
+    "intent": "complex",
+    "expected_data": "leerstandsanalyse"
+  },
+  {
+    "id": "O016",
+    "query": "Objekte mit hoher Fluktuation",
+    "category": "fluktuation",
+    "intent": "complex",
+    "expected_data": "leerstandsanalyse"
+  },
+  {
+    "id": "O017",
+    "query": "Energetische Bewertung der Objekte",
+    "category": "energiebewertung",
+    "intent": "complex",
+    "expected_data": "objekte_details"
+  },
+  {
+    "id": "O018",
+    "query": "Objekte mit Parkplätzen",
+    "category": "parkplaetze",
+    "intent": "complex",
+    "expected_data": "objekte_details"
+  },
+  {
+    "id": "O019",
+    "query": "Barrierefreie Objekte und Wohnungen",
+    "category": "barrierefreiheit",
+    "intent": "complex",
+    "expected_data": "objekte_details"
+  },
+  {
+    "id": "O020",
+    "query": "Objekte nach Verwaltungsgebühren",
+    "category": "verwaltungsgebuehren",
+    "intent": "complex",
+    "expected_data": "objekte_portfolio"
+  },
+  {
+    "id": "F006",
+    "query": "Nebenkostenabrechnung nach Objekten",
+    "category": "nebenkosten",
+    "intent": "complex",
+    "expected_data": "nebenkostenkonten_matrix"
+  },
+  {
+    "id": "F007",
+    "query": "Durchlaufende Posten Analyse",
+    "category": "durchlaufende_posten",
+    "intent": "complex",
+    "expected_data": "durchlaufende_posten"
+  },
+  {
+    "id": "F008",
+    "query": "Sonderentnahmen der letzten 12 Monate",
+    "category": "sonderentnahmen",
+    "intent": "complex",
+    "expected_data": "sonderentnahmen"
+  },
+  {
+    "id": "F009",
+    "query": "WEG-Zahlungsübersicht nach Eigentümern",
+    "category": "weg_zahlungen",
+    "intent": "complex",
+    "expected_data": "weg_zahlungsuebersicht"
+  },
+  {
+    "id": "F010",
+    "query": "Objektbezogene Sachkonten-Analyse",
+    "category": "sachkonten",
+    "intent": "complex",
+    "expected_data": "objektbezogene_sachkonten"
+  },
+  {
+    "id": "F011",
+    "query": "Spezielle Kontenklassen Übersicht",
+    "category": "kontenklassen",
+    "intent": "complex",
+    "expected_data": "spezielle_kontenklassen"
+  },
+  {
+    "id": "F013",
+    "query": "Zahlungshistorie pro Eigentümer",
+    "category": "zahlungshistorie_details",
+    "intent": "complex",
+    "expected_data": "eigentuemer_zahlungshistorie"
+  },
+  {
+    "id": "F014",
+    "query": "Liquiditätsplanung nächste 6 Monate",
+    "category": "liquiditaetsplanung",
+    "intent": "complex",
+    "expected_data": "konten_saldenliste"
+  },
+  {
+    "id": "F015",
+    "query": "Jahresabschluss-Vorbereitung Daten",
+    "category": "jahresabschluss",
+    "intent": "complex",
+    "expected_data": "buchungskonten_uebersicht"
+  },
+  {
+    "id": "A001",
+    "query": "Vollständiger Überblick Objekt mit Mietern und Eigentümern",
+    "category": "vollueberblick",
+    "intent": "complex",
+    "expected_data": "multiple"
+  },
+  {
+    "id": "A002",
+    "query": "Rentabilitätsanalyse pro Objekt",
+    "category": "rentabilitaet",
+    "intent": "complex",
+    "expected_data": "multiple"
+  },
+  {
+    "id": "A003",
+    "query": "Mieter-Fluktuation und Leerstandskosten",
+    "category": "fluktuation_kosten",
+    "intent": "complex",
+    "expected_data": "multiple"
+  },
+  {
+    "id": "A004",
+    "query": "Wartungs- und Instandhaltungsplan",
+    "category": "wartungsplan",
+    "intent": "complex",
+    "expected_data": "multiple"
+  },
+  {
+    "id": "A005",
+    "query": "Compliance-Report für Behörden",
+    "category": "compliance",
+    "intent": "complex",
+    "expected_data": "multiple"
+  },
+  {
+    "id": "A006",
+    "query": "KPIs der Immobilienverwaltung",
+    "category": "kpis",
+    "intent": "complex",
+    "expected_data": "multiple"
+  },
+  {
+    "id": "A007",
+    "query": "Risiko-Assessment der Objekte",
+    "category": "risiko_assessment",
+    "intent": "complex",
+    "expected_data": "multiple"
+  },
+  {
+    "id": "A008",
+    "query": "Marktvergleich und Potenzialanalyse",
+    "category": "marktanalyse",
+    "intent": "complex",
+    "expected_data": "multiple"
+  },
+  {
+    "id": "A009",
+    "query": "Jahresplanung und Budget-Vorschau",
+    "category": "jahresplanung",
+    "intent": "complex",
+    "expected_data": "multiple"
+  },
+  {
+    "id": "A010",
+    "query": "360-Grad Objektanalyse komplett",
+    "category": "objektanalyse_komplett",
+    "intent": "complex",
+    "expected_data": "multiple"
+  }
+]

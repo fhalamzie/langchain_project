@@ -1,326 +1,414 @@
-# CLAUDE.md - AI Instructions
+# CLAUDE.md
 
-Essential instructions for Claude AI working with the WINCASA property management system.
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
----
+## Overview
 
-## ⚠️ CRITICAL FIRST STEPS
+WINCASA is a production-ready German property management system with AI-powered query interface, knowledge-based SQL generation, and comprehensive data exports. The system features dual architecture: legacy modes (1-4) and unified intelligent engine (mode 5).
 
-### 🔥 Database Fix (MUST RUN FIRST)
+**Current Status**: Cleaned, production-ready codebase (34 Python files, 6 documentation files) with 100% Phase 2 completion.
 
-**ALWAYS run after system restart:**
-```bash
-python fix_database_permissions.py
+## Core Architecture
+
+### Dual Query System
+- **Legacy Modes (1-4)**: Direct LLM → Database/JSON pattern
+- **Unified Engine (5)**: Intelligent routing through Template → Search → Legacy fallback
+- **Knowledge System**: 226 field mappings extracted from SQL files prevent field errors
+
+### Key Components
+```
+streamlit_app.py          # Main UI with 5-mode selection
+wincasa_query_engine.py   # Phase 2 intelligent routing engine  
+llm_handler.py           # Legacy modes LLM integration
+layer4_json_loader.py    # JSON data access layer
+knowledge_extractor.py   # Extracts field mappings from SQL files
+wincasa_unified_logger.py # Query path tracking and analytics
+data_access_layer.py     # Unified data access abstraction
+wincasa_optimized_search.py # High-performance search (1-5ms)
 ```
 
-**Why**: Firebird resets database ownership on restart, breaking all SQL execution.
-
-### 🧪 System Verification
-
-**Test system works (run in background and check logs):**
-```bash
-nohup python test_all_6_modes_11_questions.py > test_output.log 2>&1 &
-tail -f test_output.log
+### Data Flow Architecture
+```
+Query Input → Mode Router → Execution Engine → Results Display
+     ↓             ↓              ↓              ↓
+Streamlit UI → Query Engine → (JSON|SQL|Search) → Formatted Output
+     ↓             ↓              ↓              ↓  
+Session State → Logger → Database/Files → Analytics Dashboard
 ```
 
-**Expected**: All 6 modes working with successful SQL execution
+## Developer Navigation
 
----
+### 🗺️ Code Map - Where to Find What
 
-## 📚 Essential Reading Order
-
-1. **This file** - AI instructions and patterns
-2. **`readme.md`** - System architecture and technical details  
-3. **`tasks.md`** - Current task backlog
-
----
-
-## 🚫 Never Modify These Files
-
-**Core System Files:**
-- `test_all_6_modes_11_questions.py` - Comprehensive testing
-- `fix_database_permissions.py` - Critical database fix
-- `gemini_llm.py` - LLM configuration
-- `real_schema_extractor.py` - Schema discovery
-- `phoenix_config.py` - Monitoring setup
-
-**All Retriever Files:**
-- `contextual_enhanced_retriever.py`
-- `hybrid_faiss_retriever.py` 
-- `guided_agent_retriever.py`
-- `contextual_vector_retriever.py`
-- `adaptive_tag_classifier.py`
-- `standard_db_interface.py`
-
----
-
-## 🔧 Implementation Patterns
-
-### Environment Setup
-```bash
-# Required environment file: /home/envs/openai.env
-OPENAI_API_KEY=your_key
-OPENROUTER_API_KEY=your_key
-```
-
-### Database Connection Pattern
+#### **🎯 Entry Points by Task**
 ```python
-# Always use embedded mode (preferred)
-db_connection = "firebird+fdb:///home/projects/langchain_project/WINCASA2022.FDB"
+# NEW DEVELOPER START HERE:
+streamlit_app.py          # UI Entry Point - Main application
+  └── Line 89: execute_query()  # Core query execution method
+
+# WORKING ON MODE 5 (UNIFIED ENGINE):
+wincasa_query_engine.py   # Intelligent routing engine
+  └── Line 45: execute_query()     # 3-path routing logic
+  └── Line 78: route_query()       # Intent classification & routing
+
+# WORKING ON LEGACY MODES (1-4):
+llm_handler.py           # Legacy LLM integration
+  └── Line 34: process_query()     # Legacy query processing
+  └── Line 156: _enhance_with_knowledge()  # Knowledge base integration
+
+# WORKING ON DATA ACCESS:
+layer4_json_loader.py    # JSON data operations
+data_access_layer.py     # Unified data abstraction  
+wincasa_optimized_search.py  # 1-5ms search engine
 ```
 
-### LLM Configuration Pattern
+#### **🔧 Core Functions to Debug**
 ```python
-from gemini_llm import get_gemini_llm
+# Query Execution Flow:
+1. streamlit_app.py:89 → execute_query()
+2. wincasa_query_engine.py:45 → execute_query() [Mode 5]
+   OR llm_handler.py:34 → process_query() [Mode 1-4] 
+3. layer4_json_loader.py:67 → search() [Data layer]
 
-# Always use this - never configure LLM manually
-llm = get_gemini_llm()
+# Performance Critical:
+wincasa_optimized_search.py:123 → search()  # <5ms target
+sql_template_engine.py:89 → execute_template()  # ~100ms target
+
+# Business Logic:
+knowledge_base_loader.py:45 → enhance_query()  # Field mapping injection
 ```
 
-### Retriever Initialization Patterns
-
-**Document-based retrievers:**
+#### **🧪 Testing & Debugging Files**
 ```python
-retriever = RetrieverClass(
-    documents=documents,
-    openai_api_key=openai_api_key,
-    db_connection_string=db_connection,
-    llm=llm
+# Quick Testing:
+test_suite_quick.py      # Fast test subset (5 key tests)
+test_golden_queries_kb.py # Real business queries
+debug_single_query.py    # Interactive query debugging (create this)
+
+# Comprehensive Testing:  
+test_suite_phase2.py     # Full test suite (26 tests)
+benchmark_current_modes.py # Performance comparison
+
+# Data Validation:
+test_layer4.py          # SQL→JSON export validation
+knowledge_extractor.py  # Field mapping analysis
+```
+
+#### **📊 Monitoring & Logs**
+```python
+# Log Analysis:
+logs/layer2.log              # Main application logs (783KB)
+logs/layer2_api.log          # API interactions (13MB)
+logs/layer2_performance.log  # Performance metrics (811KB)
+logs/query_paths.log         # Query routing decisions (6KB)
+
+# Analytics:
+wincasa_analytics_system.py     # Business metrics dashboard
+wincasa_monitoring_dashboard.py # Real-time monitoring
+wincasa_unified_logger.py       # Central logging framework
+```
+
+### 🐛 Debugging Workflow
+
+#### **Debug a Specific Query:**
+```bash
+# 1. Quick test single query
+python -c "
+from streamlit_app import WincasaStreamlitApp
+app = WincasaStreamlitApp()
+result = app.execute_mode('Zeige alle Mieter', 'UNIFIED')
+print(f'Result: {result}')
+"
+
+# 2. Debug with full tracing  
+PYTHONPATH=. python -c "
+import logging
+logging.basicConfig(level=logging.DEBUG)
+# ... same as above
+"
+
+# 3. Mode comparison
+python benchmark_current_modes.py --query='Ihre Test Query'
+```
+
+#### **Debug Mode 5 Routing:**
+```bash
+# Set breakpoint at routing decision
+python -c "
+from wincasa_query_engine import WincasaQueryEngine
+engine = WincasaQueryEngine()
+import pdb; pdb.set_trace()  # Manual breakpoint
+result = engine.execute_query('Test query')
+"
+```
+
+#### **Debug Legacy Modes:**
+```bash
+# Test specific legacy mode
+python -c "
+from llm_handler import process_query
+import pdb; pdb.set_trace()
+result = process_query('Test query', 'JSON_VANILLA')
+"
+```
+
+### 📚 Architecture Deep Dive
+
+#### **Mode 5 (Unified Engine) Flow:**
+```
+Query → Intent Classification → Route Decision
+                ↓
+    ┌─────────────────────────────────┐
+    │ 1. Template Engine (~100ms)    │ → SQL Templates
+    │ 2. Optimized Search (1-5ms)    │ → In-Memory Index  
+    │ 3. Legacy Fallback (500-2000ms)│ → LLM Generation
+    └─────────────────────────────────┘
+                ↓
+        Unified Response Format
+```
+
+#### **Legacy Modes (1-4) Flow:**
+```
+Query → LLM Processing → Data Layer → Response
+   ↓         ↓              ↓           ↓
+User → llm_handler → layer4_json → Formatted Results
+```
+
+## Developer Commands
+
+### 🚀 Server Management
+```bash
+# Basic server operations
+./run_streamlit.sh               # Start web interface (port 8667)
+./run_streamlit.sh --restart     # Clean restart (kills all streamlit processes)
+./run_streamlit.sh 8668          # Custom port
+./run_streamlit.sh 8667 127.0.0.1  # Local only
+
+# Developer modes  
+./run_streamlit.sh --dev         # Developer mode (verbose logging)
+./run_streamlit.sh --debug       # Debug mode (with breakpoint instructions)
+./run_streamlit.sh --test        # Test mode (runs tests before starting)
+./run_streamlit.sh --restart --debug  # Clean restart in debug mode
+```
+
+### 🧪 Testing Commands
+```bash
+# Quick testing
+python test_suite_quick.py       # Fast test subset (5 tests)
+python test_golden_queries_kb.py # Test with real business queries
+python benchmark_current_modes.py # Performance comparison of all modes
+
+# Comprehensive testing
+python test_suite_phase2.py      # Full test suite (26 tests)
+python test_layer4.py            # SQL→JSON export validation
+
+# Mode-specific testing
+python -c "
+from wincasa_query_engine import WincasaQueryEngine
+engine = WincasaQueryEngine()
+result = engine.execute_query('Test query')
+print(f'Mode 5 result: {result}')
+"
+
+# Legacy mode testing
+python -c "
+from llm_handler import process_query  
+result = process_query('Test query', 'JSON_VANILLA')
+print(f'Legacy result: {result}')
+"
+```
+
+### 🔧 Development Utilities
+```bash
+# Data operations
+./export_json.sh                 # Export all SQL queries to JSON
+python knowledge_extractor.py    # Extract field mappings from SQL files
+
+# Debug single query
+python -c "
+from streamlit_app import WincasaStreamlitApp
+app = WincasaStreamlitApp()
+import pdb; pdb.set_trace()  # Manual breakpoint
+result = app.execute_mode('Zeige alle Mieter', 'UNIFIED')
+"
+
+# Real-time log monitoring
+tail -f logs/layer2.log          # Main application logs
+tail -f logs/layer2_performance.log  # Performance metrics
+tail -f logs/query_paths.log     # Query routing decisions
+
+# Clean development environment
+find . -name "*.pyc" -delete     # Clear Python cache
+find . -name "__pycache__" -delete # Clear cache directories
+```
+
+### Data Operations
+```bash
+./export_json.sh                 # Export all 35 SQL queries to JSON
+python3 test_layer4.py           # Test all SQL queries
+python3 knowledge_extractor.py   # Extract field mappings from SQL files
+```
+
+### Testing & Validation
+```bash
+# Core testing
+python3 test_layer4.py                    # Test all SQL queries
+python3 json_exporter.py --verify         # Verify JSON exports
+
+# Phase 2 testing 
+python3 test_suite_phase2.py              # Run full test suite (26 tests)
+python3 benchmark_current_modes.py        # Performance baseline testing
+python3 test_golden_queries_kb.py         # Test knowledge base integration
+
+# Quick testing
+python3 test_suite_quick.py               # Fast test subset
+python3 test_kaltmiete_query.py           # Test specific critical query
+```
+
+### Export Operations
+```bash
+# Single query export
+python3 json_exporter.py --single 01_eigentuemer.sql
+
+# Export with verification  
+python3 json_exporter.py --verify --min-rows 10
+
+# View export status
+cat exports/_export_summary.json
+cat exports/_verification_summary.json
+```
+
+## Development Guidelines
+
+### Session State Management
+The UI uses session-based app initialization to prevent ghost buttons:
+```python
+# In streamlit_app.py
+if 'wincasa_app' not in st.session_state:
+    st.session_state.wincasa_app = WincasaStreamlitApp()
+```
+
+### Button Key Requirements
+All buttons must use session-unique keys to prevent duplicates:
+```python
+execute_key = f"main_execute_button_{st.session_state.session_id}"
+st.button("🔍 Abfrage ausführen", key=execute_key)
+```
+
+### Configuration Management
+All paths centralized in `config/sql_paths.json`:
+```json
+{
+  "sql_queries_dir": "SQL_QUERIES",
+  "json_exports_dir": "exports", 
+  "database_path": "wincasa_data/WINCASA2022.FDB",
+  "source_data_dir": "wincasa_data/source"
+}
+```
+
+### Query Engine Integration
+The unified engine bypasses legacy handlers completely:
+```python
+# Legacy: streamlit → llm_handler → layer4_json_loader
+# Unified: streamlit → wincasa_query_engine → (template|search|fallback)
+```
+
+## Critical Business Rules
+
+- `EIGNR = -1`: All WEG owners collectively
+- `ONR >= 890`: System/test data (excluded from queries)
+- `VENDE IS NULL`: Active tenant contracts only
+- `KKLASSE = 62`: WEG owner accounts
+- **CRITICAL**: `KALTMIETE = BEWOHNER.Z1` (not KBETRAG!) - fixed in knowledge base
+
+## Knowledge Base System
+
+### Field Mapping Extraction
+```bash
+python3 knowledge_extractor.py  # Analyzes 35 SQL files → 226 mappings
+```
+
+### Runtime Integration
+The knowledge base automatically injects critical mappings into LLM prompts:
+```python
+# In knowledge_base_loader.py
+if 'kaltmiete' in query.lower():
+    return query + "\nWICHTIG: KALTMIETE = BEWOHNER.Z1"
+```
+
+## UI Layout Best Practices
+
+### Container Structure
+Results must use full-width containers to prevent narrow display:
+```python
+def display_results(self, query: str, results: Dict[str, Dict]):
+    with st.container():  # Full-width container
+        st.subheader("📊 Ergebnisse")
+        # ... rest of results display
+```
+
+### Mode Selection Logic
+Always show tabs regardless of mode selection to prevent UI blocking:
+```python
+# Always show tabs
+tab1, tab2, tab3, tab4, tab5 = st.tabs([...])
+
+with tab1:
+    if not selected_modes:
+        st.warning("⚠️ Bitte wählen Sie mindestens einen Modus aus.")
+    else:
+        self.render_query_interface(selected_modes)
+```
+
+## Production Data
+
+- **35 SQL queries** → **35 JSON exports** (229,500 total rows)
+- **311 owners**, **189 tenants**, **77 properties**, **539 apartments**
+- **Export Status**: 32/35 queries have ≥10 rows (3 have 0-5 rows due to good payment behavior)
+
+## Security & Environment
+
+- API keys: `/home/envs/openai.env` (not in repository)
+- Firebird embedded mode (no server required)
+- UTF-8 encoding for German characters
+- 100k row safety limit prevents runaway queries
+
+## Query Logging & Analytics
+
+### Central Logging System
+```bash
+# Database location
+wincasa_data/query_logs.db  # SQLite database with query history
+```
+
+### Logging Integration
+All queries automatically logged with metadata:
+```python
+from wincasa_query_logger import get_query_logger, QueryLogEntry
+
+logger = get_query_logger()  # Singleton pattern
+entry = QueryLogEntry(
+    query="Zeige alle Mieter",
+    mode="optimized_search", 
+    response_time_ms=125.5,
+    success=True
 )
+logger.log_query(entry)
 ```
 
-**Database-based retrievers:**
-```python  
-retriever = RetrieverClass(
-    db_connection_string=db_connection,
-    llm=llm,
-    enable_monitoring=False
-)
-```
+### Analytics Features
+- **Cross-Session History**: View queries from previous sessions
+- **Performance Trends**: Response time and query volume charts  
+- **Mode Distribution**: Usage patterns across query modes
+- **Error Analysis**: Systematic error pattern tracking
+- **Cost Tracking**: API usage optimization
 
-**Classifier-based retrievers:**
-```python
-classifier = ClassifierClass()  # No parameters
-```
+## Phase 2 Status: COMPLETE
 
----
-
-## 🧪 Testing Workflow
-
-### For New AI Sessions
-1. **Fix database**: `python fix_database_permissions.py`
-2. **Run test in background**: `nohup python test_all_6_modes_11_questions.py > test_output.log 2>&1 &`
-3. **Monitor results**: `tail -f test_output.log`
-4. **Read docs**: Check `readme.md` for system details
-5. **Check tasks**: Review `tasks.md` for current priorities
-
-### Before Making Changes
-1. Run comprehensive test in background to ensure system works
-2. Make incremental changes only
-3. Test after each change
-
-### Test Scripts
-- **`test_all_6_modes_11_questions.py`** - Comprehensive testing (5-10 min)
-- **`phoenix_enabled_benchmark.py`** - Phoenix monitoring demo
-
-### Running Tests in Background
-```bash
-# Start test in background
-nohup python test_all_6_modes_11_questions.py > test_output.log 2>&1 &
-
-# Check the process ID
-ps aux | grep test_all_6_modes
-
-# Monitor output
-tail -f test_output.log
-
-# Check final results
-grep "FINAL RESULTS" test_output.log -A 20
-```
-
----
-
-## 📊 Phoenix Monitoring
-
-**Dashboard**: http://localhost:6006
-
-**Setup Phoenix in scripts:**
-```python
-from phoenix_config import setup_phoenix_monitoring, create_span
-
-phoenix_config = setup_phoenix_monitoring(
-    project_name="WINCASA-YourComponent",
-    port=6006,
-    enable_ui=True
-)
-
-with create_span("operation", {"key": "value"}) as span:
-    result = your_function()
-    span.set_attributes({"success": True})
-```
-
-**Environment control:**
-```bash
-export PHOENIX_ENABLED=true
-export PHOENIX_PORT=6006
-```
-
----
-
-## 🛠️ Development Guidelines
-
-### Safe Change Process
-1. **Read existing patterns** before modifying
-2. **Test before changes** - verify system works
-3. **Make small changes** - incremental modifications
-4. **Test after changes** - ensure no breakage
-5. **Use Phoenix monitoring** - check performance impact
-
-### Coding Standards
-- **Follow existing patterns** - mimic current implementations
-- **Include error handling** - always use try/catch blocks
-- **Use logging** - Python logging, not print statements
-- **Environment variables** - for configuration settings
-- **No hardcoded values** - especially database connections
-
-### Library Usage
-**Never assume libraries are available** - always check first:
-- Look at existing imports in similar files
-- Check requirements.txt or package.json
-- Verify library is already used in codebase
-
----
-
-## 🔥 Emergency Recovery
-
-**If system breaks:**
-```bash
-# 1. Fix database permissions (fixes 90% of issues)
-python fix_database_permissions.py
-
-# 2. Verify system works (in background)
-nohup python test_all_6_modes_11_questions.py > test_output.log 2>&1 &
-tail -f test_output.log
-
-# 3. Check Phoenix dashboard for errors
-# http://localhost:6006
-```
-
-### Common Issues
-
-**Database problems:**
-```bash
-python fix_database_permissions.py
-python debug_table_names.py
-```
-
-**Environment issues:**
-```bash
-source /home/envs/openai.env
-echo $OPENAI_API_KEY | cut -c1-10
-```
-
-**Retriever issues:**
-```bash
-python test_pattern_integration.py
-python debug_sqldb_creation.py
-```
-
----
-
-## 🏗️ Key System Knowledge
-
-### Schema Discovery (Critical)
-- **No hardcoded mappings** - LLM discovers schema dynamically
-- **Real-time learning** - system learns from successful/failed queries
-- **Dynamic SQL generation** - queries adapt to database structure
-
-### WINCASA Domain
-- **German property management** (Hausverwaltung)
-- **6 operational retrieval modes**
-- **Real database** with 517 apartments, 699 residents
-- **Complex join patterns** (ONR+ENR, ONR+KNR+ENR)
-
-### Critical Dependencies
-1. **Database fix** - Required after every restart
-2. **API keys** - OpenAI and OpenRouter in environment file
-3. **Virtual environment** - Must be activated
-4. **Phoenix monitoring** - For performance tracking
-
----
-
-## 📁 File Organization
-
-### Directory Structure
-- **Source code** - Root directory
-- **Results** - `output/results/` (JSON), `output/analysis/` (markdown)
-- **Tests** - Main tests in root, specialized in `/temp/`
-- **Archive** - Historical files in `/archive/`
-
-### Daily Cleanup
-```bash
-# Move result files to organized structure
-mv *_results*.json output/results/ 2>/dev/null
-mv *_insights*.json output/analysis/ 2>/dev/null
-mv *_answers*.md output/analysis/ 2>/dev/null
-```
-
----
-
-## 🎯 Success Patterns
-
-### Always Remember
-1. **Database fix first** - After every system restart
-2. **Test before changes** - Verify system works
-3. **Use Phoenix** - Monitor performance and errors
-4. **Follow patterns** - Use existing code patterns
-5. **Dynamic schema** - Never hardcode database mappings
-
-### Never Do
-1. **Skip database fix** - System will fail
-2. **Modify without testing** - Always test first
-3. **Hardcode schema** - Use dynamic discovery
-4. **Assume libraries** - Check existing usage first
-5. **Leave results scattered** - Organize files properly
-
----
-
-## 🔒 Security Guidelines
-
-- **API keys** in `/home/envs/openai.env` only
-- **No secrets** in git repository
-- **Environment variables** for configuration
-- **Parameterized SQL** queries only
-- **Error handling** without exposing internals
-
----
-
-## 📚 Quick Reference
-
-### Essential Commands
-```bash
-# Critical first step
-python fix_database_permissions.py
-
-# Comprehensive testing (always run in background)
-nohup python test_all_6_modes_11_questions.py > test_output.log 2>&1 &
-
-# Monitor test progress
-tail -f test_output.log
-
-# Check test results
-grep "FINAL RESULTS" test_output.log -A 20
-```
-
-### Key Locations
-- **Tests**: Root directory
-- **Results**: `output/results/` and `output/analysis/`
-- **Config**: `/home/envs/openai.env`
-- **Database**: `WINCASA2022.FDB` in root
-- **Monitoring**: http://localhost:6006
-
----
-
-**Remember**: This system has **dynamic schema discovery** - let it learn the database structure. Never hardcode column mappings or table relationships. Always run the database fix after system restarts.
-
-**Last Updated**: January 9, 2025
+All Phase 2 components are production-ready:
+- ✅ **38/38 tasks completed** (106h actual vs 186h estimate)  
+- ✅ **100% test coverage** (26/26 tests passing)
+- ✅ **Knowledge-based SQL system** with 226 field mappings
+- ✅ **Unified query engine** with intelligent routing
+- ✅ **Performance improvements**: 1-5ms search, 100ms templates
+- ✅ **Central logging system** with persistent storage and analytics

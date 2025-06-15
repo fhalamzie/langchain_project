@@ -1,0 +1,144 @@
+{
+  "test_suite": "Phase 2.4 Integration Test",
+  "timestamp": "2025-06-14T16:02:23.815048",
+  "summary": {
+    "total_tests": 5,
+    "passed_tests": 4,
+    "success_rate": 0.8,
+    "total_time_seconds": 25.8625168800354
+  },
+  "test_results": {
+    "feature_flag_integration": {
+      "test_name": "feature_flag_integration",
+      "success": false,
+      "details": [
+        {
+          "test": "disabled_unified_system",
+          "success": false,
+          "engine_version": "unified_v2"
+        },
+        {
+          "test": "enabled_unified_system",
+          "success": true,
+          "engine_version": "unified_v2"
+        },
+        {
+          "test": "dynamic_flag_creation",
+          "success": true
+        }
+      ]
+    },
+    "shadow_mode_workflow": {
+      "test_name": "shadow_mode_workflow",
+      "success": true,
+      "details": [
+        {
+          "test": "shadow_comparisons",
+          "success": true,
+          "comparisons_created": 3,
+          "expected": 3
+        },
+        {
+          "test": "shadow_analysis",
+          "success": true,
+          "total_comparisons": 3,
+          "recommendation": "⚠️  WEAK: 5% rollout, close monitoring needed"
+        }
+      ]
+    },
+    "monitoring_integration": {
+      "test_name": "monitoring_integration",
+      "success": true,
+      "details": [
+        {
+          "test": "query_logging",
+          "success": true,
+          "queries_logged": 6
+        },
+        {
+          "test": "metrics_capture",
+          "success": true,
+          "total_queries": 1,
+          "avg_response_time": 0.01
+        },
+        {
+          "test": "dashboard_data",
+          "success": true,
+          "components": [
+            "current_metrics",
+            "performance_trend",
+            "active_alerts",
+            "recent_errors",
+            "system_stats",
+            "shadow_mode",
+            "alert_rules",
+            "dashboard_meta"
+          ]
+        }
+      ]
+    },
+    "end_to_end_workflow": {
+      "test_name": "end_to_end_workflow",
+      "success": true,
+      "details": [
+        {
+          "test": "0_percent_rollout",
+          "success": true,
+          "engine_versions": [
+            "legacy_v1",
+            "legacy_v1",
+            "legacy_v1"
+          ]
+        },
+        {
+          "test": "100_percent_rollout",
+          "success": true,
+          "engine_versions": [
+            "unified_v2",
+            "unified_v2",
+            "unified_v2"
+          ]
+        },
+        {
+          "test": "monitoring_capture",
+          "success": true,
+          "total_queries_captured": 7
+        },
+        {
+          "test": "report_generation",
+          "success": true,
+          "monitoring_report": "monitoring_data/monitoring_report_20250614_160223.json",
+          "shadow_report": "shadow_mode_data/shadow_analysis_20250614_160223.json"
+        }
+      ]
+    },
+    "performance_requirements": {
+      "test_name": "performance_requirements",
+      "success": true,
+      "details": [
+        {
+          "test": "response_times",
+          "success": true,
+          "avg_response_time_ms": 0.0058650970458984375,
+          "max_response_time_ms": 0.011205673217773438,
+          "all_response_times": [
+            0.011205673217773438,
+            0.0054836273193359375,
+            0.0050067901611328125,
+            0.0040531158447265625,
+            0.0035762786865234375
+          ]
+        }
+      ]
+    }
+  },
+  "environment": {
+    "phase": "2.4",
+    "components": [
+      "QueryEngine",
+      "ShadowMode",
+      "Monitoring",
+      "FeatureFlags"
+    ]
+  }
+}

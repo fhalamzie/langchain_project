@@ -1,0 +1,257 @@
+# Wincasa - Database Documentation
+
+## Table of Contents
+
+### Tables
+
+- 🔴 ANRUF - Die Tabelle 'ANRUF' speichert Informationen zu telefonischen und anderen Arten von Kommunikationsvor
+- 🔴 ANTBACK - Die Tabelle 'ANTBACK' speichert die Backup-Daten für die Abrechnungen von Nebenkosten und Heizkosten
+- 🔴 ANTEILE - Die Tabelle 'ANTEILE' speichert Informationen zu den Anteilen von Konten, die für die Verwaltung von
+- 🔴 AUFGABE (empty) - Die Tabelle 'AUFGABE' dient zur Speicherung von Informationen zu verschiedenen Aufgaben, die im Rahm
+- 🔴 BANKEN - Die Tabelle 'BANKEN' speichert Informationen zu Bankkonten, die von der Immobilienverwaltung genutzt
+- 🔴 BESCHLUSS - Die Tabelle 'BESCHLUSS' speichert Informationen zu Beschlüssen, die im Rahmen der Verwaltung von Imm
+- 🔴 BESCHLUSS_ANH (empty) - Die Tabelle 'BESCHLUSS_ANH' speichert Anhänge zu Beschlüssen, die in der Immobilienverwaltung getrof
+- 🔴 BESCHLUSS_V (empty) - Die Tabelle 'BESCHLUSS_V' speichert Verlaufsdaten zu Beschlüssen, die im Rahmen der Immobilienverwal
+- 🔴 BETREUT (empty) - Die Tabelle 'BETREUT' speichert Informationen über die Betreuung von Personen, die in Immobilienobje
+- 🔴 BUCHHK_NWG (empty) - Die Tabelle BUCHHK_NWG dient zur Verknüpfung von Buchungen mit Konten und Wohnungsnummern im Immobil
+- 🔴 BUCHKAUT - Die Tabelle BUCHKAUT speichert Transaktionsdaten für Buchungen und Käufe im Immobilienverwaltungssys
+- 🔴 BUCHUNG - Die Tabelle 'BUCHUNG' speichert Transaktionen und Buchungen im Kontext der Immobilienverwaltung. Jed
+- 🔴 HDBUCH - Die Tabelle 'HDBUCH' speichert Buchungsdetails für verschiedene Transaktionen und Kosten im Zusammen
+- 🔴 LIEFONRKNR (empty) - Die Tabelle 'LIEFONRKNR' speichert die Beziehungen zwischen Lieferantennummern und Objekt- sowie Kun
+- 🔴 NACHWEIS - Die Tabelle 'NACHWEIS' speichert Informationen zu verschiedenen Ereignissen oder Aktionen, die im Ra
+- 🔴 NKANPASS - Die Tabelle NKANPASS speichert Informationen zu Anpassungen von Nebenkostenabrechnungen für Mieter u
+- 🔴 NKDETAIL_WIPL - Die Tabelle NKDETAIL_WIPL speichert detaillierte Informationen zu Nebenkostenabrechnungen innerhalb 
+- 🔴 NKGUTNA - Die Tabelle 'NKGUTNA' speichert finanzielle Transaktionen und Buchungen für Konten im Immobilienverw
+- 🔴 NKMASTER_WIPL - Die Tabelle NKMASTER_WIPL dient zur Verwaltung von Wirtschaftsplänen für Immobilienobjekte und deren
+- 🔴 OBJBANKEN - Die Tabelle 'OBJBANKEN' speichert Bankverbindungen, die mit Objekten in der Immobilienverwaltung ass
+- 🔴 PERSONEN (empty) - Die Tabelle PERSONEN speichert Informationen zu Personen, die mit den Immobilien in Verbindung stehe
+- 🔴 RUECKBKT - Die Tabelle 'RUECKBKT' speichert Informationen zu Rücklagenkonten, die für die Verwaltung von Immobi
+- 🔴 RUECKPOS - Die Tabelle 'RUECKPOS' dient zur Verwaltung von Rücklagenpositionen für Immobilienobjekte. Sie enthä
+- 🔴 SEEIG (empty) - Die Tabelle SEEIG speichert Informationen zu den Eigentumsverhältnissen und finanziellen Vereinbarun
+- 🔴 SEVERTRAG (empty) - Die Tabelle SEVERTRAG speichert Informationen zu Serviceverträgen zwischen Eigentümern und Verwalter
+- 🔴 SEVMIETEN (empty) - Die Tabelle SEVMIETEN speichert Informationen zu Mietzahlungen und zugehörigen Buchungen im Immobili
+- 🔴 STAFFELVZ - Die Tabelle 'STAFFELVZ' speichert Informationen zu gestaffelten Zahlungen, die mit Konten und Positi
+- 🔴 STAMMKTO - Die Tabelle 'STAMMKTO' enthält Stammdaten zu Konten, die für die Buchhaltung und Verwaltung von Immo
+- 🔴 TECHDATA (empty) - Die Tabelle TECHDATA speichert technische Daten und freie Text- und Wertfelder für Objekte, die in d
+- 🔴 TERMINE (empty) - Die Tabelle TERMINE speichert Informationen zu verschiedenen Terminen, die im Rahmen der Immobilienv
+- 🔴 UMLAGEAUSNAHME - Die Tabelle 'UMLAGEAUSNAHME' speichert Informationen zu Ausnahmen bei der Umlage von Nebenkosten für
+- 🔴 VEREIG - Die Tabelle VEREIG speichert Informationen über die Anteile von Eigentümern an Objekten, die in Vers
+- 🔴 VERSAMMLUNG - Die Tabelle 'VERSAMMLUNG' speichert Informationen zu Versammlungen, die im Kontext der Immobilienver
+- 🔴 VERWALTER - Die Tabelle 'VERWALTER' speichert Informationen zu den Verwaltern von Immobilien, einschließlich per
+- 🔴 VERWVERG (empty) - Die Tabelle 'VERWVERG' speichert Informationen zu Verwaltungsvergütungen, die im Rahmen der Immobili
+- 🔴 VORGANG - Die Tabelle 'VORGANG' speichert Informationen zu verschiedenen Vorgängen, die im Rahmen der Immobili
+- 🔴 ZAEHLERSTAND - Die Tabelle 'ZAEHLERSTAND' speichert die Zählerstände für verschiedene Konten und Zähler.
+- 🔴 ZAEHLERSTAND_BA - Die Tabelle 'ZAEHLERSTAND_BA' speichert Informationen zu den Zählerständen von Immobilien, die für B
+- 🔴 ZTERMIN - Die Tabelle 'ZTERMIN' speichert Informationen zu Zahlungsterminen, die mit verschiedenen Konten und 
+- 🟠 ANTBACK_ID - Die Tabelle ANTBACK_ID speichert Informationen zu Sicherungsprozessen von Daten, die mit Objekten in
+- 🟠 BANK_AUSNAHMEN - Die Tabelle 'BANK_AUSNAHMEN' speichert Informationen zu Ausnahmefällen im Kontext von Bankverbindung
+- 🟠 BENUTZERGRUPPEN - Die Tabelle 'BENUTZERGRUPPEN' speichert Informationen zu verschiedenen Benutzergruppen, die in einem
+- 🟠 BENUTZERRECHTE - Die Tabelle 'BENUTZERRECHTE' speichert Informationen über die Rechte, die einzelnen Benutzergruppen 
+- 🟠 BEWADR - Die Tabelle BEWADR speichert Adress- und Kontaktdaten von Bewohnern oder Eigentümern von Immobilien,
+- 🟠 BEWOHNER - Die Tabelle 'BEWOHNER' enthält Informationen zu den Bewohnern von Mieteinheiten, einschließlich pers
+- 🟠 BUCHZAHL - Die Tabelle 'BUCHZAHL' speichert Informationen zu Zahlungen, die im Rahmen der Immobilienverwaltung 
+- 🟠 BUSCHLU - Die Tabelle BUSCHLU speichert Informationen zu verschiedenen Schlüsselzahlen und Bezeichnungen, die 
+- 🟠 DATEVS04 - Die Tabelle DATEVS04 speichert Informationen zu DATEV-spezifischen Daten für die Buchhaltung und Fin
+- 🟠 EIGADR - Die Tabelle 'EIGADR' enthält alle relevanten Adress- und Kontaktdaten der Eigentümer von Immobilien,
+- 🟠 EIGBANKEN - Die Tabelle 'EIGBANKEN' speichert Bankinformationen der Eigentümer, die in der Immobilienverwaltung 
+- 🟠 EIGENTUEMER - Die Tabelle 'EIGENTUEMER' speichert Informationen zu den Eigentümern von Immobilien, einschließlich 
+- 🟠 EMAIL_KONTEN - Die Tabelle 'EMAIL_KONTEN' speichert die Konfigurationsdaten für E-Mail-Konten der Mitarbeiter, inkl
+- 🟠 EUSCHLU - Die Tabelle 'EUSCHLU' speichert Schlüsselinformationen zu verschiedenen Einheiten und Zählern, die i
+- 🟠 HDBUCHUNG (empty) - Die Tabelle 'HDBUCHUNG' speichert finanzielle Transaktionen, die mit Immobilienbuchungen verbunden s
+- 🟠 KATEGORIE_CRM - Die Tabelle 'KATEGORIE_CRM' speichert Informationen zu verschiedenen Kategorien, die im Rahmen des C
+- 🟠 KONTAKTONR - Die Tabelle 'KONTAKTONR' speichert die Zuordnung von Kontaktnummern zu Objektnummern und dient als V
+- 🟠 KONTEN - Die Tabelle 'KONTEN' speichert Finanzinformationen zu den Konten der Eigentümer und Mieter innerhalb
+- 🟠 LDOKUMENTE (empty) - Die Tabelle 'LDOKUMENTE' speichert Informationen zu Dokumenten, die mit Liegenschaften verbunden sin
+- 🟠 LFOTOS (empty) - Die Tabelle LFOTOS speichert Informationen zu Fotografien, die mit Liegenschaften in der Immobilienv
+- 🟠 LIEFERAN - Die Tabelle 'LIEFERAN' enthält Informationen zu Lieferanten, Dienstleistern und anderen Geschäftspar
+- 🟠 LIEGEN (empty) - WICHTIG: Diese Tabelle ist LEER und wird nicht verwendet! Für Liegenschaftsdaten bitte die Tabelle O
+- 🟠 MITARBEITER - Die Tabelle 'MITARBEITER' speichert Informationen zu den Angestellten der Immobilienverwaltung, eins
+- 🟠 MODULE - Die Tabelle MODULE speichert Informationen zu verschiedenen Modulen innerhalb des Immobilienverwaltu
+- 🟠 MUSTERKR - Die Tabelle MUSTERKR speichert Informationen zu Musterkunden, die für verschiedene Zwecke innerhalb 
+- 🟠 NACHWEIS_DOC - Die Tabelle 'NACHWEIS_DOC' speichert Dokumente und zugehörige Metadaten, die im Rahmen der Immobilie
+- 🟠 NACHWEIS_DOKUMENTE (empty) - Die Tabelle 'NACHWEIS_DOKUMENTE' speichert Informationen zu Dokumenten, die als Nachweis für verschi
+- 🟠 OBJEKTE - Die Tabelle 'OBJEKTE' ist die HAUPTTABELLE für alle Liegenschaften/Immobilien. Sie enthält alle rele
+- 🟠 OBJPORTAL_TEXTE (empty) - Die Tabelle 'OBJPORTAL_TEXTE' speichert Textinformationen, die mit Immobilienobjekten im Portal verk
+- 🟠 SBUCHUNG (empty) - Die Tabelle 'SBUCHUNG' speichert Transaktionsdaten für Buchungen im Immobilienverwaltungssystem 'Win
+- 🟠 SCHLUESSEL (empty) - Die Tabelle SCHLUESSEL speichert Informationen zu den Schlüsseln der Immobilien, die im Immobilienve
+- 🟠 SEVSOLLGEST (empty) - Die Tabelle SEVSOLLGEST speichert Sollstellungen für die Nebenkostenabrechnung von Immobilienobjekte
+- 🟠 SLEVBUCH (empty) - Die Tabelle 'SLEVBUCH' dient zur Speicherung von Buchungsinformationen im Kontext der Immobilienverw
+- 🟠 SOLLGEST - Die Tabelle 'SOLLGEST' speichert Informationen über die geplanten Monatsbudgets für Objekte in einem
+- 🟠 SOLLGEST_VERWGEB (empty) - Die Tabelle 'SOLLGEST_VERWGEB' speichert die geplanten Verwaltungskosten für Immobilienobjekte, aufg
+- 🟠 SPLITBUCH - Die Tabelle SPLITBUCH speichert Informationen zu aufgeteilten Buchungen im Immobilienverwaltungssyst
+- 🟠 SSOLL (empty) - Die Tabelle SSOLL speichert Sollstellungen, die mit Buchungen in der Tabelle BUCHUNGTEMP verknüpft s
+- 🟠 STATUS - Die Tabelle 'STATUS' speichert systemweite Einstellungen und Konfigurationen für das Immobilienverwa
+- 🟠 TERMINE_CRM - Die Tabelle 'TERMINE_CRM' dient zur Verwaltung von Terminen im Rahmen des Customer Relationship Mana
+- 🟠 UNTERGEMEINSCHAFT - Die Tabelle 'UNTERGEMEINSCHAFT' speichert Informationen zu verschiedenen Untergemeinschaften innerha
+- 🟠 VBDETAIL - Die Tabelle VBDETAIL speichert detaillierte Informationen zu verschiedenen Bereichen der Immobilienv
+- 🟠 VERBRANALYSEGES (empty) - Die Tabelle 'VERBRANALYSEGES' speichert die Verbrauchsanalyse für Heizung und Warmwasser von Immobil
+- 🟠 VERBRANALYSEWHG (empty) - Die Tabelle 'VERBRANALYSEWHG' speichert detaillierte Informationen über den Verbrauch und die Kosten
+- 🟠 VERERG - Die Tabelle 'VERERG' speichert Informationen zu Vorgängen im Kontext der Immobilienverwaltung, insbe
+- 🟠 VERSICHERUNG (empty) - Die Tabelle 'VERSICHERUNG' speichert Informationen zu Versicherungspolicen, die mit Immobilienobjekt
+- 🟠 VERTHEMEN - Die Tabelle 'VERTHEMEN' speichert Informationen zu verschiedenen Themen, die während einer Eigentüme
+- 🟠 VERW_MITARBEITER (empty) - Die Tabelle 'VERW_MITARBEITER' speichert die Zuordnung von Mitarbeitern zu Verwaltern innerhalb des 
+- 🟠 VORAUSZ - Die Tabelle 'VORAUSZ' enthält Informationen zu Vorauszahlungen, die im Kontext der Immobilienverwalt
+- 🟠 VORGANG_NACHWEIS (empty) - Die Tabelle 'VORGANG_NACHWEIS' speichert die Zuordnung zwischen Vorgängen und Nachweisen in einem Im
+- 🟠 WOHNUNG - Die Tabelle 'WOHNUNG' speichert Informationen zu einzelnen Wohnungen oder Gewerbeeinheiten innerhalb
+- 🟠 ZAEHLERSTAMM - Die Tabelle 'ZAEHLERSTAMM' speichert Stammdaten zu Zählern, die in Immobilien zur Erfassung von Verb
+- 🟠 ZAEHLER_ORT - Die Tabelle 'ZAEHLER_ORT' speichert Informationen zu den Standorten von Zählern innerhalb des Immobi
+- 🟠 ZINSSAETZE (empty) - Die Tabelle 'ZINSSAETZE' speichert Informationen zu verschiedenen Zinssatzreihen und deren gültigen 
+- 🟠 ZINSSATZREIHE (empty) - Die Tabelle 'ZINSSATZREIHE' speichert Informationen zu verschiedenen Zinssatzreihen, die für die Ber
+- 🟢 ABRANTEILE - Die Tabelle 'ABRANTEILE' speichert Informationen zu Anteilen von Abrechnungseinheiten innerhalb eine
+- 🟢 ABRFIRM - Die Tabelle ABRFIRM speichert Informationen zu Firmen, die in Beziehung zur Immobilienverwaltung ste
+- 🟢 ARCHIV_TREE - Die Tabelle ARCHIV_TREE dient zur Strukturierung und Kategorisierung von archivierten Dokumenten und
+- 🟢 AUFTRAG - Die Tabelle 'AUFTRAG' speichert Informationen zu finanziellen Transaktionen zwischen Auftraggebern u
+- 🟢 A_EXP (empty) - Tabelle zur Speicherung von Exportdaten für die Immobilienverwaltung.
+- 🟢 BANKORT - Die Tabelle BANKORT speichert Informationen zu Bankstandorten, einschließlich Bankkontonummern, Bank
+- 🟢 BAUSZUG940 - Die Tabelle BAUSZUG940 speichert Transaktionsdaten für Bauvorhaben, inklusive Zahlungsstatus, Beträg
+- 🟢 BGHUMSTELL (empty) - Die Tabelle BGHUMSTELL speichert Informationen zu Umstellungen im Bereich der Betriebs- und Heizkost
+- 🟢 BUCHLETZT (empty) - Tabelle zur Speicherung der letzten Buchungsinformationen für Objekte.
+- 🟢 BUCHUNGEN_GEL - Die Tabelle 'BUCHUNGEN_GEL' speichert Transaktionsdaten für Buchungen im Zusammenhang mit der Immobi
+- 🟢 BUCHUNGTEMP (empty) - Die Tabelle BUCHUNGTEMP dient zur temporären Speicherung von Buchungsdaten im Immobilienverwaltungss
+- 🟢 BUCHUNGTEMPBNR (empty) - Temporäre Tabelle zur Speicherung von Buchungsnummern.
+- 🟢 BUCHUNGTEMPERR (empty) - Temporäre Tabelle zur Speicherung von Buchungsinformationen im Immobilienverwaltungssystem Wincasa.
+- 🟢 BUCHUNG_ZUFRLVORC20 - Die Tabelle BUCHUNG_ZUFRLVORC20 speichert Informationen zu Buchungen, die im Rahmen der Immobilienve
+- 🟢 BUCHVORL (empty) - Tabelle zur Speicherung von vorläufigen Buchungsinformationen.
+- 🟢 BUCHVORL_SPLIT (empty) - Die Tabelle 'BUCHVORL_SPLIT' speichert aufgeteilte Buchungsvorlagen für die Immobilienverwaltung.
+- 🟢 CASALOCK (empty) - Die Tabelle CASALOCK dient zur Speicherung von Informationen bezüglich des Schließsystems einer Immo
+- 🟢 CP_LIEFONR (empty) - Die Tabelle CP_LIEFONR dient zur Speicherung von Lieferantennummern in Bezug auf bestimmte Objekte u
+- 🟢 DASI_HISTORY - Die Tabelle 'DASI_HISTORY' speichert die Historie von Sicherungen und Änderungen innerhalb des Immob
+- 🟢 DATEVBUCHSTAPEL (empty) - Die Tabelle 'DATEVBUCHSTAPEL' dient zur Speicherung von Buchungsstapeln, die für die Buchhaltung und
+- 🟢 DATEVMAN (empty) - Die Tabelle DATEVMAN speichert Verwaltungsinformationen für DATEV-bezogene Prozesse, die in einem Im
+- 🟢 DOKUMENT_TREE - Die Tabelle 'DOKUMENT_TREE' dient zur Speicherung von strukturierten Informationen über verschiedene
+- 🟢 EMAILVORLAGEN - Die Tabelle 'EMAILVORLAGEN' speichert Vorlagen für E-Mails, die im Rahmen der Immobilienverwaltung v
+- 🟢 EPOST_LETTER - Die Tabelle 'EPOST_LETTER' speichert Informationen zu elektronisch versendeten Briefen, einschließli
+- 🟢 FOTOS - Die Tabelle 'FOTOS' speichert Informationen zu Bildern, die mit Immobilien, Eigentümern oder Kunden 
+- 🟢 HDBESCH (empty) - Die Tabelle HDBESCH speichert detaillierte Beschreibungen zu Immobilienbeschaffenheiten, die für die
+- 🟢 HDBUCH_VORL (empty) - Die Tabelle 'HDBUCH_VORL' dient zur Speicherung vorläufiger Buchungsinformationen im Immobilienverwa
+- 🟢 HDDETAIL - Die Tabelle 'HDDETAIL' speichert detaillierte Informationen zu verschiedenen Hausdienstleistungen un
+- 🟢 HK_KOSTEN - Die Tabelle HK_KOSTEN speichert Informationen zu den Kosten, die im Zusammenhang mit der Verwaltung 
+- 🟢 HK_WOHN - Die Tabelle 'HK_WOHN' speichert Informationen zu Wohnverhältnissen, einschließlich der Zuordnung von
+- 🟢 IEIGADR (empty) - Die Tabelle IEIGADR speichert die Adress- und Kontaktdaten von Eigentümern innerhalb des Immobilienv
+- 🟢 ILIEFERAN (empty) - Die Tabelle ILIEFERAN speichert Informationen zu Lieferanten, die für Immobilienverwaltungsdienste g
+- 🟢 KONTAKTGRUPPEN (empty) - Die Tabelle 'KONTAKTGRUPPEN' speichert Informationen zu verschiedenen Gruppen von Kontakten, die im 
+- 🟢 NKARCHIV - Die Tabelle NKARCHIV dient der Archivierung von Nebenkostenabrechnungen für verschiedene Objekte und
+- 🟢 NKDETAIL - Die Tabelle NKDETAIL speichert detaillierte Informationen zu Nebenkostenabrechnungen für Immobilieno
+- 🟢 NKMASTER - Die Tabelle NKMASTER enthält alle relevanten Informationen zu den Nebenkostenabrechnungen für Mieter
+- 🟢 ONLBBLZ - Die Tabelle ONLBBLZ speichert Informationen zu Bankleitzahlen und zugehörigen Bankdaten.
+- 🟢 ONLBLERN - Die Tabelle ONLBLERN speichert Informationen zu Lerninhalten und Buchungstexten, die mit bestimmten 
+- 🟢 PMALT (empty) - Die Tabelle PMALT speichert historische Daten über Änderungen und Transaktionen, die im Immobilienve
+- 🟢 QUICKTEXTE - Die Tabelle 'QUICKTEXTE' speichert vordefinierte Textbausteine, die in verschiedenen Dokumenten oder
+- 🟢 SCHLUESSEL_AUSGABE (empty) - Die Tabelle 'SCHLUESSEL_AUSGABE' speichert Informationen über die Ausgabe von Schlüsseln an Kontakte
+- 🟢 SET_A - Die Tabelle SET_A speichert Informationen zu den Eigenschaften von Immobilienobjekten, die für die V
+- 🟢 SET_B - Die Tabelle SET_B speichert Informationen zu bestimmten Geschäftsvorfällen, die mit Brennstoffen und
+- 🟢 SET_D (empty) - Die Tabelle SET_D dient zur Speicherung von Daten, die mit der Verwaltung von Immobilienobjekten und
+- 🟢 SET_W (empty) - Die Tabelle SET_W dient zur Speicherung von Informationen im Kontext der Immobilienverwaltung für da
+- 🟢 SEVERTRAG_STD - Die Tabelle SEVERTRAG_STD speichert Standardinformationen zu Serviceverträgen, die im Rahmen der Imm
+- 🟢 SKR03 - Die Tabelle SKR03 speichert Informationen zu Konten und deren Eigenschaften im Kontext der Finanzbuc
+- 🟢 SKR04 - Die Tabelle SKR04 speichert Informationen zu Konten, die im Rahmen der Finanzbuchhaltung verwendet w
+- 🟢 SONUML (empty) - Die Tabelle SONUML speichert Informationen zu den Sonderumlagen, die für die Eigentümergemeinschafte
+- 🟢 TAPITEL (empty) - Die Tabelle 'TAPITEL' dient zur Speicherung von Telefoninformationen, die mit verschiedenen Entitäte
+- 🟢 TIP2 (empty) - Tabelle zur Speicherung von TIP2-Informationen, die spezifische Daten in einem Textformat enthalten.
+- 🟢 TIPTAG - Die Tabelle TIPTAG speichert Tipps und Hinweise für die Benutzer des Immobilienverwaltungssystems Wi
+- 🟢 TMP_A (empty) - Temporäre Tabelle zur Speicherung von Objekt- und Eigentümerinformationen im Immobilienverwaltungssy
+- 🟢 UEBDTA - Die Tabelle UEBDTA speichert Transaktionsdaten für Überweisungen, die im Rahmen der Immobilienverwal
+- 🟢 UMLAGE - Die Tabelle 'UMLAGE' speichert Informationen zu den Umlageschlüsseln und Bezeichnungen für verschied
+- 🟢 USTSAETZE - Die Tabelle 'USTSAETZE' speichert Informationen zu verschiedenen Umsatzsteuersätzen, die in der Immo
+- 🟢 VERW - Die Tabelle 'VERW' enthält Informationen zu Verwaltungen, die im Immobilienverwaltungssystem 'Wincas
+
+### Procedures
+
+- ABRECHNUNGS_SALDENLISTE - Die Prozedur 'ABRECHNUNGS_SALDENLISTE' dient zur Erstellung einer Saldenliste für die Abrechnung von
+- ABRECHNUNG_VZ - Die Prozedur ABRECHNUNG_VZ ist für die Erstellung von vorläufigen Abrechnungen für verschiedene Kost
+- ABRECHNUNG_VZ_ZPOS - Die Prozedur 'ABRECHNUNG_VZ_ZPOS' dient zur Berechnung von vorläufigen Zahlungspositionen innerhalb 
+- ABRECHNUNG_VZ_ZPOS_WOHNEINHEIT - Diese Prozedur wird verwendet, um die vorläufigen Zahlungspositionen für eine Wohneinheit innerhalb 
+- ABR_VZ_BE - Diese Prozedur wird verwendet, um Vorauszahlungen (VZ) für bestimmte Konten und Zeiträume zu berechn
+- ABR_VZ_BE_ABGRENZUNG_DETAIL - Diese Prozedur wird verwendet, um detaillierte Abgrenzungsinformationen für bestimmte Konten und Zei
+- ADRESSEN_DETAIL - Die Prozedur ADRESSEN_DETAIL dient dazu, detaillierte Informationen zu Adressen im Immobilienverwalt
+- ADRESSEN_FUNKTION - Die Prozedur ADRESSEN_FUNKTION wird verwendet, um spezifische Funktionen und Zuständigkeiten von Adr
+- ADRESSEN_NAMEN - Die Prozedur ADRESSEN_NAMEN dient dazu, Namen und Adressinformationen von verschiedenen Entitäten wi
+- ALTERNPOSTANSCHRIFT - Die Prozedur ALTERNPOSTANSCHRIFT dient dazu, alternative Postanschriften für Bewohner zu verwalten. 
+- ANONYM_ADDTEXT - Diese Prozedur wird verwendet, um Text zu einem anonymisierten Feld hinzuzufügen.
+- ANONYM_FRVER - Diese Prozedur wird verwendet, um Bewohner- und Eigentümerdaten zu anonymisieren.
+- ANONYM_PROCEDURE - Die ANONYM_PROCEDURE ist eine gespeicherte Prozedur im Immobilienverwaltungssystem 'Wincasa', die fü
+- ANONYM_REPLACETEXT - Die Prozedur ANONYM_REPLACETEXT wird verwendet, um Text in einer Datenbank zu anonymisieren, indem s
+- BANKSALDO_ALT - Die Prozedur BANKSALDO_ALT dient dazu, den alten Banksaldo für ein gegebenes Konto innerhalb eines s
+- BEAUSEINZUG - Prozedur zur Verarbeitung von Einzugsinformationen in der Immobilienverwaltung.
+- BERECHNE_MAHNLISTE - Die Prozedur BERECHNE_MAHNLISTE ist dafür zuständig, eine Liste von Mahnungen basierend auf den gege
+- BILANZ_SCHW - Die Prozedur BILANZ_SCHW dient zur Berechnung und Abfrage von Bilanzinformationen zu einem bestimmte
+- CHECK_SET_KONTOBEZ_BE_NAME - Diese Prozedur überprüft und setzt den Kontobezeichner basierend auf dem Namen des Eigentümers oder 
+- CHECK_SET_KONTOBEZ_EIG_NAME - Die Prozedur CHECK_SET_KONTOBEZ_EIG_NAME wird verwendet, um die Konsistenz und Korrektheit der Konto
+- CRM_GET_UEBERBLICK - Die Prozedur 'CRM_GET_UEBERBLICK' dient dazu, einen Überblick über CRM-bezogene Daten zu erhalten, b
+- CRM_GET_UEBERBLICK_DET - Die Prozedur 'CRM_GET_UEBERBLICK_DET' dient dazu, einen detaillierten Überblick über CRM-bezogene Ak
+- CRM_GET_UEBERBLICK_DET2 - Die Prozedur CRM_GET_UEBERBLICK_DET2 dient dazu, einen detaillierten Überblick über bestimmte Geschä
+- EIGVZ_ZPOS_GES - Die Prozedur 'EIGVZ_ZPOS_GES' dient zur Berechnung der Gesamtsummen von Verwaltungszahlungen innerha
+- EINNAHMEN - Die Tabelle 'EINNAHMEN' speichert Informationen zu den finanziellen Einnahmen innerhalb des Immobili
+- EINNAHMEN_OBJ - Die Prozedur EINNAHMEN_OBJ dient zur Abfrage der Einnahmen für bestimmte Objekte innerhalb eines geg
+- EINZKAUS - Prozedur zur Abwicklung von Einzelkaufvorgängen innerhalb des Immobilienverwaltungssystems.
+- EINZKAUS_DETAIL - Die Prozedur EINZKAUS_DETAIL dient zur Abfrage von detaillierten Informationen über einzelne Kaufvor
+- EINZKAUS_VORTRAG - Die Prozedur EINZKAUS_VORTRAG ist für die Berechnung und Auswertung von einzelnen Kaufverträgen inne
+- EINZKAUS_VORTRAG_POS - Die Tabelle EINZKAUS_VORTRAG_POS dient als Schnittstelle für eine Prozedur, die im Immobilienverwalt
+- ENTWICKLUNG_GELDKONTEN - Die Prozedur 'ENTWICKLUNG_GELDKONTEN' dient zur Abfrage und Analyse der finanziellen Entwicklung von
+- ENTW_SALDO_WDATUM - Die Prozedur 'ENTW_SALDO_WDATUM' dient zur Ermittlung von Salden und zugehörigen Daten für einen bes
+- GET_ANZ_LASTSCHRIFTEN - Prozedur zur Ermittlung der Anzahl der Lastschriften für ein bestimmtes Bankkonto.
+- GET_BETREUT - Die Prozedur GET_BETREUT_block1 dient dazu, detaillierte Informationen über betreute Personen zu erh
+- GET_BEW_EIG_PRO_HAUS - Prozedur zur Abfrage von Bewohner- und Eigentümerinformationen für ein bestimmtes Haus.
+- GET_GEBURTSTAGSLIST - Prozedur zur Abfrage einer Liste von Geburtstagen von Eigentümern und Mietern.
+- GET_HAUSLIST - Die Prozedur GET_HAUSLIST dient dazu, eine Liste von Häusern basierend auf bestimmten Eingabeparamet
+- GET_HAUSLIST_TYP - Prozedur zur Abfrage einer Liste von Häusern basierend auf dem Haustyp, der Verwaltungsnummer und de
+- GET_INTERNEHEIZ_GES - Prozedur zur Abfrage der Gesamtheizkosten und Verbrauchsmengen für eine bestimmte Immobilie in einem
+- GET_KNRSTR - Prozedur zur Ermittlung einer Kundennummer-Straßenkombination.
+- GET_LASTSCHRIFTEN - Die Prozedur GET_LASTSCHRIFTEN dient dazu, die letzten Buchungen/Schriftstücke eines Kontos abzurufe
+- GET_LAST_BUCHUNG - Prozedur zur Abfrage der letzten Buchungen in einem Immobilienverwaltungssystem.
+- GET_LAST_BUCHUNG_BNR - Prozedur zur Abfrage der letzten Buchungsinformationen basierend auf einer Buchungsnummer.
+- GET_MAHNLISTE - Prozedur zur Abfrage der Mahnliste für Immobilienobjekte.
+- GET_RUECKL_BUCHUNGEN - Prozedur zur Abfrage von Rücklastschrift-Buchungen innerhalb eines bestimmten Zeitraums.
+- GET_RUECKL_BUCHUNGEN_RLA - Prozedur zur Abfrage von Rücklastschrift-Buchungen innerhalb eines bestimmten Zeitraums.
+- GET_SOLLSTBEZ - Die Prozedur GET_SOLLSTBEZ ist dafür verantwortlich, den Soll-Standortbezeichner für eine gegebene O
+- HAUSABR_EA - Die Prozedur HAUSABR_EA dient zur Abrechnung und Verwaltung von Hausgeldern und anderen immobilienbe
+- HAUSABR_EA_BUCH - Die Prozedur HAUSABR_EA_BUCH ist für die Buchung von Hausabrechnungen im Rahmen der Eigentumsverwalt
+- HAUSABR_EA_NEW - Die Prozedur HAUSABR_EA_NEW ist für die Erstellung neuer Hausabrechnungen für Eigentümer-Anteile zus
+- INTEGER_LIST - Die Tabelle INTEGER_LIST dient als Schnittstelle für eine Prozedur, die eine Liste von Integer-Werte
+- JOURNAL - Die Tabelle 'JOURNAL' dient als Protokoll für Transaktionen und Buchungen innerhalb des Immobilienve
+- JOURNAL_EINAUS - Die Tabelle 'JOURNAL_EINAUS' dient als Schnittstelle für die Prozedur, die Ein- und Ausgangsbuchunge
+- JOURNAL_EINAUS_K - Die Prozedur 'JOURNAL_EINAUS_K' dient zur Verarbeitung von Ein- und Ausgangsbuchungen im Kontext der
+- JOURNAL_HD - Die Tabelle 'JOURNAL_HD' dient als Speicher für die Header-Daten von Buchungsjournalen, die im Rahme
+- KAUTIONSLIST - Die Prozedur KAUTIONSLIST dient zur Abfrage und Generierung einer Liste von Kautionen, die zwischen 
+- KONTOAUSZUG - Die Prozedur KONTOAUSZUG dient dazu, einen Kontoauszug für ein bestimmtes Konto über einen definiert
+- KONTOSALDO - Die Prozedur KONTOSALDO dient zur Ermittlung des Saldos und des Nettosaldos eines Kontos innerhalb e
+- KONTOSALDO_ALT - Die Prozedur KONTOSALDO_ALT dient dazu, den alten Kontostand eines Kundenkontos zu berechnen und zur
+- KONTOSALDO_UST - Die Prozedur KONTOSALDO_UST dient zur Berechnung des Kontosaldos unter Berücksichtigung der Umsatzst
+- KONTOSTAENDE_AKTUALISIEREN - Diese Prozedur ist dafür verantwortlich, die Kontostände in der Datenbank zu aktualisieren. Sie wird
+- KONTOSTAENDE_AKTUALISIERENOBJ - Diese Prozedur ist dafür zuständig, die Kontostände für Objekte in der Datenbank zu aktualisieren.
+- KONTOSTAND_AKTUALISIEREN - Prozedur zur Aktualisierung des Kontostands für ein bestimmtes Konto.
+- MITARBEITER_CRM - Die Prozedur 'MITARBEITER_CRM' dient zur Verwaltung von Mitarbeiterdaten im Customer Relationship Ma
+- OFFENE_POSTEN_LISTE - Die Prozedur 'OFFENE_POSTEN_LISTE' dient zur Abfrage von offenen Posten in der Buchhaltung einer Imm
+- OFFENE_SOLLSTELLUNGEN - Die Prozedur 'OFFENE_SOLLSTELLUNGEN' dient dazu, offene Sollstellungen basierend auf Banknummer und 
+- OFFENE_SOLLSTELLUNGEN_DIREKT - Die Prozedur 'OFFENE_SOLLSTELLUNGEN_DIREKT' dient dazu, offene Sollstellungen direkt zu ermitteln un
+- OFFENE_SOLLSTELLUNGEN_KONTO - Die Prozedur 'OFFENE_SOLLSTELLUNGEN_KONTO' dient zur Abfrage von offenen Sollstellungen auf einem Ko
+- OFFENE_SOLLSTELLUNGEN_OBJ - Die Prozedur 'OFFENE_SOLLSTELLUNGEN_OBJ' dient dazu, offene Sollstellungen für ein bestimmtes Objekt
+- ONL_OFFENE_SOLLSTELLUNGEN - Die Prozedur 'ONL_OFFENE_SOLLSTELLUNGEN' dient zur Abfrage offener Sollstellungen in einem Immobilie
+- RUECKLAGEN_GESAMT_ABR - Die Prozedur 'RUECKLAGEN_GESAMT_ABR' dient zur Abrechnung und Übersicht der gesamten Rücklagen eines
+- RUECKL_KONTROLL - Prozedur zur Kontrolle von Rückläufen in der Immobilienverwaltung.
+- RUECKL_KONTROLL_DETAIL - Die Prozedur 'RUECKL_KONTROLL_DETAIL' dient zur Detailkontrolle von Rückläufen in einem Immobilienve
+- SALDENLISTE_NEU - Die Prozedur SALDENLISTE_NEU dient zur Erstellung einer Saldenliste für einen bestimmten Zeitraum un
+- SALDENLISTE_NEU_DETAIL - Die Prozedur SALDENLISTE_NEU_DETAIL dient zur Erstellung einer detaillierten Saldenliste für einen b
+- SALDENLISTE_NEU_DETAIL1 - Die Prozedur SALDENLISTE_NEU_DETAIL1 ist für die Erstellung einer detaillierten Saldenliste verantwo
+- SALDENLISTE_NEU_DETAIL2 - Die Prozedur SALDENLISTE_NEU_DETAIL2 dient zur Abfrage von Saldeninformationen für einen spezifizier
+- SALDEN_LISTE - Die Prozedur SALDEN_LISTE ist für die Erstellung einer Liste von Salden für bestimmte Objekte innerh
+- SALDEN_LISTE_ALL - Die Prozedur SALDEN_LISTE_ALL ist für die Erstellung einer Saldenliste aller Konten für einen bestim
+- SEV_ABRECHNUNG - Die Prozedur SEV_ABRECHNUNG dient zur Durchführung von Abrechnungen im Immobilienverwaltungssystem '
+- SEV_SOLLSTELLUNGEN - Die Prozedur SEV_SOLLSTELLUNGEN ist für die Abfrage und Verarbeitung von Sollstellungen in einem Imm
+- SOLLBUCH_GET_ART_MWST - Diese Prozedur wird verwendet, um die Art der Mehrwertsteuer und zugehörige Kontoinformationen für B
+- SP_WHGLIST - Die Stored Procedure 'SP_WHGLIST' dient zur Abfrage von Wohnungslisten und liefert Informationen zu 
+- STAFFMIETERH - Die Prozedur STAFFMIETERH dient zur Handhabung von Staffelmieten für Mieter, indem sie relevante Inf
+- SUMMEN_UND_SALDENLISTE - Die Prozedur SUMMEN_UND_SALDENLISTE ist für die Erstellung einer Summen- und Saldenliste zuständig, 
+- SUMMEN_UND_SALDENLISTE_KLASSE - Diese Prozedur berechnet Summen und Salden für bestimmte Kontenklassen innerhalb eines gegebenen Zei
+- SUMMEN_UND_SALDENLISTE_UST - Diese Prozedur berechnet und liefert eine Liste von Summen und Salden für die Umsatzsteuer.
+- TRANSITIONS - Die Tabelle TRANSITIONS dient als Prozedur für die Verwaltung von Zeitübergängen, insbesondere für d
+- UEBERSICHT_BANKKONTO - Diese Prozedur dient zur Generierung einer Übersicht über die Bankkontobewegungen innerhalb eines be
+- UEBERSICHT_BANKKONTO_OHNE_SALDO - Diese Prozedur liefert eine Übersicht über Bankkontobewegungen ohne den aktuellen Saldo.
+- UNTERSCHR_LISTE - Die Prozedur UNTERSCHR_LISTE dient dazu, eine Liste von Unterschriftenberechtigten für eine bestimmt
+- USTLISTE - Die Prozedur USTLISTE ist für die Erstellung einer Umsatzsteuerliste verantwortlich, die verschieden
+- USTLISTE_KONTO - Die Prozedur 'USTLISTE_KONTO' dient zur Berechnung und Ausgabe von Umsatzsteuerinformationen für Kon
+- VERSAMMLUNG_ERG - Die Prozedur VERSAMMLUNG_ERG dient dazu, Ergebnisse von Eigentümerversammlungen zu verarbeiten und a
+- VZ_BE_DETAIL - Die Prozedur VZ_BE_DETAIL dient zur Abfrage von Verrechnungsdetails für einen bestimmten Zeitraum un
+- WEG_SAMMELLIST - Die Prozedur 'WEG_SAMMELLIST' dient zur Erstellung einer Sammelliste für Wohnungseigentümergemeinsch
+- WEG_VERMOEGENSSTATUS - Die Prozedur WEG_VERMOEGENSSTATUS dient zur Ermittlung des Vermögensstatus einer Wohnungseigentümerg
+- ZAHLUNGSUEBERSICHT - Die Prozedur ZAHLUNGSUEBERSICHT dient zur Generierung einer Übersicht über Zahlungen innerhalb eines

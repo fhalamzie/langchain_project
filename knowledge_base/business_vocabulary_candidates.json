@@ -1,0 +1,100 @@
+{
+  "_note": "This file contains candidates extracted from SQL filenames. Please review and curate into business_vocabulary.json",
+  "candidates": {
+    "aktuelle mieter": {
+      "source_file": "03_aktuelle_mieter.sql",
+      "primary_table": "BEWOHNER",
+      "description": "Verwaltung aktueller Mietverhältnisse mit allen Kontakt- und Zahlungsinformationen"
+    },
+    "bank konten": {
+      "source_file": "12_bank_konten.sql",
+      "primary_table": "KONTEN",
+      "description": "Übersicht aller Bankkonten und Liquidität pro Objekt"
+    },
+    "detaillierte buchungen": {
+      "source_file": "26_detaillierte_buchungen.sql",
+      "primary_table": "BUCHUNG",
+      "description": "Alle Buchungen eines Kontos/Objekts inkl. Durchlaufende Posten & Sonderentnahmen"
+    },
+    "durchlaufende posten": {
+      "source_file": "31_durchlaufende_posten.sql",
+      "primary_table": "RUECKPOS",
+      "description": "Übersicht aller durchlaufenden Posten (temporäre Buchungen)"
+    },
+    "eigentuemer konten": {
+      "source_file": "10_eigentuemer_konten.sql",
+      "primary_table": "KONTEN",
+      "description": "Übersicht aller WEG-Eigentümerkonten mit Salden und Zuordnungen"
+    },
+    "eigentuemer op zusammenfassung": {
+      "source_file": "15_eigentuemer_op_zusammenfassung.sql",
+      "primary_table": "KONTEN",
+      "description": "Konsolidierte Übersicht offener Posten pro Eigentümer"
+    },
+    "forderungsalterung": {
+      "source_file": "21_forderungsalterung.sql",
+      "primary_table": "KONTEN",
+      "description": "Altersstruktur offener Forderungen für gezieltes Inkasso"
+    },
+    "instandhaltungskosten": {
+      "source_file": "23_instandhaltungskosten.sql",
+      "primary_table": "BUCHUNG",
+      "description": "Analyse der Instandhaltungskosten nach Kategorie und Objekt"
+    },
+    "konten saldenliste": {
+      "source_file": "27_konten_saldenliste.sql",
+      "primary_table": "KONTEN",
+      "description": "Saldenliste aller NK-relevanten Konten mit Finanzwerten"
+    },
+    "leerstandsanalyse": {
+      "source_file": "22_leerstandsanalyse.sql",
+      "primary_table": "WOHNUNG",
+      "description": "Identifikation und finanzielle Bewertung von Leerständen"
+    },
+    "mieter konten": {
+      "source_file": "11_mieter_konten.sql",
+      "primary_table": "KONTEN",
+      "description": "Übersicht aller Mieterkonten mit Zahlungsstatus"
+    },
+    "nebenkostenkonten matrix": {
+      "source_file": "28_nebenkostenkonten_matrix.sql",
+      "primary_table": "KONTEN",
+      "description": "Matrix aller NK-Positionen mit Umlageschlüsseln und Kosten"
+    },
+    "objektbezogene sachkonten": {
+      "source_file": "25_objektbezogene_sachkonten.sql",
+      "primary_table": "KONTEN",
+      "description": "Übersicht aller Sachkonten eines Objekts für NK-Abrechnung"
+    },
+    "objekte portfolio": {
+      "source_file": "06_objekte_portfolio.sql",
+      "primary_table": "OBJEKTE",
+      "description": "Übersicht aller verwalteten Liegenschaften mit Nutzungsarten"
+    },
+    "ruecklagen management": {
+      "source_file": "33_ruecklagen_management.sql",
+      "primary_table": "RUECKPOS",
+      "description": "Vollständige Übersicht aller Rücklagenpositionen pro WEG"
+    },
+    "ruecklagenanalyse": {
+      "source_file": "24_ruecklagenanalyse.sql",
+      "primary_table": "RUECKPOS",
+      "description": "Vollständige Analyse der Instandhaltungsrücklagen pro WEG"
+    },
+    "sonderentnahmen": {
+      "source_file": "32_sonderentnahmen.sql",
+      "primary_table": "RUECKPOS",
+      "description": "Analyse außerordentlicher Entnahmen und Zuführungen"
+    },
+    "spezielle kontenklassen": {
+      "source_file": "34_spezielle_kontenklassen.sql",
+      "primary_table": "KONTEN",
+      "description": "Übersicht aller speziellen Kontenklassen und -arten"
+    },
+    "wohnungen leerstand": {
+      "source_file": "08_wohnungen_leerstand.sql",
+      "primary_table": "WOHNUNG",
+      "description": "Vollständige Wohnungsübersicht mit aktuellem Belegungsstatus"
+    }
+  }
+}

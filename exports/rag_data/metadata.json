@@ -1,0 +1,25 @@
+{
+  "export_timestamp": "2025-06-14T15:01:11.263658",
+  "data_counts": {
+    "mieter": 200,
+    "eigentuemer": 311,
+    "objekte": 77
+  },
+  "total_entities": 588,
+  "data_sources": {
+    "mieter": "vw_mieter_komplett",
+    "eigentuemer": "vw_eigentuemer_portfolio",
+    "objekte": "vw_objekte_details"
+  },
+  "business_rules": {
+    "active_tenants": "VENDE IS NULL OR VENDE > CURRENT_DATE",
+    "exclude_test_data": "ONR < 890",
+    "valid_owners": "EIGNR > 0 AND EIGNR <> -1"
+  },
+  "rag_optimization": {
+    "encoding": "UTF-8",
+    "structure": "business_ready",
+    "token_optimized": true,
+    "german_umlauts": true
+  }
+}

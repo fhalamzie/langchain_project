@@ -1,0 +1,200 @@
+{
+  "BANKEN": [
+    "BUCHUNG",
+    "KONTEN"
+  ],
+  "BEWADR": [
+    "BEWOHNER",
+    "EIGADR",
+    "KONTEN",
+    "OBJEKTE",
+    "WOHNUNG"
+  ],
+  "BEWOHNER": [
+    "BEWADR",
+    "BUCHUNG",
+    "COALESCE",
+    "CURRENT_DATE",
+    "EIGADR",
+    "KONTEN",
+    "LetzterMieter",
+    "OBJEKTE",
+    "WOHNUNG"
+  ],
+  "BUCHUNG": [
+    "BANKEN",
+    "BEWOHNER",
+    "EIGENTUEMER",
+    "KONTEN",
+    "LetzteBuchung",
+    "buchungen_haben",
+    "buchungen_soll",
+    "zahlungen"
+  ],
+  "BankkontenDetails": [
+    "RUECKBKT",
+    "RUECKPOS",
+    "RuecklagenPositionen"
+  ],
+  "COALESCE": [
+    "BEWOHNER",
+    "CURRENT_DATE",
+    "EIGADR",
+    "WOHNUNG"
+  ],
+  "CURRENT_DATE": [
+    "BEWOHNER",
+    "COALESCE",
+    "EIGADR",
+    "WOHNUNG"
+  ],
+  "EIGADR": [
+    "BEWADR",
+    "BEWOHNER",
+    "COALESCE",
+    "CURRENT_DATE",
+    "EIGENTUEMER",
+    "HK_WOHN",
+    "KONTEN",
+    "OBJEKTE",
+    "VEREIG",
+    "VERSAMMLUNG",
+    "WOHNUNG"
+  ],
+  "EIGENTUEMER": [
+    "BUCHUNG",
+    "EIGADR",
+    "HK_WOHN",
+    "KONTEN",
+    "OBJEKTE",
+    "WOHNUNG",
+    "zahlungen",
+    "zahlungssummen"
+  ],
+  "HK_WOHN": [
+    "EIGADR",
+    "EIGENTUEMER",
+    "OBJEKTE",
+    "WOHNUNG"
+  ],
+  "KONTEN": [
+    "BANKEN",
+    "BEWADR",
+    "BEWOHNER",
+    "BUCHUNG",
+    "EIGADR",
+    "EIGENTUEMER",
+    "LetzteBuchung",
+    "OBJBANKEN",
+    "OBJEKTE",
+    "POSITION",
+    "RUECKPOS",
+    "SKR03",
+    "SKR04",
+    "WOHNUNG",
+    "buchungen_haben",
+    "buchungen_soll",
+    "zahlungssummen"
+  ],
+  "LetzteBuchung": [
+    "BUCHUNG",
+    "KONTEN"
+  ],
+  "LetzterMieter": [
+    "BEWOHNER",
+    "WOHNUNG"
+  ],
+  "OBJBANKEN": [
+    "KONTEN",
+    "POSITION"
+  ],
+  "OBJEKTE": [
+    "BEWADR",
+    "BEWOHNER",
+    "EIGADR",
+    "EIGENTUEMER",
+    "HK_WOHN",
+    "KONTEN",
+    "WOHNUNG"
+  ],
+  "POSITION": [
+    "KONTEN",
+    "OBJBANKEN"
+  ],
+  "RUECKBKT": [
+    "BankkontenDetails",
+    "RUECKPOS",
+    "RuecklagenPositionen"
+  ],
+  "RUECKPOS": [
+    "BankkontenDetails",
+    "KONTEN",
+    "RUECKBKT",
+    "RuecklagenPositionen"
+  ],
+  "RuecklagenPositionen": [
+    "BankkontenDetails",
+    "RUECKBKT",
+    "RUECKPOS"
+  ],
+  "SKR03": [
+    "KONTEN",
+    "SKR04"
+  ],
+  "SKR04": [
+    "KONTEN",
+    "SKR03"
+  ],
+  "VEREIG": [
+    "EIGADR",
+    "VERERG",
+    "VERSAMMLUNG",
+    "VERTHEMEN"
+  ],
+  "VERERG": [
+    "VEREIG",
+    "VERSAMMLUNG",
+    "VERTHEMEN"
+  ],
+  "VERSAMMLUNG": [
+    "EIGADR",
+    "VEREIG",
+    "VERERG",
+    "VERTHEMEN"
+  ],
+  "VERTHEMEN": [
+    "VEREIG",
+    "VERERG",
+    "VERSAMMLUNG"
+  ],
+  "WOHNUNG": [
+    "BEWADR",
+    "BEWOHNER",
+    "COALESCE",
+    "CURRENT_DATE",
+    "EIGADR",
+    "EIGENTUEMER",
+    "HK_WOHN",
+    "KONTEN",
+    "LetzterMieter",
+    "OBJEKTE"
+  ],
+  "buchungen_haben": [
+    "BUCHUNG",
+    "KONTEN",
+    "buchungen_soll"
+  ],
+  "buchungen_soll": [
+    "BUCHUNG",
+    "KONTEN",
+    "buchungen_haben"
+  ],
+  "zahlungen": [
+    "BUCHUNG",
+    "EIGENTUEMER"
+  ],
+  "zahlungssummen": [
+    "EIGENTUEMER",
+    "KONTEN"
+  ]
+}

@@ -1,0 +1,3802 @@
+[
+  {
+    "name": null,
+    "partner": null,
+    "adresse": "Von-Waldthausen-Straße 44, 2. OG rechts",
+    "plz": "44894",
+    "stadt": "Bochum",
+    "kontakt": {
+      "telefon": "+4915785996600",
+      "email": "nadja_94@hotmail.de",
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 0,
+      "warmmiete": 720.0,
+      "zahlungsstatus": "Guthaben    "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": null,
+    "partner": null,
+    "adresse": "Steinf. 32/34 + Schonneb. 81, Schonnebecker 81 - Lager",
+    "plz": "45884",
+    "stadt": "Gelsenkirchen",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 0,
+      "warmmiete": 100.0,
+      "zahlungsstatus": "Unbekannt   "
+    },
+    "eigentuemer": " Ruhrstadt Wohnen GmbH"
+  },
+  {
+    "name": " H.F. Bestatter in Essen GmbH",
+    "partner": " ",
+    "adresse": "Byfangerstraße 22, Lokal",
+    "plz": "45257",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": null,
+      "email": "info@bestatter-in-essen.de",
+      "handy": "0201 858030"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 8,
+      "warmmiete": 470.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": "Fahim Halamzie"
+  },
+  {
+    "name": " KFZ Büro Arens",
+    "partner": " ",
+    "adresse": "Hauptstraße 128, Garage 5",
+    "plz": "54568",
+    "stadt": "Gerolstein",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 6,
+      "warmmiete": 45.0,
+      "zahlungsstatus": "Ausgeglichen"
+    },
+    "eigentuemer": " "
+  },
+  {
+    "name": " Omairat",
+    "partner": " ",
+    "adresse": "Steinf. 32/34 + Schonneb. 81, Schonnebecker 81 1. OG",
+    "plz": "45884",
+    "stadt": "Gelsenkirchen",
+    "kontakt": {
+      "telefon": "017622863421",
+      "email": "rania.omairat@icloud.com",
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 12,
+      "warmmiete": 678.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Ruhrstadt Wohnen GmbH"
+  },
+  {
+    "name": " RSIS",
+    "partner": " ",
+    "adresse": "Kupferdreherstraße 190, Lager",
+    "plz": "45257",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 2,
+      "warmmiete": 400.0,
+      "zahlungsstatus": "Ausgeglichen"
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": " RSIS",
+    "partner": " ",
+    "adresse": "Kupferdreherstraße 190, Lager",
+    "plz": "45257",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 2,
+      "warmmiete": 400.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": " Trödelhalle für den Tierschutz e.V. Essen",
+    "partner": " ",
+    "adresse": "Kämpenstraße 13, Garage 2",
+    "plz": "45147",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": null,
+      "email": "adrianochmanski@hotmail.com",
+      "handy": "+491787742424"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 1,
+      "warmmiete": 90.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": " WEG Marienstr. 28",
+    "partner": " ",
+    "adresse": "Marienstraße 26, WEG Marienstr. 28",
+    "plz": "45307",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 4,
+      "warmmiete": 825.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": " headwaylogistic gmbh",
+    "partner": "Gabriel Virciu (Angestellter)",
+    "adresse": "Steinf. 32/34 + Schonneb. 81, Schonnebecker 81 DG",
+    "plz": "45884",
+    "stadt": "Gelsenkirchen",
+    "kontakt": {
+      "telefon": "49(0)231.5655789-0 ",
+      "email": "recklinghausen@headway-logistic.com",
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 3,
+      "warmmiete": 600.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Ruhrstadt Wohnen GmbH"
+  },
+  {
+    "name": "Abbas Raheel",
+    "partner": " ",
+    "adresse": "Hauptstraße 128, 3. OG links mitte",
+    "plz": "54568",
+    "stadt": "Gerolstein",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 3,
+      "warmmiete": 570.0,
+      "zahlungsstatus": "Ausgeglichen"
+    },
+    "eigentuemer": " "
+  },
+  {
+    "name": "Afrodita Kurtic",
+    "partner": " ",
+    "adresse": "Steinf. 32/34 + Schonneb. 81, Steinfurth 32 1.OG links",
+    "plz": "45884",
+    "stadt": "Gelsenkirchen",
+    "kontakt": {
+      "telefon": null,
+      "email": "afroditakurtic@gmail.com",
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 5,
+      "warmmiete": 805.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Ruhrstadt Wohnen GmbH"
+  },
+  {
+    "name": "Afrodita Kurtic",
+    "partner": " ",
+    "adresse": "Steinf. 32/34 + Schonneb. 81, Steinfurth 32 Garage 1",
+    "plz": "45884",
+    "stadt": "Gelsenkirchen",
+    "kontakt": {
+      "telefon": null,
+      "email": "afroditakurtic@gmail.com",
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 3,
+      "warmmiete": 45.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Ruhrstadt Wohnen GmbH"
+  },
+  {
+    "name": "Ahmad Sheikh Alshabab",
+    "partner": " ",
+    "adresse": "Polsumerstraße 156, 3. OG mitte",
+    "plz": "45896",
+    "stadt": "Gelsenkirchen",
+    "kontakt": {
+      "telefon": " 017663671882",
+      "email": "ahmadsheikhalshabab@gmail.com",
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 3,
+      "warmmiete": 520.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Ahmed Ahmed Obaid Ali",
+    "partner": " ",
+    "adresse": "Hordelerstraße 110, EG",
+    "plz": "44651",
+    "stadt": "Herne",
+    "kontakt": {
+      "telefon": "+491773562311",
+      "email": "ahmedali@outlook.de",
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 1,
+      "warmmiete": 1250.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Ahmed Hassan",
+    "partner": "Berivan Doko",
+    "adresse": "Polsumerstraße 156, 2. OG rechts",
+    "plz": "45896",
+    "stadt": "Gelsenkirchen",
+    "kontakt": {
+      "telefon": "015254116465",
+      "email": "hassanservice.17@gmail.com",
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 3,
+      "warmmiete": 639.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Ahmet Akbas",
+    "partner": " ",
+    "adresse": "Schmiedestraße 8, DG mitte",
+    "plz": "47055",
+    "stadt": "Duisburg",
+    "kontakt": {
+      "telefon": null,
+      "email": "ahmetakbas.buis@gmail.com",
+      "handy": "017685380010"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 3,
+      "warmmiete": 396.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": "Fahim Halamzie"
+  },
+  {
+    "name": "Akram Ghazzawi",
+    "partner": " ",
+    "adresse": "Hochfelderstraße 76 +78, Haus 76 - 3. OG links",
+    "plz": "47226",
+    "stadt": "Duisburg",
+    "kontakt": {
+      "telefon": null,
+      "email": "akram.gh.s@gmail.com",
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 3,
+      "warmmiete": 470.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Alexander Christopher Katona",
+    "partner": " ",
+    "adresse": "Kupferdreherstraße 190, 1. OG links",
+    "plz": "45257",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": "+491704628607",
+      "email": "alexanderkatona@gmx.net",
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 1,
+      "warmmiete": 850.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Alexander Tim Wimmers",
+    "partner": "Huilin Zhuang-Wimmers",
+    "adresse": "Dechant-Flocken-Str. 2, 2a - EG Mitte",
+    "plz": "52388",
+    "stadt": "Nörvenich",
+    "kontakt": {
+      "telefon": null,
+      "email": "alexander_wimmers@outlook.de",
+      "handy": "+4915757165405"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 3,
+      "warmmiete": 980.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Virnich Grundbesitz GbR"
+  },
+  {
+    "name": "Alhmedi Alaa",
+    "partner": " ",
+    "adresse": "Hochfelderstraße 76 +78, Haus 78 - EG rechts",
+    "plz": "47226",
+    "stadt": "Duisburg",
+    "kontakt": {
+      "telefon": null,
+      "email": "alaaalhamedi49@gmail.com",
+      "handy": " +4917687732984"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 6,
+      "warmmiete": 610.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Ali Fares Jahangir",
+    "partner": " ",
+    "adresse": "Schmiedestraße 8, 2. OG",
+    "plz": "47055",
+    "stadt": "Duisburg",
+    "kontakt": {
+      "telefon": null,
+      "email": "ali.1020fares@gmail.com",
+      "handy": "015778516375"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 3,
+      "warmmiete": 630.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": "Fahim Halamzie"
+  },
+  {
+    "name": "Ali Yaiama",
+    "partner": " ",
+    "adresse": "Hauptstraße 128, Garage 2",
+    "plz": "54568",
+    "stadt": "Gerolstein",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 4,
+      "warmmiete": 45.0,
+      "zahlungsstatus": "Ausgeglichen"
+    },
+    "eigentuemer": " "
+  },
+  {
+    "name": "Alina Beckes",
+    "partner": " ",
+    "adresse": "Dechant-Flocken-Str. 2, 2b -  1. OG links",
+    "plz": "52388",
+    "stadt": "Nörvenich",
+    "kontakt": {
+      "telefon": null,
+      "email": "alina.backes@gmx.de",
+      "handy": "+4915222735111"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 3,
+      "warmmiete": 673.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Virnich Grundbesitz GbR"
+  },
+  {
+    "name": "Alla Varvarchuk",
+    "partner": " ",
+    "adresse": "Erlenstr. 21, 2. OG links",
+    "plz": "52353",
+    "stadt": "Düren",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": "+4915259788667"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 2,
+      "warmmiete": 571.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Virnich Grundbesitz GbR"
+  },
+  {
+    "name": "Amira Belyanma",
+    "partner": " ",
+    "adresse": "Stauderstraße 59, Großes Ladenlokal",
+    "plz": "45326",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": null,
+      "email": "belyanmaamira@gmail.com",
+      "handy": "+491733172322"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 1,
+      "warmmiete": 1130.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Anastasiia Tarasova",
+    "partner": null,
+    "adresse": "Von-Waldthausen-Straße 44, 2. OG links",
+    "plz": "44894",
+    "stadt": "Bochum",
+    "kontakt": {
+      "telefon": "+4915252392728",
+      "email": "trskn.n010305@gmail.com",
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 0,
+      "warmmiete": 581.35,
+      "zahlungsstatus": "Unbekannt   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Andrea Abdul Rahman",
+    "partner": "Mahmoud Abdul Rahman",
+    "adresse": "Stauderstraße 59, 2. OG mitte",
+    "plz": "45326",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": "0176 70953710"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 7,
+      "warmmiete": 730.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Anette Steinhoff",
+    "partner": " ",
+    "adresse": "Kämpenstraße 13, 2. OG rechts",
+    "plz": "45147",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": null,
+      "email": "steinhoff.heinr@gmail.com",
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 19,
+      "warmmiete": 522.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Anhelina Biloshytska",
+    "partner": null,
+    "adresse": "Hochfelderstraße 76 +78, Haus 76 - 1. OG links",
+    "plz": "47226",
+    "stadt": "Duisburg",
+    "kontakt": {
+      "telefon": "+4917684300217",
+      "email": "vladb1492@gmail.com",
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 0,
+      "warmmiete": 600.0,
+      "zahlungsstatus": "Unbekannt   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Anna Kierspel",
+    "partner": "Hermann Kierpsel",
+    "adresse": "Dechant-Flocken-Str. 2, 2a - 1. OG rechts",
+    "plz": "52388",
+    "stadt": "Nörvenich",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": "+49267219158343"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 3,
+      "warmmiete": 880.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Virnich Grundbesitz GbR"
+  },
+  {
+    "name": "Anojan Vallipuram",
+    "partner": " ",
+    "adresse": "Hombrucherstraße 1, 1. OG links",
+    "plz": "45139",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": "015221881973"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 5,
+      "warmmiete": 424.5,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Ari Harum",
+    "partner": " ",
+    "adresse": "Polsumerstraße 156, Gewerbe links",
+    "plz": "45896",
+    "stadt": "Gelsenkirchen",
+    "kontakt": {
+      "telefon": null,
+      "email": "haushaltshilfe.gelsenkirchen@outlock.de",
+      "handy": "+491621506050"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 1,
+      "warmmiete": 750.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Asha Ghussoun",
+    "partner": "Zakaria ",
+    "adresse": "Hauptstraße 128, EG rechts",
+    "plz": "54568",
+    "stadt": "Gerolstein",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 7,
+      "warmmiete": 577.0,
+      "zahlungsstatus": "Ausgeglichen"
+    },
+    "eigentuemer": " "
+  },
+  {
+    "name": "Astrid John",
+    "partner": " ",
+    "adresse": "Donatusstraße 8, WE06",
+    "plz": "50259",
+    "stadt": "Pulheim",
+    "kontakt": {
+      "telefon": null,
+      "email": "Astrid.John@gmx.de",
+      "handy": "+49 152 31962753"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 15,
+      "warmmiete": 761.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": "Dorothea Rixen"
+  },
+  {
+    "name": "Berkant Kirov",
+    "partner": null,
+    "adresse": "Bismarkstraße 56, DG links",
+    "plz": "45888",
+    "stadt": "Gelsenkirchen",
+    "kontakt": {
+      "telefon": null,
+      "email": "dimitrovagyulbie@gmail.com",
+      "handy": "4917666612976"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 0,
+      "warmmiete": 455.0,
+      "zahlungsstatus": "Unbekannt   "
+    },
+    "eigentuemer": "Fahim Halamzie"
+  },
+  {
+    "name": "Bernd Klock",
+    "partner": " ",
+    "adresse": "Heerstraße 97, EG",
+    "plz": "47053",
+    "stadt": "Duisburg",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": "015730112191"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 7,
+      "warmmiete": 286.17,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": "Pamir Halamzie"
+  },
+  {
+    "name": "Bestun Kaderzada",
+    "partner": "Marwa Husarin",
+    "adresse": "Hauptstraße 128, 1. OG rechts mitte",
+    "plz": "54568",
+    "stadt": "Gerolstein",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 4,
+      "warmmiete": 645.0,
+      "zahlungsstatus": "Ausgeglichen"
+    },
+    "eigentuemer": " "
+  },
+  {
+    "name": "Brigitte Kumetz",
+    "partner": "Stefan Peters",
+    "adresse": "Byfangerstraße 24, 2. OG",
+    "plz": "45257",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": null,
+      "email": "s.peters66.1@web.de",
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 0,
+      "warmmiete": 684.67,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": "Fahim Halamzie"
+  },
+  {
+    "name": "Burak Güngör",
+    "partner": "Asyegül Güngör",
+    "adresse": "Kupferdreherstraße 190, 1. OG links",
+    "plz": "45257",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": null,
+      "email": "burak.g-97@hotmail.de",
+      "handy": "01715564174"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 3,
+      "warmmiete": 850.0,
+      "zahlungsstatus": "Ausgeglichen"
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Carina Peters",
+    "partner": " ",
+    "adresse": "Heerstraße 97, 1. OG",
+    "plz": "47053",
+    "stadt": "Duisburg",
+    "kontakt": {
+      "telefon": "+4915222567516",
+      "email": null,
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 4,
+      "warmmiete": 470.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": "Pamir Halamzie"
+  },
+  {
+    "name": "Caylak Endem",
+    "partner": " ",
+    "adresse": "Hochfelderstraße 76 +78, Haus 78 - EG links",
+    "plz": "47226",
+    "stadt": "Duisburg",
+    "kontakt": {
+      "telefon": "01772655350",
+      "email": "emirhanture653@gmail.com",
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 6,
+      "warmmiete": 668.95,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Chantal Maaßen",
+    "partner": "Florian Behler",
+    "adresse": "Byfangerstraße 22, 1. OG links",
+    "plz": "45257",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": "+4917660149414",
+      "email": "chani.maa48@gmail.com",
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 2,
+      "warmmiete": 1142.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": "Fahim Halamzie"
+  },
+  {
+    "name": "Christa Schüssler",
+    "partner": " ",
+    "adresse": "Hauptstraße 128, Garage 4",
+    "plz": "54568",
+    "stadt": "Gerolstein",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 9,
+      "warmmiete": 45.0,
+      "zahlungsstatus": "Ausgeglichen"
+    },
+    "eigentuemer": " "
+  },
+  {
+    "name": "Christian Schumacher",
+    "partner": " ",
+    "adresse": "Dechant-Flocken-Str. 2, UG Mitte",
+    "plz": "52388",
+    "stadt": "Nörvenich",
+    "kontakt": {
+      "telefon": "+4915162525448",
+      "email": "christian@stille-net.com",
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 3,
+      "warmmiete": 807.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Virnich Grundbesitz GbR"
+  },
+  {
+    "name": "Dagmar Soldat",
+    "partner": "Dennis Brauner",
+    "adresse": "Donatusstraße 8, WE05",
+    "plz": "50259",
+    "stadt": "Pulheim",
+    "kontakt": {
+      "telefon": "+49 2234 12667",
+      "email": "dennis.brauner@gmx.de",
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 10,
+      "warmmiete": 1006.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": "Dorothea Rixen"
+  },
+  {
+    "name": "Dakhil Chamo Haji",
+    "partner": "Kasem Zaineb Haji",
+    "adresse": "Stauderstraße 59, 1. OG links",
+    "plz": "45326",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": "01578 1785230"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 8,
+      "warmmiete": 963.1,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "David Nowak",
+    "partner": " ",
+    "adresse": "Heerstraße 97, 1. OG hinten",
+    "plz": "47053",
+    "stadt": "Duisburg",
+    "kontakt": {
+      "telefon": "01573469401",
+      "email": "davidnowak.kobi@gmail.com",
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 3,
+      "warmmiete": 410.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": "Pamir Halamzie"
+  },
+  {
+    "name": "Dennis Gattnar",
+    "partner": " ",
+    "adresse": "Kämpenstraße 13, 3. OG links",
+    "plz": "45147",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 19,
+      "warmmiete": 414.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Denys Grechka",
+    "partner": "Yulija Grechka",
+    "adresse": "Dechant-Flocken-Str. 2, DG rechts",
+    "plz": "52388",
+    "stadt": "Nörvenich",
+    "kontakt": {
+      "telefon": null,
+      "email": "denrik1981@gmail.com",
+      "handy": "+49160959600500"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 3,
+      "warmmiete": 736.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Virnich Grundbesitz GbR"
+  },
+  {
+    "name": "Dimitrij Kotowskij",
+    "partner": null,
+    "adresse": "Byfangerstraße 22, DG links",
+    "plz": "45257",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": "+491638677547",
+      "email": "jonni12345@gmx.de",
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 1,
+      "warmmiete": 620.0,
+      "zahlungsstatus": "Unbekannt   "
+    },
+    "eigentuemer": "Fahim Halamzie"
+  },
+  {
+    "name": "Elena  Asenova",
+    "partner": " ",
+    "adresse": "Germanenstraße 1, 1. OG links",
+    "plz": "45888",
+    "stadt": "Gelsenkirchen",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": "0176 24670862"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 7,
+      "warmmiete": 400.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": "Fahim Halamzie"
+  },
+  {
+    "name": "Engin Bozuk",
+    "partner": "Emine Arslan ",
+    "adresse": "Steinf. 32/34 + Schonneb. 81, Steinfurth 32 Garage 2",
+    "plz": "45884",
+    "stadt": "Gelsenkirchen",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 5,
+      "warmmiete": 45.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Ruhrstadt Wohnen GmbH"
+  },
+  {
+    "name": "Erhan Genc",
+    "partner": " ",
+    "adresse": "Steinf. 32/34 + Schonneb. 81, Schonnebecker 81 EG",
+    "plz": "45884",
+    "stadt": "Gelsenkirchen",
+    "kontakt": {
+      "telefon": null,
+      "email": "erhan.genc@aol.de",
+      "handy": "01638269648"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 3,
+      "warmmiete": 740.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Ruhrstadt Wohnen GmbH"
+  },
+  {
+    "name": "Eric-Jeremy Ellberg",
+    "partner": " ",
+    "adresse": "Hochfelderstraße 76 +78, Haus 76 - 2. OG rechts",
+    "plz": "47226",
+    "stadt": "Duisburg",
+    "kontakt": {
+      "telefon": "+4915228625076",
+      "email": "ellbergericjeremy@gmail.com",
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 1,
+      "warmmiete": 536.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Erich Franz Clasen",
+    "partner": "Annemarie Clasen",
+    "adresse": "Erlenstr. 21, 1. OG links",
+    "plz": "52353",
+    "stadt": "Düren",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 20,
+      "warmmiete": 586.56,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Virnich Grundbesitz GbR"
+  },
+  {
+    "name": "Eve Heinrich",
+    "partner": " ",
+    "adresse": "Byfangerstraße 22, DG rechts",
+    "plz": "45257",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": "+491751562305",
+      "email": "eve-heinrich@web.de",
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 2,
+      "warmmiete": 650.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": "Fahim Halamzie"
+  },
+  {
+    "name": "Fabian Anton",
+    "partner": "Nina Christoffer",
+    "adresse": "Dechant-Flocken-Str. 2, 2a - DG rechts",
+    "plz": "52388",
+    "stadt": "Nörvenich",
+    "kontakt": {
+      "telefon": null,
+      "email": "anton.fabian@gmx.de",
+      "handy": "+4917682164757"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 2,
+      "warmmiete": 800.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Virnich Grundbesitz GbR"
+  },
+  {
+    "name": "Fatma Tasar",
+    "partner": " ",
+    "adresse": "Hochfelderstraße 76 +78, Haus 78 - 1. OG rechts",
+    "plz": "47226",
+    "stadt": "Duisburg",
+    "kontakt": {
+      "telefon": "01773973313",
+      "email": null,
+      "handy": "0177 9748465"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 13,
+      "warmmiete": 420.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Felix Faure",
+    "partner": " ",
+    "adresse": "Dechant-Flocken-Str. 2, 1. OG Mitte",
+    "plz": "52388",
+    "stadt": "Nörvenich",
+    "kontakt": {
+      "telefon": null,
+      "email": "felix.faure@web.de",
+      "handy": "+4915734442057"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 3,
+      "warmmiete": 895.83,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Virnich Grundbesitz GbR"
+  },
+  {
+    "name": "Frank Lauf",
+    "partner": " ",
+    "adresse": "Geranienhof 3, Garage 04",
+    "plz": "50769",
+    "stadt": "Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 10,
+      "warmmiete": 60.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " "
+  },
+  {
+    "name": "Frank Neubauer",
+    "partner": " ",
+    "adresse": "Steinf. 32/34 + Schonneb. 81, Steinfurth 32 EG rechts",
+    "plz": "45884",
+    "stadt": "Gelsenkirchen",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 9,
+      "warmmiete": 337.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Ruhrstadt Wohnen GmbH"
+  },
+  {
+    "name": "Franz Pfeifer",
+    "partner": " ",
+    "adresse": "Friedrichstraße 19, 1. OG links",
+    "plz": "46145",
+    "stadt": "Oberhausen",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": "0176 36062010"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 7,
+      "warmmiete": 399.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": "Fahim Halamzie"
+  },
+  {
+    "name": "Franziska Silberkuhl",
+    "partner": " ",
+    "adresse": "Byfangerstraße 24, DG",
+    "plz": "45257",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": "+4917632949265",
+      "email": "franzisilberkuhl@gmail.com",
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 1,
+      "warmmiete": 790.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": "Fahim Halamzie"
+  },
+  {
+    "name": "Giesela Winzen",
+    "partner": " ",
+    "adresse": "Geranienhof 3, 1. OG links",
+    "plz": "50769",
+    "stadt": "Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 18,
+      "warmmiete": 711.5,
+      "zahlungsstatus": "Ausgeglichen"
+    },
+    "eigentuemer": " "
+  },
+  {
+    "name": "Golma Haridari",
+    "partner": "Mousa Jamil Sori",
+    "adresse": "Hauptstraße 128, 3. OG links",
+    "plz": "54568",
+    "stadt": "Gerolstein",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 6,
+      "warmmiete": 596.9,
+      "zahlungsstatus": "Ausgeglichen"
+    },
+    "eigentuemer": " "
+  },
+  {
+    "name": "Güneri Hüseyin",
+    "partner": " ",
+    "adresse": "Kämpenstraße 13, Stellplatz 4",
+    "plz": "45147",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": "+491639550182",
+      "email": "kontakt@sv-hak.de",
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 0,
+      "warmmiete": 30.0,
+      "zahlungsstatus": "Unbekannt   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Güneri Hüseyin",
+    "partner": " ",
+    "adresse": "Kämpenstraße 13, Garage 4",
+    "plz": "45147",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": "+491639550182",
+      "email": "kontakt@sv-hak.de",
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 0,
+      "warmmiete": 70.0,
+      "zahlungsstatus": "Unbekannt   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Güneri Hüseyin",
+    "partner": " ",
+    "adresse": "Kämpenstraße 13, Lager rechts",
+    "plz": "45147",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": "+491639550182",
+      "email": "kontakt@sv-hak.de",
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 1,
+      "warmmiete": 1000.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Habib Rahmani",
+    "partner": " ",
+    "adresse": "Kämpenstraße 13, 2. OG links",
+    "plz": "45147",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": "0174 821 79 79"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 5,
+      "warmmiete": 450.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Halil Bayram",
+    "partner": "Zehra Bayram",
+    "adresse": "Geranienhof 3, 1. OG rechts",
+    "plz": "50769",
+    "stadt": "Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": "+49 177 8715559"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 5,
+      "warmmiete": 1130.0,
+      "zahlungsstatus": "Guthaben    "
+    },
+    "eigentuemer": " "
+  },
+  {
+    "name": "Hartwig Hardenacke",
+    "partner": " ",
+    "adresse": "Kämpenstraße 13, Garage 1",
+    "plz": "45147",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": "+491719788060",
+      "email": "hartwig.hardenacke@t-online.de",
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 1,
+      "warmmiete": 70.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Heiko Spudat",
+    "partner": "Ilona Grira",
+    "adresse": "Geranienhof 3, 2. OG rechts",
+    "plz": "50769",
+    "stadt": "Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 0,
+      "warmmiete": 1015.5,
+      "zahlungsstatus": "Ausgeglichen"
+    },
+    "eigentuemer": " "
+  },
+  {
+    "name": "Heiko Spudat",
+    "partner": "Ilona Grira",
+    "adresse": "Geranienhof 3, Garage 03",
+    "plz": "50769",
+    "stadt": "Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 14,
+      "warmmiete": 60.0,
+      "zahlungsstatus": "Ausgeglichen"
+    },
+    "eigentuemer": " "
+  },
+  {
+    "name": "Heinz-Peter Renkens",
+    "partner": " ",
+    "adresse": "Bäuminghausstraße 41, 2. OG links",
+    "plz": "45326",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": "+4915224451712",
+      "email": "hp@hp-renkens.de",
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 1,
+      "warmmiete": 520.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": "Fahim Halamzie"
+  },
+  {
+    "name": "Hubert Huber",
+    "partner": " ",
+    "adresse": "Donatusstraße 8, WE02",
+    "plz": "50259",
+    "stadt": "Pulheim",
+    "kontakt": {
+      "telefon": "+49 2234 82941",
+      "email": "hubert.huber@netcologne.de",
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 28,
+      "warmmiete": 728.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": "Dorothea Rixen"
+  },
+  {
+    "name": "Hubert Titz",
+    "partner": " ",
+    "adresse": "Paulusstraße 9, PAULU9-WE1",
+    "plz": "50129",
+    "stadt": "Bergheim",
+    "kontakt": {
+      "telefon": null,
+      "email": "H-Titz@gmx.de",
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 0,
+      "warmmiete": 80.0,
+      "zahlungsstatus": "Ausgeglichen"
+    },
+    "eigentuemer": " "
+  },
+  {
+    "name": "Ibrahim Conte",
+    "partner": null,
+    "adresse": "Bäuminghausstraße 41, 1. OG rechts",
+    "plz": "45326",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": null,
+      "email": "iconte@gmail.com",
+      "handy": "+4917656849236"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 0,
+      "warmmiete": 490.0,
+      "zahlungsstatus": "Unbekannt   "
+    },
+    "eigentuemer": "Fahim Halamzie"
+  },
+  {
+    "name": "Iryna Makhatska",
+    "partner": null,
+    "adresse": "Von-Waldthausen-Straße 44, 1. OG rechts",
+    "plz": "44894",
+    "stadt": "Bochum",
+    "kontakt": {
+      "telefon": null,
+      "email": "irynamakhatska@gmail.com",
+      "handy": "+491737375516"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 0,
+      "warmmiete": 581.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Ivan Tandaric",
+    "partner": "Matea Juric",
+    "adresse": "Dechant-Flocken-Str. 2, 2b - EG links",
+    "plz": "52388",
+    "stadt": "Nörvenich",
+    "kontakt": {
+      "telefon": null,
+      "email": "ivan.tandaric38@gmail.com",
+      "handy": "+4917620572326"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 2,
+      "warmmiete": 720.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Virnich Grundbesitz GbR"
+  },
+  {
+    "name": "Jacqueline Kneißl",
+    "partner": " ",
+    "adresse": "Hochfelderstraße 76 +78, Haus 78 - 3. OG links",
+    "plz": "47226",
+    "stadt": "Duisburg",
+    "kontakt": {
+      "telefon": "+4918738934370",
+      "email": "kneissljacqueline399@gmail.com",
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 1,
+      "warmmiete": 485.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Jaenis Beatrix Nergert",
+    "partner": "Jaqueline Marie Klose",
+    "adresse": "Byfangerstraße 22, 1. OG rechts",
+    "plz": "45257",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": null,
+      "email": "jaenis.nergert@gmx.de",
+      "handy": "015759081767"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 3,
+      "warmmiete": 518.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": "Fahim Halamzie"
+  },
+  {
+    "name": "Jan Robert Jürgens",
+    "partner": " ",
+    "adresse": "Richard-Wagner-Str. 46, WE 182",
+    "plz": "50674",
+    "stadt": "Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 0,
+      "warmmiete": 395.0,
+      "zahlungsstatus": "Ausgeglichen"
+    },
+    "eigentuemer": "Arne Häusler"
+  },
+  {
+    "name": "Jan Robert Jürgens",
+    "partner": " ",
+    "adresse": "Richard-Wagner-Str. 46, WE 166",
+    "plz": "50674",
+    "stadt": "Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 0,
+      "warmmiete": 500.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": "Johanna Häusler"
+  },
+  {
+    "name": "Janina Growe",
+    "partner": "Stephan Commer",
+    "adresse": "Dechant-Flocken-Str. 2, 2b - EG rechts",
+    "plz": "52388",
+    "stadt": "Nörvenich",
+    "kontakt": {
+      "telefon": null,
+      "email": "janina.growe02@gmail.com",
+      "handy": "+4915739414794"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 3,
+      "warmmiete": 874.25,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Virnich Grundbesitz GbR"
+  },
+  {
+    "name": "Jaroslaw Galecki",
+    "partner": " ",
+    "adresse": "Hochfelderstraße 76 +78, Haus 76 - 2. OG links",
+    "plz": "47226",
+    "stadt": "Duisburg",
+    "kontakt": {
+      "telefon": "015901471161",
+      "email": "Berufsbetreuer-Vural@t-online.de",
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 6,
+      "warmmiete": 625.32,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Jason Marcel Bittner",
+    "partner": "Patricia Birkner",
+    "adresse": "Byfangerstraße 24, EG",
+    "plz": "45257",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": "+4917622058120",
+      "email": "jasonbittner826@gmail.com",
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 3,
+      "warmmiete": 651.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": "Fahim Halamzie"
+  },
+  {
+    "name": "Jenny Huns",
+    "partner": "Harald Huns",
+    "adresse": "Hauptstraße 128, Garage 6",
+    "plz": "54568",
+    "stadt": "Gerolstein",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 4,
+      "warmmiete": 45.0,
+      "zahlungsstatus": "Ausgeglichen"
+    },
+    "eigentuemer": " "
+  },
+  {
+    "name": "Jessica Stroß",
+    "partner": " ",
+    "adresse": "Kupferdreherstraße 190, DG",
+    "plz": "45257",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": null,
+      "email": "jessica.stross@t-online.de",
+      "handy": "+49 176 747 947 30"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 5,
+      "warmmiete": 760.0,
+      "zahlungsstatus": "Ausgeglichen"
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Jessica Stroß",
+    "partner": " ",
+    "adresse": "Kupferdreherstraße 190, DG",
+    "plz": "45257",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": null,
+      "email": "jessica.stross@t-online.de",
+      "handy": "+49 176 747 947 30"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 5,
+      "warmmiete": 760.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Joseph Lartey Mawule",
+    "partner": null,
+    "adresse": "Friedrichstraße 19, 1. OG rechts",
+    "plz": "46145",
+    "stadt": "Oberhausen",
+    "kontakt": {
+      "telefon": "+491749527724",
+      "email": "Jlartey581@gmail.com",
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 0,
+      "warmmiete": 400.0,
+      "zahlungsstatus": "Unbekannt   "
+    },
+    "eigentuemer": "Fahim Halamzie"
+  },
+  {
+    "name": "Joy Ahego",
+    "partner": "Jonathan Imafidon",
+    "adresse": "Stauderstraße 59, 1. OG rechts",
+    "plz": "45326",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": "+49 1521 8563027"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 7,
+      "warmmiete": 1323.7,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Julia Bichbeimer",
+    "partner": "Jana Richter",
+    "adresse": "Stauderstraße 59, 2. OG rechts",
+    "plz": "45326",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": "017652521236",
+      "email": " jbichbeimer@web.de",
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 3,
+      "warmmiete": 970.0,
+      "zahlungsstatus": "Guthaben    "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Karl Heinz Knedel",
+    "partner": " ",
+    "adresse": "Steinf. 32/34 + Schonneb. 81, Steinfurth 34 mitte",
+    "plz": "45884",
+    "stadt": "Gelsenkirchen",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 23,
+      "warmmiete": 430.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Ruhrstadt Wohnen GmbH"
+  },
+  {
+    "name": "Karsten Kindler",
+    "partner": " ",
+    "adresse": "Steinf. 32/34 + Schonneb. 81, Steinfurth 32 Bike-Garage",
+    "plz": "45884",
+    "stadt": "Gelsenkirchen",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 5,
+      "warmmiete": 45.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Ruhrstadt Wohnen GmbH"
+  },
+  {
+    "name": "Larrisa Korbel",
+    "partner": " ",
+    "adresse": "Dechant-Flocken-Str. 2, UG rechts",
+    "plz": "52388",
+    "stadt": "Nörvenich",
+    "kontakt": {
+      "telefon": "+4917672161616",
+      "email": "larissa.korbel@web.de",
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 3,
+      "warmmiete": 820.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Virnich Grundbesitz GbR"
+  },
+  {
+    "name": "Laurin Zillgers",
+    "partner": " ",
+    "adresse": "Dechant-Flocken-Str. 2, 2b - DG links",
+    "plz": "52388",
+    "stadt": "Nörvenich",
+    "kontakt": {
+      "telefon": null,
+      "email": "laurin.zilgers@t-online.de",
+      "handy": "+4915788141409"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 3,
+      "warmmiete": 600.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Virnich Grundbesitz GbR"
+  },
+  {
+    "name": "Lena Zieglowski",
+    "partner": " ",
+    "adresse": "Polsumerstraße 156, 2. OG links",
+    "plz": "45896",
+    "stadt": "Gelsenkirchen",
+    "kontakt": {
+      "telefon": "0177 7706735",
+      "email": "L.Zieglowski@live.de",
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 9,
+      "warmmiete": 515.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Levent Ibraimovic",
+    "partner": " ",
+    "adresse": "Erlenstr. 21, 2. OG rechts",
+    "plz": "52353",
+    "stadt": "Düren",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": "+4915779364941"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 13,
+      "warmmiete": 373.02,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Virnich Grundbesitz GbR"
+  },
+  {
+    "name": "Lisa Al-Dunani",
+    "partner": "Al-Dunani Lawin",
+    "adresse": "Polsumerstraße 156, 2. OG mitte",
+    "plz": "45896",
+    "stadt": "Gelsenkirchen",
+    "kontakt": {
+      "telefon": "+4917624697612",
+      "email": "lisa_al_dunani@live.de",
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 2,
+      "warmmiete": 570.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Lisa Peters",
+    "partner": "Rene Nonn",
+    "adresse": "Dechant-Flocken-Str. 2, 2a - DG links",
+    "plz": "52388",
+    "stadt": "Nörvenich",
+    "kontakt": {
+      "telefon": null,
+      "email": "lisapeters@gmx.de",
+      "handy": "+4915901717204"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 2,
+      "warmmiete": 770.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Virnich Grundbesitz GbR"
+  },
+  {
+    "name": "Ljubica Sijakovic",
+    "partner": " ",
+    "adresse": "Byfangerstraße 24, 1. OG",
+    "plz": "45257",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": null,
+      "email": "mag.sijako@gmx.de",
+      "handy": "01573 1063604"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 5,
+      "warmmiete": 600.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": "Fahim Halamzie"
+  },
+  {
+    "name": "Luka Maric",
+    "partner": " ",
+    "adresse": "Steinf. 32/34 + Schonneb. 81, Steinfurth 34 Lager",
+    "plz": "45884",
+    "stadt": "Gelsenkirchen",
+    "kontakt": {
+      "telefon": null,
+      "email": "luka.maric1988@googlemail.com",
+      "handy": "+491726441698"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 2,
+      "warmmiete": 250.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Ruhrstadt Wohnen GmbH"
+  },
+  {
+    "name": "Maik Meinhard Olszewski",
+    "partner": " ",
+    "adresse": "Heerstraße 97, EG hinten",
+    "plz": "47053",
+    "stadt": "Duisburg",
+    "kontakt": {
+      "telefon": "+491782886338",
+      "email": "maikolszewski@gmail.com",
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 4,
+      "warmmiete": 470.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": "Pamir Halamzie"
+  },
+  {
+    "name": "Markus Guillaume",
+    "partner": "Thorsten Schoo",
+    "adresse": "Kupferdreherstraße 190, Stellplatz 1",
+    "plz": "45257",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": "0201 481763"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 0,
+      "warmmiete": 160.0,
+      "zahlungsstatus": "Ausgeglichen"
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Markus Guillaume",
+    "partner": "Thorsten Schoo",
+    "adresse": "Kupferdreherstraße 190, Stellplatz 2",
+    "plz": "45257",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": "0201 481763"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 0,
+      "warmmiete": 0.0,
+      "zahlungsstatus": "Ausgeglichen"
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Markus Guillaume",
+    "partner": "Thorsten Schoo",
+    "adresse": "Kupferdreherstraße 190, Stellplatz 3",
+    "plz": "45257",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": "0201 481763"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 0,
+      "warmmiete": 0.0,
+      "zahlungsstatus": "Ausgeglichen"
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Markus Guillaume",
+    "partner": "Thorsten Schoo",
+    "adresse": "Kupferdreherstraße 190, Stellplatz 4",
+    "plz": "45257",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": "0201 481763"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 0,
+      "warmmiete": 0.0,
+      "zahlungsstatus": "Ausgeglichen"
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Markus Guillaume",
+    "partner": "Thorsten Schoo",
+    "adresse": "Kupferdreherstraße 190, Stellplatz 5",
+    "plz": "45257",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": "0201 481763"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 0,
+      "warmmiete": 0.0,
+      "zahlungsstatus": "Ausgeglichen"
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Markus Guillaume",
+    "partner": "Thorsten Schoo",
+    "adresse": "Kupferdreherstraße 190, Stellplatz 1",
+    "plz": "45257",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": "0201 481763"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 0,
+      "warmmiete": 160.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Markus Guillaume",
+    "partner": "Thorsten Schoo",
+    "adresse": "Kupferdreherstraße 190, Stellplatz 2",
+    "plz": "45257",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": "0201 481763"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 0,
+      "warmmiete": 0.0,
+      "zahlungsstatus": "Ausgeglichen"
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Markus Guillaume",
+    "partner": "Thorsten Schoo",
+    "adresse": "Kupferdreherstraße 190, Stellplatz 3",
+    "plz": "45257",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": "0201 481763"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 0,
+      "warmmiete": 0.0,
+      "zahlungsstatus": "Ausgeglichen"
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Markus Guillaume",
+    "partner": "Thorsten Schoo",
+    "adresse": "Kupferdreherstraße 190, Stellplatz 4",
+    "plz": "45257",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": "0201 481763"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 0,
+      "warmmiete": 0.0,
+      "zahlungsstatus": "Ausgeglichen"
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Markus Guillaume",
+    "partner": "Thorsten Schoo",
+    "adresse": "Kupferdreherstraße 190, Stellplatz 5",
+    "plz": "45257",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": "0201 481763"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 0,
+      "warmmiete": 0.0,
+      "zahlungsstatus": "Ausgeglichen"
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Markus Pape",
+    "partner": " ",
+    "adresse": "Kämpenstraße 13, Lager links",
+    "plz": "45147",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": null,
+      "email": "info@pape-dachtechnik.de",
+      "handy": "+4917660855766"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 5,
+      "warmmiete": 700.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Markus Thomas Piechota",
+    "partner": "Christian Piechota",
+    "adresse": "Stauderstraße 59, Kleines Ladenlokal",
+    "plz": "45326",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": null,
+      "email": "Cs1909@gmx.de",
+      "handy": "0172 2718766"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 9,
+      "warmmiete": 359.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Markus Tornow",
+    "partner": " ",
+    "adresse": "Kämpenstraße 13, Garage 3",
+    "plz": "45147",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": "015158129273",
+      "email": "markustornow@web.de",
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 2,
+      "warmmiete": 200.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Markus Wunsch",
+    "partner": " ",
+    "adresse": "Hauptstraße 128, 1. OG links",
+    "plz": "54568",
+    "stadt": "Gerolstein",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 23,
+      "warmmiete": 268.0,
+      "zahlungsstatus": "Ausgeglichen"
+    },
+    "eigentuemer": " "
+  },
+  {
+    "name": "Maroua Antar",
+    "partner": " ",
+    "adresse": "Kämpenstraße 13, Laden EG",
+    "plz": "45147",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": null,
+      "email": "marwa.antar@outlook.com",
+      "handy": "0177 6061083"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 5,
+      "warmmiete": 780.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Maroua Antar",
+    "partner": " ",
+    "adresse": "Kämpenstraße 13, 1. OG",
+    "plz": "45147",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": null,
+      "email": "marwa.antar@outlook.com",
+      "handy": "0177 6061083"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 3,
+      "warmmiete": 1080.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Maximilian Horn",
+    "partner": " ",
+    "adresse": "Bäuminghausstraße 41, EG links",
+    "plz": "45326",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": "01793475974",
+      "email": "maximilianhorn18@gmail.com",
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 3,
+      "warmmiete": 608.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": "Fahim Halamzie"
+  },
+  {
+    "name": "Melina Krolak",
+    "partner": " ",
+    "adresse": "Polsumerstraße 156, 3. OG rechts",
+    "plz": "45896",
+    "stadt": "Gelsenkirchen",
+    "kontakt": {
+      "telefon": "+491622416953",
+      "email": "krolakmelina28@gmail.com",
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 3,
+      "warmmiete": 610.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Michael Oluwasegun Jeje",
+    "partner": " ",
+    "adresse": "Stauderstraße 59, 2. OG links",
+    "plz": "45326",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": null,
+      "email": "michaelolalekan780@gmail.com ",
+      "handy": "0178 5907336"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 13,
+      "warmmiete": 560.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Mirko Schmidt",
+    "partner": " ",
+    "adresse": "Dechant-Flocken-Str. 2, 2b - 1. OG mitte",
+    "plz": "52388",
+    "stadt": "Nörvenich",
+    "kontakt": {
+      "telefon": null,
+      "email": "mirkosch@arcor.de",
+      "handy": "+491778939702"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 2,
+      "warmmiete": 875.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Virnich Grundbesitz GbR"
+  },
+  {
+    "name": "Mohamad Bagher Hashimi",
+    "partner": "Nazifa Hashimi",
+    "adresse": "Portendieckstraße 14, DG",
+    "plz": "45309",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": "+49 17670376307",
+      "email": "javid.hashimi.x@gmx.de",
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 1,
+      "warmmiete": 1200.0,
+      "zahlungsstatus": "Ausgeglichen"
+    },
+    "eigentuemer": "Pamir Halamzie"
+  },
+  {
+    "name": "Mohamad Omar",
+    "partner": " ",
+    "adresse": "Hochfelderstraße 76 +78, Haus 78 - 3. OG rechts",
+    "plz": "47226",
+    "stadt": "Duisburg",
+    "kontakt": {
+      "telefon": null,
+      "email": "romankhd123@gmail.com",
+      "handy": "+4915750447321"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 6,
+      "warmmiete": 590.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Mohamad Sharifi",
+    "partner": "Mohamad Hadi Ahmadi",
+    "adresse": "Hauptstraße 128, 1. OG rechts",
+    "plz": "54568",
+    "stadt": "Gerolstein",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 4,
+      "warmmiete": 577.0,
+      "zahlungsstatus": "Ausgeglichen"
+    },
+    "eigentuemer": " "
+  },
+  {
+    "name": "Monika Engbroks",
+    "partner": " ",
+    "adresse": "Donatusstraße 8, WE01",
+    "plz": "50259",
+    "stadt": "Pulheim",
+    "kontakt": {
+      "telefon": "+49 163 7110 193",
+      "email": "MEngbroks@vds.de",
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 6,
+      "warmmiete": 1274.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": "Dorothea Rixen"
+  },
+  {
+    "name": "Monika Gehringer",
+    "partner": " ",
+    "adresse": "Donatusstraße 8, WE03",
+    "plz": "50259",
+    "stadt": "Pulheim",
+    "kontakt": {
+      "telefon": "+49 2234 2039811",
+      "email": "davxidgehringer@gmail.com",
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 17,
+      "warmmiete": 1010.0,
+      "zahlungsstatus": "Guthaben    "
+    },
+    "eigentuemer": "Dorothea Rixen"
+  },
+  {
+    "name": "Muhamed Karabasic",
+    "partner": "Sanela Karabasic",
+    "adresse": "Polsumerstraße 156, 1. OG rechts",
+    "plz": "45896",
+    "stadt": "Gelsenkirchen",
+    "kontakt": {
+      "telefon": null,
+      "email": "dzenisdurak@gmail.com",
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 9,
+      "warmmiete": 739.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Murat Yildirim",
+    "partner": " ",
+    "adresse": "Kämpenstraße 13, Stellplatz 1",
+    "plz": "45147",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": "0157 571 555 69"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 5,
+      "warmmiete": 85.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Murat Yildirim",
+    "partner": " ",
+    "adresse": "Kämpenstraße 13, Stellplatz 3",
+    "plz": "45147",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": "0157 571 555 69"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 5,
+      "warmmiete": 0.0,
+      "zahlungsstatus": "Ausgeglichen"
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Naser Bajrami",
+    "partner": " ",
+    "adresse": "Hauptstraße 128, 4. OG links",
+    "plz": "54568",
+    "stadt": "Gerolstein",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 13,
+      "warmmiete": 750.0,
+      "zahlungsstatus": "Ausgeglichen"
+    },
+    "eigentuemer": " "
+  },
+  {
+    "name": "Naser Buni",
+    "partner": " ",
+    "adresse": "Kämpenstraße 13, 3. OG rechts",
+    "plz": "45147",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": "0152241643",
+      "email": "naser.1980@hotmail.com",
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 2,
+      "warmmiete": 1050.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Nathalie Schulz",
+    "partner": " ",
+    "adresse": "Hochfelderstraße 76 +78, Haus 78 - 2. OG links",
+    "plz": "47226",
+    "stadt": "Duisburg",
+    "kontakt": {
+      "telefon": "+4915730902473",
+      "email": "nathalieschulz1234@icloud.com",
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 1,
+      "warmmiete": 575.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Neel Bieler",
+    "partner": " ",
+    "adresse": "Dechant-Flocken-Str. 2, 2b - DG rechts",
+    "plz": "52388",
+    "stadt": "Nörvenich",
+    "kontakt": {
+      "telefon": null,
+      "email": "bieler.neel@web.de",
+      "handy": "+4915154178332"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 3,
+      "warmmiete": 754.5,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Virnich Grundbesitz GbR"
+  },
+  {
+    "name": "Nina Hausmann",
+    "partner": "Lukas Richert",
+    "adresse": "Dechant-Flocken-Str. 2, EG links",
+    "plz": "52388",
+    "stadt": "Nörvenich",
+    "kontakt": {
+      "telefon": "+491636290457",
+      "email": "ninahausmann08@gmail.com",
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 3,
+      "warmmiete": 944.44,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Virnich Grundbesitz GbR"
+  },
+  {
+    "name": "Nuray Yilmazer",
+    "partner": " ",
+    "adresse": "Polsumerstraße 156, Gewerbe rechts",
+    "plz": "45896",
+    "stadt": "Gelsenkirchen",
+    "kontakt": {
+      "telefon": null,
+      "email": "nurayyilmazer50@gmail.com",
+      "handy": "+491629356704"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 1,
+      "warmmiete": 730.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Oleh Orel",
+    "partner": null,
+    "adresse": "Hochfelderstraße 76 +78, Haus 78 - 2. OG rechts",
+    "plz": "47226",
+    "stadt": "Duisburg",
+    "kontakt": {
+      "telefon": "+4915252099868",
+      "email": "olehorel90@gmail.com",
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 1,
+      "warmmiete": 535.0,
+      "zahlungsstatus": "Unbekannt   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Oliver Beck",
+    "partner": " ",
+    "adresse": "Steinf. 32/34 + Schonneb. 81, Schonnebecker 81 2. OG re",
+    "plz": "45884",
+    "stadt": "Gelsenkirchen",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 2,
+      "warmmiete": 450.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Ruhrstadt Wohnen GmbH"
+  },
+  {
+    "name": "Onur Can",
+    "partner": "Naile Firat",
+    "adresse": "Schmiedestraße 8, DG rechts",
+    "plz": "47055",
+    "stadt": "Duisburg",
+    "kontakt": {
+      "telefon": "01773077054",
+      "email": " nailefiratcan2007@gmail.com",
+      "handy": "017662402314"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 3,
+      "warmmiete": 490.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": "Fahim Halamzie"
+  },
+  {
+    "name": "Ouafaa Hafsi",
+    "partner": null,
+    "adresse": "Marienstraße 26, 1. OG",
+    "plz": "45307",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": null,
+      "email": "o.hafsi@web.de",
+      "handy": "+4917663838285"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 0,
+      "warmmiete": 1150.0,
+      "zahlungsstatus": "Unbekannt   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Pascal Heek",
+    "partner": "Carina Heek",
+    "adresse": "Marienstraße 26, DG",
+    "plz": "45307",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": "015786764044",
+      "email": "p.heek87@gmail.com",
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 3,
+      "warmmiete": 953.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Patricia Scatizzi",
+    "partner": " ",
+    "adresse": "Kupferdreherstraße 190, 1. OG rechts",
+    "plz": "45257",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": null,
+      "email": "patriziascatizzi@gmail.com",
+      "handy": "+49 15253413754"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 5,
+      "warmmiete": 740.0,
+      "zahlungsstatus": "Ausgeglichen"
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Patricia Scatizzi",
+    "partner": " ",
+    "adresse": "Kupferdreherstraße 190, 1. OG rechts",
+    "plz": "45257",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": null,
+      "email": "patriziascatizzi@gmail.com",
+      "handy": "+49 15253413754"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 5,
+      "warmmiete": 740.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Peter Dressler",
+    "partner": " ",
+    "adresse": "Kämpenstraße 13, Garage 5",
+    "plz": "45147",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": "017630469965",
+      "email": "dressler_p@web.de",
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 2,
+      "warmmiete": 60.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Peter Josef Otten",
+    "partner": " ",
+    "adresse": "Erlenstr. 21, EG links",
+    "plz": "52353",
+    "stadt": "Düren",
+    "kontakt": {
+      "telefon": null,
+      "email": "peter-josef.otten@gmx.de",
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 37,
+      "warmmiete": 568.82,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Virnich Grundbesitz GbR"
+  },
+  {
+    "name": "Petra Nabakowski",
+    "partner": " ",
+    "adresse": "Von-Waldthausen-Straße 44, EG",
+    "plz": "44894",
+    "stadt": "Bochum",
+    "kontakt": {
+      "telefon": null,
+      "email": "petranabakowski@gmail.com",
+      "handy": "+49 173 5905029"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 10,
+      "warmmiete": 830.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Philipp Hönig",
+    "partner": " ",
+    "adresse": "Byfangerstraße 22, 2. OG rechts",
+    "plz": "45257",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": "+491719761892",
+      "email": "philipphoenig2002@t-online.de",
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 2,
+      "warmmiete": 570.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": "Fahim Halamzie"
+  },
+  {
+    "name": "Raad Shekho",
+    "partner": " Knhaf Shekho",
+    "adresse": "Germanenstraße 1, 1. OG rechts",
+    "plz": "45888",
+    "stadt": "Gelsenkirchen",
+    "kontakt": {
+      "telefon": null,
+      "email": "raadshekho3@gmail.com ",
+      "handy": "01631493722 "
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 3,
+      "warmmiete": 631.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Rafat Alata",
+    "partner": " ",
+    "adresse": "Hochfelderstraße 76 +78, Haus 76 - EG links",
+    "plz": "47226",
+    "stadt": "Duisburg",
+    "kontakt": {
+      "telefon": "015779751975",
+      "email": "rafatalata@gmail.com",
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 3,
+      "warmmiete": 470.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Rami Al Shihabi",
+    "partner": "Huda Al Hutary",
+    "adresse": "Polsumerstraße 156, 3. OG links",
+    "plz": "45896",
+    "stadt": "Gelsenkirchen",
+    "kontakt": {
+      "telefon": null,
+      "email": "alshihabirami20@gmail.com",
+      "handy": "017647081281"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 3,
+      "warmmiete": 580.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Rene Bangert",
+    "partner": " ",
+    "adresse": "Hordelerstraße 110, DG rechts",
+    "plz": "44651",
+    "stadt": "Herne",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": "015751011548"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 5,
+      "warmmiete": 423.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Rima Almasri",
+    "partner": " ",
+    "adresse": "Von-Waldthausen-Straße 44, 1. OG links",
+    "plz": "44894",
+    "stadt": "Bochum",
+    "kontakt": {
+      "telefon": "015736786048",
+      "email": "rima.almasri@gmail.com",
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 3,
+      "warmmiete": 492.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Robert Zohrabyan",
+    "partner": "Miriam Guloyan",
+    "adresse": "Hauptstraße 128, 2. OG rechts",
+    "plz": "54568",
+    "stadt": "Gerolstein",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 8,
+      "warmmiete": 620.0,
+      "zahlungsstatus": "Ausgeglichen"
+    },
+    "eigentuemer": " "
+  },
+  {
+    "name": "Robin Rueger",
+    "partner": null,
+    "adresse": "Hochfelderstraße 76 +78, Haus 76 - EG rechts",
+    "plz": "47226",
+    "stadt": "Duisburg",
+    "kontakt": {
+      "telefon": null,
+      "email": "rob.rueg@web.de",
+      "handy": "+491628811374"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 0,
+      "warmmiete": 575.0,
+      "zahlungsstatus": "Unbekannt   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Ronald Gutzmerow",
+    "partner": " ",
+    "adresse": "Steinf. 32/34 + Schonneb. 81, Steinfurth 32 2.OG links",
+    "plz": "45884",
+    "stadt": "Gelsenkirchen",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 2,
+      "warmmiete": 460.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Ruhrstadt Wohnen GmbH"
+  },
+  {
+    "name": "Saad El-Bakri",
+    "partner": " ",
+    "adresse": "Marienstraße 26, 2. OG",
+    "plz": "45307",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": "015255711722",
+      "email": "elbakri.saad@gmail.com",
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 5,
+      "warmmiete": 1120.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Sabine Cardaci",
+    "partner": " ",
+    "adresse": "Dechant-Flocken-Str. 2, 1. OG rechts",
+    "plz": "52388",
+    "stadt": "Nörvenich",
+    "kontakt": {
+      "telefon": null,
+      "email": "sabine.cardaci@freenet.de",
+      "handy": "+4917620218966"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 3,
+      "warmmiete": 966.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Virnich Grundbesitz GbR"
+  },
+  {
+    "name": "Sabri Sabri",
+    "partner": "Kjoloud S.H. Alatir",
+    "adresse": "Steinf. 32/34 + Schonneb. 81, Steinfurth 32 2.OG rechts",
+    "plz": "45884",
+    "stadt": "Gelsenkirchen",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 5,
+      "warmmiete": 700.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Ruhrstadt Wohnen GmbH"
+  },
+  {
+    "name": "Sabri Sayilir",
+    "partner": "Zeynep Sayilir",
+    "adresse": "Erlenstr. 21, 1. OG rechts",
+    "plz": "52353",
+    "stadt": "Düren",
+    "kontakt": {
+      "telefon": null,
+      "email": "alpayasay@gmail.com",
+      "handy": "+4924215514272"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 9,
+      "warmmiete": 534.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Virnich Grundbesitz GbR"
+  },
+  {
+    "name": "Sabrina Klünter",
+    "partner": "Patrick Ley",
+    "adresse": "Dechant-Flocken-Str. 2, 2b - UG links",
+    "plz": "52388",
+    "stadt": "Nörvenich",
+    "kontakt": {
+      "telefon": null,
+      "email": "kluenter.sabrina@gmail.com",
+      "handy": "+4915202598079"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 3,
+      "warmmiete": 760.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Virnich Grundbesitz GbR"
+  },
+  {
+    "name": "Sabrina Vietinghoff",
+    "partner": "Boris Vietinghoff",
+    "adresse": "Byfangerstraße 22, EG rechts",
+    "plz": "45257",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": null,
+      "email": "sabrina.vietinghoff@posteo.de",
+      "handy": "017634679323"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 3,
+      "warmmiete": 1000.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": "Fahim Halamzie"
+  },
+  {
+    "name": "Sarah Fokin",
+    "partner": "Edgar Fokin",
+    "adresse": "Byfangerstraße 22, 2. OG links",
+    "plz": "45257",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": "+4915782060281",
+      "email": "sablim6@gmail.com",
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 1,
+      "warmmiete": 1090.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": "Fahim Halamzie"
+  },
+  {
+    "name": "Sascha Klein",
+    "partner": " ",
+    "adresse": "Geranienhof 3, 2. OG links",
+    "plz": "50769",
+    "stadt": "Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 12,
+      "warmmiete": 754.25,
+      "zahlungsstatus": "Ausgeglichen"
+    },
+    "eigentuemer": " "
+  },
+  {
+    "name": "Sascha Klein",
+    "partner": " ",
+    "adresse": "Geranienhof 3, Garage 02",
+    "plz": "50769",
+    "stadt": "Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 10,
+      "warmmiete": 60.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " "
+  },
+  {
+    "name": "Saskia Kim Rebernisek",
+    "partner": " ",
+    "adresse": "Weuenstraße 35, DG rechts",
+    "plz": "45143",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": "015784462835",
+      "email": "himmelpforten1@gmx.de",
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 4,
+      "warmmiete": 680.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Saskia Kohl",
+    "partner": " ",
+    "adresse": "Dechant-Flocken-Str. 2, DG Mitte",
+    "plz": "52388",
+    "stadt": "Nörvenich",
+    "kontakt": {
+      "telefon": null,
+      "email": "saskia_kohl@gmx.de",
+      "handy": "+4915751782719"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 3,
+      "warmmiete": 847.89,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Virnich Grundbesitz GbR"
+  },
+  {
+    "name": "Scher Safi",
+    "partner": " ",
+    "adresse": "Bäuminghausstraße 41, 2. OG rechts",
+    "plz": "45326",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": "01575 2962078"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 8,
+      "warmmiete": 489.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": "Fahim Halamzie"
+  },
+  {
+    "name": "Selin Sermin",
+    "partner": "Jasmin Muriz Bisveac",
+    "adresse": "Donatusstraße 8, WE04",
+    "plz": "50259",
+    "stadt": "Pulheim",
+    "kontakt": {
+      "telefon": null,
+      "email": "selinsermin96@hotmail.com",
+      "handy": " +49 157 39470783"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 4,
+      "warmmiete": 945.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": "Dorothea Rixen"
+  },
+  {
+    "name": "Selma Yaman",
+    "partner": " ",
+    "adresse": "Polsumerstraße 156, 1. OG links",
+    "plz": "45896",
+    "stadt": "Gelsenkirchen",
+    "kontakt": {
+      "telefon": "017621725210",
+      "email": "s-yaman@gmx.de",
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 9,
+      "warmmiete": 805.6,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Sevda Kurtic",
+    "partner": " ",
+    "adresse": "Steinf. 32/34 + Schonneb. 81, Schonnebecker 81 2. OG li",
+    "plz": "45884",
+    "stadt": "Gelsenkirchen",
+    "kontakt": {
+      "telefon": "+491634649755",
+      "email": "afrodita.kurtic@gmail.com",
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 2,
+      "warmmiete": 420.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Ruhrstadt Wohnen GmbH"
+  },
+  {
+    "name": "Shawn Alexander Schinschke",
+    "partner": " ",
+    "adresse": "Hordelerstraße 110, 1. OG rechts",
+    "plz": "44651",
+    "stadt": "Herne",
+    "kontakt": {
+      "telefon": null,
+      "email": "shawnschinschke@web.de",
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 3,
+      "warmmiete": 401.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Simon Wierz",
+    "partner": "Jacqueline Möhrer",
+    "adresse": "Dechant-Flocken-Str. 2, EG Mitte",
+    "plz": "52388",
+    "stadt": "Nörvenich",
+    "kontakt": {
+      "telefon": null,
+      "email": "s.wierz@web.de",
+      "handy": "+4915755084847"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 3,
+      "warmmiete": 953.46,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Virnich Grundbesitz GbR"
+  },
+  {
+    "name": "Stefan Forster",
+    "partner": " ",
+    "adresse": "Hauptstraße 128, Garage 3",
+    "plz": "54568",
+    "stadt": "Gerolstein",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 9,
+      "warmmiete": 45.0,
+      "zahlungsstatus": "Ausgeglichen"
+    },
+    "eigentuemer": " "
+  },
+  {
+    "name": "Stefanie Kogelheide",
+    "partner": " ",
+    "adresse": "Steinf. 32/34 + Schonneb. 81, Steinfurth 32 EG links",
+    "plz": "45884",
+    "stadt": "Gelsenkirchen",
+    "kontakt": {
+      "telefon": null,
+      "email": "stefanie.k.k.1997@gmail.com",
+      "handy": "01776120079"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 3,
+      "warmmiete": 430.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Ruhrstadt Wohnen GmbH"
+  },
+  {
+    "name": "Tamara Schmitz",
+    "partner": " ",
+    "adresse": "Dechant-Flocken-Str. 2, 2a - 1. OG links",
+    "plz": "52388",
+    "stadt": "Nörvenich",
+    "kontakt": {
+      "telefon": "01787901360",
+      "email": null,
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 6,
+      "warmmiete": 875.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Virnich Grundbesitz GbR"
+  },
+  {
+    "name": "Theo und Marie Justen",
+    "partner": "Agnes Schindler",
+    "adresse": "Dechant-Flocken-Str. 2, 2a - EG rechts",
+    "plz": "52388",
+    "stadt": "Nörvenich",
+    "kontakt": {
+      "telefon": "+4922356219",
+      "email": "justen-marina@web.de",
+      "handy": "+491631630699"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 4,
+      "warmmiete": 880.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Virnich Grundbesitz GbR"
+  },
+  {
+    "name": "Thorsten Schoo",
+    "partner": " ",
+    "adresse": "Kupferdreherstraße 190, Praxis",
+    "plz": "45257",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": "+49201481763",
+      "email": null,
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 0,
+      "warmmiete": 0.0,
+      "zahlungsstatus": "Ausgeglichen"
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Thorsten Schoo",
+    "partner": " ",
+    "adresse": "Kupferdreherstraße 190, Lager - Tschoo",
+    "plz": "45257",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": "+49201481763",
+      "email": null,
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 0,
+      "warmmiete": 100.0,
+      "zahlungsstatus": "Ausgeglichen"
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Thorsten Schoo",
+    "partner": " ",
+    "adresse": "Kupferdreherstraße 190, Lager - Tschoo",
+    "plz": "45257",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": "+49201481763",
+      "email": null,
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 0,
+      "warmmiete": 100.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Tobias Peters",
+    "partner": " ",
+    "adresse": "Dechant-Flocken-Str. 2, 2b - UG rechts",
+    "plz": "52388",
+    "stadt": "Nörvenich",
+    "kontakt": {
+      "telefon": null,
+      "email": "t.peters0088@gmail.com",
+      "handy": "+4915205682791"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 3,
+      "warmmiete": 761.54,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Virnich Grundbesitz GbR"
+  },
+  {
+    "name": "Ulrich Weß",
+    "partner": " ",
+    "adresse": "Hordelerstraße 110, 1. OG links",
+    "plz": "44651",
+    "stadt": "Herne",
+    "kontakt": {
+      "telefon": "02323 375100 ",
+      "email": "ulrich.wess@gmail.com",
+      "handy": "0172 4377887 "
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 5,
+      "warmmiete": 413.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Ulrich Weß",
+    "partner": " ",
+    "adresse": "Hordelerstraße 110, Garage",
+    "plz": "44651",
+    "stadt": "Herne",
+    "kontakt": {
+      "telefon": "02323 375100 ",
+      "email": "ulrich.wess@gmail.com",
+      "handy": "0172 4377887 "
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 0,
+      "warmmiete": 0.0,
+      "zahlungsstatus": "Ausgeglichen"
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Ulrich Weß",
+    "partner": " ",
+    "adresse": "Hordelerstraße 110, Garten",
+    "plz": "44651",
+    "stadt": "Herne",
+    "kontakt": {
+      "telefon": "02323 375100 ",
+      "email": "ulrich.wess@gmail.com",
+      "handy": "0172 4377887 "
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 3,
+      "warmmiete": 350.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Ulrike Breuer",
+    "partner": " ",
+    "adresse": "Geranienhof 3, EG-Ladenlokal rechts",
+    "plz": "50769",
+    "stadt": "Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": "+49 172 69 82 648"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 30,
+      "warmmiete": 569.5,
+      "zahlungsstatus": "Guthaben    "
+    },
+    "eigentuemer": " "
+  },
+  {
+    "name": "Ulrike Breuer",
+    "partner": " ",
+    "adresse": "Geranienhof 3, EG Ladenlokal links",
+    "plz": "50769",
+    "stadt": "Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": "+49 172 69 82 648"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 19,
+      "warmmiete": 1259.25,
+      "zahlungsstatus": "Guthaben    "
+    },
+    "eigentuemer": " "
+  },
+  {
+    "name": "Ulrike Breuer",
+    "partner": " ",
+    "adresse": "Geranienhof 3, Garage 01",
+    "plz": "50769",
+    "stadt": "Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": "+49 172 69 82 648"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 23,
+      "warmmiete": 60.0,
+      "zahlungsstatus": "Guthaben    "
+    },
+    "eigentuemer": " "
+  },
+  {
+    "name": "Uwe Föhrding",
+    "partner": " ",
+    "adresse": "Schmiedestraße 8, 1. OG",
+    "plz": "47055",
+    "stadt": "Duisburg",
+    "kontakt": {
+      "telefon": "01722172070",
+      "email": "uwefoehrding@aol.com",
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 0,
+      "warmmiete": 210.0,
+      "zahlungsstatus": "Guthaben    "
+    },
+    "eigentuemer": "Fahim Halamzie"
+  },
+  {
+    "name": "WEG Donatusstr. 6",
+    "partner": " ",
+    "adresse": "Donatusstraße 8, WEG Donatusstr. 6",
+    "plz": "50259",
+    "stadt": "Pulheim",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 0,
+      "warmmiete": 1055.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": "Dorothea Rixen"
+  },
+  {
+    "name": "Wiktoria Marta Buczak",
+    "partner": " ",
+    "adresse": "Byfangerstraße 22, EG links",
+    "plz": "45257",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": "01781363914",
+      "email": "heyitswiki11@gmail.com",
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 3,
+      "warmmiete": 480.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": "Fahim Halamzie"
+  },
+  {
+    "name": "Yasin Alabari",
+    "partner": " ",
+    "adresse": "Hochfelderstraße 76 +78, Haus 78 - 1. OG links",
+    "plz": "47226",
+    "stadt": "Duisburg",
+    "kontakt": {
+      "telefon": "+4917684775017",
+      "email": "yasinalabari@gmail.com",
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 2,
+      "warmmiete": 470.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Yassir Al Yandouzi",
+    "partner": " ",
+    "adresse": "test39, test",
+    "plz": "45127",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": null,
+      "email": "jackson.jeffry@gmail.com",
+      "handy": "017674502164"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 0,
+      "warmmiete": 0.0,
+      "zahlungsstatus": "Ausgeglichen"
+    },
+    "eigentuemer": " "
+  },
+  {
+    "name": "Yazan Abid",
+    "partner": " ",
+    "adresse": "Hochfelderstraße 76 +78, Haus 76 - 1. OG rechts",
+    "plz": "47226",
+    "stadt": "Duisburg",
+    "kontakt": {
+      "telefon": null,
+      "email": "yazan.abid.1995@gmail.com",
+      "handy": "+49 172 8008832"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 6,
+      "warmmiete": 581.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Yousif Alhalaq",
+    "partner": "Hebi Alhalaq",
+    "adresse": "Hauptstraße 128, EG rechts mitte",
+    "plz": "54568",
+    "stadt": "Gerolstein",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 3,
+      "warmmiete": 645.0,
+      "zahlungsstatus": "Ausgeglichen"
+    },
+    "eigentuemer": " "
+  },
+  {
+    "name": "Youssef Bendouda",
+    "partner": " ",
+    "adresse": "Sursstraße 11, DG links",
+    "plz": "45143",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": "+4915562922549",
+      "email": "bendouda@web.de",
+      "handy": "+491789341756"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 2,
+      "warmmiete": 580.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": "Fahim Halamzie"
+  },
+  {
+    "name": "Youssef Chikh Ali",
+    "partner": " ",
+    "adresse": "Schmiedestraße 8, EG",
+    "plz": "47055",
+    "stadt": "Duisburg",
+    "kontakt": {
+      "telefon": "+491795383951",
+      "email": "yous172@hotmail.com",
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 2,
+      "warmmiete": 640.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": "Fahim Halamzie"
+  },
+  {
+    "name": "Yüksel Oguz",
+    "partner": " ",
+    "adresse": "Hochfelderstraße 76 +78, Haus 76 - 3. OG rechts",
+    "plz": "47226",
+    "stadt": "Duisburg",
+    "kontakt": {
+      "telefon": null,
+      "email": "pakize-altun@outlook.de",
+      "handy": "+4915779751975"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 6,
+      "warmmiete": 582.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Zahra Halamzie",
+    "partner": " ",
+    "adresse": "Marienstraße 26, EG",
+    "plz": "45307",
+    "stadt": "Essen",
+    "kontakt": {
+      "telefon": null,
+      "email": "info@halamzie.de",
+      "handy": null
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 8,
+      "warmmiete": 638.0,
+      "zahlungsstatus": "Guthaben    "
+    },
+    "eigentuemer": " Sundeki Immobilien 1 GmbH"
+  },
+  {
+    "name": "Zukrana Rexhepi",
+    "partner": "Halid Huseinovic",
+    "adresse": "Erlenstr. 21, EG rechts",
+    "plz": "52353",
+    "stadt": "Düren",
+    "kontakt": {
+      "telefon": null,
+      "email": "adam_zuk@icloud.com",
+      "handy": "+491632386414"
+    },
+    "vertrag": {
+      "status": "Unbefristet",
+      "dauer_jahre": 3,
+      "warmmiete": 690.0,
+      "zahlungsstatus": "Rückstand   "
+    },
+    "eigentuemer": " Virnich Grundbesitz GbR"
+  }
+]

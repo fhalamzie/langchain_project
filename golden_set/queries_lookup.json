@@ -1,0 +1,93 @@
+[
+  {
+    "id": "M001",
+    "query": "Wer wohnt in der Bergstraße 15?",
+    "category": "mieter_suche",
+    "intent": "lookup",
+    "expected_data": "mieter_komplett"
+  },
+  {
+    "id": "M002",
+    "query": "Zeige mir alle Mieter in Hamburg",
+    "category": "mieter_suche",
+    "intent": "lookup",
+    "expected_data": "mieter_komplett"
+  },
+  {
+    "id": "M003",
+    "query": "Kontaktdaten von Herrn Müller",
+    "category": "kontakt_lookup",
+    "intent": "lookup",
+    "expected_data": "mieter_komplett"
+  },
+  {
+    "id": "M004",
+    "query": "Telefonnummer von Familie Schmidt",
+    "category": "kontakt_lookup",
+    "intent": "lookup",
+    "expected_data": "mieter_komplett"
+  },
+  {
+    "id": "M005",
+    "query": "Email-Adresse der Mieterin in Wohnung 12",
+    "category": "kontakt_lookup",
+    "intent": "lookup",
+    "expected_data": "mieter_komplett"
+  },
+  {
+    "id": "M011",
+    "query": "Wie lange wohnt Familie Weber schon in der Wohnung?",
+    "category": "mietdauer",
+    "intent": "lookup",
+    "expected_data": "mieter_komplett"
+  },
+  {
+    "id": "M014",
+    "query": "Wer ist der Hauptmieter in Wohnung 5?",
+    "category": "hauptmieter",
+    "intent": "lookup",
+    "expected_data": "mieter_komplett"
+  },
+  {
+    "id": "M016",
+    "query": "Kontosaldo von Mieter Müller",
+    "category": "konto_saldo",
+    "intent": "lookup",
+    "expected_data": "mieter_konten"
+  },
+  {
+    "id": "E001",
+    "query": "Wem gehört das Gebäude in der Rosenstraße 8?",
+    "category": "eigentuemer_suche",
+    "intent": "lookup",
+    "expected_data": "eigentuemer_portfolio"
+  },
+  {
+    "id": "E002",
+    "query": "Kontaktdaten von Eigentümer Hansen",
+    "category": "kontakt_lookup",
+    "intent": "lookup",
+    "expected_data": "eigentuemer_portfolio"
+  },
+  {
+    "id": "E006",
+    "query": "Portfolio von Eigentümer Schmidt",
+    "category": "portfolio_details",
+    "intent": "lookup",
+    "expected_data": "eigentuemer_portfolio"
+  },
+  {
+    "id": "E013",
+    "query": "Rücklagenkonto von Eigentümer Müller",
+    "category": "ruecklagen",
+    "intent": "lookup",
+    "expected_data": "eigentuemer_konten"
+  },
+  {
+    "id": "O001",
+    "query": "Details zum Objekt Hauptstraße 15",
+    "category": "objekt_details",
+    "intent": "lookup",
+    "expected_data": "objekte_details"
+  }
+]

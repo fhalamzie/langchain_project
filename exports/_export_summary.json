@@ -1,0 +1,26 @@
+{
+  "export_time": "2025-06-12T14:41:29.474284",
+  "total_queries": 35,
+  "successful_exports": 35,
+  "failed_exports": 0,
+  "total_rows_exported": 229500,
+  "failed_queries": [],
+  "export_directory": "exports",
+  "notes": {
+    "utf8_queries": [
+      "01_eigentuemer.sql",
+      "02_mieter.sql",
+      "03_aktuelle_mieter.sql",
+      "04_alle_mieter.sql",
+      "10_eigentuemer_konten.sql",
+      "17_beschluesse.sql",
+      "18_versammlungen.sql"
+    ],
+    "large_queries": [
+      "29_eigentuemer_zahlungshistorie.sql",
+      "30_weg_zahlungsuebersicht.sql",
+      "35_buchungskonten_uebersicht.sql"
+    ],
+    "parameterized_exports": "See *_EIGNR*.json files for parameterized versions"
+  }
+}

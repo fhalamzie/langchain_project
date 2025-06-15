@@ -1,0 +1,217 @@
+{
+  "flags": {
+    "unified_system_enabled": {
+      "name": "unified_system_enabled",
+      "flag_type": "boolean",
+      "default_value": false,
+      "description": "Enable Unified Template System",
+      "enabled": true,
+      "rollout_percentage": 100,
+      "rollout_strategy": "gradual",
+      "include_users": [],
+      "exclude_users": [],
+      "include_user_patterns": [],
+      "created_at": "2025-06-14T16:00:35.626205",
+      "created_by": "system",
+      "last_modified": "2025-06-14T16:02:10.850239",
+      "tags": [
+        "core",
+        "query_engine"
+      ],
+      "expiry_date": null,
+      "auto_cleanup": true
+    },
+    "shadow_mode_enabled": {
+      "name": "shadow_mode_enabled",
+      "flag_type": "boolean",
+      "default_value": true,
+      "description": "Enable Shadow Mode A/B Testing",
+      "enabled": true,
+      "rollout_percentage": 100.0,
+      "rollout_strategy": "gradual",
+      "include_users": [],
+      "exclude_users": [],
+      "include_user_patterns": [],
+      "created_at": "2025-06-14T16:00:35.626211",
+      "created_by": "system",
+      "last_modified": "2025-06-14T16:00:35.626212",
+      "tags": [
+        "testing",
+        "monitoring"
+      ],
+      "expiry_date": null,
+      "auto_cleanup": true
+    },
+    "template_engine_enabled": {
+      "name": "template_engine_enabled",
+      "flag_type": "boolean",
+      "default_value": false,
+      "description": "Enable SQL Template Engine",
+      "enabled": true,
+      "rollout_percentage": 0.0,
+      "rollout_strategy": "gradual",
+      "include_users": [],
+      "exclude_users": [],
+      "include_user_patterns": [],
+      "created_at": "2025-06-14T16:00:35.626212",
+      "created_by": "system",
+      "last_modified": "2025-06-14T16:00:35.626213",
+      "tags": [
+        "core",
+        "templates"
+      ],
+      "expiry_date": null,
+      "auto_cleanup": true
+    },
+    "optimized_search_enabled": {
+      "name": "optimized_search_enabled",
+      "flag_type": "boolean",
+      "default_value": true,
+      "description": "Enable Optimized Search System",
+      "enabled": true,
+      "rollout_percentage": 100.0,
+      "rollout_strategy": "gradual",
+      "include_users": [],
+      "exclude_users": [],
+      "include_user_patterns": [],
+      "created_at": "2025-06-14T16:00:35.626213",
+      "created_by": "system",
+      "last_modified": "2025-06-14T16:00:35.626214",
+      "tags": [
+        "core",
+        "search"
+      ],
+      "expiry_date": null,
+      "auto_cleanup": true
+    },
+    "monitoring_enabled": {
+      "name": "monitoring_enabled",
+      "flag_type": "boolean",
+      "default_value": true,
+      "description": "Enable Real-time Monitoring",
+      "enabled": true,
+      "rollout_percentage": 100.0,
+      "rollout_strategy": "gradual",
+      "include_users": [],
+      "exclude_users": [],
+      "include_user_patterns": [],
+      "created_at": "2025-06-14T16:00:35.626214",
+      "created_by": "system",
+      "last_modified": "2025-06-14T16:00:35.626215",
+      "tags": [
+        "monitoring",
+        "observability"
+      ],
+      "expiry_date": null,
+      "auto_cleanup": true
+    },
+    "cost_tracking_enabled": {
+      "name": "cost_tracking_enabled",
+      "flag_type": "boolean",
+      "default_value": true,
+      "description": "Enable Cost Tracking for LLM calls",
+      "enabled": true,
+      "rollout_percentage": 100.0,
+      "rollout_strategy": "gradual",
+      "include_users": [],
+      "exclude_users": [],
+      "include_user_patterns": [],
+      "created_at": "2025-06-14T16:00:35.626216",
+      "created_by": "system",
+      "last_modified": "2025-06-14T16:00:35.626216",
+      "tags": [
+        "monitoring",
+        "cost"
+      ],
+      "expiry_date": null,
+      "auto_cleanup": true
+    },
+    "unified_rollout_percentage": {
+      "name": "unified_rollout_percentage",
+      "flag_type": "percentage",
+      "default_value": 0.0,
+      "description": "Percentage of users getting Unified System",
+      "enabled": true,
+      "rollout_percentage": 100.0,
+      "rollout_strategy": "gradual",
+      "include_users": [],
+      "exclude_users": [],
+      "include_user_patterns": [],
+      "created_at": "2025-06-14T16:00:35.626217",
+      "created_by": "system",
+      "last_modified": "2025-06-14T16:00:35.626217",
+      "tags": [
+        "rollout",
+        "core"
+      ],
+      "expiry_date": null,
+      "auto_cleanup": true
+    },
+    "experimental_features": {
+      "name": "experimental_features",
+      "flag_type": "json",
+      "default_value": {
+        "intent_router_v2": false,
+        "ai_query_enhancement": false
+      },
+      "description": "Experimental features configuration",
+      "enabled": true,
+      "rollout_percentage": 0.0,
+      "rollout_strategy": "gradual",
+      "include_users": [],
+      "exclude_users": [],
+      "include_user_patterns": [],
+      "created_at": "2025-06-14T16:00:35.626219",
+      "created_by": "system",
+      "last_modified": "2025-06-14T16:00:35.626220",
+      "tags": [
+        "experimental"
+      ],
+      "expiry_date": null,
+      "auto_cleanup": true
+    },
+    "experimental_ai_enhancement": {
+      "name": "experimental_ai_enhancement",
+      "flag_type": "boolean",
+      "default_value": false,
+      "description": "Experimental AI query enhancement",
+      "enabled": true,
+      "rollout_percentage": 10.0,
+      "rollout_strategy": "gradual",
+      "include_users": [],
+      "exclude_users": [],
+      "include_user_patterns": [],
+      "created_at": "2025-06-14T16:00:35.628465",
+      "created_by": "system",
+      "last_modified": "2025-06-14T16:00:35.628785",
+      "tags": [
+        "experimental",
+        "ai"
+      ],
+      "expiry_date": null,
+      "auto_cleanup": true
+    },
+    "test_dynamic_flag": {
+      "name": "test_dynamic_flag",
+      "flag_type": "boolean",
+      "default_value": false,
+      "description": "Test flag for integration",
+      "enabled": true,
+      "rollout_percentage": 50.0,
+      "rollout_strategy": "gradual",
+      "include_users": [],
+      "exclude_users": [],
+      "include_user_patterns": [],
+      "created_at": "2025-06-14T16:02:02.479400",
+      "created_by": "system",
+      "last_modified": "2025-06-14T16:02:02.479403",
+      "tags": [],
+      "expiry_date": null,
+      "auto_cleanup": true
+    }
+  },
+  "metadata": {
+    "last_updated": "2025-06-14T16:02:10.850249",
+    "total_flags": 10
+  }
+}

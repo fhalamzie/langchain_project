@@ -1,0 +1,569 @@
+{
+  "meta": {
+    "version": "2.0_realistic",
+    "created": "2025-06-14",
+    "total_queries": 48,
+    "description": "WINCASA Realistic Golden Set mit echten Datenbankwerten",
+    "validation": {
+      "total_queries": 48,
+      "queries_with_results": 10,
+      "avg_results_per_query": 10.0,
+      "zero_result_queries": [],
+      "high_result_queries": [
+        {
+          "query": "Wer wohnt in der Steinf. 32/34 + Schonneb. 81?",
+          "results": 10,
+          "category": "mieter_search"
+        },
+        {
+          "query": "Wer wohnt in der Kämpenstraße 13?",
+          "results": 10,
+          "category": "mieter_search"
+        },
+        {
+          "query": "Wer wohnt in der Akazienstraße 17?",
+          "results": 10,
+          "category": "mieter_search"
+        },
+        {
+          "query": "Wer wohnt in der Florastr. 90?",
+          "results": 10,
+          "category": "mieter_search"
+        },
+        {
+          "query": "Wer wohnt in der Holzmaarstr. 37?",
+          "results": 10,
+          "category": "mieter_search"
+        },
+        {
+          "query": "Wer wohnt in der Im Salzgrund 33?",
+          "results": 10,
+          "category": "mieter_search"
+        },
+        {
+          "query": "Wer wohnt in der Erlenstr. 21?",
+          "results": 10,
+          "category": "mieter_search"
+        },
+        {
+          "query": "Zeige mir alle Mieter in Heist",
+          "results": 10,
+          "category": "mieter_search"
+        },
+        {
+          "query": "Zeige mir alle Mieter in Overath",
+          "results": 10,
+          "category": "mieter_search"
+        },
+        {
+          "query": "Zeige mir alle Mieter in Neuss",
+          "results": 10,
+          "category": "mieter_search"
+        }
+      ],
+      "performance_samples": [
+        {
+          "query": "Wer wohnt in der Steinf. 32/34 + Schonneb. 81?",
+          "results": 10,
+          "time_ms": 844.29,
+          "confidence": 0.95
+        },
+        {
+          "query": "Wer wohnt in der Kämpenstraße 13?",
+          "results": 10,
+          "time_ms": 536.91,
+          "confidence": 0.95
+        },
+        {
+          "query": "Wer wohnt in der Akazienstraße 17?",
+          "results": 10,
+          "time_ms": 837.14,
+          "confidence": 0.95
+        },
+        {
+          "query": "Wer wohnt in der Florastr. 90?",
+          "results": 10,
+          "time_ms": 936.34,
+          "confidence": 0.95
+        },
+        {
+          "query": "Wer wohnt in der Holzmaarstr. 37?",
+          "results": 10,
+          "time_ms": 2635.35,
+          "confidence": 0.95
+        },
+        {
+          "query": "Wer wohnt in der Im Salzgrund 33?",
+          "results": 10,
+          "time_ms": 2129.43,
+          "confidence": 0.95
+        },
+        {
+          "query": "Wer wohnt in der Erlenstr. 21?",
+          "results": 10,
+          "time_ms": 2121.34,
+          "confidence": 0.95
+        },
+        {
+          "query": "Zeige mir alle Mieter in Heist",
+          "results": 10,
+          "time_ms": 704.5,
+          "confidence": 0.95
+        },
+        {
+          "query": "Zeige mir alle Mieter in Overath",
+          "results": 10,
+          "time_ms": 3308.08,
+          "confidence": 0.95
+        },
+        {
+          "query": "Zeige mir alle Mieter in Neuss",
+          "results": 10,
+          "time_ms": 1330.89,
+          "confidence": 0.95
+        }
+      ],
+      "hit_rate": 1.0
+    },
+    "real_data_stats": {
+      "cities": 70,
+      "addresses": 69,
+      "names": 817,
+      "companies": 10
+    }
+  },
+  "queries": [
+    {
+      "id": "realistic_001",
+      "query": "Wer wohnt in der Steinf. 32/34 + Schonneb. 81?",
+      "category": "mieter_search",
+      "intent": "lookup",
+      "expected_data": "mieter_komplett",
+      "real_value": "Steinf. 32/34 + Schonneb. 81",
+      "data_source": "addresses"
+    },
+    {
+      "id": "realistic_002",
+      "query": "Wer wohnt in der Kämpenstraße 13?",
+      "category": "mieter_search",
+      "intent": "lookup",
+      "expected_data": "mieter_komplett",
+      "real_value": "Kämpenstraße 13",
+      "data_source": "addresses"
+    },
+    {
+      "id": "realistic_003",
+      "query": "Wer wohnt in der Akazienstraße 17?",
+      "category": "mieter_search",
+      "intent": "lookup",
+      "expected_data": "mieter_komplett",
+      "real_value": "Akazienstraße 17",
+      "data_source": "addresses"
+    },
+    {
+      "id": "realistic_004",
+      "query": "Wer wohnt in der Florastr. 90?",
+      "category": "mieter_search",
+      "intent": "lookup",
+      "expected_data": "mieter_komplett",
+      "real_value": "Florastr. 90",
+      "data_source": "addresses"
+    },
+    {
+      "id": "realistic_005",
+      "query": "Wer wohnt in der Holzmaarstr. 37?",
+      "category": "mieter_search",
+      "intent": "lookup",
+      "expected_data": "mieter_komplett",
+      "real_value": "Holzmaarstr. 37",
+      "data_source": "addresses"
+    },
+    {
+      "id": "realistic_006",
+      "query": "Wer wohnt in der Im Salzgrund 33?",
+      "category": "mieter_search",
+      "intent": "lookup",
+      "expected_data": "mieter_komplett",
+      "real_value": "Im Salzgrund 33",
+      "data_source": "addresses"
+    },
+    {
+      "id": "realistic_007",
+      "query": "Wer wohnt in der Erlenstr. 21?",
+      "category": "mieter_search",
+      "intent": "lookup",
+      "expected_data": "mieter_komplett",
+      "real_value": "Erlenstr. 21",
+      "data_source": "addresses"
+    },
+    {
+      "id": "realistic_008",
+      "query": "Zeige mir alle Mieter in Heist",
+      "category": "mieter_search",
+      "intent": "lookup",
+      "expected_data": "mieter_komplett",
+      "real_value": "Heist",
+      "data_source": "cities"
+    },
+    {
+      "id": "realistic_009",
+      "query": "Zeige mir alle Mieter in Overath",
+      "category": "mieter_search",
+      "intent": "lookup",
+      "expected_data": "mieter_komplett",
+      "real_value": "Overath",
+      "data_source": "cities"
+    },
+    {
+      "id": "realistic_010",
+      "query": "Zeige mir alle Mieter in Neuss",
+      "category": "mieter_search",
+      "intent": "lookup",
+      "expected_data": "mieter_komplett",
+      "real_value": "Neuss",
+      "data_source": "cities"
+    },
+    {
+      "id": "realistic_011",
+      "query": "Zeige mir alle Mieter in Hasborn",
+      "category": "mieter_search",
+      "intent": "lookup",
+      "expected_data": "mieter_komplett",
+      "real_value": "Hasborn",
+      "data_source": "cities"
+    },
+    {
+      "id": "realistic_012",
+      "query": "Zeige mir alle Mieter in Burscheid",
+      "category": "mieter_search",
+      "intent": "lookup",
+      "expected_data": "mieter_komplett",
+      "real_value": "Burscheid",
+      "data_source": "cities"
+    },
+    {
+      "id": "realistic_013",
+      "query": "Kontaktdaten von Karl",
+      "category": "contact_lookup",
+      "intent": "lookup",
+      "expected_data": "mieter_komplett",
+      "real_value": "Karl",
+      "data_source": "names"
+    },
+    {
+      "id": "realistic_014",
+      "query": "Kontaktdaten von Christian",
+      "category": "contact_lookup",
+      "intent": "lookup",
+      "expected_data": "mieter_komplett",
+      "real_value": "Christian",
+      "data_source": "names"
+    },
+    {
+      "id": "realistic_015",
+      "query": "Kontaktdaten von Lievenbrück",
+      "category": "contact_lookup",
+      "intent": "lookup",
+      "expected_data": "mieter_komplett",
+      "real_value": "Lievenbrück",
+      "data_source": "names"
+    },
+    {
+      "id": "realistic_016",
+      "query": "Kontaktdaten von Onur",
+      "category": "contact_lookup",
+      "intent": "lookup",
+      "expected_data": "mieter_komplett",
+      "real_value": "Onur",
+      "data_source": "names"
+    },
+    {
+      "id": "realistic_017",
+      "query": "Kontaktdaten von Murcia",
+      "category": "contact_lookup",
+      "intent": "lookup",
+      "expected_data": "mieter_komplett",
+      "real_value": "Murcia",
+      "data_source": "names"
+    },
+    {
+      "id": "realistic_018",
+      "query": "Kontaktdaten von Arena",
+      "category": "contact_lookup",
+      "intent": "lookup",
+      "expected_data": "mieter_komplett",
+      "real_value": "Arena",
+      "data_source": "names"
+    },
+    {
+      "id": "realistic_019",
+      "query": "Kontaktdaten von Heek",
+      "category": "contact_lookup",
+      "intent": "lookup",
+      "expected_data": "mieter_komplett",
+      "real_value": "Heek",
+      "data_source": "names"
+    },
+    {
+      "id": "realistic_020",
+      "query": "Telefonnummer von Familie Volker",
+      "category": "contact_lookup",
+      "intent": "lookup",
+      "expected_data": "mieter_komplett",
+      "real_value": "Volker",
+      "data_source": "names"
+    },
+    {
+      "id": "realistic_021",
+      "query": "Telefonnummer von Familie Yousif",
+      "category": "contact_lookup",
+      "intent": "lookup",
+      "expected_data": "mieter_komplett",
+      "real_value": "Yousif",
+      "data_source": "names"
+    },
+    {
+      "id": "realistic_022",
+      "query": "Telefonnummer von Familie Jacqueline",
+      "category": "contact_lookup",
+      "intent": "lookup",
+      "expected_data": "mieter_komplett",
+      "real_value": "Jacqueline",
+      "data_source": "names"
+    },
+    {
+      "id": "realistic_023",
+      "query": "Telefonnummer von Familie Enno",
+      "category": "contact_lookup",
+      "intent": "lookup",
+      "expected_data": "mieter_komplett",
+      "real_value": "Enno",
+      "data_source": "names"
+    },
+    {
+      "id": "realistic_024",
+      "query": "Telefonnummer von Familie Growe",
+      "category": "contact_lookup",
+      "intent": "lookup",
+      "expected_data": "mieter_komplett",
+      "real_value": "Growe",
+      "data_source": "names"
+    },
+    {
+      "id": "realistic_025",
+      "query": "Portfolio von Ruhrstadt Wohnen GmbH &",
+      "category": "portfolio_query",
+      "intent": "template",
+      "expected_data": "eigentuemer_portfolio",
+      "real_value": "Ruhrstadt Wohnen GmbH &",
+      "data_source": "companies"
+    },
+    {
+      "id": "realistic_026",
+      "query": "Portfolio von Prader Bauträger GmbH",
+      "category": "portfolio_query",
+      "intent": "template",
+      "expected_data": "eigentuemer_portfolio",
+      "real_value": "Prader Bauträger GmbH",
+      "data_source": "companies"
+    },
+    {
+      "id": "realistic_027",
+      "query": "Portfolio von Ruhrstadt Immobilien Service GmbH &",
+      "category": "portfolio_query",
+      "intent": "template",
+      "expected_data": "eigentuemer_portfolio",
+      "real_value": "Ruhrstadt Immobilien Service GmbH &",
+      "data_source": "companies"
+    },
+    {
+      "id": "realistic_028",
+      "query": "Portfolio von Ruhrstadt Immobilien Service GmbH &",
+      "category": "portfolio_query",
+      "intent": "template",
+      "expected_data": "eigentuemer_portfolio",
+      "real_value": "Ruhrstadt Immobilien Service GmbH &",
+      "data_source": "companies"
+    },
+    {
+      "id": "realistic_029",
+      "query": "Wie viele Objekte hat Ruhrstadt Hausverwaltung?",
+      "category": "portfolio_query",
+      "intent": "template",
+      "expected_data": "eigentuemer_portfolio",
+      "real_value": "Ruhrstadt Hausverwaltung",
+      "data_source": "companies"
+    },
+    {
+      "id": "realistic_030",
+      "query": "Wie viele Objekte hat Prader Bauträger GmbH?",
+      "category": "portfolio_query",
+      "intent": "template",
+      "expected_data": "eigentuemer_portfolio",
+      "real_value": "Prader Bauträger GmbH",
+      "data_source": "companies"
+    },
+    {
+      "id": "realistic_031",
+      "query": "Wie viele Objekte hat Sundeki Immobilien 1 GmbH &?",
+      "category": "portfolio_query",
+      "intent": "template",
+      "expected_data": "eigentuemer_portfolio",
+      "real_value": "Sundeki Immobilien 1 GmbH &",
+      "data_source": "companies"
+    },
+    {
+      "id": "realistic_032",
+      "query": "Freie Wohnungen in Ockenheim",
+      "category": "vacancy_status",
+      "intent": "template",
+      "expected_data": "objekte_details",
+      "real_value": "Ockenheim",
+      "data_source": "cities"
+    },
+    {
+      "id": "realistic_033",
+      "query": "Freie Wohnungen in Wiehl",
+      "category": "vacancy_status",
+      "intent": "template",
+      "expected_data": "objekte_details",
+      "real_value": "Wiehl",
+      "data_source": "cities"
+    },
+    {
+      "id": "realistic_034",
+      "query": "Freie Wohnungen in Ockenheim",
+      "category": "vacancy_status",
+      "intent": "template",
+      "expected_data": "objekte_details",
+      "real_value": "Ockenheim",
+      "data_source": "cities"
+    },
+    {
+      "id": "realistic_035",
+      "query": "Freie Wohnungen in Hausverwaltung",
+      "category": "vacancy_status",
+      "intent": "template",
+      "expected_data": "objekte_details",
+      "real_value": "Hausverwaltung",
+      "data_source": "cities"
+    },
+    {
+      "id": "realistic_036",
+      "query": "Freie Wohnungen in Gerolstein",
+      "category": "vacancy_status",
+      "intent": "template",
+      "expected_data": "objekte_details",
+      "real_value": "Gerolstein",
+      "data_source": "cities"
+    },
+    {
+      "id": "realistic_037",
+      "query": "Leerstand in Bochum",
+      "category": "vacancy_status",
+      "intent": "template",
+      "expected_data": "objekte_details",
+      "real_value": "Bochum",
+      "data_source": "cities"
+    },
+    {
+      "id": "realistic_038",
+      "query": "Leerstand in Wiehl",
+      "category": "vacancy_status",
+      "intent": "template",
+      "expected_data": "objekte_details",
+      "real_value": "Wiehl",
+      "data_source": "cities"
+    },
+    {
+      "id": "realistic_039",
+      "query": "Leerstand in Herne",
+      "category": "vacancy_status",
+      "intent": "template",
+      "expected_data": "objekte_details",
+      "real_value": "Herne",
+      "data_source": "cities"
+    },
+    {
+      "id": "realistic_040",
+      "query": "Leerstand in Erkelenz",
+      "category": "vacancy_status",
+      "intent": "template",
+      "expected_data": "objekte_details",
+      "real_value": "Erkelenz",
+      "data_source": "cities"
+    },
+    {
+      "id": "realistic_041",
+      "query": "Details zu Follerstr. 93",
+      "category": "property_details",
+      "intent": "template",
+      "expected_data": "objekte_details",
+      "real_value": "Follerstr. 93",
+      "data_source": "addresses"
+    },
+    {
+      "id": "realistic_042",
+      "query": "Details zu Follerstr. 93",
+      "category": "property_details",
+      "intent": "template",
+      "expected_data": "objekte_details",
+      "real_value": "Follerstr. 93",
+      "data_source": "addresses"
+    },
+    {
+      "id": "realistic_043",
+      "query": "Details zu Escher Str. 5",
+      "category": "property_details",
+      "intent": "template",
+      "expected_data": "objekte_details",
+      "real_value": "Escher Str. 5",
+      "data_source": "addresses"
+    },
+    {
+      "id": "realistic_044",
+      "query": "Kontostand von Diana",
+      "category": "account_balance",
+      "intent": "template",
+      "expected_data": "mieter_komplett",
+      "real_value": "Diana",
+      "data_source": "names"
+    },
+    {
+      "id": "realistic_045",
+      "query": "Kontostand von Hüttenweg",
+      "category": "account_balance",
+      "intent": "template",
+      "expected_data": "mieter_komplett",
+      "real_value": "Hüttenweg",
+      "data_source": "names"
+    },
+    {
+      "id": "realistic_046",
+      "query": "Kontostand von Joseph",
+      "category": "account_balance",
+      "intent": "template",
+      "expected_data": "mieter_komplett",
+      "real_value": "Joseph",
+      "data_source": "names"
+    },
+    {
+      "id": "realistic_047",
+      "query": "Kontostand von Joachim",
+      "category": "account_balance",
+      "intent": "template",
+      "expected_data": "mieter_komplett",
+      "real_value": "Joachim",
+      "data_source": "names"
+    },
+    {
+      "id": "realistic_048",
+      "query": "Kontostand von Klein",
+      "category": "account_balance",
+      "intent": "template",
+      "expected_data": "mieter_komplett",
+      "real_value": "Klein",
+      "data_source": "names"
+    }
+  ]
+}

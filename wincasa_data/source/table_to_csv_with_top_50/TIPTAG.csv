@@ -1,0 +1,173 @@
+"NR";"TEXT"
+1;"Sie möchten bestimmte Kosten z.B. 70% nach Personenzahl und 30% nach Wohnfläche umlegen?
+
+Einfach unter HAUS - KONTENRAHMEN - KONTEN dem entsprechenden Konto zwei verschiedene Umlageschlüssel zuordnen. 
+Den Rest macht Win-CASA für Sie."
+2;"Im Menü STAMMDATEN - TERMINE 
+ist ein kompletter Terminplaner in Win-CASA bereits integriert. 
+
+Der Terminplaner erinnert Sie automatisch, wenn ein Termin ansteht und erzeugt  Terminlisten."
+3;"Lassen Sie häufig wiederkehrende Zahlungen (z.B. Abschlagszahlungen an Stadtwerke, Müllgebühren, Strompauschalen) von Win-CASA automatisch erzeugen!
+
+Näheres dazu im Menü  BUCHHALTUNG - ZAHLUNGSTERMINE"
+4;"Die Liste der letzten 20 Buchungen im Fenster Sollstellung buchen können Sie sich auch nur für das aktuelle Haus anzeigen lassen. 
+
+Näheres dazu im Menü STAMMDATEN - VOREINSTELLUNGEN - BUCHHALTUNG."
+5;"Miet- / Hausgelderhöhungen können Sie in Win-CASA automatisch generieren lassen. Zusätzlich wird ein Erhöhungsanschreiben für Mieter/Eigentümer erstellt.
+
+Näheres finden Sie im Menü HAUS - ERHÖHUNGEN."
+6;"Die beim Buchen verwendete laufende Beleg-Nummer können Sie im Menü HAUS - LAUFENDE BELEG Nr. ändern.
+
+Ob die Beleg Nr. automatisch hochgezählt wird oder nicht können Sie im Menü STAMMDATEN - VOREINSTELLUNGEN - BUCHHALTUNG einstellen. "
+7;"Der auf Sollstellungen u. Lastschriften und damit auch auf dem Kontoauszug des Mieters/Eigentümers erscheinende Text kann von Ihnen geändert werden. 
+
+Näheres finden Sie im Menü STAMMDATEN - VOREINSTELLUNGEN - BUCHHALTUNG"
+8;"In Win-CASA ist eine komplette Kautionsabrechnung integriert. Abzurechnende Mieter erhalten dadurch eine komplette Übersicht über Ihre Kaution, aufgelaufene Zinsen abzgl. möglicher verbliebener Aufwendungen.
+
+Näheres finden Sie im Menü WOHNUNG - DATEN - REGISTER KAUTION"
+9;"Kontrollieren Sie bitte regelmäßig ob Sie mit der aktuellsten Version von Win-CASA arbeiten. Unter HILFE - INFO finden Sie das Programmdatum ihrer Version.
+Direkt über unsere Internetseite unter
+www.software24.de erhalten Sie stets die aktuellste SERVICE DATEI - zum Download - KOSTENLOS.
+Beachten Sie hierzu auch das Menü HILFE - WIN-CASA INTERNET SERVICE CENTER!"
+10;"Die Win-CASA Online Hilfe erklärt wichtige tägliche Buchungsfälle wie z.B.:
+- Unterzahlung eines Mieters
+- Verbuchen einer Lastschrift
+- Buchungen von Rechnungen
+
+Näheres finden Sie im Menü HILFE - LERNPROGRAMM - HÄUFIGE BUCHUNGSFÄLLE"
+11;"Wie erfasse ich externe Heizkosten- abrechnungen z.B. von ISTA, TECHEM, BRUNATA etc.?
+
+Näheres finden Sie im Menü HILFE - LERNPROGRAMM - BESONDERE UMLAGEVERFAHREN"
+12;"Wie verbuche ich in einem gewerblich und privat vermietetem Haus Kosten die:
+- nur auf private Mieter
+- nur auf die gewerblichen Mieter
+- auf private und gewerbliche Mieter
+entfallen.
+Näheres finden Sie im Menü HILFE - LERNPROGRAMM - BESONDERE UMLAGEVERFAHREN"
+13;"Die Kosten für den Aufzug sollen auf alle Mieter (ausgenommen auf den Erdgeschossmieter) umgelegt werden. Wie ist dies in Win-CASA zu lösen?
+
+Näheres finden Sie im Menü HILFE - LERNPROGRAMM - BESONDERE UMLAGEVERFAHREN"
+14;"WEG Verwaltung - Eine Großreparatur soll aus den Rücklagen gedeckt werden. Wie wird dies verbucht?
+
+Näheres finden Sie im Menü HILFE - LERNPROGRAMM - BESONDERE UMLAGEVERFAHREN"
+15;"Führen Sie regelmäßig Datensicherungen durch. Sie können Ihre Daten auf der Festplatte oder extene Datenträger (z.B. USB-Stick) speichern.
+
+Näheres finden Sie im Menü SONSTIGES - DATENSICHERUNG"
+16;"Im Fenster WOHNUNG - DATEN erhalten Sie durch Klick auf die RECHTE Maustaste direkten Zugriff auf spezielle Listen zu der entsprechenden Wohnung."
+17;"Beim Buchen von Ausgaben können Sie neben dem Buchungsdatum auch ein Wertstellungsdatum angeben. 
+Das Wertstellungsdatum ist die Berechnungsbasis für die spätere Nebenkosten- oder WEG-Abrechnung.
+
+Näheres finden Sie im Menü HILFE - Thema - WERTSTELLUNGSDATUM"
+18;"Jede Liste und Auswertung kann in Win-CASA frei nach Ihren Wünschen im optionalen Berichtsdesigner gestaltet werden. Dabei können Sie zusätzliche Felder und Spalten anzeigen lassen oder aber einfach nur Ihr Firmenlogo einbinden.
+
+Näheres finden Sie im Menü HILFE - BERICHTSDESIGNER"
+19;"Sie können Win-CASA in Verbindung mit Ihrer Textverarbeitung einsetzen.Win-CASA startet automatisch z.B.Microsoft Word(R) oder ein andere Textverarbeitung und erlaubt das Einbinden von Mieter- oder Eigentümerdaten über die Seriebrieffunktion.
+Näheres finden Sie im Menü STAMMDATEN - VOREINSTELLUNGEN - TEXTVERARBEITUNG"
+20;"Innerhalb vieler Listenfenster steht das Auswahlfeld ""ZEITRAUM"" zur Verfügung. Dort können Sie den Bereich ""Abrechnungszeitraum"" auswählen. Besonders bei abweichenden Wirtschaftsjahren sparen Sie dadurch Zeit bei der Eingabe des Datums.
+Der Abrechnungszeitraum wird im Menü HAUS - DATEN eingestellt. "
+21;"Win-CASA exportiert Lastschriften und Überweisungen in eine DTA-Datei. 
+- DTA wird von jeder Bank oder Sparkasse     als Standard akzeptiert.
+Sie können die DTA-Datei in Ihr Onlinebanking-Programm einlesen, die DTA-Datei direkt online an die Bank übertragen oder die DTA-Datei auf Diskette bei der Bank vorbeibringen.
+Näheres finden Sie im Menü: BUCHHALTUNG - LASTSCHRIFTEN/ÜBERWEISUNGEN"
+22;"Legen Sie sich in Ihrem Haus einen Kontenrahmen nach Ihren Wünschen an. Anschließend speichern Sie sich diesen Kontenrahmen als Musterkontenrahmen.
+Dadurch steht Ihnen Ihr Kontenplan für andere Häuser zur Verfügung und kann dort übernommen werden.
+Näheres finden Sie im Menü HAUS - KONTENRAHMEN - KONTEN - SPEICHERN"
+23;"Sofortige direkte Hilfe zum Programm erhalten Sie:
+
+- durch Drücken des Hilfe-Schalters
+
+oder 
+
+- durch Drücken der F1- Taste"
+24;"Eine stets aktualisierte Liste häufig gestellter Fragen zu Win-CASA finden Sie im Internet unter:
+
+http://www.software24.com
+
+im Bereich Service - FAQ oder Tipps & Tricks"
+25;"Aktuelle Infos zu Programmupdates und Neuerungen von Win-CASA erhalten Sie gerne durch den kostenlosen E-Mail Newsletter.
+Einfach anmelden im Internet unter:
+http://www.software24.de
+oder über das Win-CASA Internet Service Center.
+Dies rufen Sie über das Menü HILFE - INTERNET SERVICE CENTER auf!"
+26;"Im Fenster ABRECHNUNGEN - GUTHABEN/NACHZAHLUNGEN können Sie errechnete G/N sofort in die Buchhaltung übernehmen. Sie erstellen automatisch eine Überweisung oder Lastschrift für die betreffenden Mieter/Eigentümer und erzeugen eine Sollstellung."
+27;"Im Fenser ABRECHNUNGEN - NEUE VORAUSZAHLUNGEN können Sie die neuen VZ aufgrund der letzten Nebenkostenabrechnung sofort in die Wohnungsdaten übernehmen."
+28;"Unter Stammdaten-Kontakte geben Sie Adressen, Tel.- u. Bankverbindungen von Behörden, Handwerkern, Lieferanten, Versorgern, Versicherungen etc. ein.
+
+Unter SONSTIGES-SUCHEN bzw. Symbol SUCHEN können Sie Mieternamen und Kontaktadressen blitzschnell auffinden."
+29;"Unter Menü STAMMDATEN - VOREINSTELLUNG - BUCHHALTUNG können Sie einstellen, ob in dem Buchungsfenster die Eingabefelder für Kontoauszugsnummer und Blatt-Nr. ein- oder ausgeblendet werden sollen."
+30;"In der Win-CASA-Hauptmaske können Sie durch Drücken auf ""Objekt"" bzw. ""Wohnung"" links vor den jeweiligen aufklappbaren Feldern nach Objekten oder Wohnungen suchen. "
+31;"Im Haupfenster können Sie mit den Funktionstasten:
+
+F3 - Suchansicht
+F4 - Buchungsansicht
+
+umschalten.  "
+32;"Die neue Heizkosten- und Warmwasserberechnung ermöglicht die exakte Ermittlung der jeweiligen Kosten nach Paragraph 9 Heizkostenverordnung oder durch prozentualer Verteilung.
+Ein Assistent begleitet Sie dabei Schritt für Schritt durch die Eingaben.
+Selbstverständlich werden verschiedene Brennstoffarten wie Heizöl, Stadtgas, Erdgas, Brechkoks und Fernwärme berücksichtigt. 
+"
+33;"Optionales DATEV-Modul
+
+Dieses Modul ermöglicht Ihnen den Export von Buchungsdaten im DATEV-Format zur Datenübernahme durch den Steuerberater.
+Dabei kann für jedes Konto ein entsprechendes DATEV-Konto hinterlegt werden.
+
+Für detailiertere Informationen sprechen Sie einfach mit unserem Vertrieb!"
+34;"Optionales CAEXIM-Modul
+
+Mit Hilfe dieses Moduls werden die Abrechnungsdaten als Datei an ein externes Heizkostenabrechnungsunter-
+nehmen (z.B ISTA, Brunata) übertragen. 
+Dies erspart das Erstellen und Eingeben der
+berechneten Werte in Win-CASA.
+
+Für detailiertere Informationen sprechen Sie mit unserem Vertrieb!"
+35;"Mit Hilfe des Schalter ""Rücklastschrift verbuchen"" im Menü BUCHEN können von der Bank nicht akzeptierte Lastschriften automatisch zurückgebucht und sollgestellt werden. Selbstverständlich werden die hierbei anfallenden Gebühren mitberücksichtigt."
+36;"Sie können in Win-CASA anfallende Mahngebühren automatisch sollstellen oder diese optional als Festbetrag in der Nebenkosten-/WEG-Abrechnung belasten.
+
+Das Auswahlfenster für diese Optionen wird beim Ausdruck der Mahnung eingeblendet!"
+37;"Die neue Liste ""Zahlungsübersicht"" stellt jeder einzelnen Sollstellung die entsprechende Zahlung gegenüber. 
+Daher eignet sich diese Übersicht ideal als Ergänzung zum Kontoauszug, besonders bei Unterzahlungen.
+
+Sie rufen diese Liste über den Menüpunkt LISTE - ZAHLUNGSÜBERSICHT auf!"
+38;"Mit Hilfe der Finanzstatus-Liste werden alle Bestandskonten (Kassen/Banken) wahlweise pro Haus oder alle Häuser zu einem bestimmten Stichtag summiert.
+
+Dadurch haben Sie Ihre Finanzen auf einen Blick parat.
+
+Diese Liste rufen Sie über das Menü LISTEN - FINANZSTATUS auf!"
+39;"Im Menü BUCHHALTUNG - SOLLSTELLUNG BUCHEN können Sie durch Drücken des Schalters ""Drucken"" eine Liste der zu verbuchenden Sollstellungen ausdrucken. 
+
+Auf dieser Liste werden die wichtigsten Daten dieser Sollstellungen angzeigt!"
+40;"Offen Posten können Sie mit Hilfe der ""Offene Posten Liste"" schnell und einfach überprüfen.
+Hier werden alle sollgestellten aber noch nicht verbuchten Vorgänge ausgewiesen.
+Hierbei  können Sie die Liste entweder nach Datum oder Konto sortiert ausdrucken.
+Sie rufen die Liste über den Menüpunkt LISTEN - OFFENE POSTEN ÜBERSICHT auf!"
+41;"Speichern Sie Termine, Bemerkungen oder die Korrespondenz bzw. wichtige Dokumente objektabhängig zum jeweiligen Gebäude ab. Dies ist auch ideal zum Nachweis von wichtigen Schreiben bei evtl. gerichtlichen Auseinandersetzungen.
+
+Sie rufen das Dokumentenmanagement über den Menüpunkt STAMMDATEN - DOKUMENTENMANAGEMENT auf!"
+42;"Win-CASA ermöglicht es Ihnen alle Ausdrucke, egal ob Buchungsübersicht, Nebenkostenabrechnung oder diverse Kontrollisten in das gängige PDF-Format zu exportieren.
+
+Wählen Sie hierzu in der Druckvorschau einfach den Schalter ""Exportiere nach..."". Nach dem Export wird wahlweise ein Nachweis über das Dokument erstellt.
+"
+43;"Win-CASA ermöglicht es Ihnen alle Ausdrucke, egal ob Buchungsübersicht, Nebenkostenabrechnung oder diverse Kontrollisten als HTML-Dokument zu exportieren.
+
+Wählen Sie hierzu in der Druckvorschau einfach den Schalter ""Exportiere nach..."". Nach dem Export wird wahlweise ein Nachweis über das Dokument erstellt."
+44;"Win-CASA ermöglicht es Ihnen alle Ausdrucke, egal ob Buchungsübersicht, Nebenkostenabrechnung oder diverse Kontrollisten in das XLS-Format zu exportieren. Sie können die exportierten Daten dann in MS-Excel weiterverarbeiten.
+
+Wählen Sie hierzu in der Druckvorschau einfach den Schalter ""Exportiere nach..."". Nach dem Export wird wahlweise ein Nachweis über das Dokument erstellt."
+45;"Win-CASA ermöglicht direktes Telefonieren per Mausklick aus dem Programm heraus. Hierzu wird die eingetragene Nummer des Bewohners/Eigentümers oder Kontaktes direkt über Ihr Systemtelefon gewählt.
+
+Hierzu finden Sie in den Bewohner-, Eigentümer- und Kontaktfenstern den Schalter ""Tel./Email""."
+46;"Der Versand von Emails aus Win-CASA heraus ist mit einem Mausklick möglich.
+Hierbei wird auf Ihre bestehende Email-Software (z.B. MS-Outlook) zurückgegriffen. Die jeweilige Email-Adresse wird aus der in-CASA-Datenbank übernommen.
+
+Hierzu finden Sie in den Bewohner-, Eigentümer- und Kontaktfenstern den Schalter ""Tel./Email""."
+47;"Mit der Serienbrieffunktion können Sie Serienbriefe sowohl an Bewohner/Eigentümer als auch an Kontakte/Lieferanten erstellen.
+
+Dies eignet sich ideal für Rundschreiben und Änderungsmitteilungen."
+48;"Durch die integrierte Rücklagenverwaltung mit Rücklagen-Bestandskonten, z.B. Festgeld, Sparbuch etc. (Win-CASA WEG und PRO) haben Sie Ihre Rücklagenpositionen immer im Griff.
+Gebühren, Zinsen, Soli und Steuern sind den einzelnen Rücklagen-Bestandskonten individuell zuordenbar.
+Die Rücklagenverwaltung rufen Sie über den Menüpunkt ABRECHNUNGEN - RÜCKLAGEN auf!
+"
+49;"Zuführungen und Entnahmen aus Rücklagen werden unter Buchhaltung-Buchen mit dem Assistenten für Rücklagen (Schalter Rücklagen) gebucht."
+50;"In der Win-CASA-Hauptmaske können Sie durch Drücken des Schalters ""Drucken"" rechts neben dem Rollfeld Objekt eine Objektliste mit allen bisher angelegten Objekten ausdrucken!
+
+Dadurch behalten Sie immer den Überblick über Ihre angelegten Objekte!"

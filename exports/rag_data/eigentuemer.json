@@ -1,0 +1,8088 @@
+[
+  {
+    "name": " Sundeki Immobilien 1 GmbH &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "45127 Essen",
+    "kontakt": {
+      "telefon": null,
+      "email": "info@halamzie.de",
+      "handy": "+49 174 8217979"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 2,
+      "einheiten": 20,
+      "kategorie": "Multi-Objekt        ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Dagmar Wingen &  Dieter Wingen",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50259 Pulheim",
+    "kontakt": {
+      "telefon": null,
+      "email": "dieter.wingen@t-online.de",
+      "handy": "+49 178 47863344"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 2,
+      "einheiten": 3,
+      "kategorie": "Multi-Objekt        ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": null,
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "52428 Jülich",
+    "kontakt": {
+      "telefon": null,
+      "email": "m.schroeder@schroeder-iv.de",
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": " Château Veauneclos GbR &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "51143 Köln",
+    "kontakt": {
+      "telefon": "+49 2203 87282",
+      "email": "Hollstein@netcologne.de",
+      "handy": "01638728200"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 12,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": " Hommelsheim GmbH &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "53332 Bornheim",
+    "kontakt": {
+      "telefon": null,
+      "email": "info@edel-asphaltbau.de",
+      "handy": "+49 172 9983030"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": " Pader &  ",
+    "typ": "Gewerblich  ",
+    "firma": "Prader Bauträger GmbH",
+    "plz_ort": "50259 Pulheim",
+    "kontakt": {
+      "telefon": null,
+      "email": "info@prader-bautraeger.de",
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Achim Lobenthal &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50968 Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 7,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Adrian Pawlowski &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50767 Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": "adiewa@web.de + adrian.pawlowski@web.de",
+      "handy": "+49 176 23369039"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Alexander Hoffmann &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50127 Bergheim",
+    "kontakt": {
+      "telefon": "+49 2271 64529",
+      "email": "bmal655@icloud.com",
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Alexandra Arens &  Christoph Arens",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "41363 Jüchen",
+    "kontakt": {
+      "telefon": null,
+      "email": "arens5@t-online.de",
+      "handy": "+49 173 9347732"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Alexandra Fekete &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50968 Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Alfred Hennerici &  Alfred Hennerici",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50354 Hürth",
+    "kontakt": {
+      "telefon": "+49 2233 78928",
+      "email": "wohnungen.hennerici@web.de",
+      "handy": "+49 175 5823721 "
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Anastasia Mitini-Vassiliadis &  Christos Mitini-Vassiliadis",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50859 Köln",
+    "kontakt": {
+      "telefon": "+49 221 733086",
+      "email": "chris.anastasia@yahoo.de",
+      "handy": "+49 152 09232652"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 2,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Andrea Birkenfeld &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50374 Erftstadt",
+    "kontakt": {
+      "telefon": "+49 2235 9944224",
+      "email": "andrea.birkenfeld@gmx.net",
+      "handy": "+49 152 54193616"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Andrea Kremer-Rogge &  Burkhard Kremer",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50129 Bergheim",
+    "kontakt": {
+      "telefon": null,
+      "email": "info@fahrschulekremer.de",
+      "handy": "+49 177 3307850"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 2,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Andreas Brandau &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "76185 Karlsruhe",
+    "kontakt": {
+      "telefon": "+49 721 8308933",
+      "email": "andreasbrandau@t-online.de",
+      "handy": "+49 178 2126230"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Andreas Bögel &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50769 Köln",
+    "kontakt": {
+      "telefon": "+49 163-6782828",
+      "email": "andreas-boegel@gmx.de",
+      "handy": "+49 163-2902336"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Andreas Derix &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50767 Köln",
+    "kontakt": {
+      "telefon": "+49 221 37954654",
+      "email": "a-derix@t-online.de",
+      "handy": "+49 1705214746 "
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 3,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Andreas Nonnen-Büscher &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "53119 Bonn",
+    "kontakt": {
+      "telefon": "+49 228 6042740",
+      "email": "info@nonnen-buescher.de",
+      "handy": "+49 170 5315422"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 4,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Aneglika Braun &  Heribert Braun",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50259 Pulheim",
+    "kontakt": {
+      "telefon": "+49223859725 ",
+      "email": "a_braun@t-online.de",
+      "handy": "+49 177 9543455"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 2,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Anita Römer &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50767 Köln",
+    "kontakt": {
+      "telefon": "+49 221 5902230",
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Anna Bartoschek & Matthias Koslowski",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": null,
+    "kontakt": {
+      "telefon": "+49 221-30182478",
+      "email": "anna.bartoschek@gmx.de",
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Annick Freiesleben &  Volker Freiesleben",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50674 Köln",
+    "kontakt": {
+      "telefon": "+49221 57979116",
+      "email": "info@capfacility.de",
+      "handy": "+49 163 5797916"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Anosah Elanthirayan &  Muthukumar Elanthirayan",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50189 Elsdorf",
+    "kontakt": {
+      "telefon": null,
+      "email": "anu86@web.de",
+      "handy": "+49 176 80853950"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Beate Amrhein &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "40789 Monheim",
+    "kontakt": {
+      "telefon": "+49 2173 31689",
+      "email": "beate.amrhein@t-online.de",
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Bekaz Ibryam &  Taner Ibryam",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50127 Bergheim-Quadrath",
+    "kontakt": {
+      "telefon": null,
+      "email": "ibryambelkiz@gmail.com",
+      "handy": "+49 162 4780637"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Benjamin Sablotny &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "52388 Nörvenich-Rath",
+    "kontakt": {
+      "telefon": "+49176 55165319",
+      "email": "benjamin.sablotny@gmail.com",
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 2,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Bernd Löffler &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50259 Pulheim",
+    "kontakt": {
+      "telefon": "+49 2238 52426",
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 2,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Beuße Oliver &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50259 Pulheim",
+    "kontakt": {
+      "telefon": null,
+      "email": "o.beusse@web.de",
+      "handy": "+49 172 2926722"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Björn Klimek &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "51103 Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": "klimek@klimekschneider.com",
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Brigitte Mannebach &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "59872 Meschede",
+    "kontakt": {
+      "telefon": null,
+      "email": "brigittemannebach.bm@gmail.com",
+      "handy": "+49 152 09372300"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Carl Alexander Barthel &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50829 Köln",
+    "kontakt": {
+      "telefon": "+49 221 5399221",
+      "email": "barthel@carlbarthel.de",
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Christiane Kanz-Erlenbusch &  Oliver Kanz",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50999 Köln",
+    "kontakt": {
+      "telefon": "+49 2236 3314618",
+      "email": "ch.erlenbusch@gmail.com",
+      "handy": "+49 172 8237363"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Christina Babic &  Alen Babic",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50765 Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": "christina.babic@gmx.de",
+      "handy": "+49 1522 2734156"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 2,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Christina Eylenfeld &  Martin Lange",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50999 Köln",
+    "kontakt": {
+      "telefon": "+49 157 72393821",
+      "email": "ml.lange@t-online.de",
+      "handy": "+49 178 1417804"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Christine Schug &  Hans-Dieter Schug",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50767 Köln",
+    "kontakt": {
+      "telefon": "+49 221 5904201",
+      "email": "christine.schug@gmx.de",
+      "handy": "+49 178 6355060"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Cornelia Lievenbrück & Bernhard Lievenbrück",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50767 Köln",
+    "kontakt": {
+      "telefon": "+49 221 5903282",
+      "email": "lievenbrueck@arcor.de",
+      "handy": "+49 176 34496127"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 2,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Daniela Korsten &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50127 Bergheim",
+    "kontakt": {
+      "telefon": null,
+      "email": "daniela_korsten@web.de",
+      "handy": "+49 176 44270234"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Denise Esser &  Daniel Esser",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50226 Frechen",
+    "kontakt": {
+      "telefon": "+49 2234 93345181",
+      "email": "daniel.esser79@web.de",
+      "handy": "+49 172-6003663"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 2,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Deniz Horst Asar &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50259 Pulheim",
+    "kontakt": {
+      "telefon": null,
+      "email": "deniz_asar@outlook.de",
+      "handy": "+49 1517 0353397"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Dennis Dr. Grosse &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50933 Köln",
+    "kontakt": {
+      "telefon": "+4915112579645",
+      "email": "grossedennis@aol.com",
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Dennis Rogowski &  Jaqueline Bräu",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "53945 Blankenheim",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Dennis Witt &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50739 Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": "monca@21x9.org",
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Diana Riediger &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50169 Kerpen",
+    "kontakt": {
+      "telefon": null,
+      "email": "diana.riediger1206@gmail.com",
+      "handy": "+49 1578-4868639"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Dierk Krull &  Astrid Krull",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "52388 Nörvenich-Rath",
+    "kontakt": {
+      "telefon": "+49 2426 6259",
+      "email": "dierk.krull@gmx.de",
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 2,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Doris Klöser &  Herbert Klöser",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50189 Elsdorf-Niederembt",
+    "kontakt": {
+      "telefon": "+49 2271 89292",
+      "email": "doriskloeser@gmx.de",
+      "handy": "+49 163 1831752"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Dorothea Groth &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50733 Köln",
+    "kontakt": {
+      "telefon": "022177870754",
+      "email": "dorothea.groth@t-online.de",
+      "handy": "015110683970"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Dorothea Kühn &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50259 Pulheim",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Dunja Wagner &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50374 Erftstadt",
+    "kontakt": {
+      "telefon": "+49 223 5466606",
+      "email": "wagner.du@web.de",
+      "handy": "+49 162 9121229"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Elisabeth Meurer &  Wolfgang Schmitt",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50765 Köln",
+    "kontakt": {
+      "telefon": "+49 221 1683352",
+      "email": "WolfiSchmitt@web.de",
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Elisabeth Stastny &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "24944 Flensburg",
+    "kontakt": {
+      "telefon": null,
+      "email": "elista@gmx.net",
+      "handy": "+49 178 1417804"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Elke Budde-Spölgen &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "51371 Leverkusen",
+    "kontakt": {
+      "telefon": "+49 214 83362864",
+      "email": null,
+      "handy": "+49 172 9095977"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 2,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Elke Striewe &  Werner Kirchmann",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50374 Erftstadt",
+    "kontakt": {
+      "telefon": null,
+      "email": "contact@wernerkirchmann.com",
+      "handy": "+49 176 23143105"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Ellen Ramb &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "51503 Rösrath",
+    "kontakt": {
+      "telefon": "+49 2205 4462",
+      "email": "ellen.ramb@mail.de",
+      "handy": "+49 172 7844307"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Emel Kilic &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50767 Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": "emel.kilic1@web.de",
+      "handy": "+49 170 8215632"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 3,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Emine Cakir &  Raif Cakir",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50127 Bergheim",
+    "kontakt": {
+      "telefon": null,
+      "email": "cakirraif67@gmail.com",
+      "handy": "+49 176 81289351"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Engin Sahin &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50126 Bergheim",
+    "kontakt": {
+      "telefon": null,
+      "email": "ensabau@web.de",
+      "handy": "+49 163 2017217"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Enno Ehlert &  Nick Hoffmann",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "82008 Unterhaching",
+    "kontakt": {
+      "telefon": null,
+      "email": "enno.ehlert@gmail.com",
+      "handy": "+49 151 58061827"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Ercan Tombalak &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50859 Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": "selina1tanem@hotmail.com",
+      "handy": "+49 176 58868186"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 3,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Erika Peger &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50933 Köln",
+    "kontakt": {
+      "telefon": "+49 221 409049",
+      "email": null,
+      "handy": "+49 176 57710301"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Ernst Kaplan & Christina Kaplan",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50739 Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": "ch.kaplan@bewo-mobil-koeln.de",
+      "handy": "+49 177 4511243"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Ernst Norbert Honnen &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50859 Köln",
+    "kontakt": {
+      "telefon": "+49 2234 48503",
+      "email": "mnkk.honnen@web.de",
+      "handy": "+49 1577 5297055"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Eyman Süleyman &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "54568 Gerolstein",
+    "kontakt": {
+      "telefon": "017693378642",
+      "email": "s.eyman@web.de",
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 2,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Fahim  Halamzie &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": null,
+    "kontakt": {
+      "telefon": "+49 1748217979",
+      "email": "halamzie@ruhrstadt-gruppe.com",
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Florian  Bibelge &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "52388 Nörvenich",
+    "kontakt": {
+      "telefon": "+49 170 8995362 ",
+      "email": "Bibelge.Florian@gmx.de",
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Frank Kullmann &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "53332 Bornheim",
+    "kontakt": {
+      "telefon": null,
+      "email": "kullmann67@web.de",
+      "handy": "+49 172 9983030"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Frank Mottie &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50259 Pulheim",
+    "kontakt": {
+      "telefon": null,
+      "email": "frankmottie@icloud.com",
+      "handy": "+49 178 1493108"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 2,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Frank Odendahl &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50259 Pulheim",
+    "kontakt": {
+      "telefon": null,
+      "email": "Frank.Odendahl@gmx.de",
+      "handy": "+49 162 6060900"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Franz Hoffmann &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "51427 Bergisch Gladbach",
+    "kontakt": {
+      "telefon": "+49 2204 960822",
+      "email": "Hoffmann.dagmar@mail.de",
+      "handy": "+49 151 22147923"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 2,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Franz-Ulrich Mainz &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50129 Bergheim",
+    "kontakt": {
+      "telefon": "+49 2238 940336",
+      "email": "mainzul@hotmail.com",
+      "handy": "+49 174 7677203"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 2,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Gabriele Mainzer &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50226 Frechen",
+    "kontakt": {
+      "telefon": "+49 2234 9512624",
+      "email": "gabriele.mainzer@web.de",
+      "handy": "+49 162 3451267"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Georg Stoll &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50767 Köln",
+    "kontakt": {
+      "telefon": "+49 221 5903821",
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Georg Zorn &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "86956 Schongau",
+    "kontakt": {
+      "telefon": "+49 8861200495",
+      "email": "zorn.georg@t-online.de",
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Gruscha Hill &  Stephan Hill",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50374 Erftstadt",
+    "kontakt": {
+      "telefon": "+49 214 2069422",
+      "email": "jbe@zeitundwert.de",
+      "handy": "+49 172 6202081"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 2,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Günter Dorstewitz &  Margit Dorstewitz",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50767 Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Halil Feyzula &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50127 Bergheim",
+    "kontakt": {
+      "telefon": null,
+      "email": "tumerrr2016@gmail.com",
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 2,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Hanim Gülsin &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50127 Bergheim",
+    "kontakt": {
+      "telefon": null,
+      "email": "hasangulsin@gmail.com",
+      "handy": "+49 159 04378252"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 3,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Harm Meiners &  Lorena Meiners",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50259 Pulheim",
+    "kontakt": {
+      "telefon": "+49 222 1395289",
+      "email": "harm.meiners@web.de",
+      "handy": "+49 176 23399874"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 2,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Hasan Gülsin &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50127 Bergheim",
+    "kontakt": {
+      "telefon": null,
+      "email": "hasangulsin@gmail.com",
+      "handy": "+49 159 04378252"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Hayriye Kaplan & Alim Tahtaci",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50674 Köln",
+    "kontakt": {
+      "telefon": "+49 174 3721071",
+      "email": "immo@tahtaci.eu",
+      "handy": "+49 173 5277770"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Heinz-Bodo Muntau &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "52388 Nörvenich-Rath",
+    "kontakt": {
+      "telefon": "+49 2426 1899",
+      "email": "bodo.muntau@t-online.de",
+      "handy": "+49 152 37329178"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 3,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Helga Horatz &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "46049 Oberhausen",
+    "kontakt": {
+      "telefon": "+49 208 4569620",
+      "email": "stefan.horatz@gmail.com",
+      "handy": "01777926011"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Helmut Willems &  Junghee Willemns",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50858 Köln",
+    "kontakt": {
+      "telefon": "+49 221 488827",
+      "email": "hwillems@gmx.de",
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Henryk Paterok &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "54568 Gerolstein",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 2,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Hermann-Josef Fleschen &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "54533 Hasborn",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 2,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Hildegard Zöll &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50767 Köln",
+    "kontakt": {
+      "telefon": "+49 221 5906468",
+      "email": "hildegard.zoell@gmx.de",
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Horst und Elisabeth Häkes &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50171 Kerpen",
+    "kontakt": {
+      "telefon": "+49 227 57622",
+      "email": "horst.haekes@bartolomeo.de",
+      "handy": "+49 151 70025340"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Hubert Aussems &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50676 Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": "hubertusaussmes@gmail.com",
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Hubert Braun & Maria Braun",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "52388 Nörvenich-Rath",
+    "kontakt": {
+      "telefon": "+49 2426 904729",
+      "email": "mariabraun3@t-online.de",
+      "handy": "+49 151 75031912"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 4,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Hue Kieu Loi-Thai &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50354 Hürth",
+    "kontakt": {
+      "telefon": null,
+      "email": "huekieu09@googlemail.com",
+      "handy": "+49 176 83326203"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 4,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Huelya Yildiz &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "25492 Heist",
+    "kontakt": {
+      "telefon": null,
+      "email": "bensumi0049@icloud.com",
+      "handy": "+49 176 63629134"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Igor Fuchs &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "52388 Nörvenich-Rath",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 2,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Iman Kezze &  Muhammad Ali Kezze",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "40227 Düsseldorf",
+    "kontakt": {
+      "telefon": null,
+      "email": "mak@kezze.de",
+      "handy": "+49 177 6115357"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Ingrid Lantzerath &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50999 Köln",
+    "kontakt": {
+      "telefon": "+49 2236 61501",
+      "email": null,
+      "handy": "+49 174 6523543"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Irene Groh &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50733 Köln",
+    "kontakt": {
+      "telefon": "+49 221 3452115",
+      "email": "i.groh@web.de",
+      "handy": "+49177 8664511"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 2,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Irmgard Henze &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50767 Köln",
+    "kontakt": {
+      "telefon": "+49 221 5904233",
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Irmgard Wilbert &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50259 Pulheim",
+    "kontakt": {
+      "telefon": "+49 2238 3036530",
+      "email": null,
+      "handy": "+49 174 7413053"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 3,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Jasmin Arciprete &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50676 Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": "arciprete@web.de",
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Jennifer Kunkel &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "51674 Wiehl",
+    "kontakt": {
+      "telefon": "+492262 7979 583",
+      "email": "jenny.kunkel@gmail.com",
+      "handy": "+49 16096901488"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Jens Rösch &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50374 Erftstadt",
+    "kontakt": {
+      "telefon": "+49 2235 9567414",
+      "email": "jens.roesch@industrievertretung-roesch.de",
+      "handy": "+49 152 31957474"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Joachim Albert Lucht &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50259 Pulheim",
+    "kontakt": {
+      "telefon": "+49 2234 84973",
+      "email": "lucht-frech@t-online.de",
+      "handy": "+49 172 2037030"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Jochen Piefenbrink &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "41238 Mönchengladbach",
+    "kontakt": {
+      "telefon": "+49172 2613055",
+      "email": "Jochen.Piefenbrink@kapellmann.de",
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Josefa Murcia &  Vera Gonzales",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50127 Bergheim",
+    "kontakt": {
+      "telefon": "+49 2271 93057",
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 2,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Judith Winter &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "40670 Meerbusch",
+    "kontakt": {
+      "telefon": null,
+      "email": "Judith.Winter@gmx.de",
+      "handy": "+49 173 9819666"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Julian Turner &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50765 Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": "julianturner@web.de",
+      "handy": "+49 163 2374366"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Jutta Ferner &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "53347 Alfter",
+    "kontakt": {
+      "telefon": "+49 2222 61812",
+      "email": "fernerju@gmail.com",
+      "handy": "+49 15201508141"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 2,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Jörg Leonhard &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "66877 Ramstein-Miesenbach",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 7,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Jürgen Gusek &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50765 Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Kai Pohl &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50170 Kerpen",
+    "kontakt": {
+      "telefon": null,
+      "email": "pohl.kai@web.de",
+      "handy": "+49 176 84381654"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Karin Prf. Dr. Lehmann &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "73033 Göppingen",
+    "kontakt": {
+      "telefon": null,
+      "email": "k_r_lehmann@web.de",
+      "handy": "+49 1716219174"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Karl Becker &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50171 Kerpen",
+    "kontakt": {
+      "telefon": "+49 2275 912668",
+      "email": "kvbbecker@t-online.de",
+      "handy": "+49 172 6402513"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Klaas Schröder &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50739 Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": "klaas.schroeder@fondof.de",
+      "handy": "+49 175 1161301"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Klaus Vollmer & Irene  Vollmer",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50259 Pulheim",
+    "kontakt": {
+      "telefon": null,
+      "email": "info@buerovollmer.com",
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Kolibius Sylvia & Jürgen Mordieck",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50259 Pulheim",
+    "kontakt": {
+      "telefon": null,
+      "email": "juergen.mohrdieck@arcor.de",
+      "handy": "+49 163 2349636"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Konstantinos Dr. Chatzirafailidis &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "65500 KAVALA (Griechenland)",
+    "kontakt": {
+      "telefon": "+30 6980291326 ",
+      "email": "jsiada13@gmail.com",
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Kristina Cimpric &  Nikola Cimpric",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50189 Elsdorf-Niederembt",
+    "kontakt": {
+      "telefon": "+491772395978",
+      "email": "tina110370@gmx.de",
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Kurban Gülsin &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50127 Bergheim",
+    "kontakt": {
+      "telefon": null,
+      "email": "kurbanguelsin@icloud.com",
+      "handy": "+49 163 2544442"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Mahmut Harun Dr. Akguel &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50169 Kerpen-Horrem",
+    "kontakt": {
+      "telefon": "+49 2273 93220",
+      "email": "teis@hvo-team.com",
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Manfred Derix &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50767 Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": "derix-koeln@t-online.de",
+      "handy": "+49 171 2741455"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 2,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Manfred Dr. Schlotmann &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50825 Köln",
+    "kontakt": {
+      "telefon": "+49 221 97316124",
+      "email": "manfred.schlotmann@web.de",
+      "handy": "+49 160 8123229"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Mareike Lindner &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50825 Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": "mareike_lindner@gmx.de",
+      "handy": "+49 163 7705110"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Margarete Gasterstedt &  Wolfgang Gasterstedt",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50171 Kerpen",
+    "kontakt": {
+      "telefon": "+49223751418",
+      "email": "nc-gasterwo@netcologne.de",
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Margarete Stoll &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50767 Köln",
+    "kontakt": {
+      "telefon": "+49 221 5903821",
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Margriet Tamms &  Heiner Tamms",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50171 Kerpen",
+    "kontakt": {
+      "telefon": "+4922374164",
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Maria Petersen &  Tim Petersen",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50226 Frechen",
+    "kontakt": {
+      "telefon": "+49 2234 6883351",
+      "email": "maria-petersen@arcor.de",
+      "handy": "+49 176 21196062"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Marie-Theres Tinnefeld &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "81927 München",
+    "kontakt": {
+      "telefon": "+49 899 19446",
+      "email": "tinnefeld@hm.edu",
+      "handy": "+49 151 61124400"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Marilou Schepull &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50733 Köln",
+    "kontakt": {
+      "telefon": "+491605970451",
+      "email": "florisa.schepull@gmail.com",
+      "handy": "+49 163 6128329"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Mario-Heinz Krautz &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50171 Kerpen",
+    "kontakt": {
+      "telefon": "+49 2237 560232",
+      "email": "ma.krautz@unitybox.de",
+      "handy": "+49 172 2731912"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Markus Brink &  Petra Brink",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50127 Bergheim",
+    "kontakt": {
+      "telefon": "+49 2271 981320",
+      "email": "markus.brink@netcologne.de",
+      "handy": "+49 163 5599071"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Markus Hoofe &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50670 Köln",
+    "kontakt": {
+      "telefon": "+49 2203 935302317",
+      "email": "mhoofe@gmail.com",
+      "handy": "+49 172 9751100"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 2,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Markus Krick &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50169 Kerpen",
+    "kontakt": {
+      "telefon": null,
+      "email": "markus-krick@gmx.de",
+      "handy": "+4917655556655"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Marten Schlöbe &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50670 Köln",
+    "kontakt": {
+      "telefon": "+49 2271 75130250",
+      "email": "m_schloebe@gmx.de",
+      "handy": "+49 176 24433592"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Martin Schlöter &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50169 Kerpen",
+    "kontakt": {
+      "telefon": null,
+      "email": "tanja.eis@hvo-team.com",
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 2,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Martina Eichel-Streiber &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "51519 Odenthal",
+    "kontakt": {
+      "telefon": "+49 2202 708462",
+      "email": "martina@von-eichel-streiber.de",
+      "handy": "+49 176 63684094"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Martina Schaefer &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50189 Elsdorf-Niederembt",
+    "kontakt": {
+      "telefon": null,
+      "email": "tina-schaefer.1@web.de",
+      "handy": "+49 1577 7786130"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Marvin Müller &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50171 Kerpen",
+    "kontakt": {
+      "telefon": "+49 2237 9234224",
+      "email": "marvinmueller96@hotmail.de",
+      "handy": "+49 175 2427075"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Maxim Janz &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "40667 Meerbusch",
+    "kontakt": {
+      "telefon": null,
+      "email": "maxim.janz@yahoo.de",
+      "handy": "+49 162 9844080"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 17,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Maxim Kramer &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "53925 Kall",
+    "kontakt": {
+      "telefon": "+49 2441 777578",
+      "email": "kramer_maxim@web.de",
+      "handy": "+49 163 7999077"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Mehtap Yilmaz &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50259 Pulheim",
+    "kontakt": {
+      "telefon": "+49 216 6266885",
+      "email": "Yilmaz.Cenk@Scheidt-Bachmann.de",
+      "handy": "+49 162 4656684"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Melanie Schopp &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "21035 Hamburg",
+    "kontakt": {
+      "telefon": null,
+      "email": "mel-b@arcor.de",
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 2,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Metin Akin &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50129 Bergheim",
+    "kontakt": {
+      "telefon": "+49 2271 54871",
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Michael Dietrich &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50670 Köln",
+    "kontakt": {
+      "telefon": "+49 221 1391717",
+      "email": "dietrichmc@gmx.de",
+      "handy": "+49 172 2431574"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Michael Mangili &  Tiziana Mangili",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50767 Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": "tiziana-38@netcologne.de",
+      "handy": "+49 173 7675568"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Michael Mischok &  Corinna Mischok",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "52388 Nörvenich-Rath",
+    "kontakt": {
+      "telefon": null,
+      "email": "mike1984dn@googlemail.com",
+      "handy": "+49 151 23226503"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Michaela Calenberg &  ",
+    "typ": "Gewerblich  ",
+    "firma": "Bona Casa GmbH & Co.KG",
+    "plz_ort": "42551 Velbert",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 4,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Monika Abts &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50189 Elsdorf-Niederembt",
+    "kontakt": {
+      "telefon": "+49 2274 7002340",
+      "email": "abts733@t-online.de",
+      "handy": "+49 170 4832183"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Monika Klein &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50259 Pulheim",
+    "kontakt": {
+      "telefon": "+491755391797",
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Monika Kropp &  Edgar Kropp",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "52525 Heinsberg ",
+    "kontakt": {
+      "telefon": "+31 314 55262768",
+      "email": "edgarkropp07@web.de",
+      "handy": "+49 176 34458233"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 2,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Monika Spiekermann & Dr. Rolf-Hermann Spiekermann",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "55437 Ockenheim",
+    "kontakt": {
+      "telefon": "+49 176 43492825",
+      "email": "rspiekermann@gmx.de",
+      "handy": "+49 672 59195156"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 2,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Moumen Ben Nasser &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50127 Bergheim",
+    "kontakt": {
+      "telefon": null,
+      "email": "zakaria.bennasser@yahoo.com",
+      "handy": "+49 157 74578488"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 2,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Naip Mehmeti &  Avni Mehmeti",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50127 Bergheim",
+    "kontakt": {
+      "telefon": "+49 15737151770",
+      "email": "xhelal79@mail.de",
+      "handy": "+49 157 72791360"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 2,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Nicole Boitz &  Andre Boitz",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "52388 Nörvenich-Rath",
+    "kontakt": {
+      "telefon": "+49 2426 902382",
+      "email": "nicoleboitz1976@gmail.com",
+      "handy": "+49 157 33248209"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Nicole Delmes &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50935 Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": "nicole.delmes@gmx.de",
+      "handy": "+49 172 9686051"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Norbert Schulze &  Hildegard Schulze",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "53127 Bonn",
+    "kontakt": {
+      "telefon": null,
+      "email": "hildegardschulze@netcologne.de",
+      "handy": "+49 177 4057208"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 3,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Norbert Stefan Berndt &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50169 Kerpen",
+    "kontakt": {
+      "telefon": null,
+      "email": "nberndt@web.de",
+      "handy": "+49 15227538187"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Oczan Kahramann &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50767 Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": "skahraman@t-online.de",
+      "handy": "+49 171 5422519"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Oswald Malunat &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "40589 Düsseldorf",
+    "kontakt": {
+      "telefon": null,
+      "email": "oswald.malunat@icloud.com",
+      "handy": "+49 176 78207899"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Paul Bauchrowitz &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": null,
+    "kontakt": {
+      "telefon": null,
+      "email": "bauchrowitz@ruhrstadt-gruppe.com",
+      "handy": "+49 1732790334"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Paul Lemoine &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50765 Köln",
+    "kontakt": {
+      "telefon": "+49 221 5908469",
+      "email": "palemoine@aol.com",
+      "handy": "+49 172 8371577"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Paulina Kemmerich & Stefan Kemmerich",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50769 Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": "stefankemmerich@web.de",
+      "handy": "+49 176 21722143"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Peter Beilstein &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50739 Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": "peter@peterbeilstein.de",
+      "handy": "+49 172 2189933"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Peter Janovics &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50181 Bedburg",
+    "kontakt": {
+      "telefon": "+49 2463 9991339",
+      "email": "janovics@web.de",
+      "handy": "+49 178 6977163"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Peter Prof. Dr. Falkai &  Monika Falkai",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "81243 München",
+    "kontakt": {
+      "telefon": null,
+      "email": "mfalkai@t-online.de",
+      "handy": " +49 172 25 55 459"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 2,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Peter Senter &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50354 Hürth-Berrenrath",
+    "kontakt": {
+      "telefon": null,
+      "email": "peter.senter@netcologne.de",
+      "handy": "+49 172 2101772"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 2,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Peter Sitzler &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50259 Pulheim",
+    "kontakt": {
+      "telefon": null,
+      "email": "dino@psitzler.de",
+      "handy": "+49 162 6450107"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 2,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Petra Wierichs &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "53125 Bonn",
+    "kontakt": {
+      "telefon": null,
+      "email": "petra_wierichs@web.de",
+      "handy": "+491716572013"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Philipp Magnus Meinrenken &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50670 Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": "meinrenken@imotegra.de",
+      "handy": "+49 176 43543742"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Radoslaw Huptys &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50670 Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": "huptys@gmx.net",
+      "handy": "+49 173 5610138"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Rafal Moron &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "51371 Leverkusen",
+    "kontakt": {
+      "telefon": "+49 177 6522098",
+      "email": "rafalmoron@gmx.de",
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Ralph Glaser &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50259 Pulheim",
+    "kontakt": {
+      "telefon": "+49 2234 899499",
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Regina Kraus &  Jürgen Kraus",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "52353 Düren",
+    "kontakt": {
+      "telefon": null,
+      "email": "juergen-kraus@gmx.net",
+      "handy": "+49 157 89579297"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Regina Theilen &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50259 Pulheim",
+    "kontakt": {
+      "telefon": "+49 176 80632229",
+      "email": "r.theilen@t-online.de",
+      "handy": "+49 170 5935141"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Renate Heller-Merges &  Jürgen Merges",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50765 Köln",
+    "kontakt": {
+      "telefon": "+49 160 7744042",
+      "email": "j.mergesheller@gmail.com",
+      "handy": "+49 176 81215884"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Robert Stein &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50769 Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": "r-stein-kln@t-online.de",
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 2,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Roman Wegert &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "52353 Düren",
+    "kontakt": {
+      "telefon": null,
+      "email": "wegertroman@googlemail.com",
+      "handy": "+49 163 7498314"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 2,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Rosemarie Höschler &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50767 Köln",
+    "kontakt": {
+      "telefon": "+49 221 9497440",
+      "email": "korneliushoeschler@yahoo.de",
+      "handy": "+49 176 4763878"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Rosemarie c/o Jutta Müller Lipp &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50259 Pulheim",
+    "kontakt": {
+      "telefon": null,
+      "email": "uwejuttamueller@gmx.de",
+      "handy": "+49 162 7728088"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 2,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Sabine Metter &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50169 Kerpen",
+    "kontakt": {
+      "telefon": "+4922736036968",
+      "email": "bibim5@gmx.de",
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Sabine Seidler & Sven  Köller",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50769 Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": "sabine.seidler@gmx.de",
+      "handy": "+49 173 5772007"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Sabrina Thelen &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50129 Bergheim",
+    "kontakt": {
+      "telefon": null,
+      "email": "sabrina.otto@hotmail.de",
+      "handy": "+49 176 72438938"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Sanjar Mirza &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50767 Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": "sanjar.mirza@yahoo.com",
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 2,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Sehribani Gülali &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50127 Bergheim",
+    "kontakt": {
+      "telefon": null,
+      "email": "ademguelali@icloud.com",
+      "handy": "+49 177 9113347"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 3,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Selma Arena &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "52388 Nörvenich-Rath",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Selvarajah Suthargar &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50171 Kerpen",
+    "kontakt": {
+      "telefon": "+49 2237 5064827",
+      "email": null,
+      "handy": "+49 176 23225780"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Seyed Reza Mousavi &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50739 Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": "reza.mousavi1206@gmail.com",
+      "handy": "+49 176 70336859"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Siegfried Fechner &  Erika Fechner",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "52388 Nörvenich-Rath",
+    "kontakt": {
+      "telefon": "+49 2426 5528",
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 2,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Silvia Becker-Kisker &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50171 Kerpen",
+    "kontakt": {
+      "telefon": "+49 2237 656620",
+      "email": "h.kisker@online.de",
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Simone Migels &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "51491 Overath",
+    "kontakt": {
+      "telefon": null,
+      "email": "simone-rausch7@web.de",
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Simone Stöcker  &  Frank Stöcker",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50765 Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": "fstoecker@outlook.de",
+      "handy": "+49 162 9002753"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Sofia Bücker &  Roland Bücker",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "52355 Düren",
+    "kontakt": {
+      "telefon": null,
+      "email": "roland.buecker@t-online.de",
+      "handy": "+49 170 7887740"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Stefan Zöll &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "41812 Erkelenz",
+    "kontakt": {
+      "telefon": "+49 2431 9867886",
+      "email": "S-Zoell@gmx.de",
+      "handy": "+49 176 43387341"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Suat Akgül &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50767 Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": "hicran77@gmx.net",
+      "handy": "+49 172 6416557"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 2,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Susanne Flau &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50999 Köln",
+    "kontakt": {
+      "telefon": "+49 2236 9616278",
+      "email": "susanne.flau@stadt-koeln.de",
+      "handy": "+49 178 7813106"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Süleyman Dogu &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": null,
+    "kontakt": {
+      "telefon": null,
+      "email": "dogu@ruhrstadt-gruppe.com",
+      "handy": "+49 15788726306"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Tatjana Vonk &  Torsten Vonk",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50171 Kerpen",
+    "kontakt": {
+      "telefon": "+49 2275 914156",
+      "email": "tt.vonk@gmx.de",
+      "handy": "+49 172 9348816"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Taylan Cakmak",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50171 Kerpen",
+    "kontakt": {
+      "telefon": null,
+      "email": "taylan_cakmak1996@hotmail.com",
+      "handy": "+49 173 9530983"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Thomas Maraun & Luisa Maraun",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50259 Pulheim",
+    "kontakt": {
+      "telefon": "+49 177 5100773",
+      "email": "thomas.maraun@arcor.de",
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 3,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Thomas Porcedda &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "53115 Bonn",
+    "kontakt": {
+      "telefon": "+49 151 65185251",
+      "email": "angstnase@yahoo.de",
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 3,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Thomas Prof Dr. Klockgether &  Maria Klockgether",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "53127 Bonn",
+    "kontakt": {
+      "telefon": null,
+      "email": "klockgether@uni-bonn.de",
+      "handy": "+49 163 4516927"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Thomas Puhl &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50129 Bergheim",
+    "kontakt": {
+      "telefon": "+49 2173 2076283",
+      "email": "thomasreginapuhl@web.de",
+      "handy": "+49 157 34702880"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 3,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Thorsten Schelian &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50171 Kerpen",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Thorsten Schoo &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "45257 Essen",
+    "kontakt": {
+      "telefon": "+49201481763",
+      "email": "t.schoo@t-online.de",
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Till Rautenbach &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50259 Pulheim",
+    "kontakt": {
+      "telefon": null,
+      "email": "till.rautenbach@gmx.de",
+      "handy": "+49 173 8405825"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 2,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Tuna Wittschell &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50767 Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": "t.wittschell@gmx.de",
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 2,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Ulrich Freigeber &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50674 Köln",
+    "kontakt": {
+      "telefon": "+49 221 96714221",
+      "email": "ulrich@immobilien-freigeber.de",
+      "handy": "+49 163 2339224"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 2,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Ursula Schierl &  Karl Schierl",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50259 Pulheim",
+    "kontakt": {
+      "telefon": "+49 2238 9299780",
+      "email": "karl-schierl@t-online.de",
+      "handy": "+49 151 61456811"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Ursula Wiertz &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "51491 Overath",
+    "kontakt": {
+      "telefon": "+49 221 2405252",
+      "email": "ursulawiertz@web.de",
+      "handy": "+49 151 28785239"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Ute Wirtz &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50321 Brühl",
+    "kontakt": {
+      "telefon": "+49 2232 156960",
+      "email": "ute@familiewirtz.de",
+      "handy": "+49 1522 8389197"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Uwe Betting &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "41564 Kaarst",
+    "kontakt": {
+      "telefon": null,
+      "email": "uwe.betting@axa.de",
+      "handy": "+49 172 9600557"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 2,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Werner Karl Schaefer &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "51145 Köln",
+    "kontakt": {
+      "telefon": "+49174 1868135",
+      "email": "hoeggel@web.de",
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Werner Rind &  Katharina Rind",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50767 Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Werner Spanier &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50259 Pulheim",
+    "kontakt": {
+      "telefon": null,
+      "email": "werner.spanier@web.de",
+      "handy": "+49 172 1535646"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Werner Wittpoth &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50259 Pulheim",
+    "kontakt": {
+      "telefon": "+492238/5409484",
+      "email": "wernerwittpoth@gmx.de",
+      "handy": "+491743018785"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 5,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Whannou Franck",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50733 Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": "whannoufranck@hotmail.fr",
+      "handy": "+491758649450"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Wolfgang Scholz &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50767 Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": "hawo.scholz@t-online.de",
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 2,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Wolfgang Sodeur &  Helga Sodeur",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50858 Köln",
+    "kontakt": {
+      "telefon": "+49 2234 942948",
+      "email": "wolfgang.sodeur@t-online.de",
+      "handy": "+49 1511 7010173"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Wolfgang Stange &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50127 Bergheim",
+    "kontakt": {
+      "telefon": "+49 173 2726653",
+      "email": "grossmann_und_stange@t-online.de",
+      "handy": "+49 157 89579297"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 2,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Yücel Kac &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50171 Kerpen",
+    "kontakt": {
+      "telefon": null,
+      "email": "nur16k@icloud.com",
+      "handy": "+49 163 2113760"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Ömer Kesim &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50765 Köln",
+    "kontakt": {
+      "telefon": "+49 221 769920",
+      "email": "oemerkesim@icloud.com",
+      "handy": "+49 178 8608529"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 1,
+      "einheiten": 1,
+      "kategorie": "Einzel-Eigentümer   ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": null,
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50676 Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": " Anna Elise Stiftung &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50354 Hürth",
+    "kontakt": {
+      "telefon": null,
+      "email": "anna-elise-stiftung@t-online.de",
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": " Doppelt &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50127 Bergheim",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": " Mietify GmbH &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "45127 Essen",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": " Monca Ablage (WEG und MV) &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": null,
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": " Ruhrstadt Hausverwaltung &  ",
+    "typ": "Gewerblich  ",
+    "firma": "Ruhrstadt Hausverwaltung",
+    "plz_ort": "45127 Essen",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": " Ruhrstadt Immobilien Service GmbH &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "45127 Essen",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": " Ruhrstadt Wohnen GmbH &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "45127 Essen",
+    "kontakt": {
+      "telefon": null,
+      "email": "info@ruhrstadt-wohnen.de",
+      "handy": "+49 157 88726306"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": " St.Antonius &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": null,
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": " Virnich Grundbesitz GbR &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "52388 Nörvenich",
+    "kontakt": {
+      "telefon": null,
+      "email": "virnich@dpc-gmbh.de",
+      "handy": "01729650990"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": " Virnich Grundbesitz GbR &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "52388 Nörvenich",
+    "kontakt": {
+      "telefon": "+49 172 8650990",
+      "email": "virnich@dpc-gmbh.de",
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": " WEG Ahestr. 11-15, 50127 Bergheim &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50127 Bergheim",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": " WEG Akazienstr. 17, 52353 Düren &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "52353 Düren",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": " WEG Albert-Schweitzer-Str.18, 50127 Bergheim  &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50127 Bergheim",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": " WEG Am Schmidtgrund 60, 50765 Köln &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50765 Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": " WEG Burgunder Str. 14+16, 50171 Kerpen &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50171 Kerpen",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": " WEG Cohnenhofstr. 46, 50769 Köln &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50769 Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": " WEG Escher Str. 5, 50767 Köln &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50767 Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": " WEG Florastr. 73, 50733 Köln &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50733 Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": " WEG Haager 124 (Villa Bonna), 53127 Bonn &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "53127 Bonn",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": " WEG Hauptstr. 246, 50169 Kerpen &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50169 Kerpen",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": " WEG Heinrichstr. 5, 50259 Pulheim &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50259 Pulheim",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": " WEG Hüttenweg 1, 50226 Frechen &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50226 Frechen",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": " WEG Kitschburger Str. 234, 50933 Köln &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50933 Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": " WEG Kupferdreherstr. 190, 45257 Essen &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "45257 Essen",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": " WEG Langgasse 39, 50189 Elsdorf &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50189 Elsdorf",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": " WEG Levenkaulstr. 4, 50259 Pulheim &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50259 Pulheim",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": " WEG Lindenstr. 81, 50674 Köln &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50674 Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": " WEG Manstedtener Str. 51, 50259 Pulheim &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50259 Pulheim",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": " WEG Martinstr. 2 / Nikolausstr. 7 52388 Nörvenich &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "52388 Nörvenich",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": " WEG Maybachstr. 161, 50674 Köln &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50674 Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": " WEG Neusser Str. 49, 50670 Köln &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50670 Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": " WEG Petunienweg 80, 50127 Bergheim &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50127 Bergheim",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": " WEG Zur Ville 11, 50129 Bergheim &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50129 Bergheim",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Anita Nüchter &  Patrick Nüchter",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "56269 Dierdorf",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Arne Häusler &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "19395 Plau am See",
+    "kontakt": {
+      "telefon": null,
+      "email": "haeusler@hausexperte24.de",
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Beate Jendrian &  Holger Jendrian",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50859 Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": "beate.jendrian@googlemail.com",
+      "handy": "+49 163 2523286"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Björn Klimek &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "51103 Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Christian c./o. Hausverwaltung Klar Klar &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50859 Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Cordelia Wagner &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50968 Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Corina Sav & Nicolae-Adrian SAV",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "54558 Gillenfeld",
+    "kontakt": {
+      "telefon": null,
+      "email": "savcorina85@yahoo.com",
+      "handy": "+49 157 78428196"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Dorothea Groth &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50733 Köln",
+    "kontakt": {
+      "telefon": "+49 250 781090315",
+      "email": "dorothea.groth@t-online.de",
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Dorothea Rixen &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50129 Bergheim",
+    "kontakt": {
+      "telefon": null,
+      "email": "hoenerrixen@t-online.de",
+      "handy": "+49 1515 0680326"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Dorothee Teucher &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "51399 Burscheid",
+    "kontakt": {
+      "telefon": null,
+      "email": "d.teucher@gmx.de",
+      "handy": "0151 626 48 301"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Ernst Kaplan &  Christina Kaplan",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50739 Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": "ch.kaplan@bewo-mobil-koeln.de",
+      "handy": "+49 177 4511243"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Ewa Maio &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50859 Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": "ewa.maio@icloud.com",
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Fahim Halamzie &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "45127 Essen",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Frank Christoph &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "56170 Bendorf",
+    "kontakt": {
+      "telefon": null,
+      "email": "frank-c@gmx.net",
+      "handy": "+49 178 8347111"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Gerhard Linden & Gisela Linden",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50999 Köln",
+    "kontakt": {
+      "telefon": "+49 223 663943",
+      "email": "info@dachdecker-linden.de",
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Gero Tinnefeld &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "81373 München",
+    "kontakt": {
+      "telefon": null,
+      "email": "tinnefeldmail@gmail.com",
+      "handy": "+49 151 61124400"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Günter Thar &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50129 Bergheim",
+    "kontakt": {
+      "telefon": null,
+      "email": "gugthar@gmx.de",
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Hans Reuß &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "63452 Hanau",
+    "kontakt": {
+      "telefon": "+496181990314",
+      "email": null,
+      "handy": "+496181993015"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Hartmut Häusler &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "19395 Plau am See",
+    "kontakt": {
+      "telefon": null,
+      "email": "haeusler@hausexperte24.de",
+      "handy": "+49 163 5683723"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Henner Dr. Löffler &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50933 Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": "hennerloeffler@me.com",
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Hsien-Li Su &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50859 Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": "hsienli_su@hotmail.com",
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Jennifer Kunkel Immobilien GbR - Kunkel &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "51674 Wiehl",
+    "kontakt": {
+      "telefon": "+49 226 27979583",
+      "email": "jenny.kunkel@gmail.com",
+      "handy": "+49 160 96901488"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Johanna Häusler &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "16540 Hohen Neuendorf",
+    "kontakt": {
+      "telefon": null,
+      "email": "haeusler@hausexperte24.de",
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Johanna Löffler &  Henner Dr",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50933 Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Jonas Bohrer &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "40235 Düsseldorf",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Julia Probst &  Johannes Rother",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50859 Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": "probst@qualitus.de + johannesrother@icloud.com",
+      "handy": "+49 173 6357447"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Jutta Ferner &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "53347 Alfter",
+    "kontakt": {
+      "telefon": "+49 2222 61812 ",
+      "email": null,
+      "handy": "+49 1520 15081041"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Jutta Ferner &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "53347 Alfter",
+    "kontakt": {
+      "telefon": null,
+      "email": "fernerju@gmail.com",
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Kai Blöcker &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50226 Frechen",
+    "kontakt": {
+      "telefon": "+49 2234 986060",
+      "email": "kai@bloecker-online.de",
+      "handy": "+49 173 2527776"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Karin Prof. Dr. Lehmann &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "73033 Göppingen",
+    "kontakt": {
+      "telefon": null,
+      "email": "k_r_lehmann@web.de",
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Karl Josef Stallmann &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "41468 Neuss",
+    "kontakt": {
+      "telefon": "+49 213 13148786",
+      "email": "cs@stallmann.biz",
+      "handy": "+49 152 29891494"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Karl-Jürgen Thar &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50374 Erftstadt",
+    "kontakt": {
+      "telefon": null,
+      "email": "juergenthar@uujthar.de",
+      "handy": "+49 175 5952288"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Klaas Schröder &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50739 Köln",
+    "kontakt": {
+      "telefon": "+49 221 539705353",
+      "email": "klaas.schroeder@fondof.de",
+      "handy": "+49 175 1161301"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Kulem Dr. Arslan &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "53639 Königswinter",
+    "kontakt": {
+      "telefon": null,
+      "email": "hp.kulem@googlemail.com",
+      "handy": "+49 152 27142803"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Lutz Prof. Dr. Tharant &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "40489 Düsseldorf",
+    "kontakt": {
+      "telefon": "+49 211 401611",
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Manfred Schlotmann &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50825 Köln",
+    "kontakt": {
+      "telefon": "+49 221 97316124 ",
+      "email": "manfred.schlotmann@web.de",
+      "handy": "+49 160 8123229"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Manfred Zadek &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50859 Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": "zadek@gmx.de",
+      "handy": "+49 176 10209825"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Marian Ivanova &  Nadezhda Ivanov",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50859 Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Markus Mok &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50859 Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": "mok@exev.tv",
+      "handy": "+49 171 1708800"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Marten Schlöbe &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50670 Köln",
+    "kontakt": {
+      "telefon": "+49 2271 75130250",
+      "email": "m_schloebe@gmx.de",
+      "handy": "+49 176 24433592"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Michael Dietrich &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50670 Köln",
+    "kontakt": {
+      "telefon": "+49 221 1391717",
+      "email": "dietrichmc@gmx.de",
+      "handy": "+49 172 2431574"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Oliver Cemal Besiroglu &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50859 Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": "o.besiroglu@dr-starck.de",
+      "handy": "+49 176 18521397"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Oliver Cemal Besiroglu &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50859 Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": "o.besiroglu@dr-starck.de",
+      "handy": "+49 176 18521397"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Pamir Halamzie &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "c/o Ruhrstadt Hausverwaltung",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Paul Bauchrowitz &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": null,
+    "kontakt": {
+      "telefon": "+49 173",
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Peter Beilstein &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50739 Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": "peter@peterbeilstein.de",
+      "handy": "+49 172 2189933"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Radoslaw Huptys &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50670 Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": "huptys@gmx.net",
+      "handy": "+49 173 5610138"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Rafal Moron &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "51371 Leverkusen",
+    "kontakt": {
+      "telefon": null,
+      "email": "rafalmoron@gmx.de",
+      "handy": "+49 177 6522098"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Regina Just &  Matthias Just",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50859 Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Rita Senft &  Rüdiger Senft",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50858 Köln",
+    "kontakt": {
+      "telefon": "+49 151 11453993",
+      "email": "ruediger_senft@yahoo.de",
+      "handy": "+49 177 6484322"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Ron Blöcker &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50259 Pulheim",
+    "kontakt": {
+      "telefon": null,
+      "email": "ronbloecker@gmx.de",
+      "handy": "+49 173 2527779"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Simone Migels &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "51491 Overath",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Stefan Hisgen &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50997 Köln",
+    "kontakt": {
+      "telefon": "+49 223 248339",
+      "email": "stefan.hisgen@koeln.de",
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Svenja  Elenich & Marcel Elenich",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": null,
+    "kontakt": {
+      "telefon": null,
+      "email": "elvenich@gmx.de",
+      "handy": "+49 152-34264220"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Tatjana Bogdan-Deufel &  Marco Flandoli",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50859 Köln",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Therese Klein &  Lars Klein",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50859 Köln",
+    "kontakt": {
+      "telefon": "+49 2234 9295940",
+      "email": "larsklein@gmx.de",
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Thomas  Klepsch &  ",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "34399 Wesertal",
+    "kontakt": {
+      "telefon": null,
+      "email": null,
+      "handy": null
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "E-Mail fehlt     "
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  },
+  {
+    "name": "Thomas Maraun &  Luisa Maraun",
+    "typ": "Privatperson",
+    "firma": null,
+    "plz_ort": "50259 Pulheim",
+    "kontakt": {
+      "telefon": null,
+      "email": "thomas.maraun@arcor.de",
+      "handy": "+49 177 5100773"
+    },
+    "banking": {
+      "iban": null,
+      "bic": null,
+      "sepa_status": "Fehlend"
+    },
+    "portfolio": {
+      "objekte": 0,
+      "einheiten": 0,
+      "kategorie": "Kein Objekt         ",
+      "datenvollstaendigkeit": "SEPA-Mandat fehlt"
+    },
+    "finanzen": {
+      "kontostand": 0.0,
+      "ruecklagen": 0.0
+    }
+  }
+]

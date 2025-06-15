@@ -1,0 +1,36 @@
+{
+  "timestamp": "2025-06-14T14:36:03.711119",
+  "modes": {
+    "VERSION_A_JSON_SYSTEM": {
+      "success_rate": "5/5",
+      "avg_time_ms": 709.9,
+      "avg_quality": 0.532
+    },
+    "VERSION_A_JSON_VANILLA": {
+      "success_rate": "5/5",
+      "avg_time_ms": 305.76,
+      "avg_quality": 0.512
+    },
+    "VERSION_B_SQL_SYSTEM": {
+      "success_rate": "5/5",
+      "avg_time_ms": 1372.1,
+      "avg_quality": 0.425
+    },
+    "VERSION_B_SQL_VANILLA": {
+      "success_rate": "5/5",
+      "avg_time_ms": 332.18,
+      "avg_quality": 0.4
+    }
+  },
+  "best_modes": {
+    "best_mode_by_success_rate": "VERSION_A_JSON_SYSTEM",
+    "best_mode_by_speed": "VERSION_A_JSON_VANILLA",
+    "best_mode_by_quality": "VERSION_A_JSON_SYSTEM",
+    "overall_statistics": {
+      "total_queries_tested": 20,
+      "global_success_rate": 1.0,
+      "avg_response_time_ms": 679.98,
+      "total_tokens_used": 0
+    }
+  }
+}

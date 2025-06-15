@@ -1,0 +1,1132 @@
+{
+  "AKTUELLER_SALDO": {
+    "canonical": "EXPRESSION: K.KBRUTTO...",
+    "source_file": "27_konten_saldenliste.sql",
+    "is_computed": false
+  },
+  "ANFANGSSTAND": {
+    "canonical": "EXPRESSION: R.ANFSTAND, 0) AS NUMERIC(15,2...",
+    "source_file": "33_ruecklagen_management.sql",
+    "is_computed": true
+  },
+  "ANFSTAND_IST": {
+    "canonical": "RP.ANFSTAND",
+    "source_file": "24_ruecklagenanalyse.sql",
+    "is_computed": false
+  },
+  "ANREDE": {
+    "canonical": "EXPRESSION: B.BANREDE...",
+    "source_file": "03_aktuelle_mieter.sql",
+    "is_computed": false
+  },
+  "ANZAHL": {
+    "canonical": "EXPRESSION: *...",
+    "source_file": "35_buchungskonten_uebersicht.sql",
+    "is_computed": true
+  },
+  "ANZAHL_ABWESEND": {
+    "canonical": "EXPRESSION: DISTINCT CASE WHEN VEREIG.ABWESEND = 1 THEN VEREIG...",
+    "source_file": "17_beschluesse.sql",
+    "is_computed": true
+  },
+  "ANZAHL_ANWESEND": {
+    "canonical": "EXPRESSION: DISTINCT CASE WHEN VEREIG.ABWESEND = 0 THEN VEREIG...",
+    "source_file": "17_beschluesse.sql",
+    "is_computed": true
+  },
+  "ANZAHL_BUCHUNGEN_2023": {
+    "canonical": "EXPRESSION: DISTINCT B2.BNR...",
+    "source_file": "27_konten_saldenliste.sql",
+    "is_computed": true
+  },
+  "ANZAHL_BUCHUNGEN_2024": {
+    "canonical": "EXPRESSION: DISTINCT B.BNR...",
+    "source_file": "27_konten_saldenliste.sql",
+    "is_computed": true
+  },
+  "ANZAHL_EIGENTUMSEINHEITEN": {
+    "canonical": "COMPUTED: CASE WHEN EIGENTUEMER.Z1 > 0 THEN 1 END...",
+    "source_file": "01_eigentuemer.sql",
+    "is_computed": true
+  },
+  "ANZAHL_EINHEITEN": {
+    "canonical": "EXPRESSION: O.OANZEINH...",
+    "source_file": "33_ruecklagen_management.sql",
+    "is_computed": false
+  },
+  "ANZAHL_KONTEN": {
+    "canonical": "EXPRESSION: DISTINCT K.KNR...",
+    "source_file": "15_eigentuemer_op_zusammenfassung.sql",
+    "is_computed": true
+  },
+  "ANZAHL_OBJEKTE": {
+    "canonical": "EXPRESSION: DISTINCT K.ONR...",
+    "source_file": "15_eigentuemer_op_zusammenfassung.sql",
+    "is_computed": true
+  },
+  "AUSGANG": {
+    "canonical": "EXPRESSION: 0 AS NUMERIC(15,2)...",
+    "source_file": "29_eigentuemer_zahlungshistorie.sql",
+    "is_computed": true
+  },
+  "AnzahlAbwesendPersonen": {
+    "canonical": "EXPRESSION: VEREIG.AnzahlAbwesendPersonen, 0...",
+    "source_file": "18_versammlungen.sql",
+    "is_computed": true
+  },
+  "AnzahlAnwesendPersonen": {
+    "canonical": "EXPRESSION: VEREIG.AnzahlAnwesendPersonen, 0...",
+    "source_file": "18_versammlungen.sql",
+    "is_computed": true
+  },
+  "BANKNAME": {
+    "canonical": "EXPRESSION: B.BBANK...",
+    "source_file": "03_aktuelle_mieter.sql",
+    "is_computed": false
+  },
+  "BANK_BEZEICHNUNG": {
+    "canonical": "KB.KBEZ",
+    "source_file": "31_durchlaufende_posten.sql",
+    "is_computed": false
+  },
+  "BANK_HABEN_NAME": {
+    "canonical": "BH.BEZEICHNUNG",
+    "source_file": "26_detaillierte_buchungen.sql",
+    "is_computed": false
+  },
+  "BANK_KONTOKLASSE": {
+    "canonical": "KB.KKLASSE",
+    "source_file": "31_durchlaufende_posten.sql",
+    "is_computed": false
+  },
+  "BANK_SOLL_NAME": {
+    "canonical": "BS.BEZEICHNUNG",
+    "source_file": "26_detaillierte_buchungen.sql",
+    "is_computed": false
+  },
+  "BELEG_REFERENZ": {
+    "canonical": "EXPRESSION: B.BELEGNR...",
+    "source_file": "26_detaillierte_buchungen.sql",
+    "is_computed": false
+  },
+  "BETRAG_ABS": {
+    "canonical": "EXPRESSION: B.BETRAG...",
+    "source_file": "26_detaillierte_buchungen.sql",
+    "is_computed": false
+  },
+  "BETRAG_ORIGINAL": {
+    "canonical": "EXPRESSION: B.BETRAG...",
+    "source_file": "29_eigentuemer_zahlungshistorie.sql",
+    "is_computed": false
+  },
+  "BETRIEBSKOSTEN": {
+    "canonical": "BEWOHNER.Z3",
+    "source_file": "02_mieter.sql",
+    "is_computed": false
+  },
+  "BIC": {
+    "canonical": "EXPRESSION: B.BBIC...",
+    "source_file": "03_aktuelle_mieter.sql",
+    "is_computed": false
+  },
+  "BLZ": {
+    "canonical": "EXPRESSION: B.BBLZ...",
+    "source_file": "03_aktuelle_mieter.sql",
+    "is_computed": false
+  },
+  "BRIEFANREDE": {
+    "canonical": "EXPRESSION: B.BBRIEFAN...",
+    "source_file": "03_aktuelle_mieter.sql",
+    "is_computed": false
+  },
+  "BUCHUNGSKREIS": {
+    "canonical": "EXPRESSION: W.BKNR...",
+    "source_file": "08_wohnungen_leerstand.sql",
+    "is_computed": false
+  },
+  "BUCHUNGSTEXT": {
+    "canonical": "EXPRESSION: B.TEXT...",
+    "source_file": "26_detaillierte_buchungen.sql",
+    "is_computed": false
+  },
+  "DATEV_KONTONUMMER": {
+    "canonical": "EXPRESSION: K.DATEVKNR...",
+    "source_file": "34_spezielle_kontenklassen.sql",
+    "is_computed": false
+  },
+  "DIFFERENZ_2024_2023": {
+    "canonical": "EXPRESSION: SUM(B.BETRAG), 0) - COALESCE(SUM(B2.BETRAG), 0) AS...",
+    "source_file": "27_konten_saldenliste.sql",
+    "is_computed": true
+  },
+  "DOPPELTQBESCHLUSS": {
+    "canonical": "VERTHEMEN.DOPPQUAL",
+    "source_file": "17_beschluesse.sql",
+    "is_computed": false
+  },
+  "DURCHLAUF_AKTIV": {
+    "canonical": "EXPRESSION: R.POS5CHECK...",
+    "source_file": "33_ruecklagen_management.sql",
+    "is_computed": false
+  },
+  "DURCHLAUF_BETRAG": {
+    "canonical": "EXPRESSION: R.POS5, 0) AS NUMERIC(15,2...",
+    "source_file": "33_ruecklagen_management.sql",
+    "is_computed": true
+  },
+  "DURCHLAUF_BEZEICHNUNG": {
+    "canonical": "EXPRESSION: R.POS5NAME...",
+    "source_file": "33_ruecklagen_management.sql",
+    "is_computed": false
+  },
+  "DURCHSCHNITT_OP": {
+    "canonical": "EXPRESSION: K.OPBETRAG...",
+    "source_file": "15_eigentuemer_op_zusammenfassung.sql",
+    "is_computed": true
+  },
+  "EIGENTUEMERKUERZEL": {
+    "canonical": "EXPRESSION: EIGADR.ENOTIZ AS VARCHAR(2000)...",
+    "source_file": "16_beiraete.sql",
+    "is_computed": true
+  },
+  "EIGENTUEMER_CODE": {
+    "canonical": "EXPRESSION: E.ENOTIZ AS VARCHAR(2000)...",
+    "source_file": "15_eigentuemer_op_zusammenfassung.sql",
+    "is_computed": true
+  },
+  "EIGENTUEMER_NAME": {
+    "canonical": "EXPRESSION: ' || E.EVNAME...",
+    "source_file": "15_eigentuemer_op_zusammenfassung.sql",
+    "is_computed": true
+  },
+  "EINFACHERBESCHLUSS": {
+    "canonical": "VERTHEMEN.IMPBESCHL",
+    "source_file": "17_beschluesse.sql",
+    "is_computed": false
+  },
+  "EINGANG": {
+    "canonical": "EXPRESSION: B.BETRAG...",
+    "source_file": "29_eigentuemer_zahlungshistorie.sql",
+    "is_computed": false
+  },
+  "EINHEITEN": {
+    "canonical": "EXPRESSION: O.OANZEINH...",
+    "source_file": "23_instandhaltungskosten.sql",
+    "is_computed": false
+  },
+  "EINHEITENART": {
+    "canonical": "EXPRESSION: W.ART...",
+    "source_file": "08_wohnungen_leerstand.sql",
+    "is_computed": false
+  },
+  "EINHEIT_BEZEICHNUNG": {
+    "canonical": "EXPRESSION: W.EBEZ...",
+    "source_file": "08_wohnungen_leerstand.sql",
+    "is_computed": false
+  },
+  "EINHEIT_NR": {
+    "canonical": "EXPRESSION: K.ENR...",
+    "source_file": "34_spezielle_kontenklassen.sql",
+    "is_computed": false
+  },
+  "EINNAHME_AUSGABE": {
+    "canonical": "EXPRESSION: K.EA...",
+    "source_file": "25_objektbezogene_sachkonten.sql",
+    "is_computed": false
+  },
+  "EINZELKOSTENKREIS": {
+    "canonical": "EXPRESSION: W.EKNR...",
+    "source_file": "08_wohnungen_leerstand.sql",
+    "is_computed": false
+  },
+  "EMAIL": {
+    "canonical": "EXPRESSION: E.EEMAIL...",
+    "source_file": "15_eigentuemer_op_zusammenfassung.sql",
+    "is_computed": false
+  },
+  "ENDSTAND": {
+    "canonical": "EXPRESSION: R.ENDSTAND, 0) AS NUMERIC(15,2...",
+    "source_file": "33_ruecklagen_management.sql",
+    "is_computed": true
+  },
+  "ENDSTAND_IST": {
+    "canonical": "RP.ENDSTAND",
+    "source_file": "24_ruecklagenanalyse.sql",
+    "is_computed": false
+  },
+  "ENTNAHMEN": {
+    "canonical": "EXPRESSION: R.ENTN, 0) AS NUMERIC(15,2...",
+    "source_file": "33_ruecklagen_management.sql",
+    "is_computed": true
+  },
+  "ENTNAHME_KONTO": {
+    "canonical": "EXPRESSION: R.KENTN...",
+    "source_file": "33_ruecklagen_management.sql",
+    "is_computed": false
+  },
+  "ENTNAHME_KONTO_BEZEICHNUNG": {
+    "canonical": "KE.KBEZ",
+    "source_file": "32_sonderentnahmen.sql",
+    "is_computed": false
+  },
+  "ERSTE_BUCHUNG": {
+    "canonical": "EXPRESSION: B.DATUM, B2.DATUM...",
+    "source_file": "27_konten_saldenliste.sql",
+    "is_computed": true
+  },
+  "ERSTE_MAHNUNG": {
+    "canonical": "EXPRESSION: K.MAHNDATUM...",
+    "source_file": "15_eigentuemer_op_zusammenfassung.sql",
+    "is_computed": true
+  },
+  "FREI10_AKTIV": {
+    "canonical": "EXPRESSION: R.POS10CHECK...",
+    "source_file": "33_ruecklagen_management.sql",
+    "is_computed": false
+  },
+  "FREI10_BETRAG": {
+    "canonical": "EXPRESSION: R.POS10, 0) AS NUMERIC(15,2...",
+    "source_file": "33_ruecklagen_management.sql",
+    "is_computed": true
+  },
+  "FREI10_BEZEICHNUNG": {
+    "canonical": "EXPRESSION: R.POS10NAME...",
+    "source_file": "33_ruecklagen_management.sql",
+    "is_computed": false
+  },
+  "FREI6_AKTIV": {
+    "canonical": "EXPRESSION: R.POS6CHECK...",
+    "source_file": "33_ruecklagen_management.sql",
+    "is_computed": false
+  },
+  "FREI6_BETRAG": {
+    "canonical": "EXPRESSION: R.POS6, 0) AS NUMERIC(15,2...",
+    "source_file": "33_ruecklagen_management.sql",
+    "is_computed": true
+  },
+  "FREI6_BEZEICHNUNG": {
+    "canonical": "EXPRESSION: R.POS6NAME...",
+    "source_file": "33_ruecklagen_management.sql",
+    "is_computed": false
+  },
+  "FREI7_AKTIV": {
+    "canonical": "EXPRESSION: R.POS7CHECK...",
+    "source_file": "33_ruecklagen_management.sql",
+    "is_computed": false
+  },
+  "FREI7_BETRAG": {
+    "canonical": "EXPRESSION: R.POS7, 0) AS NUMERIC(15,2...",
+    "source_file": "33_ruecklagen_management.sql",
+    "is_computed": true
+  },
+  "FREI7_BEZEICHNUNG": {
+    "canonical": "EXPRESSION: R.POS7NAME...",
+    "source_file": "33_ruecklagen_management.sql",
+    "is_computed": false
+  },
+  "FREI8_AKTIV": {
+    "canonical": "EXPRESSION: R.POS8CHECK...",
+    "source_file": "33_ruecklagen_management.sql",
+    "is_computed": false
+  },
+  "FREI8_BETRAG": {
+    "canonical": "EXPRESSION: R.POS8, 0) AS NUMERIC(15,2...",
+    "source_file": "33_ruecklagen_management.sql",
+    "is_computed": true
+  },
+  "FREI8_BEZEICHNUNG": {
+    "canonical": "EXPRESSION: R.POS8NAME...",
+    "source_file": "33_ruecklagen_management.sql",
+    "is_computed": false
+  },
+  "FREI9_AKTIV": {
+    "canonical": "EXPRESSION: R.POS9CHECK...",
+    "source_file": "33_ruecklagen_management.sql",
+    "is_computed": false
+  },
+  "FREI9_BETRAG": {
+    "canonical": "EXPRESSION: R.POS9, 0) AS NUMERIC(15,2...",
+    "source_file": "33_ruecklagen_management.sql",
+    "is_computed": true
+  },
+  "FREI9_BEZEICHNUNG": {
+    "canonical": "EXPRESSION: R.POS9NAME...",
+    "source_file": "33_ruecklagen_management.sql",
+    "is_computed": false
+  },
+  "GARAGENMIETE": {
+    "canonical": "BEWOHNER.Z2",
+    "source_file": "02_mieter.sql",
+    "is_computed": false
+  },
+  "GESAMTFLAECHE_QM": {
+    "canonical": "EXPRESSION: O.GA1 AS NUMERIC(10,2)...",
+    "source_file": "32_sonderentnahmen.sql",
+    "is_computed": true
+  },
+  "GESAMT_EIGENTUMSANTEILE": {
+    "canonical": "VEREIG.EIGANTEIL",
+    "source_file": "17_beschluesse.sql",
+    "is_computed": true
+  },
+  "GESAMT_ENTNAHMEN": {
+    "canonical": "EXPRESSION: (R.ENTN + COALESCE(R.SONDERENTN, 0)) AS NUMERIC(15...",
+    "source_file": "31_durchlaufende_posten.sql",
+    "is_computed": true
+  },
+  "GESAMT_OP": {
+    "canonical": "EXPRESSION: K.OPBETRAG...",
+    "source_file": "15_eigentuemer_op_zusammenfassung.sql",
+    "is_computed": true
+  },
+  "GESAMT_SOLLBETRAG": {
+    "canonical": "EXPRESSION: K.KBRUTTO...",
+    "source_file": "15_eigentuemer_op_zusammenfassung.sql",
+    "is_computed": true
+  },
+  "GESAMT_ZUEFUEHRUNGEN": {
+    "canonical": "EXPRESSION: (R.ZUF + COALESCE(R.SONDERZUF, 0)) AS NUMERIC(15,2...",
+    "source_file": "31_durchlaufende_posten.sql",
+    "is_computed": true
+  },
+  "GEWERBEFLAECHE_QM": {
+    "canonical": "EXPRESSION: O.GA2...",
+    "source_file": "06_objekte_portfolio.sql",
+    "is_computed": false
+  },
+  "GEWERBE_TEILWEISE": {
+    "canonical": "OBJEKTE.GA2",
+    "source_file": "05_objekte.sql",
+    "is_computed": false
+  },
+  "GesamtAbwesendAnteile": {
+    "canonical": "EXPRESSION: VEREIG.GesamtAbwesendAnteile, 0...",
+    "source_file": "18_versammlungen.sql",
+    "is_computed": true
+  },
+  "GesamtAnwesendAnteile": {
+    "canonical": "EXPRESSION: VEREIG.GesamtAnwesendAnteile, 0...",
+    "source_file": "18_versammlungen.sql",
+    "is_computed": true
+  },
+  "GesamtEigentumsanteile": {
+    "canonical": "EXPRESSION: VEREIG.GesamtEigentumsanteile, 1000...",
+    "source_file": "18_versammlungen.sql",
+    "is_computed": true
+  },
+  "HABEN_KONTOBEZEICHNUNG": {
+    "canonical": "KH.KBEZ",
+    "source_file": "26_detaillierte_buchungen.sql",
+    "is_computed": false
+  },
+  "HABEN_KONTONUMMER": {
+    "canonical": "EXPRESSION: B.KHABEN...",
+    "source_file": "26_detaillierte_buchungen.sql",
+    "is_computed": false
+  },
+  "HABEN_OBJEKT": {
+    "canonical": "EXPRESSION: B.ONRHABEN...",
+    "source_file": "26_detaillierte_buchungen.sql",
+    "is_computed": false
+  },
+  "HANDY": {
+    "canonical": "EXPRESSION: B.BHANDY...",
+    "source_file": "03_aktuelle_mieter.sql",
+    "is_computed": false
+  },
+  "HEIZKOSTEN": {
+    "canonical": "BEWOHNER.Z4",
+    "source_file": "02_mieter.sql",
+    "is_computed": false
+  },
+  "HOECHSTER_OP": {
+    "canonical": "EXPRESSION: K.OPBETRAG...",
+    "source_file": "15_eigentuemer_op_zusammenfassung.sql",
+    "is_computed": true
+  },
+  "IBAN": {
+    "canonical": "EXPRESSION: B.BIBAN...",
+    "source_file": "03_aktuelle_mieter.sql",
+    "is_computed": false
+  },
+  "INDEXID": {
+    "canonical": "EXPRESSION: ROW_NUMBER() OVER (ORDER BY OBJEKTE.ONR)...",
+    "source_file": "07_wohnungen.sql",
+    "is_computed": false
+  },
+  "KALTMIETE": {
+    "canonical": "BEWOHNER.Z1",
+    "source_file": "02_mieter.sql",
+    "is_computed": false
+  },
+  "KAPSTEUER_AKTIV": {
+    "canonical": "EXPRESSION: R.POS4CHECK...",
+    "source_file": "33_ruecklagen_management.sql",
+    "is_computed": false
+  },
+  "KAPSTEUER_BETRAG": {
+    "canonical": "EXPRESSION: R.POS4, 0) AS NUMERIC(15,2...",
+    "source_file": "33_ruecklagen_management.sql",
+    "is_computed": true
+  },
+  "KAPSTEUER_BEZEICHNUNG": {
+    "canonical": "EXPRESSION: R.POS4NAME...",
+    "source_file": "33_ruecklagen_management.sql",
+    "is_computed": false
+  },
+  "KAUTION": {
+    "canonical": "EXPRESSION: B.KAUT_VEREINBART...",
+    "source_file": "03_aktuelle_mieter.sql",
+    "is_computed": false
+  },
+  "KNR": {
+    "canonical": "EXPRESSION: B.KSOLL...",
+    "source_file": "35_buchungskonten_uebersicht.sql",
+    "is_computed": false
+  },
+  "KONTEN_IN_MAHNUNG": {
+    "canonical": "COMPUTED: CASE WHEN K.KMAHNSTUFE > 0 THEN 1 END...",
+    "source_file": "15_eigentuemer_op_zusammenfassung.sql",
+    "is_computed": true
+  },
+  "KONTOBEZEICHNUNG": {
+    "canonical": "EXPRESSION: K.KBEZ...",
+    "source_file": "27_konten_saldenliste.sql",
+    "is_computed": false
+  },
+  "KONTOINHABER": {
+    "canonical": "EXPRESSION: B.BKONTOINH...",
+    "source_file": "03_aktuelle_mieter.sql",
+    "is_computed": false
+  },
+  "KONTONUMMER": {
+    "canonical": "EXPRESSION: B.BKONTO...",
+    "source_file": "03_aktuelle_mieter.sql",
+    "is_computed": false
+  },
+  "KONTOSTAND": {
+    "canonical": "EXPRESSION: K.KBRUTTO, 0) AS NUMERIC(15,2...",
+    "source_file": "34_spezielle_kontenklassen.sql",
+    "is_computed": true
+  },
+  "KONTO_BEZEICHNUNG": {
+    "canonical": "EXPRESSION: K.KBEZ...",
+    "source_file": "34_spezielle_kontenklassen.sql",
+    "is_computed": false
+  },
+  "KONTO_CODE": {
+    "canonical": "EXPRESSION: K.KNRSTR...",
+    "source_file": "34_spezielle_kontenklassen.sql",
+    "is_computed": false
+  },
+  "KONTO_ENTNAHME": {
+    "canonical": "RP.KENTN",
+    "source_file": "24_ruecklagenanalyse.sql",
+    "is_computed": false
+  },
+  "KONTO_NUMMER_POSITION": {
+    "canonical": "RP.KNRP",
+    "source_file": "24_ruecklagenanalyse.sql",
+    "is_computed": false
+  },
+  "KONTO_ZUFUEHRUNG": {
+    "canonical": "RP.KZUF",
+    "source_file": "24_ruecklagenanalyse.sql",
+    "is_computed": false
+  },
+  "LAGE": {
+    "canonical": "WOHNUNG.EBEZ",
+    "source_file": "02_mieter.sql",
+    "is_computed": false
+  },
+  "LETZTER_AUSZUG": {
+    "canonical": "LETZTER_AUSZUG",
+    "source_file": "22_leerstandsanalyse.sql",
+    "is_computed": true
+  },
+  "LETZTES_MAHNDATUM": {
+    "canonical": "EXPRESSION: K.MAHNDATUM...",
+    "source_file": "11_mieter_konten.sql",
+    "is_computed": false
+  },
+  "LETZTE_BUCHUNG": {
+    "canonical": "EXPRESSION: B.DATUM, B2.DATUM...",
+    "source_file": "27_konten_saldenliste.sql",
+    "is_computed": true
+  },
+  "LETZTE_KALTMIETE": {
+    "canonical": "LETZTE_KALTMIETE",
+    "source_file": "22_leerstandsanalyse.sql",
+    "is_computed": true
+  },
+  "LETZTE_MAHNUNG": {
+    "canonical": "EXPRESSION: K.MAHNDATUM...",
+    "source_file": "15_eigentuemer_op_zusammenfassung.sql",
+    "is_computed": true
+  },
+  "LETZTE_NEBENKOSTEN": {
+    "canonical": "LETZTE_NEBENKOSTEN",
+    "source_file": "22_leerstandsanalyse.sql",
+    "is_computed": true
+  },
+  "LETZTE_WARMMIETE": {
+    "canonical": "LETZTE_WARMMIETE",
+    "source_file": "22_leerstandsanalyse.sql",
+    "is_computed": true
+  },
+  "LETZTE_ZAHLUNG": {
+    "canonical": "EXPRESSION: B.DATUM...",
+    "source_file": "21_forderungsalterung.sql",
+    "is_computed": true
+  },
+  "LIEGENSCHAFTSKUERZEL": {
+    "canonical": "OBJEKTE.OBEZ",
+    "source_file": "16_beiraete.sql",
+    "is_computed": false
+  },
+  "Liegenschaftskuerzel": {
+    "canonical": "OBJEKTE.OBEZ",
+    "source_file": "14_eigentuemer_op.sql",
+    "is_computed": false
+  },
+  "MAHNSTUFE": {
+    "canonical": "EXPRESSION: K.KMAHNSTUFE...",
+    "source_file": "34_spezielle_kontenklassen.sql",
+    "is_computed": false
+  },
+  "MAX_MAHNSTUFE": {
+    "canonical": "EXPRESSION: K.KMAHNSTUFE...",
+    "source_file": "15_eigentuemer_op_zusammenfassung.sql",
+    "is_computed": true
+  },
+  "MIETBEGINN": {
+    "canonical": "EXPRESSION: B.VBEGINN...",
+    "source_file": "11_mieter_konten.sql",
+    "is_computed": false
+  },
+  "MIETENDE": {
+    "canonical": "EXPRESSION: B.VENDE...",
+    "source_file": "11_mieter_konten.sql",
+    "is_computed": false
+  },
+  "MIETER_NAME": {
+    "canonical": "EXPRESSION: ' || B.BVNAME...",
+    "source_file": "11_mieter_konten.sql",
+    "is_computed": true
+  },
+  "MIETSCHULDEN": {
+    "canonical": "KONTEN.KBRUTTO",
+    "source_file": "02_mieter.sql",
+    "is_computed": false
+  },
+  "MIETSTATUS": {
+    "canonical": "EXPRESSION: 'AKTIV'...",
+    "source_file": "03_aktuelle_mieter.sql",
+    "is_computed": false
+  },
+  "NACHNAME": {
+    "canonical": "EXPRESSION: B.BNAME...",
+    "source_file": "04_alle_mieter.sql",
+    "is_computed": false
+  },
+  "NACHNAME2": {
+    "canonical": "EXPRESSION: B.BNAME2...",
+    "source_file": "04_alle_mieter.sql",
+    "is_computed": false
+  },
+  "NEBENKOSTEN": {
+    "canonical": "EXPRESSION: B.Z3...",
+    "source_file": "04_alle_mieter.sql",
+    "is_computed": false
+  },
+  "NETTOKALTMIETE": {
+    "canonical": "EXPRESSION: B.Z1...",
+    "source_file": "04_alle_mieter.sql",
+    "is_computed": false
+  },
+  "NETTO_BEWEGUNG": {
+    "canonical": "EXPRESSION: (R.ENDSTAND - R.ANFSTAND) AS NUMERIC(15,2)...",
+    "source_file": "31_durchlaufende_posten.sql",
+    "is_computed": true
+  },
+  "NETTO_SONDERBEWEGUNG": {
+    "canonical": "EXPRESSION: (COALESCE(R.SONDERZUF, 0) - COALESCE(R.SONDERENTN,...",
+    "source_file": "32_sonderentnahmen.sql",
+    "is_computed": true
+  },
+  "NETTO_ZINSERTRAG": {
+    "canonical": "EXPRESSION: (COALESCE(R.POS1, 0) - (COALESCE(R.POS2, 0) + COAL...",
+    "source_file": "33_ruecklagen_management.sql",
+    "is_computed": true
+  },
+  "OBJEKTE_KUERZEL": {
+    "canonical": "EXPRESSION: DISTINCT O.OBEZ, ', '...",
+    "source_file": "15_eigentuemer_op_zusammenfassung.sql",
+    "is_computed": false
+  },
+  "OBJEKTFREITEXT1": {
+    "canonical": "OBJEKTE.FRINH1",
+    "source_file": "05_objekte.sql",
+    "is_computed": false
+  },
+  "OBJEKTFREITEXT10": {
+    "canonical": "OBJEKTE.FRINH10",
+    "source_file": "05_objekte.sql",
+    "is_computed": false
+  },
+  "OBJEKTFREITEXT11": {
+    "canonical": "OBJEKTE.FRINH11",
+    "source_file": "05_objekte.sql",
+    "is_computed": false
+  },
+  "OBJEKTFREITEXT12": {
+    "canonical": "OBJEKTE.FRINH12",
+    "source_file": "05_objekte.sql",
+    "is_computed": false
+  },
+  "OBJEKTFREITEXT2": {
+    "canonical": "OBJEKTE.FRINH2",
+    "source_file": "05_objekte.sql",
+    "is_computed": false
+  },
+  "OBJEKTFREITEXT3": {
+    "canonical": "OBJEKTE.FRINH3",
+    "source_file": "05_objekte.sql",
+    "is_computed": false
+  },
+  "OBJEKTFREITEXT4": {
+    "canonical": "OBJEKTE.FRINH4",
+    "source_file": "05_objekte.sql",
+    "is_computed": false
+  },
+  "OBJEKTFREITEXT5": {
+    "canonical": "OBJEKTE.FRINH5",
+    "source_file": "05_objekte.sql",
+    "is_computed": false
+  },
+  "OBJEKTFREITEXT6": {
+    "canonical": "OBJEKTE.FRINH6",
+    "source_file": "05_objekte.sql",
+    "is_computed": false
+  },
+  "OBJEKTFREITEXT7": {
+    "canonical": "OBJEKTE.FRINH7",
+    "source_file": "05_objekte.sql",
+    "is_computed": false
+  },
+  "OBJEKTFREITEXT8": {
+    "canonical": "OBJEKTE.FRINH8",
+    "source_file": "05_objekte.sql",
+    "is_computed": false
+  },
+  "OBJEKTFREITEXT9": {
+    "canonical": "OBJEKTE.FRINH9",
+    "source_file": "05_objekte.sql",
+    "is_computed": false
+  },
+  "OBJEKT_BEZEICHNUNG": {
+    "canonical": "EXPRESSION: O.OBEZ...",
+    "source_file": "19_etv_presence.sql",
+    "is_computed": false
+  },
+  "OBJEKT_KURZ": {
+    "canonical": "EXPRESSION: O.OBEZ...",
+    "source_file": "34_spezielle_kontenklassen.sql",
+    "is_computed": false
+  },
+  "OBJEKT_NAME": {
+    "canonical": "EXPRESSION: O.OBEZ...",
+    "source_file": "06_objekte_portfolio.sql",
+    "is_computed": false
+  },
+  "OBJEKT_NR": {
+    "canonical": "EXPRESSION: O.ONR...",
+    "source_file": "19_etv_presence.sql",
+    "is_computed": false
+  },
+  "OBJEKT_ORT": {
+    "canonical": "EXPRESSION: O.OPLZORT...",
+    "source_file": "26_detaillierte_buchungen.sql",
+    "is_computed": false
+  },
+  "OBJEKT_STRASSE": {
+    "canonical": "EXPRESSION: O.OSTRASSE...",
+    "source_file": "33_ruecklagen_management.sql",
+    "is_computed": false
+  },
+  "OFFENE_FORDERUNG": {
+    "canonical": "EXPRESSION: K.OPBETRAG...",
+    "source_file": "03_aktuelle_mieter.sql",
+    "is_computed": false
+  },
+  "OFFENE_MIETE": {
+    "canonical": "EXPRESSION: K.OPBETRAG...",
+    "source_file": "11_mieter_konten.sql",
+    "is_computed": false
+  },
+  "OFFENE_POSTEN": {
+    "canonical": "EXPRESSION: K.OPBETRAG, 0) AS NUMERIC(15,2...",
+    "source_file": "34_spezielle_kontenklassen.sql",
+    "is_computed": true
+  },
+  "ONR": {
+    "canonical": "EXPRESSION: B.ONRSOLL...",
+    "source_file": "35_buchungskonten_uebersicht.sql",
+    "is_computed": false
+  },
+  "ONRKNR": {
+    "canonical": "EXPRESSION: KONTEN.ONR * KONTEN.KNR...",
+    "source_file": "09_konten.sql",
+    "is_computed": false
+  },
+  "OffenerPosten": {
+    "canonical": "KONTEN.KBRUTTO",
+    "source_file": "14_eigentuemer_op.sql",
+    "is_computed": false
+  },
+  "PERIODE_BIS": {
+    "canonical": "EXPRESSION: R.DTBIS...",
+    "source_file": "33_ruecklagen_management.sql",
+    "is_computed": false
+  },
+  "PERIODE_VON": {
+    "canonical": "EXPRESSION: R.DTVON...",
+    "source_file": "33_ruecklagen_management.sql",
+    "is_computed": false
+  },
+  "PLZ_ORT": {
+    "canonical": "EXPRESSION: O.OPLZORT...",
+    "source_file": "23_instandhaltungskosten.sql",
+    "is_computed": false
+  },
+  "PROJEKT_KONTO": {
+    "canonical": "EXPRESSION: R.KNRP...",
+    "source_file": "33_ruecklagen_management.sql",
+    "is_computed": false
+  },
+  "RICHTUNG": {
+    "canonical": "EXPRESSION: 'ZAHLUNG'...",
+    "source_file": "29_eigentuemer_zahlungshistorie.sql",
+    "is_computed": false
+  },
+  "RUECKLAGEN_NAME": {
+    "canonical": "RP.NAME",
+    "source_file": "24_ruecklagenanalyse.sql",
+    "is_computed": false
+  },
+  "RUECKLAGE_NAME": {
+    "canonical": "EXPRESSION: R.NAME...",
+    "source_file": "33_ruecklagen_management.sql",
+    "is_computed": false
+  },
+  "RUECKLAGE_NR": {
+    "canonical": "EXPRESSION: R.NR...",
+    "source_file": "33_ruecklagen_management.sql",
+    "is_computed": false
+  },
+  "RUECKPOS_NR": {
+    "canonical": "RP.NR",
+    "source_file": "24_ruecklagenanalyse.sql",
+    "is_computed": false
+  },
+  "SOLI_AKTIV": {
+    "canonical": "EXPRESSION: R.POS3CHECK...",
+    "source_file": "33_ruecklagen_management.sql",
+    "is_computed": false
+  },
+  "SOLI_BETRAG": {
+    "canonical": "EXPRESSION: R.POS3, 0) AS NUMERIC(15,2...",
+    "source_file": "33_ruecklagen_management.sql",
+    "is_computed": true
+  },
+  "SOLI_BEZEICHNUNG": {
+    "canonical": "EXPRESSION: R.POS3NAME...",
+    "source_file": "33_ruecklagen_management.sql",
+    "is_computed": false
+  },
+  "SOLL_KONTOBEZEICHNUNG": {
+    "canonical": "KS.KBEZ",
+    "source_file": "26_detaillierte_buchungen.sql",
+    "is_computed": false
+  },
+  "SOLL_KONTONUMMER": {
+    "canonical": "EXPRESSION: B.KSOLL...",
+    "source_file": "26_detaillierte_buchungen.sql",
+    "is_computed": false
+  },
+  "SOLL_MIETE": {
+    "canonical": "EXPRESSION: B.MIETE1...",
+    "source_file": "11_mieter_konten.sql",
+    "is_computed": false
+  },
+  "SOLL_OBJEKT": {
+    "canonical": "EXPRESSION: B.ONRSOLL...",
+    "source_file": "26_detaillierte_buchungen.sql",
+    "is_computed": false
+  },
+  "SONDER_ENTNAHME": {
+    "canonical": "EXPRESSION: R.SONDERENTN, 0) AS NUMERIC(15,2...",
+    "source_file": "33_ruecklagen_management.sql",
+    "is_computed": true
+  },
+  "SONDER_ENTNAHME_BETRAG": {
+    "canonical": "EXPRESSION: R.SONDERENTN, 0) AS NUMERIC(15,2...",
+    "source_file": "32_sonderentnahmen.sql",
+    "is_computed": true
+  },
+  "SONDER_ENTNAHME_KONTO": {
+    "canonical": "EXPRESSION: R.KSONDERENTN...",
+    "source_file": "32_sonderentnahmen.sql",
+    "is_computed": false
+  },
+  "SONDER_ZUEFUEHRUNG": {
+    "canonical": "EXPRESSION: R.SONDERZUF, 0) AS NUMERIC(15,2...",
+    "source_file": "33_ruecklagen_management.sql",
+    "is_computed": true
+  },
+  "SONDER_ZUEFUEHRUNG_BETRAG": {
+    "canonical": "EXPRESSION: R.SONDERZUF, 0) AS NUMERIC(15,2...",
+    "source_file": "32_sonderentnahmen.sql",
+    "is_computed": true
+  },
+  "SONDER_ZUEFUEHRUNG_KONTO": {
+    "canonical": "EXPRESSION: R.KSONDERZUF...",
+    "source_file": "32_sonderentnahmen.sql",
+    "is_computed": false
+  },
+  "STEUERBELASTUNG_GESAMT": {
+    "canonical": "EXPRESSION: (COALESCE(R.POS2, 0) + COALESCE(R.POS3, 0) + COALE...",
+    "source_file": "33_ruecklagen_management.sql",
+    "is_computed": true
+  },
+  "STRASSE": {
+    "canonical": "EXPRESSION: O.OSTRASSE...",
+    "source_file": "23_instandhaltungskosten.sql",
+    "is_computed": false
+  },
+  "SUMME": {
+    "canonical": "EXPRESSION: B.BETRAG...",
+    "source_file": "35_buchungskonten_uebersicht.sql",
+    "is_computed": true
+  },
+  "SUMME_2023": {
+    "canonical": "EXPRESSION: SUM(B2.BETRAG), 0) AS NUMERIC(15,2...",
+    "source_file": "27_konten_saldenliste.sql",
+    "is_computed": true
+  },
+  "SUMME_2024": {
+    "canonical": "EXPRESSION: SUM(B.BETRAG), 0) AS NUMERIC(15,2...",
+    "source_file": "27_konten_saldenliste.sql",
+    "is_computed": true
+  },
+  "SUMME_ENTHALTUNG_ANTEILE": {
+    "canonical": "COMPUTED: CASE WHEN VERERG.SENTHALTUNG = 'J' THEN VEREIG.EIG...",
+    "source_file": "17_beschluesse.sql",
+    "is_computed": true
+  },
+  "SUMME_JA_ANTEILE": {
+    "canonical": "COMPUTED: CASE WHEN VERERG.SJA = 'J' THEN VEREIG.EIGANTEIL E...",
+    "source_file": "17_beschluesse.sql",
+    "is_computed": true
+  },
+  "SUMME_NEIN_ANTEILE": {
+    "canonical": "COMPUTED: CASE WHEN VERERG.SNEIN = 'J' THEN VEREIG.EIGANTEIL...",
+    "source_file": "17_beschluesse.sql",
+    "is_computed": true
+  },
+  "TELEFON": {
+    "canonical": "EXPRESSION: E.ETEL1, E.ETEL2...",
+    "source_file": "15_eigentuemer_op_zusammenfassung.sql",
+    "is_computed": true
+  },
+  "TELEFON2": {
+    "canonical": "EXPRESSION: B.BTEL2...",
+    "source_file": "03_aktuelle_mieter.sql",
+    "is_computed": false
+  },
+  "TRANSACTION_DATUM": {
+    "canonical": "EXPRESSION: B.DATUM...",
+    "source_file": "26_detaillierte_buchungen.sql",
+    "is_computed": false
+  },
+  "TRANSACTION_ID": {
+    "canonical": "EXPRESSION: B.BNR...",
+    "source_file": "26_detaillierte_buchungen.sql",
+    "is_computed": false
+  },
+  "TRANSACTION_TYP": {
+    "canonical": "EXPRESSION: 'NORMALE BUCHUNG'...",
+    "source_file": "26_detaillierte_buchungen.sql",
+    "is_computed": false
+  },
+  "UMLAGESCHLUESSEL": {
+    "canonical": "EXPRESSION: R.USCHL...",
+    "source_file": "33_ruecklagen_management.sql",
+    "is_computed": false
+  },
+  "UMLAGESCHLUESSEL_1": {
+    "canonical": "EXPRESSION: K.KUSCHLNR1...",
+    "source_file": "34_spezielle_kontenklassen.sql",
+    "is_computed": false
+  },
+  "UMLAGE_PROZENT_1": {
+    "canonical": "EXPRESSION: K.KUSCHLPROZ1, 0) AS NUMERIC(5,2...",
+    "source_file": "34_spezielle_kontenklassen.sql",
+    "is_computed": true
+  },
+  "UMSATZSTEUER": {
+    "canonical": "EXPRESSION: K.KUST...",
+    "source_file": "27_konten_saldenliste.sql",
+    "is_computed": false
+  },
+  "VERSAMMLUNGSBESCHREIBUNG": {
+    "canonical": "VD.VERBEZ",
+    "source_file": "19_etv_presence.sql",
+    "is_computed": false
+  },
+  "VERSAMMLUNGSDATUM": {
+    "canonical": "VD.VERDAT",
+    "source_file": "19_etv_presence.sql",
+    "is_computed": false
+  },
+  "VERSAMMLUNGSLEITER": {
+    "canonical": "VD.VLNAME",
+    "source_file": "19_etv_presence.sql",
+    "is_computed": false
+  },
+  "VERTRAGSBEGINN": {
+    "canonical": "EXPRESSION: B.VBEGINN...",
+    "source_file": "04_alle_mieter.sql",
+    "is_computed": false
+  },
+  "VERTRAGSENDE": {
+    "canonical": "EXPRESSION: B.VENDE...",
+    "source_file": "04_alle_mieter.sql",
+    "is_computed": false
+  },
+  "VERTRAGSNOTIZ": {
+    "canonical": "EXPRESSION: BEWOHNER.VNOTIZ AS VARCHAR(2000)...",
+    "source_file": "02_mieter.sql",
+    "is_computed": true
+  },
+  "VERWALTUNG": {
+    "canonical": "EXPRESSION: V.VERWFIRMA...",
+    "source_file": "06_objekte_portfolio.sql",
+    "is_computed": false
+  },
+  "VERWALTUNG_ORT": {
+    "canonical": "EXPRESSION: V.VERWORT...",
+    "source_file": "06_objekte_portfolio.sql",
+    "is_computed": false
+  },
+  "VORNAME": {
+    "canonical": "EXPRESSION: B.BVNAME...",
+    "source_file": "04_alle_mieter.sql",
+    "is_computed": false
+  },
+  "VORNAME2": {
+    "canonical": "EXPRESSION: B.BVNAME2...",
+    "source_file": "04_alle_mieter.sql",
+    "is_computed": false
+  },
+  "WARMMIETE": {
+    "canonical": "EXPRESSION: B.MIETE1...",
+    "source_file": "04_alle_mieter.sql",
+    "is_computed": false
+  },
+  "WOHNFLAECHE": {
+    "canonical": "EXPRESSION: O.GA1...",
+    "source_file": "23_instandhaltungskosten.sql",
+    "is_computed": false
+  },
+  "WOHNFLAECHE_GESAMT": {
+    "canonical": "EXPRESSION: O.GA1 AS NUMERIC(10,2)...",
+    "source_file": "33_ruecklagen_management.sql",
+    "is_computed": true
+  },
+  "WOHNFLAECHE_QM": {
+    "canonical": "EXPRESSION: O.GA1...",
+    "source_file": "06_objekte_portfolio.sql",
+    "is_computed": false
+  },
+  "WOHNUNG": {
+    "canonical": "KONTEN.KBEZ",
+    "source_file": "14_eigentuemer_op.sql",
+    "is_computed": false
+  },
+  "WOHNUNGSBEZEICHNUNG": {
+    "canonical": "EXPRESSION: W.EBEZ...",
+    "source_file": "04_alle_mieter.sql",
+    "is_computed": false
+  },
+  "WOHNUNGSTYP": {
+    "canonical": "EXPRESSION: W.ART...",
+    "source_file": "04_alle_mieter.sql",
+    "is_computed": false
+  },
+  "WOHNUNGS_BEZEICHNUNG": {
+    "canonical": "EXPRESSION: W.EBEZ...",
+    "source_file": "11_mieter_konten.sql",
+    "is_computed": false
+  },
+  "ZINSEN_AKTIV": {
+    "canonical": "EXPRESSION: R.POS1CHECK...",
+    "source_file": "33_ruecklagen_management.sql",
+    "is_computed": false
+  },
+  "ZINSEN_BETRAG": {
+    "canonical": "EXPRESSION: R.POS1, 0) AS NUMERIC(15,2...",
+    "source_file": "33_ruecklagen_management.sql",
+    "is_computed": true
+  },
+  "ZINSEN_BEZEICHNUNG": {
+    "canonical": "EXPRESSION: R.POS1NAME...",
+    "source_file": "33_ruecklagen_management.sql",
+    "is_computed": false
+  },
+  "ZINSSTEUER_AKTIV": {
+    "canonical": "EXPRESSION: R.POS2CHECK...",
+    "source_file": "33_ruecklagen_management.sql",
+    "is_computed": false
+  },
+  "ZINSSTEUER_BETRAG": {
+    "canonical": "EXPRESSION: R.POS2, 0) AS NUMERIC(15,2...",
+    "source_file": "33_ruecklagen_management.sql",
+    "is_computed": true
+  },
+  "ZINSSTEUER_BEZEICHNUNG": {
+    "canonical": "EXPRESSION: R.POS2NAME...",
+    "source_file": "33_ruecklagen_management.sql",
+    "is_computed": false
+  },
+  "ZUEFUEHRUNGEN": {
+    "canonical": "EXPRESSION: R.ZUF, 0) AS NUMERIC(15,2...",
+    "source_file": "33_ruecklagen_management.sql",
+    "is_computed": true
+  },
+  "ZUEFUEHRUNGS_KONTO": {
+    "canonical": "EXPRESSION: R.KZUF...",
+    "source_file": "33_ruecklagen_management.sql",
+    "is_computed": false
+  },
+  "ZUEFUEHRUNG_KONTO_BEZEICHNUNG": {
+    "canonical": "KZ.KBEZ",
+    "source_file": "32_sonderentnahmen.sql",
+    "is_computed": false
+  },
+  "ZUFUEHRUNG_NACHZAHLUNG": {
+    "canonical": "RP.ZUFNACHZ",
+    "source_file": "24_ruecklagenanalyse.sql",
+    "is_computed": false
+  },
+  "ZUFUEHRUNG_NACHZAHLUNG_SOLL": {
+    "canonical": "RP.ZUFNACHZ_SOLL",
+    "source_file": "24_ruecklagenanalyse.sql",
+    "is_computed": false
+  },
+  "ZUF_IST": {
+    "canonical": "RP.ZUF",
+    "source_file": "24_ruecklagenanalyse.sql",
+    "is_computed": false
+  }
+}

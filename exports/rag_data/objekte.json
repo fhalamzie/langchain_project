@@ -1,0 +1,2312 @@
+[
+  {
+    "adresse": "Aachener Str. 71",
+    "plz": "50674",
+    "stadt": "Köln",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 0.0,
+      "objektart": "Eigentumswohnung"
+    },
+    "vermietung": {
+      "vermietet": 1,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 0.0
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": " ",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Aachener Str. 71",
+    "plz": "50674",
+    "stadt": "Köln",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 0.0,
+      "objektart": "Eigentumswohnung"
+    },
+    "vermietung": {
+      "vermietet": 1,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 0.0
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": " ",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Aachener Str. 71",
+    "plz": "50674",
+    "stadt": "Köln",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 0.0,
+      "objektart": "Eigentumswohnung"
+    },
+    "vermietung": {
+      "vermietet": 1,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 0.0
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": " ",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Ahestraße 11-15",
+    "plz": "50127",
+    "stadt": "Bergheim-Quadrath",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 0.0,
+      "objektart": "Mehrfamilienhaus"
+    },
+    "vermietung": {
+      "vermietet": 18,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 0.0
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": " ",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Akazienstraße 17",
+    "plz": "52353",
+    "stadt": "Düren",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 0.0,
+      "objektart": "Mehrfamilienhaus"
+    },
+    "vermietung": {
+      "vermietet": 8,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 0.0
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": " ",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Albert-Schweitzer-Straße 18",
+    "plz": "50127",
+    "stadt": "Bergheim",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 0.0,
+      "objektart": "Mehrfamilienhaus"
+    },
+    "vermietung": {
+      "vermietet": 4,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 0.0
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": " ",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Am Schmidtgrund 60",
+    "plz": "50765",
+    "stadt": "Köln",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 0.0,
+      "objektart": "Mehrfamilienhaus"
+    },
+    "vermietung": {
+      "vermietet": 6,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 0.0
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": " ",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Bismarkstraße 56",
+    "plz": "45888",
+    "stadt": "Gelsenkirchen",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 30.0,
+      "objektart": "Eigentumswohnung"
+    },
+    "vermietung": {
+      "vermietet": 1,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 455.0
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": "Fahim Halamzie",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Burgunder Str. 14+16",
+    "plz": "50171",
+    "stadt": "Kerpen",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 0.0,
+      "objektart": "Mehrfamilienhaus"
+    },
+    "vermietung": {
+      "vermietet": 17,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 0.0
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": " ",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Byfangerstraße 22",
+    "plz": "45257",
+    "stadt": "Essen",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 608.72,
+      "objektart": "Mehrfamilienhaus"
+    },
+    "vermietung": {
+      "vermietet": 9,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 6540.0
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": "Fahim Halamzie",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Byfangerstraße 24",
+    "plz": "45257",
+    "stadt": "Essen",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 310.9,
+      "objektart": "Mehrfamilienhaus"
+    },
+    "vermietung": {
+      "vermietet": 4,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 2725.67
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": "Fahim Halamzie",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Bäuminghausstraße 41",
+    "plz": "45326",
+    "stadt": "Essen",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 435.0,
+      "objektart": "Mehrfamilienhaus"
+    },
+    "vermietung": {
+      "vermietet": 7,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 2107.0
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": "Fahim Halamzie",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Cohnenhofstr. 46",
+    "plz": "50769",
+    "stadt": "Köln",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 0.0,
+      "objektart": "Mehrfamilienhaus"
+    },
+    "vermietung": {
+      "vermietet": 3,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 0.0
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": " ",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Cohnenhofstr. 94D",
+    "plz": "50769",
+    "stadt": "Köln",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 0.0,
+      "objektart": "Haus"
+    },
+    "vermietung": {
+      "vermietet": 1,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 0.0
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": " ",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Dechant-Flocken-Str. 2",
+    "plz": "52388",
+    "stadt": "Nörvenich",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 0.0,
+      "objektart": "Mehrfamilienhaus"
+    },
+    "vermietung": {
+      "vermietet": 22,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 18173.91
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": " Virnich Grundbesitz GbR",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Donatusstraße 8",
+    "plz": "50259",
+    "stadt": "Pulheim",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 516.19,
+      "objektart": "Mehrfamilienhaus"
+    },
+    "vermietung": {
+      "vermietet": 7,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 6779.0
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": "Dorothea Rixen",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Erlenstr. 21",
+    "plz": "52353",
+    "stadt": "Düren",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 0.0,
+      "objektart": "Mehrfamilienhaus"
+    },
+    "vermietung": {
+      "vermietet": 6,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 3323.4
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": " Virnich Grundbesitz GbR",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Escher Str. 5",
+    "plz": "50767",
+    "stadt": "Köln",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 0.0,
+      "objektart": "Mehrfamilienhaus"
+    },
+    "vermietung": {
+      "vermietet": 21,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 0.0
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": " ",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Florastr. 90",
+    "plz": "50733",
+    "stadt": "Köln",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 0.0,
+      "objektart": "Eigentumswohnung"
+    },
+    "vermietung": {
+      "vermietet": 1,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 0.0
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": " ",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Florastraße 73",
+    "plz": "50733",
+    "stadt": "Köln",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 0.0,
+      "objektart": "Mehrfamilienhaus"
+    },
+    "vermietung": {
+      "vermietet": 9,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 0.0
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": " ",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Follerstr. 93",
+    "plz": "50676",
+    "stadt": "Köln",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 0.0,
+      "objektart": "Haus"
+    },
+    "vermietung": {
+      "vermietet": 5,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 0.0
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": " ",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Friedrichstraße 19",
+    "plz": "46145",
+    "stadt": "Oberhausen",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 60.0,
+      "objektart": "Eigentumswohnung"
+    },
+    "vermietung": {
+      "vermietet": 2,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 799.0
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": "Fahim Halamzie",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Geranienhof 3",
+    "plz": "50769",
+    "stadt": "Köln",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 477.0,
+      "objektart": "Mehrfamilienhaus"
+    },
+    "vermietung": {
+      "vermietet": 10,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 5680.0
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": " ",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Germanenstraße 1",
+    "plz": "45888",
+    "stadt": "Gelsenkirchen",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 65.0,
+      "objektart": "Eigentumswohnung"
+    },
+    "vermietung": {
+      "vermietet": 1,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 631.0
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": " Sundeki Immobilien 1 GmbH",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Germanenstraße 1",
+    "plz": "45888",
+    "stadt": "Gelsenkirchen",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 80.0,
+      "objektart": "Eigentumswohnung"
+    },
+    "vermietung": {
+      "vermietet": 1,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 400.0
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": "Fahim Halamzie",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Haager Weg 124",
+    "plz": "53127",
+    "stadt": "Bonn",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 0.0,
+      "objektart": "Mehrfamilienhaus"
+    },
+    "vermietung": {
+      "vermietet": 1,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 0.0
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": " ",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Haager Weg 124",
+    "plz": "53127",
+    "stadt": "Bonn",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 0.0,
+      "objektart": "Mehrfamilienhaus"
+    },
+    "vermietung": {
+      "vermietet": 1,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 0.0
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": " ",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Haager Weg 124",
+    "plz": "53127",
+    "stadt": "Bonn",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 0.0,
+      "objektart": "Mehrfamilienhaus"
+    },
+    "vermietung": {
+      "vermietet": 1,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 0.0
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": " ",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Haager Weg 124  (Villa Bonna)",
+    "plz": "53127",
+    "stadt": "Bonn",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 0.0,
+      "objektart": "Mehrfamilienhaus"
+    },
+    "vermietung": {
+      "vermietet": 15,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 0.0
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": " ",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Hauptstr. 246",
+    "plz": "50169",
+    "stadt": "Kerpen",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 0.0,
+      "objektart": "Mehrfamilienhaus"
+    },
+    "vermietung": {
+      "vermietet": 3,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 0.0
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": " ",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Hauptstraße 128",
+    "plz": "54568",
+    "stadt": "Gerolstein",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 0.0,
+      "objektart": "Mehrfamilienhaus"
+    },
+    "vermietung": {
+      "vermietet": 29,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 5473.9
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Beendet am 2024-12-31"
+    },
+    "eigentuemer": {
+      "name": " ",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Heerstraße 97",
+    "plz": "47053",
+    "stadt": "Duisburg",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 199.5,
+      "objektart": "Mehrfamilienhaus"
+    },
+    "vermietung": {
+      "vermietet": 6,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 1636.17
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": "Pamir Halamzie",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Heinrichstr. 5",
+    "plz": "50259",
+    "stadt": "Pulheim",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 0.0,
+      "objektart": "Mehrfamilienhaus"
+    },
+    "vermietung": {
+      "vermietet": 37,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 0.0
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": " ",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Hochfelderstraße 76 +78",
+    "plz": "47226",
+    "stadt": "Duisburg",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 800.0,
+      "objektart": "Mehrfamilienhaus"
+    },
+    "vermietung": {
+      "vermietet": 16,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 8793.27
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": " Sundeki Immobilien 1 GmbH",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Holzmaarstr. 37",
+    "plz": "54558",
+    "stadt": "Gillenfeld",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 191.0,
+      "objektart": "Mehrfamilienhaus"
+    },
+    "vermietung": {
+      "vermietet": 1,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 0.0
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": "Corina Sav",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Hombrucherstraße 1",
+    "plz": "45139",
+    "stadt": "Essen",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 0.0,
+      "objektart": "Eigentumswohnung"
+    },
+    "vermietung": {
+      "vermietet": 1,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 424.5
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": " Sundeki Immobilien 1 GmbH",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Hordelerstraße 110",
+    "plz": "44651",
+    "stadt": "Herne",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": -1852.0,
+      "objektart": "Mehrfamilienhaus"
+    },
+    "vermietung": {
+      "vermietet": 7,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 2837.0
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": " Sundeki Immobilien 1 GmbH",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Hüttenweg 1",
+    "plz": "50226",
+    "stadt": "Frechen",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 0.0,
+      "objektart": "Mehrfamilienhaus"
+    },
+    "vermietung": {
+      "vermietet": 3,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 0.0
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": " ",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Im Salzgrund 33",
+    "plz": "50999",
+    "stadt": "Köln",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 0.0,
+      "objektart": "Mehrfamilienhaus"
+    },
+    "vermietung": {
+      "vermietet": 7,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 0.0
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": " ",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Kaiser-Otto-Straße 13-15",
+    "plz": "50259",
+    "stadt": "Pulheim",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 0.0,
+      "objektart": "Mehrfamilienhaus"
+    },
+    "vermietung": {
+      "vermietet": 5,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 0.0
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": " ",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Kettwiger Str. 23",
+    "plz": "45127",
+    "stadt": "Essen",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 0.0,
+      "objektart": "Haus"
+    },
+    "vermietung": {
+      "vermietet": 3,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 0.0
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": " ",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Kirchstraße 3",
+    "plz": "57641",
+    "stadt": "Oberlahr",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 0.0,
+      "objektart": "Eigentumswohnung"
+    },
+    "vermietung": {
+      "vermietet": 1,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 0.0
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": " ",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Kitschburger Straße 234",
+    "plz": "50933",
+    "stadt": "Köln",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 0.0,
+      "objektart": "Mehrfamilienhaus"
+    },
+    "vermietung": {
+      "vermietet": 4,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 0.0
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": " ",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Kupferdreherstraße 190",
+    "plz": "45257",
+    "stadt": "Essen",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 0.0,
+      "objektart": "Mehrfamilienhaus"
+    },
+    "vermietung": {
+      "vermietet": 11,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 3010.0
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": " Sundeki Immobilien 1 GmbH",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Kupferdreherstraße 190",
+    "plz": "45257",
+    "stadt": "Essen",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 261.0,
+      "objektart": "Mehrfamilienhaus"
+    },
+    "vermietung": {
+      "vermietet": 10,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 3010.0
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": " Sundeki Immobilien 1 GmbH",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Kyffhäuser Straße 12",
+    "plz": "50674",
+    "stadt": "Köln",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 0.0,
+      "objektart": "Mehrfamilienhaus"
+    },
+    "vermietung": {
+      "vermietet": 21,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 0.0
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": " ",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Kämpenstraße 13",
+    "plz": "45147",
+    "stadt": "Essen",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 381.5,
+      "objektart": "Mehrfamilienhaus"
+    },
+    "vermietung": {
+      "vermietet": 16,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 6601.0
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": " Sundeki Immobilien 1 GmbH",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Kölner Str. 17",
+    "plz": "50226\tFrechen",
+    "stadt": "",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 0.0,
+      "objektart": "Eigentumswohnung"
+    },
+    "vermietung": {
+      "vermietet": 1,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 0.0
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": " ",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Kölner Str. 7a",
+    "plz": "50226\tFrechen",
+    "stadt": "",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 0.0,
+      "objektart": "Eigentumswohnung"
+    },
+    "vermietung": {
+      "vermietet": 1,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 0.0
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": " ",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Langgasse 39",
+    "plz": "50189",
+    "stadt": "Elsdorf-Niederembt",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 0.0,
+      "objektart": "Mehrfamilienhaus"
+    },
+    "vermietung": {
+      "vermietet": 6,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 0.0
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": " ",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Levenkaulstraße 4",
+    "plz": "50259",
+    "stadt": "Pulheim",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 0.0,
+      "objektart": "Mehrfamilienhaus"
+    },
+    "vermietung": {
+      "vermietet": 3,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 0.0
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": " ",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Lindenstraße 81",
+    "plz": "50674",
+    "stadt": "Köln",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 0.0,
+      "objektart": "Mehrfamilienhaus"
+    },
+    "vermietung": {
+      "vermietet": 4,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 0.0
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": " ",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Manstedtener Str. 51",
+    "plz": "50259",
+    "stadt": "Pulheim",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 0.0,
+      "objektart": "Mehrfamilienhaus"
+    },
+    "vermietung": {
+      "vermietet": 7,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 0.0
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": " ",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Marienstraße 26",
+    "plz": "45307",
+    "stadt": "Essen",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 434.0,
+      "objektart": "Mehrfamilienhaus"
+    },
+    "vermietung": {
+      "vermietet": 5,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 4686.0
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": " Sundeki Immobilien 1 GmbH",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Martinstraße 2 & Nikolausstraße 7",
+    "plz": "52388",
+    "stadt": "Nörvenich-Rath",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 0.0,
+      "objektart": "Mehrfamilienhaus"
+    },
+    "vermietung": {
+      "vermietet": 37,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 0.0
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": " ",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Maybachstraße 161",
+    "plz": "50670",
+    "stadt": "Köln",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 0.0,
+      "objektart": "Mehrfamilienhaus"
+    },
+    "vermietung": {
+      "vermietet": 5,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 0.0
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": " ",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Merheimer Str. 440",
+    "plz": "50739",
+    "stadt": "Köln",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 0.0,
+      "objektart": "Mehrfamilienhaus"
+    },
+    "vermietung": {
+      "vermietet": 11,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 0.0
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": " ",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Neusser Str. 49",
+    "plz": "50670",
+    "stadt": "Köln",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 0.0,
+      "objektart": "Mehrfamilienhaus"
+    },
+    "vermietung": {
+      "vermietet": 5,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 0.0
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": " ",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Paulusstraße 9",
+    "plz": "50129",
+    "stadt": "Bergheim",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 0.0,
+      "objektart": "Haus"
+    },
+    "vermietung": {
+      "vermietet": 1,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 80.0
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": " ",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Petunienweg 80",
+    "plz": "50127",
+    "stadt": "Bergheim",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 0.0,
+      "objektart": "Mehrfamilienhaus"
+    },
+    "vermietung": {
+      "vermietet": 2,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 0.0
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": " ",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Polsumerstraße 156",
+    "plz": "45896",
+    "stadt": "Gelsenkirchen",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 735.88,
+      "objektart": "Mehrfamilienhaus"
+    },
+    "vermietung": {
+      "vermietet": 10,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 6458.6
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": " Sundeki Immobilien 1 GmbH",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Portendieckstraße 14",
+    "plz": "45309",
+    "stadt": "Essen",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 111.99,
+      "objektart": "Mehrfamilienhaus"
+    },
+    "vermietung": {
+      "vermietet": 1,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 1200.0
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": "Pamir Halamzie",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Ribbertstr. 1",
+    "plz": "50354",
+    "stadt": "Hürth",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 0.0,
+      "objektart": "Mehrfamilienhaus"
+    },
+    "vermietung": {
+      "vermietet": 1,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 0.0
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": " ",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Richard-Wagner-Str. 46",
+    "plz": "50674",
+    "stadt": "Köln",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 0.0,
+      "objektart": "Mehrfamilienhaus"
+    },
+    "vermietung": {
+      "vermietet": 1,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 500.0
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": "Johanna Häusler",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Richard-Wagner-Str. 46",
+    "plz": "50674",
+    "stadt": "Köln",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 0.0,
+      "objektart": "Mehrfamilienhaus"
+    },
+    "vermietung": {
+      "vermietet": 1,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 0.0
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": " ",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Richard-Wagner-Str. 46",
+    "plz": "50674",
+    "stadt": "Köln",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 0.0,
+      "objektart": "Mehrfamilienhaus"
+    },
+    "vermietung": {
+      "vermietet": 1,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 395.0
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": "Arne Häusler",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Richard-Wagner-Str.51",
+    "plz": "50674\tKöln",
+    "stadt": "",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 0.0,
+      "objektart": "Eigentumswohnung"
+    },
+    "vermietung": {
+      "vermietet": 1,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 0.0
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": " ",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Sauerbruchstraße 21-23",
+    "plz": "50767",
+    "stadt": "Köln",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 0.0,
+      "objektart": "Mehrfamilienhaus"
+    },
+    "vermietung": {
+      "vermietet": 12,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 0.0
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": " ",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Schmiedestraße 8",
+    "plz": "47055",
+    "stadt": "Duisburg",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 291.0,
+      "objektart": "Mehrfamilienhaus"
+    },
+    "vermietung": {
+      "vermietet": 5,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 2366.0
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": "Fahim Halamzie",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Schürgespfad 41-43",
+    "plz": "50259",
+    "stadt": "Pulheim",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 0.0,
+      "objektart": "Mehrfamilienhaus"
+    },
+    "vermietung": {
+      "vermietet": 4,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 0.0
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Beendet am 2024-12-31"
+    },
+    "eigentuemer": {
+      "name": " ",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Stauderstraße 59",
+    "plz": "45326",
+    "stadt": "Essen",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 606.0,
+      "objektart": "Mehrfamilienhaus"
+    },
+    "vermietung": {
+      "vermietet": 7,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 6035.8
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": " Sundeki Immobilien 1 GmbH",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Steinf. 32/34 + Schonneb. 81",
+    "plz": "45884",
+    "stadt": "Gelsenkirchen",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 796.64,
+      "objektart": "Mehrfamilienhäuser"
+    },
+    "vermietung": {
+      "vermietet": 18,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 6535.0
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": " Ruhrstadt Wohnen GmbH",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Sursstraße 11",
+    "plz": "45143",
+    "stadt": "Essen",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 52.0,
+      "objektart": "Eigentumswohnung"
+    },
+    "vermietung": {
+      "vermietet": 1,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 580.0
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": "Fahim Halamzie",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Von-Waldthausen-Straße 44",
+    "plz": "44894",
+    "stadt": "Bochum",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 428.59,
+      "objektart": "Mehrfamilienhaus"
+    },
+    "vermietung": {
+      "vermietet": 6,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 3204.35
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": " Sundeki Immobilien 1 GmbH",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Weuenstraße 35",
+    "plz": "45143",
+    "stadt": "Essen",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 82.0,
+      "objektart": "Eigentumswohnung"
+    },
+    "vermietung": {
+      "vermietet": 1,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 680.0
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": " Sundeki Immobilien 1 GmbH",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "Zur Ville 11",
+    "plz": "50129",
+    "stadt": "Bergheim",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 0.0,
+      "objektart": "Mehrfamilienhaus"
+    },
+    "vermietung": {
+      "vermietet": 4,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 0.0
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": " ",
+      "typ": "Privatperson"
+    }
+  },
+  {
+    "adresse": "test39",
+    "plz": "45127",
+    "stadt": "Essen",
+    "groesse": {
+      "einheiten_total": 0,
+      "wohnflaeche_qm": 0.0,
+      "objektart": "Haus"
+    },
+    "vermietung": {
+      "vermietet": 1,
+      "leerstand": 0,
+      "vermietungsgrad_prozent": 0.0,
+      "status": "Teilvermietet  ",
+      "mieteinnahmen_monatlich": 0.0
+    },
+    "finanzen": {
+      "hausgeld_kontostand": 0.0,
+      "finanzstatus": "Negativ       "
+    },
+    "verwaltung": {
+      "verwalter_name": null,
+      "verwalter_firma": null,
+      "status": "Unbefristet"
+    },
+    "eigentuemer": {
+      "name": " ",
+      "typ": "Privatperson"
+    }
+  }
+]

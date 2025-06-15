@@ -1,0 +1,41 @@
+{
+  "query_info": {
+    "file": "21_forderungsalterung.sql",
+    "generated": "2025-06-12T14:40:27.526951",
+    "driver": "firebird-driver",
+    "charset": "ISO8859_1",
+    "business_purpose": "Altersstruktur offener Forderungen für gezieltes Inkasso",
+    "main_tables": [
+      "KONTEN",
+      "BUCHUNG",
+      "EIGADR/BEWOHNER",
+      "KATEGORIEN",
+      "VERWENDUNG"
+    ],
+    "total_rows": 0,
+    "execution_time_seconds": 0.004418
+  },
+  "columns": [
+    "ALTERSKLASSE",
+    "SCHULDNERTYP",
+    "ANZAHL_KONTEN",
+    "GESAMT_FORDERUNG",
+    "DURCHSCHNITT_OP",
+    "KLEINSTE_FORDERUNG",
+    "GROESSTE_FORDERUNG",
+    "OHNE_MAHNUNG",
+    "MAHNSTUFE_1",
+    "MAHNSTUFE_2",
+    "MAHNSTUFE_3",
+    "MAHNSTUFE_4_PLUS",
+    "INKASSO_RISIKO",
+    "ABSCHREIBUNGSKANDIDATEN",
+    "AVG_TAGE_UEBERFAELLIG"
+  ],
+  "data": [],
+  "summary": {
+    "row_count": 0,
+    "success": true,
+    "error": null
+  }
+}

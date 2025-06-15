@@ -1,0 +1,51 @@
+"ID";"BGR_ID";"GRUPPE";"UNTERGRUPPE";"FUNKTION";"RECHTE";"FUNKTION_NR"
+0;0;"Verwaltung";"Haus";"Daten";"J";0
+1;0;"Verwaltung";"Haus";"Daten ändern";"J";1
+2;0;"Verwaltung";"Haus";"Neu";"J";2
+3;0;"Verwaltung";"Haus";"Löschen";"J";3
+4;0;"Verwaltung";"Haus";"Kopieren";"J";4
+5;0;"Verwaltung";"Weitere Funktionen";"Erhöhungen (Miete, Hausgeld)";"J";5
+6;0;"Verwaltung";"Weitere Funktionen";"Anpassen (Indexmiete)";"J";6
+7;0;"Verwaltung";"Weitere Funktionen";"Laufende Beleg-Nr.";"J";7
+8;0;"Verwaltung";"Weitere Funktionen";"Kautionsverwaltung";"J";8
+9;0;"Verwaltung";"Weitere Funktionen";"Verträge";"J";9
+10;0;"Verwaltung";"Weitere Funktionen";"Zählerstände";"J";10
+11;0;"Verwaltung";"Weitere Funktionen";"Zählerverwaltung";"J";11
+12;0;"Verwaltung";"Weitere Funktionen";"Dokumente/Nachweise";"J";12
+13;0;"Verwaltung";"Weitere Funktionen";"Termine";"J";13
+14;0;"Verwaltung";"WEG";"Sonderumlage (WEG)";"J";14
+15;0;"Verwaltung";"WEG";"Beschlusssammlung (WEG)";"J";15
+16;0;"Verwaltung";"Weitere Funktionen";"Liste der Verwaltungsbeiräte";"J";16
+17;0;"Verwaltung";"Weitere Funktionen";"Schlüsselverwaltung";"J";17
+18;0;"Verwaltung";"Weitere Funktionen";"Sondereigentumsverwaltung";"J";18
+19;0;"Verwaltung";"Weitere Funktionen";"Geräteverwaltung";"J";19
+21;0;"Verwaltung";"Weitere Funktionen";"Anteile und Zählerstände speichern";"J";21
+22;0;"Verwaltung";"Weitere Funktionen";"Anteile und Zählerstände laden";"J";22
+23;0;"Verwaltung";"Konten";"Konten";"J";23
+24;0;"Verwaltung";"Konten";"Umlageschlüssel";"J";24
+25;0;"Verwaltung";"Konten";"Bestandskonten";"J";25
+26;0;"Verwaltung";"Konten";"Rücklagekonten";"J";26
+27;0;"Verwaltung";"Konten";"Spezielle Konten zuordnen";"J";27
+28;0;"Verwaltung";"Konten";"Anfangsbestand (EB-Wert)";"J";28
+29;0;"Verwaltung";"Konten";"Alte Buchungen löschen";"J";29
+30;0;"Verwaltung";"Wohnung";"Daten";"J";30
+31;0;"Verwaltung";"Wohnung";"Daten ändern";"J";31
+32;0;"Verwaltung";"Wohnung";"Neu";"J";32
+33;0;"Verwaltung";"Wohnung";"Löschen";"J";33
+34;0;"Verwaltung";"Wohnung";"Ausgezogene Bewohner";"J";34
+35;0;"Verwaltung";"Wohnung";"Frühere Eigentümer";"J";35
+36;0;"Verwaltung";"Adressen";"Eigentümer";"J";36
+37;0;"Verwaltung";"Adressen";"Eigentümer Daten ändern";"J";37
+38;0;"Verwaltung";"Adressen";"Verwalter";"J";38
+39;0;"Verwaltung";"Adressen";"Kontakte & Lieferanten";"J";39
+40;0;"Verwaltung";"Adressen";"Kontakte & Lief. ändern";"J";40
+41;0;"Verwaltung";"Voreinstellungen";"Musterkonten";"J";41
+42;0;"Verwaltung";"Voreinstellungen";"Einstellungen";"J";42
+43;0;"Buchhaltung";"Buchen";"Buchen";"J";43
+44;0;"Buchhaltung";"Sollstellungen";"Automatische Sollstellung";"J";44
+45;0;"Buchhaltung";"Sollstellungen";"Manuell oder G/N";"J";45
+46;0;"Buchhaltung";"Sollstellungen";"Verwaltervergütung";"J";46
+47;0;"Buchhaltung";"Sollstellungen";"Sollstellungen buchen";"J";47
+48;0;"Buchhaltung";"Zahlungsverkehr";"Lastschriften";"J";48
+49;0;"Buchhaltung";"Zahlungsverkehr";"Überweisungen";"J";49
+50;0;"Buchhaltung";"Mahnliste";"Mahnen";"J";50

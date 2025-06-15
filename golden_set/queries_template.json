@@ -1,0 +1,156 @@
+[
+  {
+    "id": "M008",
+    "query": "Welche Wohnungen sind vermietet?",
+    "category": "vermietung_status",
+    "intent": "template",
+    "expected_data": "wohnungen"
+  },
+  {
+    "id": "M009",
+    "query": "Freie Wohnungen in Hamburg",
+    "category": "leerstand",
+    "intent": "template",
+    "expected_data": "wohnungen_leerstand"
+  },
+  {
+    "id": "M013",
+    "query": "Alle Bewohner im Objekt Hauptstraße 20",
+    "category": "objekt_bewohner",
+    "intent": "template",
+    "expected_data": "mieter_komplett"
+  },
+  {
+    "id": "M027",
+    "query": "Kontaktliste aller aktuellen Mieter",
+    "category": "kontaktliste",
+    "intent": "template",
+    "expected_data": "mieter_komplett"
+  },
+  {
+    "id": "M029",
+    "query": "Mieter sortiert nach Einzugsdatum",
+    "category": "einzug_chronologie",
+    "intent": "template",
+    "expected_data": "mieter_komplett"
+  },
+  {
+    "id": "E003",
+    "query": "Alle Eigentümer mit mehr als 3 Objekten",
+    "category": "portfolio_analyse",
+    "intent": "template",
+    "expected_data": "eigentuemer_portfolio"
+  },
+  {
+    "id": "E005",
+    "query": "WEG-Eigentümer der Anlage Musterstraße",
+    "category": "weg_eigentuemer",
+    "intent": "template",
+    "expected_data": "weg_eigentuemer"
+  },
+  {
+    "id": "E016",
+    "query": "Beiräte der WEG-Anlagen",
+    "category": "beiraete",
+    "intent": "template",
+    "expected_data": "beiraete"
+  },
+  {
+    "id": "E017",
+    "query": "Beschlüsse der letzten Eigentümerversammlung",
+    "category": "beschluesse",
+    "intent": "template",
+    "expected_data": "beschluesse"
+  },
+  {
+    "id": "E018",
+    "query": "Nächste Eigentümerversammlung",
+    "category": "versammlungen",
+    "intent": "template",
+    "expected_data": "versammlungen"
+  },
+  {
+    "id": "E024",
+    "query": "Eigentümer nach Postleitzahlen sortiert",
+    "category": "geografische_verteilung",
+    "intent": "template",
+    "expected_data": "eigentuemer_portfolio"
+  },
+  {
+    "id": "O002",
+    "query": "Alle Objekte in Bremen",
+    "category": "objekte_standort",
+    "intent": "template",
+    "expected_data": "objekte_details"
+  },
+  {
+    "id": "O003",
+    "query": "Objekte mit mehr als 10 Wohnungen",
+    "category": "objekt_groesse",
+    "intent": "template",
+    "expected_data": "objekte_details"
+  },
+  {
+    "id": "O006",
+    "query": "Alle Wohnungen im Objekt Bergstraße 20",
+    "category": "wohnungen_objekt",
+    "intent": "template",
+    "expected_data": "wohnungen"
+  },
+  {
+    "id": "O007",
+    "query": "Freie Wohnungen nach Größe sortiert",
+    "category": "leerstand_groesse",
+    "intent": "template",
+    "expected_data": "wohnungen_leerstand"
+  },
+  {
+    "id": "O011",
+    "query": "Portfolio-Übersicht aller verwalteten Objekte",
+    "category": "portfolio_uebersicht",
+    "intent": "template",
+    "expected_data": "objekte_portfolio"
+  },
+  {
+    "id": "F001",
+    "query": "Aktuelle Kontosalden aller Konten",
+    "category": "kontosalden",
+    "intent": "template",
+    "expected_data": "konten_saldenliste"
+  },
+  {
+    "id": "F002",
+    "query": "Buchungen der letzten 30 Tage",
+    "category": "aktuelle_buchungen",
+    "intent": "template",
+    "expected_data": "detaillierte_buchungen"
+  },
+  {
+    "id": "F003",
+    "query": "Offene Forderungen Übersicht",
+    "category": "forderungen",
+    "intent": "template",
+    "expected_data": "forderungsalterung"
+  },
+  {
+    "id": "F004",
+    "query": "Rücklagen-Management Übersicht",
+    "category": "ruecklagen",
+    "intent": "template",
+    "expected_data": "ruecklagen_management"
+  },
+  {
+    "id": "F005",
+    "query": "Bankkonten-Übersicht",
+    "category": "bankkonten",
+    "intent": "template",
+    "expected_data": "bank_konten"
+  },
+  {
+    "id": "F012",
+    "query": "Buchungskonten-Übersicht komplett",
+    "category": "buchungskonten",
+    "intent": "template",
+    "expected_data": "buchungskonten_uebersicht"
+  }
+]

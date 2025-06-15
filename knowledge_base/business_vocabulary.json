@@ -1,0 +1,75 @@
+{
+  "_note": "Manually curated business vocabulary mapping business terms to database entities",
+  "eigentümer": {
+    "primary_table": "EIGADR",
+    "description": "Immobilieneigentümer / Vermieter",
+    "aliases": ["eigentuemer", "owner", "vermieter", "landlord"],
+    "key_fields": ["EIGNR", "ENAME", "EVNAME", "ENOTIZ"]
+  },
+  "mieter": {
+    "primary_table": "BEWADR",
+    "description": "Wohnungsmieter / Bewohner",
+    "aliases": ["bewohner", "tenant", "pächter"],
+    "key_fields": ["BEWNR", "BNAME", "BVNAME", "BSTR", "BPLZORT"]
+  },
+  "wohnung": {
+    "primary_table": "WOHNUNG",
+    "description": "Mieteinheit / Apartment",
+    "aliases": ["apartment", "einheit", "unit", "mietobjekt"],
+    "key_fields": ["ENR", "ETYP", "EFLAECHE", "EBEZ"]
+  },
+  "objekt": {
+    "primary_table": "OBJEKTE",
+    "description": "Gebäude / Liegenschaft",
+    "aliases": ["gebäude", "immobilie", "liegenschaft", "property"],
+    "key_fields": ["ONR", "OBEZ", "OSTRASSE", "OPLZORT"]
+  },
+  "konto": {
+    "primary_table": "KONTEN",
+    "description": "Finanzkonto für Buchhaltung",
+    "aliases": ["account", "finanzkonto", "buchhaltungskonto"],
+    "key_fields": ["KNR", "KBEZ", "KBRUTTO", "OPBETRAG"]
+  },
+  "buchung": {
+    "primary_table": "BUCHUNG",
+    "description": "Einzelne Finanztransaktion",
+    "aliases": ["transaktion", "transaction", "zahlung", "payment"],
+    "key_fields": ["BNR", "DATUM", "BETRAG", "BELEGNR"]
+  },
+  "vertrag": {
+    "primary_table": "BEWOHNER",
+    "description": "Mietvertrag mit Konditionen",
+    "aliases": ["mietvertrag", "contract", "lease"],
+    "key_fields": ["VBEGINN", "VENDE", "Z1", "Z2", "Z3", "Z4"]
+  },
+  "rücklage": {
+    "primary_table": "RUECKPOS",
+    "description": "Instandhaltungsrücklage",
+    "aliases": ["ruecklage", "reserve", "rückstellung"],
+    "key_fields": ["RPNR", "ANFSTAND", "ENDSTAND", "ZUF", "ENTN"]
+  },
+  "kaltmiete": {
+    "primary_field": "BEWOHNER.Z1",
+    "description": "Nettomiete ohne Nebenkosten",
+    "aliases": ["nettomiete", "grundmiete", "net rent"],
+    "related_table": "BEWOHNER"
+  },
+  "nebenkosten": {
+    "primary_field": "BEWOHNER.Z3",
+    "description": "Betriebskosten-Vorauszahlung",
+    "aliases": ["betriebskosten", "NK", "operating costs"],
+    "related_table": "BEWOHNER"
+  },
+  "heizkosten": {
+    "primary_field": "BEWOHNER.Z4",
+    "description": "Heizkosten-Vorauszahlung",
+    "aliases": ["heizung", "heating costs"],
+    "related_table": "BEWOHNER"
+  },
+  "warmmiete": {
+    "computed": "BEWOHNER.Z1 + BEWOHNER.Z2 + BEWOHNER.Z3 + BEWOHNER.Z4",
+    "description": "Gesamtmiete inkl. aller Nebenkosten",
+    "aliases": ["bruttomiete", "gesamtmiete", "gross rent"],
+    "related_table": "BEWOHNER"
+  }
+}

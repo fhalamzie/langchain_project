@@ -1,0 +1,401 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WINCASA Business Metrics Dashboard</title>
+    <meta charset="utf-8">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .header h1 { margin: 0; font-size: 2.5rem; }
+        .header p { opacity: 0.9; margin-top: 0.5rem; }
+        
+        .container { max-width: 1400px; margin: 0 auto; padding: 2rem; }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .metric-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .metric-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+        }
+        
+        .metric-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #667eea;
+            margin: 0.5rem 0;
+        }
+        
+        .metric-label {
+            color: #718096;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .metric-delta {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-top: 0.5rem;
+        }
+        
+        .delta-positive {
+            background: #d4f8e8;
+            color: #276749;
+        }
+        
+        .delta-negative {
+            background: #fef2f2;
+            color: #991b1b;
+        }
+        
+        .chart-container {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        
+        .chart-container h2 {
+            margin-bottom: 1.5rem;
+            color: #2d3748;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        
+        th {
+            background: #f7fafc;
+            padding: 0.75rem;
+            text-align: left;
+            font-weight: 600;
+            color: #4a5568;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        
+        td {
+            padding: 0.75rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        tr:hover {
+            background: #f7fafc;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e2e8f0;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 0.5rem 0;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transition: width 0.3s ease;
+        }
+        
+        .insights-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+        
+        .insights-box h3 {
+            color: #92400e;
+            margin-bottom: 0.5rem;
+        }
+        
+        .recommendation {
+            background: #dbeafe;
+            border-left: 4px solid #3b82f6;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border-radius: 4px;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: #718096;
+            border-top: 1px solid #e2e8f0;
+            margin-top: 3rem;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin: 0 0.25rem;
+        }
+        
+        .badge-success { background: #d4f8e8; color: #276749; }
+        .badge-warning { background: #fef3c7; color: #92400e; }
+        .badge-info { background: #dbeafe; color: #1e40af; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>📊 WINCASA Business Metrics Dashboard</h1>
+        <p>Real-time analytics and business intelligence | Last updated: 2025-06-14 16:23:53</p>
+    </div>
+    
+    <div class="container">
+        
+        <section>
+            <h2>📈 Key Business Metrics</h2>
+            
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-label">Query Volume</div>
+                    <div class="metric-value">1.0</div>
+                    <div class="metric-label">queries/hour</div>
+                    <div class="metric-delta delta-negative">-3.6% vs 7-day avg</div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="metric-label">Success Rate</div>
+                    <div class="metric-value">87.0%</div>
+                    <div class="metric-label">last 24 hours</div>
+                    <div class="metric-delta delta-negative">-2.9% vs 7-day avg</div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="metric-label">Avg Response Time</div>
+                    <div class="metric-value">525ms</div>
+                    <div class="metric-label">last 24 hours</div>
+                    <div class="metric-delta delta-negative">+26.3% vs 7-day avg</div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="metric-label">Avg Cost per Query</div>
+                    <div class="metric-value">$0.018</div>
+                    <div class="metric-label">last 24 hours</div>
+                    <div class="metric-delta delta-negative">+3.7% vs 7-day avg</div>
+                </div>
+            </div>
+        </section>
+        
+        
+        <section class="chart-container">
+            <h2>⚡ Performance Analysis</h2>
+            
+            <div class="insights-box">
+                <h3>System Performance</h3>
+                <p>The system is processing queries with an average response time of 
+                525ms.</p>
+            </div>
+            
+            <h3>Engine Usage Distribution</h3>
+            <div style="margin: 1rem 0;">
+                
+            <div style="margin: 0.5rem 0;">
+                <div style="display: flex; align-items: center; justify-content: space-between;">
+                    <span>legacy_v1</span>
+                    <span>52.2%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 52.17391304347826%"></div>
+                </div>
+            </div>
+            
+            <div style="margin: 0.5rem 0;">
+                <div style="display: flex; align-items: center; justify-content: space-between;">
+                    <span>unified_v2</span>
+                    <span>47.8%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 47.82608695652174%"></div>
+                </div>
+            </div>
+            
+            </div>
+            
+            <h3>Performance Metrics by Engine</h3>
+            <table>
+                <tr>
+                    <th>Engine</th>
+                    <th>Usage %</th>
+                    <th>Avg Response Time</th>
+                    <th>Cost Impact</th>
+                </tr>
+                
+            <tr>
+                <td>legacy_v1 <span class="badge badge-warning">Legacy</span></td>
+                <td>52.2%</td>
+                <td>500-2000ms</td>
+                <td>$0.05</td>
+            </tr>
+            
+            <tr>
+                <td>unified_v2 <span class="badge badge-success">Optimized</span></td>
+                <td>47.8%</td>
+                <td>5-50ms</td>
+                <td>$0.00</td>
+            </tr>
+            
+            </table>
+        </section>
+        
+        
+        <section class="chart-container">
+            <h2>🔍 Query Pattern Analysis</h2>
+            
+            <p>Identified <strong>6</strong> unique query patterns.</p>
+            
+            <table>
+                <tr>
+                    <th>Pattern</th>
+                    <th>Type</th>
+                    <th>Frequency</th>
+                    <th>Success Rate</th>
+                    <th>Avg Response</th>
+                </tr>
+                
+            <tr>
+                <td>Tenant By Name</td>
+                <td>entity_search</td>
+                <td>50</td>
+                <td>100.0%</td>
+                <td>29ms</td>
+            </tr>
+            
+            <tr>
+                <td>By City</td>
+                <td>location_query</td>
+                <td>33</td>
+                <td>97.0%</td>
+                <td>361ms</td>
+            </tr>
+            
+            <tr>
+                <td>Portfolio Overview</td>
+                <td>portfolio_query</td>
+                <td>25</td>
+                <td>100.0%</td>
+                <td>29ms</td>
+            </tr>
+            
+            <tr>
+                <td>Vacancy Analysis</td>
+                <td>analytics_query</td>
+                <td>25</td>
+                <td>80.0%</td>
+                <td>1450ms</td>
+            </tr>
+            
+            <tr>
+                <td>Balance Check</td>
+                <td>financial_query</td>
+                <td>25</td>
+                <td>100.0%</td>
+                <td>29ms</td>
+            </tr>
+            
+            <tr>
+                <td>By Location</td>
+                <td>location_query</td>
+                <td>50</td>
+                <td>90.0%</td>
+                <td>814ms</td>
+            </tr>
+            
+            </table>
+        </section>
+        
+        
+        <section class="chart-container">
+            <h2>💰 Cost Analysis & Savings</h2>
+            
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-label">Daily Cost</div>
+                    <div class="metric-value">$0.42</div>
+                    <div class="metric-label">current run rate</div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="metric-label">Monthly Projection</div>
+                    <div class="metric-value">$12.60</div>
+                    <div class="metric-label">at current usage</div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="metric-label">Daily Savings</div>
+                    <div class="metric-value">$0.73</div>
+                    <div class="metric-label">vs legacy system</div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="metric-label">Savings Rate</div>
+                    <div class="metric-value">63%</div>
+                    <div class="metric-label">cost reduction</div>
+                </div>
+            </div>
+            
+            <div class="insights-box">
+                <h3>Cost Optimization Impact</h3>
+                <p>The unified system is saving approximately <strong>$0.73</strong> per day 
+                compared to legacy system costs. At current usage rates, this translates to 
+                <strong>$266.45</strong> in annual savings.</p>
+            </div>
+        </section>
+        
+        
+        
+        <section class="chart-container">
+            <h2>🎯 Recommendations</h2>
+            
+            <div class="recommendation">
+                <strong>🔴 Performance - High Priority</strong><br>
+                Optimize 1 slow query patterns<br>
+                <em>Expected Impact: Reduce average response time by up to 50%</em>
+            </div>
+            
+        </section>
+        
+    </div>
+    
+    <div class="footer">
+        <p>WINCASA Phase 2 Analytics System | Generated by Business Dashboard</p>
+    </div>
+</body>
+</html>
+        

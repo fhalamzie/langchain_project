@@ -1,0 +1,48 @@
+{
+  "query_info": {
+    "file": "15_eigentuemer_op_zusammenfassung.sql",
+    "generated": "2025-06-12T14:40:26.354656",
+    "driver": "firebird-driver",
+    "charset": "ISO8859_1",
+    "business_purpose": "Konsolidierte Übersicht offener Posten pro Eigentümer",
+    "main_tables": [
+      "KONTEN",
+      "EIGADR",
+      "OBJEKTE",
+      "WOHNUNG",
+      "LAYER 4 ENHANCEMENT"
+    ],
+    "total_rows": 0,
+    "execution_time_seconds": 0.00867
+  },
+  "columns": [
+    "EIGNR",
+    "EIGENTUEMER_NAME",
+    "EIGENTUEMER_CODE",
+    "EIGENTUEMER_TYP",
+    "FIRMENNAME",
+    "TELEFON",
+    "EMAIL",
+    "ANZAHL_KONTEN",
+    "ANZAHL_EINHEITEN",
+    "ANZAHL_OBJEKTE",
+    "GESAMT_OP",
+    "HOECHSTER_OP",
+    "DURCHSCHNITT_OP",
+    "MAX_MAHNSTUFE",
+    "KONTEN_IN_MAHNUNG",
+    "MAHNSTUFE_TEXT",
+    "RISIKO_STATUS",
+    "GESAMT_SOLLBETRAG",
+    "OP_VERHALTNIS_SOLL",
+    "ERSTE_MAHNUNG",
+    "LETZTE_MAHNUNG",
+    "OBJEKTE_KUERZEL"
+  ],
+  "data": [],
+  "summary": {
+    "row_count": 0,
+    "success": true,
+    "error": null
+  }
+}
