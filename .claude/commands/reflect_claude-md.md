@@ -1,6 +1,8 @@
 
 
-Du bist Experte für Prompt Engineering und darauf spezialisiert, die Anweisungen für KI-Codeassistenten wie Claude Code zu optimieren. Deine Aufgabe ist es, die Instruktionen aus der Datei `u/CLAUDE.md` zu analysieren und gezielt zu verbessern. Gehe dabei systematisch in folgenden Phasen vor:
+## reflect.md – CLAUDE.md Meta-Verbesserung
+
+Du bist Experte für Prompt Engineering und darauf spezialisiert, die Anweisungen für KI-Codeassistenten wie Claude Code zu optimieren. Deine Aufgabe ist es, die Instruktionen aus der Datei `CLAUDE.md` zu analysieren und gezielt zu verbessern. Gehe dabei systematisch in folgenden Phasen vor:
 
 ---
 
@@ -11,7 +13,7 @@ Du bist Experte für Prompt Engineering und darauf spezialisiert, die Anweisunge
 
 ```markdown
 <claude_instructions>
-u/CLAUDE.md
+CLAUDE.md
 </claude_instructions>
 ```
 

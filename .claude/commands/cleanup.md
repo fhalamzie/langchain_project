@@ -1,4 +1,8 @@
+## cleanup.md – Code-Aufräumen und Legacy-Migration
+
 Diese Anweisung dient dazu, eine unstrukturierte oder historisch gewachsene Codebasis auf ein neues, systematisch gepflegtes Dokumentationsmodell umzustellen. Ziel ist es, ein `CLEANUP_INVENTORY.md` zu erstellen, das die Grundlage für eine spätere `INVENTORY.md` bildet und den Übergang zur dokumentierten Projektstruktur unterstützt.
+
+---
 
 ## Hintergrund
 
@@ -52,4 +56,23 @@ Ein maschinenlesbares Aufräuminventar (`CLEANUP_INVENTORY.md`), das als Migrati
 - Verwende real vorhandene Dateien und Strukturen
 - Vermeide Doppeleinträge
 - Nutze `SessionID` nur, wenn Kontextinformationen vorliegen
-- Dokumentiere jede Annahme oder Entscheidung transparent 
+- Dokumentiere jede Annahme oder Entscheidung transparent
+
+---
+
+## Verknüpfungen zu Kerndokumenten
+
+Um den späteren Übergang zu einem konsistenten, verknüpften Dokumentationssystem zu unterstützen, sind folgende Beziehungsverknüpfungen zu berücksichtigen:
+
+- [ARCHITECTURE.md]: Weist Module aus, denen Dateien in `CLEANUP_INVENTORY.md` zugeordnet werden sollten.
+- [SAD.md]: Gibt an, welche Dateien zur Laufzeitkritik und technischen Steuerung gehören.
+- [CHANGELOG.md]: Alle lösch-, Refactor- oder Umbauvorschläge müssen im Session-Kontext nachvollziehbar dokumentiert werden.
+- [INVENTORY.md]: Finalisierung des bereinigten `CLEANUP_INVENTORY.md` mit dauerhaften Metadaten.
+- [TASKS.md]: Automatisierte Ableitung von Aufgaben für Refactoring, Migration oder Löschung.
+- [CLAUDE.md]: Wenn bei der Aufräumung neue Richtlinien, Bootstrap-Abläufe oder Tools eingeführt werden, müssen diese dort reflektiert werden.
+- [LOGGING.md]: Wenn Logging-relevante Dateien betroffen sind, Prüfung auf Logging-Konformität und Anpassung.
+- [TESTING.md]: Bei kritischen Komponenten Prüfung, ob Tests vorhanden sind oder angelegt werden müssen.
+- [API.md]: API-nahe Dateien oder Serverkomponenten prüfen, ob Änderungen an Endpunkten notwendig sind.
+
+Ziel ist ein integratives, nachvollziehbares und automatisch nutzbares Inventar über alle Kernbereiche des Systems.
+
