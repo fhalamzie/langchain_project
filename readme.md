@@ -5,9 +5,12 @@ Production-ready German property management system with AI-powered query interfa
 ## 🚀 Quick Start
 
 ```bash
-# 1. Start Web Interface
-./run_streamlit.sh
+# 1. Start Web Interface (runs with nohup in background)
+./tools/scripts/run_streamlit.sh
 # Access at: http://localhost:8667
+
+# For development/debugging (runs in foreground)
+./tools/scripts/run_streamlit.sh --debug
 
 # 2. Export All Data
 ./export_json.sh

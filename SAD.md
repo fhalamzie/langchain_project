@@ -182,6 +182,22 @@ class InvoiceFactory(SQLAlchemyModelFactory):
   4. Ignoriert temporäre und Backup-Dateien
   5. Live-Reload für ARCHITECTURE.md, TESTING.md, CLAUDE.md
 
+### 🚀 `tools/scripts/run_streamlit.sh`
+
+- WINCASA Streamlit Server Management:
+  1. **Default**: Startet mit `nohup` im Hintergrund (Production-Modus)
+  2. **Port-spezifische Prozessverwaltung**: Killt nur Prozesse auf dem Zielport (default: 8667)
+  3. **Logging**: Server-Output in `logs/streamlit_YYYYMMDD_HHMMSS.log`
+  4. **Flags**:
+     - `--debug`: Foreground-Ausführung für Debugging
+     - `--dev`: Foreground-Ausführung mit Verbose-Logging
+     - `--restart`: Clean Restart mit Port-spezifischem Kill
+     - `--test`: Führt Tests vor dem Start aus
+  5. **Prozess-Management**: 
+     - Zeigt PID bei Start an
+     - Stop via: `kill PID` oder `./tools/scripts/run_streamlit.sh --restart`
+     - Prüft nur spezifischen Port, lässt andere Streamlit-Prozesse laufen
+
 **Claude-Regel:** Verwende **ausschließlich** diese Skripte für Umschaltung und Rebuild. Niemals manuell eingreifen.
 
 ---

@@ -12,6 +12,12 @@ export PYTHONPATH="${PYTHONPATH}:$(pwd)/src"
 
 ./tools/scripts/sync-project.sh
 
+# Start server (runs with nohup in background)
+./tools/scripts/run_streamlit.sh
+
+# For development/debugging (runs in foreground)
+./tools/scripts/run_streamlit.sh --debug
+
 Code schreiben
 
 ./tools/scripts/run-tests.sh

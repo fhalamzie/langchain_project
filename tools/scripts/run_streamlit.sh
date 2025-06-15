@@ -1,6 +1,9 @@
 #!/bin/bash
 # WINCASA Layer 4 Streamlit Launcher with Clean Restart
 # Usage: ./run_streamlit.sh [port] [address] [--restart] [--debug] [--test] [--dev]
+#
+# By default runs with nohup in background for production use
+# Use --debug or --dev flags to run in foreground for development
 
 # Change to project root directory
 cd "$(dirname "$0")/../.."
@@ -12,20 +15,25 @@ echo "📂 Working directory: $(pwd)"
 clean_restart() {
     echo "🧹 Performing clean restart..."
     
-    # Stop all Streamlit processes (not just port 8667)
-    echo "   Stopping all Streamlit processes..."
-    pkill -f "streamlit.*streamlit_app.py" 2>/dev/null || true
-    pkill -f "streamlit run" 2>/dev/null || true
+    # Get port from arguments or default
+    local RESTART_PORT="${ARGS[0]:-8667}"
     
-    # Wait for processes to terminate
-    sleep 3
-    
-    # Force kill if still running
-    REMAINING=$(pgrep -f streamlit 2>/dev/null || true)
-    if [ ! -z "$REMAINING" ]; then
-        echo "   Force stopping remaining processes..."
-        pkill -9 -f streamlit 2>/dev/null || true
+    # Only stop Streamlit process on specific port
+    echo "   Stopping Streamlit process on port $RESTART_PORT..."
+    EXISTING_PID=$(lsof -ti:$RESTART_PORT 2>/dev/null)
+    if [ ! -z "$EXISTING_PID" ]; then
+        echo "   Found process PID: $EXISTING_PID"
+        kill $EXISTING_PID 2>/dev/null || true
         sleep 2
+        
+        # Force kill if still running
+        if kill -0 $EXISTING_PID 2>/dev/null; then
+            echo "   Force stopping process..."
+            kill -9 $EXISTING_PID 2>/dev/null || true
+            sleep 1
+        fi
+    else
+        echo "   No process found on port $RESTART_PORT"
     fi
     
     # Clear any cached Python bytecode
@@ -61,12 +69,23 @@ for arg in "$@"; do
     esac
 done
 
-# If not restart, check for existing processes
+# Parse arguments first to get port
+ARGS=()
+for arg in "$@"; do
+    if [[ "$arg" != "--restart" ]] && [[ "$arg" != "--debug" ]] && [[ "$arg" != "--test" ]] && [[ "$arg" != "--dev" ]]; then
+        ARGS+=("$arg")
+    fi
+done
+
+# Get port early for process checking
+TARGET_PORT="${ARGS[0]:-$(grep "^STREAMLIT_PORT=" config/.env 2>/dev/null | cut -d'=' -f2 || echo "8667")}"
+
+# If not restart, check for existing processes on specific port
 if [[ "$*" != *"--restart"* ]]; then
-    # Standard process check for port 8667
-    EXISTING_PID=$(lsof -ti:8667 2>/dev/null)
+    # Only check the specific port we're targeting
+    EXISTING_PID=$(lsof -ti:$TARGET_PORT 2>/dev/null)
     if [ ! -z "$EXISTING_PID" ]; then
-        echo "⚠️  Found existing Streamlit process on port 8667 (PID: $EXISTING_PID)"
+        echo "⚠️  Found existing Streamlit process on port $TARGET_PORT (PID: $EXISTING_PID)"
         echo "   Stopping it first..."
         kill $EXISTING_PID 2>/dev/null || true
         sleep 2
@@ -122,19 +141,8 @@ if [ "$TEST_MODE" = true ]; then
 fi
 
 # Get server configuration from command line, .env, or defaults
-# Parse arguments (skip special flags)
-ARGS=()
-for arg in "$@"; do
-    if [[ "$arg" != "--restart" ]] && [[ "$arg" != "--debug" ]] && [[ "$arg" != "--test" ]] && [[ "$arg" != "--dev" ]]; then
-        ARGS+=("$arg")
-    fi
-done
-
-if [ -n "${ARGS[0]}" ]; then
-    PORT=${ARGS[0]}
-else
-    PORT=$(grep "^STREAMLIT_PORT=" config/.env | cut -d'=' -f2 2>/dev/null || echo "8667")
-fi
+# Use TARGET_PORT from earlier parsing
+PORT=$TARGET_PORT
 
 if [ -n "${ARGS[1]}" ]; then
     ADDRESS=${ARGS[1]}
@@ -178,12 +186,36 @@ if [ "$DEBUG_MODE" = true ]; then
 fi
 
 echo "🚀 Starting Streamlit server..."
-streamlit run src/wincasa/core/streamlit_app.py \
-    --server.port $PORT \
-    --server.address 0.0.0.0 \
-    --server.enableCORS false \
-    --server.enableXsrfProtection false \
-    --server.headless true \
-    --theme.base light \
-    --server.maxUploadSize 10 \
-    --logger.level $LOG_LEVEL
+
+# Check if we should run in foreground (for debugging)
+if [ "$DEBUG_MODE" = true ] || [ "$DEV_MODE" = true ]; then
+    echo "🔍 Running in foreground mode (debug/dev)"
+    streamlit run src/wincasa/core/streamlit_app.py \
+        --server.port $PORT \
+        --server.address $ADDRESS \
+        --server.enableCORS false \
+        --server.enableXsrfProtection false \
+        --server.headless true \
+        --theme.base light \
+        --server.maxUploadSize 10 \
+        --logger.level $LOG_LEVEL
+else
+    # Default: Run with nohup in background
+    LOG_FILE="logs/streamlit_$(date +%Y%m%d_%H%M%S).log"
+    echo "📝 Server output will be logged to: $LOG_FILE"
+    echo "💡 Use 'tail -f $LOG_FILE' to follow the logs"
+    
+    nohup streamlit run src/wincasa/core/streamlit_app.py \
+        --server.port $PORT \
+        --server.address $ADDRESS \
+        --server.enableCORS false \
+        --server.enableXsrfProtection false \
+        --server.headless true \
+        --theme.base light \
+        --server.maxUploadSize 10 \
+        --logger.level $LOG_LEVEL > "$LOG_FILE" 2>&1 &
+    
+    PID=$!
+    echo "✅ Server started with PID: $PID"
+    echo "🛑 To stop: kill $PID or ./tools/scripts/run_streamlit.sh --restart"
+fi
