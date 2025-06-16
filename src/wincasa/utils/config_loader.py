@@ -225,10 +225,14 @@ class WincasaConfig:
                 else:
                     return content
                     
-        except FileNotFoundError as e:
-            raise FileNotFoundError(f"System-Prompt-Datei nicht gefunden: {e}") from e
+        except FileNotFoundError:
+            # Silently ignore and let the caller handle with fallback
+            # Don't log here to avoid noise in logs
+            return None
         except Exception as e:
-            raise Exception(f"Fehler beim Laden des System-Prompts: {e}") from e
+            # Only log unexpected errors
+            logger.error(f"Unexpected error loading system prompt: {e}")
+            return None
     
     def get_db_config(self) -> Dict[str, str]:
         """Gibt Datenbank-Konfiguration zurück"""

@@ -61,12 +61,11 @@ class WincasaLLMHandler:
         
     def _load_system_prompt(self) -> str:
         """Lädt System-Prompt basierend auf aktuellem Modus"""
-        try:
-            return self.config.load_system_prompt()
-        except Exception as e:
-            # Log the error but continue with fallback
-            # logger.error(f"Fehler beim Laden des System-Prompts: {e}")
+        prompt = self.config.load_system_prompt()
+        if prompt is None:
+            # System prompt file not found, use fallback
             return self._get_fallback_prompt()
+        return prompt
     
     def _get_fallback_prompt(self) -> str:
         """Fallback System-Prompt falls Datei nicht gefunden"""

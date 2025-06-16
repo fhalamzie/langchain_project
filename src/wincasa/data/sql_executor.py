@@ -94,7 +94,9 @@ class WincasaSQLExecutor:
         try:
             # Just check if we can get the singleton connection
             conn = get_db_connection()
-            return not conn.closed
+            # Firebird driver doesn't have a 'closed' attribute
+            # Just check if connection exists
+            return conn is not None
         except Exception as e:
             logger.error(f"Datenbank-Verbindung fehlgeschlagen: {e}")
             return False
