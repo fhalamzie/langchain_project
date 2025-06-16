@@ -1,13 +1,13 @@
 {
   "query_info": {
     "file": "05_objekte.sql",
-    "generated": "2025-06-16T03:33:45.406919",
+    "generated": "2025-06-16T21:54:35.292108",
     "driver": "firebird-driver",
     "charset": "ISO8859_1",
     "business_purpose": "Umfassende Objektverwaltung mit Finanzdaten, Verwalter-Info und technischen Specs",
     "main_tables": [],
     "total_rows": 77,
-    "execution_time_seconds": 0.007856
+    "execution_time_seconds": 0.007539
   },
   "columns": [
     "ONR",

@@ -1,0 +1,53 @@
+{
+  "test_time": "2025-06-16 21:37:03",
+  "results": [
+    {
+      "id": "user_001",
+      "query": "wer wohnt marienstr 26",
+      "category": "mieter_search",
+      "success": true,
+      "response_time": 1.2448482513427734,
+      "answer_preview": "In der Marienstraße 26 wohnen die Mieter Luka Maric, Markus Tornow und Maroua Antar. Die Eigentümer der Immobilie sind die Ruhrstadt Wohnen GmbH mit Sitz in 45127 Essen.",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_002",
+      "query": "mieter marienstrasse 26 essen",
+      "category": "mieter_search",
+      "success": true,
+      "response_time": 2.260802745819092,
+      "answer_preview": "Die Anfrage bezüglich der Mieter in der Marienstraße 26 in Essen ergibt, dass es keine spezifischen Informationen zu einem Mieter an dieser Adresse gibt. Es wird lediglich ein Mieter in der Marienstra",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_003",
+      "query": "wer wohnt in der kämpenstr",
+      "category": "mieter_search",
+      "success": true,
+      "response_time": 0.6873199939727783,
+      "answer_preview": "In der Kämpenstraße wohnt Markus Pape, der als Mieter in der Immobilie registriert ist.",
+      "source": "structured_search",
+      "error": null
+    }
+  ],
+  "analysis": {
+    "total_queries": 3,
+    "successful": 3,
+    "failed": 0,
+    "avg_response_time": 1.397656997044881,
+    "by_category": {
+      "mieter_search": {
+        "total": 3,
+        "success": 3,
+        "failed": 0,
+        "avg_time": 1.397656997044881,
+        "success_rate": 100.0
+      }
+    },
+    "by_source": {
+      "structured_search": 3
+    }
+  }
+}

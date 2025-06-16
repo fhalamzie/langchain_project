@@ -1,7 +1,7 @@
 {
   "query_info": {
     "file": "28_nebenkostenkonten_matrix.sql",
-    "generated": "2025-06-16T03:34:40.529036",
+    "generated": "2025-06-16T21:55:46.308752",
     "driver": "firebird-driver",
     "charset": "ISO8859_1",
     "business_purpose": "Matrix aller NK-Positionen mit Umlageschlüsseln und Kosten",
@@ -14,7 +14,7 @@
       "Korrekte Spaltennamen (KSOLL statt SOLLKTO)"
     ],
     "total_rows": 458,
-    "execution_time_seconds": 0.103737
+    "execution_time_seconds": 0.125182
   },
   "columns": [
     "ONR",

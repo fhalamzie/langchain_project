@@ -1,0 +1,53 @@
+{
+  "test_time": "2025-06-16 21:37:15",
+  "results": [
+    {
+      "id": "user_001",
+      "query": "wer wohnt marienstr 26",
+      "category": "mieter_search",
+      "success": true,
+      "response_time": 2.558602809906006,
+      "answer_preview": "In der Marienstraße 26 wohnen keine spezifischen Mieter, die in den bereitgestellten Daten aufgeführt sind. Die Informationen beziehen sich hauptsächlich auf die Eigentümer der Immobilie, die Ruhrstad",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_002",
+      "query": "mieter marienstrasse 26 essen",
+      "category": "mieter_search",
+      "success": true,
+      "response_time": 1.8835515975952148,
+      "answer_preview": "Die Anfrage bezüglich der Mieter in der Marienstraße 26 in Essen ergibt, dass es keine spezifischen Informationen zu einem Mieter an dieser Adresse gibt. Es sind lediglich Mieter und Eigentümer an der",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_003",
+      "query": "wer wohnt in der kämpenstr",
+      "category": "mieter_search",
+      "success": true,
+      "response_time": 1.2152211666107178,
+      "answer_preview": "In der Kämpenstraße wohnt der Mieter Markus Pape, der sich in der Immobilie Kämpenstraße 13, Lager links, befindet.",
+      "source": "structured_search",
+      "error": null
+    }
+  ],
+  "analysis": {
+    "total_queries": 3,
+    "successful": 3,
+    "failed": 0,
+    "avg_response_time": 1.8857918580373128,
+    "by_category": {
+      "mieter_search": {
+        "total": 3,
+        "success": 3,
+        "failed": 0,
+        "avg_time": 1.8857918580373128,
+        "success_rate": 100.0
+      }
+    },
+    "by_source": {
+      "structured_search": 3
+    }
+  }
+}

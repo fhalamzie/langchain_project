@@ -39,7 +39,7 @@ SELECT
   END AS MAHNSTUFE_TEXT,                  -- Mahnstufe Text: Klartext-Beschreibung
   
   -- === MIETER-INFORMATION ===
-  B.BNAME || ', ' || B.BVNAME AS MIETER_NAME, -- Mietername: Nachname, Vorname
+  B.BNAME || ', ' || B.BVNAME AS BNAME, -- Mietername: Nachname, Vorname
   B.VBEGINN AS MIETBEGINN,                -- Mietbeginn (DATE): Vertragsbeginn
   B.VENDE AS MIETENDE,                    -- Mietende (DATE): NULL=Aktiv
   B.MIETE1 AS SOLL_MIETE,                 -- Sollmiete (NUMERIC): Vereinbarte Warmmiete
@@ -61,7 +61,7 @@ SELECT
   
   -- === OBJEKT-KONTEXT ===
   O.OBEZ AS OBJEKT_KURZ,                  -- Objektkürzel (VARCHAR): Gebäude-Kürzel
-  O.OSTRASSE AS OBJEKT_STRASSE,           -- Objektstraße (VARCHAR): Gebäudeadresse
+  O.OSTRASSE AS OSTRASSE,           -- Objektstraße (VARCHAR): Gebäudeadresse
   
   -- === MIETVERZUG-BERECHNUNG (LAYER 4: RESTORED) ===
   CASE 

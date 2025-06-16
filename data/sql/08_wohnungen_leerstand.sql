@@ -15,7 +15,7 @@ SELECT
   -- === WOHNUNGS-IDENTIFIKATION ===
   W.ONR,                                  -- Objektnummer (SMALLINT): Gebäude-ID
   W.ENR,                                  -- Einheitsnummer (SMALLINT): Wohnungs-ID
-  W.EBEZ AS EINHEIT_BEZEICHNUNG,          -- Einheitsbezeichnung (VARCHAR): Vollständige Bez.
+  W.EBEZ AS EBEZ,          -- Einheitsbezeichnung (VARCHAR): Vollständige Bez.
   W.EBEZ AS WOHNUNGS_BEZEICHNUNG,         -- Wohnungsbezeichnung (VARCHAR): z.B. "2.OG links"
   W.ART AS EINHEITENART,                  -- Art (VARCHAR): "Wohnung", "Garage", etc.
   W.BKNR AS BUCHUNGSKREIS,                -- Buchungskreis (INTEGER): NK-Abrechnungskreis
@@ -59,22 +59,22 @@ SELECT
   END AS LEERSTAND_TAGE,                  -- Leerstand in Tagen: Bei Leerstand
   
   -- === MIETPREIS-INFORMATIONEN (aus BEWOHNER-Tabelle) ===
-  CAST(B.Z1 AS NUMERIC(15,2)) AS SOLL_KALTMIETE,      -- Soll-Kaltmiete: Aus BEWOHNER.Z1
-  CAST(B.Z3 AS NUMERIC(15,2)) AS SOLL_NEBENKOSTEN,    -- Soll-Nebenkosten: Aus BEWOHNER.Z3
+  CAST(B.Z1 AS NUMERIC(15,2)) AS SOLL_KALTMIETE,      -- Soll-Z1: Aus BEWOHNER.Z1
+  CAST(B.Z3 AS NUMERIC(15,2)) AS SOLL_NEBENKOSTEN,    -- Soll-Z3: Aus BEWOHNER.Z3
   CAST(B.MIETE1 AS NUMERIC(15,2)) AS SOLL_WARMMIETE,  -- Soll-Warmmiete: Aus BEWOHNER.MIETE1
   
   -- === EIGENTÜMER-INFORMATION ===
   E.KNR AS EIGENTUEMER_NR,               -- Eigentümernummer (INTEGER): Wohnungseigentümer
-  EA.ENAME || ', ' || EA.EVNAME AS EIGENTUEMER_NAME, -- Eigentümername: Nachname, Vorname
+  EA.ENAME || ', ' || EA.EVNAME AS ENAME, -- Eigentümername: Nachname, Vorname
   
   -- === OBJEKT-KONTEXT ===
   O.OBEZ AS OBJEKT_KURZ,                  -- Objektkürzel (VARCHAR): Gebäude-Kürzel
-  O.OSTRASSE AS OBJEKT_STRASSE,           -- Objektstraße (VARCHAR): Gebäudeadresse
-  O.OPLZORT AS OBJEKT_ORT                 -- Objekt PLZ/Ort (VARCHAR): Standort
+  O.OSTRASSE AS OSTRASSE,           -- Objektstraße (VARCHAR): Gebäudeadresse
+  O.OPLZORT AS OPLZORT                 -- Objekt PLZ/Ort (VARCHAR): Standort
 
 FROM WOHNUNG W
   INNER JOIN OBJEKTE O ON W.ONR = O.ONR
-  LEFT JOIN EIGENTUEMER E ON W.ONR = E.ONR AND W.ENR = E.ENR
+  LEFT JOIN EIGADR E ON W.ONR = E.ONR AND W.ENR = E.ENR
   LEFT JOIN EIGADR EA ON E.KNR = EA.EIGNR
   LEFT JOIN BEWOHNER B ON W.ONR = B.ONR 
     AND W.ENR = B.ENR 

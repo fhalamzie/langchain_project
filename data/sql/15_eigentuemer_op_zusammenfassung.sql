@@ -16,7 +16,7 @@ LAYER 4 ENHANCEMENT: Einheiten-Details hinzugefügt
 SELECT 
   -- === EIGENTÜMER-IDENTIFIKATION ===
   E.EIGNR,                                -- Eigentümernummer (INTEGER): Eindeutige ID
-  E.ENAME || ', ' || E.EVNAME AS EIGENTUEMER_NAME, -- Name: Nachname, Vorname
+  E.ENAME || ', ' || E.EVNAME AS ENAME, -- Name: Nachname, Vorname
   CAST(E.ENOTIZ AS VARCHAR(2000)) AS EIGENTUEMER_CODE, -- Code: Internes Kürzel
   
   -- === EIGENTÜMER-KLASSIFIKATION ===
@@ -87,7 +87,7 @@ SELECT
   LIST(DISTINCT O.OBEZ, ', ') AS OBJEKTE_KUERZEL  -- Objekte: Alle betroffenen
 
 FROM EIGADR E
-  INNER JOIN EIGENTUEMER EIG ON EIG.EIGNR = E.EIGNR
+  INNER JOIN EIGADR EIG ON EIG.EIGNR = E.EIGNR
   INNER JOIN KONTEN K ON K.ONR = EIG.ONR AND K.KNR = EIG.KNR
   LEFT JOIN OBJEKTE O ON K.ONR = O.ONR
   LEFT JOIN WOHNUNG W ON K.ONR = W.ONR AND K.ENR = W.ENR

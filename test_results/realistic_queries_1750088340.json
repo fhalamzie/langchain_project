@@ -1,0 +1,128 @@
+{
+  "test_time": "2025-06-16 17:39:00",
+  "results": [
+    {
+      "id": "user_001",
+      "query": "wer wohnt marienstr 26",
+      "category": "mieter_search",
+      "success": false,
+      "response_time": 0.0013327598571777344,
+      "answer_preview": "Keine relevanten Daten für Ihre Anfrage gefunden.",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_002",
+      "query": "mieter marienstrasse 26 essen",
+      "category": "mieter_search",
+      "success": false,
+      "response_time": 9.894371032714844e-05,
+      "answer_preview": "Keine relevanten Daten für Ihre Anfrage gefunden.",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_003",
+      "query": "wer wohnt in der kämpenstr",
+      "category": "mieter_search",
+      "success": false,
+      "response_time": 8.702278137207031e-05,
+      "answer_preview": "Keine relevanten Daten für Ihre Anfrage gefunden.",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_004",
+      "query": "Bewohner Kämpennstraße 13",
+      "category": "mieter_search",
+      "success": false,
+      "response_time": 7.843971252441406e-05,
+      "answer_preview": "Keine relevanten Daten für Ihre Anfrage gefunden.",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_005",
+      "query": "tel borowski",
+      "category": "contact_lookup",
+      "success": false,
+      "response_time": 0.00017952919006347656,
+      "answer_preview": "Keine relevanten Daten für Ihre Anfrage gefunden.",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_006",
+      "query": "telefon wolfgang borowsky",
+      "category": "contact_lookup",
+      "success": false,
+      "response_time": 8.487701416015625e-05,
+      "answer_preview": "Keine relevanten Daten für Ihre Anfrage gefunden.",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_007",
+      "query": "nummer von herrn nabakowski",
+      "category": "contact_lookup",
+      "success": false,
+      "response_time": 7.939338684082031e-05,
+      "answer_preview": "Keine relevanten Daten für Ihre Anfrage gefunden.",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_008",
+      "query": "fahim halamzei telefon",
+      "category": "contact_lookup",
+      "success": false,
+      "response_time": 8.916854858398438e-05,
+      "answer_preview": "Keine relevanten Daten für Ihre Anfrage gefunden.",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_009",
+      "query": "kontakt f. halamzie",
+      "category": "contact_lookup",
+      "success": false,
+      "response_time": 6.580352783203125e-05,
+      "answer_preview": "Keine relevanten Daten für Ihre Anfrage gefunden.",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_010",
+      "query": "murat yildirim tel nr",
+      "category": "contact_lookup",
+      "success": false,
+      "response_time": 6.866455078125e-05,
+      "answer_preview": "Keine relevanten Daten für Ihre Anfrage gefunden.",
+      "source": "structured_search",
+      "error": null
+    }
+  ],
+  "analysis": {
+    "total_queries": 10,
+    "successful": 0,
+    "failed": 10,
+    "avg_response_time": 0.0002164602279663086,
+    "by_category": {
+      "mieter_search": {
+        "total": 4,
+        "success": 0,
+        "failed": 4,
+        "avg_time": 0,
+        "success_rate": 0.0
+      },
+      "contact_lookup": {
+        "total": 6,
+        "success": 0,
+        "failed": 6,
+        "avg_time": 0,
+        "success_rate": 0.0
+      }
+    },
+    "by_source": {}
+  }
+}

@@ -31,9 +31,9 @@ SELECT
   
   -- === MIETVERTRAGSDATEN MIT HISTORIE ===
   B.VBEGINN AS VERTRAGSBEGINN,            -- Vertragsbeginn (DATE): Einzugsdatum
-  B.VENDE AS VERTRAGSENDE,                -- Vertragsende (DATE): Auszugsdatum oder NULL
+  B.VENDE AS VENDE,                -- VENDE (DATE): Auszugsdatum oder NULL
   B.Z1 AS NETTOKALTMIETE,                 -- Nettokaltmiete (NUMERIC): Letzte Grundmiete
-  B.Z3 AS NEBENKOSTEN,                    -- Nebenkosten (NUMERIC): Letzte NK-Vorauszahlung
+  B.Z3 AS Z3,                    -- Z3 (NUMERIC): Letzte NK-Vorauszahlung
   B.MIETE1 AS WARMMIETE,                  -- Warmmiete (NUMERIC): Letzte Gesamtmiete
   
   -- === STATUS-KATEGORISIERUNG (LAYER 4: FIREBIRD 5.0 SYNTAX) ===
@@ -51,7 +51,7 @@ SELECT
   
   -- === OBJEKT-KONTEXT ===
   O.OBEZ AS OBJEKT_KURZ,                  -- Objektkürzel (VARCHAR): Gebäude-Kürzel
-  O.OSTRASSE AS OBJEKT_STRASSE            -- Objektstraße (VARCHAR): Gebäudeadresse
+  O.OSTRASSE AS OSTRASSE            -- Objektstraße (VARCHAR): Gebäudeadresse
 
 FROM BEWOHNER B
   INNER JOIN WOHNUNG W ON (B.ONR = W.ONR AND B.ENR = W.ENR)
@@ -81,7 +81,7 @@ ERWARTETES ERGEBNIS:
 - VENDE-Spalte zeigt Auszugsdaten
 - Status-Kategorisierung für Analysen:
   - AKTIV: Laufende Verträge
-  - KUENDIGUNG: Zukünftiges Vertragsende
+  - KUENDIGUNG: Zukünftiges VENDE
   - KUERZLICH BEENDET: Letzte 3 Monate
   - BEENDET: Letztes Jahr
   - HISTORISCH: Älter als 1 Jahr

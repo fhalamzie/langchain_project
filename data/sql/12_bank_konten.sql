@@ -48,7 +48,7 @@ SELECT
   -- === OBJEKT-ZUORDNUNG ===
   K.ONR,                                  -- Objektnummer (SMALLINT): Gebäude
   O.OBEZ AS OBJEKT_KURZ,                  -- Objektkürzel (VARCHAR): Gebäude-Kürzel
-  O.OSTRASSE AS OBJEKT_STRASSE,           -- Objektstraße (VARCHAR): Gebäudeadresse
+  O.OSTRASSE AS OSTRASSE,           -- Objektstraße (VARCHAR): Gebäudeadresse
   
   -- === KONTOTYP-KLASSIFIKATION ===
   CASE 

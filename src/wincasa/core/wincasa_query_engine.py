@@ -115,7 +115,19 @@ class WincasaQueryEngine:
             self.semantic_engine = None
         
         # Initialize Structured Search (Phase 2.2)
-        self.search_system = WincasaOptimizedSearch(debug_mode=debug_mode)
+        self.search_system = WincasaOptimizedSearch(
+            rag_data_dir="data/exports/rag_data",
+            debug_mode=debug_mode
+        )
+        
+        # Initialize Query Intent Recognizer
+        try:
+            from wincasa.core.query_intent_recognizer import QueryIntentRecognizer
+            self.intent_recognizer = QueryIntentRecognizer()
+            print("🎯 Query Intent Recognizer initialized")
+        except ImportError:
+            print("⚠️ Query Intent Recognizer not available")
+            self.intent_recognizer = None
         
         # Performance & Monitoring
         self.query_stats = {
@@ -290,6 +302,19 @@ class WincasaQueryEngine:
         
         # Always log the query start
         print(f"[WincasaQueryEngine] Processing query: '{query[:50]}...' for user: {user_id}")
+        
+        # Analyze query intent if recognizer is available
+        query_analysis = None
+        if self.intent_recognizer:
+            try:
+                query_analysis = self.intent_recognizer.analyze(query)
+                if self.debug_mode:
+                    print(f"   🎯 Intent: {query_analysis.intent.value} (confidence: {query_analysis.confidence:.2f})")
+                    if query_analysis.entities:
+                        print(f"   📋 Entities: {query_analysis.entities}")
+            except Exception as e:
+                if self.debug_mode:
+                    print(f"   ⚠️ Intent analysis failed: {e}")
         
         # Determine processing mode
         use_unified = force_mode == "unified" or (

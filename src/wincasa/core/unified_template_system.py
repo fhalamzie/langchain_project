@@ -90,7 +90,10 @@ class UnifiedTemplateSystem:
         self.template_engine = SQLTemplateEngine(debug_mode=debug_mode)
         
         # Level 3: Optimized Search (Fallback)
-        self.search_system = WincasaOptimizedSearch(debug_mode=debug_mode)
+        self.search_system = WincasaOptimizedSearch(
+            rag_data_dir="data/exports/rag_data",
+            debug_mode=debug_mode
+        )
         
         # Performance tracking
         self.query_stats = {

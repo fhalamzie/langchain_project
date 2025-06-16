@@ -1,10 +1,20 @@
 {
-  "export_time": "2025-06-16T03:34:54.562697",
+  "export_time": "2025-06-16T21:55:56.070470",
   "total_queries": 35,
-  "successful_exports": 35,
-  "failed_exports": 0,
-  "total_rows_exported": 228629,
-  "failed_queries": [],
+  "successful_exports": 26,
+  "failed_exports": 9,
+  "total_rows_exported": 100714,
+  "failed_queries": [
+    "01_eigentuemer.sql",
+    "07_wohnungen.sql",
+    "08_wohnungen_leerstand.sql",
+    "10_eigentuemer_konten.sql",
+    "13_weg_eigentuemer.sql",
+    "14_eigentuemer_op.sql",
+    "15_eigentuemer_op_zusammenfassung.sql",
+    "29_eigentuemer_zahlungshistorie.sql",
+    "30_weg_zahlungsuebersicht.sql"
+  ],
   "export_directory": "data/exports",
   "notes": {
     "utf8_queries": [

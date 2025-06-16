@@ -1,13 +1,13 @@
 {
   "query_info": {
     "file": "20_monatliche_mieteinnahmen.sql",
-    "generated": "2025-06-16T03:33:47.781362",
+    "generated": "2025-06-16T21:54:37.311204",
     "driver": "firebird-driver",
     "charset": "ISO8859_1",
     "business_purpose": "Complete monthly rental income analysis with German property management standards",
     "main_tables": [],
     "total_rows": 13,
-    "execution_time_seconds": 0.586319
+    "execution_time_seconds": 0.598955
   },
   "columns": [
     "JAHR",
@@ -270,7 +270,7 @@
       "ANZAHL_ZAHLER": 33,
       "ANZAHL_BUCHUNGEN": 18062,
       "MIETEINNAHMEN": 5180567.44,
-      "NK_NACHZAHLUNGEN": 59168.44,
+      "NK_NACHZAHLUNGEN": 0.0,
       "GESAMTEINNAHMEN": 5452311.95,
       "PUENKTLICHE_ZAHLER": 15977,
       "VERSPAETETE_ZAHLER": 771,

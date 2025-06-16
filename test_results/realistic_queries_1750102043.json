@@ -1,0 +1,80 @@
+{
+  "test_time": "2025-06-16 21:27:23",
+  "results": [
+    {
+      "id": "user_001",
+      "query": "wer wohnt marienstr 26",
+      "category": "mieter_search",
+      "success": true,
+      "response_time": 1.6057078838348389,
+      "answer_preview": "In der Marienstraße 26 wohnen die Mieter Theo und Marie Justen sowie Agnes Schindler.",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_002",
+      "query": "mieter marienstrasse 26 essen",
+      "category": "mieter_search",
+      "success": true,
+      "response_time": 1.4024193286895752,
+      "answer_preview": "Die Anfrage bezüglich der Mieter in der Marienstraße 26 in Essen ergibt, dass es keine spezifischen Informationen zu einem Mieter an dieser Adresse gibt. Es sind lediglich Mieter für die Marienstraße ",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_003",
+      "query": "wer wohnt in der kämpenstr",
+      "category": "mieter_search",
+      "success": true,
+      "response_time": 3.144195556640625,
+      "answer_preview": "In der Kämpenstraße wohnen folgende Mieter:\n\n1. H.F. Bestatter in Essen GmbH & - Byfangerstraße 22, Lokal\n2. Markus Pape & - Kämpenstraße 13, Lager links\n\nDie Eigentümer der Immobilien in der Kämpenst",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_004",
+      "query": "Bewohner Kämpennstraße 13",
+      "category": "mieter_search",
+      "success": true,
+      "response_time": 3.975487470626831,
+      "answer_preview": "Die Anfrage bezüglich der Bewohner der Kämpenstraße 13 ergibt folgende Informationen:\n\nDas Objekt in der Kämpenstraße 13 in Essen ist teilvermietet. Die aktuellen Mieter sind:\n\n1. Trödelhalle für den ",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_005",
+      "query": "tel borowski",
+      "category": "contact_lookup",
+      "success": true,
+      "response_time": 2.3088974952697754,
+      "answer_preview": "Sehr geehrte Damen und Herren,\n\nvielen Dank für Ihre Anfrage bezüglich der Mietobjekte in der Byfangerstraße 22, EG rechts.\n\nDie aktuellen Mieter sind Frau Sabrina Vietinghoff und Herr Boris Vietingho",
+      "source": "structured_search",
+      "error": null
+    }
+  ],
+  "analysis": {
+    "total_queries": 5,
+    "successful": 5,
+    "failed": 0,
+    "avg_response_time": 2.487341547012329,
+    "by_category": {
+      "mieter_search": {
+        "total": 4,
+        "success": 4,
+        "failed": 0,
+        "avg_time": 2.5319525599479675,
+        "success_rate": 100.0
+      },
+      "contact_lookup": {
+        "total": 1,
+        "success": 1,
+        "failed": 0,
+        "avg_time": 2.3088974952697754,
+        "success_rate": 100.0
+      }
+    },
+    "by_source": {
+      "structured_search": 5
+    }
+  }
+}

@@ -1,13 +1,13 @@
 {
   "query_info": {
     "file": "09_konten.sql",
-    "generated": "2025-06-16T03:33:45.589624",
+    "generated": "2025-06-16T21:54:35.417833",
     "driver": "firebird-driver",
     "charset": "ISO8859_1",
     "business_purpose": "Umfassender Kontenplan mit erweiterten Finanzfeldern",
     "main_tables": [],
     "total_rows": 3556,
-    "execution_time_seconds": 0.071076
+    "execution_time_seconds": 0.070459
   },
   "columns": [
     "ONR",

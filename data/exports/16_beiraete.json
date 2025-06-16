@@ -1,13 +1,13 @@
 {
   "query_info": {
     "file": "16_beiraete.sql",
-    "generated": "2025-06-16T03:33:46.654324",
+    "generated": "2025-06-16T21:54:36.175369",
     "driver": "firebird-driver",
     "charset": "ISO8859_1",
     "business_purpose": "Komplette Verwaltungsbeirats-Verwaltung mit allen Positionen und Kontaktdaten",
     "main_tables": [],
     "total_rows": 34,
-    "execution_time_seconds": 0.005091
+    "execution_time_seconds": 0.004958
   },
   "columns": [
     "ONR",

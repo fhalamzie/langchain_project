@@ -1,0 +1,23 @@
+{
+  "common_mistakes": {
+    "BEWNAME": "Use BNAME instead",
+    "OWNERS": "Use EIGADR table instead",
+    "TENANTS": "Use BEWOHNER table instead",
+    "STRASSE": "Use BSTR, ESTR, or OSTRASSE",
+    "STADT": "Use BPLZORT or EPLZORT or OPLZORT",
+    "KALTMIETE": "Use Z1 field instead",
+    "AKTIV": "Use VENDE IS NULL instead"
+  },
+  "table_mappings": {
+    "tenants": "BEWOHNER",
+    "owners": "EIGADR",
+    "properties": "OBJEKTE",
+    "units": "WOHNUNG",
+    "accounts": "KONTEN"
+  },
+  "critical_joins": {
+    "mieter_to_objekt": "BEWOHNER.ONR = OBJEKTE.ONR",
+    "objekt_to_owner": "OBJEKTE.EIGNR = EIGADR.EIGNR",
+    "mieter_address": "BEWOHNER.BEWNR = BEWADR.BEWNR"
+  }
+}

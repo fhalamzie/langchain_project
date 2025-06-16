@@ -1,0 +1,31 @@
+{
+  "test_time": "2025-06-16 17:37:22",
+  "results": [
+    {
+      "id": "user_001",
+      "query": "wer wohnt marienstr 26",
+      "category": "mieter_search",
+      "success": false,
+      "response_time": 0.0014603137969970703,
+      "answer_preview": "Keine relevanten Daten für Ihre Anfrage gefunden.",
+      "source": "unknown",
+      "error": null
+    }
+  ],
+  "analysis": {
+    "total_queries": 1,
+    "successful": 0,
+    "failed": 1,
+    "avg_response_time": 0.0014603137969970703,
+    "by_category": {
+      "mieter_search": {
+        "total": 1,
+        "success": 0,
+        "failed": 1,
+        "avg_time": 0,
+        "success_rate": 0.0
+      }
+    },
+    "by_source": {}
+  }
+}

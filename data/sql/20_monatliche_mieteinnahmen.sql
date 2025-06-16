@@ -52,7 +52,7 @@ SELECT
   END) AS MIETEINNAHMEN,                  -- Rental income: Identified via text
   
   SUM(CASE 
-    WHEN B.BETRAG > 0 AND (B.TEXT LIKE '%Nebenkosten%' OR B.TEXT LIKE '%NK%' OR B.TEXT LIKE '%Betriebskosten%')
+    WHEN B.BETRAG > 0 AND (B.TEXT LIKE '%Z3%' OR B.TEXT LIKE '%NK%' OR B.TEXT LIKE '%Betriebskosten%')
     THEN B.BETRAG ELSE 0 
   END) AS NK_NACHZAHLUNGEN,               -- Utility cost settlements: Separate tracking
   

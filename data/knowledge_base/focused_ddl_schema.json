@@ -1,0 +1,320 @@
+{
+  "core_tables": [
+    "BEWOHNER",
+    "EIGADR",
+    "OBJEKTE",
+    "WOHNUNG",
+    "KONTEN",
+    "EIGENTUEMER",
+    "BEWADR",
+    "BUCHUNG"
+  ],
+  "all_tables": [
+    "B",
+    "BANKEN",
+    "BANKKONTENDETAILS",
+    "BEWADR",
+    "BEWOHNER",
+    "BUCHUNG",
+    "BUCHUNGEN_HABEN",
+    "BUCHUNGEN_SOLL",
+    "COALESCE",
+    "CURRENT_DATE",
+    "DEDICATED",
+    "DEUTLICH",
+    "EIGADR",
+    "EIGENTUEMER",
+    "FIX",
+    "FÜR",
+    "HK_WOHN",
+    "HTP",
+    "JOINS",
+    "KONTEN",
+    "KORRIGIERT",
+    "LAYER",
+    "LETZTEBUCHUNG",
+    "LETZTERMIETER",
+    "MUSS",
+    "OBJBANKEN",
+    "OBJEKTE",
+    "POSITION",
+    "RUECKBKT",
+    "RUECKLAGENPOSITIONEN",
+    "RUECKPOS",
+    "SKR03",
+    "SKR04",
+    "SOLLGEST",
+    "SUBQUERY",
+    "VEREIG",
+    "VERERG",
+    "VERSAMMLUNG",
+    "VERTHEMEN",
+    "VERWALTER",
+    "WOHNUNG",
+    "Z",
+    "ZAHLUNGEN",
+    "ZAHLUNGSSUMMEN",
+    "ZU",
+    "ÜBER"
+  ],
+  "table_usage": {
+    "EIGENTUEMER": [
+      "01_eigentuemer.sql",
+      "07_wohnungen.sql",
+      "08_wohnungen_leerstand.sql",
+      "10_eigentuemer_konten.sql",
+      "13_weg_eigentuemer.sql",
+      "14_eigentuemer_op.sql",
+      "15_eigentuemer_op_zusammenfassung.sql",
+      "29_eigentuemer_zahlungshistorie.sql",
+      "30_weg_zahlungsuebersicht.sql"
+    ],
+    "EIGADR": [
+      "01_eigentuemer.sql",
+      "02_mieter.sql",
+      "05_objekte.sql",
+      "06_objekte_portfolio.sql",
+      "07_wohnungen.sql",
+      "08_wohnungen_leerstand.sql",
+      "10_eigentuemer_konten.sql",
+      "13_weg_eigentuemer.sql",
+      "14_eigentuemer_op.sql",
+      "15_eigentuemer_op_zusammenfassung.sql",
+      "16_beiraete.sql",
+      "18_versammlungen.sql",
+      "29_eigentuemer_zahlungshistorie.sql",
+      "30_weg_zahlungsuebersicht.sql"
+    ],
+    "BEWOHNER": [
+      "02_mieter.sql",
+      "03_aktuelle_mieter.sql",
+      "04_alle_mieter.sql",
+      "08_wohnungen_leerstand.sql",
+      "11_mieter_konten.sql",
+      "20_monatliche_mieteinnahmen.sql",
+      "22_leerstandsanalyse.sql",
+      "28_nebenkostenkonten_matrix.sql"
+    ],
+    "WOHNUNG": [
+      "02_mieter.sql",
+      "03_aktuelle_mieter.sql",
+      "04_alle_mieter.sql",
+      "07_wohnungen.sql",
+      "08_wohnungen_leerstand.sql",
+      "10_eigentuemer_konten.sql",
+      "11_mieter_konten.sql",
+      "13_weg_eigentuemer.sql",
+      "15_eigentuemer_op_zusammenfassung.sql",
+      "22_leerstandsanalyse.sql",
+      "29_eigentuemer_zahlungshistorie.sql",
+      "30_weg_zahlungsuebersicht.sql"
+    ],
+    "OBJEKTE": [
+      "02_mieter.sql",
+      "03_aktuelle_mieter.sql",
+      "04_alle_mieter.sql",
+      "05_objekte.sql",
+      "06_objekte_portfolio.sql",
+      "07_wohnungen.sql",
+      "08_wohnungen_leerstand.sql",
+      "09_konten.sql",
+      "10_eigentuemer_konten.sql",
+      "11_mieter_konten.sql",
+      "12_bank_konten.sql",
+      "13_weg_eigentuemer.sql",
+      "14_eigentuemer_op.sql",
+      "15_eigentuemer_op_zusammenfassung.sql",
+      "16_beiraete.sql",
+      "19_etv_presence.sql",
+      "22_leerstandsanalyse.sql",
+      "23_instandhaltungskosten.sql",
+      "24_ruecklagenanalyse.sql",
+      "25_objektbezogene_sachkonten.sql",
+      "26_detaillierte_buchungen.sql",
+      "27_konten_saldenliste.sql",
+      "28_nebenkostenkonten_matrix.sql",
+      "29_eigentuemer_zahlungshistorie.sql",
+      "30_weg_zahlungsuebersicht.sql",
+      "31_durchlaufende_posten.sql",
+      "32_sonderentnahmen.sql",
+      "33_ruecklagen_management.sql",
+      "34_spezielle_kontenklassen.sql"
+    ],
+    "BEWADR": [
+      "02_mieter.sql",
+      "03_aktuelle_mieter.sql"
+    ],
+    "KONTEN": [
+      "02_mieter.sql",
+      "03_aktuelle_mieter.sql",
+      "09_konten.sql",
+      "10_eigentuemer_konten.sql",
+      "11_mieter_konten.sql",
+      "12_bank_konten.sql",
+      "14_eigentuemer_op.sql",
+      "15_eigentuemer_op_zusammenfassung.sql",
+      "20_monatliche_mieteinnahmen.sql",
+      "21_forderungsalterung.sql",
+      "23_instandhaltungskosten.sql",
+      "25_objektbezogene_sachkonten.sql",
+      "26_detaillierte_buchungen.sql",
+      "27_konten_saldenliste.sql",
+      "28_nebenkostenkonten_matrix.sql",
+      "29_eigentuemer_zahlungshistorie.sql",
+      "30_weg_zahlungsuebersicht.sql",
+      "31_durchlaufende_posten.sql",
+      "32_sonderentnahmen.sql",
+      "34_spezielle_kontenklassen.sql",
+      "35_buchungskonten_uebersicht.sql"
+    ],
+    "FÜR": [
+      "03_aktuelle_mieter.sql"
+    ],
+    "VERWALTER": [
+      "06_objekte_portfolio.sql"
+    ],
+    "HK_WOHN": [
+      "07_wohnungen.sql"
+    ],
+    "COALESCE": [
+      "08_wohnungen_leerstand.sql"
+    ],
+    "CURRENT_DATE": [
+      "08_wohnungen_leerstand.sql"
+    ],
+    "BANKEN": [
+      "12_bank_konten.sql",
+      "26_detaillierte_buchungen.sql"
+    ],
+    "OBJBANKEN": [
+      "12_bank_konten.sql"
+    ],
+    "POSITION": [
+      "12_bank_konten.sql"
+    ],
+    "ZU": [
+      "15_eigentuemer_op_zusammenfassung.sql"
+    ],
+    "LAYER": [
+      "17_beschluesse.sql"
+    ],
+    "HTP": [
+      "17_beschluesse.sql"
+    ],
+    "VERERG": [
+      "17_beschluesse.sql"
+    ],
+    "VEREIG": [
+      "17_beschluesse.sql",
+      "18_versammlungen.sql",
+      "19_etv_presence.sql"
+    ],
+    "VERSAMMLUNG": [
+      "17_beschluesse.sql",
+      "18_versammlungen.sql",
+      "19_etv_presence.sql"
+    ],
+    "VERTHEMEN": [
+      "17_beschluesse.sql"
+    ],
+    "SUBQUERY": [
+      "18_versammlungen.sql"
+    ],
+    "JOINS": [
+      "19_etv_presence.sql"
+    ],
+    "BUCHUNG": [
+      "20_monatliche_mieteinnahmen.sql",
+      "21_forderungsalterung.sql",
+      "23_instandhaltungskosten.sql",
+      "24_ruecklagenanalyse.sql",
+      "26_detaillierte_buchungen.sql",
+      "27_konten_saldenliste.sql",
+      "28_nebenkostenkonten_matrix.sql",
+      "29_eigentuemer_zahlungshistorie.sql",
+      "30_weg_zahlungsuebersicht.sql",
+      "35_buchungskonten_uebersicht.sql"
+    ],
+    "B": [
+      "20_monatliche_mieteinnahmen.sql",
+      "23_instandhaltungskosten.sql",
+      "26_detaillierte_buchungen.sql",
+      "30_weg_zahlungsuebersicht.sql",
+      "35_buchungskonten_uebersicht.sql"
+    ],
+    "LETZTEBUCHUNG": [
+      "21_forderungsalterung.sql"
+    ],
+    "LETZTERMIETER": [
+      "22_leerstandsanalyse.sql"
+    ],
+    "SOLLGEST": [
+      "22_leerstandsanalyse.sql"
+    ],
+    "BANKKONTENDETAILS": [
+      "24_ruecklagenanalyse.sql"
+    ],
+    "RUECKPOS": [
+      "24_ruecklagenanalyse.sql",
+      "31_durchlaufende_posten.sql",
+      "32_sonderentnahmen.sql",
+      "33_ruecklagen_management.sql"
+    ],
+    "RUECKBKT": [
+      "24_ruecklagenanalyse.sql"
+    ],
+    "DEDICATED": [
+      "24_ruecklagenanalyse.sql"
+    ],
+    "RUECKLAGENPOSITIONEN": [
+      "24_ruecklagenanalyse.sql"
+    ],
+    "SKR03": [
+      "25_objektbezogene_sachkonten.sql"
+    ],
+    "SKR04": [
+      "25_objektbezogene_sachkonten.sql"
+    ],
+    "KORRIGIERT": [
+      "26_detaillierte_buchungen.sql"
+    ],
+    "FIX": [
+      "26_detaillierte_buchungen.sql"
+    ],
+    "MUSS": [
+      "26_detaillierte_buchungen.sql"
+    ],
+    "ZAHLUNGEN": [
+      "29_eigentuemer_zahlungshistorie.sql"
+    ],
+    "ÜBER": [
+      "29_eigentuemer_zahlungshistorie.sql"
+    ],
+    "Z": [
+      "29_eigentuemer_zahlungshistorie.sql"
+    ],
+    "DEUTLICH": [
+      "29_eigentuemer_zahlungshistorie.sql"
+    ],
+    "ZAHLUNGSSUMMEN": [
+      "30_weg_zahlungsuebersicht.sql"
+    ],
+    "BUCHUNGEN_HABEN": [
+      "35_buchungskonten_uebersicht.sql"
+    ],
+    "BUCHUNGEN_SOLL": [
+      "35_buchungskonten_uebersicht.sql"
+    ]
+  },
+  "critical_mappings": {
+    "KALTMIETE": "BEWOHNER.Z1",
+    "MIETER_NAME": "BEWOHNER.BNAME",
+    "MIETER_VORNAME": "BEWOHNER.BVNAME",
+    "MIETER_STRASSE": "BEWOHNER.BSTR",
+    "MIETER_ORT": "BEWOHNER.BPLZORT",
+    "EIGENTÜMER_NAME": "EIGADR.ENAME",
+    "EIGENTÜMER_VORNAME": "EIGADR.EVNAME",
+    "EIGENTÜMER_STRASSE": "EIGADR.ESTR",
+    "EIGENTÜMER_ORT": "EIGADR.EPLZORT"
+  }
+}

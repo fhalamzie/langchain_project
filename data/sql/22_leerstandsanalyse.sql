@@ -59,7 +59,7 @@ SELECT
   
   -- === OBJEKT-KONTEXT ===
   O.OBEZ AS OBJEKT_KURZ,                 -- Objektkürzel: Gebäude
-  O.OSTRASSE AS OBJEKT_STRASSE,          -- Objektstraße: Vollständige Adresse
+  O.OSTRASSE AS OSTRASSE,          -- Objektstraße: Vollständige Adresse
   O.OPLZORT AS OBJEKT_PLZORT,            -- Objektort: PLZ und Stadt
   
   -- === LEERSTANDSSTATUS ===

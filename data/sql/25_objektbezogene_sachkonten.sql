@@ -25,7 +25,7 @@ SELECT
   -- === OBJEKT-IDENTIFIKATION ===
   K.ONR,                                  -- Objektnummer (SMALLINT): Liegenschafts-ID
   O.OBEZ AS OBJEKT_KURZ,                 -- Objektkürzel (VARCHAR): z.B. "KUPFE190_W"
-  O.OSTRASSE AS OBJEKT_STRASSE,          -- Objektstraße (VARCHAR): Liegenschaftsadresse
+  O.OSTRASSE AS OSTRASSE,          -- Objektstraße (VARCHAR): Liegenschaftsadresse
   
   -- === KONTEN-IDENTIFIKATION ===
   K.KNR,                                  -- Kontonummer (INTEGER): Eindeutige Konto-ID

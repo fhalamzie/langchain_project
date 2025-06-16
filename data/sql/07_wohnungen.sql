@@ -6,12 +6,12 @@
 BUSINESS PURPOSE: Vollständige Wohnungseinheiten-Verwaltung mit Flächendaten und Kostenstellenzuordnung
 MAIN TABLES:
   - WOHNUNG (Einheiten-Stammdaten) - 20 Spalten
-  - HK_WOHN (Heizkosten/Flächen-Zuordnung) - Zeitabhängige Flächendaten
+  - HK_WOHN (Z4/Flächen-Zuordnung) - Zeitabhängige Flächendaten
 KEY RELATIONSHIPS:
   - WOHNUNG.ONR+ENR -> EIGENTUEMER.ONR+ENR (1:n - Ein Wohnung kann mehrere Eigentümer haben über Zeit)
   - WOHNUNG.BKNR -> Buchungskreis (Financial Assignment)
   - WOHNUNG.EKNR -> Einzelkostenkreis (Cost Center Assignment)
-LEGAL CONTEXT: Wohnungsabnahme, Flächenberechnung für Heizkosten, Eigentumsverhältnisse
+LEGAL CONTEXT: Wohnungsabnahme, Flächenberechnung für Z4, Eigentumsverhältnisse
 */
 
 SELECT 
@@ -35,7 +35,7 @@ SELECT
   
   -- === FL?CHENDATEN (aus HK_WOHN Tabelle) ===
   HK_WOHN.QM,                             -- Wohnfläche qm (FLOAT): Exakte Wohnfläche der Einheit
-  HK_WOHN.QMWARMW,                        -- Beheizte Fläche qm (FLOAT): Für Heizkosten-Umlageschlüssel
+  HK_WOHN.QMWARMW,                        -- Beheizte Fläche qm (FLOAT): Für Z4-Umlageschlüssel
   
   -- === TECHNISCHE AUSSTATTUNG ===
   WOHNUNG.FRINH1,                         -- Ausstattung 1 (VARCHAR): "Zentral - Junkers KN 36-8D 23, BJ 1996"
@@ -98,7 +98,7 @@ SELECT
 
 FROM OBJEKTE
   INNER JOIN WOHNUNG ON WOHNUNG.ONR = OBJEKTE.ONR
-  INNER JOIN EIGENTUEMER ON EIGENTUEMER.ONR = OBJEKTE.ONR 
+  INNER JOIN EIGADR ON EIGENTUEMER.ONR = OBJEKTE.ONR 
                             AND EIGENTUEMER.ENR = WOHNUNG.ENR
   LEFT JOIN EIGADR ON EIGENTUEMER.EIGNR = EIGADR.EIGNR
   LEFT JOIN HK_WOHN ON HK_WOHN.ONR = WOHNUNG.ONR 

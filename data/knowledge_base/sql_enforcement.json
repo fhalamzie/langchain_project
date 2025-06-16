@@ -1,0 +1,37 @@
+{
+  "table_enforcement": {
+    "NEVER_USE": [
+      "Eigentümer",
+      "Mieter",
+      "OWNERS",
+      "TENANTS",
+      "Properties"
+    ],
+    "ALWAYS_USE": {
+      "tenants": "BEWOHNER",
+      "owners": "EIGADR",
+      "properties": "OBJEKTE",
+      "units": "WOHNUNG"
+    }
+  },
+  "field_enforcement": {
+    "NEVER_USE": [
+      "BEWNAME",
+      "KALTMIETE",
+      "STRASSE",
+      "AKTIV"
+    ],
+    "ALWAYS_USE": {
+      "tenant_name": "BNAME",
+      "cold_rent": "Z1",
+      "street": "BSTR/ESTR/OSTRASSE",
+      "active": "VENDE IS NULL"
+    }
+  },
+  "critical_rules": [
+    "Table names are CASE SENSITIVE in Firebird",
+    "Never use German special characters in SQL",
+    "Always use UPPER() for LIKE comparisons",
+    "BEWOHNER has no EIGNR field - join through OBJEKTE"
+  ]
+}

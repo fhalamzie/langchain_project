@@ -21,7 +21,7 @@ SELECT
   -- === OBJEKT-IDENTIFIKATION ===
   R.ONR,                                  -- Objektnummer: WEG
   O.OBEZ AS OBJEKT_KURZ,                  -- Objektkürzel: Bezeichnung
-  O.OSTRASSE AS OBJEKT_STRASSE,           -- Objektstraße: Vollständige Adresse
+  O.OSTRASSE AS OSTRASSE,           -- Objektstraße: Vollständige Adresse
   O.OANZEINH AS ANZAHL_EINHEITEN,         -- Einheiten: Wohnungsanzahl
   CAST(O.GA1 AS NUMERIC(10,2)) AS WOHNFLAECHE_GESAMT, -- Wohnfläche: Gesamt m²
   

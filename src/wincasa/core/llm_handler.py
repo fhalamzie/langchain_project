@@ -109,17 +109,18 @@ Wichtige Regeln:
             'sql_vanilla': base_path / 'VERSION_B_SQL_VANILLA.md'
         }
         
-        if mode not in prompt_files:
+        mode_lower = mode.lower()
+        if mode_lower not in prompt_files:
             return self._get_fallback_prompt()
         
-        prompt_path = prompt_files[mode]
+        prompt_path = prompt_files[mode_lower]
         
         # Try Enhanced Layer 4 first, fall back to standard Layer 4, then Layer 2
-        if not prompt_path.exists() and mode in layer4_fallback:
-            prompt_path = layer4_fallback[mode]
+        if not prompt_path.exists() and mode_lower in layer4_fallback:
+            prompt_path = layer4_fallback[mode_lower]
         
-        if not prompt_path.exists() and mode in layer2_prompts:
-            prompt_path = layer2_prompts[mode]
+        if not prompt_path.exists() and mode_lower in layer2_prompts:
+            prompt_path = layer2_prompts[mode_lower]
         
         try:
             with open(prompt_path, 'r', encoding='utf-8') as f:
@@ -133,10 +134,11 @@ Wichtige Regeln:
                 else:
                     base_content = content
                 
-                # Add knowledge base context
-                knowledge_context = self._get_knowledge_base_context()
-                if knowledge_context:
-                    base_content += f"\n\n{knowledge_context}"
+                # Add knowledge base context (skip for SQL modes to avoid confusion)
+                if not mode.lower().startswith('sql_'):
+                    knowledge_context = self._get_knowledge_base_context()
+                    if knowledge_context:
+                        base_content += f"\n\n{knowledge_context}"
                 
                 # Schema information is now provided by knowledge base context
                 

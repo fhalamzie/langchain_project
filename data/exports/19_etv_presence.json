@@ -1,13 +1,13 @@
 {
   "query_info": {
     "file": "19_etv_presence.sql",
-    "generated": "2025-06-16T03:33:47.181362",
+    "generated": "2025-06-16T21:54:36.699074",
     "driver": "firebird-driver",
     "charset": "ISO8859_1",
     "business_purpose": "Complete German WEG assembly attendance with full legal compliance",
     "main_tables": [],
     "total_rows": 52,
-    "execution_time_seconds": 0.02428
+    "execution_time_seconds": 0.024744
   },
   "columns": [
     "VERNR",
@@ -32,9 +32,9 @@
     "VERSAMMLUNGSDATUM",
     "VERSAMMLUNGSBESCHREIBUNG",
     "VERSAMMLUNGSLEITER",
-    "OBJEKT_NR",
-    "OBJEKT_BEZEICHNUNG",
-    "OBJEKT_STRASSE",
+    "ONR",
+    "OBEZ",
+    "OSTRASSE",
     "WEG_KONFORMITAET"
   ],
   "data": [
@@ -61,9 +61,9 @@
       "VERSAMMLUNGSDATUM": "2025-04-25",
       "VERSAMMLUNGSBESCHREIBUNG": "Konferenzraum des Gasthauses",
       "VERSAMMLUNGSLEITER": "Süleyman Dogu ",
-      "OBJEKT_NR": 75,
-      "OBJEKT_BEZEICHNUNG": "BURGU14_16",
-      "OBJEKT_STRASSE": "Burgunder Str. 14+16",
+      "ONR": 75,
+      "OBEZ": "BURGU14_16",
+      "OSTRASSE": "Burgunder Str. 14+16",
       "WEG_KONFORMITAET": "VOLLSTAENDIG_WEG_KONFORM       "
     },
     {
@@ -89,9 +89,9 @@
       "VERSAMMLUNGSDATUM": "2025-04-16",
       "VERSAMMLUNGSBESCHREIBUNG": "Konferenzraum im Gasthaus Waldau",
       "VERSAMMLUNGSLEITER": "Süleyman Dogu ",
-      "OBJEKT_NR": 49,
-      "OBJEKT_BEZEICHNUNG": "HAAGE124",
-      "OBJEKT_STRASSE": "Haager Weg 124  (Villa Bonna)",
+      "ONR": 49,
+      "OBEZ": "HAAGE124",
+      "OSTRASSE": "Haager Weg 124  (Villa Bonna)",
       "WEG_KONFORMITAET": "VOLLSTAENDIG_WEG_KONFORM       "
     },
     {
@@ -117,9 +117,9 @@
       "VERSAMMLUNGSDATUM": "2025-03-20",
       "VERSAMMLUNGSBESCHREIBUNG": "Gasthaus Kreutz",
       "VERSAMMLUNGSLEITER": "Süleyman Dogu",
-      "OBJEKT_NR": 78,
-      "OBJEKT_BEZEICHNUNG": "MARTI2_NIKOL7",
-      "OBJEKT_STRASSE": "Martinstraße 2 & Nikolausstraße 7",
+      "ONR": 78,
+      "OBEZ": "MARTI2_NIKOL7",
+      "OSTRASSE": "Martinstraße 2 & Nikolausstraße 7",
       "WEG_KONFORMITAET": "VOLLSTAENDIG_WEG_KONFORM       "
     },
     {
@@ -145,9 +145,9 @@
       "VERSAMMLUNGSDATUM": "2025-03-19",
       "VERSAMMLUNGSBESCHREIBUNG": "Konferenzraum der Hausverwaltung",
       "VERSAMMLUNGSLEITER": "Süleyman Dogu ",
-      "OBJEKT_NR": 62,
-      "OBJEKT_BEZEICHNUNG": "MANST51",
-      "OBJEKT_STRASSE": "Manstedtener Str. 51",
+      "ONR": 62,
+      "OBEZ": "MANST51",
+      "OSTRASSE": "Manstedtener Str. 51",
       "WEG_KONFORMITAET": "VOLLSTAENDIG_WEG_KONFORM       "
     },
     {
@@ -173,9 +173,9 @@
       "VERSAMMLUNGSDATUM": "2025-03-17",
       "VERSAMMLUNGSBESCHREIBUNG": "Konferenzraum der Hausverwaltung",
       "VERSAMMLUNGSLEITER": "Süleyman Dogu ",
-      "OBJEKT_NR": 45,
-      "OBJEKT_BEZEICHNUNG": "FLORA73",
-      "OBJEKT_STRASSE": "Florastraße 73",
+      "ONR": 45,
+      "OBEZ": "FLORA73",
+      "OSTRASSE": "Florastraße 73",
       "WEG_KONFORMITAET": "VOLLSTAENDIG_WEG_KONFORM       "
     },
     {
@@ -201,9 +201,9 @@
       "VERSAMMLUNGSDATUM": "2025-03-17",
       "VERSAMMLUNGSBESCHREIBUNG": "Konferenzraum der Hausverwaltung",
       "VERSAMMLUNGSLEITER": "Süleyman Dogu ",
-      "OBJEKT_NR": 73,
-      "OBJEKT_BEZEICHNUNG": "ALBER18",
-      "OBJEKT_STRASSE": "Albert-Schweitzer-Straße 18",
+      "ONR": 73,
+      "OBEZ": "ALBER18",
+      "OSTRASSE": "Albert-Schweitzer-Straße 18",
       "WEG_KONFORMITAET": "VOLLSTAENDIG_WEG_KONFORM       "
     },
     {
@@ -229,9 +229,9 @@
       "VERSAMMLUNGSDATUM": "2025-02-06",
       "VERSAMMLUNGSBESCHREIBUNG": "Konferenzraum der Hausverwaltung",
       "VERSAMMLUNGSLEITER": "Süleyman Dogu ",
-      "OBJEKT_NR": 84,
-      "OBJEKT_BEZEICHNUNG": "COHNE46",
-      "OBJEKT_STRASSE": "Cohnenhofstr. 46",
+      "ONR": 84,
+      "OBEZ": "COHNE46",
+      "OSTRASSE": "Cohnenhofstr. 46",
       "WEG_KONFORMITAET": "VOLLSTAENDIG_WEG_KONFORM       "
     },
     {
@@ -257,9 +257,9 @@
       "VERSAMMLUNGSDATUM": "2025-02-06",
       "VERSAMMLUNGSBESCHREIBUNG": "Konferenzraum der Hausverwaltung",
       "VERSAMMLUNGSLEITER": "Süleyman Dogu ",
-      "OBJEKT_NR": 48,
-      "OBJEKT_BEZEICHNUNG": "NEUSS49",
-      "OBJEKT_STRASSE": "Neusser Str. 49",
+      "ONR": 48,
+      "OBEZ": "NEUSS49",
+      "OSTRASSE": "Neusser Str. 49",
       "WEG_KONFORMITAET": "VOLLSTAENDIG_WEG_KONFORM       "
     },
     {
@@ -285,9 +285,9 @@
       "VERSAMMLUNGSDATUM": "2025-02-04",
       "VERSAMMLUNGSBESCHREIBUNG": "Konferenzraum der Hausverwaltung",
       "VERSAMMLUNGSLEITER": "Süleyman Dogu ",
-      "OBJEKT_NR": 82,
-      "OBJEKT_BEZEICHNUNG": "HAUPT246",
-      "OBJEKT_STRASSE": "Hauptstr. 246",
+      "ONR": 82,
+      "OBEZ": "HAUPT246",
+      "OSTRASSE": "Hauptstr. 246",
       "WEG_KONFORMITAET": "VOLLSTAENDIG_WEG_KONFORM       "
     },
     {
@@ -313,9 +313,9 @@
       "VERSAMMLUNGSDATUM": "2025-02-04",
       "VERSAMMLUNGSBESCHREIBUNG": "Konferenzraum der Hausverwaltung",
       "VERSAMMLUNGSLEITER": "Süleyman Dogu ",
-      "OBJEKT_NR": 57,
-      "OBJEKT_BEZEICHNUNG": "HUETT1",
-      "OBJEKT_STRASSE": "Hüttenweg 1",
+      "ONR": 57,
+      "OBEZ": "HUETT1",
+      "OSTRASSE": "Hüttenweg 1",
       "WEG_KONFORMITAET": "VOLLSTAENDIG_WEG_KONFORM       "
     },
     {
@@ -341,9 +341,9 @@
       "VERSAMMLUNGSDATUM": "2025-01-23",
       "VERSAMMLUNGSBESCHREIBUNG": "in der Wohnung von Herrn Rautenbach",
       "VERSAMMLUNGSLEITER": "Süleyman Dogu",
-      "OBJEKT_NR": 56,
-      "OBJEKT_BEZEICHNUNG": "HEINR5",
-      "OBJEKT_STRASSE": "Heinrichstr. 5",
+      "ONR": 56,
+      "OBEZ": "HEINR5",
+      "OSTRASSE": "Heinrichstr. 5",
       "WEG_KONFORMITAET": "VOLLSTAENDIG_WEG_KONFORM       "
     },
     {
@@ -369,9 +369,9 @@
       "VERSAMMLUNGSDATUM": "2025-01-10",
       "VERSAMMLUNGSBESCHREIBUNG": null,
       "VERSAMMLUNGSLEITER": "Süleyman Dogu",
-      "OBJEKT_NR": 21,
-      "OBJEKT_BEZEICHNUNG": "KUPFE190_W",
-      "OBJEKT_STRASSE": "Kupferdreherstraße 190",
+      "ONR": 21,
+      "OBEZ": "KUPFE190_W",
+      "OSTRASSE": "Kupferdreherstraße 190",
       "WEG_KONFORMITAET": "VOLLSTAENDIG_WEG_KONFORM       "
     },
     {
@@ -397,9 +397,9 @@
       "VERSAMMLUNGSDATUM": "2024-12-30",
       "VERSAMMLUNGSBESCHREIBUNG": "Büro immobilien monca company GmbH",
       "VERSAMMLUNGSLEITER": "Fahim Halamzie",
-      "OBJEKT_NR": 42,
-      "OBJEKT_BEZEICHNUNG": "HAUPT128",
-      "OBJEKT_STRASSE": "Hauptstraße 128",
+      "ONR": 42,
+      "OBEZ": "HAUPT128",
+      "OSTRASSE": "Hauptstraße 128",
       "WEG_KONFORMITAET": "VOLLSTAENDIG_WEG_KONFORM       "
     },
     {
@@ -425,9 +425,9 @@
       "VERSAMMLUNGSDATUM": "2024-12-20",
       "VERSAMMLUNGSBESCHREIBUNG": "Hotel Restaurant Latio",
       "VERSAMMLUNGSLEITER": "Fahim Halamzie",
-      "OBJEKT_NR": 55,
-      "OBJEKT_BEZEICHNUNG": "ESCHE5",
-      "OBJEKT_STRASSE": "Escher Str. 5",
+      "ONR": 55,
+      "OBEZ": "ESCHE5",
+      "OSTRASSE": "Escher Str. 5",
       "WEG_KONFORMITAET": "VOLLSTAENDIG_WEG_KONFORM       "
     },
     {
@@ -453,9 +453,9 @@
       "VERSAMMLUNGSDATUM": "2024-12-20",
       "VERSAMMLUNGSBESCHREIBUNG": "Hotel Restaurant Latio",
       "VERSAMMLUNGSLEITER": "Süleyman Dogu",
-      "OBJEKT_NR": 55,
-      "OBJEKT_BEZEICHNUNG": "ESCHE5",
-      "OBJEKT_STRASSE": "Escher Str. 5",
+      "ONR": 55,
+      "OBEZ": "ESCHE5",
+      "OSTRASSE": "Escher Str. 5",
       "WEG_KONFORMITAET": "VOLLSTAENDIG_WEG_KONFORM       "
     },
     {
@@ -481,9 +481,9 @@
       "VERSAMMLUNGSDATUM": "2024-12-19",
       "VERSAMMLUNGSBESCHREIBUNG": "Konferenzraum der Hausverwaltung",
       "VERSAMMLUNGSLEITER": "Süleyman Dogu ",
-      "OBJEKT_NR": 46,
-      "OBJEKT_BEZEICHNUNG": "KYFFH12",
-      "OBJEKT_STRASSE": "Kyffhäuser Straße 12",
+      "ONR": 46,
+      "OBEZ": "KYFFH12",
+      "OSTRASSE": "Kyffhäuser Straße 12",
       "WEG_KONFORMITAET": "VOLLSTAENDIG_WEG_KONFORM       "
     },
     {
@@ -509,9 +509,9 @@
       "VERSAMMLUNGSDATUM": "2024-12-19",
       "VERSAMMLUNGSBESCHREIBUNG": "Konferenzraum der Hausverwaltung",
       "VERSAMMLUNGSLEITER": "Süleyman Dogu",
-      "OBJEKT_NR": 64,
-      "OBJEKT_BEZEICHNUNG": "MERHE440",
-      "OBJEKT_STRASSE": "Merheimer Str. 440",
+      "ONR": 64,
+      "OBEZ": "MERHE440",
+      "OSTRASSE": "Merheimer Str. 440",
       "WEG_KONFORMITAET": "VOLLSTAENDIG_WEG_KONFORM       "
     },
     {
@@ -537,9 +537,9 @@
       "VERSAMMLUNGSDATUM": "2024-12-16",
       "VERSAMMLUNGSBESCHREIBUNG": null,
       "VERSAMMLUNGSLEITER": "Fahim Halamzie",
-      "OBJEKT_NR": 32,
-      "OBJEKT_BEZEICHNUNG": "FOLLE93",
-      "OBJEKT_STRASSE": "Follerstr. 93",
+      "ONR": 32,
+      "OBEZ": "FOLLE93",
+      "OSTRASSE": "Follerstr. 93",
       "WEG_KONFORMITAET": "VOLLSTAENDIG_WEG_KONFORM       "
     },
     {
@@ -565,9 +565,9 @@
       "VERSAMMLUNGSDATUM": "2024-12-12",
       "VERSAMMLUNGSBESCHREIBUNG": "Gesamtschule Elsdorf - Raum 44",
       "VERSAMMLUNGSLEITER": "Süleyman Dogu ",
-      "OBJEKT_NR": 76,
-      "OBJEKT_BEZEICHNUNG": "LANGG39",
-      "OBJEKT_STRASSE": "Langgasse 39",
+      "ONR": 76,
+      "OBEZ": "LANGG39",
+      "OSTRASSE": "Langgasse 39",
       "WEG_KONFORMITAET": "VOLLSTAENDIG_WEG_KONFORM       "
     },
     {
@@ -593,9 +593,9 @@
       "VERSAMMLUNGSDATUM": "2024-12-10",
       "VERSAMMLUNGSBESCHREIBUNG": "Konferenzraum der Hausverwaltung",
       "VERSAMMLUNGSLEITER": "Süleyman Dogu ",
-      "OBJEKT_NR": 70,
-      "OBJEKT_BEZEICHNUNG": "ZURVI11",
-      "OBJEKT_STRASSE": "Zur Ville 11",
+      "ONR": 70,
+      "OBEZ": "ZURVI11",
+      "OSTRASSE": "Zur Ville 11",
       "WEG_KONFORMITAET": "VOLLSTAENDIG_WEG_KONFORM       "
     },
     {
@@ -621,9 +621,9 @@
       "VERSAMMLUNGSDATUM": "2024-12-10",
       "VERSAMMLUNGSBESCHREIBUNG": "Konferenzraum der Hausverwaltung",
       "VERSAMMLUNGSLEITER": "Süleyman Dogu ",
-      "OBJEKT_NR": 72,
-      "OBJEKT_BEZEICHNUNG": "AKAZI17",
-      "OBJEKT_STRASSE": "Akazienstraße 17",
+      "ONR": 72,
+      "OBEZ": "AKAZI17",
+      "OSTRASSE": "Akazienstraße 17",
       "WEG_KONFORMITAET": "VOLLSTAENDIG_WEG_KONFORM       "
     },
     {
@@ -649,9 +649,9 @@
       "VERSAMMLUNGSDATUM": "2024-11-21",
       "VERSAMMLUNGSBESCHREIBUNG": "Konferenzraum der Hausverwaltung",
       "VERSAMMLUNGSLEITER": "Süleyman Dogu ",
-      "OBJEKT_NR": 44,
-      "OBJEKT_BEZEICHNUNG": "KITSC234",
-      "OBJEKT_STRASSE": "Kitschburger Straße 234",
+      "ONR": 44,
+      "OBEZ": "KITSC234",
+      "OSTRASSE": "Kitschburger Straße 234",
       "WEG_KONFORMITAET": "VOLLSTAENDIG_WEG_KONFORM       "
     },
     {
@@ -677,9 +677,9 @@
       "VERSAMMLUNGSDATUM": "2024-11-19",
       "VERSAMMLUNGSBESCHREIBUNG": "Konferenzraum der Hausverwaltung",
       "VERSAMMLUNGSLEITER": "Süleyman Dogu ",
-      "OBJEKT_NR": 60,
-      "OBJEKT_BEZEICHNUNG": "LEVEN4",
-      "OBJEKT_STRASSE": "Levenkaulstraße 4",
+      "ONR": 60,
+      "OBEZ": "LEVEN4",
+      "OSTRASSE": "Levenkaulstraße 4",
       "WEG_KONFORMITAET": "VOLLSTAENDIG_WEG_KONFORM       "
     },
     {
@@ -705,9 +705,9 @@
       "VERSAMMLUNGSDATUM": "2024-10-28",
       "VERSAMMLUNGSBESCHREIBUNG": "Restaurant Zur Linde",
       "VERSAMMLUNGSLEITER": "Süleyman Dogu ",
-      "OBJEKT_NR": 71,
-      "OBJEKT_BEZEICHNUNG": "AHEST11_15",
-      "OBJEKT_STRASSE": "Ahestraße 11-15",
+      "ONR": 71,
+      "OBEZ": "AHEST11_15",
+      "OSTRASSE": "Ahestraße 11-15",
       "WEG_KONFORMITAET": "VOLLSTAENDIG_WEG_KONFORM       "
     },
     {
@@ -733,9 +733,9 @@
       "VERSAMMLUNGSDATUM": "2024-10-21",
       "VERSAMMLUNGSBESCHREIBUNG": "Konferenzraum der Hausverwaltung",
       "VERSAMMLUNGSLEITER": "Süleyman Dogu ",
-      "OBJEKT_NR": 63,
-      "OBJEKT_BEZEICHNUNG": "MAYBA161",
-      "OBJEKT_STRASSE": "Maybachstraße 161",
+      "ONR": 63,
+      "OBEZ": "MAYBA161",
+      "OSTRASSE": "Maybachstraße 161",
       "WEG_KONFORMITAET": "VOLLSTAENDIG_WEG_KONFORM       "
     },
     {
@@ -761,9 +761,9 @@
       "VERSAMMLUNGSDATUM": "2024-09-26",
       "VERSAMMLUNGSBESCHREIBUNG": "Büroräume Hausverwaltung",
       "VERSAMMLUNGSLEITER": "Süleyman Dogu",
-      "OBJEKT_NR": 51,
-      "OBJEKT_BEZEICHNUNG": "AMSCH60",
-      "OBJEKT_STRASSE": "Am Schmidtgrund 60",
+      "ONR": 51,
+      "OBEZ": "AMSCH60",
+      "OSTRASSE": "Am Schmidtgrund 60",
       "WEG_KONFORMITAET": "VOLLSTAENDIG_WEG_KONFORM       "
     },
     {
@@ -789,9 +789,9 @@
       "VERSAMMLUNGSDATUM": "2024-09-03",
       "VERSAMMLUNGSBESCHREIBUNG": "Casa Rechtsanwälte",
       "VERSAMMLUNGSLEITER": "Süleyman Dogu",
-      "OBJEKT_NR": 42,
-      "OBJEKT_BEZEICHNUNG": "HAUPT128",
-      "OBJEKT_STRASSE": "Hauptstraße 128",
+      "ONR": 42,
+      "OBEZ": "HAUPT128",
+      "OSTRASSE": "Hauptstraße 128",
       "WEG_KONFORMITAET": "VOLLSTAENDIG_WEG_KONFORM       "
     },
     {
@@ -817,9 +817,9 @@
       "VERSAMMLUNGSDATUM": "2024-08-21",
       "VERSAMMLUNGSBESCHREIBUNG": "Räumlichkeiten Herr Freigeber",
       "VERSAMMLUNGSLEITER": "Süleyman Dogu",
-      "OBJEKT_NR": 61,
-      "OBJEKT_BEZEICHNUNG": "LINDE81",
-      "OBJEKT_STRASSE": "Lindenstraße 81",
+      "ONR": 61,
+      "OBEZ": "LINDE81",
+      "OSTRASSE": "Lindenstraße 81",
       "WEG_KONFORMITAET": "VOLLSTAENDIG_WEG_KONFORM       "
     },
     {
@@ -845,9 +845,9 @@
       "VERSAMMLUNGSDATUM": "2024-03-22",
       "VERSAMMLUNGSBESCHREIBUNG": null,
       "VERSAMMLUNGSLEITER": "Fahim Halamzie",
-      "OBJEKT_NR": 62,
-      "OBJEKT_BEZEICHNUNG": "MANST51",
-      "OBJEKT_STRASSE": "Manstedtener Str. 51",
+      "ONR": 62,
+      "OBEZ": "MANST51",
+      "OSTRASSE": "Manstedtener Str. 51",
       "WEG_KONFORMITAET": "VOLLSTAENDIG_WEG_KONFORM       "
     },
     {
@@ -873,9 +873,9 @@
       "VERSAMMLUNGSDATUM": "2024-03-21",
       "VERSAMMLUNGSBESCHREIBUNG": null,
       "VERSAMMLUNGSLEITER": "Suleyman Dogu",
-      "OBJEKT_NR": 49,
-      "OBJEKT_BEZEICHNUNG": "HAAGE124",
-      "OBJEKT_STRASSE": "Haager Weg 124  (Villa Bonna)",
+      "ONR": 49,
+      "OBEZ": "HAAGE124",
+      "OSTRASSE": "Haager Weg 124  (Villa Bonna)",
       "WEG_KONFORMITAET": "VOLLSTAENDIG_WEG_KONFORM       "
     },
     {
@@ -901,9 +901,9 @@
       "VERSAMMLUNGSDATUM": "2024-03-19",
       "VERSAMMLUNGSBESCHREIBUNG": null,
       "VERSAMMLUNGSLEITER": "Suleyman Dogu",
-      "OBJEKT_NR": 58,
-      "OBJEKT_BEZEICHNUNG": "IMSAL33",
-      "OBJEKT_STRASSE": "Im Salzgrund 33",
+      "ONR": 58,
+      "OBEZ": "IMSAL33",
+      "OSTRASSE": "Im Salzgrund 33",
       "WEG_KONFORMITAET": "VOLLSTAENDIG_WEG_KONFORM       "
     },
     {
@@ -929,9 +929,9 @@
       "VERSAMMLUNGSDATUM": "2024-03-19",
       "VERSAMMLUNGSBESCHREIBUNG": null,
       "VERSAMMLUNGSLEITER": "Suleyman Dogu",
-      "OBJEKT_NR": 57,
-      "OBJEKT_BEZEICHNUNG": "HUETT1",
-      "OBJEKT_STRASSE": "Hüttenweg 1",
+      "ONR": 57,
+      "OBEZ": "HUETT1",
+      "OSTRASSE": "Hüttenweg 1",
       "WEG_KONFORMITAET": "VOLLSTAENDIG_WEG_KONFORM       "
     },
     {
@@ -957,9 +957,9 @@
       "VERSAMMLUNGSDATUM": "2024-03-14",
       "VERSAMMLUNGSBESCHREIBUNG": null,
       "VERSAMMLUNGSLEITER": "Suleyman Dogu",
-      "OBJEKT_NR": 82,
-      "OBJEKT_BEZEICHNUNG": "HAUPT246",
-      "OBJEKT_STRASSE": "Hauptstr. 246",
+      "ONR": 82,
+      "OBEZ": "HAUPT246",
+      "OSTRASSE": "Hauptstr. 246",
       "WEG_KONFORMITAET": "VOLLSTAENDIG_WEG_KONFORM       "
     },
     {
@@ -985,9 +985,9 @@
       "VERSAMMLUNGSDATUM": "2024-03-14",
       "VERSAMMLUNGSBESCHREIBUNG": null,
       "VERSAMMLUNGSLEITER": "Suleyman Dogu",
-      "OBJEKT_NR": 61,
-      "OBJEKT_BEZEICHNUNG": "LINDE81",
-      "OBJEKT_STRASSE": "Lindenstraße 81",
+      "ONR": 61,
+      "OBEZ": "LINDE81",
+      "OSTRASSE": "Lindenstraße 81",
       "WEG_KONFORMITAET": "VOLLSTAENDIG_WEG_KONFORM       "
     },
     {
@@ -1013,9 +1013,9 @@
       "VERSAMMLUNGSDATUM": "2024-03-12",
       "VERSAMMLUNGSBESCHREIBUNG": null,
       "VERSAMMLUNGSLEITER": "Süleyman Dogu",
-      "OBJEKT_NR": 72,
-      "OBJEKT_BEZEICHNUNG": "AKAZI17",
-      "OBJEKT_STRASSE": "Akazienstraße 17",
+      "ONR": 72,
+      "OBEZ": "AKAZI17",
+      "OSTRASSE": "Akazienstraße 17",
       "WEG_KONFORMITAET": "EINGESCHRAENKT_WEG_KONFORM     "
     },
     {
@@ -1041,9 +1041,9 @@
       "VERSAMMLUNGSDATUM": "2024-03-12",
       "VERSAMMLUNGSBESCHREIBUNG": null,
       "VERSAMMLUNGSLEITER": "Suleyman Dogu",
-      "OBJEKT_NR": 59,
-      "OBJEKT_BEZEICHNUNG": "KAISE13_15",
-      "OBJEKT_STRASSE": "Kaiser-Otto-Straße 13-15",
+      "ONR": 59,
+      "OBEZ": "KAISE13_15",
+      "OSTRASSE": "Kaiser-Otto-Straße 13-15",
       "WEG_KONFORMITAET": "VOLLSTAENDIG_WEG_KONFORM       "
     },
     {
@@ -1069,9 +1069,9 @@
       "VERSAMMLUNGSDATUM": "2024-03-07",
       "VERSAMMLUNGSBESCHREIBUNG": null,
       "VERSAMMLUNGSLEITER": "Fahim Halamzie",
-      "OBJEKT_NR": 45,
-      "OBJEKT_BEZEICHNUNG": "FLORA73",
-      "OBJEKT_STRASSE": "Florastraße 73",
+      "ONR": 45,
+      "OBEZ": "FLORA73",
+      "OSTRASSE": "Florastraße 73",
       "WEG_KONFORMITAET": "VOLLSTAENDIG_WEG_KONFORM       "
     },
     {
@@ -1097,9 +1097,9 @@
       "VERSAMMLUNGSDATUM": "2024-03-05",
       "VERSAMMLUNGSBESCHREIBUNG": null,
       "VERSAMMLUNGSLEITER": "Fahim Halamzie",
-      "OBJEKT_NR": 78,
-      "OBJEKT_BEZEICHNUNG": "MARTI2_NIKOL7",
-      "OBJEKT_STRASSE": "Martinstraße 2 & Nikolausstraße 7",
+      "ONR": 78,
+      "OBEZ": "MARTI2_NIKOL7",
+      "OSTRASSE": "Martinstraße 2 & Nikolausstraße 7",
       "WEG_KONFORMITAET": "WEG_KONFORM_STANDARDBESCHLUESSE"
     },
     {
@@ -1125,9 +1125,9 @@
       "VERSAMMLUNGSDATUM": "2024-02-29",
       "VERSAMMLUNGSBESCHREIBUNG": null,
       "VERSAMMLUNGSLEITER": "Fahim Halamzie",
-      "OBJEKT_NR": 75,
-      "OBJEKT_BEZEICHNUNG": "BURGU14_16",
-      "OBJEKT_STRASSE": "Burgunder Str. 14+16",
+      "ONR": 75,
+      "OBEZ": "BURGU14_16",
+      "OSTRASSE": "Burgunder Str. 14+16",
       "WEG_KONFORMITAET": "EINGESCHRAENKT_WEG_KONFORM     "
     },
     {
@@ -1153,9 +1153,9 @@
       "VERSAMMLUNGSDATUM": "2024-02-29",
       "VERSAMMLUNGSBESCHREIBUNG": null,
       "VERSAMMLUNGSLEITER": "Fahim Halamzie",
-      "OBJEKT_NR": 73,
-      "OBJEKT_BEZEICHNUNG": "ALBER18",
-      "OBJEKT_STRASSE": "Albert-Schweitzer-Straße 18",
+      "ONR": 73,
+      "OBEZ": "ALBER18",
+      "OSTRASSE": "Albert-Schweitzer-Straße 18",
       "WEG_KONFORMITAET": "VOLLSTAENDIG_WEG_KONFORM       "
     },
     {
@@ -1181,9 +1181,9 @@
       "VERSAMMLUNGSDATUM": "2024-02-27",
       "VERSAMMLUNGSBESCHREIBUNG": null,
       "VERSAMMLUNGSLEITER": "Suleyman Dogu",
-      "OBJEKT_NR": 84,
-      "OBJEKT_BEZEICHNUNG": "COHNE46",
-      "OBJEKT_STRASSE": "Cohnenhofstr. 46",
+      "ONR": 84,
+      "OBEZ": "COHNE46",
+      "OSTRASSE": "Cohnenhofstr. 46",
       "WEG_KONFORMITAET": "VOLLSTAENDIG_WEG_KONFORM       "
     },
     {
@@ -1209,9 +1209,9 @@
       "VERSAMMLUNGSDATUM": "2024-02-27",
       "VERSAMMLUNGSBESCHREIBUNG": null,
       "VERSAMMLUNGSLEITER": "Suleyman Dogu",
-      "OBJEKT_NR": 60,
-      "OBJEKT_BEZEICHNUNG": "LEVEN4",
-      "OBJEKT_STRASSE": "Levenkaulstraße 4",
+      "ONR": 60,
+      "OBEZ": "LEVEN4",
+      "OSTRASSE": "Levenkaulstraße 4",
       "WEG_KONFORMITAET": "VOLLSTAENDIG_WEG_KONFORM       "
     },
     {
@@ -1237,9 +1237,9 @@
       "VERSAMMLUNGSDATUM": "2024-02-01",
       "VERSAMMLUNGSBESCHREIBUNG": null,
       "VERSAMMLUNGSLEITER": "Suleyman Dogu",
-      "OBJEKT_NR": 21,
-      "OBJEKT_BEZEICHNUNG": "KUPFE190_W",
-      "OBJEKT_STRASSE": "Kupferdreherstraße 190",
+      "ONR": 21,
+      "OBEZ": "KUPFE190_W",
+      "OSTRASSE": "Kupferdreherstraße 190",
       "WEG_KONFORMITAET": "VOLLSTAENDIG_WEG_KONFORM       "
     },
     {
@@ -1265,9 +1265,9 @@
       "VERSAMMLUNGSDATUM": "2024-01-10",
       "VERSAMMLUNGSBESCHREIBUNG": "Wohneinheit Herr Rautenbach",
       "VERSAMMLUNGSLEITER": "Fahim Halamzie",
-      "OBJEKT_NR": 56,
-      "OBJEKT_BEZEICHNUNG": "HEINR5",
-      "OBJEKT_STRASSE": "Heinrichstr. 5",
+      "ONR": 56,
+      "OBEZ": "HEINR5",
+      "OSTRASSE": "Heinrichstr. 5",
       "WEG_KONFORMITAET": "VOLLSTAENDIG_WEG_KONFORM       "
     },
     {
@@ -1293,9 +1293,9 @@
       "VERSAMMLUNGSDATUM": "2023-11-21",
       "VERSAMMLUNGSBESCHREIBUNG": null,
       "VERSAMMLUNGSLEITER": "Süleyman Dogu",
-      "OBJEKT_NR": 64,
-      "OBJEKT_BEZEICHNUNG": "MERHE440",
-      "OBJEKT_STRASSE": "Merheimer Str. 440",
+      "ONR": 64,
+      "OBEZ": "MERHE440",
+      "OSTRASSE": "Merheimer Str. 440",
       "WEG_KONFORMITAET": "VOLLSTAENDIG_WEG_KONFORM       "
     },
     {
@@ -1321,9 +1321,9 @@
       "VERSAMMLUNGSDATUM": null,
       "VERSAMMLUNGSBESCHREIBUNG": "Konferenzraum der Hausverwaltung",
       "VERSAMMLUNGSLEITER": "Süleyman Dogu ",
-      "OBJEKT_NR": 46,
-      "OBJEKT_BEZEICHNUNG": "KYFFH12",
-      "OBJEKT_STRASSE": "Kyffhäuser Straße 12",
+      "ONR": 46,
+      "OBEZ": "KYFFH12",
+      "OSTRASSE": "Kyffhäuser Straße 12",
       "WEG_KONFORMITAET": "VOLLSTAENDIG_WEG_KONFORM       "
     },
     {
@@ -1349,9 +1349,9 @@
       "VERSAMMLUNGSDATUM": null,
       "VERSAMMLUNGSBESCHREIBUNG": "Konferenzraum der Hausverwaltung",
       "VERSAMMLUNGSLEITER": "Süleyman Dogu ",
-      "OBJEKT_NR": 1,
-      "OBJEKT_BEZEICHNUNG": "Cassavi Testobjekt",
-      "OBJEKT_STRASSE": "Kettwiger Str. 23",
+      "ONR": 1,
+      "OBEZ": "Cassavi Testobjekt",
+      "OSTRASSE": "Kettwiger Str. 23",
       "WEG_KONFORMITAET": "VOLLSTAENDIG_WEG_KONFORM       "
     },
     {
@@ -1377,9 +1377,9 @@
       "VERSAMMLUNGSDATUM": null,
       "VERSAMMLUNGSBESCHREIBUNG": "Konferenzraum der Hausverwaltung",
       "VERSAMMLUNGSLEITER": "Süleyman Dogu ",
-      "OBJEKT_NR": 21,
-      "OBJEKT_BEZEICHNUNG": "KUPFE190_W",
-      "OBJEKT_STRASSE": "Kupferdreherstraße 190",
+      "ONR": 21,
+      "OBEZ": "KUPFE190_W",
+      "OSTRASSE": "Kupferdreherstraße 190",
       "WEG_KONFORMITAET": "VOLLSTAENDIG_WEG_KONFORM       "
     },
     {
@@ -1405,9 +1405,9 @@
       "VERSAMMLUNGSDATUM": null,
       "VERSAMMLUNGSBESCHREIBUNG": "Konferenzraum der Hausverwaltung",
       "VERSAMMLUNGSLEITER": "Süleyman Dogu ",
-      "OBJEKT_NR": 58,
-      "OBJEKT_BEZEICHNUNG": "IMSAL33",
-      "OBJEKT_STRASSE": "Im Salzgrund 33",
+      "ONR": 58,
+      "OBEZ": "IMSAL33",
+      "OSTRASSE": "Im Salzgrund 33",
       "WEG_KONFORMITAET": "VOLLSTAENDIG_WEG_KONFORM       "
     },
     {
@@ -1433,9 +1433,9 @@
       "VERSAMMLUNGSDATUM": null,
       "VERSAMMLUNGSBESCHREIBUNG": "Konferenzraum der Hausverwaltung",
       "VERSAMMLUNGSLEITER": "Süleyman Dogu ",
-      "OBJEKT_NR": 59,
-      "OBJEKT_BEZEICHNUNG": "KAISE13_15",
-      "OBJEKT_STRASSE": "Kaiser-Otto-Straße 13-15",
+      "ONR": 59,
+      "OBEZ": "KAISE13_15",
+      "OSTRASSE": "Kaiser-Otto-Straße 13-15",
       "WEG_KONFORMITAET": "VOLLSTAENDIG_WEG_KONFORM       "
     },
     {
@@ -1461,9 +1461,9 @@
       "VERSAMMLUNGSDATUM": null,
       "VERSAMMLUNGSBESCHREIBUNG": null,
       "VERSAMMLUNGSLEITER": "Suleyman Dogu",
-      "OBJEKT_NR": 70,
-      "OBJEKT_BEZEICHNUNG": "ZURVI11",
-      "OBJEKT_STRASSE": "Zur Ville 11",
+      "ONR": 70,
+      "OBEZ": "ZURVI11",
+      "OSTRASSE": "Zur Ville 11",
       "WEG_KONFORMITAET": "VOLLSTAENDIG_WEG_KONFORM       "
     },
     {
@@ -1489,9 +1489,9 @@
       "VERSAMMLUNGSDATUM": null,
       "VERSAMMLUNGSBESCHREIBUNG": null,
       "VERSAMMLUNGSLEITER": null,
-      "OBJEKT_NR": 56,
-      "OBJEKT_BEZEICHNUNG": "HEINR5",
-      "OBJEKT_STRASSE": "Heinrichstr. 5",
+      "ONR": 56,
+      "OBEZ": "HEINR5",
+      "OSTRASSE": "Heinrichstr. 5",
       "WEG_KONFORMITAET": "VOLLSTAENDIG_WEG_KONFORM       "
     }
   ],

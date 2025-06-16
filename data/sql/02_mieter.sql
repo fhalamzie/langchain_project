@@ -76,10 +76,10 @@ SELECT
   ) AS VERTRAGSSTATUS,                    -- Berechneter Vertragsstatus
   
   -- === MIETKOSTEN (Aktuelle Miete und Aufschlüsselung) ===
-  BEWOHNER.Z1 AS KALTMIETE,               -- Kaltmiete (NUMERIC 15,2): Nettomiete ohne Nebenkosten
-  BEWOHNER.Z2 AS GARAGENMIETE,            -- Garage/Stellplatz (NUMERIC 15,2): Zusätzliche Stellplatzkosten
-  BEWOHNER.Z3 AS BETRIEBSKOSTEN,          -- Betriebskosten (NUMERIC 15,2): Nebenkosten-Vorauszahlung
-  BEWOHNER.Z4 AS HEIZKOSTEN,              -- Heizkosten (NUMERIC 15,2): Heiz-/Warmwasser-Vorauszahlung
+  BEWOHNER.Z1 AS Z1,               -- Z1 (NUMERIC 15,2): Nettomiete ohne Z3
+  BEWOHNER.Z2 AS Z2,            -- Garage/Stellplatz (NUMERIC 15,2): Zusätzliche Stellplatzkosten
+  BEWOHNER.Z3 AS BETRIEBSKOSTEN,          -- Betriebskosten (NUMERIC 15,2): Z3-Vorauszahlung
+  BEWOHNER.Z4 AS Z4,              -- Z4 (NUMERIC 15,2): Heiz-/Warmwasser-Vorauszahlung
   (COALESCE(BEWOHNER.Z1, 0) + COALESCE(BEWOHNER.Z2, 0) + 
    COALESCE(BEWOHNER.Z3, 0) + COALESCE(BEWOHNER.Z4, 0)) AS WARMMIETE_AKTUELL,  -- Gesamtmiete
   BEWOHNER.MIETE1,                        -- Aktuelle Miete 1 (NUMERIC 15,2): Erste Mietstufe

@@ -1,7 +1,7 @@
 {
   "query_info": {
     "file": "33_ruecklagen_management.sql",
-    "generated": "2025-06-16T03:34:44.956424",
+    "generated": "2025-06-16T21:55:46.389028",
     "driver": "firebird-driver",
     "charset": "ISO8859_1",
     "business_purpose": "Vollständige Übersicht aller Rücklagenpositionen pro WEG",
@@ -17,12 +17,12 @@
       "Korrekte Sortierung nach Endstand (höchste Rücklagen zuerst)"
     ],
     "total_rows": 75,
-    "execution_time_seconds": 0.008575
+    "execution_time_seconds": 0.00745
   },
   "columns": [
     "ONR",
     "OBJEKT_KURZ",
-    "OBJEKT_STRASSE",
+    "OSTRASSE",
     "ANZAHL_EINHEITEN",
     "WOHNFLAECHE_GESAMT",
     "RUECKLAGE_NR",
@@ -80,7 +80,7 @@
     {
       "ONR": 68,
       "OBJEKT_KURZ": "SAUER21_23",
-      "OBJEKT_STRASSE": "Sauerbruchstraße 21-23",
+      "OSTRASSE": "Sauerbruchstraße 21-23",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 0.0,
       "RUECKLAGE_NR": 144,
@@ -137,7 +137,7 @@
     {
       "ONR": 56,
       "OBJEKT_KURZ": "HEINR5",
-      "OBJEKT_STRASSE": "Heinrichstr. 5",
+      "OSTRASSE": "Heinrichstr. 5",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 0.0,
       "RUECKLAGE_NR": 132,
@@ -194,7 +194,7 @@
     {
       "ONR": 60,
       "OBJEKT_KURZ": "LEVEN4",
-      "OBJEKT_STRASSE": "Levenkaulstraße 4",
+      "OSTRASSE": "Levenkaulstraße 4",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 0.0,
       "RUECKLAGE_NR": 136,
@@ -251,7 +251,7 @@
     {
       "ONR": 76,
       "OBJEKT_KURZ": "LANGG39",
-      "OBJEKT_STRASSE": "Langgasse 39",
+      "OSTRASSE": "Langgasse 39",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 0.0,
       "RUECKLAGE_NR": 153,
@@ -308,7 +308,7 @@
     {
       "ONR": 75,
       "OBJEKT_KURZ": "BURGU14_16",
-      "OBJEKT_STRASSE": "Burgunder Str. 14+16",
+      "OSTRASSE": "Burgunder Str. 14+16",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 0.0,
       "RUECKLAGE_NR": 152,
@@ -365,7 +365,7 @@
     {
       "ONR": 42,
       "OBJEKT_KURZ": "HAUPT128",
-      "OBJEKT_STRASSE": "Hauptstraße 128",
+      "OSTRASSE": "Hauptstraße 128",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 0.0,
       "RUECKLAGE_NR": 107,
@@ -422,7 +422,7 @@
     {
       "ONR": 45,
       "OBJEKT_KURZ": "FLORA73",
-      "OBJEKT_STRASSE": "Florastraße 73",
+      "OSTRASSE": "Florastraße 73",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 0.0,
       "RUECKLAGE_NR": 118,
@@ -479,7 +479,7 @@
     {
       "ONR": 61,
       "OBJEKT_KURZ": "LINDE81",
-      "OBJEKT_STRASSE": "Lindenstraße 81",
+      "OSTRASSE": "Lindenstraße 81",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 0.0,
       "RUECKLAGE_NR": 137,
@@ -536,7 +536,7 @@
     {
       "ONR": 48,
       "OBJEKT_KURZ": "NEUSS49",
-      "OBJEKT_STRASSE": "Neusser Str. 49",
+      "OSTRASSE": "Neusser Str. 49",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 0.0,
       "RUECKLAGE_NR": 121,
@@ -593,7 +593,7 @@
     {
       "ONR": 70,
       "OBJEKT_KURZ": "ZURVI11",
-      "OBJEKT_STRASSE": "Zur Ville 11",
+      "OSTRASSE": "Zur Ville 11",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 0.0,
       "RUECKLAGE_NR": 146,
@@ -650,7 +650,7 @@
     {
       "ONR": 44,
       "OBJEKT_KURZ": "KITSC234",
-      "OBJEKT_STRASSE": "Kitschburger Straße 234",
+      "OSTRASSE": "Kitschburger Straße 234",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 0.0,
       "RUECKLAGE_NR": 117,
@@ -707,7 +707,7 @@
     {
       "ONR": 32,
       "OBJEKT_KURZ": "FOLLE93",
-      "OBJEKT_STRASSE": "Follerstr. 93",
+      "OSTRASSE": "Follerstr. 93",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 0.0,
       "RUECKLAGE_NR": 210,
@@ -764,7 +764,7 @@
     {
       "ONR": 64,
       "OBJEKT_KURZ": "MERHE440",
-      "OBJEKT_STRASSE": "Merheimer Str. 440",
+      "OSTRASSE": "Merheimer Str. 440",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 0.0,
       "RUECKLAGE_NR": 140,
@@ -821,7 +821,7 @@
     {
       "ONR": 55,
       "OBJEKT_KURZ": "ESCHE5",
-      "OBJEKT_STRASSE": "Escher Str. 5",
+      "OSTRASSE": "Escher Str. 5",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 0.0,
       "RUECKLAGE_NR": 130,
@@ -878,7 +878,7 @@
     {
       "ONR": 82,
       "OBJEKT_KURZ": "HAUPT246",
-      "OBJEKT_STRASSE": "Hauptstr. 246",
+      "OSTRASSE": "Hauptstr. 246",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 0.0,
       "RUECKLAGE_NR": 159,
@@ -935,7 +935,7 @@
     {
       "ONR": 73,
       "OBJEKT_KURZ": "ALBER18",
-      "OBJEKT_STRASSE": "Albert-Schweitzer-Straße 18",
+      "OSTRASSE": "Albert-Schweitzer-Straße 18",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 0.0,
       "RUECKLAGE_NR": 149,
@@ -992,7 +992,7 @@
     {
       "ONR": 63,
       "OBJEKT_KURZ": "MAYBA161",
-      "OBJEKT_STRASSE": "Maybachstraße 161",
+      "OSTRASSE": "Maybachstraße 161",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 0.0,
       "RUECKLAGE_NR": 139,
@@ -1049,7 +1049,7 @@
     {
       "ONR": 58,
       "OBJEKT_KURZ": "IMSAL33",
-      "OBJEKT_STRASSE": "Im Salzgrund 33",
+      "OSTRASSE": "Im Salzgrund 33",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 0.0,
       "RUECKLAGE_NR": 134,
@@ -1106,7 +1106,7 @@
     {
       "ONR": 84,
       "OBJEKT_KURZ": "COHNE46",
-      "OBJEKT_STRASSE": "Cohnenhofstr. 46",
+      "OSTRASSE": "Cohnenhofstr. 46",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 0.0,
       "RUECKLAGE_NR": 163,
@@ -1163,7 +1163,7 @@
     {
       "ONR": 86,
       "OBJEKT_KURZ": "KUPFE190",
-      "OBJEKT_STRASSE": "Kupferdreherstraße 190",
+      "OSTRASSE": "Kupferdreherstraße 190",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 261.0,
       "RUECKLAGE_NR": 203,
@@ -1220,7 +1220,7 @@
     {
       "ONR": 59,
       "OBJEKT_KURZ": "KAISE13_15",
-      "OBJEKT_STRASSE": "Kaiser-Otto-Straße 13-15",
+      "OSTRASSE": "Kaiser-Otto-Straße 13-15",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 0.0,
       "RUECKLAGE_NR": 135,
@@ -1277,7 +1277,7 @@
     {
       "ONR": 21,
       "OBJEKT_KURZ": "KUPFE190_W",
-      "OBJEKT_STRASSE": "Kupferdreherstraße 190",
+      "OSTRASSE": "Kupferdreherstraße 190",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 0.0,
       "RUECKLAGE_NR": 49,
@@ -1334,7 +1334,7 @@
     {
       "ONR": 51,
       "OBJEKT_KURZ": "AMSCH60",
-      "OBJEKT_STRASSE": "Am Schmidtgrund 60",
+      "OSTRASSE": "Am Schmidtgrund 60",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 0.0,
       "RUECKLAGE_NR": 125,
@@ -1391,7 +1391,7 @@
     {
       "ONR": 49,
       "OBJEKT_KURZ": "HAAGE124",
-      "OBJEKT_STRASSE": "Haager Weg 124  (Villa Bonna)",
+      "OSTRASSE": "Haager Weg 124  (Villa Bonna)",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 0.0,
       "RUECKLAGE_NR": 123,
@@ -1448,7 +1448,7 @@
     {
       "ONR": 57,
       "OBJEKT_KURZ": "HUETT1",
-      "OBJEKT_STRASSE": "Hüttenweg 1",
+      "OSTRASSE": "Hüttenweg 1",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 0.0,
       "RUECKLAGE_NR": 133,
@@ -1505,7 +1505,7 @@
     {
       "ONR": 72,
       "OBJEKT_KURZ": "AKAZI17",
-      "OBJEKT_STRASSE": "Akazienstraße 17",
+      "OSTRASSE": "Akazienstraße 17",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 0.0,
       "RUECKLAGE_NR": 148,
@@ -1562,7 +1562,7 @@
     {
       "ONR": 46,
       "OBJEKT_KURZ": "KYFFH12",
-      "OBJEKT_STRASSE": "Kyffhäuser Straße 12",
+      "OSTRASSE": "Kyffhäuser Straße 12",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 0.0,
       "RUECKLAGE_NR": 119,
@@ -1619,7 +1619,7 @@
     {
       "ONR": 62,
       "OBJEKT_KURZ": "MANST51",
-      "OBJEKT_STRASSE": "Manstedtener Str. 51",
+      "OSTRASSE": "Manstedtener Str. 51",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 0.0,
       "RUECKLAGE_NR": 138,
@@ -1676,7 +1676,7 @@
     {
       "ONR": 80,
       "OBJEKT_KURZ": "PETUN80",
-      "OBJEKT_STRASSE": "Petunienweg 80",
+      "OSTRASSE": "Petunienweg 80",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 0.0,
       "RUECKLAGE_NR": 157,
@@ -1733,7 +1733,7 @@
     {
       "ONR": 1,
       "OBJEKT_KURZ": "Cassavi Testobjekt",
-      "OBJEKT_STRASSE": "Kettwiger Str. 23",
+      "OSTRASSE": "Kettwiger Str. 23",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 0.0,
       "RUECKLAGE_NR": 212,
@@ -1790,7 +1790,7 @@
     {
       "ONR": 2,
       "OBJEKT_KURZ": "PORTE14",
-      "OBJEKT_STRASSE": "Portendieckstraße 14",
+      "OSTRASSE": "Portendieckstraße 14",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 111.99,
       "RUECKLAGE_NR": 205,
@@ -1847,7 +1847,7 @@
     {
       "ONR": 3,
       "OBJEKT_KURZ": "test39",
-      "OBJEKT_STRASSE": "test39",
+      "OSTRASSE": "test39",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 0.0,
       "RUECKLAGE_NR": 216,
@@ -1904,7 +1904,7 @@
     {
       "ONR": 4,
       "OBJEKT_KURZ": "VONWA44",
-      "OBJEKT_STRASSE": "Von-Waldthausen-Straße 44",
+      "OSTRASSE": "Von-Waldthausen-Straße 44",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 428.59,
       "RUECKLAGE_NR": 25,
@@ -1961,7 +1961,7 @@
     {
       "ONR": 5,
       "OBJEKT_KURZ": "KAEMP13",
-      "OBJEKT_STRASSE": "Kämpenstraße 13",
+      "OSTRASSE": "Kämpenstraße 13",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 381.5,
       "RUECKLAGE_NR": 26,
@@ -2018,7 +2018,7 @@
     {
       "ONR": 6,
       "OBJEKT_KURZ": "BAEUM41",
-      "OBJEKT_STRASSE": "Bäuminghausstraße 41",
+      "OSTRASSE": "Bäuminghausstraße 41",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 435.0,
       "RUECKLAGE_NR": 27,
@@ -2075,7 +2075,7 @@
     {
       "ONR": 7,
       "OBJEKT_KURZ": "GERMA1G",
-      "OBJEKT_STRASSE": "Germanenstraße 1",
+      "OSTRASSE": "Germanenstraße 1",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 65.0,
       "RUECKLAGE_NR": 28,
@@ -2132,7 +2132,7 @@
     {
       "ONR": 9,
       "OBJEKT_KURZ": "HOCHF76+78",
-      "OBJEKT_STRASSE": "Hochfelderstraße 76 +78",
+      "OSTRASSE": "Hochfelderstraße 76 +78",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 800.0,
       "RUECKLAGE_NR": 30,
@@ -2189,7 +2189,7 @@
     {
       "ONR": 10,
       "OBJEKT_KURZ": "FRIED19",
-      "OBJEKT_STRASSE": "Friedrichstraße 19",
+      "OSTRASSE": "Friedrichstraße 19",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 60.0,
       "RUECKLAGE_NR": 31,
@@ -2246,7 +2246,7 @@
     {
       "ONR": 11,
       "OBJEKT_KURZ": "WEUEN35",
-      "OBJEKT_STRASSE": "Weuenstraße 35",
+      "OSTRASSE": "Weuenstraße 35",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 82.0,
       "RUECKLAGE_NR": 32,
@@ -2303,7 +2303,7 @@
     {
       "ONR": 12,
       "OBJEKT_KURZ": "SURSS11",
-      "OBJEKT_STRASSE": "Sursstraße 11",
+      "OSTRASSE": "Sursstraße 11",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 52.0,
       "RUECKLAGE_NR": 33,
@@ -2360,7 +2360,7 @@
     {
       "ONR": 13,
       "OBJEKT_KURZ": "HOMBR1",
-      "OBJEKT_STRASSE": "Hombrucherstraße 1",
+      "OSTRASSE": "Hombrucherstraße 1",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 0.0,
       "RUECKLAGE_NR": 34,
@@ -2417,7 +2417,7 @@
     {
       "ONR": 14,
       "OBJEKT_KURZ": "SCHMI8",
-      "OBJEKT_STRASSE": "Schmiedestraße 8",
+      "OSTRASSE": "Schmiedestraße 8",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 291.0,
       "RUECKLAGE_NR": 35,
@@ -2474,7 +2474,7 @@
     {
       "ONR": 15,
       "OBJEKT_KURZ": "BYFAN24",
-      "OBJEKT_STRASSE": "Byfangerstraße 24",
+      "OSTRASSE": "Byfangerstraße 24",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 310.9,
       "RUECKLAGE_NR": 36,
@@ -2531,7 +2531,7 @@
     {
       "ONR": 16,
       "OBJEKT_KURZ": "BYFAN22",
-      "OBJEKT_STRASSE": "Byfangerstraße 22",
+      "OSTRASSE": "Byfangerstraße 22",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 608.72,
       "RUECKLAGE_NR": 37,
@@ -2588,7 +2588,7 @@
     {
       "ONR": 17,
       "OBJEKT_KURZ": "STAUD59",
-      "OBJEKT_STRASSE": "Stauderstraße 59",
+      "OSTRASSE": "Stauderstraße 59",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 606.0,
       "RUECKLAGE_NR": 38,
@@ -2645,7 +2645,7 @@
     {
       "ONR": 18,
       "OBJEKT_KURZ": "MARIE26",
-      "OBJEKT_STRASSE": "Marienstraße 26",
+      "OSTRASSE": "Marienstraße 26",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 434.0,
       "RUECKLAGE_NR": 104,
@@ -2702,7 +2702,7 @@
     {
       "ONR": 19,
       "OBJEKT_KURZ": "GERMA1P",
-      "OBJEKT_STRASSE": "Germanenstraße 1",
+      "OSTRASSE": "Germanenstraße 1",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 80.0,
       "RUECKLAGE_NR": 43,
@@ -2759,7 +2759,7 @@
     {
       "ONR": 20,
       "OBJEKT_KURZ": "HORDE110",
-      "OBJEKT_STRASSE": "Hordelerstraße 110",
+      "OSTRASSE": "Hordelerstraße 110",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": -1852.0,
       "RUECKLAGE_NR": 48,
@@ -2816,7 +2816,7 @@
     {
       "ONR": 33,
       "OBJEKT_KURZ": "POLSU156",
-      "OBJEKT_STRASSE": "Polsumerstraße 156",
+      "OSTRASSE": "Polsumerstraße 156",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 735.88,
       "RUECKLAGE_NR": 71,
@@ -2873,7 +2873,7 @@
     {
       "ONR": 38,
       "OBJEKT_KURZ": "STEINF32+34+81",
-      "OBJEKT_STRASSE": "Steinf. 32/34 + Schonneb. 81",
+      "OSTRASSE": "Steinf. 32/34 + Schonneb. 81",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 796.64,
       "RUECKLAGE_NR": 82,
@@ -2930,7 +2930,7 @@
     {
       "ONR": 40,
       "OBJEKT_KURZ": "BISMA56",
-      "OBJEKT_STRASSE": "Bismarkstraße 56",
+      "OSTRASSE": "Bismarkstraße 56",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 30.0,
       "RUECKLAGE_NR": 100,
@@ -2987,7 +2987,7 @@
     {
       "ONR": 41,
       "OBJEKT_KURZ": "HEERS97",
-      "OBJEKT_STRASSE": "Heerstraße 97",
+      "OSTRASSE": "Heerstraße 97",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 199.5,
       "RUECKLAGE_NR": 106,
@@ -3044,7 +3044,7 @@
     {
       "ONR": 65,
       "OBJEKT_KURZ": "RICHA46_JHÄUSLER",
-      "OBJEKT_STRASSE": "Richard-Wagner-Str. 46",
+      "OSTRASSE": "Richard-Wagner-Str. 46",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 0.0,
       "RUECKLAGE_NR": 201,
@@ -3101,7 +3101,7 @@
     {
       "ONR": 69,
       "OBJEKT_KURZ": "SCHUE41_43",
-      "OBJEKT_STRASSE": "Schürgespfad 41-43",
+      "OSTRASSE": "Schürgespfad 41-43",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 0.0,
       "RUECKLAGE_NR": 145,
@@ -3158,7 +3158,7 @@
     {
       "ONR": 85,
       "OBJEKT_KURZ": "DECHA2",
-      "OBJEKT_STRASSE": "Dechant-Flocken-Str. 2",
+      "OSTRASSE": "Dechant-Flocken-Str. 2",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 0.0,
       "RUECKLAGE_NR": 164,
@@ -3215,7 +3215,7 @@
     {
       "ONR": 88,
       "OBJEKT_KURZ": "ERLEN21",
-      "OBJEKT_STRASSE": "Erlenstr. 21",
+      "OSTRASSE": "Erlenstr. 21",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 0.0,
       "RUECKLAGE_NR": 167,
@@ -3272,7 +3272,7 @@
     {
       "ONR": 90,
       "OBJEKT_KURZ": "RIBBE1",
-      "OBJEKT_STRASSE": "Ribbertstr. 1",
+      "OSTRASSE": "Ribbertstr. 1",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 0.0,
       "RUECKLAGE_NR": 170,
@@ -3329,7 +3329,7 @@
     {
       "ONR": 91,
       "OBJEKT_KURZ": "KOELN17",
-      "OBJEKT_STRASSE": "Kölner Str. 17",
+      "OSTRASSE": "Kölner Str. 17",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 0.0,
       "RUECKLAGE_NR": 171,
@@ -3386,7 +3386,7 @@
     {
       "ONR": 93,
       "OBJEKT_KURZ": "RICHA51",
-      "OBJEKT_STRASSE": "Richard-Wagner-Str.51",
+      "OSTRASSE": "Richard-Wagner-Str.51",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 0.0,
       "RUECKLAGE_NR": 173,
@@ -3443,7 +3443,7 @@
     {
       "ONR": 94,
       "OBJEKT_KURZ": "AACHE71_HÄUSLER",
-      "OBJEKT_STRASSE": "Aachener Str. 71",
+      "OSTRASSE": "Aachener Str. 71",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 0.0,
       "RUECKLAGE_NR": 174,
@@ -3500,7 +3500,7 @@
     {
       "ONR": 95,
       "OBJEKT_KURZ": "RICHA46_ANNAE",
-      "OBJEKT_STRASSE": "Richard-Wagner-Str. 46",
+      "OSTRASSE": "Richard-Wagner-Str. 46",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 0.0,
       "RUECKLAGE_NR": 178,
@@ -3557,7 +3557,7 @@
     {
       "ONR": 96,
       "OBJEKT_KURZ": "AACHE71_HISGEN",
-      "OBJEKT_STRASSE": "Aachener Str. 71",
+      "OSTRASSE": "Aachener Str. 71",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 0.0,
       "RUECKLAGE_NR": 176,
@@ -3614,7 +3614,7 @@
     {
       "ONR": 97,
       "OBJEKT_KURZ": "RICHA46_AHÄUSLER",
-      "OBJEKT_STRASSE": "Richard-Wagner-Str. 46",
+      "OSTRASSE": "Richard-Wagner-Str. 46",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 0.0,
       "RUECKLAGE_NR": 179,
@@ -3671,7 +3671,7 @@
     {
       "ONR": 98,
       "OBJEKT_KURZ": "HAAGE124_FALKA",
-      "OBJEKT_STRASSE": "Haager Weg 124",
+      "OSTRASSE": "Haager Weg 124",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 0.0,
       "RUECKLAGE_NR": 180,
@@ -3728,7 +3728,7 @@
     {
       "ONR": 99,
       "OBJEKT_KURZ": "HAAGE124_FERNE",
-      "OBJEKT_STRASSE": "Haager Weg 124",
+      "OSTRASSE": "Haager Weg 124",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 0.0,
       "RUECKLAGE_NR": 181,
@@ -3785,7 +3785,7 @@
     {
       "ONR": 100,
       "OBJEKT_KURZ": "FLORA90",
-      "OBJEKT_STRASSE": "Florastr. 90",
+      "OSTRASSE": "Florastr. 90",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 0.0,
       "RUECKLAGE_NR": 182,
@@ -3842,7 +3842,7 @@
     {
       "ONR": 101,
       "OBJEKT_KURZ": "COHNE94D",
-      "OBJEKT_STRASSE": "Cohnenhofstr. 94D",
+      "OSTRASSE": "Cohnenhofstr. 94D",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 0.0,
       "RUECKLAGE_NR": 183,
@@ -3899,7 +3899,7 @@
     {
       "ONR": 102,
       "OBJEKT_KURZ": "DONAT8",
-      "OBJEKT_STRASSE": "Donatusstraße 8",
+      "OSTRASSE": "Donatusstraße 8",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 516.19,
       "RUECKLAGE_NR": 184,
@@ -3956,7 +3956,7 @@
     {
       "ONR": 103,
       "OBJEKT_KURZ": "HOLZM37",
-      "OBJEKT_STRASSE": "Holzmaarstr. 37",
+      "OSTRASSE": "Holzmaarstr. 37",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 191.0,
       "RUECKLAGE_NR": 185,
@@ -4013,7 +4013,7 @@
     {
       "ONR": 104,
       "OBJEKT_KURZ": "HAAGE124_SPIEK",
-      "OBJEKT_STRASSE": "Haager Weg 124",
+      "OSTRASSE": "Haager Weg 124",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 0.0,
       "RUECKLAGE_NR": 186,
@@ -4070,7 +4070,7 @@
     {
       "ONR": 105,
       "OBJEKT_KURZ": "KIRCH3",
-      "OBJEKT_STRASSE": "Kirchstraße 3",
+      "OSTRASSE": "Kirchstraße 3",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 0.0,
       "RUECKLAGE_NR": 187,
@@ -4127,7 +4127,7 @@
     {
       "ONR": 106,
       "OBJEKT_KURZ": "PAULU9",
-      "OBJEKT_STRASSE": "Paulusstraße 9",
+      "OSTRASSE": "Paulusstraße 9",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 0.0,
       "RUECKLAGE_NR": 188,
@@ -4184,7 +4184,7 @@
     {
       "ONR": 109,
       "OBJEKT_KURZ": "GERAN3_STALL",
-      "OBJEKT_STRASSE": "Geranienhof 3",
+      "OSTRASSE": "Geranienhof 3",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 477.0,
       "RUECKLAGE_NR": 191,
@@ -4241,7 +4241,7 @@
     {
       "ONR": 110,
       "OBJEKT_KURZ": "KOELN7A",
-      "OBJEKT_STRASSE": "Kölner Str. 7a",
+      "OSTRASSE": "Kölner Str. 7a",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 0.0,
       "RUECKLAGE_NR": 192,
@@ -4298,7 +4298,7 @@
     {
       "ONR": 112,
       "OBJEKT_KURZ": "AACHE71_TEUCHER",
-      "OBJEKT_STRASSE": "Aachener Str. 71",
+      "OSTRASSE": "Aachener Str. 71",
       "ANZAHL_EINHEITEN": null,
       "WOHNFLAECHE_GESAMT": 0.0,
       "RUECKLAGE_NR": 194,

@@ -45,9 +45,9 @@ SELECT
   
   -- === MIETVERTRAGSDATEN ===
   B.VBEGINN AS VERTRAGSBEGINN,            -- Vertragsbeginn (DATE): Mietbeginn/Einzugsdatum
-  B.VENDE AS VERTRAGSENDE,                -- Vertragsende (DATE): NULL = unbefristet/aktiv
+  B.VENDE AS VENDE,                -- VENDE (DATE): NULL = unbefristet/aktiv
   B.Z1 AS NETTOKALTMIETE,                 -- Nettokaltmiete (NUMERIC): Grundmiete ohne NK (Z1)
-  B.Z3 AS NEBENKOSTEN,                    -- Nebenkosten (NUMERIC): Monatliche NK-Vorauszahlung (Z3)
+  B.Z3 AS Z3,                    -- Z3 (NUMERIC): Monatliche NK-Vorauszahlung (Z3)
   B.MIETE1 AS WARMMIETE,                  -- Warmmiete (NUMERIC): Gesamtmiete inkl. NK
   B.KAUT_VEREINBART AS KAUTION,           -- Kaution (NUMERIC): Hinterlegte Mietkaution
   
@@ -61,8 +61,8 @@ SELECT
   
   -- === OBJEKT-KONTEXT ===
   O.OBEZ AS OBJEKT_KURZ,                  -- Objektkürzel (VARCHAR): Internes Kürzel
-  O.OSTRASSE AS OBJEKT_STRASSE,           -- Objektstraße (VARCHAR): Adresse des Gebäudes
-  O.OPLZORT AS OBJEKT_ORT,                -- Objekt PLZ/Ort (VARCHAR): Standort des Gebäudes
+  O.OSTRASSE AS OSTRASSE,           -- Objektstraße (VARCHAR): Adresse des Gebäudes
+  O.OPLZORT AS OPLZORT,                -- Objekt PLZ/Ort (VARCHAR): Standort des Gebäudes
   
   -- === STATUS-INFORMATIONEN ===
   'AKTIV' AS MIETSTATUS,                  -- Mietstatus: Immer AKTIV in dieser Abfrage

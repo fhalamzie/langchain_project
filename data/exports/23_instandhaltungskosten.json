@@ -1,7 +1,7 @@
 {
   "query_info": {
     "file": "23_instandhaltungskosten.sql",
-    "generated": "2025-06-16T03:33:48.079112",
+    "generated": "2025-06-16T21:54:37.618016",
     "driver": "firebird-driver",
     "charset": "ISO8859_1",
     "business_purpose": "Analyse der Instandhaltungskosten nach Kategorie und Objekt",
@@ -11,7 +11,7 @@
       "OBJEKTE"
     ],
     "total_rows": 229,
-    "execution_time_seconds": 0.02831
+    "execution_time_seconds": 0.030015
   },
   "columns": [
     "ONR",

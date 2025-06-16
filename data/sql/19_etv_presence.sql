@@ -120,9 +120,9 @@ SELECT
   VD.VLNAME AS VERSAMMLUNGSLEITER,        -- VARCHAR: Who led the assembly?
   
   -- === PROPERTY CONTEXT ===
-  O.ONR AS OBJEKT_NR,                     -- SMALLINT: Which building?
-  O.OBEZ AS OBJEKT_BEZEICHNUNG,           -- VARCHAR: Property short code
-  O.OSTRASSE AS OBJEKT_STRASSE,           -- VARCHAR: Property address
+  O.ONR AS ONR,                     -- SMALLINT: Which building?
+  O.OBEZ AS OBEZ,           -- VARCHAR: Property short code
+  O.OSTRASSE AS OSTRASSE,           -- VARCHAR: Property address
   
   -- === LAYER 4: LEGAL COMPLIANCE SUMMARY ===
   CASE 

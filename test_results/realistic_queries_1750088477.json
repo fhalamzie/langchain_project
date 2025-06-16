@@ -1,0 +1,251 @@
+{
+  "test_time": "2025-06-16 17:41:17",
+  "results": [
+    {
+      "id": "user_001",
+      "query": "wer wohnt marienstr 26",
+      "category": "mieter_search",
+      "success": true,
+      "response_time": 0.8857486248016357,
+      "answer_preview": "In der Marienstraße 26 wohnen die Mieter Luka Maric sowie die Eigentümer Hubert Braun und Maria Braun.",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_002",
+      "query": "mieter marienstrasse 26 essen",
+      "category": "mieter_search",
+      "success": true,
+      "response_time": 1.640357255935669,
+      "answer_preview": "Die Anfrage bezüglich der Mieter in der Marienstraße 26 in Essen ergibt, dass es keine spezifischen Informationen zu einem Mieter an dieser Adresse gibt. Es sind lediglich Mieter und Eigentümer für di",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_003",
+      "query": "wer wohnt in der kämpenstr",
+      "category": "mieter_search",
+      "success": true,
+      "response_time": 0.865757942199707,
+      "answer_preview": "In der Kämpenstraße wohnt als Mieter Markus Pape, der sich in der Kämpenstraße 13, Lager links befindet.",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_004",
+      "query": "Bewohner Kämpennstraße 13",
+      "category": "mieter_search",
+      "success": true,
+      "response_time": 3.075901508331299,
+      "answer_preview": "Die Anfrage bezüglich der Bewohner der Kämpenstraße 13 ergibt folgende Informationen:\n\nDas Objekt Kämpenstraße 13 in Essen ist teilvermietet. Die aktuellen Mieter sind:\n\n1. Trödelhalle für den Tiersch",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_005",
+      "query": "tel borowski",
+      "category": "contact_lookup",
+      "success": true,
+      "response_time": 3.8549211025238037,
+      "answer_preview": "Sehr geehrte Damen und Herren,\n\nvielen Dank für Ihre Anfrage bezüglich der Mietverhältnisse in der Byfangerstraße 22, EG rechts.\n\nDie aktuellen Mieter sind Frau Sabrina Vietinghoff und Herr Boris Viet",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_006",
+      "query": "telefon wolfgang borowsky",
+      "category": "contact_lookup",
+      "success": true,
+      "response_time": 1.2738549709320068,
+      "answer_preview": "Leider sind in den bereitgestellten Daten keine Kontaktdaten, einschließlich einer Telefonnummer für Wolfgang Borowsky, enthalten. Es gibt mehrere Eigentümer mit dem Vornamen Wolfgang, jedoch kein spe",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_007",
+      "query": "nummer von herrn nabakowski",
+      "category": "contact_lookup",
+      "success": true,
+      "response_time": 2.1526126861572266,
+      "answer_preview": "Die angefragte Nummer von Herrn Nabakowski ist in den bereitgestellten Daten nicht enthalten. Es sind lediglich Informationen zu Petra Nabakowski als Mieterin an der Von-Waldthausen-Straße 44, EG, ver",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_008",
+      "query": "fahim halamzei telefon",
+      "category": "contact_lookup",
+      "success": true,
+      "response_time": 1.260939598083496,
+      "answer_preview": "Leider kann ich keine Kontaktdaten wie Telefonnummern bereitstellen. Ich kann Ihnen jedoch mitteilen, dass Fahim Halamzie als Eigentümer unter der Adresse 45127 Essen verzeichnet ist. Wenn Sie weitere",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_009",
+      "query": "kontakt f. halamzie",
+      "category": "contact_lookup",
+      "success": true,
+      "response_time": 1.6329925060272217,
+      "answer_preview": "Sehr geehrte Damen und Herren,\n\nvielen Dank für Ihre Anfrage bezüglich der Kontaktinformationen für Zahra Halamzie.\n\nDie Mietadresse von Zahra Halamzie lautet:\n- Marienstraße 26, EG\n\nDer Eigentümer, F",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_010",
+      "query": "murat yildirim tel nr",
+      "category": "contact_lookup",
+      "success": true,
+      "response_time": 1.008847951889038,
+      "answer_preview": "Leider kann ich Ihnen die Telefonnummer von Murat Yildirim nicht zur Verfügung stellen, da diese Information nicht in den bereitgestellten Daten enthalten ist. Wenn Sie weitere Informationen benötigen",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_011",
+      "query": "miete borowski???",
+      "category": "rent_inquiry",
+      "success": true,
+      "response_time": 2.0042381286621094,
+      "answer_preview": "Die Anfrage bezüglich der Miete von Borowski kann auf Grundlage der bereitgestellten Daten nicht direkt beantwortet werden, da keine spezifischen Informationen zu einer Immobilie oder einem Mietverhäl",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_012",
+      "query": "was zahlt frau nabakowsky",
+      "category": "rent_inquiry",
+      "success": true,
+      "response_time": 1.392275094985962,
+      "answer_preview": "Die Anfrage bezüglich der Zahlungen von Frau Petra Nabakowski kann nicht direkt aus den bereitgestellten Daten beantwortet werden, da keine Informationen zu den Zahlungen oder Mietkonditionen für dies",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_013",
+      "query": "miete alex blesing",
+      "category": "rent_inquiry",
+      "success": true,
+      "response_time": 1.7001073360443115,
+      "answer_preview": "Die Anfrage nach \"Miete Alex Blesing\" ergibt keine relevanten Ergebnisse. Es sind keine Mietverträge oder Eigentümer mit dem Namen \"Alex Blesing\" in den bereitgestellten Daten aufgeführt. Die aufgelis",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_014",
+      "query": "wieviel zahlt harrison abhulimen",
+      "category": "rent_inquiry",
+      "success": true,
+      "response_time": 0.9445266723632812,
+      "answer_preview": "Die bereitgestellten Daten enthalten keine Informationen über einen Mieter oder Eigentümer namens Harrison Abhulimen. Daher kann ich keine Auskunft darüber geben, wie viel Harrison Abhulimen zahlt.",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_015",
+      "query": "einheiten fhalamzi",
+      "category": "unit_count",
+      "success": true,
+      "response_time": 5.675961256027222,
+      "answer_preview": "Die Anfrage zu den Einheiten in Fhalamzi ergibt folgende Eigentümerinformationen:\n\n1. **52428 Jülich** - Eigentümer: Keine Angabe\n2. **51143 Köln** - Eigentümer: Château Veauneclos GbR\n3. **53332 Born",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_016",
+      "query": "wieviele whg hat sundeki immobilien",
+      "category": "unit_count",
+      "success": true,
+      "response_time": 1.409531593322754,
+      "answer_preview": "Die bereitgestellten Daten enthalten keine spezifische Anzahl an Wohnungen, die im Besitz von Sundeki Immobilien 1 GmbH sind. Es wird lediglich erwähnt, dass Sundeki Immobilien 1 GmbH als Eigentümer a",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_017",
+      "query": "anzahl wohnungen halamzie",
+      "category": "unit_count",
+      "success": true,
+      "response_time": 6.775205850601196,
+      "answer_preview": "Die Anzahl der Wohnungen, die im Zusammenhang mit den Halamzie-Eigentümern stehen, ist wie folgt:\n\n1. Zahra Halamzie (Mieter) - Marienstraße 26, EG\n2. Fahim Halamzie (Eigentümer) - keine spezifische W",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_018",
+      "query": "weg neusserstr",
+      "category": "weg_info",
+      "success": true,
+      "response_time": 1.6999647617340088,
+      "answer_preview": "Die Anfrage bezüglich der WEG Neusser Str. bezieht sich auf die Eigentümerdaten. Der Eigentümer der WEG Neusser Str. 49, 50670 Köln ist in den bereitgestellten Daten vermerkt. \n\nFalls weitere Informat",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_019",
+      "query": "groesse weg neuss 49",
+      "category": "weg_info",
+      "success": true,
+      "response_time": 1.9655280113220215,
+      "answer_preview": "Die Anfrage bezüglich der Größe der WEG Neusser Str. 49 in Köln kann nicht direkt beantwortet werden, da in den bereitgestellten Daten keine Informationen zur Größe der Immobilie enthalten sind. Es wi",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_020",
+      "query": "weg marinenstrasse",
+      "category": "weg_info",
+      "success": true,
+      "response_time": 1.9765803813934326,
+      "answer_preview": "Die Anfrage bezüglich der WEG Marienstraße bezieht sich auf die folgenden Ergebnisse:\n\n1. **Mieter**: WEG Marienstr. 28\n2. **Mieter**: Marienstraße 26\n3. **Mieter**: WEG Marienstr. 28\n\nEs sind keine w",
+      "source": "structured_search",
+      "error": null
+    }
+  ],
+  "analysis": {
+    "total_queries": 20,
+    "successful": 20,
+    "failed": 0,
+    "avg_response_time": 2.15979266166687,
+    "by_category": {
+      "mieter_search": {
+        "total": 4,
+        "success": 4,
+        "failed": 0,
+        "avg_time": 1.6169413328170776,
+        "success_rate": 100.0
+      },
+      "contact_lookup": {
+        "total": 6,
+        "success": 6,
+        "failed": 0,
+        "avg_time": 1.8640281359354656,
+        "success_rate": 100.0
+      },
+      "rent_inquiry": {
+        "total": 4,
+        "success": 4,
+        "failed": 0,
+        "avg_time": 1.510286808013916,
+        "success_rate": 100.0
+      },
+      "unit_count": {
+        "total": 3,
+        "success": 3,
+        "failed": 0,
+        "avg_time": 4.620232899983724,
+        "success_rate": 100.0
+      },
+      "weg_info": {
+        "total": 3,
+        "success": 3,
+        "failed": 0,
+        "avg_time": 1.8806910514831543,
+        "success_rate": 100.0
+      }
+    },
+    "by_source": {
+      "structured_search": 20
+    }
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "test_time": "2025-06-16 17:25:08",
+  "results": [
+    {
+      "id": "user_001",
+      "query": "wer wohnt marienstr 26",
+      "category": "mieter_search",
+      "success": false,
+      "response_time": 0.0013363361358642578,
+      "answer_preview": "Keine relevanten Daten für Ihre Anfrage gefunden.",
+      "source": "unknown",
+      "error": null
+    },
+    {
+      "id": "user_002",
+      "query": "mieter marienstrasse 26 essen",
+      "category": "mieter_search",
+      "success": false,
+      "response_time": 0.0001125335693359375,
+      "answer_preview": "Keine relevanten Daten für Ihre Anfrage gefunden.",
+      "source": "unknown",
+      "error": null
+    },
+    {
+      "id": "user_003",
+      "query": "wer wohnt in der kämpenstr",
+      "category": "mieter_search",
+      "success": false,
+      "response_time": 9.012222290039062e-05,
+      "answer_preview": "Keine relevanten Daten für Ihre Anfrage gefunden.",
+      "source": "unknown",
+      "error": null
+    },
+    {
+      "id": "user_004",
+      "query": "Bewohner Kämpennstraße 13",
+      "category": "mieter_search",
+      "success": false,
+      "response_time": 8.153915405273438e-05,
+      "answer_preview": "Keine relevanten Daten für Ihre Anfrage gefunden.",
+      "source": "unknown",
+      "error": null
+    },
+    {
+      "id": "user_005",
+      "query": "tel borowski",
+      "category": "contact_lookup",
+      "success": false,
+      "response_time": 0.00018668174743652344,
+      "answer_preview": "Keine relevanten Daten für Ihre Anfrage gefunden.",
+      "source": "unknown",
+      "error": null
+    }
+  ],
+  "analysis": {
+    "total_queries": 5,
+    "successful": 0,
+    "failed": 5,
+    "avg_response_time": 0.00036144256591796875,
+    "by_category": {
+      "mieter_search": {
+        "total": 4,
+        "success": 0,
+        "failed": 4,
+        "avg_time": 0,
+        "success_rate": 0.0
+      },
+      "contact_lookup": {
+        "total": 1,
+        "success": 0,
+        "failed": 1,
+        "avg_time": 0,
+        "success_rate": 0.0
+      }
+    },
+    "by_source": {}
+  }
+}

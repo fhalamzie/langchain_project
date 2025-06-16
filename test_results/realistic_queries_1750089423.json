@@ -1,0 +1,615 @@
+{
+  "test_time": "2025-06-16 17:57:03",
+  "results": [
+    {
+      "id": "user_001",
+      "query": "wer wohnt marienstr 26",
+      "category": "mieter_search",
+      "success": true,
+      "response_time": 3.0137579441070557,
+      "answer_preview": "In der Marienstraße 26 wohnen keine spezifischen Mieter, da die angegebene Information lediglich auf die WEG Marienstraße 28 verweist. Die Eigentümer der Immobilie sind Hubert Braun und Maria Braun au",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_002",
+      "query": "mieter marienstrasse 26 essen",
+      "category": "mieter_search",
+      "success": true,
+      "response_time": 1.3321588039398193,
+      "answer_preview": "Die Anfrage bezüglich der Mieter in der Marienstraße 26 in Essen ergibt, dass es keine spezifischen Informationen zu einem Mieter an dieser Adresse gibt. Es sind lediglich Mieter und Eigentümer von an",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_003",
+      "query": "wer wohnt in der kämpenstr",
+      "category": "mieter_search",
+      "success": true,
+      "response_time": 3.1795756816864014,
+      "answer_preview": "In der Kämpenstraße wohnt der Mieter Markus Pape, der sich in der Lagerfläche links befindet.",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_004",
+      "query": "Bewohner Kämpennstraße 13",
+      "category": "mieter_search",
+      "success": true,
+      "response_time": 3.007486581802368,
+      "answer_preview": "Die Anfrage bezüglich der Bewohner der Kämpenstraße 13 ergibt folgende Informationen:\n\nDas Objekt in der Kämpenstraße 13 in Essen ist teilvermietet. Die aktuellen Mieter sind:\n\n1. Trödelhalle für den ",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_005",
+      "query": "tel borowski",
+      "category": "contact_lookup",
+      "success": true,
+      "response_time": 3.124760389328003,
+      "answer_preview": "Sehr geehrte Damen und Herren,\n\nvielen Dank für Ihre Anfrage bezüglich der Mietobjekte in der Byfangerstraße 22, EG rechts. \n\nDie aktuellen Mieter sind Frau Sabrina Vietinghoff und Herr Boris Vietingh",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_006",
+      "query": "telefon wolfgang borowsky",
+      "category": "contact_lookup",
+      "success": true,
+      "response_time": 1.3894879817962646,
+      "answer_preview": "Leider sind in den bereitgestellten Daten keine Kontaktdaten, einschließlich einer Telefonnummer für Wolfgang Borowsky, enthalten. Es gibt mehrere Eigentümer mit dem Vornamen Wolfgang, jedoch keine sp",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_007",
+      "query": "nummer von herrn nabakowski",
+      "category": "contact_lookup",
+      "success": true,
+      "response_time": 1.672985315322876,
+      "answer_preview": "Die angefragte Nummer von Herrn Nabakowski ist in den bereitgestellten Daten nicht enthalten. Es sind lediglich Informationen zu Petra Nabakowski als Mieterin an der Von-Waldthausen-Straße 44, EG, sow",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_008",
+      "query": "fahim halamzei telefon",
+      "category": "contact_lookup",
+      "success": true,
+      "response_time": 1.4757091999053955,
+      "answer_preview": "Leider sind keine Kontaktdaten, wie eine Telefonnummer, für Fahim Halamzie in den bereitgestellten Informationen enthalten. Es sind lediglich die Eigentümerdaten und Mieterdaten aufgeführt. Wenn Sie w",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_009",
+      "query": "kontakt f. halamzie",
+      "category": "contact_lookup",
+      "success": true,
+      "response_time": 2.486511468887329,
+      "answer_preview": "Sehr geehrte Damen und Herren,\n\nvielen Dank für Ihre Anfrage bezüglich der Kontaktinformationen für Halamzie.\n\nDie relevanten Informationen sind wie folgt:\n\n**Mieter:**\n- Zahra Halamzie\n  - Adresse: M",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_010",
+      "query": "murat yildirim tel nr",
+      "category": "contact_lookup",
+      "success": true,
+      "response_time": 1.0052433013916016,
+      "answer_preview": "Es tut mir leid, aber ich kann keine Kontaktdaten wie Telefonnummern bereitstellen. Wenn Sie weitere Informationen zu den Mietern oder Eigentümern benötigen, lassen Sie es mich bitte wissen.",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_011",
+      "query": "miete borowski???",
+      "category": "rent_inquiry",
+      "success": true,
+      "response_time": 2.255880832672119,
+      "answer_preview": "Die Anfrage zur Miete von Borowski kann nicht direkt beantwortet werden, da keine spezifischen Informationen zu einer Immobilie oder einem Mietobjekt mit dem Namen \"Borowski\" in den bereitgestellten D",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_012",
+      "query": "was zahlt frau nabakowsky",
+      "category": "rent_inquiry",
+      "success": true,
+      "response_time": 1.1429543495178223,
+      "answer_preview": "Auf Grundlage der bereitgestellten Daten kann ich keine Informationen zu Frau Nabakowsky finden. Es sind keine relevanten Mietverhältnisse oder Eigentümerdaten zu dieser Person aufgeführt. Bitte überp",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_013",
+      "query": "miete alex blesing",
+      "category": "rent_inquiry",
+      "success": true,
+      "response_time": 1.504784345626831,
+      "answer_preview": "Leider sind in den bereitgestellten Daten keine Informationen zu einem Mieter oder Eigentümer mit dem Namen \"Alex Blesing\" enthalten. Die Suchergebnisse umfassen lediglich andere Mieter und Eigentümer",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_014",
+      "query": "wieviel zahlt harrison abhulimen",
+      "category": "rent_inquiry",
+      "success": true,
+      "response_time": 1.1273372173309326,
+      "answer_preview": "Basierend auf den bereitgestellten Daten ist Harrison Abhulimen nicht aufgeführt. Daher kann ich keine Informationen zu den Zahlungen von Harrison Abhulimen bereitstellen.",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_015",
+      "query": "einheiten fhalamzi",
+      "category": "unit_count",
+      "success": true,
+      "response_time": 3.8366072177886963,
+      "answer_preview": "Die Anfrage zu den Einheiten in Fhalamzi ergibt folgende Suchergebnisse:\n\n1. **52428 Jülich** - Eigentümer: Keine Angabe\n2. **51143 Köln** - Eigentümer: Château Veauneclos GbR\n3. **53332 Bornheim** - ",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_016",
+      "query": "wieviele whg hat sundeki immobilien",
+      "category": "unit_count",
+      "success": true,
+      "response_time": 1.5113160610198975,
+      "answer_preview": "Die bereitgestellten Daten enthalten keine spezifische Anzahl an Wohnungen, die im Besitz von Sundeki Immobilien 1 GmbH sind. Es wird lediglich erwähnt, dass Sundeki Immobilien 1 GmbH als Eigentümer a",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_017",
+      "query": "anzahl wohnungen halamzie",
+      "category": "unit_count",
+      "success": true,
+      "response_time": 2.1707029342651367,
+      "answer_preview": "Die Anzahl der Wohnungen, die im Zusammenhang mit der Familie Halamzie stehen, beträgt insgesamt drei. Diese sind:\n\n1. Mieter: Zahra Halamzie - Marienstraße 26, EG\n2. Eigentümer: Fahim Halamzie - 4512",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_018",
+      "query": "weg neusserstr",
+      "category": "weg_info",
+      "success": true,
+      "response_time": 2.206338405609131,
+      "answer_preview": "Die Anfrage bezüglich der WEG Neusser Straße ergibt folgende Informationen:\n\n**EIGENTÜMER:**\n- WEG Neusser Str. 49, 50670 Köln\n\n**Standort:**\n- 50670 Köln\n\nEs sind keine weiteren Informationen zu Miet",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_019",
+      "query": "groesse weg neuss 49",
+      "category": "weg_info",
+      "success": true,
+      "response_time": 2.0506718158721924,
+      "answer_preview": "Die Anfrage bezüglich der Größe der WEG Neusser Str. 49 in Köln kann nicht direkt beantwortet werden, da die bereitgestellten Daten keine Informationen zur Größe der Wohnungseigentümergemeinschaft (WE",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_020",
+      "query": "weg marinenstrasse",
+      "category": "weg_info",
+      "success": true,
+      "response_time": 1.972637414932251,
+      "answer_preview": "Die Anfrage bezüglich der WEG Marienstraße bezieht sich auf die folgenden Ergebnisse:\n\n**Mieter:**\n- WEG Marienstr. 28\n- WEG Marienstraße 26\n- WEG Marienstr. 28 (doppelt aufgeführt)\n\n**Eigentümer:**\n-",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_021",
+      "query": "verwalter neusserstr49",
+      "category": "property_manager",
+      "success": true,
+      "response_time": 3.5009140968322754,
+      "answer_preview": "Sehr geehrte Damen und Herren,\n\nvielen Dank für Ihre Anfrage bezüglich der Verwaltung der Immobilie in der Neusser Str. 49, Köln. \n\nDie Eigentümer der Immobilie sind:\n\n1. Josefa Murcia & Vera Gonzales",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_022",
+      "query": "hausverwaltung marienstr. 26",
+      "category": "property_manager",
+      "success": true,
+      "response_time": 1.5984997749328613,
+      "answer_preview": "Die Hausverwaltung für die Marienstraße 26 wird durch die WEG Marienstraße 28 verwaltet. Die Eigentümer der Immobilie sind Hubert Braun und Maria Braun, wohnhaft in 52388 Nörvenich-Rath. Für weitere I",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_023",
+      "query": "wer verwaltet kämpnstr",
+      "category": "property_manager",
+      "success": true,
+      "response_time": 2.7855112552642822,
+      "answer_preview": "Die Verwaltung der Kämpenstraße 13 in Essen erfolgt durch die Eigentümer Elke Striewe und Werner Kirchmann, wohnhaft in 50374 Erftstadt, sowie Werner Spanier aus 50259 Pulheim, Werner Wittpoth aus 502",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_024",
+      "query": "buchungskonten marienst 26",
+      "category": "accounting",
+      "success": true,
+      "response_time": 1.8001742362976074,
+      "answer_preview": "Die Buchungskonten für die Marienstraße 26 sind in den bereitgestellten Daten nicht direkt aufgeführt. Es gibt jedoch Informationen zu Mietern und Eigentümern in der Marienstraße 28, die möglicherweis",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_025",
+      "query": "konten neusserstr",
+      "category": "accounting",
+      "success": true,
+      "response_time": 3.7559893131256104,
+      "answer_preview": "Die Anfrage zu den Konten der Neusser Straße bezieht sich auf die Immobilie Neusser Str. 49 in Köln. Die Eigentümer dieser Immobilie sind:\n\n1. WEG Neusser Str. 49, 50670 Köln\n2. Konstantinos Dr. Chatz",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_026",
+      "query": "saldo marienstrasse",
+      "category": "accounting_balance",
+      "success": true,
+      "response_time": 2.744626045227051,
+      "answer_preview": "Die Anfrage zum Saldo der Marienstraße bezieht sich auf die Mieter und Eigentümer in der Marienstraße. Die relevanten Mieter sind:\n\n- WEG Marienstr. 28\n- WEG Marienstraße 26\n\nDie Eigentümer der betref",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_027",
+      "query": "kontostand objekt kämpennstr",
+      "category": "accounting_balance",
+      "success": true,
+      "response_time": 1.440850019454956,
+      "answer_preview": "Der Kontostand für das Objekt Kämpenstraße 13 in Essen kann auf Basis der bereitgestellten Daten nicht ermittelt werden, da keine Informationen zu Einnahmen, Ausgaben oder spezifischen Kontoständen vo",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_028",
+      "query": "alle mieter essen",
+      "category": "mieter_search",
+      "success": true,
+      "response_time": 0.0001811981201171875,
+      "answer_preview": "15 Ergebnisse für Mieter von Eigentümer gefunden.",
+      "source": "semantic_template",
+      "error": null
+    },
+    {
+      "id": "user_029",
+      "query": "mieter in bochm",
+      "category": "mieter_search",
+      "success": true,
+      "response_time": 3.943376302719116,
+      "answer_preview": "In Bochum befindet sich das Objekt in der Von-Waldthausen-Straße 44, welches teilvermietet ist. Aktuell sind folgende Mieter in diesem Objekt registriert:\n\n- 2. OG rechts: **Keine Mieter**\n- 2. OG lin",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_030",
+      "query": "zeig mir mieter duisburg",
+      "category": "mieter_search",
+      "success": true,
+      "response_time": 0.0001304149627685547,
+      "answer_preview": "15 Ergebnisse für Mieter von Eigentümer gefunden.",
+      "source": "semantic_template",
+      "error": null
+    },
+    {
+      "id": "user_031",
+      "query": "wohnungen marien str.",
+      "category": "wohnungen_search",
+      "success": true,
+      "response_time": 2.565624952316284,
+      "answer_preview": "Die Anfrage zu Wohnungen in der Marienstraße ergibt folgende Ergebnisse:\n\n1. **WEG Marienstraße 28** - Hier sind Mieter verzeichnet, die in der Marienstraße 26 wohnen. \n\nEs sind keine weiteren spezifi",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_032",
+      "query": "whg liste kämpenstr 13",
+      "category": "wohnungen_search",
+      "success": true,
+      "response_time": 3.2836451530456543,
+      "answer_preview": "Die Anfrage zur Wohnungsliste in der Kämpenstraße 13 ergibt folgende Informationen:\n\n- Das Objekt Kämpenstraße 13 in Essen ist teilvermietet.\n- Aktuelle Mieter sind:\n  - Anette Steinhoff, 2. OG rechts",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_033",
+      "query": "apartments hochfelder str",
+      "category": "wohnungen_search",
+      "success": true,
+      "response_time": 1.2091493606567383,
+      "answer_preview": "Leider sind in den bereitgestellten Daten keine Informationen zu Wohnungen in der Hochfelder Straße enthalten. Die Suchergebnisse beziehen sich auf verschiedene Mieter und Eigentümer an anderen Adress",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_034",
+      "query": "konto petra nabakowsi",
+      "category": "account_balance",
+      "success": true,
+      "response_time": 1.455512285232544,
+      "answer_preview": "Die Anfrage zu dem Konto von Petra Nabakowski ergibt, dass sie Mieterin in der Von-Waldthausen-Straße 44, EG ist. Weitere Informationen zu ihrem Mietverhältnis oder spezifischen Kontodaten sind in den",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_035",
+      "query": "saldo w. borowski",
+      "category": "account_balance",
+      "success": true,
+      "response_time": 3.0944628715515137,
+      "answer_preview": "Sehr geehrte Damen und Herren,\n\nvielen Dank für Ihre Anfrage bezüglich des Saldos von W. Borowski. \n\nDie relevanten Informationen zu den Mietern und dem Objekt sind wie folgt:\n\n- **Mieter**: Sabrina V",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_036",
+      "query": "kontostand senad mujowic",
+      "category": "account_balance",
+      "success": true,
+      "response_time": 1.1423277854919434,
+      "answer_preview": "Leider sind in den bereitgestellten Daten keine Informationen zu einem Kontostand von Senad Mujowic enthalten. Es sind lediglich Informationen zu Eigentümern und Mietern aufgeführt. Bitte überprüfen S",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_037",
+      "query": "eg links kämpennstr",
+      "category": "property_details",
+      "success": true,
+      "response_time": 2.357994556427002,
+      "answer_preview": "Die Anfrage betrifft die Kämpenstraße 13 in Essen, die derzeit teilvermietet ist. Folgende Mieter sind in diesem Objekt verzeichnet:\n\n1. **Trödelhalle für den Tierschutz e.V.** - Garage 2\n2. **Anette ",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_038",
+      "query": "1og rechts marienstr",
+      "category": "property_details",
+      "success": true,
+      "response_time": 2.0261762142181396,
+      "answer_preview": "Die Anfrage bezüglich der Wohnung im 1. Obergeschoss rechts in der Marienstraße kann nicht direkt beantwortet werden, da in den bereitgestellten Daten keine spezifischen Informationen zu einer Wohnung",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_039",
+      "query": "dachgeschoss waldthausen",
+      "category": "property_details",
+      "success": true,
+      "response_time": 2.419674873352051,
+      "answer_preview": "Aktuell gibt es im Dachgeschoss der Von-Waldthausen-Straße 44 in Bochum keine verfügbaren Mietobjekte, da das Gebäude teilvermietet ist. Die bestehenden Mieter befinden sich in den unteren Etagen. Für",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_040",
+      "query": "frei whg essen",
+      "category": "vacancy_status",
+      "success": true,
+      "response_time": 2.3648674488067627,
+      "answer_preview": "Sehr geehrte Damen und Herren,\n\nvielen Dank für Ihre Anfrage bezüglich einer freien Wohnung in Essen. \n\nAktuell haben wir folgende relevante Informationen:\n\n1. **Eigentümer**: WEG Kupferdreherstr. 190",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_041",
+      "query": "leerstand bochm",
+      "category": "vacancy_status",
+      "success": true,
+      "response_time": 2.1363422870635986,
+      "answer_preview": "In der Von-Waldthausen-Straße 44 in Bochum ist das Objekt teilvermietet. Derzeit sind folgende Mietverhältnisse vorhanden:\n\n- 2. OG rechts: **frei**\n- 2. OG links: **Anastasiia Tarasova**\n- 1. OG rech",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_042",
+      "query": "freie wohnugen duisburg",
+      "category": "vacancy_status",
+      "success": true,
+      "response_time": 2.9594662189483643,
+      "answer_preview": "Leider sind in den bereitgestellten Daten keine freien Wohnungen in Duisburg aufgeführt. Die aufgelisteten Eigentümer und Objekte befinden sich überwiegend in Frechen, Köln und Gelsenkirchen. Für eine",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_043",
+      "query": "hausmeister marien",
+      "category": "facility_management",
+      "success": true,
+      "response_time": 1.9313669204711914,
+      "answer_preview": "Die Anfrage bezüglich des Hausmeisters für die Marienstraße bezieht sich auf die Mieter der WEG Marienstraße 28 sowie der Marienstraße 26. \n\nDie relevanten Mieter sind:\n- WEG Marienstr. 28\n\nFür spezif",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_044",
+      "query": "hm kämpenstr",
+      "category": "facility_management",
+      "success": true,
+      "response_time": 4.79143214225769,
+      "answer_preview": "Die Anfrage bezüglich der Kämpenstraße 13 in Essen ergibt folgendes Suchergebnis:\n\nDas Objekt ist teilvermietet und weist die folgenden Mieter auf:\n\n1. Trödelhalle für den Tierschutz e.V. - Kämpenstra",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_045",
+      "query": "mail anette steinhof",
+      "category": "contact_lookup",
+      "success": true,
+      "response_time": 1.7199366092681885,
+      "answer_preview": "Sehr geehrte Frau Steinhoff,\n\nvielen Dank für Ihre Anfrage. \n\nSie sind Mieter in der Kämpenstraße 13, 2. OG rechts. Bei weiteren Anliegen oder Fragen zu Ihrer Mietwohnung stehe ich Ihnen gerne zur Ver",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_046",
+      "query": "email patrick horne",
+      "category": "contact_lookup",
+      "success": true,
+      "response_time": 1.2013182640075684,
+      "answer_preview": "Es liegen keine spezifischen Informationen zu einer Person namens Patrick Horne vor. Die Suchergebnisse enthalten lediglich Informationen zu Mietern und Eigentümern mit ähnlichen Namen, jedoch nicht z",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_047",
+      "query": "handy alex blesssing",
+      "category": "contact_lookup",
+      "success": true,
+      "response_time": 1.3706064224243164,
+      "answer_preview": "Die Anfrage nach \"handy alex blessing\" ergibt keine spezifischen Informationen zu einem Eigentümer oder Mieter mit dem Namen \"Alex Blessing\". Die Suchergebnisse enthalten mehrere Eigentümer und Mieter",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_048",
+      "query": "nk abrechnung nabakowski",
+      "category": "accounting",
+      "success": true,
+      "response_time": 2.7924509048461914,
+      "answer_preview": "Sehr geehrte Frau Nabakowski,\n\nvielen Dank für Ihre Anfrage zur Nebenkostenabrechnung. \n\nBitte teilen Sie uns mit, welche spezifischen Informationen oder Unterlagen Sie zur Nebenkostenabrechnung benöt",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_049",
+      "query": "nebenkostn borowski",
+      "category": "accounting",
+      "success": true,
+      "response_time": 2.305147409439087,
+      "answer_preview": "Sehr geehrte Damen und Herren,\n\nvielen Dank für Ihre Anfrage bezüglich der Nebenkosten für die Wohnung in der Byfangerstraße 22, EG rechts, die von den Mietern Sabrina Vietinghoff und Boris Vietinghof",
+      "source": "structured_search",
+      "error": null
+    },
+    {
+      "id": "user_050",
+      "query": "vertrag senad mujowitch",
+      "category": "contract_info",
+      "success": true,
+      "response_time": 1.4724571704864502,
+      "answer_preview": "Leider liegen keine spezifischen Informationen zu einem Vertrag mit Senad Mujowitch vor. Die Suchergebnisse zeigen lediglich Eigentümer in den Regionen Hürth-Berrenrath, Bergheim und Köln. Für weitere",
+      "source": "structured_search",
+      "error": null
+    }
+  ],
+  "analysis": {
+    "total_queries": 50,
+    "successful": 50,
+    "failed": 0,
+    "avg_response_time": 2.1527423954010008,
+    "by_category": {
+      "mieter_search": {
+        "total": 7,
+        "success": 7,
+        "failed": 0,
+        "avg_time": 2.0680952753339494,
+        "success_rate": 100.0
+      },
+      "contact_lookup": {
+        "total": 9,
+        "success": 9,
+        "failed": 0,
+        "avg_time": 1.716284328036838,
+        "success_rate": 100.0
+      },
+      "rent_inquiry": {
+        "total": 4,
+        "success": 4,
+        "failed": 0,
+        "avg_time": 1.5077391862869263,
+        "success_rate": 100.0
+      },
+      "unit_count": {
+        "total": 3,
+        "success": 3,
+        "failed": 0,
+        "avg_time": 2.5062087376912436,
+        "success_rate": 100.0
+      },
+      "weg_info": {
+        "total": 3,
+        "success": 3,
+        "failed": 0,
+        "avg_time": 2.076549212137858,
+        "success_rate": 100.0
+      },
+      "property_manager": {
+        "total": 3,
+        "success": 3,
+        "failed": 0,
+        "avg_time": 2.628308375676473,
+        "success_rate": 100.0
+      },
+      "accounting": {
+        "total": 4,
+        "success": 4,
+        "failed": 0,
+        "avg_time": 2.663440465927124,
+        "success_rate": 100.0
+      },
+      "accounting_balance": {
+        "total": 2,
+        "success": 2,
+        "failed": 0,
+        "avg_time": 2.0927380323410034,
+        "success_rate": 100.0
+      },
+      "wohnungen_search": {
+        "total": 3,
+        "success": 3,
+        "failed": 0,
+        "avg_time": 2.352806488672892,
+        "success_rate": 100.0
+      },
+      "account_balance": {
+        "total": 3,
+        "success": 3,
+        "failed": 0,
+        "avg_time": 1.8974343140920003,
+        "success_rate": 100.0
+      },
+      "property_details": {
+        "total": 3,
+        "success": 3,
+        "failed": 0,
+        "avg_time": 2.267948547999064,
+        "success_rate": 100.0
+      },
+      "vacancy_status": {
+        "total": 3,
+        "success": 3,
+        "failed": 0,
+        "avg_time": 2.486891984939575,
+        "success_rate": 100.0
+      },
+      "facility_management": {
+        "total": 2,
+        "success": 2,
+        "failed": 0,
+        "avg_time": 3.361399531364441,
+        "success_rate": 100.0
+      },
+      "contract_info": {
+        "total": 1,
+        "success": 1,
+        "failed": 0,
+        "avg_time": 1.4724571704864502,
+        "success_rate": 100.0
+      }
+    },
+    "by_source": {
+      "structured_search": 48,
+      "semantic_template": 2
+    }
+  }
+}

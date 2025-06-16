@@ -1,7 +1,7 @@
 {
   "query_info": {
     "file": "32_sonderentnahmen.sql",
-    "generated": "2025-06-16T03:34:44.935484",
+    "generated": "2025-06-16T21:55:46.371740",
     "driver": "firebird-driver",
     "charset": "ISO8859_1",
     "business_purpose": "Analyse außerordentlicher Entnahmen und Zuführungen",
@@ -16,12 +16,12 @@
       "Zusätzliche GeschäftslogikAnalysen"
     ],
     "total_rows": 5,
-    "execution_time_seconds": 0.007883
+    "execution_time_seconds": 0.004899
   },
   "columns": [
     "ONR",
     "OBJEKT_KURZ",
-    "OBJEKT_STRASSE",
+    "OSTRASSE",
     "RUECKLAGE_NR",
     "RUECKLAGE_NAME",
     "SONDER_ENTNAHME_BETRAG",
@@ -48,7 +48,7 @@
     {
       "ONR": 56,
       "OBJEKT_KURZ": "HEINR5",
-      "OBJEKT_STRASSE": "Heinrichstr. 5",
+      "OSTRASSE": "Heinrichstr. 5",
       "RUECKLAGE_NR": 132,
       "RUECKLAGE_NAME": "Rücklagen",
       "SONDER_ENTNAHME_BETRAG": 0.0,
@@ -74,7 +74,7 @@
     {
       "ONR": 51,
       "OBJEKT_KURZ": "AMSCH60",
-      "OBJEKT_STRASSE": "Am Schmidtgrund 60",
+      "OSTRASSE": "Am Schmidtgrund 60",
       "RUECKLAGE_NR": 125,
       "RUECKLAGE_NAME": "Rücklagen",
       "SONDER_ENTNAHME_BETRAG": 0.0,
@@ -100,7 +100,7 @@
     {
       "ONR": 78,
       "OBJEKT_KURZ": "MARTI2_NIKOL7",
-      "OBJEKT_STRASSE": "Martinstraße 2 & Nikolausstraße 7",
+      "OSTRASSE": "Martinstraße 2 & Nikolausstraße 7",
       "RUECKLAGE_NR": 155,
       "RUECKLAGE_NAME": "Rücklagen Martinstr",
       "SONDER_ENTNAHME_BETRAG": -16000.0,
@@ -126,7 +126,7 @@
     {
       "ONR": 46,
       "OBJEKT_KURZ": "KYFFH12",
-      "OBJEKT_STRASSE": "Kyffhäuser Straße 12",
+      "OSTRASSE": "Kyffhäuser Straße 12",
       "RUECKLAGE_NR": 119,
       "RUECKLAGE_NAME": "Rücklagen",
       "SONDER_ENTNAHME_BETRAG": -27200.0,
@@ -152,7 +152,7 @@
     {
       "ONR": 68,
       "OBJEKT_KURZ": "SAUER21_23",
-      "OBJEKT_STRASSE": "Sauerbruchstraße 21-23",
+      "OSTRASSE": "Sauerbruchstraße 21-23",
       "RUECKLAGE_NR": 144,
       "RUECKLAGE_NAME": "Rücklagen",
       "SONDER_ENTNAHME_BETRAG": -3000.0,

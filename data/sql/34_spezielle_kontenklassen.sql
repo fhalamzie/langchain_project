@@ -27,7 +27,7 @@ SELECT
     WHEN 40 THEN 'ANLAGENKONTO (Vermögen)'
     WHEN 50 THEN 'VERBINDLICHKEITEN'
     WHEN 60 THEN 'MIETERKONTO (Persönliche Konten)'
-    WHEN 61 THEN 'EIGENTÜMER NEBENKOSTEN'
+    WHEN 61 THEN 'EIGENTÜMER Z3'
     WHEN 62 THEN 'EIGENTÜMERKONTO (WEG-Konten)'
     WHEN 70 THEN 'ABGRENZUNGSKONTEN'
     WHEN 80 THEN 'STEUERKONTEN'
@@ -98,7 +98,7 @@ SELECT
   END AS BUCHUNGSVERHALTEN,               -- Buchungsverhalten: Erweiterte Abrechnungsrelevanz
   
   -- === EINHEIT-ZUORDNUNG ===
-  K.ENR AS EINHEIT_NR,                    -- Einheitsnummer: Wohnungs-Zuordnung
+  K.ENR AS ENR,                    -- Einheitsnummer: Wohnungs-Zuordnung
   CASE 
     WHEN K.ENR IS NOT NULL AND K.ENR > 0 THEN 'EINHEITSSPEZIFISCH'
     ELSE 'OBJEKTWEIT'

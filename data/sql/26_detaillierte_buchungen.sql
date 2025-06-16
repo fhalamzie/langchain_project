@@ -48,8 +48,8 @@ SELECT
   
   -- === OBJEKT-KONTEXT ===
   O.OBEZ AS OBJEKT_KURZ,                  -- Objektkürzel: Gebäude
-  O.OSTRASSE AS OBJEKT_STRASSE,           -- Objektstraße: Adresse
-  O.OPLZORT AS OBJEKT_ORT,                -- Objekt PLZ/Ort: Standort
+  O.OSTRASSE AS OSTRASSE,           -- Objektstraße: Adresse
+  O.OPLZORT AS OPLZORT,                -- Objekt PLZ/Ort: Standort
   
   -- === BUCHUNGSTEXT ===
   B.TEXT AS BUCHUNGSTEXT,                 -- Buchungstext: Beschreibung
@@ -60,7 +60,7 @@ SELECT
   -- === KOSTENART-ERKENNUNG ===
   CASE 
     WHEN B.TEXT LIKE '%Miete%' THEN 'MIETE'
-    WHEN B.TEXT LIKE '%Nebenkosten%' THEN 'NEBENKOSTEN'
+    WHEN B.TEXT LIKE '%Z3%' THEN 'Z3'
     WHEN B.TEXT LIKE '%Instandhaltung%' THEN 'INSTANDHALTUNG'
     WHEN B.TEXT LIKE '%Reparatur%' THEN 'REPARATUR'
     WHEN B.TEXT LIKE '%Versicherung%' THEN 'VERSICHERUNG'
@@ -68,7 +68,7 @@ SELECT
     WHEN B.TEXT LIKE '%Kaution%' THEN 'KAUTION'
     WHEN B.TEXT LIKE '%Rücklage%' OR B.TEXT LIKE '%Ruecklage%' THEN 'RUECKLAGE'
     WHEN B.TEXT LIKE '%Verwaltung%' THEN 'VERWALTUNG'
-    WHEN B.TEXT LIKE '%Heizung%' THEN 'HEIZKOSTEN'
+    WHEN B.TEXT LIKE '%Heizung%' THEN 'Z4'
     WHEN B.TEXT LIKE '%Wasser%' THEN 'WASSERKOSTEN'
     WHEN B.TEXT LIKE '%Strom%' THEN 'STROMKOSTEN'
     WHEN B.TEXT LIKE '%Müll%' OR B.TEXT LIKE '%Muell%' THEN 'MUELLGEBUEHREN'

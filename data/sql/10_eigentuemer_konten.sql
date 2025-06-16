@@ -27,7 +27,7 @@ SELECT
   
   -- === EIGENTÜMER-INFORMATION ===
   E.EIGNR,                                -- Eigentümernummer (INTEGER): Referenz
-  EA.ENAME || ', ' || EA.EVNAME AS EIGENTUEMER_NAME, -- Eigentümername: Nachname, Vorname
+  EA.ENAME || ', ' || EA.EVNAME AS ENAME, -- Eigentümername: Nachname, Vorname
   CASE 
     WHEN EA.EFIRMA = 'J' THEN 'JURISTISCHE PERSON'
     ELSE 'PRIVATPERSON'
@@ -40,7 +40,7 @@ SELECT
   
   -- === OBJEKT-KONTEXT ===
   O.OBEZ AS OBJEKT_KURZ,                  -- Objektkürzel (VARCHAR): Gebäude-Kürzel
-  O.OSTRASSE AS OBJEKT_STRASSE,           -- Objektstraße (VARCHAR): Gebäudeadresse
+  O.OSTRASSE AS OSTRASSE,           -- Objektstraße (VARCHAR): Gebäudeadresse
   
   -- === RISIKO-BEWERTUNG ===
   CASE 
@@ -52,7 +52,7 @@ SELECT
   END AS RISIKO_STATUS                    -- Risikostatus: Bewertung der Zahlungsmoral
 
 FROM KONTEN K
-  INNER JOIN EIGENTUEMER E ON K.KNR = E.KNR
+  INNER JOIN EIGADR E ON K.KNR = E.KNR
   LEFT JOIN EIGADR EA ON E.EIGNR = EA.EIGNR
   LEFT JOIN WOHNUNG W ON K.ONR = W.ONR AND K.ENR = W.ENR
   LEFT JOIN OBJEKTE O ON K.ONR = O.ONR

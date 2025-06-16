@@ -1,13 +1,13 @@
 {
   "query_info": {
     "file": "18_versammlungen.sql",
-    "generated": "2025-06-16T03:33:47.145696",
+    "generated": "2025-06-16T21:54:36.662012",
     "driver": "firebird-driver",
     "charset": "UTF8",
     "business_purpose": "Professional WEG assembly management with full legal compliance",
     "main_tables": [],
     "total_rows": 52,
-    "execution_time_seconds": 0.050875
+    "execution_time_seconds": 0.050647
   },
   "columns": [
     "VERNR",

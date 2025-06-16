@@ -20,7 +20,7 @@ SELECT
   -- === OBJEKT-IDENTIFIKATION ===
   R.ONR,                                  -- Objektnummer: WEG/Liegenschaft
   O.OBEZ AS OBJEKT_KURZ,                  -- Objektkürzel: Internes Kürzel
-  O.OSTRASSE AS OBJEKT_STRASSE,           -- Objektstraße: Vollständige Adresse
+  O.OSTRASSE AS OSTRASSE,           -- Objektstraße: Vollständige Adresse
   
   -- === RÜCKLAGEN-KONTEXT ===
   R.NR AS RUECKLAGE_NR,                   -- Rücklagen-Nummer: Eindeutige ID

@@ -28,7 +28,7 @@ SELECT
   END AS KKLASSE_BEZEICHNUNG,             -- Calculated: User-friendly Klassifikation
   
   -- === KONTOBESCHREIBUNG ===
-  KONTEN.KBEZ,                            -- Kontobezeichnung (VARCHAR): "Mustermann, Max EG", "Heizkosten"
+  KONTEN.KBEZ,                            -- Kontobezeichnung (VARCHAR): "Mustermann, Max EG", "Z4"
   KONTEN.KNRSTR,                          -- Konto-String (VARCHAR): "B.001.00", "E.002.00" - Lesbare Darstellung
   
   -- === FINANZSTATUS (Layer 3 Basis) ===

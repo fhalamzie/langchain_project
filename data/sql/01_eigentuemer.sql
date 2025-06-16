@@ -75,7 +75,7 @@ SELECT
   COUNT(CASE WHEN EIGENTUEMER.Z1 > 0 THEN 1 END) AS ANZAHL_EIGENTUMSEINHEITEN    -- Einheiten mit Eigentumsanteilen
 
 FROM EIGADR
-  LEFT JOIN EIGENTUEMER ON EIGADR.EIGNR = EIGENTUEMER.EIGNR
+  LEFT JOIN EIGADR ON EIGADR.EIGNR = EIGENTUEMER.EIGNR
 WHERE 
   EIGADR.EIGNR <> -1                      -- Ausschluss der kollektiven WEG-Eigentümerschaft (-1)
   AND EIGADR.EIGNR > 0                    -- Nur positive, gültige IDs
