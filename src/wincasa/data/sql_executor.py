@@ -9,10 +9,10 @@ import os
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
-import firebird.driver
 import pandas as pd
 
-from config_loader import WincasaConfig
+from wincasa.utils.config_loader import WincasaConfig
+from wincasa.data.db_singleton import get_db_connection, execute_query
 
 logger = logging.getLogger(__name__)
 
@@ -21,7 +21,7 @@ class WincasaSQLExecutor:
     
     def __init__(self):
         self.config = WincasaConfig()
-        self.connection = None
+        # Use singleton connection instead of own connection
         self.sql_templates = self._load_sql_templates()
     
     def _load_sql_templates(self) -> Dict[str, str]:
@@ -90,34 +90,20 @@ class WincasaSQLExecutor:
         return queries
     
     def connect(self) -> bool:
-        """Verbindung zur Datenbank aufbauen"""
+        """Verbindung zur Datenbank aufbauen - uses singleton"""
         try:
-            if self.connection:
-                return True
-            
-            db_config = self.config.get_db_config()
-            
-            self.connection = firebird.driver.connect(
-                database=db_config['database'],
-                user=db_config['user'],
-                password=db_config['password'],
-                charset=db_config['charset']
-            )
-            
-            logger.info("Datenbank-Verbindung erfolgreich")
-            return True
-            
+            # Just check if we can get the singleton connection
+            conn = get_db_connection()
+            return not conn.closed
         except Exception as e:
             logger.error(f"Datenbank-Verbindung fehlgeschlagen: {e}")
             return False
     
     def execute_query(self, query: str, params: Dict[str, Any] = None) -> pd.DataFrame:
         """Führt SQL-Query aus und gibt DataFrame zurück"""
-        if not self.connect():
-            raise Exception("Keine Datenbank-Verbindung")
-        
         try:
-            cursor = self.connection.cursor()
+            conn = get_db_connection()
+            cursor = conn.cursor()
             
             # Parameter ersetzen (einfache Implementierung)
             if params:
@@ -211,6 +197,122 @@ class WincasaSQLExecutor:
             return None
         
         return df.iloc[0].to_dict()
+    
+    def search_owners_by_address(self, street: str, postal_code: str = None, city: str = None) -> Dict[str, Any]:
+        """Search for owners by address"""
+        try:
+            query = """
+            SELECT DISTINCT
+                E.EIGNR,
+                E.EVORNAME,
+                E.ENAME,
+                E.EFIRMA,
+                EA.EASTR AS STRASSE,
+                EA.EAPLZ AS PLZ,
+                EA.EAORT AS ORT,
+                O.OBEZ AS LIEGENSCHAFT
+            FROM EIGENTUEMER E
+            LEFT JOIN EIGADR EA ON E.EIGNR = EA.EIGNR
+            LEFT JOIN OBJEKTE O ON E.EIGNR = O.EIGNR
+            WHERE E.EIGNR >= 890
+            """
+            
+            conditions = []
+            params = {}
+            
+            if street:
+                conditions.append("(O.OBEZ LIKE :street OR EA.EASTR LIKE :street)")
+                params['street'] = f"%{street}%"
+            
+            if postal_code:
+                conditions.append("EA.EAPLZ = :plz")
+                params['plz'] = postal_code
+                
+            if city:
+                conditions.append("EA.EAORT LIKE :city")
+                params['city'] = f"%{city}%"
+            
+            if conditions:
+                query += " AND " + " AND ".join(conditions)
+            
+            query += " ORDER BY E.ENAME"
+            
+            df = self.execute_query(query, params)
+            return {
+                'success': True,
+                'data': df.to_dict('records') if not df.empty else [],
+                'count': len(df)
+            }
+            
+        except Exception as e:
+            logger.error(f"Owner search failed: {e}")
+            return {
+                'success': False,
+                'data': [],
+                'error': str(e)
+            }
+    
+    def search_tenants_by_address(self, street: str, postal_code: str = None, city: str = None) -> Dict[str, Any]:
+        """Search for tenants by address"""
+        try:
+            query = """
+            SELECT DISTINCT
+                BA.BEWNR,
+                BA.BVNAME,
+                BA.BNAME,
+                BA.BSTR AS STRASSE,
+                BA.BPLZORT AS PLZ_ORT,
+                BA.BTEL AS TELEFON,
+                BA.BEMAIL AS EMAIL,
+                B.ONR,
+                B.ENR,
+                B.VBEGINN,
+                B.VENDE,
+                W.EBEZ AS LAGE,
+                O.OBEZ AS LIEGENSCHAFT
+            FROM BEWADR BA
+            RIGHT OUTER JOIN BEWOHNER B ON BA.BEWNR = B.BEWNR
+            LEFT OUTER JOIN WOHNUNG W ON B.ONR = W.ONR AND B.ENR = W.ENR
+            LEFT OUTER JOIN OBJEKTE O ON B.ONR = O.ONR
+            WHERE BA.BEWNR >= 0
+              AND (B.VENDE >= CURRENT_DATE OR B.VENDE IS NULL)
+              AND O.ONR < 890
+            """
+            
+            conditions = []
+            params = {}
+            
+            if street:
+                conditions.append("(O.OBEZ LIKE :street OR BA.BSTR LIKE :street)")
+                params['street'] = f"%{street}%"
+            
+            if postal_code:
+                conditions.append("BA.BPLZORT LIKE :plz")
+                params['plz'] = f"%{postal_code}%"
+                
+            if city:
+                conditions.append("BA.BPLZORT LIKE :city")
+                params['city'] = f"%{city}%"
+            
+            if conditions:
+                query += " AND " + " AND ".join(conditions)
+            
+            query += " ORDER BY BA.BEWNR"
+            
+            df = self.execute_query(query, params)
+            return {
+                'success': True,
+                'data': df.to_dict('records') if not df.empty else [],
+                'count': len(df)
+            }
+            
+        except Exception as e:
+            logger.error(f"Tenant search failed: {e}")
+            return {
+                'success': False,
+                'data': [],
+                'error': str(e)
+            }
     
     def close(self):
         """Schließt Datenbank-Verbindung"""

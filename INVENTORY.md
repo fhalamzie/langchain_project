@@ -5,7 +5,8 @@
 ### Core Package: `src/wincasa/`
 
 #### Core Modules (`src/wincasa/core/`)
-- streamlit_app.py - Haupt-UI mit 5-Modi-Auswahl (Import: `wincasa.core.streamlit_app`)
+- ~~streamlit_app.py~~ - REMOVED Session 16 - Ersetzt durch benchmark_streamlit.py
+- benchmark_streamlit.py - **NEW Session 16** - Benchmark UI für 5-Modi-Vergleich (Import: `wincasa.core.benchmark_streamlit`)
 - wincasa_query_engine.py - Unified Engine (4-Pfad-Routing mit Mode 6) (Import: `wincasa.core.wincasa_query_engine`)
 - semantic_template_engine.py - Mode 6: Semantic Templates (95% Erkennung) (Import: `wincasa.core.semantic_template_engine`)
 - llm_handler.py - Legacy-Modi (1-4) OpenAI-Integration (Import: `wincasa.core.llm_handler`)
@@ -18,6 +19,7 @@
 - data_access_layer.py - Unified Interface SQL/JSON (Import: `wincasa.data.data_access_layer`)
 - sql_executor.py - Firebird SQL-Ausführung (Import: `wincasa.data.sql_executor`)
 - json_exporter.py - SQL→JSON Export-Pipeline (Import: `wincasa.data.json_exporter`)
+- db_singleton.py - **NEW Session 16** - Firebird Singleton Connection (Import: `wincasa.data.db_singleton`)
 
 #### Knowledge Base (`src/wincasa/knowledge/`)
 - knowledge_base_loader.py - 400+ Feldmappings Runtime (Import: `wincasa.knowledge.knowledge_base_loader`)
@@ -34,6 +36,7 @@
 - config_loader.py - Konfigurationsverwaltung (Import: `wincasa.utils.config_loader`)
 - benchmark_current_modes.py - Performance-Vergleich (Import: `wincasa.utils.benchmark_current_modes`)
 - debug_single_query.py - Query-Debugging (Import: `wincasa.utils.debug_single_query`)
+- text_to_table_parser.py - **NEW Session 16** - Text zu Tabelle Parser (Import: `wincasa.utils.text_to_table_parser`)
 
 ### Testing Suite (`tests/`)
 
@@ -129,6 +132,10 @@
 - ecosystem.config.js - PM2 Konfiguration für WINCASA Server
 - supervisord.conf - Alternative Supervisord Konfiguration (nicht verwendet)
 - server_control.sh - Einfaches Server Control Script (deprecated)
+
+### HTMX UI [SessionID: benchmark-ui-20250616]
+- htmx/benchmark.html - **NEW Session 16** - Statische HTML Benchmark UI
+- htmx/server.py - **NEW Session 16** - Python HTTP Server für HTMX
 
 ### Archive (`archive/`)
 - Historische Dateien und veraltete Implementierungen

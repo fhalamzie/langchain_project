@@ -166,3 +166,32 @@
 - API documentation updated
 - All module references validated
 
+### Session 16: Benchmark-UI-Implementation - 2025-06-16
+- Status: completed
+- **Context**: User revealed "totally wrong UI context" - needed benchmark tool comparing 5 modes, not complex UI
+- **Major Changes**:
+  - Deleted original streamlit_app.py (1328 lines) with ghost button issues
+  - Created two new benchmark UIs (Streamlit + HTMX) from scratch
+- **New Modules**:
+  - src/wincasa/core/benchmark_streamlit.py - Clean Streamlit benchmark implementation
+  - htmx/benchmark.html - Static HTML with HTMX for lightweight alternative
+  - htmx/server.py - Python HTTP server for HTMX version
+  - src/wincasa/data/db_singleton.py - Database connection singleton for embedded Firebird
+  - src/wincasa/utils/text_to_table_parser.py - Parser for structured text to table conversion
+- **Features Implemented**:
+  - Side-by-side comparison of all 5 WINCASA modes
+  - LLM model selection (gpt-4o-mini, gpt-4o, o1-mini, o1)
+  - JSON/Table/Text view switching for results
+  - Automatic table formatting for structured data
+  - CSV and JSON export functionality
+  - Real-time cost and performance metrics
+- **Database Fix**: 
+  - Resolved Firebird embedded "connection shutdown" error
+  - Implemented singleton pattern for shared database connection
+  - Both UIs can now run simultaneously on ports 8668/8669
+- **UI Enhancements**:
+  - Added JSON renderer for JSON-formatted answers
+  - Text-to-table parser for WINCASA formatted output
+  - Responsive design with proper CSS styling
+- **Result**: Clean, focused benchmark tools for mode comparison
+

@@ -57,20 +57,35 @@ WINCASA implementiert eine Dual-Engine Architecture mit intelligentem Query-Rout
 
 ### 1. Presentation Layer
 
-**src/wincasa/core/streamlit_app.py**
-- Session State Management mit unique button keys
-- Full-width Container Layout für Ergebnisse  
-- 5-Modi Checkbox System
-- Tab-basierte Ergebnisanzeige
+**REMOVED: src/wincasa/core/streamlit_app.py** (Session 16)
+- Deleted due to "wrong UI context" - had ghost button issues
+- Replaced by benchmark UIs below
+
+**NEW: src/wincasa/core/benchmark_streamlit.py** (Session 16)
+- Clean benchmark UI for comparing all 5 modes
+- LLM model selection (gpt-4o-mini, gpt-4o, o1-mini, o1)
+- Table/JSON/Text view switching
+- CSV and JSON export functionality
+- Real-time performance metrics
+
+**NEW: htmx/benchmark.html + htmx/server.py** (Session 16)
+- Lightweight HTMX alternative to Streamlit
+- Static HTML with minimal JavaScript
+- Python HTTP server for API handling
+- Same features as Streamlit version
 
 **Package Structure (src/wincasa/)**:
 ```
 src/wincasa/
 ├── core/                  # Core application modules
-│   ├── streamlit_app.py   # Main Streamlit application
+│   ├── benchmark_streamlit.py   # NEW: Benchmark UI (Session 16)
+│   ├── llm_handler.py     # LLM interaction handler
 │   └── wincasa_query_engine.py  # Unified query engine
 ├── data/                  # Data processing layer
+│   ├── data_access_layer.py     # Unified data access
+│   ├── db_singleton.py    # NEW: Firebird singleton (Session 16)
 │   ├── layer4_json_loader.py    # JSON data handling
+│   ├── sql_executor.py    # SQL query execution
 │   └── sql/               # SQL query definitions
 ├── knowledge/             # Knowledge base system
 │   ├── knowledge_extractor.py   # Auto field mapping
@@ -81,8 +96,12 @@ src/wincasa/
 │   └── wincasa_unified_logger.py
 └── utils/                 # Utilities and configuration
     ├── config_loader.py   # Configuration management
-    ├── llm_handler.py     # LLM interaction
+    ├── text_to_table_parser.py  # NEW: Text parser (Session 16)
     └── VERSION_*.md       # System prompt templates
+
+htmx/                      # NEW: HTMX UI (Session 16)
+├── benchmark.html         # Static HTML interface
+└── server.py             # Python HTTP server
 ```
 
 ### 2. Intelligence Layer
@@ -228,7 +247,7 @@ Tier 4: Legacy Fallback (100% Coverage Guarantee)
 - SQL Injection Prevention via Parameter-Substitution
 - 100k Row Limit für Query Protection
 
-### Process Management Layer (NEW)
+### Process Management Layer
 **PM2 Process Manager Integration**
 - **ecosystem.config.js**: PM2 configuration with environment setup
 - **tools/scripts/pm2-wincasa.sh**: Unified server management script
@@ -245,6 +264,16 @@ Tier 4: Legacy Fallback (100% Coverage Guarantee)
   ./tools/scripts/pm2-wincasa.sh status   # Check status
   pm2 monit                               # Live dashboard
   ```
+
+### Database Connection Management (NEW - Session 16)
+**Firebird Embedded Singleton Pattern**
+- **src/wincasa/data/db_singleton.py**: Thread-safe singleton connection
+- **Problem Solved**: Firebird embedded mode only allows one connection
+- **Implementation**:
+  - Double-checked locking for thread safety
+  - Automatic reconnection on closed connection
+  - Shared across all components (Streamlit, HTMX, Query Engine)
+- **Result**: Multiple UIs can run simultaneously without conflicts
 
 ### Feature Flag System
 ```python
