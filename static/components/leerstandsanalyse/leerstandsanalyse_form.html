@@ -1,0 +1,612 @@
+<form 
+    id="leerstandsanalyse-form"
+    hx-post="/api/leerstandsanalyse"
+    hx-trigger="submit"
+    hx-target="#result-container"
+    hx-swap="innerHTML"
+    hx-indicator="#loading-indicator"
+    class="space-y-6"
+    x-data="{ formValid: false, errors: {} }"
+>
+    <div class="card bg-base-100 shadow-xl">
+        <div class="card-body">
+            <h2 class="card-title text-2xl mb-6">
+                <i class="fas fa-building mr-2"></i>
+                Leerstandsanalyse
+            </h2>
+            
+            <!-- Loading Indicator -->
+            <div id="loading-indicator" class="htmx-indicator">
+                <div class="flex justify-center items-center p-4">
+                    <span class="loading loading-spinner loading-lg"></span>
+                </div>
+            </div>
+
+            <!-- Identifikatoren -->
+            <div class="divider">Identifikatoren</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                <div class="form-control w-full">
+                    <label class="label" for="ONR">
+                        <span class="label-text">
+                            Gebäude / Liegenschaft
+                             <span class="text-error">*</span>
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="ONR"
+                        name="ONR"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        required required
+                        
+                        @blur="validateField('ONR')"
+                    />
+                    <label class="label" x-show="errors.ONR">
+                        <span class="label-text-alt text-error" x-text="errors.ONR"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="ENR">
+                        <span class="label-text">
+                            Mieteinheit / Apartment
+                             <span class="text-error">*</span>
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="ENR"
+                        name="ENR"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        required required
+                        
+                        @blur="validateField('ENR')"
+                    />
+                    <label class="label" x-show="errors.ENR">
+                        <span class="label-text-alt text-error" x-text="errors.ENR"></span>
+                    </label>
+                </div>
+
+            </div>
+
+            <!-- Allgemeine Informationen -->
+            <div class="divider">Allgemeine Informationen</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                <div class="form-control w-full">
+                    <label class="label" for="WOHNUNGSBEZEICHNUNG">
+                        <span class="label-text">
+                            Wohnungsbezeichnung
+                             <span class="text-error">*</span>
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="WOHNUNGSBEZEICHNUNG"
+                        name="WOHNUNGSBEZEICHNUNG"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        required required
+                        
+                        @blur="validateField('WOHNUNGSBEZEICHNUNG')"
+                    />
+                    <label class="label" x-show="errors.WOHNUNGSBEZEICHNUNG">
+                        <span class="label-text-alt text-error" x-text="errors.WOHNUNGSBEZEICHNUNG"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="EINHEIT_TYP">
+                        <span class="label-text">
+                            Einheit Typ
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="EINHEIT_TYP"
+                        name="EINHEIT_TYP"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('EINHEIT_TYP')"
+                    />
+                    <label class="label" x-show="errors.EINHEIT_TYP">
+                        <span class="label-text-alt text-error" x-text="errors.EINHEIT_TYP"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full md:col-span-2">
+                    <label class="label" for="NOTIZ">
+                        <span class="label-text">
+                            Notiz
+                            
+                        </span>
+                    </label>
+                    <textarea 
+                        id="NOTIZ"
+                        name="NOTIZ"
+                        placeholder="None"
+                        class="textarea textarea-bordered w-full"
+                        rows="4"
+                        
+                    ></textarea>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="OBJEKT_KURZ">
+                        <span class="label-text">
+                            Objekt Kurz
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="OBJEKT_KURZ"
+                        name="OBJEKT_KURZ"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('OBJEKT_KURZ')"
+                    />
+                    <label class="label" x-show="errors.OBJEKT_KURZ">
+                        <span class="label-text-alt text-error" x-text="errors.OBJEKT_KURZ"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="VERMIETUNGSSTATUS">
+                        <span class="label-text">
+                            Current rental status
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="VERMIETUNGSSTATUS"
+                        name="VERMIETUNGSSTATUS"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('VERMIETUNGSSTATUS')"
+                    />
+                    <label class="label" x-show="errors.VERMIETUNGSSTATUS">
+                        <span class="label-text-alt text-error" x-text="errors.VERMIETUNGSSTATUS"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="LEERSTAND_TAGE">
+                        <span class="label-text">
+                            Days vacant since becoming available
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="LEERSTAND_TAGE"
+                        name="LEERSTAND_TAGE"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('LEERSTAND_TAGE')"
+                    />
+                    <label class="label" x-show="errors.LEERSTAND_TAGE">
+                        <span class="label-text-alt text-error" x-text="errors.LEERSTAND_TAGE"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="LEERSTAND_MONATE">
+                        <span class="label-text">
+                            Months vacant for reporting
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="LEERSTAND_MONATE"
+                        name="LEERSTAND_MONATE"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('LEERSTAND_MONATE')"
+                    />
+                    <label class="label" x-show="errors.LEERSTAND_MONATE">
+                        <span class="label-text-alt text-error" x-text="errors.LEERSTAND_MONATE"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="MIETAUSFALL_GESAMT">
+                        <span class="label-text">
+                            Total rental loss due to vacancy
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="MIETAUSFALL_GESAMT"
+                        name="MIETAUSFALL_GESAMT"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('MIETAUSFALL_GESAMT')"
+                    />
+                    <label class="label" x-show="errors.MIETAUSFALL_GESAMT">
+                        <span class="label-text-alt text-error" x-text="errors.MIETAUSFALL_GESAMT"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="MIETAUSFALL_MONATLICH">
+                        <span class="label-text">
+                            Mietausfall Monatlich
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="MIETAUSFALL_MONATLICH"
+                        name="MIETAUSFALL_MONATLICH"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('MIETAUSFALL_MONATLICH')"
+                    />
+                    <label class="label" x-show="errors.MIETAUSFALL_MONATLICH">
+                        <span class="label-text-alt text-error" x-text="errors.MIETAUSFALL_MONATLICH"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="JAHRESPOTENZIAL">
+                        <span class="label-text">
+                            Annual rental potential if occupied
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="JAHRESPOTENZIAL"
+                        name="JAHRESPOTENZIAL"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('JAHRESPOTENZIAL')"
+                    />
+                    <label class="label" x-show="errors.JAHRESPOTENZIAL">
+                        <span class="label-text-alt text-error" x-text="errors.JAHRESPOTENZIAL"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="LEERSTANDSKATEGORIE">
+                        <span class="label-text">
+                            Vacancy duration category
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="LEERSTANDSKATEGORIE"
+                        name="LEERSTANDSKATEGORIE"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('LEERSTANDSKATEGORIE')"
+                    />
+                    <label class="label" x-show="errors.LEERSTANDSKATEGORIE">
+                        <span class="label-text-alt text-error" x-text="errors.LEERSTANDSKATEGORIE"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="VERMIETUNGSPRIORITAET">
+                        <span class="label-text">
+                            Rental priority based on financial impact
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="VERMIETUNGSPRIORITAET"
+                        name="VERMIETUNGSPRIORITAET"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('VERMIETUNGSPRIORITAET')"
+                    />
+                    <label class="label" x-show="errors.VERMIETUNGSPRIORITAET">
+                        <span class="label-text-alt text-error" x-text="errors.VERMIETUNGSPRIORITAET"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="MARKTVERGLEICH">
+                        <span class="label-text">
+                            Marktvergleich
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="MARKTVERGLEICH"
+                        name="MARKTVERGLEICH"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('MARKTVERGLEICH')"
+                    />
+                    <label class="label" x-show="errors.MARKTVERGLEICH">
+                        <span class="label-text-alt text-error" x-text="errors.MARKTVERGLEICH"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="LETZTER_AUSZUG">
+                        <span class="label-text">
+                            Letzter Auszug
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="LETZTER_AUSZUG"
+                        name="LETZTER_AUSZUG"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('LETZTER_AUSZUG')"
+                    />
+                    <label class="label" x-show="errors.LETZTER_AUSZUG">
+                        <span class="label-text-alt text-error" x-text="errors.LETZTER_AUSZUG"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="REVENUE_RECOVERY_SCORE">
+                        <span class="label-text">
+                            Revenue recovery score for prioritization
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="REVENUE_RECOVERY_SCORE"
+                        name="REVENUE_RECOVERY_SCORE"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('REVENUE_RECOVERY_SCORE')"
+                    />
+                    <label class="label" x-show="errors.REVENUE_RECOVERY_SCORE">
+                        <span class="label-text-alt text-error" x-text="errors.REVENUE_RECOVERY_SCORE"></span>
+                    </label>
+                </div>
+
+            </div>
+
+            <!-- Adresse -->
+            <div class="divider">Adresse</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                <div class="form-control w-full">
+                    <label class="label" for="OBJEKT_STRASSE">
+                        <span class="label-text">
+                            Straße
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="OBJEKT_STRASSE"
+                        name="OBJEKT_STRASSE"
+                        placeholder="Musterstraße 1"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('OBJEKT_STRASSE')"
+                    />
+                    <label class="label" x-show="errors.OBJEKT_STRASSE">
+                        <span class="label-text-alt text-error" x-text="errors.OBJEKT_STRASSE"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="OBJEKT_PLZORT">
+                        <span class="label-text">
+                            Postleitzahl
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="OBJEKT_PLZORT"
+                        name="OBJEKT_PLZORT"
+                        placeholder="12345"
+                        class="input input-bordered w-full"
+                        pattern="\d{5}"
+                        
+                        @blur="validateField('OBJEKT_PLZORT')"
+                    />
+                    <label class="label" x-show="errors.OBJEKT_PLZORT">
+                        <span class="label-text-alt text-error" x-text="errors.OBJEKT_PLZORT"></span>
+                    </label>
+                </div>
+
+            </div>
+
+            <!-- Finanzinformationen -->
+            <div class="divider">Finanzinformationen</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                <div class="form-control w-full">
+                    <label class="label" for="MARKT_KALTMIETE">
+                        <span class="label-text">
+                            Kaltmiete
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="MARKT_KALTMIETE"
+                        name="MARKT_KALTMIETE"
+                        placeholder="0,00 €"
+                        class="input input-bordered w-full"
+                        min="0"
+                        step="0.01" min="0"
+                        @blur="validateField('MARKT_KALTMIETE')"
+                    />
+                    <label class="label" x-show="errors.MARKT_KALTMIETE">
+                        <span class="label-text-alt text-error" x-text="errors.MARKT_KALTMIETE"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="MARKT_NEBENKOSTEN">
+                        <span class="label-text">
+                            Nebenkosten
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="MARKT_NEBENKOSTEN"
+                        name="MARKT_NEBENKOSTEN"
+                        placeholder="0,00 €"
+                        class="input input-bordered w-full"
+                        min="0"
+                        step="0.01" min="0"
+                        @blur="validateField('MARKT_NEBENKOSTEN')"
+                    />
+                    <label class="label" x-show="errors.MARKT_NEBENKOSTEN">
+                        <span class="label-text-alt text-error" x-text="errors.MARKT_NEBENKOSTEN"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="MARKT_WARMMIETE">
+                        <span class="label-text">
+                            Warmmiete
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="MARKT_WARMMIETE"
+                        name="MARKT_WARMMIETE"
+                        placeholder="0,00 €"
+                        class="input input-bordered w-full"
+                        min="0"
+                        step="0.01" min="0"
+                        @blur="validateField('MARKT_WARMMIETE')"
+                    />
+                    <label class="label" x-show="errors.MARKT_WARMMIETE">
+                        <span class="label-text-alt text-error" x-text="errors.MARKT_WARMMIETE"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="LETZTE_KALTMIETE">
+                        <span class="label-text">
+                            Kaltmiete
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="LETZTE_KALTMIETE"
+                        name="LETZTE_KALTMIETE"
+                        placeholder="0,00 €"
+                        class="input input-bordered w-full"
+                        min="0"
+                        step="0.01" min="0"
+                        @blur="validateField('LETZTE_KALTMIETE')"
+                    />
+                    <label class="label" x-show="errors.LETZTE_KALTMIETE">
+                        <span class="label-text-alt text-error" x-text="errors.LETZTE_KALTMIETE"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="LETZTE_NEBENKOSTEN">
+                        <span class="label-text">
+                            Nebenkosten
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="LETZTE_NEBENKOSTEN"
+                        name="LETZTE_NEBENKOSTEN"
+                        placeholder="0,00 €"
+                        class="input input-bordered w-full"
+                        min="0"
+                        step="0.01" min="0"
+                        @blur="validateField('LETZTE_NEBENKOSTEN')"
+                    />
+                    <label class="label" x-show="errors.LETZTE_NEBENKOSTEN">
+                        <span class="label-text-alt text-error" x-text="errors.LETZTE_NEBENKOSTEN"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="LETZTE_WARMMIETE">
+                        <span class="label-text">
+                            Warmmiete
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="LETZTE_WARMMIETE"
+                        name="LETZTE_WARMMIETE"
+                        placeholder="0,00 €"
+                        class="input input-bordered w-full"
+                        min="0"
+                        step="0.01" min="0"
+                        @blur="validateField('LETZTE_WARMMIETE')"
+                    />
+                    <label class="label" x-show="errors.LETZTE_WARMMIETE">
+                        <span class="label-text-alt text-error" x-text="errors.LETZTE_WARMMIETE"></span>
+                    </label>
+                </div>
+
+            </div>
+
+            <!-- Form Actions -->
+            <div class="card-actions justify-end mt-6">
+                <button type="reset" class="btn btn-ghost">
+                    <i class="fas fa-undo mr-2"></i>
+                    Zurücksetzen
+                </button>
+                <button type="submit" 
+                        class="btn btn-primary"
+                        :disabled="!formValid">
+                    <i class="fas fa-save mr-2"></i>
+                    Speichern
+                </button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<!-- Result Container -->
+<div id="result-container" class="mt-6"></div>

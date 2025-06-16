@@ -1,0 +1,337 @@
+{
+  "entity_name": "sonderentnahmen",
+  "german_title": "Sonderentnahmen",
+  "description": "sonderentnahmen",
+  "primary_key": "ONR",
+  "display_field": "RUECKLAGE_NAME",
+  "relationships": {},
+  "query_templates": [],
+  "fields": [
+    {
+      "name": "ONR",
+      "german_label": "Gebäude / Liegenschaft",
+      "field_type": "text",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "56",
+      "is_computed": false,
+      "group": "Identifikatoren"
+    },
+    {
+      "name": "OBJEKT_KURZ",
+      "german_label": "Objekt Kurz",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "HEINR5",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "OBJEKT_STRASSE",
+      "german_label": "Straße",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": "Musterstraße 1",
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "Heinrichstr. 5",
+      "is_computed": false,
+      "group": "Adresse"
+    },
+    {
+      "name": "RUECKLAGE_NR",
+      "german_label": "Ruecklage Nr",
+      "field_type": "text",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "132",
+      "is_computed": false,
+      "group": "Identifikatoren"
+    },
+    {
+      "name": "RUECKLAGE_NAME",
+      "german_label": "Ruecklage Name",
+      "field_type": "text",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "Rücklagen",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "SONDER_ENTNAHME_BETRAG",
+      "german_label": "Special withdrawal amount from reserves",
+      "field_type": "currency",
+      "is_required": false,
+      "validation_rules": [
+        "min=0"
+      ],
+      "placeholder": "0,00 €",
+      "help_text": "Special withdrawal amount from reserves",
+      "related_entity": null,
+      "sample_value": "0.0",
+      "is_computed": false,
+      "group": "Finanzinformationen"
+    },
+    {
+      "name": "SONDER_ENTNAHME_KONTO",
+      "german_label": "Sonder Entnahme Konto",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "ENTNAHME_KONTO_BEZEICHNUNG",
+      "german_label": "Entnahme Konto Bezeichnung",
+      "field_type": "text",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "SONDER_ZUEFUEHRUNG_BETRAG",
+      "german_label": "Betrag",
+      "field_type": "currency",
+      "is_required": false,
+      "validation_rules": [
+        "min=0"
+      ],
+      "placeholder": "0,00 €",
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "20068.47",
+      "is_computed": true,
+      "group": "Finanzinformationen"
+    },
+    {
+      "name": "SONDER_ZUEFUEHRUNG_KONTO",
+      "german_label": "Sonder Zuefuehrung Konto",
+      "field_type": "number",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "57005",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "ZUEFUEHRUNG_KONTO_BEZEICHNUNG",
+      "german_label": "Zuefuehrung Konto Bezeichnung",
+      "field_type": "text",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "Sonderzuführung Rücklage",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "NETTO_SONDERBEWEGUNG",
+      "german_label": "Netto Sonderbewegung",
+      "field_type": "number",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "20068.47",
+      "is_computed": true,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "MAX_BEWEGUNG",
+      "german_label": "Max Bewegung",
+      "field_type": "number",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "20068.47",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "BEWEGUNGSTYP",
+      "german_label": "Bewegungstyp",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "NUR ZUFÜHRUNGEN       ",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "BETRAGSKLASSE",
+      "german_label": "Betrag",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "GROSSBETRAG (10K-50K EUR)      ",
+      "is_computed": false,
+      "group": "Finanzinformationen"
+    },
+    {
+      "name": "PERIODE_VON",
+      "german_label": "Periode Von",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "2024-01-01",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "PERIODE_BIS",
+      "german_label": "Periode Bis",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "2024-12-31",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "GESCHAEFTSJAHR",
+      "german_label": "Business year",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": "Business year",
+      "related_entity": null,
+      "sample_value": "2024 ",
+      "is_computed": true,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "ENTNAHME_PRO_EINHEIT",
+      "german_label": "Entnahme Pro Einheit",
+      "field_type": "number",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "0.0",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "ENTNAHME_PRO_QM",
+      "german_label": "Quadratmeter",
+      "field_type": "number",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "0.0",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "ZWECK_HYPOTHESE",
+      "german_label": "Zweck Hypothese",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "KAPITALZUFÜHRUNG             ",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "RISIKO_BEWERTUNG",
+      "german_label": "Risiko Bewertung",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "KEINE ENTNAHME                      ",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "ANZAHL_EINHEITEN",
+      "german_label": "Anzahl Einheiten",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "GESAMTFLAECHE_QM",
+      "german_label": "Quadratmeter",
+      "field_type": "number",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "0.0",
+      "is_computed": true,
+      "group": "Allgemeine Informationen"
+    }
+  ]
+}

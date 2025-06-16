@@ -1,0 +1,706 @@
+<form 
+    id="instandhaltung-form"
+    hx-post="/api/instandhaltung"
+    hx-trigger="submit"
+    hx-target="#result-container"
+    hx-swap="innerHTML"
+    hx-indicator="#loading-indicator"
+    class="space-y-6"
+    x-data="{ formValid: false, errors: {} }"
+>
+    <div class="card bg-base-100 shadow-xl">
+        <div class="card-body">
+            <h2 class="card-title text-2xl mb-6">
+                <i class="fas fa-building mr-2"></i>
+                Instandhaltung / Wartung
+            </h2>
+            
+            <!-- Loading Indicator -->
+            <div id="loading-indicator" class="htmx-indicator">
+                <div class="flex justify-center items-center p-4">
+                    <span class="loading loading-spinner loading-lg"></span>
+                </div>
+            </div>
+
+            <!-- Identifikatoren -->
+            <div class="divider">Identifikatoren</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                <div class="form-control w-full">
+                    <label class="label" for="ONR">
+                        <span class="label-text">
+                            Gebäude / Liegenschaft
+                             <span class="text-error">*</span>
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="ONR"
+                        name="ONR"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        required required
+                        
+                        @blur="validateField('ONR')"
+                    />
+                    <label class="label" x-show="errors.ONR">
+                        <span class="label-text-alt text-error" x-text="errors.ONR"></span>
+                    </label>
+                </div>
+
+            </div>
+
+            <!-- Allgemeine Informationen -->
+            <div class="divider">Allgemeine Informationen</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                <div class="form-control w-full">
+                    <label class="label" for="OBJEKT_KURZ">
+                        <span class="label-text">
+                            Objekt Kurz
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="OBJEKT_KURZ"
+                        name="OBJEKT_KURZ"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('OBJEKT_KURZ')"
+                    />
+                    <label class="label" x-show="errors.OBJEKT_KURZ">
+                        <span class="label-text-alt text-error" x-text="errors.OBJEKT_KURZ"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="WOHNFLAECHE">
+                        <span class="label-text">
+                            Wohnflaeche
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="WOHNFLAECHE"
+                        name="WOHNFLAECHE"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('WOHNFLAECHE')"
+                    />
+                    <label class="label" x-show="errors.WOHNFLAECHE">
+                        <span class="label-text-alt text-error" x-text="errors.WOHNFLAECHE"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="EINHEITEN">
+                        <span class="label-text">
+                            Einheiten
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="EINHEITEN"
+                        name="EINHEITEN"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('EINHEITEN')"
+                    />
+                    <label class="label" x-show="errors.EINHEITEN">
+                        <span class="label-text-alt text-error" x-text="errors.EINHEITEN"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="JAHR">
+                        <span class="label-text">
+                            Jahr
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="JAHR"
+                        name="JAHR"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('JAHR')"
+                    />
+                    <label class="label" x-show="errors.JAHR">
+                        <span class="label-text-alt text-error" x-text="errors.JAHR"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="MONAT">
+                        <span class="label-text">
+                            Monat
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="MONAT"
+                        name="MONAT"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('MONAT')"
+                    />
+                    <label class="label" x-show="errors.MONAT">
+                        <span class="label-text-alt text-error" x-text="errors.MONAT"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="KONTONUMMER">
+                        <span class="label-text">
+                            Kontonummer
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="KONTONUMMER"
+                        name="KONTONUMMER"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('KONTONUMMER')"
+                    />
+                    <label class="label" x-show="errors.KONTONUMMER">
+                        <span class="label-text-alt text-error" x-text="errors.KONTONUMMER"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="KATEGORIE">
+                        <span class="label-text">
+                            Instandhaltung / Wartung
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="KATEGORIE"
+                        name="KATEGORIE"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('KATEGORIE')"
+                    />
+                    <label class="label" x-show="errors.KATEGORIE">
+                        <span class="label-text-alt text-error" x-text="errors.KATEGORIE"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label cursor-pointer">
+                        <span class="label-text">Anzahl Buchungen</span>
+                        <input 
+                            type="checkbox"
+                            id="ANZAHL_BUCHUNGEN"
+                            name="ANZAHL_BUCHUNGEN"
+                            class="checkbox checkbox-primary"
+                            value="1"
+                        />
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label cursor-pointer">
+                        <span class="label-text">Anzahl Belege</span>
+                        <input 
+                            type="checkbox"
+                            id="ANZAHL_BELEGE"
+                            name="ANZAHL_BELEGE"
+                            class="checkbox checkbox-primary"
+                            value="1"
+                        />
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="MWST_GESAMT">
+                        <span class="label-text">
+                            Mwst Gesamt
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="MWST_GESAMT"
+                        name="MWST_GESAMT"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('MWST_GESAMT')"
+                    />
+                    <label class="label" x-show="errors.MWST_GESAMT">
+                        <span class="label-text-alt text-error" x-text="errors.MWST_GESAMT"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label cursor-pointer">
+                        <span class="label-text">Anzahl Mitarbeiter</span>
+                        <input 
+                            type="checkbox"
+                            id="ANZAHL_MITARBEITER"
+                            name="ANZAHL_MITARBEITER"
+                            class="checkbox checkbox-primary"
+                            value="1"
+                        />
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="ERSTE_BUCHUNG">
+                        <span class="label-text">
+                            Erste Buchung
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="ERSTE_BUCHUNG"
+                        name="ERSTE_BUCHUNG"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('ERSTE_BUCHUNG')"
+                    />
+                    <label class="label" x-show="errors.ERSTE_BUCHUNG">
+                        <span class="label-text-alt text-error" x-text="errors.ERSTE_BUCHUNG"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="LETZTE_BUCHUNG">
+                        <span class="label-text">
+                            Letzte Buchung
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="LETZTE_BUCHUNG"
+                        name="LETZTE_BUCHUNG"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('LETZTE_BUCHUNG')"
+                    />
+                    <label class="label" x-show="errors.LETZTE_BUCHUNG">
+                        <span class="label-text-alt text-error" x-text="errors.LETZTE_BUCHUNG"></span>
+                    </label>
+                </div>
+
+            </div>
+
+            <!-- Adresse -->
+            <div class="divider">Adresse</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                <div class="form-control w-full">
+                    <label class="label" for="STRASSE">
+                        <span class="label-text">
+                            Straße
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="STRASSE"
+                        name="STRASSE"
+                        placeholder="Musterstraße 1"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('STRASSE')"
+                    />
+                    <label class="label" x-show="errors.STRASSE">
+                        <span class="label-text-alt text-error" x-text="errors.STRASSE"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="PLZ_ORT">
+                        <span class="label-text">
+                            Postleitzahl
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="PLZ_ORT"
+                        name="PLZ_ORT"
+                        placeholder="12345"
+                        class="input input-bordered w-full"
+                        pattern="\d{5}"
+                        
+                        @blur="validateField('PLZ_ORT')"
+                    />
+                    <label class="label" x-show="errors.PLZ_ORT">
+                        <span class="label-text-alt text-error" x-text="errors.PLZ_ORT"></span>
+                    </label>
+                </div>
+
+            </div>
+
+            <!-- Finanzinformationen -->
+            <div class="divider">Finanzinformationen</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                <div class="form-control w-full">
+                    <label class="label" for="KOSTENART">
+                        <span class="label-text">
+                            Kostenart
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="KOSTENART"
+                        name="KOSTENART"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('KOSTENART')"
+                    />
+                    <label class="label" x-show="errors.KOSTENART">
+                        <span class="label-text-alt text-error" x-text="errors.KOSTENART"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="GESAMTKOSTEN">
+                        <span class="label-text">
+                            Gesamtkosten
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="GESAMTKOSTEN"
+                        name="GESAMTKOSTEN"
+                        placeholder="0,00 €"
+                        class="input input-bordered w-full"
+                        min="0"
+                        step="0.01" min="0"
+                        @blur="validateField('GESAMTKOSTEN')"
+                    />
+                    <label class="label" x-show="errors.GESAMTKOSTEN">
+                        <span class="label-text-alt text-error" x-text="errors.GESAMTKOSTEN"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="DURCHSCHNITTSKOSTEN">
+                        <span class="label-text">
+                            Durchschnittskosten
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="DURCHSCHNITTSKOSTEN"
+                        name="DURCHSCHNITTSKOSTEN"
+                        placeholder="0,00 €"
+                        class="input input-bordered w-full"
+                        min="0"
+                        step="0.01" min="0"
+                        @blur="validateField('DURCHSCHNITTSKOSTEN')"
+                    />
+                    <label class="label" x-show="errors.DURCHSCHNITTSKOSTEN">
+                        <span class="label-text-alt text-error" x-text="errors.DURCHSCHNITTSKOSTEN"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="MIN_EINZELKOSTEN">
+                        <span class="label-text">
+                            Min Einzelkosten
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="MIN_EINZELKOSTEN"
+                        name="MIN_EINZELKOSTEN"
+                        placeholder="0,00 €"
+                        class="input input-bordered w-full"
+                        min="0"
+                        step="0.01" min="0"
+                        @blur="validateField('MIN_EINZELKOSTEN')"
+                    />
+                    <label class="label" x-show="errors.MIN_EINZELKOSTEN">
+                        <span class="label-text-alt text-error" x-text="errors.MIN_EINZELKOSTEN"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="MAX_EINZELKOSTEN">
+                        <span class="label-text">
+                            Max Einzelkosten
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="MAX_EINZELKOSTEN"
+                        name="MAX_EINZELKOSTEN"
+                        placeholder="0,00 €"
+                        class="input input-bordered w-full"
+                        min="0"
+                        step="0.01" min="0"
+                        @blur="validateField('MAX_EINZELKOSTEN')"
+                    />
+                    <label class="label" x-show="errors.MAX_EINZELKOSTEN">
+                        <span class="label-text-alt text-error" x-text="errors.MAX_EINZELKOSTEN"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="KOSTEN_PRO_QM">
+                        <span class="label-text">
+                            Cost per square meter
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="KOSTEN_PRO_QM"
+                        name="KOSTEN_PRO_QM"
+                        placeholder="0,00 €"
+                        class="input input-bordered w-full"
+                        min="0"
+                        step="0.01" min="0"
+                        @blur="validateField('KOSTEN_PRO_QM')"
+                    />
+                    <label class="label" x-show="errors.KOSTEN_PRO_QM">
+                        <span class="label-text-alt text-error" x-text="errors.KOSTEN_PRO_QM"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="KOSTEN_PRO_EINHEIT">
+                        <span class="label-text">
+                            Cost per residential unit
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="KOSTEN_PRO_EINHEIT"
+                        name="KOSTEN_PRO_EINHEIT"
+                        placeholder="0,00 €"
+                        class="input input-bordered w-full"
+                        min="0"
+                        step="0.01" min="0"
+                        @blur="validateField('KOSTEN_PRO_EINHEIT')"
+                    />
+                    <label class="label" x-show="errors.KOSTEN_PRO_EINHEIT">
+                        <span class="label-text-alt text-error" x-text="errors.KOSTEN_PRO_EINHEIT"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="Q1_KOSTEN">
+                        <span class="label-text">
+                            Q1 Kosten
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="Q1_KOSTEN"
+                        name="Q1_KOSTEN"
+                        placeholder="0,00 €"
+                        class="input input-bordered w-full"
+                        min="0"
+                        step="0.01" min="0"
+                        @blur="validateField('Q1_KOSTEN')"
+                    />
+                    <label class="label" x-show="errors.Q1_KOSTEN">
+                        <span class="label-text-alt text-error" x-text="errors.Q1_KOSTEN"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="Q2_KOSTEN">
+                        <span class="label-text">
+                            Q2 Kosten
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="Q2_KOSTEN"
+                        name="Q2_KOSTEN"
+                        placeholder="0,00 €"
+                        class="input input-bordered w-full"
+                        min="0"
+                        step="0.01" min="0"
+                        @blur="validateField('Q2_KOSTEN')"
+                    />
+                    <label class="label" x-show="errors.Q2_KOSTEN">
+                        <span class="label-text-alt text-error" x-text="errors.Q2_KOSTEN"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="Q3_KOSTEN">
+                        <span class="label-text">
+                            Q3 Kosten
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="Q3_KOSTEN"
+                        name="Q3_KOSTEN"
+                        placeholder="0,00 €"
+                        class="input input-bordered w-full"
+                        min="0"
+                        step="0.01" min="0"
+                        @blur="validateField('Q3_KOSTEN')"
+                    />
+                    <label class="label" x-show="errors.Q3_KOSTEN">
+                        <span class="label-text-alt text-error" x-text="errors.Q3_KOSTEN"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="Q4_KOSTEN">
+                        <span class="label-text">
+                            Q4 Kosten
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="Q4_KOSTEN"
+                        name="Q4_KOSTEN"
+                        placeholder="0,00 €"
+                        class="input input-bordered w-full"
+                        min="0"
+                        step="0.01" min="0"
+                        @blur="validateField('Q4_KOSTEN')"
+                    />
+                    <label class="label" x-show="errors.Q4_KOSTEN">
+                        <span class="label-text-alt text-error" x-text="errors.Q4_KOSTEN"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="KOSTENNIVEAU">
+                        <span class="label-text">
+                            Cost level classification
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="KOSTENNIVEAU"
+                        name="KOSTENNIVEAU"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('KOSTENNIVEAU')"
+                    />
+                    <label class="label" x-show="errors.KOSTENNIVEAU">
+                        <span class="label-text-alt text-error" x-text="errors.KOSTENNIVEAU"></span>
+                    </label>
+                </div>
+
+            </div>
+
+            <!-- Zeitangaben -->
+            <div class="divider">Zeitangaben</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                <div class="form-control w-full">
+                    <label class="label" for="FRUEHESTES_WERTDATUM">
+                        <span class="label-text">
+                            Fruehestes Wertdatum
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="date"
+                        id="FRUEHESTES_WERTDATUM"
+                        name="FRUEHESTES_WERTDATUM"
+                        placeholder="TT.MM.JJJJ"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('FRUEHESTES_WERTDATUM')"
+                    />
+                    <label class="label" x-show="errors.FRUEHESTES_WERTDATUM">
+                        <span class="label-text-alt text-error" x-text="errors.FRUEHESTES_WERTDATUM"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="SPAETESTES_WERTDATUM">
+                        <span class="label-text">
+                            Spaetestes Wertdatum
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="date"
+                        id="SPAETESTES_WERTDATUM"
+                        name="SPAETESTES_WERTDATUM"
+                        placeholder="TT.MM.JJJJ"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('SPAETESTES_WERTDATUM')"
+                    />
+                    <label class="label" x-show="errors.SPAETESTES_WERTDATUM">
+                        <span class="label-text-alt text-error" x-text="errors.SPAETESTES_WERTDATUM"></span>
+                    </label>
+                </div>
+
+            </div>
+
+            <!-- Form Actions -->
+            <div class="card-actions justify-end mt-6">
+                <button type="reset" class="btn btn-ghost">
+                    <i class="fas fa-undo mr-2"></i>
+                    Zurücksetzen
+                </button>
+                <button type="submit" 
+                        class="btn btn-primary"
+                        :disabled="!formValid">
+                    <i class="fas fa-save mr-2"></i>
+                    Speichern
+                </button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<!-- Result Container -->
+<div id="result-container" class="mt-6"></div>

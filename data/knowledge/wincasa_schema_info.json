@@ -1,0 +1,114 @@
+{
+  "BEWOHNER": {
+    "fields": [
+      "001",
+      "BANREDE",
+      "BBANK",
+      "BBIC",
+      "BBLZ",
+      "BBRIEFAN",
+      "BEMAIL",
+      "BEWNR",
+      "BHANDY",
+      "BIBAN",
+      "BKONTO",
+      "BKONTOINH",
+      "BNAME",
+      "BNAME2",
+      "BPLZORT",
+      "BSTR",
+      "BTEL",
+      "BTEL2",
+      "BVNAME",
+      "BVNAME2",
+      "ENR",
+      "KAUT_VEREINBART",
+      "KNR",
+      "MIETE1",
+      "ONR",
+      "VBEGINN",
+      "VENDE",
+      "Z1",
+      "Z3"
+    ],
+    "field_count": 29
+  },
+  "BEWADR": {
+    "fields": [
+      "BEWNR",
+      "BNAME",
+      "BVNAME"
+    ],
+    "field_count": 3
+  },
+  "EIGADR": {
+    "fields": [
+      "EEMAIL",
+      "EFIRMA",
+      "EFIRMANAME",
+      "EIGNR",
+      "ENAME",
+      "ENOTIZ",
+      "ETEL1",
+      "ETEL2",
+      "EVNAME"
+    ],
+    "field_count": 9
+  },
+  "OBJEKTE": {
+    "fields": [
+      "ARCHIVIERT",
+      "EIGNR",
+      "GA1",
+      "GA2",
+      "OANZEINH",
+      "OBEZ",
+      "ONR",
+      "OPLZORT",
+      "OSTRASSE",
+      "VERWALTUNGSBEGINN",
+      "VERWALTUNGSENDE",
+      "VERWNR"
+    ],
+    "field_count": 12
+  },
+  "WOHNUNG": {
+    "fields": [
+      "ART",
+      "BKNR",
+      "EBEZ",
+      "EKNR",
+      "ENR",
+      "ONR",
+      "WFL",
+      "WNOTIZ",
+      "ZIMMERZAHL"
+    ],
+    "field_count": 9
+  },
+  "KONTEN": {
+    "fields": [
+      "DATEVKNR",
+      "EA",
+      "EIGNR",
+      "ENR",
+      "INAKTIV",
+      "KABRECHNEN",
+      "KBEZ",
+      "KBRUTTO",
+      "KKLASSE",
+      "KMAHNSTUFE",
+      "KNR",
+      "KNRSTR",
+      "KUSCHLNR1",
+      "KUSCHLPROZ1",
+      "KUST",
+      "MAHNDATUM",
+      "NEUTRAL",
+      "ONR",
+      "OPBETRAG",
+      "SEV"
+    ],
+    "field_count": 20
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "name": "versammlungen_table",
+  "type": "table",
+  "description": "Table component for Versammlungen",
+  "styles": [
+    "table",
+    "table-zebra",
+    "overflow-x-auto"
+  ],
+  "scripts": null
+}

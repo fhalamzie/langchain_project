@@ -1,0 +1,665 @@
+{
+  "entity_name": "wohnungen",
+  "german_title": "Wohnungen",
+  "description": "wohnungen",
+  "primary_key": "INDEXID",
+  "display_field": "ENAME",
+  "relationships": {},
+  "query_templates": [],
+  "fields": [
+    {
+      "name": "INDEXID",
+      "german_label": "Indexid",
+      "field_type": "number",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "2",
+      "is_computed": false,
+      "group": "Identifikatoren"
+    },
+    {
+      "name": "ENR",
+      "german_label": "Mieteinheit / Apartment",
+      "field_type": "boolean",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "1",
+      "is_computed": false,
+      "group": "Identifikatoren"
+    },
+    {
+      "name": "ONR",
+      "german_label": "Gebäude / Liegenschaft",
+      "field_type": "boolean",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "1",
+      "is_computed": false,
+      "group": "Identifikatoren"
+    },
+    {
+      "name": "EBEZ",
+      "german_label": "Mieteinheit / Apartment",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "EG",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "ART",
+      "german_label": "Art",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "Wohnung",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "OSTRASSE",
+      "german_label": "Gebäude / Liegenschaft",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": "Musterstraße 1",
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "Kettwiger Str. 23",
+      "is_computed": false,
+      "group": "Adresse"
+    },
+    {
+      "name": "OBEZ",
+      "german_label": "Gebäude / Liegenschaft",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "Cassavi Testobjekt",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "GA1",
+      "german_label": "Ga1",
+      "field_type": "number",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "0.0",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "GA2",
+      "german_label": "Ga2",
+      "field_type": "number",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "0.0",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "OPLZORT",
+      "german_label": "Gebäude / Liegenschaft",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [
+        "pattern=\\d{5}"
+      ],
+      "placeholder": "12345",
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "45127 Essen",
+      "is_computed": false,
+      "group": "Adresse"
+    },
+    {
+      "name": "QM",
+      "german_label": "Quadratmeter",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "QMWARMW",
+      "german_label": "Quadratmeter",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "FRINH1",
+      "german_label": "Frinh1",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "FRINH2",
+      "german_label": "Frinh2",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "FRINH3",
+      "german_label": "Frinh3",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "FRINH4",
+      "german_label": "Frinh4",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "FRINH5",
+      "german_label": "Frinh5",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "FRINH6",
+      "german_label": "Frinh6",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "FRINH7",
+      "german_label": "Frinh7",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "FRINH8",
+      "german_label": "Frinh8",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "FRINH9",
+      "german_label": "Frinh9",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "FRINH10",
+      "german_label": "Frinh10",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "FRINH11",
+      "german_label": "Frinh11",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "FRINH12",
+      "german_label": "Frinh12",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "WNOTIZ",
+      "german_label": "Wnotiz",
+      "field_type": "textarea",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "BKNR",
+      "german_label": "Bknr",
+      "field_type": "text",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "100100",
+      "is_computed": false,
+      "group": "Identifikatoren"
+    },
+    {
+      "name": "EKNR",
+      "german_label": "Eknr",
+      "field_type": "text",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "200100",
+      "is_computed": false,
+      "group": "Identifikatoren"
+    },
+    {
+      "name": "EIGNR",
+      "german_label": "Immobilieneigentümer / Vermieter",
+      "field_type": "text",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "1192",
+      "is_computed": false,
+      "group": "Identifikatoren"
+    },
+    {
+      "name": "ENAME",
+      "german_label": "Immobilieneigentümer / Vermieter",
+      "field_type": "text",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "Bauchrowitz",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "EVNAME",
+      "german_label": "Immobilieneigentümer / Vermieter",
+      "field_type": "text",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "Paul",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "EVNAME2",
+      "german_label": "Evname2",
+      "field_type": "text",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "ENAME2",
+      "german_label": "Ename2",
+      "field_type": "text",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "ETEL1",
+      "german_label": "Telefon",
+      "field_type": "phone",
+      "is_required": false,
+      "validation_rules": [
+        "phone"
+      ],
+      "placeholder": "+49 123 456789",
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Kontaktdaten"
+    },
+    {
+      "name": "ETEL2",
+      "german_label": "Telefon",
+      "field_type": "phone",
+      "is_required": false,
+      "validation_rules": [
+        "phone"
+      ],
+      "placeholder": "+49 123 456789",
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Kontaktdaten"
+    },
+    {
+      "name": "EEMAIL",
+      "german_label": "E-Mail Adresse",
+      "field_type": "email",
+      "is_required": false,
+      "validation_rules": [
+        "email",
+        "maxlength=255"
+      ],
+      "placeholder": "beispiel@domain.de",
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "bauchrowitz@ruhrstadt-gruppe.com",
+      "is_computed": false,
+      "group": "Kontaktdaten"
+    },
+    {
+      "name": "EHANDY",
+      "german_label": "Mobiltelefon",
+      "field_type": "phone",
+      "is_required": false,
+      "validation_rules": [
+        "phone"
+      ],
+      "placeholder": "+49 123 456789",
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "+49 1732790334",
+      "is_computed": false,
+      "group": "Kontaktdaten"
+    },
+    {
+      "name": "ESTR",
+      "german_label": "Straße",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": "Musterstraße 1",
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Adresse"
+    },
+    {
+      "name": "EPLZORT",
+      "german_label": "Immobilieneigentümer / Vermieter",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [
+        "pattern=\\d{5}"
+      ],
+      "placeholder": "12345",
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Adresse"
+    },
+    {
+      "name": "EBLZ",
+      "german_label": "Eblz",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "ETEL1EIG2",
+      "german_label": "Telefon",
+      "field_type": "phone",
+      "is_required": false,
+      "validation_rules": [
+        "phone"
+      ],
+      "placeholder": "+49 123 456789",
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Kontaktdaten"
+    },
+    {
+      "name": "ETEL2EIG2",
+      "german_label": "Telefon",
+      "field_type": "phone",
+      "is_required": false,
+      "validation_rules": [
+        "phone"
+      ],
+      "placeholder": "+49 123 456789",
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Kontaktdaten"
+    },
+    {
+      "name": "EHANDYEIG2",
+      "german_label": "Mobiltelefon",
+      "field_type": "phone",
+      "is_required": false,
+      "validation_rules": [
+        "phone"
+      ],
+      "placeholder": "+49 123 456789",
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Kontaktdaten"
+    },
+    {
+      "name": "EEMAILEIG2",
+      "german_label": "E-Mail Adresse",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [
+        "maxlength=255"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Kontaktdaten"
+    },
+    {
+      "name": "EIGENNUTZER_BEWNR",
+      "german_label": "Bewohner-Nr.",
+      "field_type": "text",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Identifikatoren"
+    },
+    {
+      "name": "EIGENTUEMERKUERZEL",
+      "german_label": "Eigentuemerkuerzel",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": true,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "EIBAN",
+      "german_label": "Eiban",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "EBIC",
+      "german_label": "Ebic",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    }
+  ]
+}

@@ -1,0 +1,1061 @@
+
+  {
+    "meta": {
+      "version": "4.0_realistic_user_queries",
+      "created": "2025-06-16",
+      "total_queries": 150,
+      "description": "Realistic WINCASA User Queries with typos, variations, and natural language"
+    },
+    "queries": [
+      {
+        "id": "user_001",
+        "query": "wer wohnt marienstr 26",
+        "category": "mieter_search",
+        "intent": "lookup",
+        "expected_match": "Marienstraße 26"
+      },
+      {
+        "id": "user_002",
+        "query": "mieter marienstrasse 26 essen",
+        "category": "mieter_search",
+        "intent": "lookup",
+        "expected_match": "Marienstraße 26, 45307 Essen"
+      },
+      {
+        "id": "user_003",
+        "query": "wer wohnt in der kämpenstr",
+        "category": "mieter_search",
+        "intent": "lookup",
+        "expected_match": "Kämpenstraße 13"
+      },
+      {
+        "id": "user_004",
+        "query": "Bewohner Kämpennstraße 13",
+        "category": "mieter_search",
+        "intent": "lookup",
+        "expected_match": "Kämpenstraße 13"
+      },
+      {
+        "id": "user_005",
+        "query": "tel borowski",
+        "category": "contact_lookup",
+        "intent": "lookup",
+        "expected_match": "Wolfgang Borowski"
+      },
+      {
+        "id": "user_006",
+        "query": "telefon wolfgang borowsky",
+        "category": "contact_lookup",
+        "intent": "lookup",
+        "expected_match": "Wolfgang Borowski"
+      },
+      {
+        "id": "user_007",
+        "query": "nummer von herrn nabakowski",
+        "category": "contact_lookup",
+        "intent": "lookup",
+        "expected_match": "Petra Nabakowski"
+      },
+      {
+        "id": "user_008",
+        "query": "fahim halamzei telefon",
+        "category": "contact_lookup",
+        "intent": "lookup",
+        "expected_match": "Fahim Halamzie"
+      },
+      {
+        "id": "user_009",
+        "query": "kontakt f. halamzie",
+        "category": "contact_lookup",
+        "intent": "lookup",
+        "expected_match": "Fahim Halamzie"
+      },
+      {
+        "id": "user_010",
+        "query": "murat yildirim tel nr",
+        "category": "contact_lookup",
+        "intent": "lookup",
+        "expected_match": "Murat Yildirim"
+      },
+      {
+        "id": "user_011",
+        "query": "miete borowski???",
+        "category": "rent_inquiry",
+        "intent": "lookup",
+        "expected_match": "Wolfgang Borowski"
+      },
+      {
+        "id": "user_012",
+        "query": "was zahlt frau nabakowsky",
+        "category": "rent_inquiry",
+        "intent": "lookup",
+        "expected_match": "Petra Nabakowski"
+      },
+      {
+        "id": "user_013",
+        "query": "miete alex blesing",
+        "category": "rent_inquiry",
+        "intent": "lookup",
+        "expected_match": "Alex Blessing"
+      },
+      {
+        "id": "user_014",
+        "query": "wieviel zahlt harrison abhulimen",
+        "category": "rent_inquiry",
+        "intent": "lookup",
+        "expected_match": "Harrison Abhulimen"
+      },
+      {
+        "id": "user_015",
+        "query": "einheiten fhalamzi",
+        "category": "unit_count",
+        "intent": "template",
+        "expected_match": "FHALAMZIE"
+      },
+      {
+        "id": "user_016",
+        "query": "wieviele whg hat sundeki immobilien",
+        "category": "unit_count",
+        "intent": "template",
+        "expected_match": "Sundeki Immobilien 1 GmbH"
+      },
+      {
+        "id": "user_017",
+        "query": "anzahl wohnungen halamzie",
+        "category": "unit_count",
+        "intent": "template",
+        "expected_match": "Fahim Halamzie"
+      },
+      {
+        "id": "user_018",
+        "query": "weg neusserstr",
+        "category": "weg_info",
+        "intent": "template",
+        "expected_match": "Neusser Str."
+      },
+      {
+        "id": "user_019",
+        "query": "groesse weg neuss 49",
+        "category": "weg_info",
+        "intent": "template",
+        "expected_match": "WEG NEUSS49"
+      },
+      {
+        "id": "user_020",
+        "query": "weg marinenstrasse",
+        "category": "weg_info",
+        "intent": "template",
+        "expected_match": "Marienstraße"
+      },
+      {
+        "id": "user_021",
+        "query": "verwalter neusserstr49",
+        "category": "property_manager",
+        "intent": "template",
+        "expected_match": "Neusser Str. 49"
+      },
+      {
+        "id": "user_022",
+        "query": "hausverwaltung marienstr. 26",
+        "category": "property_manager",
+        "intent": "template",
+        "expected_match": "Marienstraße 26"
+      },
+      {
+        "id": "user_023",
+        "query": "wer verwaltet kämpnstr",
+        "category": "property_manager",
+        "intent": "template",
+        "expected_match": "Kämpenstraße"
+      },
+      {
+        "id": "user_024",
+        "query": "buchungskonten marienst 26",
+        "category": "accounting",
+        "intent": "template",
+        "expected_match": "Marienstraße 26"
+      },
+      {
+        "id": "user_025",
+        "query": "konten neusserstr",
+        "category": "accounting",
+        "intent": "template",
+        "expected_match": "Neusser Str."
+      },
+      {
+        "id": "user_026",
+        "query": "saldo marienstrasse",
+        "category": "accounting_balance",
+        "intent": "template",
+        "expected_match": "Marienstraße"
+      },
+      {
+        "id": "user_027",
+        "query": "kontostand objekt kämpennstr",
+        "category": "accounting_balance",
+        "intent": "template",
+        "expected_match": "Kämpenstraße"
+      },
+      {
+        "id": "user_028",
+        "query": "alle mieter essen",
+        "category": "mieter_search",
+        "intent": "lookup",
+        "expected_match": "Essen"
+      },
+      {
+        "id": "user_029",
+        "query": "mieter in bochm",
+        "category": "mieter_search",
+        "intent": "lookup",
+        "expected_match": "Bochum"
+      },
+      {
+        "id": "user_030",
+        "query": "zeig mir mieter duisburg",
+        "category": "mieter_search",
+        "intent": "lookup",
+        "expected_match": "Duisburg"
+      },
+      {
+        "id": "user_031",
+        "query": "wohnungen marien str.",
+        "category": "wohnungen_search",
+        "intent": "template",
+        "expected_match": "Marienstraße"
+      },
+      {
+        "id": "user_032",
+        "query": "whg liste kämpenstr 13",
+        "category": "wohnungen_search",
+        "intent": "template",
+        "expected_match": "Kämpenstraße 13"
+      },
+      {
+        "id": "user_033",
+        "query": "apartments hochfelder str",
+        "category": "wohnungen_search",
+        "intent": "template",
+        "expected_match": "Hochfelder Straße"
+      },
+      {
+        "id": "user_034",
+        "query": "konto petra nabakowsi",
+        "category": "account_balance",
+        "intent": "template",
+        "expected_match": "Petra Nabakowski"
+      },
+      {
+        "id": "user_035",
+        "query": "saldo w. borowski",
+        "category": "account_balance",
+        "intent": "template",
+        "expected_match": "Wolfgang Borowski"
+      },
+      {
+        "id": "user_036",
+        "query": "kontostand senad mujowic",
+        "category": "account_balance",
+        "intent": "template",
+        "expected_match": "Senad Mujovic"
+      },
+      {
+        "id": "user_037",
+        "query": "eg links kämpennstr",
+        "category": "property_details",
+        "intent": "template",
+        "expected_match": "EG links Kämpenstraße"
+      },
+      {
+        "id": "user_038",
+        "query": "1og rechts marienstr",
+        "category": "property_details",
+        "intent": "template",
+        "expected_match": "1. OG rechts Marienstraße"
+      },
+      {
+        "id": "user_039",
+        "query": "dachgeschoss waldthausen",
+        "category": "property_details",
+        "intent": "template",
+        "expected_match": "DG Von-Waldthausen-Straße"
+      },
+      {
+        "id": "user_040",
+        "query": "frei whg essen",
+        "category": "vacancy_status",
+        "intent": "template",
+        "expected_match": "Essen"
+      },
+      {
+        "id": "user_041",
+        "query": "leerstand bochm",
+        "category": "vacancy_status",
+        "intent": "template",
+        "expected_match": "Bochum"
+      },
+      {
+        "id": "user_042",
+        "query": "freie wohnugen duisburg",
+        "category": "vacancy_status",
+        "intent": "template",
+        "expected_match": "Duisburg"
+      },
+      {
+        "id": "user_043",
+        "query": "hausmeister marien",
+        "category": "facility_management",
+        "intent": "lookup",
+        "expected_match": "Marienstraße"
+      },
+      {
+        "id": "user_044",
+        "query": "hm kämpenstr",
+        "category": "facility_management",
+        "intent": "lookup",
+        "expected_match": "Kämpenstraße"
+      },
+      {
+        "id": "user_045",
+        "query": "mail anette steinhof",
+        "category": "contact_lookup",
+        "intent": "lookup",
+        "expected_match": "Anette Steinhoff"
+      },
+      {
+        "id": "user_046",
+        "query": "email patrick horne",
+        "category": "contact_lookup",
+        "intent": "lookup",
+        "expected_match": "Patrick Horn"
+      },
+      {
+        "id": "user_047",
+        "query": "handy alex blesssing",
+        "category": "contact_lookup",
+        "intent": "lookup",
+        "expected_match": "Alex Blessing"
+      },
+      {
+        "id": "user_048",
+        "query": "nk abrechnung nabakowski",
+        "category": "accounting",
+        "intent": "template",
+        "expected_match": "Petra Nabakowski"
+      },
+      {
+        "id": "user_049",
+        "query": "nebenkostn borowski",
+        "category": "accounting",
+        "intent": "template",
+        "expected_match": "Wolfgang Borowski"
+      },
+      {
+        "id": "user_050",
+        "query": "vertrag senad mujowitch",
+        "category": "contract_info",
+        "intent": "lookup",
+        "expected_match": "Senad Mujovic"
+      },
+      {
+        "id": "user_051",
+        "query": "mietvertrg harrison",
+        "category": "contract_info",
+        "intent": "lookup",
+        "expected_match": "Harrison Abhulimen"
+      },
+      {
+        "id": "user_052",
+        "query": "kaution aurora moraru",
+        "category": "deposit_info",
+        "intent": "lookup",
+        "expected_match": "Aurora-Amalia Moraru"
+      },
+      {
+        "id": "user_053",
+        "query": "kaut. shtiliyan",
+        "category": "deposit_info",
+        "intent": "lookup",
+        "expected_match": "Shtiliyan Yuliyanov"
+      },
+      {
+        "id": "user_054",
+        "query": "heizung marienstr",
+        "category": "heating_costs",
+        "intent": "template",
+        "expected_match": "Marienstraße"
+      },
+      {
+        "id": "user_055",
+        "query": "heitzkosten waldthausen 44",
+        "category": "heating_costs",
+        "intent": "template",
+        "expected_match": "Von-Waldthausen-Straße 44"
+      },
+      {
+        "id": "user_056",
+        "query": "rücklage weg marienstr",
+        "category": "reserves",
+        "intent": "template",
+        "expected_match": "WEG Marienstraße"
+      },
+      {
+        "id": "user_057",
+        "query": "rucklagen kämpenstr",
+        "category": "reserves",
+        "intent": "template",
+        "expected_match": "Kämpenstraße"
+      },
+      {
+        "id": "user_058",
+        "query": "zahlungen borowski",
+        "category": "payment_history",
+        "intent": "template",
+        "expected_match": "Wolfgang Borowski"
+      },
+      {
+        "id": "user_059",
+        "query": "zahlungshistory nabakowski",
+        "category": "payment_history",
+        "intent": "template",
+        "expected_match": "Petra Nabakowski"
+      },
+      {
+        "id": "user_060",
+        "query": "offene adolf plag",
+        "category": "open_items",
+        "intent": "template",
+        "expected_match": "Adolf Plag"
+      },
+      {
+        "id": "user_061",
+        "query": "op senad m.",
+        "category": "open_items",
+        "intent": "template",
+        "expected_match": "Senad Mujovic"
+      },
+      {
+        "id": "user_062",
+        "query": "mahnung yuliyanov",
+        "category": "dunning_level",
+        "intent": "lookup",
+        "expected_match": "Shtiliyan Yuliyanov"
+      },
+      {
+        "id": "user_063",
+        "query": "mahnstatus yazan",
+        "category": "dunning_level",
+        "intent": "lookup",
+        "expected_match": "Yazan Abit"
+      },
+      {
+        "id": "user_064",
+        "query": "beschlüsse marienst",
+        "category": "weg_resolutions",
+        "intent": "template",
+        "expected_match": "Marienstraße"
+      },
+      {
+        "id": "user_065",
+        "query": "weg beschluss kämpen",
+        "category": "weg_resolutions",
+        "intent": "template",
+        "expected_match": "Kämpenstraße"
+      },
+      {
+        "id": "user_066",
+        "query": "etv marienstr",
+        "category": "meetings",
+        "intent": "template",
+        "expected_match": "Marienstraße"
+      },
+      {
+        "id": "user_067",
+        "query": "versammlung kämpenstr wann",
+        "category": "meetings",
+        "intent": "template",
+        "expected_match": "Kämpenstraße"
+      },
+      {
+        "id": "user_068",
+        "query": "beirat marien",
+        "category": "weg_board",
+        "intent": "template",
+        "expected_match": "Marienstraße"
+      },
+      {
+        "id": "user_069",
+        "query": "verwaltungsbeirat waldthausen",
+        "category": "weg_board",
+        "intent": "template",
+        "expected_match": "Von-Waldthausen-Straße"
+      },
+      {
+        "id": "user_070",
+        "query": "wirtschaftplan marienstr 26",
+        "category": "business_plan",
+        "intent": "template",
+        "expected_match": "Marienstraße 26"
+      },
+      {
+        "id": "user_071",
+        "query": "wp kämpenstr 13",
+        "category": "business_plan",
+        "intent": "template",
+        "expected_match": "Kämpenstraße 13"
+      },
+      {
+        "id": "user_072",
+        "query": "instandhaltung marien",
+        "category": "maintenance_costs",
+        "intent": "template",
+        "expected_match": "Marienstraße"
+      },
+      {
+        "id": "user_073",
+        "query": "inst.kosten waldthausen",
+        "category": "maintenance_costs",
+        "intent": "template",
+        "expected_match": "Von-Waldthausen-Straße"
+      },
+      {
+        "id": "user_074",
+        "query": "saldo liste marienstr",
+        "category": "balance_list",
+        "intent": "template",
+        "expected_match": "Marienstraße"
+      },
+      {
+        "id": "user_075",
+        "query": "salden kämpen",
+        "category": "balance_list",
+        "intent": "template",
+        "expected_match": "Kämpenstraße"
+      },
+      {
+        "id": "user_076",
+        "query": "iban borowski",
+        "category": "banking_info",
+        "intent": "lookup",
+        "expected_match": "Wolfgang Borowski"
+      },
+      {
+        "id": "user_077",
+        "query": "konto nabakowsky",
+        "category": "banking_info",
+        "intent": "lookup",
+        "expected_match": "Petra Nabakowski"
+      },
+      {
+        "id": "user_078",
+        "query": "garage petra n.",
+        "category": "parking_info",
+        "intent": "lookup",
+        "expected_match": "Petra Nabakowski"
+      },
+      {
+        "id": "user_079",
+        "query": "stellpl. borowski",
+        "category": "parking_info",
+        "intent": "lookup",
+        "expected_match": "Wolfgang Borowski"
+      },
+      {
+        "id": "user_080",
+        "query": "keller alex b",
+        "category": "storage_info",
+        "intent": "lookup",
+        "expected_match": "Alex Blessing"
+      },
+      {
+        "id": "user_081",
+        "query": "lager kämpenstr",
+        "category": "storage_info",
+        "intent": "lookup",
+        "expected_match": "Kämpenstraße"
+      },
+      {
+        "id": "user_082",
+        "query": "einzug harrison a.",
+        "category": "move_in_date",
+        "intent": "lookup",
+        "expected_match": "Harrison Abhulimen"
+      },
+      {
+        "id": "user_083",
+        "query": "auszug patrick h",
+        "category": "move_out_date",
+        "intent": "lookup",
+        "expected_match": "Patrick Horn"
+      },
+      {
+        "id": "user_084",
+        "query": "eg links kämpen wer",
+        "category": "mieter_search",
+        "intent": "lookup",
+        "expected_match": "EG links Kämpenstraße 13"
+      },
+      {
+        "id": "user_085",
+        "query": "1og rechts marienstr mieter",
+        "category": "mieter_search",
+        "intent": "lookup",
+        "expected_match": "1. OG rechts Marienstraße 26"
+      },
+      {
+        "id": "user_086",
+        "query": "wieviel whg marienstr",
+        "category": "unit_count",
+        "intent": "template",
+        "expected_match": "Marienstraße 26"
+      },
+      {
+        "id": "user_087",
+        "query": "anzahl einh. kämpen 13",
+        "category": "unit_count",
+        "intent": "template",
+        "expected_match": "Kämpenstraße 13"
+      },
+      {
+        "id": "user_088",
+        "query": "gewerbe kämpenstr",
+        "category": "commercial_units",
+        "intent": "template",
+        "expected_match": "Kämpenstraße"
+      },
+      {
+        "id": "user_089",
+        "query": "laden kämpennstr",
+        "category": "commercial_units",
+        "intent": "template",
+        "expected_match": "Kämpenstraße"
+      },
+      {
+        "id": "user_090",
+        "query": "renovierung eg kämpen",
+        "category": "renovation_status",
+        "intent": "lookup",
+        "expected_match": "EG Kämpenstraße"
+      },
+      {
+        "id": "user_091",
+        "query": "saniert marienstr",
+        "category": "renovation_status",
+        "intent": "lookup",
+        "expected_match": "Marienstraße"
+      },
+      {
+        "id": "user_092",
+        "query": "baujahr marien 26",
+        "category": "building_info",
+        "intent": "lookup",
+        "expected_match": "Marienstraße 26"
+      },
+      {
+        "id": "user_093",
+        "query": "bj kämpenstr 13",
+        "category": "building_info",
+        "intent": "lookup",
+        "expected_match": "Kämpenstraße 13"
+      },
+      {
+        "id": "user_094",
+        "query": "heizung waldthausen",
+        "category": "heating_info",
+        "intent": "lookup",
+        "expected_match": "Von-Waldthausen-Straße"
+      },
+      {
+        "id": "user_095",
+        "query": "heizungsart marienstr",
+        "category": "heating_info",
+        "intent": "lookup",
+        "expected_match": "Marienstraße"
+      },
+      {
+        "id": "user_096",
+        "query": "forderung alter borowski",
+        "category": "aging_analysis",
+        "intent": "template",
+        "expected_match": "Wolfgang Borowski"
+      },
+      {
+        "id": "user_097",
+        "query": "alterung nabakowski",
+        "category": "aging_analysis",
+        "intent": "template",
+        "expected_match": "Petra Nabakowski"
+      },
+      {
+        "id": "user_098",
+        "query": "durchlauf marienstr",
+        "category": "transitory_items",
+        "intent": "template",
+        "expected_match": "Marienstraße"
+      },
+      {
+        "id": "user_099",
+        "query": "durchlaufende kämpen",
+        "category": "transitory_items",
+        "intent": "template",
+        "expected_match": "Kämpenstraße"
+      },
+      {
+        "id": "user_100",
+        "query": "sonderentnahme weg marien",
+        "category": "special_withdrawals",
+        "intent": "template",
+        "expected_match": "WEG Marienstraße"
+      },
+      {
+        "id": "user_101",
+        "query": "wohnt jemand marienstrasse",
+        "category": "mieter_search",
+        "intent": "lookup",
+        "expected_match": "Marienstraße"
+      },
+      {
+        "id": "user_102",
+        "query": "gibt es freie whg",
+        "category": "vacancy_status",
+        "intent": "template",
+        "expected_match": "all"
+      },
+      {
+        "id": "user_103",
+        "query": "ich suche tel von borowski",
+        "category": "contact_lookup",
+        "intent": "lookup",
+        "expected_match": "Wolfgang Borowski"
+      },
+      {
+        "id": "user_104",
+        "query": "brauche kontakt halamzie",
+        "category": "contact_lookup",
+        "intent": "lookup",
+        "expected_match": "Fahim Halamzie"
+      },
+      {
+        "id": "user_105",
+        "query": "wo ist leerstand",
+        "category": "vacancy_status",
+        "intent": "template",
+        "expected_match": "all"
+      },
+      {
+        "id": "user_106",
+        "query": "alle eigentümer",
+        "category": "eigentuemer_search",
+        "intent": "lookup",
+        "expected_match": "all"
+      },
+      {
+        "id": "user_107",
+        "query": "offene mieten",
+        "category": "open_items",
+        "intent": "template",
+        "expected_match": "all"
+      },
+      {
+        "id": "user_108",
+        "query": "wer zahlt nicht",
+        "category": "open_items",
+        "intent": "template",
+        "expected_match": "all"
+      },
+      {
+        "id": "user_109",
+        "query": "mahnungen offen",
+        "category": "dunning_level",
+        "intent": "lookup",
+        "expected_match": "all"
+      },
+      {
+        "id": "user_110",
+        "query": "nächste versammlung",
+        "category": "meetings",
+        "intent": "template",
+        "expected_match": "all"
+      },
+      {
+        "id": "user_111",
+        "query": "ist noch was frei marienstr",
+        "category": "vacancy_status",
+        "intent": "template",
+        "expected_match": "Marienstraße"
+      },
+      {
+        "id": "user_112",
+        "query": "gibts probleme mit zahlungen",
+        "category": "open_items",
+        "intent": "template",
+        "expected_match": "all"
+      },
+      {
+        "id": "user_113",
+        "query": "kann ich mit halamzi sprechen",
+        "category": "contact_lookup",
+        "intent": "lookup",
+        "expected_match": "Fahim Halamzie"
+      },
+      {
+        "id": "user_114",
+        "query": "was kostet die whg marienstr",
+        "category": "rent_inquiry",
+        "intent": "lookup",
+        "expected_match": "Marienstraße"
+      },
+      {
+        "id": "user_115",
+        "query": "ich brauch alle daten von borowski",
+        "category": "contact_lookup",
+        "intent": "lookup",
+        "expected_match": "Wolfgang Borowski"
+      },
+      {
+        "id": "user_116",
+        "query": "hat jemand in kämpenstr nicht gezahlt",
+        "category": "open_items",
+        "intent": "template",
+        "expected_match": "Kämpenstraße"
+      },
+      {
+        "id": "user_117",
+        "query": "zeig mal mietspiegel marienstr",
+        "category": "rent_inquiry",
+        "intent": "template",
+        "expected_match": "Marienstraße"
+      },
+      {
+        "id": "user_118",
+        "query": "was ist mit der heizung in waldthausen los",
+        "category": "heating_info",
+        "intent": "lookup",
+        "expected_match": "Von-Waldthausen-Straße"
+      },
+      {
+        "id": "user_119",
+        "query": "muss ich zur versammlung kommen",
+        "category": "meetings",
+        "intent": "template",
+        "expected_match": "all"
+      },
+      {
+        "id": "user_120",
+        "query": "gibts beschwerden über lärm marienstr",
+        "category": "property_details",
+        "intent": "lookup",
+        "expected_match": "Marienstraße"
+      },
+      {
+        "id": "user_121",
+        "query": "!! DRINGEND kontakt borowski",
+        "category": "contact_lookup",
+        "intent": "lookup",
+        "expected_match": "Wolfgang Borowski"
+      },
+      {
+        "id": "user_122",
+        "query": "mietrueckstand ???",
+        "category": "open_items",
+        "intent": "template",
+        "expected_match": "all"
+      },
+      {
+        "id": "user_123",
+        "query": "suche 3 zimmer whg",
+        "category": "vacancy_status",
+        "intent": "template",
+        "expected_match": "all"
+      },
+      {
+        "id": "user_124",
+        "query": "faahim halaamzie telefon bitte",
+        "category": "contact_lookup",
+        "intent": "lookup",
+        "expected_match": "Fahim Halamzie"
+      },
+      {
+        "id": "user_125",
+        "query": "liste aller mieter bitte",
+        "category": "mieter_search",
+        "intent": "lookup",
+        "expected_match": "all"
+      },
+      {
+        "id": "user_126",
+        "query": "beauminghaus strasse mieter",
+        "category": "mieter_search",
+        "intent": "lookup",
+        "expected_match": "Bäuminghausstraße"
+      },
+      {
+        "id": "user_127",
+        "query": "von waldthausen str 44",
+        "category": "mieter_search",
+        "intent": "lookup",
+        "expected_match": "Von-Waldthausen-Straße 44"
+      },
+      {
+        "id": "user_128",
+        "query": "hochfelderstr 76+78",
+        "category": "mieter_search",
+        "intent": "lookup",
+        "expected_match": "Hochfelder Straße 76 + 78"
+      },
+      {
+        "id": "user_129",
+        "query": "germanen str 1",
+        "category": "mieter_search",
+        "intent": "lookup",
+        "expected_match": "Germanenstraße 1"
+      },
+      {
+        "id": "user_130",
+        "query": "@borowski",
+        "category": "contact_lookup",
+        "intent": "lookup",
+        "expected_match": "Wolfgang Borowski"
+      },
+      {
+        "id": "user_131",
+        "query": "#marienstrasse",
+        "category": "property_details",
+        "intent": "template",
+        "expected_match": "Marienstraße"
+      },
+      {
+        "id": "user_132",
+        "query": "45307",
+        "category": "mieter_search",
+        "intent": "lookup",
+        "expected_match": "45307 Essen"
+      },
+      {
+        "id": "user_133",
+        "query": "44894",
+        "category": "mieter_search",
+        "intent": "lookup",
+        "expected_match": "44894 Bochum"
+      },
+      {
+        "id": "user_134",
+        "query": "hausnummer 26",
+        "category": "property_details",
+        "intent": "lookup",
+        "expected_match": "26"
+      },
+      {
+        "id": "user_135",
+        "query": "nr 13",
+        "category": "property_details",
+        "intent": "lookup",
+        "expected_match": "13"
+      },
+      {
+        "id": "user_136",
+        "query": "?????",
+        "category": "unclear",
+        "intent": "unclear",
+        "expected_match": "unclear"
+      },
+      {
+        "id": "user_137",
+        "query": "hilfe",
+        "category": "help",
+        "intent": "help",
+        "expected_match": "help"
+      },
+      {
+        "id": "user_138",
+        "query": "555-1234",
+        "category": "contact_lookup",
+        "intent": "lookup",
+        "expected_match": "phone"
+      },
+      {
+        "id": "user_139",
+        "query": "info@",
+        "category": "contact_lookup",
+        "intent": "lookup",
+        "expected_match": "email"
+      },
+      {
+        "id": "user_140",
+        "query": "whg frei?",
+        "category": "vacancy_status",
+        "intent": "template",
+        "expected_match": "all"
+      },
+      {
+        "id": "user_141",
+        "query": "$$$ miete",
+        "category": "rent_inquiry",
+        "intent": "template",
+        "expected_match": "all"
+      },
+      {
+        "id": "user_142",
+        "query": "!!!",
+        "category": "unclear",
+        "intent": "unclear",
+        "expected_match": "unclear"
+      },
+      {
+        "id": "user_143",
+        "query": "test",
+        "category": "unclear",
+        "intent": "unclear",
+        "expected_match": "unclear"
+      },
+      {
+        "id": "user_144",
+        "query": "123",
+        "category": "unclear",
+        "intent": "unclear",
+        "expected_match": "unclear"
+      },
+      {
+        "id": "user_145",
+        "query": "miete erhöhung marienstr",
+        "category": "rent_inquiry",
+        "intent": "template",
+        "expected_match": "Marienstraße"
+      },
+      {
+        "id": "user_146",
+        "query": "mieterhöhung 2024",
+        "category": "rent_inquiry",
+        "intent": "template",
+        "expected_match": "2024"
+      },
+      {
+        "id": "user_147",
+        "query": "kündigungsfrist borowski",
+        "category": "contract_info",
+        "intent": "lookup",
+        "expected_match": "Wolfgang Borowski"
+      },
+      {
+        "id": "user_148",
+        "query": "kündigung einreichen",
+        "category": "contract_info",
+        "intent": "template",
+        "expected_match": "all"
+      },
+      {
+        "id": "user_149",
+        "query": "umzug von marienstr nach kämpenstr",
+        "category": "move_info",
+        "intent": "template",
+        "expected_match": "Marienstraße to Kämpenstraße"
+      },
+      {
+        "id": "user_150",
+        "query": "wohnungstausch möglich?",
+        "category": "property_exchange",
+        "intent": "template",
+        "expected_match": "all"
+      }
+    ]
+  } 

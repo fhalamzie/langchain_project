@@ -1,0 +1,11 @@
+{
+  "name": "eigentuemer_op_card",
+  "type": "card",
+  "description": "Card component for Eigentuemer_Op",
+  "styles": [
+    "card",
+    "stats",
+    "stat"
+  ],
+  "scripts": null
+}

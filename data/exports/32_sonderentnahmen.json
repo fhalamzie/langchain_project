@@ -1,7 +1,7 @@
 {
   "query_info": {
     "file": "32_sonderentnahmen.sql",
-    "generated": "2025-06-12T14:41:19.736222",
+    "generated": "2025-06-16T03:34:44.935484",
     "driver": "firebird-driver",
     "charset": "ISO8859_1",
     "business_purpose": "Analyse außerordentlicher Entnahmen und Zuführungen",
@@ -16,7 +16,7 @@
       "Zusätzliche GeschäftslogikAnalysen"
     ],
     "total_rows": 5,
-    "execution_time_seconds": 0.005328
+    "execution_time_seconds": 0.007883
   },
   "columns": [
     "ONR",

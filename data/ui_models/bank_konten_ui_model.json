@@ -1,0 +1,253 @@
+{
+  "entity_name": "bank_konten",
+  "german_title": "Bank_Konten",
+  "description": "bank_konten",
+  "primary_key": "KNR",
+  "display_field": "KONTO_BEZEICHNUNG",
+  "relationships": {},
+  "query_templates": [],
+  "fields": [
+    {
+      "name": "KNR",
+      "german_label": "Finanzkonto für Buchhaltung",
+      "field_type": "text",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "1200",
+      "is_computed": false,
+      "group": "Identifikatoren"
+    },
+    {
+      "name": "KONTO_CODE",
+      "german_label": "Konto Code",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "01200",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "KONTO_BEZEICHNUNG",
+      "german_label": "Konto Bezeichnung",
+      "field_type": "text",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "Bank (CASAVI_TEST, IBAN: DE10370623651002054155)",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "KONTOSTAND",
+      "german_label": "Kontostand",
+      "field_type": "number",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "0.0",
+      "is_computed": true,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "GUTHABEN",
+      "german_label": "Guthaben",
+      "field_type": "number",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "0.0",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "UEBERZIEHUNG",
+      "german_label": "Ueberziehung",
+      "field_type": "number",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "0.0",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "BANKINSTITUT",
+      "german_label": "Bankinstitut",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "SEPA-KONTO   ",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "IBAN_EXTRAHIERT",
+      "german_label": "Iban Extrahiert",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "DE10370623651002054155",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "ONR",
+      "german_label": "Gebäude / Liegenschaft",
+      "field_type": "boolean",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "1",
+      "is_computed": false,
+      "group": "Identifikatoren"
+    },
+    {
+      "name": "OBJEKT_KURZ",
+      "german_label": "Objekt Kurz",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "Cassavi Testobjekt",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "OBJEKT_STRASSE",
+      "german_label": "Straße",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": "Musterstraße 1",
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "Kettwiger Str. 23",
+      "is_computed": false,
+      "group": "Adresse"
+    },
+    {
+      "name": "KONTOTYP",
+      "german_label": "Kontotyp",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "BETRIEBSKONTO  ",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "LIQUIDITAET_STATUS",
+      "german_label": "Liquiditaet Status",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "NEUTRAL",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "BANK_NAME",
+      "german_label": "Bank Name",
+      "field_type": "text",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "VB Rhein-Erft-Köln",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "BLZ",
+      "german_label": "Blz",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "370 623 65",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "KONTONUMMER_ALT",
+      "german_label": "Kontonummer Alt",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "IBAN",
+      "german_label": "Iban",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "DE10370623651002054155",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "BIC",
+      "german_label": "Bic",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "GENODED1FHH",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    }
+  ]
+}

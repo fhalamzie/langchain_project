@@ -1,0 +1,10 @@
+{
+  "entity_name": "smart_home",
+  "german_title": "Intelligente Wohnungsausstattung",
+  "description": "intelligente wohnung",
+  "primary_key": null,
+  "display_field": null,
+  "relationships": {},
+  "query_templates": [],
+  "fields": []
+}

@@ -1,0 +1,13 @@
+{
+  "name": "nebenkostenkonten_matrix_form",
+  "type": "form",
+  "description": "Form component for Nebenkostenkonten_Matrix",
+  "styles": [
+    "form-control",
+    "input",
+    "select",
+    "textarea",
+    "btn"
+  ],
+  "scripts": null
+}

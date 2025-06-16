@@ -1,0 +1,13 @@
+{
+  "name": "weg_zahlungsuebersicht_form",
+  "type": "form",
+  "description": "Form component for Weg_Zahlungsuebersicht",
+  "styles": [
+    "form-control",
+    "input",
+    "select",
+    "textarea",
+    "btn"
+  ],
+  "scripts": null
+}

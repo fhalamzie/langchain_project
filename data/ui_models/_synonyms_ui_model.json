@@ -1,0 +1,10 @@
+{
+  "entity_name": "_synonyms",
+  "german_title": "_Synonyms",
+  "description": "_synonyms",
+  "primary_key": null,
+  "display_field": null,
+  "relationships": {},
+  "query_templates": [],
+  "fields": []
+}

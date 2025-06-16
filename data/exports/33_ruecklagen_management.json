@@ -1,7 +1,7 @@
 {
   "query_info": {
     "file": "33_ruecklagen_management.sql",
-    "generated": "2025-06-12T14:41:19.753864",
+    "generated": "2025-06-16T03:34:44.956424",
     "driver": "firebird-driver",
     "charset": "ISO8859_1",
     "business_purpose": "Vollständige Übersicht aller Rücklagenpositionen pro WEG",
@@ -17,7 +17,7 @@
       "Korrekte Sortierung nach Endstand (höchste Rücklagen zuerst)"
     ],
     "total_rows": 75,
-    "execution_time_seconds": 0.007959
+    "execution_time_seconds": 0.008575
   },
   "columns": [
     "ONR",

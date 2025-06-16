@@ -1,0 +1,5977 @@
+{
+  "version": "1.0",
+  "description": "Focused WINCASA DDL for core tables only",
+  "tables": {
+    "EIGADR": {
+      "columns": [
+        {
+          "name": "EIGNR",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "EANREDE",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "EANREDE2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "EBRIEFAN",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "EBRIEFAN2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ETITEL",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ETITEL2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "EVNAME",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "EVNAME2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ENAME",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ENAME2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "EZUSATZ",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "EZUSATZ2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ESTR",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ELAND",
+          "type": "CHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "EPLZORT",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ETEL1",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ETEL2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "EFAX",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "EEMAIL",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "EHANDY",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ENOTIZ",
+          "type": "BLOB",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "EBLZ",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "EKONTO",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "EKONTOINH",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "EBANK",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "LFALTNR",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "INTERNET",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "EMAIL_JA",
+          "type": "CHAR",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "FAX_JA",
+          "type": "CHAR",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GEBURTSDATUM",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "GEBURTSDATUM2",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "DRUCKWAS",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "EBIC",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "EIBAN",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "SEPA_MAN_NR",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "SEPA_MAN_DAT",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "SEPA_MAN_ART",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "ETEL1EIG2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ETEL2EIG2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "EHANDYEIG2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "EFAXEIG2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "EEMAILEIG2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "EBANK2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "EBLZ2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "EKONTO2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "EKONTOINH2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "EBIC2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "EIBAN2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "EINWILLIGUNG",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "ADR_NR_POSTANSCHRIFT",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "CPSTATUS",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "CPDATUMZUGANG",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "POSTANSCHRIFT_ART",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "EIGENNUTZER_BEWNR",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "ANONYM",
+          "type": "CHAR",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "KOMMUNIKATIONSKANAL",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "EFIRMA",
+          "type": "CHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "EFIRMANAME",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        }
+      ],
+      "key_columns": [
+        "EIGNR",
+        "ENAME",
+        "EVNAME",
+        "ESTR",
+        "EPLZORT",
+        "ETEL1",
+        "EEMAIL"
+      ],
+      "total_columns": 59,
+      "description": "Eigentümer-Stammdaten mit Kontaktdaten und Banking"
+    },
+    "OBJEKTE": {
+      "columns": [
+        {
+          "name": "ONR",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "OBEZ",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "OSTRASSE",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "OPLZORT",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "OANZEINH",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "GA1",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA2",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA3",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA4",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA5",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA6",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA7",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA8",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA9",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA10",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA11",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA12",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA13",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA14",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA15",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA16",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA17",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA18",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA19",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA20",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA21",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA22",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA23",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA24",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA25",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA26",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA27",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA28",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA29",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA30",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA31",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA32",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA33",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA34",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA35",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA36",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA37",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA38",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA39",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA40",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA41",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA42",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA43",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA44",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA45",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA46",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA47",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA48",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA49",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA50",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA51",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA52",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA53",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA54",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA55",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA56",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA57",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA58",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA59",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA60",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA61",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA62",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA63",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA64",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA65",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA66",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA67",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA68",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA69",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA70",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA71",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA72",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA73",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA74",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA75",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA76",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA77",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA78",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA79",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA80",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA81",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA82",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA83",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA84",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA85",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA86",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA87",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA88",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA89",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA90",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA91",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA92",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA93",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA94",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA95",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA96",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA97",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA98",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GA99",
+          "type": "NUMERIC(15,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "BANK",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "NAME",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "KTO",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BLZ",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "KTOSTAND",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "KTOASTAND",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "FUSSZ1",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "FUSSZ2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BAUTOSOLL",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "SOLL_KOPF",
+          "type": "CHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "SOLL_FUSS",
+          "type": "CHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "RKTOSTAND",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "RKTOASTAND",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "LEVBANKNR",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "SMIETE",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "SVORAUSZ",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "SHAUSGELD",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BKVON",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BKBIS",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "HKVON",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "HKBIS",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "VERWNAME",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "VERWFIRMA",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "VERWORT",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "VERWTEL",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "VERWFAX",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "VERWSTR",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "FRINH1",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "FRINH2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "FRINH3",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "FRINH4",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "FRINH5",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "FRINH6",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "FRINH7",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "FRINH8",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "FRINH9",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "FRINH10",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "FRINH11",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "FRINH12",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "VERWTEL2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "VERWHANDY",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "VERWEMAIL",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BEXTINT",
+          "type": "CHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "HUWERT",
+          "type": "FLOAT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "WWASMW",
+          "type": "FLOAT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "HEIZMEDIUM",
+          "type": "FLOAT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BWWASSER",
+          "type": "CHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "HKVERKTO",
+          "type": "FLOAT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "HEIZSYSTEM",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "HKDIENST",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BSONST",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "EIGNR",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ABRFUSSZ1",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ABRFUSSZ2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ABRFUSSZ3",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "HMNAME",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "HMFIRMA",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "HMSTR",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "HMORT",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "HMTEL",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "HMTEL2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "HMHANDY",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "HMFAX",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "HMEMAIL",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "NOTIZ",
+          "type": "BLOB",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ART",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "FUSSZE1",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "FUSSZE2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "LEVBANKNR2",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "WIBEGIN",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "WIENDE",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "WIALTBEGIN",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "WIALTENDE",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "WIDATENALT",
+          "type": "CHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "WIBDATUM",
+          "type": "CHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "HEIZEXTERN",
+          "type": "CHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "FERNWAERME",
+          "type": "CHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BRENNSTOFFART",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "HEIZANFMENGE",
+          "type": "FLOAT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "HEIZANFBETRAG",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "HEIZANFPREISEINH",
+          "type": "FLOAT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "HEIZVERBRMENGE",
+          "type": "FLOAT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "HEIZBRENNK",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "HEIZRESTMENGE",
+          "type": "FLOAT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BRENNKOSTKTO",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "WARMWASSTEMP",
+          "type": "FLOAT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "WARMWASSVERBR",
+          "type": "FLOAT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "HEIZWERT",
+          "type": "FLOAT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "HEIZPARA9",
+          "type": "CHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "HEIZWARMWPROZ",
+          "type": "FLOAT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "HEIZBRENNKPROZ",
+          "type": "FLOAT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BUSCHLPROZ1",
+          "type": "FLOAT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BUSCHLPROZ2",
+          "type": "FLOAT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "WUSCHLPROZ1",
+          "type": "FLOAT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "WUSCHLPROZ2",
+          "type": "FLOAT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BUSCHL1",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BUSCHL2",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "WUSCHL1",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "WUSCHL2",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "HEIZEINH",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "GESHEIZK",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "GESWWK",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "WWFEST",
+          "type": "FLOAT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "GESHEIZANLK",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "HEIZNEBENK",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "HEIZZUSATZK",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "WWZUSATZK",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "HEIZK",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "WWK",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "EXTHEIZART",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BKTORUECKLAS",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BKTOMAHN",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "EKTORUECKLAS",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "EKTOMAHN",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BELNR",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "WIPLHEIZK",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ABRNKEINLTEXT",
+          "type": "BLOB",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ABRNKABSCHLTEXTGUTH",
+          "type": "BLOB",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ABRNKABSCHLTEXTNACHZ",
+          "type": "BLOB",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ABRWEGEINLTEXT",
+          "type": "BLOB",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ABRWEGABSCHLTEXTGUTH",
+          "type": "BLOB",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ABRWEGABSCHLTEXTNACHZ",
+          "type": "BLOB",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "WIPLEINLTEXT",
+          "type": "BLOB",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "WIPLABSCHLTEXT",
+          "type": "BLOB",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ISLOCK",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "USTID",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "RECHNR",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "RECHNRSTR",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "KWUSCHL",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "GESKWKOSTEN",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "GESHEIZKNETTO",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "HFREI1",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "HFREI2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "HFREI3",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "HFREI4",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "HFREI5",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "HFREI6",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "HFREI7",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "HFREI8",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "HFREI9",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "HFREI10",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "HFREI11",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "HFREI12",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "WFREI1",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "WFREI2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "WFREI3",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "WFREI4",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "WFREI5",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "WFREI6",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "WFREI7",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "WFREI8",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "WFREI9",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "WFREI10",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "WFREI11",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "WFREI12",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "VERWWWW",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "VERWNR",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "VBR_NAME",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "VBR_FIRMA",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "VBR_STR",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "VBR_ORT",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "VBR_TEL",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "VBR_TEL2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "VBR_HANDY",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "VBR_FAX",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "VBR_EMAIL",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ENERGWW",
+          "type": "NUMERIC(18,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "ENERGHEIZ",
+          "type": "NUMERIC(18,4)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GESKWNETTO",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "VBR_NR1",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "VBR_NR2",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "VBR_NR3",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BETREUER_NR1",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "STEUERNUMMER",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "FINANZAMT",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ENVBR_KENNWERT_REF",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "SEPA_CI",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "SEPA_MANDAT_STD",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "VBR_NR4",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "VBR_NR5",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "VBR_NR6",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "VBR_NR_VORSITZ",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "HMANREDE",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "HMBRIEFAN",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "SONUMLAGEBETRAG",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BKTOVERZUGSZINSEN",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "EKTOVERZUGSZINSEN",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "EIGNR2",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "EIGNR3",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "KOSTENSTELLE",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "FRINH13",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "FRINH14",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "FRINH15",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "FRINH16",
+          "type": "BLOB",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "HFREI13",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "HFREI14",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "HFREI15",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "HFREI16",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "FRINH17",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "FRINH18",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "FRINH19",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "FRINH20",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "HFREI17",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "HFREI18",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "HFREI19",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "HFREI20",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ABRWEGANSCHREIBEN_EINL",
+          "type": "BLOB",
+          "nullable": true,
+          "default": "default"
+        },
+        {
+          "name": "ABRWEGANSCHREIBEN_ABSCHL",
+          "type": "BLOB",
+          "nullable": true,
+          "default": "default"
+        },
+        {
+          "name": "ABRWEGANSCHREIBEN_GUTH",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": "default"
+        },
+        {
+          "name": "ABRWEGANSCHREIBEN_NACHZ",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": "default"
+        },
+        {
+          "name": "HEIZKOSTEN_WEG_DIFF",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "HEIZKOSTEN_WEG_DIFF_ALT",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "HEIZKOSTEN_WEG_DIFF_USCHL",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "KTOUNEINBRINGLICH",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "SEPA_CI2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "MAHNGEB1",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "MAHNGEB2",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "MAHNGEB3",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "MAHNTAGE1",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "MAHNTAGE2",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "MAHNTAGE3",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "MAHNENAB",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "MAHNZIEL_TAGE",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "SOLLTAG",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BMAHNEINL_1",
+          "type": "BLOB",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BMAHNABSCHL_1",
+          "type": "BLOB",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BMAHNEINL_2",
+          "type": "BLOB",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BMAHNABSCHL_2",
+          "type": "BLOB",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BMAHNEINL_3",
+          "type": "BLOB",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BMAHNABSCHL_3",
+          "type": "BLOB",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "EMAHNEINL_1",
+          "type": "BLOB",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "EMAHNABSCHL_1",
+          "type": "BLOB",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "EMAHNEINL_2",
+          "type": "BLOB",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "EMAHNABSCHL_2",
+          "type": "BLOB",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "EMAHNEINL_3",
+          "type": "BLOB",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "EMAHNABSCHL_3",
+          "type": "BLOB",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "MAHNALT",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "VERWALTUNGSBEGINN",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "VERWALTUNGSENDE",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ARCHIVIERT",
+          "type": "CHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "CPSTATUS",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "KTORUNDUNGSDIFF",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "SONUMLAGEBETRAG2",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "SONUMLAGEBETRAG3",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "SONUMLAGEBETRAG4",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "SONUMLAGEBETRAG5",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "SONUMLSCHL1",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "SONUMLSCHL2",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "SONUMLSCHL3",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "SONUMLSCHL4",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "SONUMLSCHL5",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "LAST_UPDATE",
+          "type": "TIMESTAMP",
+          "nullable": true,
+          "default": "DEFAULT"
+        }
+      ],
+      "key_columns": [
+        "ONR",
+        "OBEZ",
+        "OSTRASSE",
+        "OPLZORT",
+        "EIGNR"
+      ],
+      "total_columns": 356,
+      "description": "Liegenschafts-Stammdaten mit Verwaltungsinformationen"
+    },
+    "WOHNUNG": {
+      "columns": [
+        {
+          "name": "ONR",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ENR",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "EBEZ",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "WNOTIZ",
+          "type": "BLOB",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "FRINH1",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "FRINH2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "FRINH3",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "FRINH4",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "FRINH5",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "FRINH6",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "FRINH7",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "FRINH8",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "FRINH9",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "FRINH10",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "FRINH11",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "FRINH12",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ART",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "DRUCKWAS",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BKNR",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "EKNR",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        }
+      ],
+      "key_columns": [
+        "ONR",
+        "ENR",
+        "EBEZ",
+        "ART"
+      ],
+      "total_columns": 20,
+      "description": "Wohnungseinheiten innerhalb der Objekte"
+    },
+    "BEWOHNER": {
+      "columns": [
+        {
+          "name": "ONR",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "KNR",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ENR",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ID",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Z1",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Z2",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Z3",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Z4",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Z5",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Z6",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Z7",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Z8",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "MIETE1",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "MIETE2",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "MIETE3",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "MIETE4",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "MIETDATUM",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "KAUT_VEREINBART",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "KAUT_ZEILE1",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "KAUT_ZEILE2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "KAUT_ZEILE3",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "KAUT_ABGERECHNET",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "KAUT_BEZ_KONTO",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "KAUT_KONTO",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "KAUT_BANK",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "KAUT_BLZ",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "MIETDATUM1",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "MIETDATUM2",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "MIETDATUM3",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "MIETDATUM4",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BLASTJA",
+          "type": "CHAR",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "BMAHNSPERRE",
+          "type": "CHAR",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "VABSCHLUS",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "VBEGINN",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "VENDE",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "EERHDATUM",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "VNAMEMIETER",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "VNAMEVERMIETER",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "VNOTIZ",
+          "type": "BLOB",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "VKFRIST",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "VZUMJAHRESENDE",
+          "type": "CHAR",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "BANREDE",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BANREDE2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BBRIEFAN",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BBRIEFAN2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BVNAME",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BNAME",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BVNAME2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BNAME2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BAGEBER",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BSTR",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BPLZORT",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BBANK",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BTEL",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BFAX",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BTEL2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BBLZ",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BKONTO",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BABRVON",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BABRBIS",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BGEKAM",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BBESTAETIGT",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BVON",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BWEGEN",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BABNMIETER",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BABNVERMIETER",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BMWSTAUSW",
+          "type": "CHAR",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "BMWSTSATZ",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BKONTOINH",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BKURZ",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BTITEL",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BTITEL2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BZUSATZ",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BZUSATZ2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BEMAIL",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BHANDY",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "MIETE5",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "MIETE6",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "MIETDATUM5",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "MIETDATUM6",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "VERTRART",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZA1",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZA2",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZA3",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZA4",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZA5",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZA6",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZA7",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZA8",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "STAFFEL",
+          "type": "CHAR",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "MIETE7",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "MIETE8",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "MIETE9",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "MIETE10",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "MIETDATUM7",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "MIETDATUM8",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "MIETDATUM9",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "MIETDATUM10",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZADATUM1",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZADATUM2",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZADATUM3",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZADATUM4",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZADATUM5",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZADATUM6",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZADATUM7",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZADATUM8",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZDATUM1",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZDATUM2",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZDATUM3",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZDATUM4",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZDATUM5",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZDATUM6",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZDATUM7",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZDATUM8",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BKAUTION3",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "BDKAUTION1",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BDKAUTION2",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BDKAUTION3",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "KAUTVEREINB",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BKAUTIONMEMO",
+          "type": "BLOB",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BINTERNET",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "DRUCKWAS",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BEWSTATUS",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BEWWARTE",
+          "type": "CHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BEWWARTEDATUM",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BEWWARTENR",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "GEKDATUM",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "SEV",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "EMAIL_JA",
+          "type": "CHAR",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "FAX_JA",
+          "type": "CHAR",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "DAUERAUFTRAG",
+          "type": "CHAR",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GEBURTSDATUM",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "GEBURTSDATUM2",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BNWG",
+          "type": "CHAR",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "BBIC",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BIBAN",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "SOLLTAG",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "IM_INDEX",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "IM_PROZMETHODE",
+          "type": "CHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "IM_BASISJAHR",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "IM_DIFF",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "IM_ERREICHEN",
+          "type": "CHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "IM_MONAT",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "IM_JAHR",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "IM_ERHPROZ",
+          "type": "NUMERIC(18,1)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "IM_ISINDEXMIETE",
+          "type": "CHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "IM_INFO",
+          "type": "BLOB",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "IM_STATUS",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "IM_VPI_AKT",
+          "type": "NUMERIC(18,1)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "IM_VPI_DATUM_AKT",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "IM_PROZ_SCHWELLE",
+          "type": "CHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BSTR2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BPLZORT2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "SEPA_MAN_NR",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "SEPA_MAN_DAT",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ADR_NR1",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ADR_NR2",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ADR_NR3",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ADR_NR4",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "GESCHOSS",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "MIETEINNAHME_ART",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "SEPA_MAN_ART",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "KAUT_BIC",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "KAUT_IBAN",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "KAUT_BERECHNUNG",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "KAUT_VERZINSUNG_ART",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "KAUT_ZINSSATZREIHE",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "KAUT_ZINSSATZ_FEST",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BLAND",
+          "type": "CHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "SEPA_LS_TEXTSCHL",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "BVIRTKTO",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "WOHNUNGSGEBERBESCHEINIGUNG",
+          "type": "BLOB",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "WGEBERBESCH_PERSONEN",
+          "type": "BLOB",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BTELBEW2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BTEL2BEW2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BHANDYBEW2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BFAXBEW2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BEMAILBEW2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BBANK2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BBLZ2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BKONTO2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BKONTOINH2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BBIC2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BIBAN2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BUERGSCHAFT",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BUERGSCHAFT_JN",
+          "type": "CHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "EINWILLIGUNG",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "ADR_NR_POSTANSCHRIFT",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "PFAENDUNG",
+          "type": "CHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BEWNR",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BEWWARTEZ1",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BEWWARTEZ2",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BEWWARTEZ3",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BEWWARTEZ4",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BEWWARTEZ5",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BEWWARTEZ6",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BEWWARTEZ7",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BEWWARTEZ8",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        }
+      ],
+      "key_columns": [
+        "ONR",
+        "KNR",
+        "ENR",
+        "BEWNR",
+        "BNAME",
+        "BVNAME",
+        "BSTR",
+        "BPLZORT",
+        "Z1",
+        "VENDE"
+      ],
+      "total_columns": 198,
+      "description": "Mieter-Stammdaten mit Vertragsdaten (KEIN EIGNR!)"
+    },
+    "KONTEN": {
+      "columns": [
+        {
+          "name": "ONR",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "KNR",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "KBEZ",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "KBRUTTO",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "OPBETRAG",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "KUST",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "KVERTEILUNG",
+          "type": "CHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "KKSTNR",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "KUSCHLNR1",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "KUSCHLNR2",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "KUSCHLPROZ1",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "KUSCHLPROZ2",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "KMAHNSTUFE",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "KBEW",
+          "type": "CHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "KNRSTR",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "KABRECHNEN",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "KWBRUTTO",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "KWBRUTTOALT",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "MAHNDATUM",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "MAHNGEDRUCKT",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BUTEXT1",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BUTEXT2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BUTEXT3",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BUTEXT4",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BUTEXT5",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "LINR",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "KKLASSE",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "STSATZ",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "EA",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "SELCODE",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "SFREI1",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "SFREI2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "RFREI1",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "KBRUTTOWJ",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "BFREI1",
+          "type": "CHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "IFREI1",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "IFREI2",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "FESTB",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "FESTBPROZ",
+          "type": "FLOAT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "IHRABRVON",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "IHRABRBIS",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BHEIZ",
+          "type": "CHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "HEIZKOSTEN",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "USTVOR",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "IHEIZK",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "KWERTBRUTTO",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "MAWAGNIS",
+          "type": "CHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "IHEIZEXT",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "DATEVKNR",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ENR",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "MAW",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "NEUTRAL",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "RLPOS",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BANKNR",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BKART",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BKBEMERKUNG",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "SEV",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "SEVKNR",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "INAKTIV",
+          "type": "CHAR",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "KGESAMTMITNUML",
+          "type": "NUMERIC(18,4)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "KGESAMTMITNUMLNETTO",
+          "type": "NUMERIC(18,4)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BEW",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "SOLL_IN_NK",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "OSI_STFREI",
+          "type": "CHAR",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "KSTANDABRECHNEN",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "NICHT_IN_EAR",
+          "type": "CHAR",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "DATEVKNR2",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZU_RL",
+          "type": "CHAR",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "CAEXIM_KAT",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "WIPL_OHNE_MINUS",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "NBK_16KOSTEN",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "FESTB_NETTO",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": "DEFAULT"
+        }
+      ],
+      "key_columns": [
+        "KNR",
+        "KKLASSE",
+        "ONR",
+        "BEWNR",
+        "OPBETRAG"
+      ],
+      "total_columns": 72,
+      "description": "Buchhaltungskonten für Mieter und Eigentümer"
+    },
+    "EIGENTUEMER": {
+      "columns": [
+        {
+          "name": "ONR",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "KNR",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ENR",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ID",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Z1",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Z2",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Z3",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Z4",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Z5",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Z6",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Z7",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Z8",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ERUECK",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "EBEMERKUNG",
+          "type": "BLOB",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ELASTJA",
+          "type": "CHAR",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "EMAHNSPERRE",
+          "type": "CHAR",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "EERHDATUM",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ELETZTHAUSGELD",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "EMWSTAUSW",
+          "type": "CHAR",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "EMWSTSATZ",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "EZBEGINN",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "EZENDE",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZA1",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZA2",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZA3",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZA4",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZA5",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZA6",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZA7",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZA8",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZADATUM1",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZADATUM2",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZADATUM3",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZADATUM4",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZADATUM5",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZADATUM6",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZADATUM7",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZADATUM8",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "DRUCKWAS",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "EIGNR",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZDATUM1",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZDATUM2",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZDATUM3",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZDATUM4",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZDATUM5",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZDATUM6",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZDATUM7",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZDATUM8",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "USTID",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "RECHNR",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "RECHNRSTR",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "SEV",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "EIGENNUTZER",
+          "type": "CHAR",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "EIGNR2",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "EIGNR3",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "EIGNR4",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "EIGNR5",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "IST_RL_POS",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "SOLL_RL_POS",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "DAUERAUFTRAG",
+          "type": "CHAR",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "ENWG",
+          "type": "CHAR",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "SOLLTAG",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "STEUERNUMMER",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "FINANZAMT",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "SEPA_MAN_ART",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "SEPA_MAN_NR",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "SEPA_MAN_DAT",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "SEPA_LS_TEXTSCHL",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "EVIRTKTO",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BANKID",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BANKID2",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "PFAENDUNG",
+          "type": "CHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "GEMEINSCHAFTSTYP",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Z9",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Z10",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Z11",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Z12",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Z13",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Z14",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Z15",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Z16",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Z17",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Z18",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Z19",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Z20",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Z21",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Z22",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Z23",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Z24",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Z25",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Z26",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Z27",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Z28",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Z29",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Z30",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Z31",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Z32",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Z33",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Z34",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Z35",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Z36",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Z37",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Z38",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Z39",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Z40",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Z41",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Z42",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Z43",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Z44",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Z45",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Z46",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Z47",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Z48",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZA9",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZA10",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZA11",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZA12",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZA13",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZA14",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZA15",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZA16",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZA17",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZA18",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZA19",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZA20",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZA21",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZA22",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZA23",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZA24",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZA25",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZA26",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZA27",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZA28",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZA29",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZA30",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZA31",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZA32",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZA33",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZA34",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZA35",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZA36",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZA37",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZA38",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZA39",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZA40",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZA41",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZA42",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZA43",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZA44",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZA45",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZA46",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZA47",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZA48",
+          "type": "NUMERIC(18,2)",
+          "nullable": true,
+          "default": null
+        }
+      ],
+      "key_columns": [],
+      "total_columns": 153,
+      "description": "Eigentumsrelationen zwischen Personen und Objekten"
+    },
+    "BUCHUNG": {
+      "columns": [
+        {
+          "name": "BNR",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ONRSOLL",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ONRHABEN",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "KSOLL",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "KHABEN",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "DATUM",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "MWST",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BELEGNR",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BETRAG",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "TEXT",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "KSTRSOLL",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "KSTRHABEN",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "LBNR",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "OPNR",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "LASTERZEUGT",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "WDATUM",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "KAUSZUGNR",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "KAUSZUGBLATT",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BRENNSTMENGE",
+          "type": "FLOAT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "OPBETRAG",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "MAHNSTUFE",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BANKNRSOLL",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BANKNRHABEN",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "LASTBANK",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ARTSOLL",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ARTHABEN",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "SPLITNR",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BSTRSOLL",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BSTRHABEN",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ARTOP",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "KNROP",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "MWSTOP",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "SEVKNR",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "SEVJAHRMONAT",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZZDATUM",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "NICHTUMLEGEN",
+          "type": "CHAR",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GN",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "VERZUGSZINSEN_BNR",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "VERWALTER_ID",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "MITARBEITER_ID",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ERFASSUNGSDATUM",
+          "type": "TIMESTAMP",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "IS_ABRL",
+          "type": "CHAR",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "MITARBEITER_EDIT_ID",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "VERWALTER_EDIT_ID",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ZULETZT_GEMAHNT",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BELEGLINK",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "CO2BETRAG",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "CO2ART",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": null
+        }
+      ],
+      "key_columns": [],
+      "total_columns": 48,
+      "description": "Finanztransaktionen und Zahlungseingänge"
+    },
+    "BEWADR": {
+      "columns": [
+        {
+          "name": "BEWNR",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BANREDE",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BANREDE2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BBRIEFAN",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BBRIEFAN2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BVNAME",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BNAME",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BVNAME2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BNAME2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BAGEBER",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BSTR",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BPLZORT",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BBANK",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BTEL",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BFAX",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BTEL2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BBLZ",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BKONTO",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BKONTOINH",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BTITEL",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BTITEL2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BZUSATZ",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BZUSATZ2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BEMAIL",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BHANDY",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BINTERNET",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "EMAIL_JA",
+          "type": "CHAR",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "FAX_JA",
+          "type": "CHAR",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "GEBURTSDATUM",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "GEBURTSDATUM2",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BBIC",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BIBAN",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BSTR2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BPLZORT2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BLAND",
+          "type": "CHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BVIRTKTO",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BTELBEW2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BTEL2BEW2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BHANDYBEW2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BFAXBEW2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BEMAILBEW2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BBANK2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BBLZ2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BKONTO2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BKONTOINH2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BBIC2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BIBAN2",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ADR_NR_POSTANSCHRIFT",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "EINWILLIGUNG",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "CPSTATUS",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "CPDATUMZUGANG",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "POSTANSCHRIFT_ART",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ANONYM",
+          "type": "CHAR",
+          "nullable": true,
+          "default": "DEFAULT"
+        },
+        {
+          "name": "KOMMUNIKATIONSKANAL",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BFIRMA",
+          "type": "CHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "BFIRMANAME",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        }
+      ],
+      "key_columns": [],
+      "total_columns": 56,
+      "description": "Zusätzliche Mieter-Adressen"
+    },
+    "HK_WOHN": {
+      "columns": [
+        {
+          "name": "ONR",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ENR",
+          "type": "SMALLINT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "WOHNVON",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "WOHNBIS",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "WINCASA_ID",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ABRFIRMA_ID",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "NUTZERNR",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "EBEZ",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "NAME",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "VNAME",
+          "type": "VARCHAR",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "QM",
+          "type": "FLOAT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "QMWARMW",
+          "type": "FLOAT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "MWSTAUSW",
+          "type": "CHAR",
+          "nullable": true,
+          "default": null
+        }
+      ],
+      "key_columns": [],
+      "total_columns": 13,
+      "description": "Heizkosten und Flächendaten"
+    }
+  },
+  "critical_mappings": {
+    "KALTMIETE": "BEWOHNER.Z1",
+    "OWNER_NAME": "EIGADR.ENAME",
+    "OWNER_STREET": "EIGADR.ESTR",
+    "TENANT_NAME": "BEWOHNER.BNAME",
+    "TENANT_CITY": "BEWOHNER.BPLZORT",
+    "PROPERTY_STREET": "OBJEKTE.OSTRASSE",
+    "PROPERTY_CITY": "OBJEKTE.OPLZORT"
+  },
+  "business_rules": {
+    "ACTIVE_TENANTS": "VENDE IS NULL",
+    "EXCLUDE_TEST": "ONR < 890",
+    "TENANT_ACCOUNTS": "KKLASSE = 60",
+    "EXCLUDE_WEG": "EIGNR <> -1",
+    "INCOME_ONLY": "BETRAG > 0"
+  },
+  "relationships": {
+    "owner_property": "EIGADR.EIGNR -> EIGENTUEMER.EIGNR -> OBJEKTE",
+    "tenant_apartment": "BEWOHNER.ONR+ENR -> WOHNUNG.ONR+ENR",
+    "tenant_account": "BEWOHNER.KNR -> KONTEN.KNR",
+    "transaction_account": "BUCHUNG.KHABEN/KSOLL -> KONTEN.KNR"
+  }
+}

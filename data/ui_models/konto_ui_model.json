@@ -1,0 +1,10 @@
+{
+  "entity_name": "konto",
+  "german_title": "Finanzkonto für Buchhaltung",
+  "description": "account",
+  "primary_key": null,
+  "display_field": null,
+  "relationships": {},
+  "query_templates": [],
+  "fields": []
+}

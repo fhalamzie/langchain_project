@@ -27,6 +27,11 @@
       "vermieterin",
       "besitzer",
       "besitzerin"
+    ],
+    "important_relationships": [
+      "EIGENTUEMER.KNR = EIGADR.EIGNR (link owner units to owner data)",
+      "EIGENTUEMER links units to owners via ONR+ENR",
+      "OBJEKTE table does NOT have EIGNR field"
     ]
   },
   "mieter": {
@@ -488,7 +493,9 @@
     "aliases": [
       "vacancy",
       "leere wohnung",
-      "unvermietete einheit"
+      "unvermietete einheit",
+      "unvermietet",
+      "frei"
     ],
     "key_fields": [
       "ENR",
@@ -498,8 +505,11 @@
     "german_variations": [
       "leerstand",
       "leerstehend",
-      "unvermietete wohnung"
-    ]
+      "unvermietete wohnung",
+      "freie wohnung"
+    ],
+    "json_export": "08_wohnungen_leerstand",
+    "sql_hint": "Use LEFT JOIN BEWOHNER ... WHERE B.KNR IS NULL to find vacant units"
   },
   "vermietungsgrad": {
     "computed": "(VERMIETETE_EINHEITEN / GESAMT_EINHEITEN) * 100",

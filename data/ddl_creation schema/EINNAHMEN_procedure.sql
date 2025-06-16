@@ -1,0 +1,290 @@
+-- Prozedur: EINNAHMEN
+-- Generiert: 2025-05-31 10:26:41
+
+CREATE OR ALTER PROCEDURE EINNAHMEN
+DECLARE VARIABLE BANKNRSOLL INTEGER;
+DECLARE VARIABLE BANKNRHABEN INTEGER;
+DECLARE VARIABLE ARTSOLL INTEGER;
+DECLARE VARIABLE ARTHABEN INTEGER;
+DECLARE VARIABLE SPLITNR INTEGER;
+DECLARE VARIABLE IBANKNRAKT INTEGER;
+DECLARE VARIABLE BANKSTR VARCHAR(15);
+DECLARE VARIABLE USTSATZ NUMERIC(15, 2);
+DECLARE VARIABLE ART1 INTEGER;
+DECLARE VARIABLE ART2 INTEGER;
+DECLARE VARIABLE ART3 INTEGER;
+DECLARE VARIABLE ART4 INTEGER;
+DECLARE VARIABLE ARTSOLL1 INTEGER;
+DECLARE VARIABLE KHABENNEU INTEGER;
+BEGIN
+ IBANKNRAKT=-1;
+ BANKSTR='';
+ IF (BBEW='J') THEN
+  BEGIN
+   ART1=10;
+   ART2=13;
+   ART3=10;
+   ART4=13;
+   ARTSOLL1=60;
+  END
+ ELSE
+  BEGIN
+   ART1=15;
+   ART2=18;
+   ART3=110;
+   ART4=580;
+   ARTSOLL1=62;
+  END
+ /* */
+ IF (SOLLBU='J') then
+  begin
+   FOR SELECT BNR, DATUM, WDATUM, KSOLL, KHABEN, BELEGNR, TEXT, MWST, BETRAG, BANKNRSOLL, BANKNRHABEN, OPBETRAG, SPLITNR, KSTRHABEN, KSTRSOLL, ARTSOLL, ARTHABEN, GN from buchung
+   WHERE (ONRSOLL=:IONR OR ONRHABEN=:IONR)
+   AND ((ARTSOLL>=:ART1 AND ARTSOLL<=:ART2) OR (ARTHABEN>=:ART1 AND ARTHABEN<=:ART2) OR (ARTSOLL>=:ART3 AND ARTSOLL<=:ART4) OR (ARTHABEN>=:ART3 AND ARTHABEN<=:ART4))
+   AND (Datum>=:DTVON and Datum<=:DTBIS)
+   and BETRAG<>0
+   INTO :BNR, :DATUM, :WDATUM, :KSOLL, :KHABEN, :BELEGNR, :TEXT, :MWST, :BETRAG, :BANKNRSOLL, :BANKNRHABEN, :OPBETRAG, :SPLITNR, :KSTRHABEN, :KSTRSOLL, :ARTSOLL, :ARTHABEN, :GN
+   DO
+    BEGIN
+     ONR=:IONR;
+     IF (OPBETRAG IS NOT NULL) THEN
+      BEGIN
+       IF (OPBETRAG = 0) THEN
+        BEMERKUNG='BEZ';
+       ELSE
+        BEMERKUNG='OP';
+      END
+     ELSE
+      BEMERKUNG='';
+     IF (BANKNRSOLL IS NOT NULL) THEN
+      BEGIN
+       IF (IBANKNRAKT=BANKNRSOLL) THEN
+        KSTRSOLL=KSTRSOLL || ' ' || BANKSTR;
+       ELSE
+        BEGIN
+         SELECT KURZBEZ from Banken where NR=:BANKNRSOLL into :BANKSTR;
+         KSTRSOLL=KSTRSOLL || ' ' || BANKSTR;
+         IBANKNRAKT=BANKNRSOLL;
+        END
+      END
+     ELSE
+      SELECT KNRSTR || ' ' || KBEZ, INAKTIV from konten where ONR=:IONR AND KNR=:KSOLL
+       into :KSTRSOLL, :INAKTIV;
+     IF (BANKNRHABEN IS NOT NULL) THEN
+      BEGIN
+       IF (IBANKNRAKT=BANKNRHABEN) THEN
+         KSTRHABEN=KSTRHABEN || ' ' || BANKSTR;
+          ELSE
+           BEGIN
+            SELECT KURZBEZ from Banken where NR=:BANKNRHABEN into :BANKSTR;
+            KSTRHABEN=KSTRHABEN || ' ' || BANKSTR;
+            IBANKNRAKT=BANKNRHABEN;
+           END
+      END
+     ELSE
+      SELECT KNRSTR || ' ' || KBEZ from konten where ONR=:IONR AND KNR=:KHABEN
+      into :KSTRHABEN;
+     /*Steuer*/
+     IF ((MWST<>0) AND (not (ARTHABEN>=110 AND ARTHABEN<=580))) THEN
+      BEGIN
+       USTSATZ=100+MWST;
+       /* Steuer im Haben?*/
+       IF ((ARTHABEN>=10 AND ARTHABEN<=19) OR (ARTHABEN>=110 AND ARTHABEN<=580)) THEN
+        BEGIN
+         BETRAGH=(BETRAG*100) / USTSATZ;
+         USTBETRAG=BETRAG-BETRAGH;
+         BETRAGS=BETRAG;
+        END
+       ELSE
+        BEGIN
+         BETRAGS=(BETRAG*100) / USTSATZ;
+         USTBETRAG=BETRAG-BETRAGS;
+         BETRAGH=BETRAG;
+         BETRAG=-BETRAG;
+        END
+      END
+     ELSE
+      BEGIN /* keine Steuer */
+       BETRAGS=BETRAG;
+       BETRAGH=BETRAG;
+       USTBETRAG=NULL;
+       MWST=NULL;
+       IF ((ARTSOLL>=10 AND ARTSOLL<=19) OR (ARTSOLL>=110 AND ARTSOLL<=580)) THEN
+        BETRAG=-BETRAG;
+      END
+     suspend;
+    END
+  END /* SOLLBU */
+ ELSE
+/***************************************/
+  BEGIN /* IST Buchhaltung */
+   FOR SELECT BNR, DATUM, WDATUM, KSOLL, KNROP, BELEGNR, TEXT, MWSTOP, BETRAG, BANKNRSOLL, BANKNRHABEN, OPBETRAG, SPLITNR, KSTRHABEN, KSTRSOLL, ARTSOLL, ARTHABEN, GN, KHABEN from buchung
+   WHERE (ONRSOLL=:IONR OR ONRHABEN=:IONR)
+   AND ((ARTOP>=:ART1 AND ARTOP<=:ART2) OR (ARTOP>=:ART3 AND ARTOP<=:ART4))
+   AND (Datum>=:DTVON and Datum<=:DTBIS)
+   and BETRAG<>0
+   INTO :BNR, :DATUM, :WDATUM, :KSOLL, :KHABEN, :BELEGNR, :TEXT, :MWST, :BETRAG, :BANKNRSOLL, :BANKNRHABEN, :OPBETRAG, :SPLITNR, :KSTRHABEN, :KSTRSOLL, :ARTSOLL, :ARTHABEN, :GN, :KHABENNEU 
+   DO
+    BEGIN
+     ONR=:IONR;
+     BEMERKUNG='';
+     IF (BANKNRSOLL IS NOT NULL) THEN
+      BEGIN
+           IF (IBANKNRAKT=BANKNRSOLL) THEN
+            KSTRSOLL=KSTRSOLL || ' ' || BANKSTR;
+           ELSE
+            BEGIN
+             SELECT KURZBEZ from Banken where NR=:BANKNRSOLL into :BANKSTR;
+             KSTRSOLL=KSTRSOLL || ' ' || BANKSTR;
+             IBANKNRAKT=BANKNRSOLL;
+            END
+      END
+     ELSE
+      SELECT KNRSTR || ' ' || KBEZ from konten where ONR=:IONR AND KNR=:KSOLL
+       into :KSTRSOLL;
+      SELECT KNRSTR || ' ' || KBEZ  from konten where ONR=:IONR AND KNR=:KHABEN
+      into :KSTRHABEN ;
+      SELECT INAKTIV  from konten where ONR=:IONR AND KNR=:KHABENNEU
+      into  :INAKTIV ;
+     /* Umwandlung? UWE VZ UMDREHEN*/
+     IF (ARTSOLL=60 OR ARTSOLL=62) THEN
+      begin
+       BETRAG=-BETRAG;
+      end
+     IF (ARTSOLL=1) THEN  /* KOSTENKONTO direkt auf DEB nicht erlaubt */
+      BETRAG=0;
+
+
+     /*Steuer*/
+     IF ((MWST<>0) AND (not (ARTHABEN>=110 AND ARTHABEN<=580))) THEN
+      BEGIN
+       USTSATZ=100+MWST;
+       /* Steuer im Haben?*/
+       BETRAGH=(BETRAG*100) / USTSATZ;
+       USTBETRAG=BETRAG-BETRAGH;
+       BETRAGS=BETRAG;
+      END
+     ELSE
+      BEGIN /* keine Steuer */
+       BETRAGS=BETRAG;
+       BETRAGH=BETRAG;
+       USTBETRAG=NULL;
+       MWST=NULL;
+      END
+     suspend;
+    END
+
+   FOR SELECT BNR, DATUM, WDATUM, KSOLL, KNROP, BELEGNR, TEXT, MWSTOP, BETRAG, BANKNRSOLL, BANKNRHABEN, OPBETRAG, SPLITNR, KSTRHABEN, KSTRSOLL, ARTSOLL, ARTHABEN, GN, KHABEN from buchung
+   WHERE (ONRSOLL=:IONR OR ONRHABEN=:IONR)
+   AND ARTOP=0
+   AND (Datum>=:DTVON and Datum<=:DTBIS)
+   AND buchung.artsoll=:ARTSOLL1
+   and BETRAG<>0
+   INTO :BNR, :DATUM, :WDATUM, :KSOLL, :KHABEN, :BELEGNR, :TEXT, :MWST, :BETRAG, :BANKNRSOLL, :BANKNRHABEN, :OPBETRAG, :SPLITNR, :KSTRHABEN, :KSTRSOLL, :ARTSOLL, :ARTHABEN, :GN, :KHABENNEU
+   DO
+    BEGIN
+     ONR=:IONR;
+     BEMERKUNG='';
+     IF (BANKNRSOLL IS NOT NULL) THEN
+      BEGIN
+           IF (IBANKNRAKT=BANKNRSOLL) THEN
+            KSTRSOLL=KSTRSOLL || ' ' || BANKSTR;
+           ELSE
+            BEGIN
+             SELECT KURZBEZ from Banken where NR=:BANKNRSOLL into :BANKSTR;
+             KSTRSOLL=KSTRSOLL || ' ' || BANKSTR;
+             IBANKNRAKT=BANKNRSOLL;
+            END
+      END
+     ELSE
+      SELECT KNRSTR || ' ' || KBEZ from konten where ONR=:IONR AND KNR=:KSOLL
+       into :KSTRSOLL;
+        for select KNR, Betrag, ARTOP, MWSTOP from buchzahl where BNR=:BNR
+     into KHABEN, Betrag, ARTHABEN, MWST
+     do
+      begin
+       BETRAG=-BETRAG;
+       /*Steuer*/
+       IF ((MWST<>0) AND (not (ARTHABEN>=110 AND ARTHABEN<=580))) THEN
+        BEGIN
+         USTSATZ=100+MWST;
+         /* Steuer im Haben?*/
+         BETRAGH=(BETRAG*100) / USTSATZ;
+         USTBETRAG=BETRAG-BETRAGH;
+         BETRAGS=BETRAG;
+        END
+       ELSE
+        BEGIN /* keine Steuer */
+         BETRAGS=BETRAG;
+         BETRAGH=BETRAG;
+         USTBETRAG=NULL;
+         MWST=NULL;
+        END
+       SELECT KNRSTR || ' ' || KBEZ  from konten where ONR=:IONR AND KNR=:KHABEN
+       into :KSTRHABEN ;
+       
+        SELECT INAKTIV  from konten where ONR=:IONR AND KNR=:KHABENNEU
+       into  :INAKTIV ;
+       IF (BETRAG<>0) then
+        suspend;
+      end
+    end /* SPLIT */
+
+  /* SPLIT */
+   FOR SELECT BNR, DATUM, WDATUM, KSOLL, KNROP, BELEGNR, TEXT, MWSTOP, BETRAG, BANKNRSOLL, BANKNRHABEN, OPBETRAG, SPLITNR, KSTRHABEN, KSTRSOLL, ARTSOLL, ARTHABEN, GN, KHABEN from buchung
+   WHERE (ONRSOLL=:IONR OR ONRHABEN=:IONR)
+   AND ARTOP=0
+   AND (Datum>=:DTVON and Datum<=:DTBIS)
+   AND ((ARTSOLL=:ARTSOLL1) OR (ARTHABEN=:ARTSOLL1))
+   AND (BANKNRSOLL IS NOT NULL)
+   and BETRAG<>0
+   INTO :BNR, :DATUM, :WDATUM, :KSOLL, :KHABEN, :BELEGNR, :TEXT, :MWST, :BETRAG, :BANKNRSOLL, :BANKNRHABEN, :OPBETRAG, :SPLITNR, :KSTRHABEN, :KSTRSOLL, :ARTSOLL, :ARTHABEN, :GN, :KHABENNEU
+   DO
+    BEGIN
+     ONR=:IONR;
+     BEMERKUNG='';
+     IF (BANKNRSOLL IS NOT NULL) THEN
+      BEGIN
+           IF (IBANKNRAKT=BANKNRSOLL) THEN
+            KSTRSOLL=KSTRSOLL || ' ' || BANKSTR;
+           ELSE
+            BEGIN
+             SELECT KURZBEZ from Banken where NR=:BANKNRSOLL into :BANKSTR;
+             KSTRSOLL=KSTRSOLL || ' ' || BANKSTR;
+             IBANKNRAKT=BANKNRSOLL;
+            END
+      END
+     ELSE
+      SELECT KNRSTR || ' ' || KBEZ from konten where ONR=:IONR AND KNR=:KSOLL
+       into :KSTRSOLL;
+     for select KNR, Betrag, ARTOP, MWSTOP from buchzahl where BNR=:BNR
+     into KHABEN, Betrag, ARTHABEN, MWST
+     do
+      begin
+       /*Steuer*/
+       IF ((MWST<>0) AND (not (ARTHABEN>=110 AND ARTHABEN<=580))) THEN
+        BEGIN
+         USTSATZ=100+MWST;
+         /* Steuer im Haben?*/
+         BETRAGH=(BETRAG*100) / USTSATZ;
+         USTBETRAG=BETRAG-BETRAGH;
+         BETRAGS=BETRAG;
+        END
+       ELSE
+        BEGIN /* keine Steuer */
+         BETRAGS=BETRAG;
+         BETRAGH=BETRAG;
+         USTBETRAG=NULL;
+         MWST=NULL;
+        END
+       SELECT KNRSTR || ' ' || KBEZ from konten where ONR=:IONR AND KNR=:KHABEN
+       into :KSTRHABEN;
+       
+       SELECT INAKTIV  from konten where ONR=:IONR AND KNR=:KHABENNEU
+       into  :INAKTIV ;
+       IF (BETRAG<>0) then
+        suspend;
+      end
+    end /* SPLIT */
+  END /* IST Buchhaltung */
+END

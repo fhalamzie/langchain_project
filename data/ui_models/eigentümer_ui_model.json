@@ -1,0 +1,10 @@
+{
+  "entity_name": "eigentümer",
+  "german_title": "Immobilieneigentümer / Vermieter",
+  "description": "eigentuemer",
+  "primary_key": null,
+  "display_field": null,
+  "relationships": {},
+  "query_templates": [],
+  "fields": []
+}

@@ -1,0 +1,11 @@
+{
+  "name": "weg_zahlungsuebersicht_table",
+  "type": "table",
+  "description": "Table component for Weg_Zahlungsuebersicht",
+  "styles": [
+    "table",
+    "table-zebra",
+    "overflow-x-auto"
+  ],
+  "scripts": null
+}

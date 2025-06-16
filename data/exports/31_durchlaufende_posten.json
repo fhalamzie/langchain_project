@@ -1,7 +1,7 @@
 {
   "query_info": {
     "file": "31_durchlaufende_posten.sql",
-    "generated": "2025-06-12T14:41:19.718866",
+    "generated": "2025-06-16T03:34:44.915018",
     "driver": "firebird-driver",
     "charset": "ISO8859_1",
     "business_purpose": "Übersicht aller durchlaufenden Posten (temporäre Buchungen)",
@@ -15,7 +15,7 @@
       "Flexible FilterParameter"
     ],
     "total_rows": 79,
-    "execution_time_seconds": 0.006827
+    "execution_time_seconds": 0.00815
   },
   "columns": [
     "ONR",

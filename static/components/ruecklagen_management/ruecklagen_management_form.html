@@ -1,0 +1,1277 @@
+<form 
+    id="ruecklagen_management-form"
+    hx-post="/api/ruecklagen_management"
+    hx-trigger="submit"
+    hx-target="#result-container"
+    hx-swap="innerHTML"
+    hx-indicator="#loading-indicator"
+    class="space-y-6"
+    x-data="{ formValid: false, errors: {} }"
+>
+    <div class="card bg-base-100 shadow-xl">
+        <div class="card-body">
+            <h2 class="card-title text-2xl mb-6">
+                <i class="fas fa-building mr-2"></i>
+                Ruecklagen_Management
+            </h2>
+            
+            <!-- Loading Indicator -->
+            <div id="loading-indicator" class="htmx-indicator">
+                <div class="flex justify-center items-center p-4">
+                    <span class="loading loading-spinner loading-lg"></span>
+                </div>
+            </div>
+
+            <!-- Identifikatoren -->
+            <div class="divider">Identifikatoren</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                <div class="form-control w-full">
+                    <label class="label" for="ONR">
+                        <span class="label-text">
+                            Gebäude / Liegenschaft
+                             <span class="text-error">*</span>
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="ONR"
+                        name="ONR"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        required required
+                        
+                        @blur="validateField('ONR')"
+                    />
+                    <label class="label" x-show="errors.ONR">
+                        <span class="label-text-alt text-error" x-text="errors.ONR"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="RUECKLAGE_NR">
+                        <span class="label-text">
+                            Ruecklage Nr
+                             <span class="text-error">*</span>
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="RUECKLAGE_NR"
+                        name="RUECKLAGE_NR"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        required required
+                        
+                        @blur="validateField('RUECKLAGE_NR')"
+                    />
+                    <label class="label" x-show="errors.RUECKLAGE_NR">
+                        <span class="label-text-alt text-error" x-text="errors.RUECKLAGE_NR"></span>
+                    </label>
+                </div>
+
+            </div>
+
+            <!-- Allgemeine Informationen -->
+            <div class="divider">Allgemeine Informationen</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                <div class="form-control w-full">
+                    <label class="label" for="OBJEKT_KURZ">
+                        <span class="label-text">
+                            Objekt Kurz
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="OBJEKT_KURZ"
+                        name="OBJEKT_KURZ"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('OBJEKT_KURZ')"
+                    />
+                    <label class="label" x-show="errors.OBJEKT_KURZ">
+                        <span class="label-text-alt text-error" x-text="errors.OBJEKT_KURZ"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="ANZAHL_EINHEITEN">
+                        <span class="label-text">
+                            Anzahl Einheiten
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="ANZAHL_EINHEITEN"
+                        name="ANZAHL_EINHEITEN"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('ANZAHL_EINHEITEN')"
+                    />
+                    <label class="label" x-show="errors.ANZAHL_EINHEITEN">
+                        <span class="label-text-alt text-error" x-text="errors.ANZAHL_EINHEITEN"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="WOHNFLAECHE_GESAMT">
+                        <span class="label-text">
+                            Wohnflaeche Gesamt
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="WOHNFLAECHE_GESAMT"
+                        name="WOHNFLAECHE_GESAMT"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('WOHNFLAECHE_GESAMT')"
+                    />
+                    <label class="label" x-show="errors.WOHNFLAECHE_GESAMT">
+                        <span class="label-text-alt text-error" x-text="errors.WOHNFLAECHE_GESAMT"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="RUECKLAGE_NAME">
+                        <span class="label-text">
+                            Ruecklage Name
+                             <span class="text-error">*</span>
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="RUECKLAGE_NAME"
+                        name="RUECKLAGE_NAME"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        required required
+                        
+                        @blur="validateField('RUECKLAGE_NAME')"
+                    />
+                    <label class="label" x-show="errors.RUECKLAGE_NAME">
+                        <span class="label-text-alt text-error" x-text="errors.RUECKLAGE_NAME"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="UMLAGESCHLUESSEL">
+                        <span class="label-text">
+                            Cost allocation key (area, units, shares)
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="UMLAGESCHLUESSEL"
+                        name="UMLAGESCHLUESSEL"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('UMLAGESCHLUESSEL')"
+                    />
+                    <label class="label" x-show="errors.UMLAGESCHLUESSEL">
+                        <span class="label-text-alt text-error" x-text="errors.UMLAGESCHLUESSEL"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="ZUEFUEHRUNGS_KONTO">
+                        <span class="label-text">
+                            Zuefuehrungs Konto
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="ZUEFUEHRUNGS_KONTO"
+                        name="ZUEFUEHRUNGS_KONTO"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('ZUEFUEHRUNGS_KONTO')"
+                    />
+                    <label class="label" x-show="errors.ZUEFUEHRUNGS_KONTO">
+                        <span class="label-text-alt text-error" x-text="errors.ZUEFUEHRUNGS_KONTO"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="ENTNAHME_KONTO">
+                        <span class="label-text">
+                            Entnahme Konto
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="ENTNAHME_KONTO"
+                        name="ENTNAHME_KONTO"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('ENTNAHME_KONTO')"
+                    />
+                    <label class="label" x-show="errors.ENTNAHME_KONTO">
+                        <span class="label-text-alt text-error" x-text="errors.ENTNAHME_KONTO"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="PROJEKT_KONTO">
+                        <span class="label-text">
+                            Projekt Konto
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="PROJEKT_KONTO"
+                        name="PROJEKT_KONTO"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('PROJEKT_KONTO')"
+                    />
+                    <label class="label" x-show="errors.PROJEKT_KONTO">
+                        <span class="label-text-alt text-error" x-text="errors.PROJEKT_KONTO"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="ZINSEN_BEZEICHNUNG">
+                        <span class="label-text">
+                            Zinsen Bezeichnung
+                             <span class="text-error">*</span>
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="ZINSEN_BEZEICHNUNG"
+                        name="ZINSEN_BEZEICHNUNG"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        required required
+                        
+                        @blur="validateField('ZINSEN_BEZEICHNUNG')"
+                    />
+                    <label class="label" x-show="errors.ZINSEN_BEZEICHNUNG">
+                        <span class="label-text-alt text-error" x-text="errors.ZINSEN_BEZEICHNUNG"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="ZINSEN_AKTIV">
+                        <span class="label-text">
+                            Zinsen Aktiv
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="ZINSEN_AKTIV"
+                        name="ZINSEN_AKTIV"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('ZINSEN_AKTIV')"
+                    />
+                    <label class="label" x-show="errors.ZINSEN_AKTIV">
+                        <span class="label-text-alt text-error" x-text="errors.ZINSEN_AKTIV"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="ZINSSTEUER_BEZEICHNUNG">
+                        <span class="label-text">
+                            Zinssteuer Bezeichnung
+                             <span class="text-error">*</span>
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="ZINSSTEUER_BEZEICHNUNG"
+                        name="ZINSSTEUER_BEZEICHNUNG"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        required required
+                        
+                        @blur="validateField('ZINSSTEUER_BEZEICHNUNG')"
+                    />
+                    <label class="label" x-show="errors.ZINSSTEUER_BEZEICHNUNG">
+                        <span class="label-text-alt text-error" x-text="errors.ZINSSTEUER_BEZEICHNUNG"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="ZINSSTEUER_AKTIV">
+                        <span class="label-text">
+                            Zinssteuer Aktiv
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="ZINSSTEUER_AKTIV"
+                        name="ZINSSTEUER_AKTIV"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('ZINSSTEUER_AKTIV')"
+                    />
+                    <label class="label" x-show="errors.ZINSSTEUER_AKTIV">
+                        <span class="label-text-alt text-error" x-text="errors.ZINSSTEUER_AKTIV"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="SOLI_BEZEICHNUNG">
+                        <span class="label-text">
+                            Soli Bezeichnung
+                             <span class="text-error">*</span>
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="SOLI_BEZEICHNUNG"
+                        name="SOLI_BEZEICHNUNG"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        required required
+                        
+                        @blur="validateField('SOLI_BEZEICHNUNG')"
+                    />
+                    <label class="label" x-show="errors.SOLI_BEZEICHNUNG">
+                        <span class="label-text-alt text-error" x-text="errors.SOLI_BEZEICHNUNG"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="SOLI_AKTIV">
+                        <span class="label-text">
+                            Soli Aktiv
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="SOLI_AKTIV"
+                        name="SOLI_AKTIV"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('SOLI_AKTIV')"
+                    />
+                    <label class="label" x-show="errors.SOLI_AKTIV">
+                        <span class="label-text-alt text-error" x-text="errors.SOLI_AKTIV"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="KAPSTEUER_BEZEICHNUNG">
+                        <span class="label-text">
+                            Kapsteuer Bezeichnung
+                             <span class="text-error">*</span>
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="KAPSTEUER_BEZEICHNUNG"
+                        name="KAPSTEUER_BEZEICHNUNG"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        required required
+                        
+                        @blur="validateField('KAPSTEUER_BEZEICHNUNG')"
+                    />
+                    <label class="label" x-show="errors.KAPSTEUER_BEZEICHNUNG">
+                        <span class="label-text-alt text-error" x-text="errors.KAPSTEUER_BEZEICHNUNG"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="KAPSTEUER_AKTIV">
+                        <span class="label-text">
+                            Kapsteuer Aktiv
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="KAPSTEUER_AKTIV"
+                        name="KAPSTEUER_AKTIV"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('KAPSTEUER_AKTIV')"
+                    />
+                    <label class="label" x-show="errors.KAPSTEUER_AKTIV">
+                        <span class="label-text-alt text-error" x-text="errors.KAPSTEUER_AKTIV"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="DURCHLAUF_BEZEICHNUNG">
+                        <span class="label-text">
+                            Durchlauf Bezeichnung
+                             <span class="text-error">*</span>
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="DURCHLAUF_BEZEICHNUNG"
+                        name="DURCHLAUF_BEZEICHNUNG"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        required required
+                        
+                        @blur="validateField('DURCHLAUF_BEZEICHNUNG')"
+                    />
+                    <label class="label" x-show="errors.DURCHLAUF_BEZEICHNUNG">
+                        <span class="label-text-alt text-error" x-text="errors.DURCHLAUF_BEZEICHNUNG"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="DURCHLAUF_AKTIV">
+                        <span class="label-text">
+                            Durchlauf Aktiv
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="DURCHLAUF_AKTIV"
+                        name="DURCHLAUF_AKTIV"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('DURCHLAUF_AKTIV')"
+                    />
+                    <label class="label" x-show="errors.DURCHLAUF_AKTIV">
+                        <span class="label-text-alt text-error" x-text="errors.DURCHLAUF_AKTIV"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="FREI6_BEZEICHNUNG">
+                        <span class="label-text">
+                            Frei6 Bezeichnung
+                             <span class="text-error">*</span>
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="FREI6_BEZEICHNUNG"
+                        name="FREI6_BEZEICHNUNG"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        required required
+                        
+                        @blur="validateField('FREI6_BEZEICHNUNG')"
+                    />
+                    <label class="label" x-show="errors.FREI6_BEZEICHNUNG">
+                        <span class="label-text-alt text-error" x-text="errors.FREI6_BEZEICHNUNG"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="FREI6_AKTIV">
+                        <span class="label-text">
+                            Frei6 Aktiv
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="FREI6_AKTIV"
+                        name="FREI6_AKTIV"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('FREI6_AKTIV')"
+                    />
+                    <label class="label" x-show="errors.FREI6_AKTIV">
+                        <span class="label-text-alt text-error" x-text="errors.FREI6_AKTIV"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="FREI7_BEZEICHNUNG">
+                        <span class="label-text">
+                            Frei7 Bezeichnung
+                             <span class="text-error">*</span>
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="FREI7_BEZEICHNUNG"
+                        name="FREI7_BEZEICHNUNG"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        required required
+                        
+                        @blur="validateField('FREI7_BEZEICHNUNG')"
+                    />
+                    <label class="label" x-show="errors.FREI7_BEZEICHNUNG">
+                        <span class="label-text-alt text-error" x-text="errors.FREI7_BEZEICHNUNG"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="FREI7_AKTIV">
+                        <span class="label-text">
+                            Frei7 Aktiv
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="FREI7_AKTIV"
+                        name="FREI7_AKTIV"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('FREI7_AKTIV')"
+                    />
+                    <label class="label" x-show="errors.FREI7_AKTIV">
+                        <span class="label-text-alt text-error" x-text="errors.FREI7_AKTIV"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="FREI8_BEZEICHNUNG">
+                        <span class="label-text">
+                            Frei8 Bezeichnung
+                             <span class="text-error">*</span>
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="FREI8_BEZEICHNUNG"
+                        name="FREI8_BEZEICHNUNG"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        required required
+                        
+                        @blur="validateField('FREI8_BEZEICHNUNG')"
+                    />
+                    <label class="label" x-show="errors.FREI8_BEZEICHNUNG">
+                        <span class="label-text-alt text-error" x-text="errors.FREI8_BEZEICHNUNG"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="FREI8_AKTIV">
+                        <span class="label-text">
+                            Frei8 Aktiv
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="FREI8_AKTIV"
+                        name="FREI8_AKTIV"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('FREI8_AKTIV')"
+                    />
+                    <label class="label" x-show="errors.FREI8_AKTIV">
+                        <span class="label-text-alt text-error" x-text="errors.FREI8_AKTIV"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="FREI9_BEZEICHNUNG">
+                        <span class="label-text">
+                            Frei9 Bezeichnung
+                             <span class="text-error">*</span>
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="FREI9_BEZEICHNUNG"
+                        name="FREI9_BEZEICHNUNG"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        required required
+                        
+                        @blur="validateField('FREI9_BEZEICHNUNG')"
+                    />
+                    <label class="label" x-show="errors.FREI9_BEZEICHNUNG">
+                        <span class="label-text-alt text-error" x-text="errors.FREI9_BEZEICHNUNG"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="FREI9_AKTIV">
+                        <span class="label-text">
+                            Frei9 Aktiv
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="FREI9_AKTIV"
+                        name="FREI9_AKTIV"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('FREI9_AKTIV')"
+                    />
+                    <label class="label" x-show="errors.FREI9_AKTIV">
+                        <span class="label-text-alt text-error" x-text="errors.FREI9_AKTIV"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="FREI10_BEZEICHNUNG">
+                        <span class="label-text">
+                            Frei10 Bezeichnung
+                             <span class="text-error">*</span>
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="FREI10_BEZEICHNUNG"
+                        name="FREI10_BEZEICHNUNG"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        required required
+                        
+                        @blur="validateField('FREI10_BEZEICHNUNG')"
+                    />
+                    <label class="label" x-show="errors.FREI10_BEZEICHNUNG">
+                        <span class="label-text-alt text-error" x-text="errors.FREI10_BEZEICHNUNG"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="FREI10_AKTIV">
+                        <span class="label-text">
+                            Frei10 Aktiv
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="FREI10_AKTIV"
+                        name="FREI10_AKTIV"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('FREI10_AKTIV')"
+                    />
+                    <label class="label" x-show="errors.FREI10_AKTIV">
+                        <span class="label-text-alt text-error" x-text="errors.FREI10_AKTIV"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="ANFANGSSTAND">
+                        <span class="label-text">
+                            Anfangsstand
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="ANFANGSSTAND"
+                        name="ANFANGSSTAND"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('ANFANGSSTAND')"
+                    />
+                    <label class="label" x-show="errors.ANFANGSSTAND">
+                        <span class="label-text-alt text-error" x-text="errors.ANFANGSSTAND"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="ENDSTAND">
+                        <span class="label-text">
+                            Instandhaltungsrücklage
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="ENDSTAND"
+                        name="ENDSTAND"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('ENDSTAND')"
+                    />
+                    <label class="label" x-show="errors.ENDSTAND">
+                        <span class="label-text-alt text-error" x-text="errors.ENDSTAND"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="ZUEFUEHRUNGEN">
+                        <span class="label-text">
+                            Zuefuehrungen
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="ZUEFUEHRUNGEN"
+                        name="ZUEFUEHRUNGEN"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('ZUEFUEHRUNGEN')"
+                    />
+                    <label class="label" x-show="errors.ZUEFUEHRUNGEN">
+                        <span class="label-text-alt text-error" x-text="errors.ZUEFUEHRUNGEN"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="ENTNAHMEN">
+                        <span class="label-text">
+                            Entnahmen
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="ENTNAHMEN"
+                        name="ENTNAHMEN"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('ENTNAHMEN')"
+                    />
+                    <label class="label" x-show="errors.ENTNAHMEN">
+                        <span class="label-text-alt text-error" x-text="errors.ENTNAHMEN"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="SONDER_ZUEFUEHRUNG">
+                        <span class="label-text">
+                            Sonder Zuefuehrung
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="SONDER_ZUEFUEHRUNG"
+                        name="SONDER_ZUEFUEHRUNG"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('SONDER_ZUEFUEHRUNG')"
+                    />
+                    <label class="label" x-show="errors.SONDER_ZUEFUEHRUNG">
+                        <span class="label-text-alt text-error" x-text="errors.SONDER_ZUEFUEHRUNG"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="SONDER_ENTNAHME">
+                        <span class="label-text">
+                            Sonder Entnahme
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="SONDER_ENTNAHME"
+                        name="SONDER_ENTNAHME"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('SONDER_ENTNAHME')"
+                    />
+                    <label class="label" x-show="errors.SONDER_ENTNAHME">
+                        <span class="label-text-alt text-error" x-text="errors.SONDER_ENTNAHME"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="RUECKLAGE_PRO_EINHEIT">
+                        <span class="label-text">
+                            Reserve fund per residential unit
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="RUECKLAGE_PRO_EINHEIT"
+                        name="RUECKLAGE_PRO_EINHEIT"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('RUECKLAGE_PRO_EINHEIT')"
+                    />
+                    <label class="label" x-show="errors.RUECKLAGE_PRO_EINHEIT">
+                        <span class="label-text-alt text-error" x-text="errors.RUECKLAGE_PRO_EINHEIT"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="RUECKLAGE_PRO_QM">
+                        <span class="label-text">
+                            Quadratmeter
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="RUECKLAGE_PRO_QM"
+                        name="RUECKLAGE_PRO_QM"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('RUECKLAGE_PRO_QM')"
+                    />
+                    <label class="label" x-show="errors.RUECKLAGE_PRO_QM">
+                        <span class="label-text-alt text-error" x-text="errors.RUECKLAGE_PRO_QM"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="STEUERBELASTUNG_GESAMT">
+                        <span class="label-text">
+                            Steuerbelastung Gesamt
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="STEUERBELASTUNG_GESAMT"
+                        name="STEUERBELASTUNG_GESAMT"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('STEUERBELASTUNG_GESAMT')"
+                    />
+                    <label class="label" x-show="errors.STEUERBELASTUNG_GESAMT">
+                        <span class="label-text-alt text-error" x-text="errors.STEUERBELASTUNG_GESAMT"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="NETTO_ZINSERTRAG">
+                        <span class="label-text">
+                            Netto Zinsertrag
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="NETTO_ZINSERTRAG"
+                        name="NETTO_ZINSERTRAG"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('NETTO_ZINSERTRAG')"
+                    />
+                    <label class="label" x-show="errors.NETTO_ZINSERTRAG">
+                        <span class="label-text-alt text-error" x-text="errors.NETTO_ZINSERTRAG"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="RUECKLAGE_BEWERTUNG">
+                        <span class="label-text">
+                            Ruecklage Bewertung
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="RUECKLAGE_BEWERTUNG"
+                        name="RUECKLAGE_BEWERTUNG"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('RUECKLAGE_BEWERTUNG')"
+                    />
+                    <label class="label" x-show="errors.RUECKLAGE_BEWERTUNG">
+                        <span class="label-text-alt text-error" x-text="errors.RUECKLAGE_BEWERTUNG"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="LIQUIDITAETS_STATUS">
+                        <span class="label-text">
+                            Liquidity status for reserves
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="LIQUIDITAETS_STATUS"
+                        name="LIQUIDITAETS_STATUS"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('LIQUIDITAETS_STATUS')"
+                    />
+                    <label class="label" x-show="errors.LIQUIDITAETS_STATUS">
+                        <span class="label-text-alt text-error" x-text="errors.LIQUIDITAETS_STATUS"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="PERIODE_VON">
+                        <span class="label-text">
+                            Periode Von
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="PERIODE_VON"
+                        name="PERIODE_VON"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('PERIODE_VON')"
+                    />
+                    <label class="label" x-show="errors.PERIODE_VON">
+                        <span class="label-text-alt text-error" x-text="errors.PERIODE_VON"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="PERIODE_BIS">
+                        <span class="label-text">
+                            Periode Bis
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="PERIODE_BIS"
+                        name="PERIODE_BIS"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('PERIODE_BIS')"
+                    />
+                    <label class="label" x-show="errors.PERIODE_BIS">
+                        <span class="label-text-alt text-error" x-text="errors.PERIODE_BIS"></span>
+                    </label>
+                </div>
+
+            </div>
+
+            <!-- Adresse -->
+            <div class="divider">Adresse</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                <div class="form-control w-full">
+                    <label class="label" for="OBJEKT_STRASSE">
+                        <span class="label-text">
+                            Straße
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="OBJEKT_STRASSE"
+                        name="OBJEKT_STRASSE"
+                        placeholder="Musterstraße 1"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('OBJEKT_STRASSE')"
+                    />
+                    <label class="label" x-show="errors.OBJEKT_STRASSE">
+                        <span class="label-text-alt text-error" x-text="errors.OBJEKT_STRASSE"></span>
+                    </label>
+                </div>
+
+            </div>
+
+            <!-- Finanzinformationen -->
+            <div class="divider">Finanzinformationen</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                <div class="form-control w-full">
+                    <label class="label" for="ZINSEN_BETRAG">
+                        <span class="label-text">
+                            Betrag
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="ZINSEN_BETRAG"
+                        name="ZINSEN_BETRAG"
+                        placeholder="0,00 €"
+                        class="input input-bordered w-full"
+                        min="0"
+                        step="0.01" min="0"
+                        @blur="validateField('ZINSEN_BETRAG')"
+                    />
+                    <label class="label" x-show="errors.ZINSEN_BETRAG">
+                        <span class="label-text-alt text-error" x-text="errors.ZINSEN_BETRAG"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="ZINSSTEUER_BETRAG">
+                        <span class="label-text">
+                            Betrag
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="ZINSSTEUER_BETRAG"
+                        name="ZINSSTEUER_BETRAG"
+                        placeholder="0,00 €"
+                        class="input input-bordered w-full"
+                        min="0"
+                        step="0.01" min="0"
+                        @blur="validateField('ZINSSTEUER_BETRAG')"
+                    />
+                    <label class="label" x-show="errors.ZINSSTEUER_BETRAG">
+                        <span class="label-text-alt text-error" x-text="errors.ZINSSTEUER_BETRAG"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="SOLI_BETRAG">
+                        <span class="label-text">
+                            Betrag
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="SOLI_BETRAG"
+                        name="SOLI_BETRAG"
+                        placeholder="0,00 €"
+                        class="input input-bordered w-full"
+                        min="0"
+                        step="0.01" min="0"
+                        @blur="validateField('SOLI_BETRAG')"
+                    />
+                    <label class="label" x-show="errors.SOLI_BETRAG">
+                        <span class="label-text-alt text-error" x-text="errors.SOLI_BETRAG"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="KAPSTEUER_BETRAG">
+                        <span class="label-text">
+                            Betrag
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="KAPSTEUER_BETRAG"
+                        name="KAPSTEUER_BETRAG"
+                        placeholder="0,00 €"
+                        class="input input-bordered w-full"
+                        min="0"
+                        step="0.01" min="0"
+                        @blur="validateField('KAPSTEUER_BETRAG')"
+                    />
+                    <label class="label" x-show="errors.KAPSTEUER_BETRAG">
+                        <span class="label-text-alt text-error" x-text="errors.KAPSTEUER_BETRAG"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="DURCHLAUF_BETRAG">
+                        <span class="label-text">
+                            Pass-through amount for accounting
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="DURCHLAUF_BETRAG"
+                        name="DURCHLAUF_BETRAG"
+                        placeholder="0,00 €"
+                        class="input input-bordered w-full"
+                        min="0"
+                        step="0.01" min="0"
+                        @blur="validateField('DURCHLAUF_BETRAG')"
+                    />
+                    <label class="label" x-show="errors.DURCHLAUF_BETRAG">
+                        <span class="label-text-alt text-error" x-text="errors.DURCHLAUF_BETRAG"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="FREI6_BETRAG">
+                        <span class="label-text">
+                            Betrag
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="FREI6_BETRAG"
+                        name="FREI6_BETRAG"
+                        placeholder="0,00 €"
+                        class="input input-bordered w-full"
+                        min="0"
+                        step="0.01" min="0"
+                        @blur="validateField('FREI6_BETRAG')"
+                    />
+                    <label class="label" x-show="errors.FREI6_BETRAG">
+                        <span class="label-text-alt text-error" x-text="errors.FREI6_BETRAG"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="FREI7_BETRAG">
+                        <span class="label-text">
+                            Betrag
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="FREI7_BETRAG"
+                        name="FREI7_BETRAG"
+                        placeholder="0,00 €"
+                        class="input input-bordered w-full"
+                        min="0"
+                        step="0.01" min="0"
+                        @blur="validateField('FREI7_BETRAG')"
+                    />
+                    <label class="label" x-show="errors.FREI7_BETRAG">
+                        <span class="label-text-alt text-error" x-text="errors.FREI7_BETRAG"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="FREI8_BETRAG">
+                        <span class="label-text">
+                            Betrag
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="FREI8_BETRAG"
+                        name="FREI8_BETRAG"
+                        placeholder="0,00 €"
+                        class="input input-bordered w-full"
+                        min="0"
+                        step="0.01" min="0"
+                        @blur="validateField('FREI8_BETRAG')"
+                    />
+                    <label class="label" x-show="errors.FREI8_BETRAG">
+                        <span class="label-text-alt text-error" x-text="errors.FREI8_BETRAG"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="FREI9_BETRAG">
+                        <span class="label-text">
+                            Betrag
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="FREI9_BETRAG"
+                        name="FREI9_BETRAG"
+                        placeholder="0,00 €"
+                        class="input input-bordered w-full"
+                        min="0"
+                        step="0.01" min="0"
+                        @blur="validateField('FREI9_BETRAG')"
+                    />
+                    <label class="label" x-show="errors.FREI9_BETRAG">
+                        <span class="label-text-alt text-error" x-text="errors.FREI9_BETRAG"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="FREI10_BETRAG">
+                        <span class="label-text">
+                            Betrag
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="FREI10_BETRAG"
+                        name="FREI10_BETRAG"
+                        placeholder="0,00 €"
+                        class="input input-bordered w-full"
+                        min="0"
+                        step="0.01" min="0"
+                        @blur="validateField('FREI10_BETRAG')"
+                    />
+                    <label class="label" x-show="errors.FREI10_BETRAG">
+                        <span class="label-text-alt text-error" x-text="errors.FREI10_BETRAG"></span>
+                    </label>
+                </div>
+
+            </div>
+
+            <!-- Form Actions -->
+            <div class="card-actions justify-end mt-6">
+                <button type="reset" class="btn btn-ghost">
+                    <i class="fas fa-undo mr-2"></i>
+                    Zurücksetzen
+                </button>
+                <button type="submit" 
+                        class="btn btn-primary"
+                        :disabled="!formValid">
+                    <i class="fas fa-save mr-2"></i>
+                    Speichern
+                </button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<!-- Result Container -->
+<div id="result-container" class="mt-6"></div>

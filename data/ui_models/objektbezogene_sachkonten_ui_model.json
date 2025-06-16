@@ -1,0 +1,255 @@
+{
+  "entity_name": "objektbezogene_sachkonten",
+  "german_title": "Objektbezogene_Sachkonten",
+  "description": "objektbezogene_sachkonten",
+  "primary_key": "ONR",
+  "display_field": "KONTO_BEZEICHNUNG",
+  "relationships": {},
+  "query_templates": [],
+  "fields": [
+    {
+      "name": "ONR",
+      "german_label": "Gebäude / Liegenschaft",
+      "field_type": "text",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "62",
+      "is_computed": false,
+      "group": "Identifikatoren"
+    },
+    {
+      "name": "OBJEKT_KURZ",
+      "german_label": "Objekt Kurz",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "MANST51",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "OBJEKT_STRASSE",
+      "german_label": "Straße",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": "Musterstraße 1",
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "Manstedtener Str. 51",
+      "is_computed": false,
+      "group": "Adresse"
+    },
+    {
+      "name": "KNR",
+      "german_label": "Finanzkonto für Buchhaltung",
+      "field_type": "text",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "41600",
+      "is_computed": false,
+      "group": "Identifikatoren"
+    },
+    {
+      "name": "KONTO_CODE",
+      "german_label": "Konto Code",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "41600",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "KONTO_BEZEICHNUNG",
+      "german_label": "Konto Bezeichnung",
+      "field_type": "text",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "Aufzugskosten",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "KKLASSE",
+      "german_label": "Betriebskosten nach BetrKV",
+      "field_type": "boolean",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "1",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "KONTENKLASSE_TEXT",
+      "german_label": "Kontenklasse Text",
+      "field_type": "textarea",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "SACHKONTO       ",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "EINNAHME_AUSGABE",
+      "german_label": "Einnahme Ausgabe",
+      "field_type": "boolean",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "1",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "EA_TEXT",
+      "german_label": "Ea Text",
+      "field_type": "textarea",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "EINNAHME   ",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "INAKTIV",
+      "german_label": "Inaktiv",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "N",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "KONTO_STATUS",
+      "german_label": "Konto Status",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "AKTIV  ",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "KOSTENART",
+      "german_label": "Kostenart",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "AUFZUG            ",
+      "is_computed": false,
+      "group": "Finanzinformationen"
+    },
+    {
+      "name": "UMLAGEFAEHIGKEIT",
+      "german_label": "Cost apportionability per German law",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": "Cost apportionability per German law",
+      "related_entity": null,
+      "sample_value": "ZU PRUEFEN            ",
+      "is_computed": true,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "AKTUELLER_SALDO",
+      "german_label": "Saldo",
+      "field_type": "currency",
+      "is_required": false,
+      "validation_rules": [
+        "min=0"
+      ],
+      "placeholder": "0,00 €",
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "2739.49",
+      "is_computed": false,
+      "group": "Finanzinformationen"
+    },
+    {
+      "name": "OFFENE_POSTEN",
+      "german_label": "Offene Posten",
+      "field_type": "number",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "948.88",
+      "is_computed": true,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "SKR_BEZEICHNUNG",
+      "german_label": "Skr Bezeichnung",
+      "field_type": "text",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "KONTOAKTIVITAET",
+      "german_label": "Kontoaktivitaet",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "MIT OFFENEN POSTEN",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    }
+  ]
+}

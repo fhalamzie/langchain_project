@@ -1,0 +1,13 @@
+{
+  "name": "buchungskonten_uebersicht_form",
+  "type": "form",
+  "description": "Form component for Buchungskonten_Uebersicht",
+  "styles": [
+    "form-control",
+    "input",
+    "select",
+    "textarea",
+    "btn"
+  ],
+  "scripts": null
+}

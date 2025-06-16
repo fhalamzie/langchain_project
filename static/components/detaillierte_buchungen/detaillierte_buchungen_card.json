@@ -1,0 +1,11 @@
+{
+  "name": "detaillierte_buchungen_card",
+  "type": "card",
+  "description": "Card component for Detaillierte_Buchungen",
+  "styles": [
+    "card",
+    "stats",
+    "stat"
+  ],
+  "scripts": null
+}

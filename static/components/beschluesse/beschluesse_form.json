@@ -1,0 +1,13 @@
+{
+  "name": "beschluesse_form",
+  "type": "form",
+  "description": "Form component for Beschluesse",
+  "styles": [
+    "form-control",
+    "input",
+    "select",
+    "textarea",
+    "btn"
+  ],
+  "scripts": null
+}

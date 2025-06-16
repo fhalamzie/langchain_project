@@ -1,0 +1,791 @@
+<form 
+    id="konten-form"
+    hx-post="/api/konten"
+    hx-trigger="submit"
+    hx-target="#result-container"
+    hx-swap="innerHTML"
+    hx-indicator="#loading-indicator"
+    class="space-y-6"
+    x-data="{ formValid: false, errors: {} }"
+>
+    <div class="card bg-base-100 shadow-xl">
+        <div class="card-body">
+            <h2 class="card-title text-2xl mb-6">
+                <i class="fas fa-building mr-2"></i>
+                Konten
+            </h2>
+            
+            <!-- Loading Indicator -->
+            <div id="loading-indicator" class="htmx-indicator">
+                <div class="flex justify-center items-center p-4">
+                    <span class="loading loading-spinner loading-lg"></span>
+                </div>
+            </div>
+
+            <!-- Identifikatoren -->
+            <div class="divider">Identifikatoren</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                <div class="form-control w-full">
+                    <label class="label cursor-pointer">
+                        <span class="label-text">Gebäude / Liegenschaft</span>
+                        <input 
+                            type="checkbox"
+                            id="ONR"
+                            name="ONR"
+                            class="checkbox checkbox-primary"
+                            value="1"
+                        />
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="KNR">
+                        <span class="label-text">
+                            Finanzkonto für Buchhaltung
+                             <span class="text-error">*</span>
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="KNR"
+                        name="KNR"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        required required
+                        
+                        @blur="validateField('KNR')"
+                    />
+                    <label class="label" x-show="errors.KNR">
+                        <span class="label-text-alt text-error" x-text="errors.KNR"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="ENR">
+                        <span class="label-text">
+                            Mieteinheit / Apartment
+                             <span class="text-error">*</span>
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="ENR"
+                        name="ENR"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        required required
+                        
+                        @blur="validateField('ENR')"
+                    />
+                    <label class="label" x-show="errors.ENR">
+                        <span class="label-text-alt text-error" x-text="errors.ENR"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="ONRKNR">
+                        <span class="label-text">
+                            Objekt-Nr.
+                             <span class="text-error">*</span>
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="ONRKNR"
+                        name="ONRKNR"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        required required
+                        
+                        @blur="validateField('ONRKNR')"
+                    />
+                    <label class="label" x-show="errors.ONRKNR">
+                        <span class="label-text-alt text-error" x-text="errors.ONRKNR"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="DATEVKNR">
+                        <span class="label-text">
+                            Datevknr
+                             <span class="text-error">*</span>
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="DATEVKNR"
+                        name="DATEVKNR"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        required required
+                        
+                        @blur="validateField('DATEVKNR')"
+                    />
+                    <label class="label" x-show="errors.DATEVKNR">
+                        <span class="label-text-alt text-error" x-text="errors.DATEVKNR"></span>
+                    </label>
+                </div>
+
+            </div>
+
+            <!-- Allgemeine Informationen -->
+            <div class="divider">Allgemeine Informationen</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                <div class="form-control w-full">
+                    <label class="label cursor-pointer">
+                        <span class="label-text">Betriebskosten nach BetrKV</span>
+                        <input 
+                            type="checkbox"
+                            id="KKLASSE"
+                            name="KKLASSE"
+                            class="checkbox checkbox-primary"
+                            value="1"
+                        />
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="KKLASSE_BEZEICHNUNG">
+                        <span class="label-text">
+                            Kklasse Bezeichnung
+                             <span class="text-error">*</span>
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="KKLASSE_BEZEICHNUNG"
+                        name="KKLASSE_BEZEICHNUNG"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        required required
+                        
+                        @blur="validateField('KKLASSE_BEZEICHNUNG')"
+                    />
+                    <label class="label" x-show="errors.KKLASSE_BEZEICHNUNG">
+                        <span class="label-text-alt text-error" x-text="errors.KKLASSE_BEZEICHNUNG"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="KBEZ">
+                        <span class="label-text">
+                            Finanzkonto für Buchhaltung
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="KBEZ"
+                        name="KBEZ"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('KBEZ')"
+                    />
+                    <label class="label" x-show="errors.KBEZ">
+                        <span class="label-text-alt text-error" x-text="errors.KBEZ"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="KBRUTTO">
+                        <span class="label-text">
+                            Finanzkonto für Buchhaltung
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="KBRUTTO"
+                        name="KBRUTTO"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('KBRUTTO')"
+                    />
+                    <label class="label" x-show="errors.KBRUTTO">
+                        <span class="label-text-alt text-error" x-text="errors.KBRUTTO"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="KUST">
+                        <span class="label-text">
+                            Kust
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="KUST"
+                        name="KUST"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('KUST')"
+                    />
+                    <label class="label" x-show="errors.KUST">
+                        <span class="label-text-alt text-error" x-text="errors.KUST"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="KVERTEILUNG">
+                        <span class="label-text">
+                            Kverteilung
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="KVERTEILUNG"
+                        name="KVERTEILUNG"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('KVERTEILUNG')"
+                    />
+                    <label class="label" x-show="errors.KVERTEILUNG">
+                        <span class="label-text-alt text-error" x-text="errors.KVERTEILUNG"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="USTVOR">
+                        <span class="label-text">
+                            Ustvor
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="USTVOR"
+                        name="USTVOR"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('USTVOR')"
+                    />
+                    <label class="label" x-show="errors.USTVOR">
+                        <span class="label-text-alt text-error" x-text="errors.USTVOR"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="KWBRUTTO">
+                        <span class="label-text">
+                            Kwbrutto
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="KWBRUTTO"
+                        name="KWBRUTTO"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('KWBRUTTO')"
+                    />
+                    <label class="label" x-show="errors.KWBRUTTO">
+                        <span class="label-text-alt text-error" x-text="errors.KWBRUTTO"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="KWBRUTTOALT">
+                        <span class="label-text">
+                            Kwbruttoalt
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="KWBRUTTOALT"
+                        name="KWBRUTTOALT"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('KWBRUTTOALT')"
+                    />
+                    <label class="label" x-show="errors.KWBRUTTOALT">
+                        <span class="label-text-alt text-error" x-text="errors.KWBRUTTOALT"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="KBRUTTOWJ">
+                        <span class="label-text">
+                            Kbruttowj
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="KBRUTTOWJ"
+                        name="KBRUTTOWJ"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('KBRUTTOWJ')"
+                    />
+                    <label class="label" x-show="errors.KBRUTTOWJ">
+                        <span class="label-text-alt text-error" x-text="errors.KBRUTTOWJ"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="INAKTIV">
+                        <span class="label-text">
+                            Inaktiv
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="INAKTIV"
+                        name="INAKTIV"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('INAKTIV')"
+                    />
+                    <label class="label" x-show="errors.INAKTIV">
+                        <span class="label-text-alt text-error" x-text="errors.INAKTIV"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full md:col-span-2">
+                    <label class="label" for="BUTEXT4">
+                        <span class="label-text">
+                            Butext4
+                            
+                        </span>
+                    </label>
+                    <textarea 
+                        id="BUTEXT4"
+                        name="BUTEXT4"
+                        placeholder="None"
+                        class="textarea textarea-bordered w-full"
+                        rows="4"
+                        
+                    ></textarea>
+                </div>
+
+                <div class="form-control w-full md:col-span-2">
+                    <label class="label" for="BUTEXT5">
+                        <span class="label-text">
+                            Butext5
+                            
+                        </span>
+                    </label>
+                    <textarea 
+                        id="BUTEXT5"
+                        name="BUTEXT5"
+                        placeholder="None"
+                        class="textarea textarea-bordered w-full"
+                        rows="4"
+                        
+                    ></textarea>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="FESTB">
+                        <span class="label-text">
+                            Festb
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="FESTB"
+                        name="FESTB"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('FESTB')"
+                    />
+                    <label class="label" x-show="errors.FESTB">
+                        <span class="label-text-alt text-error" x-text="errors.FESTB"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="FESTBPROZ">
+                        <span class="label-text">
+                            Festbproz
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="FESTBPROZ"
+                        name="FESTBPROZ"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('FESTBPROZ')"
+                    />
+                    <label class="label" x-show="errors.FESTBPROZ">
+                        <span class="label-text-alt text-error" x-text="errors.FESTBPROZ"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label cursor-pointer">
+                        <span class="label-text">Kmahnstufe</span>
+                        <input 
+                            type="checkbox"
+                            id="KMAHNSTUFE"
+                            name="KMAHNSTUFE"
+                            class="checkbox checkbox-primary"
+                            value="1"
+                        />
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="MAHNGEDRUCKT">
+                        <span class="label-text">
+                            Mahngedruckt
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="MAHNGEDRUCKT"
+                        name="MAHNGEDRUCKT"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('MAHNGEDRUCKT')"
+                    />
+                    <label class="label" x-show="errors.MAHNGEDRUCKT">
+                        <span class="label-text-alt text-error" x-text="errors.MAHNGEDRUCKT"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="MAHNSTATUS">
+                        <span class="label-text">
+                            Mahnstatus
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="MAHNSTATUS"
+                        name="MAHNSTATUS"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('MAHNSTATUS')"
+                    />
+                    <label class="label" x-show="errors.MAHNSTATUS">
+                        <span class="label-text-alt text-error" x-text="errors.MAHNSTATUS"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="STSATZ">
+                        <span class="label-text">
+                            Stsatz
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="STSATZ"
+                        name="STSATZ"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('STSATZ')"
+                    />
+                    <label class="label" x-show="errors.STSATZ">
+                        <span class="label-text-alt text-error" x-text="errors.STSATZ"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="LIEGENSCHAFTSKUERZEL">
+                        <span class="label-text">
+                            Liegenschaftskuerzel
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="LIEGENSCHAFTSKUERZEL"
+                        name="LIEGENSCHAFTSKUERZEL"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('LIEGENSCHAFTSKUERZEL')"
+                    />
+                    <label class="label" x-show="errors.LIEGENSCHAFTSKUERZEL">
+                        <span class="label-text-alt text-error" x-text="errors.LIEGENSCHAFTSKUERZEL"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full md:col-span-2">
+                    <label class="label" for="BUTEXT1">
+                        <span class="label-text">
+                            Butext1
+                            
+                        </span>
+                    </label>
+                    <textarea 
+                        id="BUTEXT1"
+                        name="BUTEXT1"
+                        placeholder="None"
+                        class="textarea textarea-bordered w-full"
+                        rows="4"
+                        
+                    ></textarea>
+                </div>
+
+                <div class="form-control w-full md:col-span-2">
+                    <label class="label" for="BUTEXT2">
+                        <span class="label-text">
+                            Butext2
+                            
+                        </span>
+                    </label>
+                    <textarea 
+                        id="BUTEXT2"
+                        name="BUTEXT2"
+                        placeholder="None"
+                        class="textarea textarea-bordered w-full"
+                        rows="4"
+                        
+                    ></textarea>
+                </div>
+
+                <div class="form-control w-full md:col-span-2">
+                    <label class="label" for="BUTEXT3">
+                        <span class="label-text">
+                            Butext3
+                            
+                        </span>
+                    </label>
+                    <textarea 
+                        id="BUTEXT3"
+                        name="BUTEXT3"
+                        placeholder="None"
+                        class="textarea textarea-bordered w-full"
+                        rows="4"
+                        
+                    ></textarea>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="KABRECHNEN">
+                        <span class="label-text">
+                            Kabrechnen
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="KABRECHNEN"
+                        name="KABRECHNEN"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('KABRECHNEN')"
+                    />
+                    <label class="label" x-show="errors.KABRECHNEN">
+                        <span class="label-text-alt text-error" x-text="errors.KABRECHNEN"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="IHRABRVON">
+                        <span class="label-text">
+                            Ihrabrvon
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="IHRABRVON"
+                        name="IHRABRVON"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('IHRABRVON')"
+                    />
+                    <label class="label" x-show="errors.IHRABRVON">
+                        <span class="label-text-alt text-error" x-text="errors.IHRABRVON"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="IHRABRBIS">
+                        <span class="label-text">
+                            Ihrabrbis
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="IHRABRBIS"
+                        name="IHRABRBIS"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('IHRABRBIS')"
+                    />
+                    <label class="label" x-show="errors.IHRABRBIS">
+                        <span class="label-text-alt text-error" x-text="errors.IHRABRBIS"></span>
+                    </label>
+                </div>
+
+            </div>
+
+            <!-- Adresse -->
+            <div class="divider">Adresse</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                <div class="form-control w-full">
+                    <label class="label" for="KNRSTR">
+                        <span class="label-text">
+                            Straße
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="KNRSTR"
+                        name="KNRSTR"
+                        placeholder="Musterstraße 1"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('KNRSTR')"
+                    />
+                    <label class="label" x-show="errors.KNRSTR">
+                        <span class="label-text-alt text-error" x-text="errors.KNRSTR"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="OSTRASSE">
+                        <span class="label-text">
+                            Gebäude / Liegenschaft
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="OSTRASSE"
+                        name="OSTRASSE"
+                        placeholder="Musterstraße 1"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('OSTRASSE')"
+                    />
+                    <label class="label" x-show="errors.OSTRASSE">
+                        <span class="label-text-alt text-error" x-text="errors.OSTRASSE"></span>
+                    </label>
+                </div>
+
+            </div>
+
+            <!-- Finanzinformationen -->
+            <div class="divider">Finanzinformationen</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                <div class="form-control w-full">
+                    <label class="label" for="OPBETRAG">
+                        <span class="label-text">
+                            Finanzkonto für Buchhaltung
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="OPBETRAG"
+                        name="OPBETRAG"
+                        placeholder="0,00 €"
+                        class="input input-bordered w-full"
+                        min="0"
+                        step="0.01" min="0"
+                        @blur="validateField('OPBETRAG')"
+                    />
+                    <label class="label" x-show="errors.OPBETRAG">
+                        <span class="label-text-alt text-error" x-text="errors.OPBETRAG"></span>
+                    </label>
+                </div>
+
+            </div>
+
+            <!-- Zeitangaben -->
+            <div class="divider">Zeitangaben</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                <div class="form-control w-full">
+                    <label class="label" for="MAHNDATUM">
+                        <span class="label-text">
+                            Mahndatum
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="date"
+                        id="MAHNDATUM"
+                        name="MAHNDATUM"
+                        placeholder="TT.MM.JJJJ"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('MAHNDATUM')"
+                    />
+                    <label class="label" x-show="errors.MAHNDATUM">
+                        <span class="label-text-alt text-error" x-text="errors.MAHNDATUM"></span>
+                    </label>
+                </div>
+
+            </div>
+
+            <!-- Form Actions -->
+            <div class="card-actions justify-end mt-6">
+                <button type="reset" class="btn btn-ghost">
+                    <i class="fas fa-undo mr-2"></i>
+                    Zurücksetzen
+                </button>
+                <button type="submit" 
+                        class="btn btn-primary"
+                        :disabled="!formValid">
+                    <i class="fas fa-save mr-2"></i>
+                    Speichern
+                </button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<!-- Result Container -->
+<div id="result-container" class="mt-6"></div>

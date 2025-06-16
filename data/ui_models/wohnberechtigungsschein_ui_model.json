@@ -1,0 +1,10 @@
+{
+  "entity_name": "wohnberechtigungsschein",
+  "german_title": "Wohnberechtigungsschein für Sozialwohnungen",
+  "description": "wbs",
+  "primary_key": null,
+  "display_field": null,
+  "relationships": {},
+  "query_templates": [],
+  "fields": []
+}

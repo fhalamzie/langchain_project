@@ -1,0 +1,7 @@
+-- Prozedur: ADRESSEN_FUNKTION
+-- Generiert: 2025-05-31 10:26:42
+
+CREATE OR ALTER PROCEDURE ADRESSEN_FUNKTION
+BEGIN
+  /* Procedure text */
+END

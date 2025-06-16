@@ -1,0 +1,11 @@
+{
+  "name": "wohnungen_card",
+  "type": "card",
+  "description": "Card component for Wohnungen",
+  "styles": [
+    "card",
+    "stats",
+    "stat"
+  ],
+  "scripts": null
+}

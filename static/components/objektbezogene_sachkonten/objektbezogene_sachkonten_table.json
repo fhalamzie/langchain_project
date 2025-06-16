@@ -1,0 +1,11 @@
+{
+  "name": "objektbezogene_sachkonten_table",
+  "type": "table",
+  "description": "Table component for Objektbezogene_Sachkonten",
+  "styles": [
+    "table",
+    "table-zebra",
+    "overflow-x-auto"
+  ],
+  "scripts": null
+}

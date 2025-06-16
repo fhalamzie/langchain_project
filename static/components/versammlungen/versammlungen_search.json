@@ -1,0 +1,12 @@
+{
+  "name": "versammlungen_search",
+  "type": "search",
+  "description": "Search component for Versammlungen",
+  "styles": [
+    "form-control",
+    "input",
+    "select",
+    "checkbox"
+  ],
+  "scripts": null
+}

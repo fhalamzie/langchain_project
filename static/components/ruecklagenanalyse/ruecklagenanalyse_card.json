@@ -1,0 +1,11 @@
+{
+  "name": "ruecklagenanalyse_card",
+  "type": "card",
+  "description": "Card component for Ruecklagenanalyse",
+  "styles": [
+    "card",
+    "stats",
+    "stat"
+  ],
+  "scripts": null
+}

@@ -2,6 +2,169 @@
 
 ## Aktuelle Tasks
 
+### P0: CRITICAL - System liefert 0% korrekte Antworten [Session 17 - URGENT]
+
+- ID: T17.001
+  Title: CRITICAL-Unified-Engine-Total-Failure
+  Effort: 2h
+  Status: pending
+  SessionID: critical-fix-20250616
+  Description: Unified Engine liefert praktisch 0% korrekte Antworten - systematisches Versagen auf allen Ebenen
+  Root-Cause: LLM arbeitet mit fantasiertem Schema statt echtem WINCASA Firebird-Schema
+  Evidence: 
+    - LLM generiert: OWNERS table (richtig: EIGADR)
+    - LLM generiert: STRASSE field (richtig: BSTR/OSTRASSE) 
+    - LLM generiert: BEWNAME field (richtig: BNAME)
+    - LLM generiert: STADT field (richtig: ORT/BPLZORT)
+    - User: "ich würde es nichtmal mit 20% bewerten von dem was ich erwarte"
+  Impact: ALLE SQL-Queries schlagen fehl, System komplett unbrauchbar
+
+- ID: T17.002
+  Title: Extract-Real-Firebird-DDL-Schema
+  Effort: 4h
+  Status: done
+  SessionID: critical-fix-20250616
+  Description: Echtes Firebird DDL Schema aus Datenbank extrahieren für System-Prompts
+  Dependencies: Database-Access
+  Components: DDL-Extractor-Script, Schema-Documentation
+  Result: ✅ GEFUNDEN: data/ddl_creation schema/ mit ALLEN DDL-Definitionen!
+  Found: 
+    - BEWOHNER_table.sql (KEIN EIGNR Feld!)
+    - EIGADR_table.sql (EIGNR als PRIMARY KEY)
+    - OBJEKTE_table.sql, WOHNUNG_table.sql etc.
+    - 200+ Tabellen-Definitionen
+
+- ID: T17.003
+  Title: Fix-System-Prompts-With-Real-Schema
+  Effort: 6h
+  Status: in_progress
+  SessionID: critical-fix-20250616
+  Description: System-Prompts VERSION_*.md mit echtem Firebird DDL aktualisieren
+  Dependencies: T17.002
+  Components: 
+    - src/wincasa/utils/VERSION_A_JSON_SYSTEM.md - UPDATED (aber mit extrahiertem Schema)
+    - src/wincasa/utils/VERSION_A_JSON_VANILLA.md - UPDATED (aber mit extrahiertem Schema)
+    - src/wincasa/utils/VERSION_B_SQL_SYSTEM.md - UPDATED (aber mit extrahiertem Schema)
+    - src/wincasa/utils/VERSION_B_SQL_VANILLA.md - UPDATED (aber mit extrahiertem Schema)
+  TODO: NOCHMALS MIT ECHTEN DDL-DEFINITIONEN UPDATEN!
+  Result: LLM kennt echte Tabellen/Felder und generiert korrekte SQL-Queries
+
+- ID: T17.004
+  Title: Fix-Database-Connection-Shutdown
+  Effort: 4h
+  Status: done
+  SessionID: critical-fix-20250616
+  Description: Database Connection Shutdown Errors ab 04:33:28 - alle SQL Modi sind broken
+  Dependencies: Database-Singleton
+  Components: src/wincasa/data/db_singleton.py, Connection-Pool-Implementation
+  Result: ✅ db_singleton.py gefixt - entfernt .closed Attribut-Zugriff
+
+- ID: T17.005
+  Title: Rebuild-Knowledge-Base-Field-Mappings
+  Effort: 8h
+  Status: pending
+  SessionID: critical-fix-20250616
+  Description: Knowledge Base mit 400+ Field-Mappings funktioniert nicht - LLM kennt keine echten Feldnamen
+  Dependencies: T17.002
+  Components: 
+    - data/knowledge_base/ - Muss mit DDL-Schema aktualisiert werden
+    - tools/update_knowledge_base_schema.py - Created but not executed
+  TODO: MIT ECHTEN DDL-DEFINITIONEN UPDATEN!
+  Result: Funktionierende Field-Mappings zwischen deutschem Business-Vokabular und Firebird-Schema
+
+- ID: T17.006
+  Title: Fix-System-Prompt-Path-Resolution
+  Effort: 2h
+  Status: done
+  SessionID: critical-fix-20250616
+  Description: System Prompt Dateien existieren in src/wincasa/utils/ aber werden mit falschem Pfad gesucht
+  Dependencies: Config-Loader
+  Components: src/wincasa/utils/config_loader.py
+  Result: ✅ config_loader.py ist korrekt - sucht im richtigen Pfad
+
+- ID: T17.007
+  Title: Validate-All-Query-Modes-After-Fix
+  Effort: 4h
+  Status: pending
+  SessionID: critical-fix-20250616
+  Description: Nach Schema-Fix alle 6 Query-Modi mit 50 Test-Queries validieren
+  Dependencies: T17.003, T17.004, T17.005
+  Components: comprehensive_mode_test.py
+  Result: Messbarer Qualitätsnachweis dass Antworten jetzt korrekt sind
+
+### P0: CRITICAL Sub-Tasks - DDL-basierte Schema Updates [Session 17]
+
+- ID: T17.008
+  Title: Create-FOCUSED-DDL-Documentation
+  Effort: 2h
+  Status: pending
+  SessionID: critical-fix-20250616
+  Description: Erstelle FOKUSSIERTE Schema-Dokumentation NUR für aktuell genutzte Tabellen
+  Dependencies: data/ddl_creation schema/, data/sql/*.sql (für genutzte Tabellen)
+  Priority-Tables: 
+    1. CORE (aus SQL-Queries): BEWOHNER, EIGADR, OBJEKTE, WOHNUNG, KONTEN, BUCHUNG
+    2. SUPPORT (wenn referenziert): BEWADR, EIGENTUEMER, VERSAMMLUNG, RUECKPOS
+    3. IGNORIEREN: Alle anderen 190+ Tabellen!
+  Components: 
+    - tools/create_focused_ddl_documentation.py
+    - Analysiere data/sql/*.sql für tatsächlich genutzte Tabellen/Felder
+    - Dokumentiere NUR diese Tabellen aus DDL
+  Result: Kompakte, übersichtliche Schema-Referenz für LLM (max. 10-15 Tabellen)
+
+- ID: T17.009
+  Title: Update-SQL-System-Prompts-FOCUSED
+  Effort: 1h
+  Status: pending
+  SessionID: critical-fix-20250616
+  Description: Update VERSION_B_SQL_*.md mit FOKUSSIERTEM Schema
+  Dependencies: T17.008
+  Components:
+    - VERSION_B_SQL_SYSTEM.md - NUR Core-Tabellen detailliert
+    - VERSION_B_SQL_VANILLA.md - Ultra-kompakt (5-6 Haupttabellen)
+    - Kritische Korrekturen prominent (KEIN EIGNR in BEWOHNER!)
+  Result: Schlanke SQL-Prompts die LLM nicht überfordern
+
+- ID: T17.010
+  Title: Update-JSON-System-Prompts-FOCUSED
+  Effort: 1h
+  Status: pending
+  SessionID: critical-fix-20250616
+  Description: Update VERSION_A_JSON_*.md mit FOKUSSIERTEN Feld-Mappings
+  Dependencies: T17.008
+  Components:
+    - VERSION_A_JSON_SYSTEM.md - NUR Felder aus genutzten Tabellen
+    - VERSION_A_JSON_VANILLA.md - Minimal-Set an Mappings
+    - Mappe NUR JSON-Export-Felder die in data/exports/*.json existieren
+  Result: Präzise JSON-Prompts ohne unnötigen Ballast
+
+- ID: T17.011
+  Title: Generate-MINIMAL-Knowledge-Base
+  Effort: 2h
+  Status: pending
+  SessionID: critical-fix-20250616
+  Description: Generiere MINIMALE Knowledge Base nur für genutzte Tabellen
+  Dependencies: T17.008
+  Components:
+    - tools/generate_minimal_kb_from_ddl.py
+    - NUR Tabellen/Felder aus data/sql/*.sql extrahieren
+    - Beziehungen NUR zwischen genutzten Tabellen
+    - Business-Terms NUR für vorhandene Felder
+  Result: Schlanke Knowledge Base (~50KB statt mehrere MB)
+
+- ID: T17.012
+  Title: Test-DDL-Updates-With-Critical-Queries
+  Effort: 2h
+  Status: pending
+  SessionID: critical-fix-20250616
+  Description: Teste kritische Queries die vorher fehlschlugen
+  Dependencies: T17.009, T17.010, T17.011
+  Test-Queries:
+    - "Zeige alle Mieter" (BEWOHNER nicht TENANTS)
+    - "Liste aller Eigentümer" (EIGADR nicht OWNERS)
+    - "Summe der Kaltmiete" (Z1 nicht KALTMIETE)
+    - "Finde Leerstand" (LEFT JOIN, kein EIGNR in BEWOHNER)
+  Result: Alle kritischen Queries funktionieren
+
 ### P0: Critical Production - HTMX Migration [NEW Session 14]
 
 - ID: T14.001
@@ -224,6 +387,25 @@
   Priority: medium
   Impact: Degradation bei >1000 rows
 
+- ID: B17.001
+  Title: LLM-Generates-Wrong-Schema
+  Effort: 0h (siehe T17.002-T17.003)
+  Priority: CRITICAL
+  Impact: 100% der SQL-Queries fehlerhaft
+  Evidence: OWNERS statt EIGADR, STRASSE statt BSTR, etc.
+
+- ID: B17.002
+  Title: Database-Connection-Shutdown
+  Effort: 0h (siehe T17.004)
+  Priority: CRITICAL
+  Impact: Alle SQL-Modi broken seit 04:33:28
+  
+- ID: B17.003
+  Title: Field-Mappings-Not-Working
+  Effort: 0h (siehe T17.005)
+  Priority: CRITICAL
+  Impact: 400+ Field-Mappings werden nicht verwendet
+
 ### Maintenance-Tasks
 - ID: M9.001
   Title: Knowledge-Base-Updates
@@ -281,7 +463,17 @@
 
 ### Session-Planning
 ```
-Session 14: HTMX Migration (NEW)
+Session 17: CRITICAL FIX - System Total Failure (CURRENT)
+- T17.001: Critical-Analysis (2h)
+- T17.002: Extract-DDL-Schema (4h)
+- T17.003: Fix-System-Prompts (6h)
+- T17.004: Fix-DB-Connection (4h)
+- T17.005: Rebuild-Field-Mappings (8h)
+- T17.006: Fix-Path-Resolution (2h)
+- T17.007: Validate-All-Modes (4h)
+Total: 30h (CRITICAL - System komplett unbrauchbar)
+
+Session 18: HTMX Migration (POSTPONED until System works)
 - T14.001: HTMX-Static-Generator-Core (20h)
 - T14.002: Minimal-CGI-API-Endpoints (16h)
 - T14.003: Dynamic-UI-Model-Generation (12h)
@@ -290,13 +482,13 @@ Session 14: HTMX Migration (NEW)
 - T14.006: Streamlit-HTMX-Parallel-Testing (6h)
 Total: 76h (Major Architecture Migration)
 
-Session 15: HTMX Enhancement & Core Features
+Session 19: HTMX Enhancement & Core Features
 - T9.002: KB-Auto-Update (12h) - Enhanced for HTMX
 - T9.011: Multi-User (20h) - HTMX-based
 - T14.007: Real-time-Analytics-HTMX (16h)
 Total: 48h
 
-Session 16: Business Features (HTMX-native)
+Session 20: Business Features (HTMX-native)
 - T9.030: Report-Generator (18h) - HTMX integration
 - T9.031: Financial-Dashboard (16h) - Pure HTMX
 - T14.008: Export-System-HTMX (12h)
@@ -304,10 +496,11 @@ Total: 46h
 ```
 
 ### Success-Metrics
-- Velocity: ~35h/Session (Session 14: 76h for major migration)
+- Velocity: ~35h/Session (Session 17: 30h CRITICAL fix)
 - Quality: >95% Test-Coverage
-- **Accuracy: 100% Correct Results** (contextually and actual values)
-- Reliability: <1% Error-Rate
+- **Accuracy: AKTUELL 0% → ZIEL 100% Correct Results**
+- Reliability: AKTUELL 100% Error-Rate → ZIEL <1%
+- **User Assessment: AKTUELL <20% → ZIEL >95% Zufriedenheit**
 
 ### HTMX Migration Metrics (Session 14)
 - **Architecture**: Streamlit (1,328 lines) → Static HTMX + CGI (estimated <400 lines)

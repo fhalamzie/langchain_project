@@ -1,0 +1,448 @@
+<form 
+    id="bank_konten-form"
+    hx-post="/api/bank_konten"
+    hx-trigger="submit"
+    hx-target="#result-container"
+    hx-swap="innerHTML"
+    hx-indicator="#loading-indicator"
+    class="space-y-6"
+    x-data="{ formValid: false, errors: {} }"
+>
+    <div class="card bg-base-100 shadow-xl">
+        <div class="card-body">
+            <h2 class="card-title text-2xl mb-6">
+                <i class="fas fa-building mr-2"></i>
+                Bank_Konten
+            </h2>
+            
+            <!-- Loading Indicator -->
+            <div id="loading-indicator" class="htmx-indicator">
+                <div class="flex justify-center items-center p-4">
+                    <span class="loading loading-spinner loading-lg"></span>
+                </div>
+            </div>
+
+            <!-- Identifikatoren -->
+            <div class="divider">Identifikatoren</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                <div class="form-control w-full">
+                    <label class="label" for="KNR">
+                        <span class="label-text">
+                            Finanzkonto für Buchhaltung
+                             <span class="text-error">*</span>
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="KNR"
+                        name="KNR"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        required required
+                        
+                        @blur="validateField('KNR')"
+                    />
+                    <label class="label" x-show="errors.KNR">
+                        <span class="label-text-alt text-error" x-text="errors.KNR"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label cursor-pointer">
+                        <span class="label-text">Gebäude / Liegenschaft</span>
+                        <input 
+                            type="checkbox"
+                            id="ONR"
+                            name="ONR"
+                            class="checkbox checkbox-primary"
+                            value="1"
+                        />
+                    </label>
+                </div>
+
+            </div>
+
+            <!-- Allgemeine Informationen -->
+            <div class="divider">Allgemeine Informationen</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                <div class="form-control w-full">
+                    <label class="label" for="KONTO_CODE">
+                        <span class="label-text">
+                            Konto Code
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="KONTO_CODE"
+                        name="KONTO_CODE"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('KONTO_CODE')"
+                    />
+                    <label class="label" x-show="errors.KONTO_CODE">
+                        <span class="label-text-alt text-error" x-text="errors.KONTO_CODE"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="KONTO_BEZEICHNUNG">
+                        <span class="label-text">
+                            Konto Bezeichnung
+                             <span class="text-error">*</span>
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="KONTO_BEZEICHNUNG"
+                        name="KONTO_BEZEICHNUNG"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        required required
+                        
+                        @blur="validateField('KONTO_BEZEICHNUNG')"
+                    />
+                    <label class="label" x-show="errors.KONTO_BEZEICHNUNG">
+                        <span class="label-text-alt text-error" x-text="errors.KONTO_BEZEICHNUNG"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="KONTOSTAND">
+                        <span class="label-text">
+                            Kontostand
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="KONTOSTAND"
+                        name="KONTOSTAND"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('KONTOSTAND')"
+                    />
+                    <label class="label" x-show="errors.KONTOSTAND">
+                        <span class="label-text-alt text-error" x-text="errors.KONTOSTAND"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="GUTHABEN">
+                        <span class="label-text">
+                            Guthaben
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="GUTHABEN"
+                        name="GUTHABEN"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('GUTHABEN')"
+                    />
+                    <label class="label" x-show="errors.GUTHABEN">
+                        <span class="label-text-alt text-error" x-text="errors.GUTHABEN"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="UEBERZIEHUNG">
+                        <span class="label-text">
+                            Ueberziehung
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="UEBERZIEHUNG"
+                        name="UEBERZIEHUNG"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('UEBERZIEHUNG')"
+                    />
+                    <label class="label" x-show="errors.UEBERZIEHUNG">
+                        <span class="label-text-alt text-error" x-text="errors.UEBERZIEHUNG"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="BANKINSTITUT">
+                        <span class="label-text">
+                            Bankinstitut
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="BANKINSTITUT"
+                        name="BANKINSTITUT"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('BANKINSTITUT')"
+                    />
+                    <label class="label" x-show="errors.BANKINSTITUT">
+                        <span class="label-text-alt text-error" x-text="errors.BANKINSTITUT"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="IBAN_EXTRAHIERT">
+                        <span class="label-text">
+                            Iban Extrahiert
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="IBAN_EXTRAHIERT"
+                        name="IBAN_EXTRAHIERT"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('IBAN_EXTRAHIERT')"
+                    />
+                    <label class="label" x-show="errors.IBAN_EXTRAHIERT">
+                        <span class="label-text-alt text-error" x-text="errors.IBAN_EXTRAHIERT"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="OBJEKT_KURZ">
+                        <span class="label-text">
+                            Objekt Kurz
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="OBJEKT_KURZ"
+                        name="OBJEKT_KURZ"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('OBJEKT_KURZ')"
+                    />
+                    <label class="label" x-show="errors.OBJEKT_KURZ">
+                        <span class="label-text-alt text-error" x-text="errors.OBJEKT_KURZ"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="KONTOTYP">
+                        <span class="label-text">
+                            Kontotyp
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="KONTOTYP"
+                        name="KONTOTYP"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('KONTOTYP')"
+                    />
+                    <label class="label" x-show="errors.KONTOTYP">
+                        <span class="label-text-alt text-error" x-text="errors.KONTOTYP"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="LIQUIDITAET_STATUS">
+                        <span class="label-text">
+                            Liquiditaet Status
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="LIQUIDITAET_STATUS"
+                        name="LIQUIDITAET_STATUS"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('LIQUIDITAET_STATUS')"
+                    />
+                    <label class="label" x-show="errors.LIQUIDITAET_STATUS">
+                        <span class="label-text-alt text-error" x-text="errors.LIQUIDITAET_STATUS"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="BANK_NAME">
+                        <span class="label-text">
+                            Bank Name
+                             <span class="text-error">*</span>
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="BANK_NAME"
+                        name="BANK_NAME"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        required required
+                        
+                        @blur="validateField('BANK_NAME')"
+                    />
+                    <label class="label" x-show="errors.BANK_NAME">
+                        <span class="label-text-alt text-error" x-text="errors.BANK_NAME"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="BLZ">
+                        <span class="label-text">
+                            Blz
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="BLZ"
+                        name="BLZ"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('BLZ')"
+                    />
+                    <label class="label" x-show="errors.BLZ">
+                        <span class="label-text-alt text-error" x-text="errors.BLZ"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="KONTONUMMER_ALT">
+                        <span class="label-text">
+                            Kontonummer Alt
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="KONTONUMMER_ALT"
+                        name="KONTONUMMER_ALT"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('KONTONUMMER_ALT')"
+                    />
+                    <label class="label" x-show="errors.KONTONUMMER_ALT">
+                        <span class="label-text-alt text-error" x-text="errors.KONTONUMMER_ALT"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="IBAN">
+                        <span class="label-text">
+                            Iban
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="IBAN"
+                        name="IBAN"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('IBAN')"
+                    />
+                    <label class="label" x-show="errors.IBAN">
+                        <span class="label-text-alt text-error" x-text="errors.IBAN"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="BIC">
+                        <span class="label-text">
+                            Bic
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="BIC"
+                        name="BIC"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('BIC')"
+                    />
+                    <label class="label" x-show="errors.BIC">
+                        <span class="label-text-alt text-error" x-text="errors.BIC"></span>
+                    </label>
+                </div>
+
+            </div>
+
+            <!-- Adresse -->
+            <div class="divider">Adresse</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                <div class="form-control w-full">
+                    <label class="label" for="OBJEKT_STRASSE">
+                        <span class="label-text">
+                            Straße
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="OBJEKT_STRASSE"
+                        name="OBJEKT_STRASSE"
+                        placeholder="Musterstraße 1"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('OBJEKT_STRASSE')"
+                    />
+                    <label class="label" x-show="errors.OBJEKT_STRASSE">
+                        <span class="label-text-alt text-error" x-text="errors.OBJEKT_STRASSE"></span>
+                    </label>
+                </div>
+
+            </div>
+
+            <!-- Form Actions -->
+            <div class="card-actions justify-end mt-6">
+                <button type="reset" class="btn btn-ghost">
+                    <i class="fas fa-undo mr-2"></i>
+                    Zurücksetzen
+                </button>
+                <button type="submit" 
+                        class="btn btn-primary"
+                        :disabled="!formValid">
+                    <i class="fas fa-save mr-2"></i>
+                    Speichern
+                </button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<!-- Result Container -->
+<div id="result-container" class="mt-6"></div>

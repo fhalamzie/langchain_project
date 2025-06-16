@@ -1,0 +1,425 @@
+{
+  "entity_name": "instandhaltung",
+  "german_title": "Instandhaltung / Wartung",
+  "description": "wartung",
+  "primary_key": "ONR",
+  "display_field": "ONR",
+  "relationships": {},
+  "query_templates": [],
+  "fields": [
+    {
+      "name": "ONR",
+      "german_label": "Gebäude / Liegenschaft",
+      "field_type": "text",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": "BUCHUNG",
+      "sample_value": "4",
+      "is_computed": false,
+      "group": "Identifikatoren"
+    },
+    {
+      "name": "OBJEKT_KURZ",
+      "german_label": "Objekt Kurz",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": "BUCHUNG",
+      "sample_value": "VONWA44",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "STRASSE",
+      "german_label": "Straße",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": "Musterstraße 1",
+      "help_text": null,
+      "related_entity": "BUCHUNG",
+      "sample_value": "Von-Waldthausen-Straße 44",
+      "is_computed": false,
+      "group": "Adresse"
+    },
+    {
+      "name": "PLZ_ORT",
+      "german_label": "Postleitzahl",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [
+        "pattern=\\d{5}"
+      ],
+      "placeholder": "12345",
+      "help_text": null,
+      "related_entity": "BUCHUNG",
+      "sample_value": "44894 Bochum",
+      "is_computed": false,
+      "group": "Adresse"
+    },
+    {
+      "name": "WOHNFLAECHE",
+      "german_label": "Wohnflaeche",
+      "field_type": "number",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": "BUCHUNG",
+      "sample_value": "428.59",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "EINHEITEN",
+      "german_label": "Einheiten",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": "BUCHUNG",
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "JAHR",
+      "german_label": "Jahr",
+      "field_type": "number",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": "BUCHUNG",
+      "sample_value": "2025",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "MONAT",
+      "german_label": "Monat",
+      "field_type": "number",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": "BUCHUNG",
+      "sample_value": "2",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "KONTONUMMER",
+      "german_label": "Kontonummer",
+      "field_type": "number",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": "BUCHUNG",
+      "sample_value": "43000",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "KOSTENART",
+      "german_label": "Kostenart",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": "BUCHUNG",
+      "sample_value": "Reparaturen/ Instandhaltungen",
+      "is_computed": false,
+      "group": "Finanzinformationen"
+    },
+    {
+      "name": "KATEGORIE",
+      "german_label": "Instandhaltung / Wartung",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": "BUCHUNG",
+      "sample_value": "REPARATUR ALLGEMEIN    ",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "ANZAHL_BUCHUNGEN",
+      "german_label": "Anzahl Buchungen",
+      "field_type": "boolean",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": "BUCHUNG",
+      "sample_value": "1",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "GESAMTKOSTEN",
+      "german_label": "Gesamtkosten",
+      "field_type": "currency",
+      "is_required": false,
+      "validation_rules": [
+        "min=0"
+      ],
+      "placeholder": "0,00 €",
+      "help_text": null,
+      "related_entity": "BUCHUNG",
+      "sample_value": "1798.14",
+      "is_computed": false,
+      "group": "Finanzinformationen"
+    },
+    {
+      "name": "DURCHSCHNITTSKOSTEN",
+      "german_label": "Durchschnittskosten",
+      "field_type": "currency",
+      "is_required": false,
+      "validation_rules": [
+        "min=0"
+      ],
+      "placeholder": "0,00 €",
+      "help_text": null,
+      "related_entity": "BUCHUNG",
+      "sample_value": "1798.14",
+      "is_computed": false,
+      "group": "Finanzinformationen"
+    },
+    {
+      "name": "MIN_EINZELKOSTEN",
+      "german_label": "Min Einzelkosten",
+      "field_type": "currency",
+      "is_required": false,
+      "validation_rules": [
+        "min=0"
+      ],
+      "placeholder": "0,00 €",
+      "help_text": null,
+      "related_entity": "BUCHUNG",
+      "sample_value": "1798.14",
+      "is_computed": false,
+      "group": "Finanzinformationen"
+    },
+    {
+      "name": "MAX_EINZELKOSTEN",
+      "german_label": "Max Einzelkosten",
+      "field_type": "currency",
+      "is_required": false,
+      "validation_rules": [
+        "min=0"
+      ],
+      "placeholder": "0,00 €",
+      "help_text": null,
+      "related_entity": "BUCHUNG",
+      "sample_value": "1798.14",
+      "is_computed": false,
+      "group": "Finanzinformationen"
+    },
+    {
+      "name": "ANZAHL_BELEGE",
+      "german_label": "Anzahl Belege",
+      "field_type": "boolean",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": "BUCHUNG",
+      "sample_value": "1",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "MWST_GESAMT",
+      "german_label": "Mwst Gesamt",
+      "field_type": "number",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": "BUCHUNG",
+      "sample_value": "19.0",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "ANZAHL_MITARBEITER",
+      "german_label": "Anzahl Mitarbeiter",
+      "field_type": "boolean",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": "BUCHUNG",
+      "sample_value": "0",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "KOSTEN_PRO_QM",
+      "german_label": "Cost per square meter",
+      "field_type": "currency",
+      "is_required": false,
+      "validation_rules": [
+        "min=0"
+      ],
+      "placeholder": "0,00 €",
+      "help_text": "Cost per square meter",
+      "related_entity": "BUCHUNG",
+      "sample_value": "4.2",
+      "is_computed": true,
+      "group": "Finanzinformationen"
+    },
+    {
+      "name": "KOSTEN_PRO_EINHEIT",
+      "german_label": "Cost per residential unit",
+      "field_type": "currency",
+      "is_required": false,
+      "validation_rules": [
+        "min=0"
+      ],
+      "placeholder": "0,00 €",
+      "help_text": "Cost per residential unit",
+      "related_entity": "BUCHUNG",
+      "sample_value": "0.0",
+      "is_computed": true,
+      "group": "Finanzinformationen"
+    },
+    {
+      "name": "Q1_KOSTEN",
+      "german_label": "Q1 Kosten",
+      "field_type": "currency",
+      "is_required": false,
+      "validation_rules": [
+        "min=0"
+      ],
+      "placeholder": "0,00 €",
+      "help_text": null,
+      "related_entity": "BUCHUNG",
+      "sample_value": "1798.14",
+      "is_computed": false,
+      "group": "Finanzinformationen"
+    },
+    {
+      "name": "Q2_KOSTEN",
+      "german_label": "Q2 Kosten",
+      "field_type": "currency",
+      "is_required": false,
+      "validation_rules": [
+        "min=0"
+      ],
+      "placeholder": "0,00 €",
+      "help_text": null,
+      "related_entity": "BUCHUNG",
+      "sample_value": "0.0",
+      "is_computed": false,
+      "group": "Finanzinformationen"
+    },
+    {
+      "name": "Q3_KOSTEN",
+      "german_label": "Q3 Kosten",
+      "field_type": "currency",
+      "is_required": false,
+      "validation_rules": [
+        "min=0"
+      ],
+      "placeholder": "0,00 €",
+      "help_text": null,
+      "related_entity": "BUCHUNG",
+      "sample_value": "0.0",
+      "is_computed": false,
+      "group": "Finanzinformationen"
+    },
+    {
+      "name": "Q4_KOSTEN",
+      "german_label": "Q4 Kosten",
+      "field_type": "currency",
+      "is_required": false,
+      "validation_rules": [
+        "min=0"
+      ],
+      "placeholder": "0,00 €",
+      "help_text": null,
+      "related_entity": "BUCHUNG",
+      "sample_value": "0.0",
+      "is_computed": false,
+      "group": "Finanzinformationen"
+    },
+    {
+      "name": "ERSTE_BUCHUNG",
+      "german_label": "Erste Buchung",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": "BUCHUNG",
+      "sample_value": "2025-02-28",
+      "is_computed": true,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "LETZTE_BUCHUNG",
+      "german_label": "Letzte Buchung",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": "BUCHUNG",
+      "sample_value": "2025-02-28",
+      "is_computed": true,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "FRUEHESTES_WERTDATUM",
+      "german_label": "Fruehestes Wertdatum",
+      "field_type": "date",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": "TT.MM.JJJJ",
+      "help_text": null,
+      "related_entity": "BUCHUNG",
+      "sample_value": "2025-02-28",
+      "is_computed": false,
+      "group": "Zeitangaben"
+    },
+    {
+      "name": "SPAETESTES_WERTDATUM",
+      "german_label": "Spaetestes Wertdatum",
+      "field_type": "date",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": "TT.MM.JJJJ",
+      "help_text": null,
+      "related_entity": "BUCHUNG",
+      "sample_value": "2025-02-28",
+      "is_computed": false,
+      "group": "Zeitangaben"
+    },
+    {
+      "name": "KOSTENNIVEAU",
+      "german_label": "Cost level classification",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": "Cost level classification",
+      "related_entity": "BUCHUNG",
+      "sample_value": "NIEDRIG (<5k EUR)   ",
+      "is_computed": true,
+      "group": "Finanzinformationen"
+    }
+  ]
+}

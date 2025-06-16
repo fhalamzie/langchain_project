@@ -1,7 +1,7 @@
 {
   "query_info": {
     "file": "06_objekte_portfolio.sql",
-    "generated": "2025-06-12T14:40:25.154749",
+    "generated": "2025-06-16T03:33:45.424141",
     "driver": "firebird-driver",
     "charset": "ISO8859_1",
     "business_purpose": "Übersicht aller verwalteten Liegenschaften mit Nutzungsarten",
@@ -13,7 +13,7 @@
       "LAYER 4 STATUS"
     ],
     "total_rows": 76,
-    "execution_time_seconds": 0.005859
+    "execution_time_seconds": 0.005781
   },
   "columns": [
     "ONR",

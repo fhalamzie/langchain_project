@@ -1,0 +1,11 @@
+{
+  "name": "nebenkosten_table",
+  "type": "table",
+  "description": "Table component for Betriebskosten-Vorauszahlung",
+  "styles": [
+    "table",
+    "table-zebra",
+    "overflow-x-auto"
+  ],
+  "scripts": null
+}

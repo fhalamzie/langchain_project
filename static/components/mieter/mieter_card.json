@@ -1,0 +1,11 @@
+{
+  "name": "mieter_card",
+  "type": "card",
+  "description": "Card component for Wohnungsmieter / Bewohner",
+  "styles": [
+    "card",
+    "stats",
+    "stat"
+  ],
+  "scripts": null
+}

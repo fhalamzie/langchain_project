@@ -1,0 +1,13 @@
+{
+  "name": "detaillierte_buchungen_form",
+  "type": "form",
+  "description": "Form component for Detaillierte_Buchungen",
+  "styles": [
+    "form-control",
+    "input",
+    "select",
+    "textarea",
+    "btn"
+  ],
+  "scripts": null
+}

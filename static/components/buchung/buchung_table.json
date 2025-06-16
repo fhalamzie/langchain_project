@@ -1,0 +1,11 @@
+{
+  "name": "buchung_table",
+  "type": "table",
+  "description": "Table component for Einzelne Finanztransaktion",
+  "styles": [
+    "table",
+    "table-zebra",
+    "overflow-x-auto"
+  ],
+  "scripts": null
+}

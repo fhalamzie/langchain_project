@@ -1,0 +1,11 @@
+{
+  "name": "leerstandsanalyse_card",
+  "type": "card",
+  "description": "Card component for Leerstandsanalyse",
+  "styles": [
+    "card",
+    "stats",
+    "stat"
+  ],
+  "scripts": null
+}

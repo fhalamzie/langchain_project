@@ -1,0 +1,11 @@
+{
+  "name": "leerstand_card",
+  "type": "card",
+  "description": "Card component for Leere Wohneinheiten / Vacancy",
+  "styles": [
+    "card",
+    "stats",
+    "stat"
+  ],
+  "scripts": null
+}

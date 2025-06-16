@@ -1,0 +1,53 @@
+<div class="card bg-base-100 shadow-xl">
+    <div class="card-body">
+        <h2 class="card-title">
+            <i class="fas fa-table mr-2"></i>
+            Spezielle_Kontenklassen Übersicht
+        </h2>
+        
+        <!-- Search Bar -->
+        <div class="form-control mb-4">
+            <input 
+                type="search" 
+                placeholder="Suchen..."
+                class="input input-bordered w-full max-w-xs"
+                hx-get="/api/spezielle_kontenklassen/search"
+                hx-trigger="keyup changed delay:500ms"
+                hx-target="#table-body"
+                name="q"
+            />
+        </div>
+        
+        <!-- Table -->
+        <div class="overflow-x-auto">
+            <table class="table table-zebra">
+                <thead>
+                    <tr>
+                        <th>Betriebskosten nach BetrKV</th>
+                        <th>Kontenklasse Bezeichnung</th>
+                        <th>Gebäude / Liegenschaft</th>
+                        <th>Objekt Kurz</th>
+                        <th>Finanzkonto für Buchhaltung</th>
+                        <th>Konto Code</th>
+                        <th>Konto Bezeichnung</th>
+                        <th>Aktionen</th>
+                    </tr>
+                </thead>
+                <tbody id="table-body" 
+                       hx-get="/api/{entity_name}/list"
+                       hx-trigger="load">
+                    <!-- Data will be loaded here -->
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- Pagination -->
+        <div class="join justify-center mt-4">
+            <button class="join-item btn" hx-get="/api/{entity_name}/list?page=prev" hx-target="#table-body">«</button>
+            <button class="join-item btn btn-active">1</button>
+            <button class="join-item btn" hx-get="/api/{entity_name}/list?page=2" hx-target="#table-body">2</button>
+            <button class="join-item btn" hx-get="/api/{entity_name}/list?page=3" hx-target="#table-body">3</button>
+            <button class="join-item btn" hx-get="/api/{entity_name}/list?page=next" hx-target="#table-body">»</button>
+        </div>
+    </div>
+</div>

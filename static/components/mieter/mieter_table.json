@@ -1,0 +1,11 @@
+{
+  "name": "mieter_table",
+  "type": "table",
+  "description": "Table component for Wohnungsmieter / Bewohner",
+  "styles": [
+    "table",
+    "table-zebra",
+    "overflow-x-auto"
+  ],
+  "scripts": null
+}

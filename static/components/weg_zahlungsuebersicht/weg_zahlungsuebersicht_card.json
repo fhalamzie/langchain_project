@@ -1,0 +1,11 @@
+{
+  "name": "weg_zahlungsuebersicht_card",
+  "type": "card",
+  "description": "Card component for Weg_Zahlungsuebersicht",
+  "styles": [
+    "card",
+    "stats",
+    "stat"
+  ],
+  "scripts": null
+}

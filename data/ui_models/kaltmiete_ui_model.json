@@ -1,0 +1,10 @@
+{
+  "entity_name": "kaltmiete",
+  "german_title": "Nettomiete ohne Nebenkosten",
+  "description": "nettomiete",
+  "primary_key": null,
+  "display_field": null,
+  "relationships": {},
+  "query_templates": [],
+  "fields": []
+}

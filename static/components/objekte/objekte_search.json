@@ -1,0 +1,12 @@
+{
+  "name": "objekte_search",
+  "type": "search",
+  "description": "Search component for Objekte",
+  "styles": [
+    "form-control",
+    "input",
+    "select",
+    "checkbox"
+  ],
+  "scripts": null
+}

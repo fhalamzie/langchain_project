@@ -1,0 +1,7 @@
+-- Prozedur: ANONYM_PROCEDURE
+-- Generiert: 2025-05-31 10:26:42
+
+CREATE OR ALTER PROCEDURE ANONYM_PROCEDURE
+BEGIN
+  /* Procedure text */
+END

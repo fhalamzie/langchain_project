@@ -1,0 +1,317 @@
+{
+  "entity_name": "mieter_konten",
+  "german_title": "Mieter_Konten",
+  "description": "mieter_konten",
+  "primary_key": "KNR",
+  "display_field": "KONTO_BEZEICHNUNG",
+  "relationships": {},
+  "query_templates": [],
+  "fields": [
+    {
+      "name": "KNR",
+      "german_label": "Finanzkonto für Buchhaltung",
+      "field_type": "text",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "100601",
+      "is_computed": false,
+      "group": "Identifikatoren"
+    },
+    {
+      "name": "KONTO_CODE",
+      "german_label": "Konto Code",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "B.006.01",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "KONTO_BEZEICHNUNG",
+      "german_label": "Konto Bezeichnung",
+      "field_type": "text",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "Steinbach, Günter 3. OG rechts",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "KONTOSTAND",
+      "german_label": "Kontostand",
+      "field_type": "number",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "0.0",
+      "is_computed": true,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "OFFENE_MIETE",
+      "german_label": "Offene Miete",
+      "field_type": "currency",
+      "is_required": false,
+      "validation_rules": [
+        "min=0"
+      ],
+      "placeholder": "0,00 €",
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "0.0",
+      "is_computed": false,
+      "group": "Finanzinformationen"
+    },
+    {
+      "name": "GUTHABEN",
+      "german_label": "Guthaben",
+      "field_type": "number",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "0.0",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "MAHNSTUFE",
+      "german_label": "Mahnstufe",
+      "field_type": "number",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "4",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "LETZTES_MAHNDATUM",
+      "german_label": "Letztes Mahndatum",
+      "field_type": "date",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": "TT.MM.JJJJ",
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "2021-08-08",
+      "is_computed": false,
+      "group": "Zeitangaben"
+    },
+    {
+      "name": "MAHNSTUFE_TEXT",
+      "german_label": "Mahnstufe Text",
+      "field_type": "textarea",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "3. MAHNUNG        ",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "MIETER_NAME",
+      "german_label": "Mieter Name",
+      "field_type": "text",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": ", ",
+      "is_computed": true,
+      "group": "Finanzinformationen"
+    },
+    {
+      "name": "MIETBEGINN",
+      "german_label": "Beginn",
+      "field_type": "date",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": "TT.MM.JJJJ",
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "2010-05-01",
+      "is_computed": false,
+      "group": "Zeitangaben"
+    },
+    {
+      "name": "MIETENDE",
+      "german_label": "Ende",
+      "field_type": "date",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": "TT.MM.JJJJ",
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "2023-01-31",
+      "is_computed": false,
+      "group": "Finanzinformationen"
+    },
+    {
+      "name": "SOLL_MIETE",
+      "german_label": "Soll Miete",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Finanzinformationen"
+    },
+    {
+      "name": "ZAHLUNGSSTATUS",
+      "german_label": "Zahlungsstatus",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "AUSGEZOGEN                 ",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "ONR",
+      "german_label": "Gebäude / Liegenschaft",
+      "field_type": "text",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "5",
+      "is_computed": false,
+      "group": "Identifikatoren"
+    },
+    {
+      "name": "ENR",
+      "german_label": "Mieteinheit / Apartment",
+      "field_type": "text",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "6",
+      "is_computed": false,
+      "group": "Identifikatoren"
+    },
+    {
+      "name": "WOHNUNGS_BEZEICHNUNG",
+      "german_label": "Wohnungs Bezeichnung",
+      "field_type": "text",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "3. OG rechts",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "OBJEKT_KURZ",
+      "german_label": "Objekt Kurz",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "KAEMP13",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "OBJEKT_STRASSE",
+      "german_label": "Straße",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": "Musterstraße 1",
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "Kämpenstraße 13",
+      "is_computed": false,
+      "group": "Adresse"
+    },
+    {
+      "name": "VERZUG_IN_MONATSMIETEN",
+      "german_label": "Verzug In Monatsmieten",
+      "field_type": "currency",
+      "is_required": false,
+      "validation_rules": [
+        "min=0"
+      ],
+      "placeholder": "0,00 €",
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "0.0",
+      "is_computed": false,
+      "group": "Finanzinformationen"
+    },
+    {
+      "name": "TELEFON",
+      "german_label": "Telefon",
+      "field_type": "phone",
+      "is_required": false,
+      "validation_rules": [
+        "phone"
+      ],
+      "placeholder": "+49 123 456789",
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": true,
+      "group": "Kontaktdaten"
+    },
+    {
+      "name": "EMAIL",
+      "german_label": "Email address",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [
+        "maxlength=255"
+      ],
+      "placeholder": null,
+      "help_text": "Email address",
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Kontaktdaten"
+    }
+  ]
+}

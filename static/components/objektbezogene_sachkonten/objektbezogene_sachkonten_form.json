@@ -1,0 +1,13 @@
+{
+  "name": "objektbezogene_sachkonten_form",
+  "type": "form",
+  "description": "Form component for Objektbezogene_Sachkonten",
+  "styles": [
+    "form-control",
+    "input",
+    "select",
+    "textarea",
+    "btn"
+  ],
+  "scripts": null
+}

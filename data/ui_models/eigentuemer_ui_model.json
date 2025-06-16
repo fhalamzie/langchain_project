@@ -1,0 +1,598 @@
+{
+  "entity_name": "eigentuemer",
+  "german_title": "Eigentuemer",
+  "description": "eigentuemer",
+  "primary_key": "EIGNR",
+  "display_field": "ETITEL",
+  "relationships": {},
+  "query_templates": [],
+  "fields": [
+    {
+      "name": "EIGNR",
+      "german_label": "Immobilieneigentümer / Vermieter",
+      "field_type": "text",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "455",
+      "is_computed": false,
+      "group": "Identifikatoren"
+    },
+    {
+      "name": "EANREDE",
+      "german_label": "Eanrede",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "Herr",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "EANREDE2",
+      "german_label": "Eanrede2",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "ETITEL",
+      "german_label": "Telefon",
+      "field_type": "phone",
+      "is_required": true,
+      "validation_rules": [
+        "required",
+        "phone"
+      ],
+      "placeholder": "+49 123 456789",
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Kontaktdaten"
+    },
+    {
+      "name": "ETITEL2",
+      "german_label": "Telefon",
+      "field_type": "phone",
+      "is_required": true,
+      "validation_rules": [
+        "required",
+        "phone"
+      ],
+      "placeholder": "+49 123 456789",
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Kontaktdaten"
+    },
+    {
+      "name": "EVNAME",
+      "german_label": "Immobilieneigentümer / Vermieter",
+      "field_type": "text",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "Maxim",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "EVNAME2",
+      "german_label": "Evname2",
+      "field_type": "text",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "ENAME",
+      "german_label": "Immobilieneigentümer / Vermieter",
+      "field_type": "text",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "Janz",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "ENAME2",
+      "german_label": "Ename2",
+      "field_type": "text",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "EZUSATZ",
+      "german_label": "Ezusatz",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "Maxim Janz, Neusser Straße 12, 40667 Meerbusch",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "EZUSATZ2",
+      "german_label": "Ezusatz2",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "EBRIEFAN",
+      "german_label": "Ebriefan",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "Sehr geehrte Damen und Herren",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "EBRIEFAN2",
+      "german_label": "Ebriefan2",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "EFIRMA",
+      "german_label": "Efirma",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "N",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "EFIRMANAME",
+      "german_label": "Efirmaname",
+      "field_type": "text",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "ESTR",
+      "german_label": "Straße",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": "Musterstraße 1",
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "Neusser Straße 12",
+      "is_computed": false,
+      "group": "Adresse"
+    },
+    {
+      "name": "ELAND",
+      "german_label": "Eland",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "D  ",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "EPLZORT",
+      "german_label": "Immobilieneigentümer / Vermieter",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [
+        "pattern=\\d{5}"
+      ],
+      "placeholder": "12345",
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "40667 Meerbusch",
+      "is_computed": false,
+      "group": "Adresse"
+    },
+    {
+      "name": "ETEL1",
+      "german_label": "Telefon",
+      "field_type": "phone",
+      "is_required": false,
+      "validation_rules": [
+        "phone"
+      ],
+      "placeholder": "+49 123 456789",
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Kontaktdaten"
+    },
+    {
+      "name": "ETEL2",
+      "german_label": "Telefon",
+      "field_type": "phone",
+      "is_required": false,
+      "validation_rules": [
+        "phone"
+      ],
+      "placeholder": "+49 123 456789",
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Kontaktdaten"
+    },
+    {
+      "name": "EEMAIL",
+      "german_label": "E-Mail Adresse",
+      "field_type": "email",
+      "is_required": false,
+      "validation_rules": [
+        "email",
+        "maxlength=255"
+      ],
+      "placeholder": "beispiel@domain.de",
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "maxim.janz@yahoo.de",
+      "is_computed": false,
+      "group": "Kontaktdaten"
+    },
+    {
+      "name": "EHANDY",
+      "german_label": "Mobiltelefon",
+      "field_type": "phone",
+      "is_required": false,
+      "validation_rules": [
+        "phone"
+      ],
+      "placeholder": "+49 123 456789",
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "+49 162 9844080",
+      "is_computed": false,
+      "group": "Kontaktdaten"
+    },
+    {
+      "name": "ETEL1EIG2",
+      "german_label": "Telefon",
+      "field_type": "phone",
+      "is_required": false,
+      "validation_rules": [
+        "phone"
+      ],
+      "placeholder": "+49 123 456789",
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Kontaktdaten"
+    },
+    {
+      "name": "ETEL2EIG2",
+      "german_label": "Telefon",
+      "field_type": "phone",
+      "is_required": false,
+      "validation_rules": [
+        "phone"
+      ],
+      "placeholder": "+49 123 456789",
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Kontaktdaten"
+    },
+    {
+      "name": "EHANDYEIG2",
+      "german_label": "Mobiltelefon",
+      "field_type": "phone",
+      "is_required": false,
+      "validation_rules": [
+        "phone"
+      ],
+      "placeholder": "+49 123 456789",
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Kontaktdaten"
+    },
+    {
+      "name": "EEMAILEIG2",
+      "german_label": "E-Mail Adresse",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [
+        "maxlength=255"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Kontaktdaten"
+    },
+    {
+      "name": "EBANK",
+      "german_label": "Ebank",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "EBLZ",
+      "german_label": "Eblz",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "EKONTO",
+      "german_label": "Ekonto",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "EIBAN",
+      "german_label": "Eiban",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "EBIC",
+      "german_label": "Ebic",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "EKONTOINH",
+      "german_label": "Ekontoinh",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "Janz Maxim",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "SEPA_MAN_NR",
+      "german_label": "Sepa Man Nr",
+      "field_type": "text",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Identifikatoren"
+    },
+    {
+      "name": "SEPA_MAN_DAT",
+      "german_label": "Sepa Man Dat",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "SEPA_MAN_ART",
+      "german_label": "Sepa Man Art",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "GEBURTSDATUM",
+      "german_label": "Geburtsdatum",
+      "field_type": "date",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": "TT.MM.JJJJ",
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Zeitangaben"
+    },
+    {
+      "name": "GEBURTSDATUM2",
+      "german_label": "Geburtsdatum2",
+      "field_type": "date",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": "TT.MM.JJJJ",
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Zeitangaben"
+    },
+    {
+      "name": "EIGENNUTZER_BEWNR",
+      "german_label": "Bewohner-Nr.",
+      "field_type": "boolean",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "0",
+      "is_computed": false,
+      "group": "Identifikatoren"
+    },
+    {
+      "name": "EIGENTUEMERKUERZEL",
+      "german_label": "Eigentuemerkuerzel",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "MJANZ",
+      "is_computed": true,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "ANZAHL_OBJEKTE",
+      "german_label": "Anzahl Objekte",
+      "field_type": "boolean",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "1",
+      "is_computed": true,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "ANZAHL_EINHEITEN",
+      "german_label": "Anzahl Einheiten",
+      "field_type": "number",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "17",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "ANZAHL_EIGENTUMSEINHEITEN",
+      "german_label": "Anzahl Eigentumseinheiten",
+      "field_type": "number",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "17",
+      "is_computed": true,
+      "group": "Allgemeine Informationen"
+    }
+  ]
+}

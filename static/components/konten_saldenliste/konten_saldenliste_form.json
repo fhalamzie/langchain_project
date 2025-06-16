@@ -1,0 +1,13 @@
+{
+  "name": "konten_saldenliste_form",
+  "type": "form",
+  "description": "Form component for Konten_Saldenliste",
+  "styles": [
+    "form-control",
+    "input",
+    "select",
+    "textarea",
+    "btn"
+  ],
+  "scripts": null
+}

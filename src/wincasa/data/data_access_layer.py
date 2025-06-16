@@ -93,14 +93,15 @@ class WincasaDataAccess:
     def _get_sql_tools(self):
         """Lazy load SQL tools to avoid circular imports"""
         if self._sql_tools is None:
-            from wincasa_tools import WincasaTools
-            self._sql_tools = WincasaTools()
+            # WincasaTools functionality now integrated into sql_executor
+            from wincasa.data.sql_executor import WincasaSQLExecutor
+            self._sql_tools = WincasaSQLExecutor()
         return self._sql_tools
     
     def _get_json_loader(self):
         """Lazy load JSON loader to avoid circular imports"""
         if self._json_loader is None:
-            from layer4_json_loader import Layer4JSONLoader
+            from wincasa.data.layer4_json_loader import Layer4JSONLoader
             self._json_loader = Layer4JSONLoader()
         return self._json_loader
     

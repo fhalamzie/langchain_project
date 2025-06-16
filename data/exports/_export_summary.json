@@ -1,11 +1,11 @@
 {
-  "export_time": "2025-06-12T14:41:29.474284",
+  "export_time": "2025-06-16T03:34:54.562697",
   "total_queries": 35,
   "successful_exports": 35,
   "failed_exports": 0,
-  "total_rows_exported": 229500,
+  "total_rows_exported": 228629,
   "failed_queries": [],
-  "export_directory": "exports",
+  "export_directory": "data/exports",
   "notes": {
     "utf8_queries": [
       "01_eigentuemer.sql",

@@ -1,0 +1,316 @@
+<form 
+    id="buchungskonten_uebersicht-form"
+    hx-post="/api/buchungskonten_uebersicht"
+    hx-trigger="submit"
+    hx-target="#result-container"
+    hx-swap="innerHTML"
+    hx-indicator="#loading-indicator"
+    class="space-y-6"
+    x-data="{ formValid: false, errors: {} }"
+>
+    <div class="card bg-base-100 shadow-xl">
+        <div class="card-body">
+            <h2 class="card-title text-2xl mb-6">
+                <i class="fas fa-building mr-2"></i>
+                Buchungskonten_Uebersicht
+            </h2>
+            
+            <!-- Loading Indicator -->
+            <div id="loading-indicator" class="htmx-indicator">
+                <div class="flex justify-center items-center p-4">
+                    <span class="loading loading-spinner loading-lg"></span>
+                </div>
+            </div>
+
+            <!-- Identifikatoren -->
+            <div class="divider">Identifikatoren</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                <div class="form-control w-full">
+                    <label class="label" for="KNR">
+                        <span class="label-text">
+                            Finanzkonto für Buchhaltung
+                             <span class="text-error">*</span>
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="KNR"
+                        name="KNR"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        required required
+                        
+                        @blur="validateField('KNR')"
+                    />
+                    <label class="label" x-show="errors.KNR">
+                        <span class="label-text-alt text-error" x-text="errors.KNR"></span>
+                    </label>
+                </div>
+
+            </div>
+
+            <!-- Allgemeine Informationen -->
+            <div class="divider">Allgemeine Informationen</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                <div class="form-control w-full">
+                    <label class="label" for="KONTO_CODE">
+                        <span class="label-text">
+                            Konto Code
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="KONTO_CODE"
+                        name="KONTO_CODE"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('KONTO_CODE')"
+                    />
+                    <label class="label" x-show="errors.KONTO_CODE">
+                        <span class="label-text-alt text-error" x-text="errors.KONTO_CODE"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="BEZEICHNUNG">
+                        <span class="label-text">
+                            Bezeichnung
+                             <span class="text-error">*</span>
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="BEZEICHNUNG"
+                        name="BEZEICHNUNG"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        required required
+                        
+                        @blur="validateField('BEZEICHNUNG')"
+                    />
+                    <label class="label" x-show="errors.BEZEICHNUNG">
+                        <span class="label-text-alt text-error" x-text="errors.BEZEICHNUNG"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label cursor-pointer">
+                        <span class="label-text">Betriebskosten nach BetrKV</span>
+                        <input 
+                            type="checkbox"
+                            id="KKLASSE"
+                            name="KKLASSE"
+                            class="checkbox checkbox-primary"
+                            value="1"
+                        />
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="KONTENTYP">
+                        <span class="label-text">
+                            Kontentyp
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="KONTENTYP"
+                        name="KONTENTYP"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('KONTENTYP')"
+                    />
+                    <label class="label" x-show="errors.KONTENTYP">
+                        <span class="label-text-alt text-error" x-text="errors.KONTENTYP"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="SOLL">
+                        <span class="label-text">
+                            Jährliche Nebenkostenabrechnung
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="SOLL"
+                        name="SOLL"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('SOLL')"
+                    />
+                    <label class="label" x-show="errors.SOLL">
+                        <span class="label-text-alt text-error" x-text="errors.SOLL"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="HABEN">
+                        <span class="label-text">
+                            Jährliche Nebenkostenabrechnung
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="HABEN"
+                        name="HABEN"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('HABEN')"
+                    />
+                    <label class="label" x-show="errors.HABEN">
+                        <span class="label-text-alt text-error" x-text="errors.HABEN"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="ANZAHL_BUCHUNGEN">
+                        <span class="label-text">
+                            Anzahl Buchungen
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="ANZAHL_BUCHUNGEN"
+                        name="ANZAHL_BUCHUNGEN"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('ANZAHL_BUCHUNGEN')"
+                    />
+                    <label class="label" x-show="errors.ANZAHL_BUCHUNGEN">
+                        <span class="label-text-alt text-error" x-text="errors.ANZAHL_BUCHUNGEN"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="JAHR">
+                        <span class="label-text">
+                            Jahr
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="JAHR"
+                        name="JAHR"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('JAHR')"
+                    />
+                    <label class="label" x-show="errors.JAHR">
+                        <span class="label-text-alt text-error" x-text="errors.JAHR"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="MONAT">
+                        <span class="label-text">
+                            Monat
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="MONAT"
+                        name="MONAT"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('MONAT')"
+                    />
+                    <label class="label" x-show="errors.MONAT">
+                        <span class="label-text-alt text-error" x-text="errors.MONAT"></span>
+                    </label>
+                </div>
+
+            </div>
+
+            <!-- Finanzinformationen -->
+            <div class="divider">Finanzinformationen</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                <div class="form-control w-full">
+                    <label class="label" for="KOSTENART">
+                        <span class="label-text">
+                            Kostenart
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="KOSTENART"
+                        name="KOSTENART"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('KOSTENART')"
+                    />
+                    <label class="label" x-show="errors.KOSTENART">
+                        <span class="label-text-alt text-error" x-text="errors.KOSTENART"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="SALDO">
+                        <span class="label-text">
+                            Saldo
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="SALDO"
+                        name="SALDO"
+                        placeholder="0,00 €"
+                        class="input input-bordered w-full"
+                        min="0"
+                        step="0.01" min="0"
+                        @blur="validateField('SALDO')"
+                    />
+                    <label class="label" x-show="errors.SALDO">
+                        <span class="label-text-alt text-error" x-text="errors.SALDO"></span>
+                    </label>
+                </div>
+
+            </div>
+
+            <!-- Form Actions -->
+            <div class="card-actions justify-end mt-6">
+                <button type="reset" class="btn btn-ghost">
+                    <i class="fas fa-undo mr-2"></i>
+                    Zurücksetzen
+                </button>
+                <button type="submit" 
+                        class="btn btn-primary"
+                        :disabled="!formValid">
+                    <i class="fas fa-save mr-2"></i>
+                    Speichern
+                </button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<!-- Result Container -->
+<div id="result-container" class="mt-6"></div>

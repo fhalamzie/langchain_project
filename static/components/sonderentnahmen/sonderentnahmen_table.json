@@ -1,0 +1,11 @@
+{
+  "name": "sonderentnahmen_table",
+  "type": "table",
+  "description": "Table component for Sonderentnahmen",
+  "styles": [
+    "table",
+    "table-zebra",
+    "overflow-x-auto"
+  ],
+  "scripts": null
+}

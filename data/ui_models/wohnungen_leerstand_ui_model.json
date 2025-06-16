@@ -1,0 +1,305 @@
+{
+  "entity_name": "wohnungen_leerstand",
+  "german_title": "Wohnungen_Leerstand",
+  "description": "wohnungen_leerstand",
+  "primary_key": "ONR",
+  "display_field": "EINHEIT_BEZEICHNUNG",
+  "relationships": {},
+  "query_templates": [],
+  "fields": [
+    {
+      "name": "ONR",
+      "german_label": "Gebäude / Liegenschaft",
+      "field_type": "boolean",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "1",
+      "is_computed": false,
+      "group": "Identifikatoren"
+    },
+    {
+      "name": "ENR",
+      "german_label": "Mieteinheit / Apartment",
+      "field_type": "boolean",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "1",
+      "is_computed": false,
+      "group": "Identifikatoren"
+    },
+    {
+      "name": "EINHEIT_BEZEICHNUNG",
+      "german_label": "Einheit Bezeichnung",
+      "field_type": "text",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "EG",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "WOHNUNGS_BEZEICHNUNG",
+      "german_label": "Wohnungs Bezeichnung",
+      "field_type": "text",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "EG",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "EINHEITENART",
+      "german_label": "Einheitenart",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "Wohnung",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "BUCHUNGSKREIS",
+      "german_label": "Buchungskreis",
+      "field_type": "number",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "100100",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "EINZELKOSTENKREIS",
+      "german_label": "Einzelkostenkreis",
+      "field_type": "currency",
+      "is_required": false,
+      "validation_rules": [
+        "min=0"
+      ],
+      "placeholder": "0,00 €",
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "200100",
+      "is_computed": false,
+      "group": "Finanzinformationen"
+    },
+    {
+      "name": "AKTUELLER_STATUS",
+      "german_label": "Aktueller Status",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": " ",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "MIETER_KNR",
+      "german_label": "Mieter Knr",
+      "field_type": "currency",
+      "is_required": true,
+      "validation_rules": [
+        "required",
+        "min=0"
+      ],
+      "placeholder": "0,00 €",
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "100100",
+      "is_computed": false,
+      "group": "Finanzinformationen"
+    },
+    {
+      "name": "MIETBEGINN",
+      "german_label": "Beginn",
+      "field_type": "date",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": "TT.MM.JJJJ",
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Zeitangaben"
+    },
+    {
+      "name": "MIETENDE",
+      "german_label": "Ende",
+      "field_type": "date",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": "TT.MM.JJJJ",
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Finanzinformationen"
+    },
+    {
+      "name": "AKTUELLE_MIETE",
+      "german_label": "Aktuelle Miete",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Finanzinformationen"
+    },
+    {
+      "name": "LEERSTAND_TAGE",
+      "german_label": "Days vacant since becoming available",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": "Days vacant since becoming available",
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": true,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "SOLL_KALTMIETE",
+      "german_label": "Kaltmiete",
+      "field_type": "currency",
+      "is_required": false,
+      "validation_rules": [
+        "min=0"
+      ],
+      "placeholder": "0,00 €",
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "0.0",
+      "is_computed": false,
+      "group": "Finanzinformationen"
+    },
+    {
+      "name": "SOLL_NEBENKOSTEN",
+      "german_label": "Nebenkosten",
+      "field_type": "currency",
+      "is_required": false,
+      "validation_rules": [
+        "min=0"
+      ],
+      "placeholder": "0,00 €",
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "0.0",
+      "is_computed": false,
+      "group": "Finanzinformationen"
+    },
+    {
+      "name": "SOLL_WARMMIETE",
+      "german_label": "Warmmiete",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Finanzinformationen"
+    },
+    {
+      "name": "EIGENTUEMER_NR",
+      "german_label": "Eigentuemer Nr",
+      "field_type": "text",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "1192",
+      "is_computed": false,
+      "group": "Identifikatoren"
+    },
+    {
+      "name": "EIGENTUEMER_NAME",
+      "german_label": "Eigentuemer Name",
+      "field_type": "text",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "Bauchrowitz, Paul",
+      "is_computed": true,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "OBJEKT_KURZ",
+      "german_label": "Objekt Kurz",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "Cassavi Testobjekt",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "OBJEKT_STRASSE",
+      "german_label": "Straße",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": "Musterstraße 1",
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "Kettwiger Str. 23",
+      "is_computed": false,
+      "group": "Adresse"
+    },
+    {
+      "name": "OBJEKT_ORT",
+      "german_label": "Ort",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": "Berlin",
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "45127 Essen",
+      "is_computed": false,
+      "group": "Adresse"
+    }
+  ]
+}

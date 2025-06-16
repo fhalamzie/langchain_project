@@ -1,0 +1,10 @@
+{
+  "entity_name": "investitionsrisiko",
+  "german_title": "Risiko für hohe Investitionen",
+  "description": "investment risk",
+  "primary_key": null,
+  "display_field": null,
+  "relationships": {},
+  "query_templates": [],
+  "fields": []
+}

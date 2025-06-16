@@ -1,0 +1,13 @@
+{
+  "name": "buchung_form",
+  "type": "form",
+  "description": "Form component for Einzelne Finanztransaktion",
+  "styles": [
+    "form-control",
+    "input",
+    "select",
+    "textarea",
+    "btn"
+  ],
+  "scripts": null
+}

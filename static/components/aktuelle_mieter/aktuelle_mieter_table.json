@@ -1,0 +1,11 @@
+{
+  "name": "aktuelle_mieter_table",
+  "type": "table",
+  "description": "Table component for Aktuelle_Mieter",
+  "styles": [
+    "table",
+    "table-zebra",
+    "overflow-x-auto"
+  ],
+  "scripts": null
+}

@@ -1,0 +1,13 @@
+{
+  "name": "etv_presence_form",
+  "type": "form",
+  "description": "Form component for Etv_Presence",
+  "styles": [
+    "form-control",
+    "input",
+    "select",
+    "textarea",
+    "btn"
+  ],
+  "scripts": null
+}

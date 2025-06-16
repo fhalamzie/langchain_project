@@ -1,0 +1,11 @@
+{
+  "name": "weg_eigentuemer_card",
+  "type": "card",
+  "description": "Card component for Weg_Eigentuemer",
+  "styles": [
+    "card",
+    "stats",
+    "stat"
+  ],
+  "scripts": null
+}

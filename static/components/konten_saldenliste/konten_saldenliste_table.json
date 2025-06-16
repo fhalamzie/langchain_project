@@ -1,0 +1,11 @@
+{
+  "name": "konten_saldenliste_table",
+  "type": "table",
+  "description": "Table component for Konten_Saldenliste",
+  "styles": [
+    "table",
+    "table-zebra",
+    "overflow-x-auto"
+  ],
+  "scripts": null
+}

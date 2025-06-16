@@ -1,0 +1,229 @@
+{
+  "entity_name": "weg_zahlungsuebersicht",
+  "german_title": "Weg_Zahlungsuebersicht",
+  "description": "weg_zahlungsuebersicht",
+  "primary_key": "ONR",
+  "display_field": "MONATSNAME",
+  "relationships": {},
+  "query_templates": [],
+  "fields": [
+    {
+      "name": "ONR",
+      "german_label": "Gebäude / Liegenschaft",
+      "field_type": "boolean",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "1",
+      "is_computed": false,
+      "group": "Identifikatoren"
+    },
+    {
+      "name": "OBJEKT",
+      "german_label": "Objekt",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "Cassavi Testobjekt",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "OSTRASSE",
+      "german_label": "Gebäude / Liegenschaft",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": "Musterstraße 1",
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "Kettwiger Str. 23",
+      "is_computed": false,
+      "group": "Adresse"
+    },
+    {
+      "name": "EIGNR",
+      "german_label": "Immobilieneigentümer / Vermieter",
+      "field_type": "text",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "1192",
+      "is_computed": false,
+      "group": "Identifikatoren"
+    },
+    {
+      "name": "EIGENTUEMER",
+      "german_label": "Immobilieneigentümer / Vermieter",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "Bauchrowitz, Paul",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "ENR",
+      "german_label": "Mieteinheit / Apartment",
+      "field_type": "boolean",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "1",
+      "is_computed": false,
+      "group": "Identifikatoren"
+    },
+    {
+      "name": "WOHNUNG",
+      "german_label": "Wohnung",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "EG",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "JAHR",
+      "german_label": "Jahr",
+      "field_type": "number",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "2024",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "MONAT",
+      "german_label": "Monat",
+      "field_type": "boolean",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "1",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "MONATSNAME",
+      "german_label": "Monatsname",
+      "field_type": "text",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "Januar   ",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "ZAHLUNGEN_EINGANG",
+      "german_label": "Zahlungen Eingang",
+      "field_type": "number",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "8040.95",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "BELASTUNGEN",
+      "german_label": "Belastungen",
+      "field_type": "number",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "7015.57",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "MONATSSALDO",
+      "german_label": "Saldo",
+      "field_type": "currency",
+      "is_required": false,
+      "validation_rules": [
+        "min=0"
+      ],
+      "placeholder": "0,00 €",
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "1025.38",
+      "is_computed": false,
+      "group": "Finanzinformationen"
+    },
+    {
+      "name": "ANZAHL_EINGAENGE",
+      "german_label": "Anzahl Eingaenge",
+      "field_type": "number",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "51",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "ANZAHL_AUSGAENGE",
+      "german_label": "Anzahl Ausgaenge",
+      "field_type": "number",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "57",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "STATUS",
+      "german_label": "Status",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "ÜBERZAHLUNG      ",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    }
+  ]
+}

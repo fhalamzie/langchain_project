@@ -1,0 +1,11 @@
+{
+  "name": "nebenkostenkonten_matrix_table",
+  "type": "table",
+  "description": "Table component for Nebenkostenkonten_Matrix",
+  "styles": [
+    "table",
+    "table-zebra",
+    "overflow-x-auto"
+  ],
+  "scripts": null
+}

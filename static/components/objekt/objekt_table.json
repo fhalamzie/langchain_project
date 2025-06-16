@@ -1,0 +1,11 @@
+{
+  "name": "objekt_table",
+  "type": "table",
+  "description": "Table component for Gebäude / Liegenschaft",
+  "styles": [
+    "table",
+    "table-zebra",
+    "overflow-x-auto"
+  ],
+  "scripts": null
+}

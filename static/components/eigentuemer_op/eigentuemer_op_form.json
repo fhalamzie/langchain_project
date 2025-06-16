@@ -1,0 +1,13 @@
+{
+  "name": "eigentuemer_op_form",
+  "type": "form",
+  "description": "Form component for Eigentuemer_Op",
+  "styles": [
+    "form-control",
+    "input",
+    "select",
+    "textarea",
+    "btn"
+  ],
+  "scripts": null
+}

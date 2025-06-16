@@ -1,0 +1,13 @@
+{
+  "name": "aktuelle_mieter_form",
+  "type": "form",
+  "description": "Form component for Aktuelle_Mieter",
+  "styles": [
+    "form-control",
+    "input",
+    "select",
+    "textarea",
+    "btn"
+  ],
+  "scripts": null
+}

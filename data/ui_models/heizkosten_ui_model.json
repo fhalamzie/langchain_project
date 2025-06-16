@@ -1,0 +1,10 @@
+{
+  "entity_name": "heizkosten",
+  "german_title": "Heizkosten nach HeizkostenV",
+  "description": "heizung",
+  "primary_key": null,
+  "display_field": null,
+  "relationships": {},
+  "query_templates": [],
+  "fields": []
+}

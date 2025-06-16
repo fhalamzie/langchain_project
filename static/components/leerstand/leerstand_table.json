@@ -1,0 +1,11 @@
+{
+  "name": "leerstand_table",
+  "type": "table",
+  "description": "Table component for Leere Wohneinheiten / Vacancy",
+  "styles": [
+    "table",
+    "table-zebra",
+    "overflow-x-auto"
+  ],
+  "scripts": null
+}

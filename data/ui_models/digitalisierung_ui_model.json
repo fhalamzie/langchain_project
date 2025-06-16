@@ -1,0 +1,10 @@
+{
+  "entity_name": "digitalisierung",
+  "german_title": "Digitalisierungsgrad der Verwaltung",
+  "description": "digitalization",
+  "primary_key": null,
+  "display_field": null,
+  "relationships": {},
+  "query_templates": [],
+  "fields": []
+}

@@ -1,0 +1,858 @@
+{
+  "entity_name": "mieter",
+  "german_title": "Wohnungsmieter / Bewohner",
+  "description": "bewohner",
+  "primary_key": "BEWNR",
+  "display_field": "BTITEL",
+  "relationships": {},
+  "query_templates": [],
+  "fields": [
+    {
+      "name": "BEWNR",
+      "german_label": "Wohnungsmieter / Bewohner",
+      "field_type": "text",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": "BEWADR",
+      "sample_value": "50",
+      "is_computed": false,
+      "group": "Identifikatoren"
+    },
+    {
+      "name": "ONR",
+      "german_label": "Gebäude / Liegenschaft",
+      "field_type": "text",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": "BEWADR",
+      "sample_value": "38",
+      "is_computed": false,
+      "group": "Identifikatoren"
+    },
+    {
+      "name": "KNR",
+      "german_label": "Finanzkonto für Buchhaltung",
+      "field_type": "text",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": "BEWADR",
+      "sample_value": "100200",
+      "is_computed": false,
+      "group": "Identifikatoren"
+    },
+    {
+      "name": "ENR",
+      "german_label": "Mieteinheit / Apartment",
+      "field_type": "text",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": "BEWADR",
+      "sample_value": "2",
+      "is_computed": false,
+      "group": "Identifikatoren"
+    },
+    {
+      "name": "ID",
+      "german_label": "Id",
+      "field_type": "number",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": "BEWADR",
+      "sample_value": "534",
+      "is_computed": false,
+      "group": "Identifikatoren"
+    },
+    {
+      "name": "BANREDE",
+      "german_label": "Banrede",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": "BEWADR",
+      "sample_value": "Herr",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "BANREDE2",
+      "german_label": "Banrede2",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": "BEWADR",
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "BBRIEFAN",
+      "german_label": "Bbriefan",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": "BEWADR",
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "BBRIEFAN2",
+      "german_label": "Bbriefan2",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": "BEWADR",
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "BTITEL",
+      "german_label": "Telefon",
+      "field_type": "phone",
+      "is_required": true,
+      "validation_rules": [
+        "required",
+        "phone"
+      ],
+      "placeholder": "+49 123 456789",
+      "help_text": null,
+      "related_entity": "BEWADR",
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Kontaktdaten"
+    },
+    {
+      "name": "BTITEL2",
+      "german_label": "Telefon",
+      "field_type": "phone",
+      "is_required": true,
+      "validation_rules": [
+        "required",
+        "phone"
+      ],
+      "placeholder": "+49 123 456789",
+      "help_text": null,
+      "related_entity": "BEWADR",
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Kontaktdaten"
+    },
+    {
+      "name": "BVNAME",
+      "german_label": "Wohnungsmieter / Bewohner",
+      "field_type": "text",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": "BEWADR",
+      "sample_value": "Frank",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "BNAME",
+      "german_label": "Wohnungsmieter / Bewohner",
+      "field_type": "text",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": "BEWADR",
+      "sample_value": "Neubauer",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "BVNAME2",
+      "german_label": "Bvname2",
+      "field_type": "text",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": "BEWADR",
+      "sample_value": "",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "BNAME2",
+      "german_label": "Bname2",
+      "field_type": "text",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": "BEWADR",
+      "sample_value": "",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "BZUSATZ",
+      "german_label": "Bzusatz",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": "BEWADR",
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "BZUSATZ2",
+      "german_label": "Bzusatz2",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": "BEWADR",
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "BFIRMA",
+      "german_label": "Bfirma",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": "BEWADR",
+      "sample_value": "N",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "BFIRMANAME",
+      "german_label": "Bfirmaname",
+      "field_type": "text",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": "BEWADR",
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "BSTR",
+      "german_label": "Wohnungsmieter / Bewohner",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": "Musterstraße 1",
+      "help_text": null,
+      "related_entity": "BEWADR",
+      "sample_value": "Steinfurthstraße 32",
+      "is_computed": false,
+      "group": "Adresse"
+    },
+    {
+      "name": "BPLZORT",
+      "german_label": "Wohnungsmieter / Bewohner",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [
+        "pattern=\\d{5}"
+      ],
+      "placeholder": "12345",
+      "help_text": null,
+      "related_entity": "BEWADR",
+      "sample_value": "45884 Gelsenkirchen",
+      "is_computed": false,
+      "group": "Adresse"
+    },
+    {
+      "name": "BSTR2",
+      "german_label": "Straße",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": "Musterstraße 1",
+      "help_text": null,
+      "related_entity": "BEWADR",
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Adresse"
+    },
+    {
+      "name": "BTEL",
+      "german_label": "Telefon",
+      "field_type": "phone",
+      "is_required": false,
+      "validation_rules": [
+        "phone"
+      ],
+      "placeholder": "+49 123 456789",
+      "help_text": null,
+      "related_entity": "BEWADR",
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Kontaktdaten"
+    },
+    {
+      "name": "BTEL2",
+      "german_label": "Telefon",
+      "field_type": "phone",
+      "is_required": false,
+      "validation_rules": [
+        "phone"
+      ],
+      "placeholder": "+49 123 456789",
+      "help_text": null,
+      "related_entity": "BEWADR",
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Kontaktdaten"
+    },
+    {
+      "name": "BEMAIL",
+      "german_label": "E-Mail Adresse",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [
+        "maxlength=255"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": "BEWADR",
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Kontaktdaten"
+    },
+    {
+      "name": "BHANDY",
+      "german_label": "Mobiltelefon",
+      "field_type": "phone",
+      "is_required": false,
+      "validation_rules": [
+        "phone"
+      ],
+      "placeholder": "+49 123 456789",
+      "help_text": null,
+      "related_entity": "BEWADR",
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Kontaktdaten"
+    },
+    {
+      "name": "BTELBEW2",
+      "german_label": "Telefon",
+      "field_type": "phone",
+      "is_required": false,
+      "validation_rules": [
+        "phone"
+      ],
+      "placeholder": "+49 123 456789",
+      "help_text": null,
+      "related_entity": "BEWADR",
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Kontaktdaten"
+    },
+    {
+      "name": "BTEL2BEW2",
+      "german_label": "Telefon",
+      "field_type": "phone",
+      "is_required": false,
+      "validation_rules": [
+        "phone"
+      ],
+      "placeholder": "+49 123 456789",
+      "help_text": null,
+      "related_entity": "BEWADR",
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Kontaktdaten"
+    },
+    {
+      "name": "BEMAILBEW2",
+      "german_label": "E-Mail Adresse",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [
+        "maxlength=255"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": "BEWADR",
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Kontaktdaten"
+    },
+    {
+      "name": "BHANDYBEW2",
+      "german_label": "Mobiltelefon",
+      "field_type": "phone",
+      "is_required": false,
+      "validation_rules": [
+        "phone"
+      ],
+      "placeholder": "+49 123 456789",
+      "help_text": null,
+      "related_entity": "BEWADR",
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Kontaktdaten"
+    },
+    {
+      "name": "BBANK",
+      "german_label": "Bbank",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": "BEWADR",
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "BBLZ",
+      "german_label": "Bblz",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": "BEWADR",
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "BKONTO",
+      "german_label": "Bkonto",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": "BEWADR",
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "BBIC",
+      "german_label": "Bbic",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": "BEWADR",
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "BIBAN",
+      "german_label": "Biban",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": "BEWADR",
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "BKONTOINH",
+      "german_label": "Bkontoinh",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": "BEWADR",
+      "sample_value": "Neubauer Frank",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "VABSCHLUS",
+      "german_label": "Vabschlus",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": "BEWADR",
+      "sample_value": "2016-01-26",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "VBEGINN",
+      "german_label": "Mietvertrag mit Konditionen",
+      "field_type": "date",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": "TT.MM.JJJJ",
+      "help_text": null,
+      "related_entity": "BEWADR",
+      "sample_value": "2016-02-01",
+      "is_computed": false,
+      "group": "Zeitangaben"
+    },
+    {
+      "name": "VENDE",
+      "german_label": "Mietvertrag mit Konditionen",
+      "field_type": "date",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": "TT.MM.JJJJ",
+      "help_text": null,
+      "related_entity": "BEWADR",
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Zeitangaben"
+    },
+    {
+      "name": "VERTRAGSSTATUS",
+      "german_label": "Vertragsstatus",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": "BEWADR",
+      "sample_value": "Unbefristet",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "KALTMIETE",
+      "german_label": "Kaltmiete",
+      "field_type": "currency",
+      "is_required": false,
+      "validation_rules": [
+        "min=0"
+      ],
+      "placeholder": "0,00 €",
+      "help_text": null,
+      "related_entity": "BEWADR",
+      "sample_value": "267.0",
+      "is_computed": false,
+      "group": "Finanzinformationen"
+    },
+    {
+      "name": "GARAGENMIETE",
+      "german_label": "Garagenmiete",
+      "field_type": "currency",
+      "is_required": false,
+      "validation_rules": [
+        "min=0"
+      ],
+      "placeholder": "0,00 €",
+      "help_text": null,
+      "related_entity": "BEWADR",
+      "sample_value": "0.0",
+      "is_computed": false,
+      "group": "Finanzinformationen"
+    },
+    {
+      "name": "BETRIEBSKOSTEN",
+      "german_label": "Betriebskosten-Vorauszahlung",
+      "field_type": "currency",
+      "is_required": false,
+      "validation_rules": [
+        "min=0"
+      ],
+      "placeholder": "0,00 €",
+      "help_text": null,
+      "related_entity": "BEWADR",
+      "sample_value": "35.0",
+      "is_computed": false,
+      "group": "Finanzinformationen"
+    },
+    {
+      "name": "HEIZKOSTEN",
+      "german_label": "Heizkosten",
+      "field_type": "currency",
+      "is_required": false,
+      "validation_rules": [
+        "min=0"
+      ],
+      "placeholder": "0,00 €",
+      "help_text": null,
+      "related_entity": "BEWADR",
+      "sample_value": "35.0",
+      "is_computed": false,
+      "group": "Finanzinformationen"
+    },
+    {
+      "name": "WARMMIETE_AKTUELL",
+      "german_label": "Warmmiete",
+      "field_type": "currency",
+      "is_required": false,
+      "validation_rules": [
+        "min=0"
+      ],
+      "placeholder": "0,00 €",
+      "help_text": null,
+      "related_entity": "BEWADR",
+      "sample_value": "337.0",
+      "is_computed": false,
+      "group": "Finanzinformationen"
+    },
+    {
+      "name": "MIETE1",
+      "german_label": "Miete1",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": "BEWADR",
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Finanzinformationen"
+    },
+    {
+      "name": "MIETE2",
+      "german_label": "Miete2",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": "BEWADR",
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Finanzinformationen"
+    },
+    {
+      "name": "MIETE3",
+      "german_label": "Miete3",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": "BEWADR",
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Finanzinformationen"
+    },
+    {
+      "name": "MIETE4",
+      "german_label": "Miete4",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": "BEWADR",
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Finanzinformationen"
+    },
+    {
+      "name": "MIETDATUM1",
+      "german_label": "Mietdatum1",
+      "field_type": "date",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": "TT.MM.JJJJ",
+      "help_text": null,
+      "related_entity": "BEWADR",
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Zeitangaben"
+    },
+    {
+      "name": "MIETDATUM2",
+      "german_label": "Mietdatum2",
+      "field_type": "date",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": "TT.MM.JJJJ",
+      "help_text": null,
+      "related_entity": "BEWADR",
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Zeitangaben"
+    },
+    {
+      "name": "MIETDATUM3",
+      "german_label": "Mietdatum3",
+      "field_type": "date",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": "TT.MM.JJJJ",
+      "help_text": null,
+      "related_entity": "BEWADR",
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Zeitangaben"
+    },
+    {
+      "name": "MIETDATUM4",
+      "german_label": "Mietdatum4",
+      "field_type": "date",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": "TT.MM.JJJJ",
+      "help_text": null,
+      "related_entity": "BEWADR",
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Zeitangaben"
+    },
+    {
+      "name": "GEBURTSDATUM",
+      "german_label": "Geburtsdatum",
+      "field_type": "date",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": "TT.MM.JJJJ",
+      "help_text": null,
+      "related_entity": "BEWADR",
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Zeitangaben"
+    },
+    {
+      "name": "GEBURTSDATUM2",
+      "german_label": "Geburtsdatum2",
+      "field_type": "date",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": "TT.MM.JJJJ",
+      "help_text": null,
+      "related_entity": "BEWADR",
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Zeitangaben"
+    },
+    {
+      "name": "MIETSCHULDEN",
+      "german_label": "Mietschulden",
+      "field_type": "number",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": "BEWADR",
+      "sample_value": "2466.78",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "ZAHLUNGSSTATUS",
+      "german_label": "Zahlungsstatus",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": "BEWADR",
+      "sample_value": "Schulden    ",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "VERTRAGSNOTIZ",
+      "german_label": "Vertragsnotiz",
+      "field_type": "textarea",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": "BEWADR",
+      "sample_value": null,
+      "is_computed": true,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "LAGE",
+      "german_label": "Lage",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": "BEWADR",
+      "sample_value": "Steinfurth 32 EG rechts",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "LIEGENSCHAFTSKUERZEL",
+      "german_label": "Liegenschaftskuerzel",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": "BEWADR",
+      "sample_value": "STEINF32+34+81",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "EIGENTUEMERKUERZEL",
+      "german_label": "Eigentuemerkuerzel",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": "BEWADR",
+      "sample_value": "RSWO",
+      "is_computed": true,
+      "group": "Allgemeine Informationen"
+    }
+  ]
+}

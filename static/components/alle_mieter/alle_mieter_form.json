@@ -1,0 +1,13 @@
+{
+  "name": "alle_mieter_form",
+  "type": "form",
+  "description": "Form component for Alle_Mieter",
+  "styles": [
+    "form-control",
+    "input",
+    "select",
+    "textarea",
+    "btn"
+  ],
+  "scripts": null
+}

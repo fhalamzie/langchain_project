@@ -1,0 +1,12 @@
+{
+  "name": "objektbezogene_sachkonten_search",
+  "type": "search",
+  "description": "Search component for Objektbezogene_Sachkonten",
+  "styles": [
+    "form-control",
+    "input",
+    "select",
+    "checkbox"
+  ],
+  "scripts": null
+}

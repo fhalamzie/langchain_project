@@ -1,0 +1,11 @@
+{
+  "name": "eigentuemer_op_table",
+  "type": "table",
+  "description": "Table component for Eigentuemer_Op",
+  "styles": [
+    "table",
+    "table-zebra",
+    "overflow-x-auto"
+  ],
+  "scripts": null
+}

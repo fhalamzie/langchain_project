@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="wincasa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.14/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/styles.css" rel="stylesheet">
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    <script src="/assets/app.js"></script>
+</head>
+<body class="bg-base-100">
+    <!-- Navigation -->
+    <div class="navbar bg-base-300 shadow-lg">
+        <div class="navbar-start">
+            <div class="dropdown">
+                <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16"></path>
+                    </svg>
+                </div>
+                <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                    <li><a href="#search">🔍 Suche</a></li>
+                    <li><a href="#analytics">📊 Analytics</a></li>
+                    <li><a href="#reports">📋 Reports</a></li>
+                </ul>
+            </div>
+            <a class="btn btn-ghost text-xl font-bold">🏠 WINCASA</a>
+        </div>
+        <div class="navbar-center hidden lg:flex">
+            <ul class="menu menu-horizontal px-1">
+                <li><a href="#search" class="btn btn-ghost">🔍 Suche</a></li>
+                <li><a href="#analytics" class="btn btn-ghost">📊 Analytics</a></li>
+                <li><a href="#reports" class="btn btn-ghost">📋 Reports</a></li>
+            </ul>
+        </div>
+        <div class="navbar-end">
+            <div class="dropdown dropdown-end">
+                <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
+                    <div class="indicator">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-5 5v-5z"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="wincasa-hero">
+        <div class="hero-content text-center">
+            <div class="max-w-md">
+                <h1 class="text-5xl font-bold">{{ title }}</h1>
+                <p class="py-6">Intelligentes Property Management System mit AI-powered Query Engine</p>
+                <div class="stats shadow">
+                    <div class="stat">
+                        <div class="stat-title">Eigentümer</div>
+                        <div class="stat-value text-primary">311</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-title">Mieter</div>
+                        <div class="stat-value text-secondary">189</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-title">Objekte</div>
+                        <div class="stat-value text-accent">77</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="property-grid">
+            {% for entity in business_entities %}
+            {% if entity.form_type == 'search' %}
+            <div class="wincasa-card">
+                <div class="card-body">
+                    <h2 class="card-title">
+                        {% if entity.name == 'mieter' %}🏠{% elif entity.name == 'eigentümer' %}👤{% elif entity.name == 'wohnung' %}🏘️{% elif entity.name == 'objekt' %}🏢{% else %}📋{% endif %}
+                        {{ entity.display_name }}
+                    </h2>
+                    
+                    <!-- Form Container -->
+                    <div hx-get="/components/{{ entity.name }}_form.html" 
+                         hx-target="#form_{{ entity.name }}" 
+                         hx-trigger="load"
+                         class="wincasa-form">
+                        <div id="form_{{ entity.name }}" class="loading loading-spinner loading-lg">
+                            <div class="skeleton h-32 w-full"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Results Container -->
+                    <div id="results_{{ entity.name }}" class="wincasa-results"></div>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+        
+        <!-- Analytics Dashboard -->
+        <div class="divider"></div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-8">
+            <div class="card bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <h3 class="card-title">📊 Query Analytics</h3>
+                    <div class="stats stats-vertical lg:stats-horizontal shadow">
+                        <div class="stat">
+                            <div class="stat-title">Heute</div>
+                            <div class="stat-value text-sm">0 Queries</div>
+                            <div class="stat-desc">↗︎ 0% seit gestern</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-title">Diese Woche</div>
+                            <div class="stat-value text-sm">0 Queries</div>
+                            <div class="stat-desc">↗︎ 0% seit letzter Woche</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <h3 class="card-title">⚡ System Status</h3>
+                    <div class="flex flex-col gap-2">
+                        <div class="flex justify-between items-center">
+                            <span>Query Engine</span>
+                            <div class="badge badge-success">Online</div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span>Knowledge Base</span>
+                            <div class="badge badge-success">400+ Mappings</div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span>Database</span>
+                            <div class="badge badge-success">Connected</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="footer footer-center p-10 bg-base-200 text-base-content">
+        <aside>
+            <p class="font-bold">
+                WINCASA Property Management {{ version }}
+                <br/>Powered by HTMX + DaisyUI
+            </p>
+            <p>Copyright © 2025 - All rights reserved</p>
+        </aside>
+    </footer>
+</body>
+</html>

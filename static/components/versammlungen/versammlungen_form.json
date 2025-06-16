@@ -1,0 +1,13 @@
+{
+  "name": "versammlungen_form",
+  "type": "form",
+  "description": "Form component for Versammlungen",
+  "styles": [
+    "form-control",
+    "input",
+    "select",
+    "textarea",
+    "btn"
+  ],
+  "scripts": null
+}

@@ -1,0 +1,668 @@
+{
+  "entity_name": "weg_eigentuemer",
+  "german_title": "Weg_Eigentuemer",
+  "description": "weg_eigentuemer",
+  "primary_key": "EIGNR",
+  "display_field": "EVNAME",
+  "relationships": {},
+  "query_templates": [],
+  "fields": [
+    {
+      "name": "EIGNR",
+      "german_label": "Immobilieneigentümer / Vermieter",
+      "field_type": "text",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "1192",
+      "is_computed": false,
+      "group": "Identifikatoren"
+    },
+    {
+      "name": "EVNAME",
+      "german_label": "Immobilieneigentümer / Vermieter",
+      "field_type": "text",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "Paul",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "EVNAME2",
+      "german_label": "Evname2",
+      "field_type": "text",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "ENAME",
+      "german_label": "Immobilieneigentümer / Vermieter",
+      "field_type": "text",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "Bauchrowitz",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "ENAME2",
+      "german_label": "Ename2",
+      "field_type": "text",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "EFIRMANAME",
+      "german_label": "Efirmaname",
+      "field_type": "text",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "ESTR",
+      "german_label": "Straße",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": "Musterstraße 1",
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Adresse"
+    },
+    {
+      "name": "EPLZORT",
+      "german_label": "Immobilieneigentümer / Vermieter",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [
+        "pattern=\\d{5}"
+      ],
+      "placeholder": "12345",
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Adresse"
+    },
+    {
+      "name": "ONR",
+      "german_label": "Gebäude / Liegenschaft",
+      "field_type": "boolean",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "1",
+      "is_computed": false,
+      "group": "Identifikatoren"
+    },
+    {
+      "name": "ENR",
+      "german_label": "Mieteinheit / Apartment",
+      "field_type": "boolean",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "1",
+      "is_computed": false,
+      "group": "Identifikatoren"
+    },
+    {
+      "name": "LIEGENSCHAFTSKUERZEL",
+      "german_label": "Liegenschaftskuerzel",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "Cassavi Testobjekt",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "OSTRASSE",
+      "german_label": "Gebäude / Liegenschaft",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": "Musterstraße 1",
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "Kettwiger Str. 23",
+      "is_computed": false,
+      "group": "Adresse"
+    },
+    {
+      "name": "OPLZORT",
+      "german_label": "Gebäude / Liegenschaft",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [
+        "pattern=\\d{5}"
+      ],
+      "placeholder": "12345",
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "45127 Essen",
+      "is_computed": false,
+      "group": "Adresse"
+    },
+    {
+      "name": "Z1",
+      "german_label": "Mietvertrag mit Konditionen",
+      "field_type": "number",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "150.0",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "Z2",
+      "german_label": "Mietvertrag mit Konditionen",
+      "field_type": "number",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "50.0",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "Z3",
+      "german_label": "Mietvertrag mit Konditionen",
+      "field_type": "number",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "0.0",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "Z4",
+      "german_label": "Mietvertrag mit Konditionen",
+      "field_type": "number",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "0.0",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "Z5",
+      "german_label": "Z5",
+      "field_type": "number",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "0.0",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "ELETZTHAUSGELD",
+      "german_label": "Eletzthausgeld",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "IST_RL_POS",
+      "german_label": "Ist Rl Pos",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "SOLL_RL_POS",
+      "german_label": "Soll Rl Pos",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "DAUERAUFTRAG",
+      "german_label": "Dauerauftrag",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "N",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "SOLLTAG",
+      "german_label": "Solltag",
+      "field_type": "boolean",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "1",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "SEPA_MAN_NR",
+      "german_label": "Sepa Man Nr",
+      "field_type": "text",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Identifikatoren"
+    },
+    {
+      "name": "SEPA_MAN_DAT",
+      "german_label": "Sepa Man Dat",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "SEPA_MAN_ART",
+      "german_label": "Sepa Man Art",
+      "field_type": "boolean",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "0",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "EIGENNUTZER",
+      "german_label": "Eigennutzer",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "N",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "ENWG",
+      "german_label": "Enwg",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "N",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "EMWSTAUSW",
+      "german_label": "Emwstausw",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "N",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "EMWSTSATZ",
+      "german_label": "Emwstsatz",
+      "field_type": "boolean",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "0",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "STEUERNUMMER",
+      "german_label": "Steuernummer",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "FINANZAMT",
+      "german_label": "Finanzamt",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "ETEL1",
+      "german_label": "Telefon",
+      "field_type": "phone",
+      "is_required": false,
+      "validation_rules": [
+        "phone"
+      ],
+      "placeholder": "+49 123 456789",
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Kontaktdaten"
+    },
+    {
+      "name": "ETEL2",
+      "german_label": "Telefon",
+      "field_type": "phone",
+      "is_required": false,
+      "validation_rules": [
+        "phone"
+      ],
+      "placeholder": "+49 123 456789",
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Kontaktdaten"
+    },
+    {
+      "name": "EEMAIL",
+      "german_label": "E-Mail Adresse",
+      "field_type": "email",
+      "is_required": false,
+      "validation_rules": [
+        "email",
+        "maxlength=255"
+      ],
+      "placeholder": "beispiel@domain.de",
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "bauchrowitz@ruhrstadt-gruppe.com",
+      "is_computed": false,
+      "group": "Kontaktdaten"
+    },
+    {
+      "name": "EHANDY",
+      "german_label": "Mobiltelefon",
+      "field_type": "phone",
+      "is_required": false,
+      "validation_rules": [
+        "phone"
+      ],
+      "placeholder": "+49 123 456789",
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "+49 1732790334",
+      "is_computed": false,
+      "group": "Kontaktdaten"
+    },
+    {
+      "name": "EIGNR2",
+      "german_label": "Eigentümer-Nr.",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "EIGNR3",
+      "german_label": "Eigentümer-Nr.",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "EIGNR4",
+      "german_label": "Eigentümer-Nr.",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "EIGNR5",
+      "german_label": "Eigentümer-Nr.",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "GEMEINSCHAFTSTYP",
+      "german_label": "Gemeinschaftstyp",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "EVIRTKTO",
+      "german_label": "Evirtkto",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "BANKID",
+      "german_label": "Bankid",
+      "field_type": "boolean",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "0",
+      "is_computed": false,
+      "group": "Identifikatoren"
+    },
+    {
+      "name": "BANKID2",
+      "german_label": "Bankid2",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "PFAENDUNG",
+      "german_label": "Pfaendung",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "N",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "EIGENTUEMERKUERZEL",
+      "german_label": "Eigentuemerkuerzel",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": true,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "WOHNUNGEBEZ",
+      "german_label": "Wohnungebez",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "EG",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "BEIRAT",
+      "german_label": "Beirat",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "Vorsitz            ",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    }
+  ]
+}

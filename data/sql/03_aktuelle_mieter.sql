@@ -22,8 +22,8 @@ SELECT
   B.ENR,                                  -- Einheitsnummer (SMALLINT): Wohnungs-Referenz
   
   -- === PRIMÄRE KONTAKTDATEN ===
-  B.BNAME AS NACHNAME,                    -- Nachname (VARCHAR): Hauptmieter Familienname
-  B.BVNAME AS VORNAME,                    -- Vorname (VARCHAR): Hauptmieter Vorname
+  COALESCE(A.BNAME, B.BNAME) AS NACHNAME,  -- Nachname (VARCHAR): Hauptmieter Familienname (BEWADR bevorzugt)
+  COALESCE(A.BVNAME, B.BVNAME) AS VORNAME, -- Vorname (VARCHAR): Hauptmieter Vorname (BEWADR bevorzugt)
   B.BSTR AS STRASSE,                      -- Straße (VARCHAR): Meldeanschrift des Mieters
   B.BPLZORT AS PLZ_ORT,                   -- PLZ/Ort (VARCHAR): Kombiniert "45147 Essen"
   
@@ -72,12 +72,14 @@ SELECT
   K.KMAHNSTUFE AS MAHNSTUFE               -- Mahnstufe (SMALLINT): 0=Keine, 1-5=Mahnstufen
 
 FROM BEWOHNER B
+  LEFT JOIN BEWADR A ON (B.BEWNR = A.BEWNR)    -- JOIN für Namendaten aus BEWADR (BEWNR = BEWNR)
   INNER JOIN WOHNUNG W ON (B.ONR = W.ONR AND B.ENR = W.ENR)
   INNER JOIN OBJEKTE O ON (B.ONR = O.ONR)
   LEFT JOIN KONTEN K ON (B.KNR = K.KNR)
 WHERE 
   B.VENDE IS NULL  -- Nur aktuelle Mieter ohne Enddatum
   AND B.ONR < 890  -- Ausschluss von Testobjekten
+  AND (COALESCE(A.BNAME, B.BNAME) IS NOT NULL AND COALESCE(A.BNAME, B.BNAME) != '')  -- Nur Records mit Namen
 ORDER BY B.ONR, B.ENR, B.BNAME;
 
 /*

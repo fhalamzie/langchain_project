@@ -1,0 +1,13 @@
+{
+  "name": "spezielle_kontenklassen_form",
+  "type": "form",
+  "description": "Form component for Spezielle_Kontenklassen",
+  "styles": [
+    "form-control",
+    "input",
+    "select",
+    "textarea",
+    "btn"
+  ],
+  "scripts": null
+}

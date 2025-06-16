@@ -1,0 +1,59 @@
+{
+  "extraction_date": "2025-06-16T12:37:50.480050",
+  "critical_info": {
+    "EIGADR": {
+      "description": "Property owners table (NOT OWNERS)",
+      "key_fields": {
+        "ONR": "Owner number (PRIMARY KEY)",
+        "ONAME": "Owner name",
+        "OSTRASSE": "Street address (NOT STRASSE)",
+        "OPLZORT": "Postal code and city (NOT STADT)"
+      }
+    },
+    "BEWOHNER": {
+      "description": "Tenants table (NOT TENANTS)",
+      "key_fields": {
+        "MIETERNR": "Tenant number (PRIMARY KEY)",
+        "BNAME": "Tenant name (NOT BEWNAME)",
+        "BSTRASSE": "Street address (NOT STRASSE)",
+        "BPLZORT": "Postal code and city (NOT STADT)",
+        "Z1": "KALTMIETE - Cold rent amount (CRITICAL!)",
+        "EIGNR": "Owner reference (-1 = vacant)"
+      }
+    },
+    "OBJEKTE": {
+      "description": "Properties/Buildings table",
+      "key_fields": {
+        "OBJNR": "Property number (PRIMARY KEY)",
+        "OBJNAME": "Property name",
+        "OBJPLZORT": "Property location"
+      }
+    },
+    "WOHNUNGEN": {
+      "description": "Apartments/Units table",
+      "key_fields": {
+        "WOBJNR": "Property number (FOREIGN KEY to OBJEKTE)",
+        "WHGNR": "Apartment number",
+        "WBEZ": "Apartment designation"
+      }
+    }
+  },
+  "common_mistakes": {
+    "WRONG": [
+      "OWNERS",
+      "TENANTS",
+      "STRASSE",
+      "BEWNAME",
+      "STADT",
+      "KALTMIETE as field name"
+    ],
+    "CORRECT": [
+      "EIGADR",
+      "BEWOHNER",
+      "OSTRASSE/BSTRASSE",
+      "BNAME",
+      "OPLZORT/BPLZORT",
+      "Z1 as KALTMIETE"
+    ]
+  }
+}

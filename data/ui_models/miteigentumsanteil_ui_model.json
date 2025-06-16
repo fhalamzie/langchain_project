@@ -1,0 +1,10 @@
+{
+  "entity_name": "miteigentumsanteil",
+  "german_title": "Miteigentumsanteil nach WEG",
+  "description": "eigentumsanteil",
+  "primary_key": null,
+  "display_field": null,
+  "relationships": {},
+  "query_templates": [],
+  "fields": []
+}

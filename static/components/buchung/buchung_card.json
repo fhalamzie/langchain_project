@@ -1,0 +1,11 @@
+{
+  "name": "buchung_card",
+  "type": "card",
+  "description": "Card component for Einzelne Finanztransaktion",
+  "styles": [
+    "card",
+    "stats",
+    "stat"
+  ],
+  "scripts": null
+}

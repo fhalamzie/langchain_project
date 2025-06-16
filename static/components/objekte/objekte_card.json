@@ -1,0 +1,11 @@
+{
+  "name": "objekte_card",
+  "type": "card",
+  "description": "Card component for Objekte",
+  "styles": [
+    "card",
+    "stats",
+    "stat"
+  ],
+  "scripts": null
+}

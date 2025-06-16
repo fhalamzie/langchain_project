@@ -168,9 +168,10 @@ Wichtige Regeln:
             context += "- EIGENTÜMER-ID = EIGADR.EIGNR\n\n"
             
             context += "### MIETER:\n"
-            context += "- MIETER_NAME = BEWADR.BNAME\n"
-            context += "- MIETER_VORNAME = BEWADR.BVNAME\n"
-            context += "- MIETER-ID = BEWADR.BEWNR\n\n"
+            context += "- MIETER_NAME = BEWOHNER.BNAME (Vertragsdaten) oder BEWADR.BNAME (Adressdaten)\n"
+            context += "- MIETER_VORNAME = BEWOHNER.BVNAME (Vertragsdaten) oder BEWADR.BVNAME (Adressdaten)\n"
+            context += "- MIETER-ID = BEWOHNER.BEWNR\n"
+            context += "- WICHTIG: BEWOHNER hat KEIN EIGNR Feld! Primary Key ist (ONR, KNR)\n\n"
             
             context += "### WICHTIGE JOINS:\n"
             context += "- Eigentümer zu Objekten: EIGADR.EIGNR = OBJEKTE.EIGNR\n"

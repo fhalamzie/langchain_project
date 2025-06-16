@@ -1,0 +1,13 @@
+{
+  "name": "durchlaufende_posten_form",
+  "type": "form",
+  "description": "Form component for Durchlaufende_Posten",
+  "styles": [
+    "form-control",
+    "input",
+    "select",
+    "textarea",
+    "btn"
+  ],
+  "scripts": null
+}

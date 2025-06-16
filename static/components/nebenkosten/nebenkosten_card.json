@@ -1,0 +1,11 @@
+{
+  "name": "nebenkosten_card",
+  "type": "card",
+  "description": "Card component for Betriebskosten-Vorauszahlung",
+  "styles": [
+    "card",
+    "stats",
+    "stat"
+  ],
+  "scripts": null
+}

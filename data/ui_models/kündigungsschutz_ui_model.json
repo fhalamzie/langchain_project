@@ -1,0 +1,10 @@
+{
+  "entity_name": "kündigungsschutz",
+  "german_title": "Mieterschutz nach BGB",
+  "description": "tenant protection",
+  "primary_key": null,
+  "display_field": null,
+  "relationships": {},
+  "query_templates": [],
+  "fields": []
+}

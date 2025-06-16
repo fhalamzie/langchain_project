@@ -1,0 +1,53 @@
+<div class="card bg-base-100 shadow-xl hover:shadow-2xl transition-shadow">
+    <div class="card-body">
+        <h2 class="card-title">
+            <i class="fas fa-user mr-2"></i>
+            <span hx-text="{EINHEIT_BEZEICHNUNG}">Loading...</span>
+        </h2>
+        
+        <div class="stats stats-vertical lg:stats-horizontal shadow">
+
+            <div class="stat">
+                <div class="stat-figure text-primary">
+                    <i class="fas fa-hashtag text-3xl"></i>
+                </div>
+                <div class="stat-title">Buchungskreis</div>
+                <div class="stat-value" hx-text="{BUCHUNGSKREIS}">0</div>
+            </div>
+
+            <div class="stat">
+                <div class="stat-figure text-primary">
+                    <i class="fas fa-euro-sign text-3xl"></i>
+                </div>
+                <div class="stat-title">Einzelkostenkreis</div>
+                <div class="stat-value" hx-text="{EINZELKOSTENKREIS}">0</div>
+            </div>
+
+            <div class="stat">
+                <div class="stat-figure text-primary">
+                    <i class="fas fa-euro-sign text-3xl"></i>
+                </div>
+                <div class="stat-title">Mieter Knr</div>
+                <div class="stat-value" hx-text="{MIETER_KNR}">0</div>
+            </div>
+
+        </div>
+        
+        <div class="card-actions justify-end mt-4">
+            <button class="btn btn-primary btn-sm"
+                    hx-get="/api/leerstand/{{id}}"
+                    hx-target="#modal-content"
+                    hx-trigger="click"
+                    onclick="document.getElementById('detail-modal').showModal()">
+                <i class="fas fa-eye mr-2"></i>
+                Details
+            </button>
+            <button class="btn btn-ghost btn-sm"
+                    hx-get="/api/leerstand/{{id}}/edit"
+                    hx-target="#modal-content">
+                <i class="fas fa-edit mr-2"></i>
+                Bearbeiten
+            </button>
+        </div>
+    </div>
+</div>

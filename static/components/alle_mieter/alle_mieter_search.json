@@ -1,0 +1,12 @@
+{
+  "name": "alle_mieter_search",
+  "type": "search",
+  "description": "Search component for Alle_Mieter",
+  "styles": [
+    "form-control",
+    "input",
+    "select",
+    "checkbox"
+  ],
+  "scripts": null
+}

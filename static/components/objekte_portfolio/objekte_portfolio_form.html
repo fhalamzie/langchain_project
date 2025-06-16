@@ -1,0 +1,432 @@
+<form 
+    id="objekte_portfolio-form"
+    hx-post="/api/objekte_portfolio"
+    hx-trigger="submit"
+    hx-target="#result-container"
+    hx-swap="innerHTML"
+    hx-indicator="#loading-indicator"
+    class="space-y-6"
+    x-data="{ formValid: false, errors: {} }"
+>
+    <div class="card bg-base-100 shadow-xl">
+        <div class="card-body">
+            <h2 class="card-title text-2xl mb-6">
+                <i class="fas fa-building mr-2"></i>
+                Objekte_Portfolio
+            </h2>
+            
+            <!-- Loading Indicator -->
+            <div id="loading-indicator" class="htmx-indicator">
+                <div class="flex justify-center items-center p-4">
+                    <span class="loading loading-spinner loading-lg"></span>
+                </div>
+            </div>
+
+            <!-- Identifikatoren -->
+            <div class="divider">Identifikatoren</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                <div class="form-control w-full">
+                    <label class="label cursor-pointer">
+                        <span class="label-text">Gebäude / Liegenschaft</span>
+                        <input 
+                            type="checkbox"
+                            id="ONR"
+                            name="ONR"
+                            class="checkbox checkbox-primary"
+                            value="1"
+                        />
+                    </label>
+                </div>
+
+            </div>
+
+            <!-- Allgemeine Informationen -->
+            <div class="divider">Allgemeine Informationen</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                <div class="form-control w-full">
+                    <label class="label" for="OBJEKT_KURZ">
+                        <span class="label-text">
+                            Objekt Kurz
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="OBJEKT_KURZ"
+                        name="OBJEKT_KURZ"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('OBJEKT_KURZ')"
+                    />
+                    <label class="label" x-show="errors.OBJEKT_KURZ">
+                        <span class="label-text-alt text-error" x-text="errors.OBJEKT_KURZ"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="OBJEKT_NAME">
+                        <span class="label-text">
+                            Objekt Name
+                             <span class="text-error">*</span>
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="OBJEKT_NAME"
+                        name="OBJEKT_NAME"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        required required
+                        
+                        @blur="validateField('OBJEKT_NAME')"
+                    />
+                    <label class="label" x-show="errors.OBJEKT_NAME">
+                        <span class="label-text-alt text-error" x-text="errors.OBJEKT_NAME"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="WOHNFLAECHE_QM">
+                        <span class="label-text">
+                            Quadratmeter
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="WOHNFLAECHE_QM"
+                        name="WOHNFLAECHE_QM"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('WOHNFLAECHE_QM')"
+                    />
+                    <label class="label" x-show="errors.WOHNFLAECHE_QM">
+                        <span class="label-text-alt text-error" x-text="errors.WOHNFLAECHE_QM"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="GEWERBEFLAECHE_QM">
+                        <span class="label-text">
+                            Quadratmeter
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="GEWERBEFLAECHE_QM"
+                        name="GEWERBEFLAECHE_QM"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('GEWERBEFLAECHE_QM')"
+                    />
+                    <label class="label" x-show="errors.GEWERBEFLAECHE_QM">
+                        <span class="label-text-alt text-error" x-text="errors.GEWERBEFLAECHE_QM"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="NUTZUNGSART">
+                        <span class="label-text">
+                            Usage type classification
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="NUTZUNGSART"
+                        name="NUTZUNGSART"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('NUTZUNGSART')"
+                    />
+                    <label class="label" x-show="errors.NUTZUNGSART">
+                        <span class="label-text-alt text-error" x-text="errors.NUTZUNGSART"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="ANZAHL_EINHEITEN">
+                        <span class="label-text">
+                            Anzahl Einheiten
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="ANZAHL_EINHEITEN"
+                        name="ANZAHL_EINHEITEN"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('ANZAHL_EINHEITEN')"
+                    />
+                    <label class="label" x-show="errors.ANZAHL_EINHEITEN">
+                        <span class="label-text-alt text-error" x-text="errors.ANZAHL_EINHEITEN"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="VERWALTUNG">
+                        <span class="label-text">
+                            Hausverwaltung / Property Management
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="VERWALTUNG"
+                        name="VERWALTUNG"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('VERWALTUNG')"
+                    />
+                    <label class="label" x-show="errors.VERWALTUNG">
+                        <span class="label-text-alt text-error" x-text="errors.VERWALTUNG"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="HAUPTEIGENTUEMER">
+                        <span class="label-text">
+                            Haupteigentuemer
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="HAUPTEIGENTUEMER"
+                        name="HAUPTEIGENTUEMER"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('HAUPTEIGENTUEMER')"
+                    />
+                    <label class="label" x-show="errors.HAUPTEIGENTUEMER">
+                        <span class="label-text-alt text-error" x-text="errors.HAUPTEIGENTUEMER"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="EIGENTUEMER_CODE">
+                        <span class="label-text">
+                            Eigentuemer Code
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="EIGENTUEMER_CODE"
+                        name="EIGENTUEMER_CODE"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('EIGENTUEMER_CODE')"
+                    />
+                    <label class="label" x-show="errors.EIGENTUEMER_CODE">
+                        <span class="label-text-alt text-error" x-text="errors.EIGENTUEMER_CODE"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="VERWALTUNGSSTATUS">
+                        <span class="label-text">
+                            Verwaltungsstatus
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="VERWALTUNGSSTATUS"
+                        name="VERWALTUNGSSTATUS"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('VERWALTUNGSSTATUS')"
+                    />
+                    <label class="label" x-show="errors.VERWALTUNGSSTATUS">
+                        <span class="label-text-alt text-error" x-text="errors.VERWALTUNGSSTATUS"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="ARCHIVSTATUS">
+                        <span class="label-text">
+                            Archivstatus
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="ARCHIVSTATUS"
+                        name="ARCHIVSTATUS"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('ARCHIVSTATUS')"
+                    />
+                    <label class="label" x-show="errors.ARCHIVSTATUS">
+                        <span class="label-text-alt text-error" x-text="errors.ARCHIVSTATUS"></span>
+                    </label>
+                </div>
+
+            </div>
+
+            <!-- Adresse -->
+            <div class="divider">Adresse</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                <div class="form-control w-full">
+                    <label class="label" for="STRASSE">
+                        <span class="label-text">
+                            Straße
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="STRASSE"
+                        name="STRASSE"
+                        placeholder="Musterstraße 1"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('STRASSE')"
+                    />
+                    <label class="label" x-show="errors.STRASSE">
+                        <span class="label-text-alt text-error" x-text="errors.STRASSE"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="PLZ_ORT">
+                        <span class="label-text">
+                            Postleitzahl
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="PLZ_ORT"
+                        name="PLZ_ORT"
+                        placeholder="12345"
+                        class="input input-bordered w-full"
+                        pattern="\d{5}"
+                        
+                        @blur="validateField('PLZ_ORT')"
+                    />
+                    <label class="label" x-show="errors.PLZ_ORT">
+                        <span class="label-text-alt text-error" x-text="errors.PLZ_ORT"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="VERWALTUNG_ORT">
+                        <span class="label-text">
+                            Ort
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="VERWALTUNG_ORT"
+                        name="VERWALTUNG_ORT"
+                        placeholder="Berlin"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('VERWALTUNG_ORT')"
+                    />
+                    <label class="label" x-show="errors.VERWALTUNG_ORT">
+                        <span class="label-text-alt text-error" x-text="errors.VERWALTUNG_ORT"></span>
+                    </label>
+                </div>
+
+            </div>
+
+            <!-- Zeitangaben -->
+            <div class="divider">Zeitangaben</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                <div class="form-control w-full">
+                    <label class="label" for="VERWALTUNGSBEGINN">
+                        <span class="label-text">
+                            Beginn
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="date"
+                        id="VERWALTUNGSBEGINN"
+                        name="VERWALTUNGSBEGINN"
+                        placeholder="TT.MM.JJJJ"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('VERWALTUNGSBEGINN')"
+                    />
+                    <label class="label" x-show="errors.VERWALTUNGSBEGINN">
+                        <span class="label-text-alt text-error" x-text="errors.VERWALTUNGSBEGINN"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="VERWALTUNGSENDE">
+                        <span class="label-text">
+                            Ende
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="date"
+                        id="VERWALTUNGSENDE"
+                        name="VERWALTUNGSENDE"
+                        placeholder="TT.MM.JJJJ"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('VERWALTUNGSENDE')"
+                    />
+                    <label class="label" x-show="errors.VERWALTUNGSENDE">
+                        <span class="label-text-alt text-error" x-text="errors.VERWALTUNGSENDE"></span>
+                    </label>
+                </div>
+
+            </div>
+
+            <!-- Form Actions -->
+            <div class="card-actions justify-end mt-6">
+                <button type="reset" class="btn btn-ghost">
+                    <i class="fas fa-undo mr-2"></i>
+                    Zurücksetzen
+                </button>
+                <button type="submit" 
+                        class="btn btn-primary"
+                        :disabled="!formValid">
+                    <i class="fas fa-save mr-2"></i>
+                    Speichern
+                </button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<!-- Result Container -->
+<div id="result-container" class="mt-6"></div>

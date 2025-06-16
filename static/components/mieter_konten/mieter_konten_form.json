@@ -1,0 +1,13 @@
+{
+  "name": "mieter_konten_form",
+  "type": "form",
+  "description": "Form component for Mieter_Konten",
+  "styles": [
+    "form-control",
+    "input",
+    "select",
+    "textarea",
+    "btn"
+  ],
+  "scripts": null
+}

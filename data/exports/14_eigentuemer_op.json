@@ -1,13 +1,13 @@
 {
   "query_info": {
     "file": "14_eigentuemer_op.sql",
-    "generated": "2025-06-12T14:40:26.331857",
+    "generated": "2025-06-16T03:33:46.616340",
     "driver": "firebird-driver",
     "charset": "ISO8859_1",
     "business_purpose": "Professionelles Forderungsmanagement für WEG-Eigentümer",
     "main_tables": [],
     "total_rows": 359,
-    "execution_time_seconds": 0.016162
+    "execution_time_seconds": 0.017619
   },
   "columns": [
     "ONR",
@@ -232,7 +232,7 @@
       "OSTRASSE": "Hauptstraße 128",
       "OPLZORT": "54568 Gerolstein",
       "RISIKOSTATUS": "Zweite Mahnung - Risiko erhoeht",
-      "TAGE_SEIT_MAHNUNG": 722
+      "TAGE_SEIT_MAHNUNG": 726
     },
     {
       "ONR": 42,
@@ -260,7 +260,7 @@
       "OSTRASSE": "Hauptstraße 128",
       "OPLZORT": "54568 Gerolstein",
       "RISIKOSTATUS": "Zweite Mahnung - Risiko erhoeht",
-      "TAGE_SEIT_MAHNUNG": 722
+      "TAGE_SEIT_MAHNUNG": 726
     },
     {
       "ONR": 42,
@@ -288,7 +288,7 @@
       "OSTRASSE": "Hauptstraße 128",
       "OPLZORT": "54568 Gerolstein",
       "RISIKOSTATUS": "Zweite Mahnung - Risiko erhoeht",
-      "TAGE_SEIT_MAHNUNG": 763
+      "TAGE_SEIT_MAHNUNG": 767
     },
     {
       "ONR": 42,
@@ -624,7 +624,7 @@
       "OSTRASSE": "Hauptstraße 128",
       "OPLZORT": "54568 Gerolstein",
       "RISIKOSTATUS": "Zweite Mahnung - Risiko erhoeht",
-      "TAGE_SEIT_MAHNUNG": 722
+      "TAGE_SEIT_MAHNUNG": 726
     },
     {
       "ONR": 42,
@@ -736,7 +736,7 @@
       "OSTRASSE": "Hauptstraße 128",
       "OPLZORT": "54568 Gerolstein",
       "RISIKOSTATUS": "Zweite Mahnung - Risiko erhoeht",
-      "TAGE_SEIT_MAHNUNG": 722
+      "TAGE_SEIT_MAHNUNG": 726
     },
     {
       "ONR": 75,
@@ -3256,7 +3256,7 @@
       "OSTRASSE": "Hauptstraße 128",
       "OPLZORT": "54568 Gerolstein",
       "RISIKOSTATUS": "Zweite Mahnung - Risiko erhoeht",
-      "TAGE_SEIT_MAHNUNG": 722
+      "TAGE_SEIT_MAHNUNG": 726
     },
     {
       "ONR": 46,

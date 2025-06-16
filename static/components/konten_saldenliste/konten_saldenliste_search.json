@@ -1,0 +1,12 @@
+{
+  "name": "konten_saldenliste_search",
+  "type": "search",
+  "description": "Search component for Konten_Saldenliste",
+  "styles": [
+    "form-control",
+    "input",
+    "select",
+    "checkbox"
+  ],
+  "scripts": null
+}

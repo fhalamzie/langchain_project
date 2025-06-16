@@ -1,0 +1,12 @@
+{
+  "name": "durchlaufende_posten_search",
+  "type": "search",
+  "description": "Search component for Durchlaufende_Posten",
+  "styles": [
+    "form-control",
+    "input",
+    "select",
+    "checkbox"
+  ],
+  "scripts": null
+}

@@ -1,0 +1,11 @@
+{
+  "name": "nebenkostenkonten_matrix_card",
+  "type": "card",
+  "description": "Card component for Nebenkostenkonten_Matrix",
+  "styles": [
+    "card",
+    "stats",
+    "stat"
+  ],
+  "scripts": null
+}

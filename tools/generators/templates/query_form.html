@@ -1,0 +1,111 @@
+<form hx-post="{{ endpoint }}" 
+      hx-target="{{ target }}" 
+      hx-indicator="#loading-{{ entity.name }}"
+      id="{{ form_id }}"
+      class="wincasa-search-form">
+    
+    {% for field in entity.fields %}
+    <fieldset class="fieldset">
+        <label class="label german-label" for="{{ field.name }}">
+            <span>{{ field.label }}</span>
+            {% if field.required %}<span class="text-error">*</span>{% endif %}
+        </label>
+        
+        {% if field.type == 'currency' %}
+        <input type="number" 
+               id="{{ field.name }}" 
+               name="{{ field.name }}" 
+               class="input input-bordered currency-input"
+               placeholder="0,00"
+               step="0.01"
+               min="0"
+               onblur="validateCurrency(this)"
+               {% if field.required %}required{% endif %}>
+        
+        {% elif field.type == 'date' %}
+        <input type="date" 
+               id="{{ field.name }}" 
+               name="{{ field.name }}" 
+               class="input input-bordered"
+               {% if field.required %}required{% endif %}>
+        
+        {% elif field.type == 'number' %}
+        <input type="number" 
+               id="{{ field.name }}" 
+               name="{{ field.name }}" 
+               class="input input-bordered"
+               placeholder="Nummer eingeben"
+               {% if field.required %}required{% endif %}>
+               
+        {% elif field.type == 'email' %}
+        <input type="email" 
+               id="{{ field.name }}" 
+               name="{{ field.name }}" 
+               class="input input-bordered"
+               placeholder="email@beispiel.de"
+               {% if field.required %}required{% endif %}>
+               
+        {% elif field.type == 'tel' %}
+        <input type="tel" 
+               id="{{ field.name }}" 
+               name="{{ field.name }}" 
+               class="input input-bordered"
+               placeholder="+49 123 456789"
+               {% if field.required %}required{% endif %}>
+               
+        {% else %}
+        <input type="text" 
+               id="{{ field.name }}" 
+               name="{{ field.name }}" 
+               class="input input-bordered"
+               placeholder="{{ field.label }} eingeben"
+               {% if field.required %}required{% endif %}>
+        {% endif %}
+        
+        {% if field.source_file %}
+        <label class="label">
+            <span class="label-text-alt">Quelle: {{ field.source_file }}</span>
+        </label>
+        {% endif %}
+    </fieldset>
+    {% endfor %}
+    
+    <div class="form-actions col-span-full flex gap-4 justify-end mt-6">
+        <button type="submit" class="btn btn-primary">
+            <span class="htmx-indicator loading loading-spinner loading-xs" id="loading-{{ entity.name }}"></span>
+            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+            </svg>
+            Suchen
+        </button>
+        <button type="reset" class="btn btn-outline">
+            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+            </svg>
+            Zurücksetzen
+        </button>
+        
+        <!-- Quick Search Chips -->
+        <div class="dropdown dropdown-end">
+            <div tabindex="0" role="button" class="btn btn-ghost btn-sm">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                Vorlagen
+            </div>
+            <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+                {% if entity.name == 'mieter' %}
+                <li><a onclick="setQuickSearch('{{ entity.name }}', 'Müller')">Mieter "Müller"</a></li>
+                <li><a onclick="setQuickSearch('{{ entity.name }}', 'Berlin')">Mieter in Berlin</a></li>
+                <li><a onclick="setQuickSearch('{{ entity.name }}', 'aktuelle')">Aktuelle Mieter</a></li>
+                {% elif entity.name == 'eigentümer' %}
+                <li><a onclick="setQuickSearch('{{ entity.name }}', 'WEG')">WEG Eigentümer</a></li>
+                <li><a onclick="setQuickSearch('{{ entity.name }}', 'Portfolio')">Portfolio Übersicht</a></li>
+                {% elif entity.name == 'wohnung' %}
+                <li><a onclick="setQuickSearch('{{ entity.name }}', 'Leerstand')">Leerstehende Wohnungen</a></li>
+                <li><a onclick="setQuickSearch('{{ entity.name }}', '3 Zimmer')">3-Zimmer Wohnungen</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</form>

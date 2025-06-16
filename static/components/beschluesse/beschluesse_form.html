@@ -1,0 +1,699 @@
+<form 
+    id="beschluesse-form"
+    hx-post="/api/beschluesse"
+    hx-trigger="submit"
+    hx-target="#result-container"
+    hx-swap="innerHTML"
+    hx-indicator="#loading-indicator"
+    class="space-y-6"
+    x-data="{ formValid: false, errors: {} }"
+>
+    <div class="card bg-base-100 shadow-xl">
+        <div class="card-body">
+            <h2 class="card-title text-2xl mb-6">
+                <i class="fas fa-building mr-2"></i>
+                Beschluesse
+            </h2>
+            
+            <!-- Loading Indicator -->
+            <div id="loading-indicator" class="htmx-indicator">
+                <div class="flex justify-center items-center p-4">
+                    <span class="loading loading-spinner loading-lg"></span>
+                </div>
+            </div>
+
+            <!-- Identifikatoren -->
+            <div class="divider">Identifikatoren</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                <div class="form-control w-full">
+                    <label class="label" for="THEMAID">
+                        <span class="label-text">
+                            Themaid
+                             <span class="text-error">*</span>
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="THEMAID"
+                        name="THEMAID"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        required required
+                        
+                        @blur="validateField('THEMAID')"
+                    />
+                    <label class="label" x-show="errors.THEMAID">
+                        <span class="label-text-alt text-error" x-text="errors.THEMAID"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="BESCHLID">
+                        <span class="label-text">
+                            Beschlid
+                             <span class="text-error">*</span>
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="BESCHLID"
+                        name="BESCHLID"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        required required
+                        
+                        @blur="validateField('BESCHLID')"
+                    />
+                    <label class="label" x-show="errors.BESCHLID">
+                        <span class="label-text-alt text-error" x-text="errors.BESCHLID"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label cursor-pointer">
+                        <span class="label-text">Vernr</span>
+                        <input 
+                            type="checkbox"
+                            id="VERNR"
+                            name="VERNR"
+                            class="checkbox checkbox-primary"
+                            value="1"
+                        />
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="ONR">
+                        <span class="label-text">
+                            Gebäude / Liegenschaft
+                             <span class="text-error">*</span>
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="ONR"
+                        name="ONR"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        required required
+                        
+                        @blur="validateField('ONR')"
+                    />
+                    <label class="label" x-show="errors.ONR">
+                        <span class="label-text-alt text-error" x-text="errors.ONR"></span>
+                    </label>
+                </div>
+
+            </div>
+
+            <!-- Allgemeine Informationen -->
+            <div class="divider">Allgemeine Informationen</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                <div class="form-control w-full">
+                    <label class="label" for="VERDAT">
+                        <span class="label-text">
+                            Verdat
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="VERDAT"
+                        name="VERDAT"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('VERDAT')"
+                    />
+                    <label class="label" x-show="errors.VERDAT">
+                        <span class="label-text-alt text-error" x-text="errors.VERDAT"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="VERART">
+                        <span class="label-text">
+                            Verart
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="VERART"
+                        name="VERART"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('VERART')"
+                    />
+                    <label class="label" x-show="errors.VERART">
+                        <span class="label-text-alt text-error" x-text="errors.VERART"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="VERBEZ">
+                        <span class="label-text">
+                            Verbez
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="VERBEZ"
+                        name="VERBEZ"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('VERBEZ')"
+                    />
+                    <label class="label" x-show="errors.VERBEZ">
+                        <span class="label-text-alt text-error" x-text="errors.VERBEZ"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="VLNAME">
+                        <span class="label-text">
+                            Vlname
+                             <span class="text-error">*</span>
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="VLNAME"
+                        name="VLNAME"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        required required
+                        
+                        @blur="validateField('VLNAME')"
+                    />
+                    <label class="label" x-show="errors.VLNAME">
+                        <span class="label-text-alt text-error" x-text="errors.VLNAME"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label cursor-pointer">
+                        <span class="label-text">Htp</span>
+                        <input 
+                            type="checkbox"
+                            id="HTP"
+                            name="HTP"
+                            class="checkbox checkbox-primary"
+                            value="1"
+                        />
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label cursor-pointer">
+                        <span class="label-text">Utp</span>
+                        <input 
+                            type="checkbox"
+                            id="UTP"
+                            name="UTP"
+                            class="checkbox checkbox-primary"
+                            value="1"
+                        />
+                    </label>
+                </div>
+
+                <div class="form-control w-full md:col-span-2">
+                    <label class="label" for="BESCHLUSSBESCHREIBUNG">
+                        <span class="label-text">
+                            Beschlussbeschreibung
+                            
+                        </span>
+                    </label>
+                    <textarea 
+                        id="BESCHLUSSBESCHREIBUNG"
+                        name="BESCHLUSSBESCHREIBUNG"
+                        placeholder="None"
+                        class="textarea textarea-bordered w-full"
+                        rows="4"
+                        
+                    ></textarea>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="BESCHLUSSZUSATZ">
+                        <span class="label-text">
+                            Beschlusszusatz
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="BESCHLUSSZUSATZ"
+                        name="BESCHLUSSZUSATZ"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('BESCHLUSSZUSATZ')"
+                    />
+                    <label class="label" x-show="errors.BESCHLUSSZUSATZ">
+                        <span class="label-text-alt text-error" x-text="errors.BESCHLUSSZUSATZ"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label cursor-pointer">
+                        <span class="label-text">Abstimmung Art</span>
+                        <input 
+                            type="checkbox"
+                            id="ABSTIMMUNG_ART"
+                            name="ABSTIMMUNG_ART"
+                            class="checkbox checkbox-primary"
+                            value="1"
+                        />
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="RECHTLICHE_GRUNDLAGE">
+                        <span class="label-text">
+                            Rechtliche Grundlage
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="RECHTLICHE_GRUNDLAGE"
+                        name="RECHTLICHE_GRUNDLAGE"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('RECHTLICHE_GRUNDLAGE')"
+                    />
+                    <label class="label" x-show="errors.RECHTLICHE_GRUNDLAGE">
+                        <span class="label-text-alt text-error" x-text="errors.RECHTLICHE_GRUNDLAGE"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="EINFACHERBESCHLUSS">
+                        <span class="label-text">
+                            Einfacherbeschluss
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="EINFACHERBESCHLUSS"
+                        name="EINFACHERBESCHLUSS"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('EINFACHERBESCHLUSS')"
+                    />
+                    <label class="label" x-show="errors.EINFACHERBESCHLUSS">
+                        <span class="label-text-alt text-error" x-text="errors.EINFACHERBESCHLUSS"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="DOPPELTQBESCHLUSS">
+                        <span class="label-text">
+                            Doppeltqbeschluss
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="DOPPELTQBESCHLUSS"
+                        name="DOPPELTQBESCHLUSS"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('DOPPELTQBESCHLUSS')"
+                    />
+                    <label class="label" x-show="errors.DOPPELTQBESCHLUSS">
+                        <span class="label-text-alt text-error" x-text="errors.DOPPELTQBESCHLUSS"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="SUMME_JA_ANTEILE">
+                        <span class="label-text">
+                            Summe Ja Anteile
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="SUMME_JA_ANTEILE"
+                        name="SUMME_JA_ANTEILE"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('SUMME_JA_ANTEILE')"
+                    />
+                    <label class="label" x-show="errors.SUMME_JA_ANTEILE">
+                        <span class="label-text-alt text-error" x-text="errors.SUMME_JA_ANTEILE"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="SUMME_NEIN_ANTEILE">
+                        <span class="label-text">
+                            Summe Nein Anteile
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="SUMME_NEIN_ANTEILE"
+                        name="SUMME_NEIN_ANTEILE"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('SUMME_NEIN_ANTEILE')"
+                    />
+                    <label class="label" x-show="errors.SUMME_NEIN_ANTEILE">
+                        <span class="label-text-alt text-error" x-text="errors.SUMME_NEIN_ANTEILE"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="SUMME_ENTHALTUNG_ANTEILE">
+                        <span class="label-text">
+                            Summe Enthaltung Anteile
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="SUMME_ENTHALTUNG_ANTEILE"
+                        name="SUMME_ENTHALTUNG_ANTEILE"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('SUMME_ENTHALTUNG_ANTEILE')"
+                    />
+                    <label class="label" x-show="errors.SUMME_ENTHALTUNG_ANTEILE">
+                        <span class="label-text-alt text-error" x-text="errors.SUMME_ENTHALTUNG_ANTEILE"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="JA_COUNT">
+                        <span class="label-text">
+                            Ja Count
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="JA_COUNT"
+                        name="JA_COUNT"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('JA_COUNT')"
+                    />
+                    <label class="label" x-show="errors.JA_COUNT">
+                        <span class="label-text-alt text-error" x-text="errors.JA_COUNT"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="NEIN_COUNT">
+                        <span class="label-text">
+                            Nein Count
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="NEIN_COUNT"
+                        name="NEIN_COUNT"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('NEIN_COUNT')"
+                    />
+                    <label class="label" x-show="errors.NEIN_COUNT">
+                        <span class="label-text-alt text-error" x-text="errors.NEIN_COUNT"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="ENTHALTUNG_COUNT">
+                        <span class="label-text">
+                            Enthaltung Count
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="ENTHALTUNG_COUNT"
+                        name="ENTHALTUNG_COUNT"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('ENTHALTUNG_COUNT')"
+                    />
+                    <label class="label" x-show="errors.ENTHALTUNG_COUNT">
+                        <span class="label-text-alt text-error" x-text="errors.ENTHALTUNG_COUNT"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="GESAMT_EIGENTUMSANTEILE">
+                        <span class="label-text">
+                            Gesamt Eigentumsanteile
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="GESAMT_EIGENTUMSANTEILE"
+                        name="GESAMT_EIGENTUMSANTEILE"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('GESAMT_EIGENTUMSANTEILE')"
+                    />
+                    <label class="label" x-show="errors.GESAMT_EIGENTUMSANTEILE">
+                        <span class="label-text-alt text-error" x-text="errors.GESAMT_EIGENTUMSANTEILE"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="JA_PROZENT_ANTEILE">
+                        <span class="label-text">
+                            Ja Prozent Anteile
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="JA_PROZENT_ANTEILE"
+                        name="JA_PROZENT_ANTEILE"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('JA_PROZENT_ANTEILE')"
+                    />
+                    <label class="label" x-show="errors.JA_PROZENT_ANTEILE">
+                        <span class="label-text-alt text-error" x-text="errors.JA_PROZENT_ANTEILE"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="BESCHLUSS_STATUS">
+                        <span class="label-text">
+                            Beschluss Status
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="BESCHLUSS_STATUS"
+                        name="BESCHLUSS_STATUS"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('BESCHLUSS_STATUS')"
+                    />
+                    <label class="label" x-show="errors.BESCHLUSS_STATUS">
+                        <span class="label-text-alt text-error" x-text="errors.BESCHLUSS_STATUS"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="ANZAHL_ANWESEND">
+                        <span class="label-text">
+                            Anzahl Anwesend
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="ANZAHL_ANWESEND"
+                        name="ANZAHL_ANWESEND"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('ANZAHL_ANWESEND')"
+                    />
+                    <label class="label" x-show="errors.ANZAHL_ANWESEND">
+                        <span class="label-text-alt text-error" x-text="errors.ANZAHL_ANWESEND"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label cursor-pointer">
+                        <span class="label-text">Anzahl Abwesend</span>
+                        <input 
+                            type="checkbox"
+                            id="ANZAHL_ABWESEND"
+                            name="ANZAHL_ABWESEND"
+                            class="checkbox checkbox-primary"
+                            value="1"
+                        />
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="ABSTIMMUNG">
+                        <span class="label-text">
+                            Abstimmung
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="ABSTIMMUNG"
+                        name="ABSTIMMUNG"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('ABSTIMMUNG')"
+                    />
+                    <label class="label" x-show="errors.ABSTIMMUNG">
+                        <span class="label-text-alt text-error" x-text="errors.ABSTIMMUNG"></span>
+                    </label>
+                </div>
+
+            </div>
+
+            <!-- Zeitangaben -->
+            <div class="divider">Zeitangaben</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                <div class="form-control w-full">
+                    <label class="label" for="VERZEIT">
+                        <span class="label-text">
+                            Verzeit
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="date"
+                        id="VERZEIT"
+                        name="VERZEIT"
+                        placeholder="TT.MM.JJJJ"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('VERZEIT')"
+                    />
+                    <label class="label" x-show="errors.VERZEIT">
+                        <span class="label-text-alt text-error" x-text="errors.VERZEIT"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="JA_PROZENT_ABSTIMMENDE">
+                        <span class="label-text">
+                            Ende
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="date"
+                        id="JA_PROZENT_ABSTIMMENDE"
+                        name="JA_PROZENT_ABSTIMMENDE"
+                        placeholder="TT.MM.JJJJ"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('JA_PROZENT_ABSTIMMENDE')"
+                    />
+                    <label class="label" x-show="errors.JA_PROZENT_ABSTIMMENDE">
+                        <span class="label-text-alt text-error" x-text="errors.JA_PROZENT_ABSTIMMENDE"></span>
+                    </label>
+                </div>
+
+            </div>
+
+            <!-- Kontaktdaten -->
+            <div class="divider">Kontaktdaten</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                <div class="form-control w-full">
+                    <label class="label" for="BESCHLUSSTITEL">
+                        <span class="label-text">
+                            Telefon
+                             <span class="text-error">*</span>
+                        </span>
+                    </label>
+                    <input 
+                        type="tel"
+                        id="BESCHLUSSTITEL"
+                        name="BESCHLUSSTITEL"
+                        placeholder="+49 123 456789"
+                        class="input input-bordered w-full"
+                        required required phone
+                        
+                        @blur="validateField('BESCHLUSSTITEL')"
+                    />
+                    <label class="label" x-show="errors.BESCHLUSSTITEL">
+                        <span class="label-text-alt text-error" x-text="errors.BESCHLUSSTITEL"></span>
+                    </label>
+                </div>
+
+            </div>
+
+            <!-- Form Actions -->
+            <div class="card-actions justify-end mt-6">
+                <button type="reset" class="btn btn-ghost">
+                    <i class="fas fa-undo mr-2"></i>
+                    Zurücksetzen
+                </button>
+                <button type="submit" 
+                        class="btn btn-primary"
+                        :disabled="!formValid">
+                    <i class="fas fa-save mr-2"></i>
+                    Speichern
+                </button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<!-- Result Container -->
+<div id="result-container" class="mt-6"></div>

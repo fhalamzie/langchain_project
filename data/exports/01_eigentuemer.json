@@ -1,13 +1,13 @@
 {
   "query_info": {
     "file": "01_eigentuemer.sql",
-    "generated": "2025-06-12T14:40:24.253164",
+    "generated": "2025-06-16T03:33:44.470261",
     "driver": "firebird-driver",
     "charset": "UTF8",
     "business_purpose": "Komplette Eigentümer-Verwaltung mit Banking und Portfolio-Übersicht",
     "main_tables": [],
     "total_rows": 311,
-    "execution_time_seconds": 0.012434
+    "execution_time_seconds": 0.014754
   },
   "columns": [
     "EIGNR",

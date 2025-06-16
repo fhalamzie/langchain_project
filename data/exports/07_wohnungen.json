@@ -1,13 +1,13 @@
 {
   "query_info": {
     "file": "07_wohnungen.sql",
-    "generated": "2025-06-12T14:40:25.191800",
+    "generated": "2025-06-16T03:33:45.461617",
     "driver": "firebird-driver",
     "charset": "ISO8859_1",
     "business_purpose": "Vollständige Wohnungseinheiten-Verwaltung mit Flächendaten und Kostenstellenzuordnung",
     "main_tables": [],
     "total_rows": 539,
-    "execution_time_seconds": 0.025154
+    "execution_time_seconds": 0.025136
   },
   "columns": [
     "INDEXID",

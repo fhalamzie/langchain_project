@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WINCASA HTMX Component Library</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.4.24/dist/full.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    <script src="https://unpkg.com/alpinejs@3.13.3/dist/cdn.min.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <div class="container mx-auto p-4">
+        <h1 class="text-4xl font-bold mb-8">
+            <i class="fas fa-cube mr-3"></i>
+            WINCASA HTMX Component Library
+        </h1>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <div class="card bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <h2 class="card-title">
+                        <i class="fas fa-folder mr-2"></i>
+                        Aktuelle Mieter
+                    </h2>
+                    <p>4 Komponenten verfügbar</p>
+                    <div class="card-actions justify-end">
+                        <a href="aktuelle_mieter/" class="btn btn-primary btn-sm">
+                            <i class="fas fa-eye mr-2"></i>
+                            Anzeigen
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <h2 class="card-title">
+                        <i class="fas fa-folder mr-2"></i>
+                        Alle Mieter
+                    </h2>
+                    <p>4 Komponenten verfügbar</p>
+                    <div class="card-actions justify-end">
+                        <a href="alle_mieter/" class="btn btn-primary btn-sm">
+                            <i class="fas fa-eye mr-2"></i>
+                            Anzeigen
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <h2 class="card-title">
+                        <i class="fas fa-folder mr-2"></i>
+                        Bank Konten
+                    </h2>
+                    <p>4 Komponenten verfügbar</p>
+                    <div class="card-actions justify-end">
+                        <a href="bank_konten/" class="btn btn-primary btn-sm">
+                            <i class="fas fa-eye mr-2"></i>
+                            Anzeigen
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <h2 class="card-title">
+                        <i class="fas fa-folder mr-2"></i>
+                        Beiraete
+                    </h2>
+                    <p>4 Komponenten verfügbar</p>
+                    <div class="card-actions justify-end">
+                        <a href="beiraete/" class="btn btn-primary btn-sm">
+                            <i class="fas fa-eye mr-2"></i>
+                            Anzeigen
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <h2 class="card-title">
+                        <i class="fas fa-folder mr-2"></i>
+                        Beschluesse
+                    </h2>
+                    <p>4 Komponenten verfügbar</p>
+                    <div class="card-actions justify-end">
+                        <a href="beschluesse/" class="btn btn-primary btn-sm">
+                            <i class="fas fa-eye mr-2"></i>
+                            Anzeigen
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <h2 class="card-title">
+                        <i class="fas fa-folder mr-2"></i>
+                        Buchung
+                    </h2>
+                    <p>4 Komponenten verfügbar</p>
+                    <div class="card-actions justify-end">
+                        <a href="buchung/" class="btn btn-primary btn-sm">
+                            <i class="fas fa-eye mr-2"></i>
+                            Anzeigen
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <h2 class="card-title">
+                        <i class="fas fa-folder mr-2"></i>
+                        Buchungskonten Uebersicht
+                    </h2>
+                    <p>4 Komponenten verfügbar</p>
+                    <div class="card-actions justify-end">
+                        <a href="buchungskonten_uebersicht/" class="btn btn-primary btn-sm">
+                            <i class="fas fa-eye mr-2"></i>
+                            Anzeigen
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <h2 class="card-title">
+                        <i class="fas fa-folder mr-2"></i>
+                        Detaillierte Buchungen
+                    </h2>
+                    <p>4 Komponenten verfügbar</p>
+                    <div class="card-actions justify-end">
+                        <a href="detaillierte_buchungen/" class="btn btn-primary btn-sm">
+                            <i class="fas fa-eye mr-2"></i>
+                            Anzeigen
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <h2 class="card-title">
+                        <i class="fas fa-folder mr-2"></i>
+                        Durchlaufende Posten
+                    </h2>
+                    <p>4 Komponenten verfügbar</p>
+                    <div class="card-actions justify-end">
+                        <a href="durchlaufende_posten/" class="btn btn-primary btn-sm">
+                            <i class="fas fa-eye mr-2"></i>
+                            Anzeigen
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <h2 class="card-title">
+                        <i class="fas fa-folder mr-2"></i>
+                        Eigentuemer
+                    </h2>
+                    <p>4 Komponenten verfügbar</p>
+                    <div class="card-actions justify-end">
+                        <a href="eigentuemer/" class="btn btn-primary btn-sm">
+                            <i class="fas fa-eye mr-2"></i>
+                            Anzeigen
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <h2 class="card-title">
+                        <i class="fas fa-folder mr-2"></i>
+                        Eigentuemer Konten
+                    </h2>
+                    <p>4 Komponenten verfügbar</p>
+                    <div class="card-actions justify-end">
+                        <a href="eigentuemer_konten/" class="btn btn-primary btn-sm">
+                            <i class="fas fa-eye mr-2"></i>
+                            Anzeigen
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <h2 class="card-title">
+                        <i class="fas fa-folder mr-2"></i>
+                        Eigentuemer Op
+                    </h2>
+                    <p>4 Komponenten verfügbar</p>
+                    <div class="card-actions justify-end">
+                        <a href="eigentuemer_op/" class="btn btn-primary btn-sm">
+                            <i class="fas fa-eye mr-2"></i>
+                            Anzeigen
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <h2 class="card-title">
+                        <i class="fas fa-folder mr-2"></i>
+                        Eigentuemer Zahlungshistorie
+                    </h2>
+                    <p>4 Komponenten verfügbar</p>
+                    <div class="card-actions justify-end">
+                        <a href="eigentuemer_zahlungshistorie/" class="btn btn-primary btn-sm">
+                            <i class="fas fa-eye mr-2"></i>
+                            Anzeigen
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <h2 class="card-title">
+                        <i class="fas fa-folder mr-2"></i>
+                        Etv Presence
+                    </h2>
+                    <p>4 Komponenten verfügbar</p>
+                    <div class="card-actions justify-end">
+                        <a href="etv_presence/" class="btn btn-primary btn-sm">
+                            <i class="fas fa-eye mr-2"></i>
+                            Anzeigen
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <h2 class="card-title">
+                        <i class="fas fa-folder mr-2"></i>
+                        Instandhaltung
+                    </h2>
+                    <p>4 Komponenten verfügbar</p>
+                    <div class="card-actions justify-end">
+                        <a href="instandhaltung/" class="btn btn-primary btn-sm">
+                            <i class="fas fa-eye mr-2"></i>
+                            Anzeigen
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <h2 class="card-title">
+                        <i class="fas fa-folder mr-2"></i>
+                        Instandhaltungskosten
+                    </h2>
+                    <p>4 Komponenten verfügbar</p>
+                    <div class="card-actions justify-end">
+                        <a href="instandhaltungskosten/" class="btn btn-primary btn-sm">
+                            <i class="fas fa-eye mr-2"></i>
+                            Anzeigen
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <h2 class="card-title">
+                        <i class="fas fa-folder mr-2"></i>
+                        Konten
+                    </h2>
+                    <p>4 Komponenten verfügbar</p>
+                    <div class="card-actions justify-end">
+                        <a href="konten/" class="btn btn-primary btn-sm">
+                            <i class="fas fa-eye mr-2"></i>
+                            Anzeigen
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <h2 class="card-title">
+                        <i class="fas fa-folder mr-2"></i>
+                        Konten Saldenliste
+                    </h2>
+                    <p>4 Komponenten verfügbar</p>
+                    <div class="card-actions justify-end">
+                        <a href="konten_saldenliste/" class="btn btn-primary btn-sm">
+                            <i class="fas fa-eye mr-2"></i>
+                            Anzeigen
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <h2 class="card-title">
+                        <i class="fas fa-folder mr-2"></i>
+                        Leerstand
+                    </h2>
+                    <p>4 Komponenten verfügbar</p>
+                    <div class="card-actions justify-end">
+                        <a href="leerstand/" class="btn btn-primary btn-sm">
+                            <i class="fas fa-eye mr-2"></i>
+                            Anzeigen
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <h2 class="card-title">
+                        <i class="fas fa-folder mr-2"></i>
+                        Leerstandsanalyse
+                    </h2>
+                    <p>4 Komponenten verfügbar</p>
+                    <div class="card-actions justify-end">
+                        <a href="leerstandsanalyse/" class="btn btn-primary btn-sm">
+                            <i class="fas fa-eye mr-2"></i>
+                            Anzeigen
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <h2 class="card-title">
+                        <i class="fas fa-folder mr-2"></i>
+                        Mieter
+                    </h2>
+                    <p>4 Komponenten verfügbar</p>
+                    <div class="card-actions justify-end">
+                        <a href="mieter/" class="btn btn-primary btn-sm">
+                            <i class="fas fa-eye mr-2"></i>
+                            Anzeigen
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <h2 class="card-title">
+                        <i class="fas fa-folder mr-2"></i>
+                        Mieter Konten
+                    </h2>
+                    <p>4 Komponenten verfügbar</p>
+                    <div class="card-actions justify-end">
+                        <a href="mieter_konten/" class="btn btn-primary btn-sm">
+                            <i class="fas fa-eye mr-2"></i>
+                            Anzeigen
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <h2 class="card-title">
+                        <i class="fas fa-folder mr-2"></i>
+                        Monatliche Mieteinnahmen
+                    </h2>
+                    <p>4 Komponenten verfügbar</p>
+                    <div class="card-actions justify-end">
+                        <a href="monatliche_mieteinnahmen/" class="btn btn-primary btn-sm">
+                            <i class="fas fa-eye mr-2"></i>
+                            Anzeigen
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <h2 class="card-title">
+                        <i class="fas fa-folder mr-2"></i>
+                        Nebenkosten
+                    </h2>
+                    <p>4 Komponenten verfügbar</p>
+                    <div class="card-actions justify-end">
+                        <a href="nebenkosten/" class="btn btn-primary btn-sm">
+                            <i class="fas fa-eye mr-2"></i>
+                            Anzeigen
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <h2 class="card-title">
+                        <i class="fas fa-folder mr-2"></i>
+                        Nebenkostenkonten Matrix
+                    </h2>
+                    <p>4 Komponenten verfügbar</p>
+                    <div class="card-actions justify-end">
+                        <a href="nebenkostenkonten_matrix/" class="btn btn-primary btn-sm">
+                            <i class="fas fa-eye mr-2"></i>
+                            Anzeigen
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <h2 class="card-title">
+                        <i class="fas fa-folder mr-2"></i>
+                        Objekt
+                    </h2>
+                    <p>4 Komponenten verfügbar</p>
+                    <div class="card-actions justify-end">
+                        <a href="objekt/" class="btn btn-primary btn-sm">
+                            <i class="fas fa-eye mr-2"></i>
+                            Anzeigen
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <h2 class="card-title">
+                        <i class="fas fa-folder mr-2"></i>
+                        Objektbezogene Sachkonten
+                    </h2>
+                    <p>4 Komponenten verfügbar</p>
+                    <div class="card-actions justify-end">
+                        <a href="objektbezogene_sachkonten/" class="btn btn-primary btn-sm">
+                            <i class="fas fa-eye mr-2"></i>
+                            Anzeigen
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <h2 class="card-title">
+                        <i class="fas fa-folder mr-2"></i>
+                        Objekte
+                    </h2>
+                    <p>4 Komponenten verfügbar</p>
+                    <div class="card-actions justify-end">
+                        <a href="objekte/" class="btn btn-primary btn-sm">
+                            <i class="fas fa-eye mr-2"></i>
+                            Anzeigen
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <h2 class="card-title">
+                        <i class="fas fa-folder mr-2"></i>
+                        Objekte Portfolio
+                    </h2>
+                    <p>4 Komponenten verfügbar</p>
+                    <div class="card-actions justify-end">
+                        <a href="objekte_portfolio/" class="btn btn-primary btn-sm">
+                            <i class="fas fa-eye mr-2"></i>
+                            Anzeigen
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <h2 class="card-title">
+                        <i class="fas fa-folder mr-2"></i>
+                        Ruecklagen Management
+                    </h2>
+                    <p>4 Komponenten verfügbar</p>
+                    <div class="card-actions justify-end">
+                        <a href="ruecklagen_management/" class="btn btn-primary btn-sm">
+                            <i class="fas fa-eye mr-2"></i>
+                            Anzeigen
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <h2 class="card-title">
+                        <i class="fas fa-folder mr-2"></i>
+                        Ruecklagenanalyse
+                    </h2>
+                    <p>4 Komponenten verfügbar</p>
+                    <div class="card-actions justify-end">
+                        <a href="ruecklagenanalyse/" class="btn btn-primary btn-sm">
+                            <i class="fas fa-eye mr-2"></i>
+                            Anzeigen
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <h2 class="card-title">
+                        <i class="fas fa-folder mr-2"></i>
+                        Sonderentnahmen
+                    </h2>
+                    <p>4 Komponenten verfügbar</p>
+                    <div class="card-actions justify-end">
+                        <a href="sonderentnahmen/" class="btn btn-primary btn-sm">
+                            <i class="fas fa-eye mr-2"></i>
+                            Anzeigen
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <h2 class="card-title">
+                        <i class="fas fa-folder mr-2"></i>
+                        Spezielle Kontenklassen
+                    </h2>
+                    <p>4 Komponenten verfügbar</p>
+                    <div class="card-actions justify-end">
+                        <a href="spezielle_kontenklassen/" class="btn btn-primary btn-sm">
+                            <i class="fas fa-eye mr-2"></i>
+                            Anzeigen
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <h2 class="card-title">
+                        <i class="fas fa-folder mr-2"></i>
+                        Versammlung
+                    </h2>
+                    <p>4 Komponenten verfügbar</p>
+                    <div class="card-actions justify-end">
+                        <a href="versammlung/" class="btn btn-primary btn-sm">
+                            <i class="fas fa-eye mr-2"></i>
+                            Anzeigen
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <h2 class="card-title">
+                        <i class="fas fa-folder mr-2"></i>
+                        Versammlungen
+                    </h2>
+                    <p>4 Komponenten verfügbar</p>
+                    <div class="card-actions justify-end">
+                        <a href="versammlungen/" class="btn btn-primary btn-sm">
+                            <i class="fas fa-eye mr-2"></i>
+                            Anzeigen
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <h2 class="card-title">
+                        <i class="fas fa-folder mr-2"></i>
+                        Weg
+                    </h2>
+                    <p>4 Komponenten verfügbar</p>
+                    <div class="card-actions justify-end">
+                        <a href="weg/" class="btn btn-primary btn-sm">
+                            <i class="fas fa-eye mr-2"></i>
+                            Anzeigen
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <h2 class="card-title">
+                        <i class="fas fa-folder mr-2"></i>
+                        Weg Eigentuemer
+                    </h2>
+                    <p>4 Komponenten verfügbar</p>
+                    <div class="card-actions justify-end">
+                        <a href="weg_eigentuemer/" class="btn btn-primary btn-sm">
+                            <i class="fas fa-eye mr-2"></i>
+                            Anzeigen
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <h2 class="card-title">
+                        <i class="fas fa-folder mr-2"></i>
+                        Weg Zahlungsuebersicht
+                    </h2>
+                    <p>4 Komponenten verfügbar</p>
+                    <div class="card-actions justify-end">
+                        <a href="weg_zahlungsuebersicht/" class="btn btn-primary btn-sm">
+                            <i class="fas fa-eye mr-2"></i>
+                            Anzeigen
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <h2 class="card-title">
+                        <i class="fas fa-folder mr-2"></i>
+                        Wohnung
+                    </h2>
+                    <p>4 Komponenten verfügbar</p>
+                    <div class="card-actions justify-end">
+                        <a href="wohnung/" class="btn btn-primary btn-sm">
+                            <i class="fas fa-eye mr-2"></i>
+                            Anzeigen
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <h2 class="card-title">
+                        <i class="fas fa-folder mr-2"></i>
+                        Wohnungen
+                    </h2>
+                    <p>4 Komponenten verfügbar</p>
+                    <div class="card-actions justify-end">
+                        <a href="wohnungen/" class="btn btn-primary btn-sm">
+                            <i class="fas fa-eye mr-2"></i>
+                            Anzeigen
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <h2 class="card-title">
+                        <i class="fas fa-folder mr-2"></i>
+                        Wohnungen Leerstand
+                    </h2>
+                    <p>4 Komponenten verfügbar</p>
+                    <div class="card-actions justify-end">
+                        <a href="wohnungen_leerstand/" class="btn btn-primary btn-sm">
+                            <i class="fas fa-eye mr-2"></i>
+                            Anzeigen
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+        <div class="divider mt-8"></div>
+        
+        <div class="stats shadow">
+            <div class="stat">
+                <div class="stat-figure text-primary">
+                    <i class="fas fa-cube text-3xl"></i>
+                </div>
+                <div class="stat-title">Entities</div>
+                <div class="stat-value">41</div>
+            </div>
+            
+            <div class="stat">
+                <div class="stat-figure text-secondary">
+                    <i class="fas fa-code text-3xl"></i>
+                </div>
+                <div class="stat-title">Components</div>
+                <div class="stat-value">164</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,10 @@
+{
+  "entity_name": "kaution",
+  "german_title": "Mietkaution / Sicherheitsleistung",
+  "description": "sicherheit",
+  "primary_key": null,
+  "display_field": null,
+  "relationships": {},
+  "query_templates": [],
+  "fields": []
+}

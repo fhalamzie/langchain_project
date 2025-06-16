@@ -1,0 +1,11 @@
+{
+  "name": "wohnung_card",
+  "type": "card",
+  "description": "Card component for Mieteinheit / Apartment",
+  "styles": [
+    "card",
+    "stats",
+    "stat"
+  ],
+  "scripts": null
+}

@@ -1,0 +1,410 @@
+<form 
+    id="nebenkosten-form"
+    hx-post="/api/nebenkosten"
+    hx-trigger="submit"
+    hx-target="#result-container"
+    hx-swap="innerHTML"
+    hx-indicator="#loading-indicator"
+    class="space-y-6"
+    x-data="{ formValid: false, errors: {} }"
+>
+    <div class="card bg-base-100 shadow-xl">
+        <div class="card-body">
+            <h2 class="card-title text-2xl mb-6">
+                <i class="fas fa-building mr-2"></i>
+                Betriebskosten-Vorauszahlung
+            </h2>
+            
+            <!-- Loading Indicator -->
+            <div id="loading-indicator" class="htmx-indicator">
+                <div class="flex justify-center items-center p-4">
+                    <span class="loading loading-spinner loading-lg"></span>
+                </div>
+            </div>
+
+            <!-- Identifikatoren -->
+            <div class="divider">Identifikatoren</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                <div class="form-control w-full">
+                    <label class="label" for="ONR">
+                        <span class="label-text">
+                            Gebäude / Liegenschaft
+                             <span class="text-error">*</span>
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="ONR"
+                        name="ONR"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        required required
+                        
+                        @blur="validateField('ONR')"
+                    />
+                    <label class="label" x-show="errors.ONR">
+                        <span class="label-text-alt text-error" x-text="errors.ONR"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="KNR">
+                        <span class="label-text">
+                            Finanzkonto für Buchhaltung
+                             <span class="text-error">*</span>
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="KNR"
+                        name="KNR"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        required required
+                        
+                        @blur="validateField('KNR')"
+                    />
+                    <label class="label" x-show="errors.KNR">
+                        <span class="label-text-alt text-error" x-text="errors.KNR"></span>
+                    </label>
+                </div>
+
+            </div>
+
+            <!-- Allgemeine Informationen -->
+            <div class="divider">Allgemeine Informationen</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                <div class="form-control w-full">
+                    <label class="label" for="OBEZ">
+                        <span class="label-text">
+                            Gebäude / Liegenschaft
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="OBEZ"
+                        name="OBEZ"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('OBEZ')"
+                    />
+                    <label class="label" x-show="errors.OBEZ">
+                        <span class="label-text-alt text-error" x-text="errors.OBEZ"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="KBEZ">
+                        <span class="label-text">
+                            Finanzkonto für Buchhaltung
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="KBEZ"
+                        name="KBEZ"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('KBEZ')"
+                    />
+                    <label class="label" x-show="errors.KBEZ">
+                        <span class="label-text-alt text-error" x-text="errors.KBEZ"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="BETRKV_PARAGRAPH">
+                        <span class="label-text">
+                            Reference to German Operating Cost Ordinance paragraph
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="BETRKV_PARAGRAPH"
+                        name="BETRKV_PARAGRAPH"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('BETRKV_PARAGRAPH')"
+                    />
+                    <label class="label" x-show="errors.BETRKV_PARAGRAPH">
+                        <span class="label-text-alt text-error" x-text="errors.BETRKV_PARAGRAPH"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="UMLAGEFAEHIGKEIT">
+                        <span class="label-text">
+                            Cost apportionability per German law
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="UMLAGEFAEHIGKEIT"
+                        name="UMLAGEFAEHIGKEIT"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('UMLAGEFAEHIGKEIT')"
+                    />
+                    <label class="label" x-show="errors.UMLAGEFAEHIGKEIT">
+                        <span class="label-text-alt text-error" x-text="errors.UMLAGEFAEHIGKEIT"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="UMLAGESCHLUESSEL">
+                        <span class="label-text">
+                            Cost allocation key (area, units, shares)
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="UMLAGESCHLUESSEL"
+                        name="UMLAGESCHLUESSEL"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('UMLAGESCHLUESSEL')"
+                    />
+                    <label class="label" x-show="errors.UMLAGESCHLUESSEL">
+                        <span class="label-text-alt text-error" x-text="errors.UMLAGESCHLUESSEL"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label cursor-pointer">
+                        <span class="label-text">Anzahl Buchungen Jahr</span>
+                        <input 
+                            type="checkbox"
+                            id="ANZAHL_BUCHUNGEN_JAHR"
+                            name="ANZAHL_BUCHUNGEN_JAHR"
+                            class="checkbox checkbox-primary"
+                            value="1"
+                        />
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="GESAMTFLAECHE_QM">
+                        <span class="label-text">
+                            Quadratmeter
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="GESAMTFLAECHE_QM"
+                        name="GESAMTFLAECHE_QM"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('GESAMTFLAECHE_QM')"
+                    />
+                    <label class="label" x-show="errors.GESAMTFLAECHE_QM">
+                        <span class="label-text-alt text-error" x-text="errors.GESAMTFLAECHE_QM"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="ANZAHL_EINHEITEN">
+                        <span class="label-text">
+                            Anzahl Einheiten
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="ANZAHL_EINHEITEN"
+                        name="ANZAHL_EINHEITEN"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('ANZAHL_EINHEITEN')"
+                    />
+                    <label class="label" x-show="errors.ANZAHL_EINHEITEN">
+                        <span class="label-text-alt text-error" x-text="errors.ANZAHL_EINHEITEN"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="BEWOHNER_ANZAHL">
+                        <span class="label-text">
+                            Bewohner Anzahl
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="BEWOHNER_ANZAHL"
+                        name="BEWOHNER_ANZAHL"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('BEWOHNER_ANZAHL')"
+                    />
+                    <label class="label" x-show="errors.BEWOHNER_ANZAHL">
+                        <span class="label-text-alt text-error" x-text="errors.BEWOHNER_ANZAHL"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="BUCHUNGEN_PRO_EINHEIT_STATUS">
+                        <span class="label-text">
+                            Buchungen Pro Einheit Status
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="BUCHUNGEN_PRO_EINHEIT_STATUS"
+                        name="BUCHUNGEN_PRO_EINHEIT_STATUS"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('BUCHUNGEN_PRO_EINHEIT_STATUS')"
+                    />
+                    <label class="label" x-show="errors.BUCHUNGEN_PRO_EINHEIT_STATUS">
+                        <span class="label-text-alt text-error" x-text="errors.BUCHUNGEN_PRO_EINHEIT_STATUS"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="ABRECHNUNGSRELEVANT">
+                        <span class="label-text">
+                            Abrechnungsrelevant
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="ABRECHNUNGSRELEVANT"
+                        name="ABRECHNUNGSRELEVANT"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('ABRECHNUNGSRELEVANT')"
+                    />
+                    <label class="label" x-show="errors.ABRECHNUNGSRELEVANT">
+                        <span class="label-text-alt text-error" x-text="errors.ABRECHNUNGSRELEVANT"></span>
+                    </label>
+                </div>
+
+            </div>
+
+            <!-- Adresse -->
+            <div class="divider">Adresse</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                <div class="form-control w-full">
+                    <label class="label" for="OSTRASSE">
+                        <span class="label-text">
+                            Gebäude / Liegenschaft
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="OSTRASSE"
+                        name="OSTRASSE"
+                        placeholder="Musterstraße 1"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('OSTRASSE')"
+                    />
+                    <label class="label" x-show="errors.OSTRASSE">
+                        <span class="label-text-alt text-error" x-text="errors.OSTRASSE"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="KNRSTR">
+                        <span class="label-text">
+                            Straße
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="KNRSTR"
+                        name="KNRSTR"
+                        placeholder="Musterstraße 1"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('KNRSTR')"
+                    />
+                    <label class="label" x-show="errors.KNRSTR">
+                        <span class="label-text-alt text-error" x-text="errors.KNRSTR"></span>
+                    </label>
+                </div>
+
+            </div>
+
+            <!-- Finanzinformationen -->
+            <div class="divider">Finanzinformationen</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                <div class="form-control w-full">
+                    <label class="label" for="PERIODENKOSTEN">
+                        <span class="label-text">
+                            Periodenkosten
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="PERIODENKOSTEN"
+                        name="PERIODENKOSTEN"
+                        placeholder="0,00 €"
+                        class="input input-bordered w-full"
+                        min="0"
+                        step="0.01" min="0"
+                        @blur="validateField('PERIODENKOSTEN')"
+                    />
+                    <label class="label" x-show="errors.PERIODENKOSTEN">
+                        <span class="label-text-alt text-error" x-text="errors.PERIODENKOSTEN"></span>
+                    </label>
+                </div>
+
+            </div>
+
+            <!-- Form Actions -->
+            <div class="card-actions justify-end mt-6">
+                <button type="reset" class="btn btn-ghost">
+                    <i class="fas fa-undo mr-2"></i>
+                    Zurücksetzen
+                </button>
+                <button type="submit" 
+                        class="btn btn-primary"
+                        :disabled="!formValid">
+                    <i class="fas fa-save mr-2"></i>
+                    Speichern
+                </button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<!-- Result Container -->
+<div id="result-container" class="mt-6"></div>

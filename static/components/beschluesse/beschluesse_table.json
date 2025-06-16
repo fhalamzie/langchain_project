@@ -1,0 +1,11 @@
+{
+  "name": "beschluesse_table",
+  "type": "table",
+  "description": "Table component for Beschluesse",
+  "styles": [
+    "table",
+    "table-zebra",
+    "overflow-x-auto"
+  ],
+  "scripts": null
+}

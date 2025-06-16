@@ -1,7 +1,7 @@
 {
   "query_info": {
     "file": "12_bank_konten.sql",
-    "generated": "2025-06-12T14:40:26.262406",
+    "generated": "2025-06-16T03:33:46.545974",
     "driver": "firebird-driver",
     "charset": "ISO8859_1",
     "business_purpose": "Übersicht aller Bankkonten und Liquidität pro Objekt",
@@ -12,7 +12,7 @@
       "LAYER 4 ENHANCEMENT"
     ],
     "total_rows": 122,
-    "execution_time_seconds": 0.010587
+    "execution_time_seconds": 0.008804
   },
   "columns": [
     "KNR",

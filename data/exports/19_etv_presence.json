@@ -1,13 +1,13 @@
 {
   "query_info": {
     "file": "19_etv_presence.sql",
-    "generated": "2025-06-12T14:40:26.896487",
+    "generated": "2025-06-16T03:33:47.181362",
     "driver": "firebird-driver",
     "charset": "ISO8859_1",
     "business_purpose": "Complete German WEG assembly attendance with full legal compliance",
     "main_tables": [],
     "total_rows": 52,
-    "execution_time_seconds": 0.022701
+    "execution_time_seconds": 0.02428
   },
   "columns": [
     "VERNR",

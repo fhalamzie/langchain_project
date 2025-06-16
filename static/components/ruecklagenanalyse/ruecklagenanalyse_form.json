@@ -1,0 +1,13 @@
+{
+  "name": "ruecklagenanalyse_form",
+  "type": "form",
+  "description": "Form component for Ruecklagenanalyse",
+  "styles": [
+    "form-control",
+    "input",
+    "select",
+    "textarea",
+    "btn"
+  ],
+  "scripts": null
+}

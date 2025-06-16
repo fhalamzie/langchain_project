@@ -1,0 +1,11 @@
+{
+  "name": "alle_mieter_card",
+  "type": "card",
+  "description": "Card component for Alle_Mieter",
+  "styles": [
+    "card",
+    "stats",
+    "stat"
+  ],
+  "scripts": null
+}

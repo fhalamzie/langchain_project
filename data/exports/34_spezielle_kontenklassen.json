@@ -1,7 +1,7 @@
 {
   "query_info": {
     "file": "34_spezielle_kontenklassen.sql",
-    "generated": "2025-06-12T14:41:19.799532",
+    "generated": "2025-06-16T03:34:45.004370",
     "driver": "firebird-driver",
     "charset": "ISO8859_1",
     "business_purpose": "Übersicht aller speziellen Kontenklassen und -arten",
@@ -16,7 +16,7 @@
       "Flexible FilterParameter"
     ],
     "total_rows": 1332,
-    "execution_time_seconds": 0.032618
+    "execution_time_seconds": 0.031415
   },
   "columns": [
     "KKLASSE",

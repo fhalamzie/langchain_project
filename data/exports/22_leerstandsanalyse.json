@@ -1,7 +1,7 @@
 {
   "query_info": {
     "file": "22_leerstandsanalyse.sql",
-    "generated": "2025-06-12T14:40:27.763886",
+    "generated": "2025-06-16T03:33:48.032120",
     "driver": "firebird-driver",
     "charset": "ISO8859_1",
     "business_purpose": "Identifikation und finanzielle Bewertung von Leerständen",
@@ -13,7 +13,7 @@
       "BERECHNUNG"
     ],
     "total_rows": 435,
-    "execution_time_seconds": 0.224433
+    "execution_time_seconds": 0.223753
   },
   "columns": [
     "ONR",
@@ -53,8 +53,8 @@
       "OBJEKT_STRASSE": "Hauptstraße 128",
       "OBJEKT_PLZORT": "54568 Gerolstein",
       "VERMIETUNGSSTATUS": "LEER     ",
-      "LEERSTAND_TAGE": 894,
-      "LEERSTAND_MONATE": 29.8,
+      "LEERSTAND_TAGE": 898,
+      "LEERSTAND_MONATE": 29.9,
       "MARKT_KALTMIETE": 0.0,
       "MARKT_NEBENKOSTEN": 0.0,
       "MARKT_WARMMIETE": 0.0,

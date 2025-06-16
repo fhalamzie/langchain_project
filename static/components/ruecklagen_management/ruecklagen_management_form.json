@@ -1,0 +1,13 @@
+{
+  "name": "ruecklagen_management_form",
+  "type": "form",
+  "description": "Form component for Ruecklagen_Management",
+  "styles": [
+    "form-control",
+    "input",
+    "select",
+    "textarea",
+    "btn"
+  ],
+  "scripts": null
+}

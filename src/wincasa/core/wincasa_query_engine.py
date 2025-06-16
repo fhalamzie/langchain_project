@@ -90,7 +90,11 @@ class WincasaQueryEngine:
         self.debug_mode = debug_mode
         self.config = self._load_config(config_file)
         
+        import traceback
         print("🚀 Initialisiere WINCASA Unified Query Engine...")
+        print("📍 STACK TRACE für neue WincasaQueryEngine Instanz:")
+        traceback.print_stack()
+        print("=" * 50)
         
         # Initialize Unified Template System (Phase 2.3)
         self.unified_system = UnifiedTemplateSystem(

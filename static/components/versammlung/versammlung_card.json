@@ -1,0 +1,11 @@
+{
+  "name": "versammlung_card",
+  "type": "card",
+  "description": "Card component for Eigentümerversammlung",
+  "styles": [
+    "card",
+    "stats",
+    "stat"
+  ],
+  "scripts": null
+}

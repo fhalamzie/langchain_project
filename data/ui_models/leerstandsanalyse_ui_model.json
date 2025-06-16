@@ -1,0 +1,356 @@
+{
+  "entity_name": "leerstandsanalyse",
+  "german_title": "Leerstandsanalyse",
+  "description": "leerstandsanalyse",
+  "primary_key": "ONR",
+  "display_field": "WOHNUNGSBEZEICHNUNG",
+  "relationships": {},
+  "query_templates": [],
+  "fields": [
+    {
+      "name": "ONR",
+      "german_label": "Gebäude / Liegenschaft",
+      "field_type": "text",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "42",
+      "is_computed": false,
+      "group": "Identifikatoren"
+    },
+    {
+      "name": "ENR",
+      "german_label": "Mieteinheit / Apartment",
+      "field_type": "text",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "23",
+      "is_computed": false,
+      "group": "Identifikatoren"
+    },
+    {
+      "name": "WOHNUNGSBEZEICHNUNG",
+      "german_label": "Wohnungsbezeichnung",
+      "field_type": "text",
+      "is_required": true,
+      "validation_rules": [
+        "required"
+      ],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "Garage 1",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "EINHEIT_TYP",
+      "german_label": "Einheit Typ",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "Wohnung",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "NOTIZ",
+      "german_label": "Notiz",
+      "field_type": "textarea",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "OBJEKT_KURZ",
+      "german_label": "Objekt Kurz",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "HAUPT128",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "OBJEKT_STRASSE",
+      "german_label": "Straße",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": "Musterstraße 1",
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "Hauptstraße 128",
+      "is_computed": false,
+      "group": "Adresse"
+    },
+    {
+      "name": "OBJEKT_PLZORT",
+      "german_label": "Postleitzahl",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [
+        "pattern=\\d{5}"
+      ],
+      "placeholder": "12345",
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "54568 Gerolstein",
+      "is_computed": false,
+      "group": "Adresse"
+    },
+    {
+      "name": "VERMIETUNGSSTATUS",
+      "german_label": "Current rental status",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": "Current rental status",
+      "related_entity": null,
+      "sample_value": "LEER     ",
+      "is_computed": true,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "LEERSTAND_TAGE",
+      "german_label": "Days vacant since becoming available",
+      "field_type": "number",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": "Days vacant since becoming available",
+      "related_entity": null,
+      "sample_value": "894",
+      "is_computed": true,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "LEERSTAND_MONATE",
+      "german_label": "Months vacant for reporting",
+      "field_type": "number",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": "Months vacant for reporting",
+      "related_entity": null,
+      "sample_value": "29.8",
+      "is_computed": true,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "MARKT_KALTMIETE",
+      "german_label": "Kaltmiete",
+      "field_type": "currency",
+      "is_required": false,
+      "validation_rules": [
+        "min=0"
+      ],
+      "placeholder": "0,00 €",
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "0.0",
+      "is_computed": false,
+      "group": "Finanzinformationen"
+    },
+    {
+      "name": "MARKT_NEBENKOSTEN",
+      "german_label": "Nebenkosten",
+      "field_type": "currency",
+      "is_required": false,
+      "validation_rules": [
+        "min=0"
+      ],
+      "placeholder": "0,00 €",
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "0.0",
+      "is_computed": false,
+      "group": "Finanzinformationen"
+    },
+    {
+      "name": "MARKT_WARMMIETE",
+      "german_label": "Warmmiete",
+      "field_type": "currency",
+      "is_required": false,
+      "validation_rules": [
+        "min=0"
+      ],
+      "placeholder": "0,00 €",
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "0.0",
+      "is_computed": false,
+      "group": "Finanzinformationen"
+    },
+    {
+      "name": "LETZTE_KALTMIETE",
+      "german_label": "Kaltmiete",
+      "field_type": "currency",
+      "is_required": false,
+      "validation_rules": [
+        "min=0"
+      ],
+      "placeholder": "0,00 €",
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "0.0",
+      "is_computed": true,
+      "group": "Finanzinformationen"
+    },
+    {
+      "name": "LETZTE_NEBENKOSTEN",
+      "german_label": "Nebenkosten",
+      "field_type": "currency",
+      "is_required": false,
+      "validation_rules": [
+        "min=0"
+      ],
+      "placeholder": "0,00 €",
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "0.0",
+      "is_computed": true,
+      "group": "Finanzinformationen"
+    },
+    {
+      "name": "LETZTE_WARMMIETE",
+      "german_label": "Warmmiete",
+      "field_type": "currency",
+      "is_required": false,
+      "validation_rules": [
+        "min=0"
+      ],
+      "placeholder": "0,00 €",
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "0.0",
+      "is_computed": true,
+      "group": "Finanzinformationen"
+    },
+    {
+      "name": "MIETAUSFALL_GESAMT",
+      "german_label": "Total rental loss due to vacancy",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": "Total rental loss due to vacancy",
+      "related_entity": null,
+      "sample_value": null,
+      "is_computed": true,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "MIETAUSFALL_MONATLICH",
+      "german_label": "Mietausfall Monatlich",
+      "field_type": "number",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "0.0",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "JAHRESPOTENZIAL",
+      "german_label": "Annual rental potential if occupied",
+      "field_type": "number",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": "Annual rental potential if occupied",
+      "related_entity": null,
+      "sample_value": "0.0",
+      "is_computed": true,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "LEERSTANDSKATEGORIE",
+      "german_label": "Vacancy duration category",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": "Vacancy duration category",
+      "related_entity": null,
+      "sample_value": "5. KRITISCH (>12 Monate)  ",
+      "is_computed": true,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "VERMIETUNGSPRIORITAET",
+      "german_label": "Rental priority based on financial impact",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": "Rental priority based on financial impact",
+      "related_entity": null,
+      "sample_value": "5. KEINE DATEN          ",
+      "is_computed": true,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "MARKTVERGLEICH",
+      "german_label": "Marktvergleich",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "NIE VERMIETET                      ",
+      "is_computed": false,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "LETZTER_AUSZUG",
+      "german_label": "Letzter Auszug",
+      "field_type": "text",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": null,
+      "related_entity": null,
+      "sample_value": "2022-12-31",
+      "is_computed": true,
+      "group": "Allgemeine Informationen"
+    },
+    {
+      "name": "REVENUE_RECOVERY_SCORE",
+      "german_label": "Revenue recovery score for prioritization",
+      "field_type": "number",
+      "is_required": false,
+      "validation_rules": [],
+      "placeholder": null,
+      "help_text": "Revenue recovery score for prioritization",
+      "related_entity": null,
+      "sample_value": "0.0",
+      "is_computed": true,
+      "group": "Allgemeine Informationen"
+    }
+  ]
+}

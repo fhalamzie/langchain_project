@@ -1,0 +1,13 @@
+{
+  "name": "objekt_form",
+  "type": "form",
+  "description": "Form component for Gebäude / Liegenschaft",
+  "styles": [
+    "form-control",
+    "input",
+    "select",
+    "textarea",
+    "btn"
+  ],
+  "scripts": null
+}

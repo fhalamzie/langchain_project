@@ -1,0 +1,11 @@
+{
+  "name": "durchlaufende_posten_card",
+  "type": "card",
+  "description": "Card component for Durchlaufende_Posten",
+  "styles": [
+    "card",
+    "stats",
+    "stat"
+  ],
+  "scripts": null
+}

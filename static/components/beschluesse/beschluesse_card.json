@@ -1,0 +1,11 @@
+{
+  "name": "beschluesse_card",
+  "type": "card",
+  "description": "Card component for Beschluesse",
+  "styles": [
+    "card",
+    "stats",
+    "stat"
+  ],
+  "scripts": null
+}

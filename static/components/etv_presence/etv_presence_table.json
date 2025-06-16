@@ -1,0 +1,11 @@
+{
+  "name": "etv_presence_table",
+  "type": "table",
+  "description": "Table component for Etv_Presence",
+  "styles": [
+    "table",
+    "table-zebra",
+    "overflow-x-auto"
+  ],
+  "scripts": null
+}

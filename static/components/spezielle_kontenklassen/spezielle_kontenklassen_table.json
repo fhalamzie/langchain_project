@@ -1,0 +1,11 @@
+{
+  "name": "spezielle_kontenklassen_table",
+  "type": "table",
+  "description": "Table component for Spezielle_Kontenklassen",
+  "styles": [
+    "table",
+    "table-zebra",
+    "overflow-x-auto"
+  ],
+  "scripts": null
+}

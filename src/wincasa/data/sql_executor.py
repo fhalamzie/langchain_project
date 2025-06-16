@@ -144,33 +144,6 @@ class WincasaSQLExecutor:
         query = self.sql_templates[template_name]
         return self.execute_query(query, params)
     
-    def search_tenants_by_address(self, address: str) -> pd.DataFrame:
-        """Sucht Mieter nach Adresse"""
-        # Einfache Adresssuche (kann erweitert werden)
-        query = """
-        SELECT DISTINCT 
-            B.BEWNAME AS MIETER_NAME,
-            B.BEWVNAME AS MIETER_VORNAME,
-            B.BEWTELEFON AS TELEFON,
-            B.BEWEMAIL AS EMAIL,
-            O.OBEZ AS ADRESSE,
-            W.WHGNR AS WOHNUNG,
-            B.BVON AS MIETBEGINN,
-            B.BWARN AS BETREUER
-        FROM BEWOHNER B
-        JOIN WOHNUNG W ON B.ONR = W.ONR AND B.ENR = W.ENR
-        JOIN OBJEKTE O ON W.ONR = O.ONR
-        WHERE O.OBEZ LIKE :address
-          AND B.VENDE IS NULL
-          AND O.ONR < 890
-        ORDER BY O.OBEZ, W.WHGNR
-        """
-        
-        # Adresse für LIKE-Suche vorbereiten
-        search_address = f"%{address}%"
-        
-        return self.execute_query(query, {'address': search_address})
-    
     def get_property_info(self, address: str) -> Dict[str, Any]:
         """Holt Immobilien-Info für Adresse"""
         query = """
@@ -257,9 +230,9 @@ class WincasaSQLExecutor:
         try:
             query = """
             SELECT DISTINCT
-                BA.BEWNR,
-                BA.BVNAME,
-                BA.BNAME,
+                B.BEWNR,
+                CASE WHEN B.BVNAME IS NULL OR TRIM(B.BVNAME) = '' THEN BA.BVNAME ELSE B.BVNAME END AS BVNAME,
+                CASE WHEN B.BNAME IS NULL OR TRIM(B.BNAME) = '' THEN BA.BNAME ELSE B.BNAME END AS BNAME,
                 BA.BSTR AS STRASSE,
                 BA.BPLZORT AS PLZ_ORT,
                 BA.BTEL AS TELEFON,
@@ -270,12 +243,11 @@ class WincasaSQLExecutor:
                 B.VENDE,
                 W.EBEZ AS LAGE,
                 O.OBEZ AS LIEGENSCHAFT
-            FROM BEWADR BA
-            RIGHT OUTER JOIN BEWOHNER B ON BA.BEWNR = B.BEWNR
+            FROM BEWOHNER B
+            LEFT OUTER JOIN BEWADR BA ON B.BEWNR = BA.BEWNR
             LEFT OUTER JOIN WOHNUNG W ON B.ONR = W.ONR AND B.ENR = W.ENR
             LEFT OUTER JOIN OBJEKTE O ON B.ONR = O.ONR
-            WHERE BA.BEWNR >= 0
-              AND (B.VENDE >= CURRENT_DATE OR B.VENDE IS NULL)
+            WHERE (B.VENDE >= CURRENT_DATE OR B.VENDE IS NULL)
               AND O.ONR < 890
             """
             
@@ -283,7 +255,7 @@ class WincasaSQLExecutor:
             params = {}
             
             if street:
-                conditions.append("(O.OBEZ LIKE :street OR BA.BSTR LIKE :street)")
+                conditions.append("(O.OBEZ LIKE :street OR O.OSTRASSE LIKE :street OR BA.BSTR LIKE :street)")
                 params['street'] = f"%{street}%"
             
             if postal_code:

@@ -1,0 +1,11 @@
+{
+  "name": "instandhaltungskosten_card",
+  "type": "card",
+  "description": "Card component for Instandhaltungskosten",
+  "styles": [
+    "card",
+    "stats",
+    "stat"
+  ],
+  "scripts": null
+}

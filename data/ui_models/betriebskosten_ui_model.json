@@ -1,0 +1,10 @@
+{
+  "entity_name": "betriebskosten",
+  "german_title": "Betriebskosten nach BetrKV",
+  "description": "nebenkosten",
+  "primary_key": null,
+  "display_field": null,
+  "relationships": {},
+  "query_templates": [],
+  "fields": []
+}

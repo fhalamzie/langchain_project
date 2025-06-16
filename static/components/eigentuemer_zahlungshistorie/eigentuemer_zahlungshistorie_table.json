@@ -1,0 +1,11 @@
+{
+  "name": "eigentuemer_zahlungshistorie_table",
+  "type": "table",
+  "description": "Table component for Eigentuemer_Zahlungshistorie",
+  "styles": [
+    "table",
+    "table-zebra",
+    "overflow-x-auto"
+  ],
+  "scripts": null
+}

@@ -1,0 +1,11 @@
+{
+  "name": "konten_card",
+  "type": "card",
+  "description": "Card component for Konten",
+  "styles": [
+    "card",
+    "stats",
+    "stat"
+  ],
+  "scripts": null
+}

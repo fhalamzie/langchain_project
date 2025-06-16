@@ -1,0 +1,11 @@
+{
+  "name": "etv_presence_card",
+  "type": "card",
+  "description": "Card component for Etv_Presence",
+  "styles": [
+    "card",
+    "stats",
+    "stat"
+  ],
+  "scripts": null
+}

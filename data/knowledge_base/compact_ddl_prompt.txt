@@ -1,0 +1,47 @@
+WINCASA CORE TABLES (nur diese 9 Tabellen verwenden!):
+
+
+EIGADR: Eigentümer-Stammdaten mit Kontaktdaten und Banking
+  Schlüsselfelder: EIGNR, ENAME, EVNAME, ESTR, EPLZORT, ETEL1, EEMAIL
+
+OBJEKTE: Liegenschafts-Stammdaten mit Verwaltungsinformationen
+  Schlüsselfelder: ONR, OBEZ, OSTRASSE, OPLZORT, EIGNR
+
+WOHNUNG: Wohnungseinheiten innerhalb der Objekte
+  Schlüsselfelder: ONR, ENR, EBEZ, ART
+
+BEWOHNER: Mieter-Stammdaten mit Vertragsdaten (KEIN EIGNR!)
+  Schlüsselfelder: ONR, KNR, ENR, BEWNR, BNAME, BVNAME, BSTR, BPLZORT, Z1, VENDE
+  WICHTIG: KEIN EIGNR FELD! Verwende ONR+ENR für Wohnungszuordnung
+  KALTMIETE = Z1 (nicht KALTMIETE oder KBETRAG!)
+
+KONTEN: Buchhaltungskonten für Mieter und Eigentümer
+  Schlüsselfelder: KNR, KKLASSE, ONR, BEWNR, OPBETRAG
+
+EIGENTUEMER: Eigentumsrelationen zwischen Personen und Objekten
+  Schlüsselfelder: 
+
+BUCHUNG: Finanztransaktionen und Zahlungseingänge
+  Schlüsselfelder: 
+
+BEWADR: Zusätzliche Mieter-Adressen
+  Schlüsselfelder: 
+
+HK_WOHN: Heizkosten und Flächendaten
+  Schlüsselfelder: 
+
+KRITISCHE FELDNAMEN (niemals fantasieren!):
+  KALTMIETE: BEWOHNER.Z1
+  OWNER_NAME: EIGADR.ENAME
+  OWNER_STREET: EIGADR.ESTR
+  TENANT_NAME: BEWOHNER.BNAME
+  TENANT_CITY: BEWOHNER.BPLZORT
+  PROPERTY_STREET: OBJEKTE.OSTRASSE
+  PROPERTY_CITY: OBJEKTE.OPLZORT
+
+BUSINESS RULES:
+  ACTIVE_TENANTS: VENDE IS NULL
+  EXCLUDE_TEST: ONR < 890
+  TENANT_ACCOUNTS: KKLASSE = 60
+  EXCLUDE_WEG: EIGNR <> -1
+  INCOME_ONLY: BETRAG > 0

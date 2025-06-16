@@ -1,0 +1,11 @@
+{
+  "name": "mieter_konten_table",
+  "type": "table",
+  "description": "Table component for Mieter_Konten",
+  "styles": [
+    "table",
+    "table-zebra",
+    "overflow-x-auto"
+  ],
+  "scripts": null
+}

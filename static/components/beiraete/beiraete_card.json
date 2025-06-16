@@ -1,0 +1,11 @@
+{
+  "name": "beiraete_card",
+  "type": "card",
+  "description": "Card component for Beiraete",
+  "styles": [
+    "card",
+    "stats",
+    "stat"
+  ],
+  "scripts": null
+}

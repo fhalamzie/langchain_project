@@ -1,0 +1,11 @@
+{
+  "name": "ruecklagen_management_card",
+  "type": "card",
+  "description": "Card component for Ruecklagen_Management",
+  "styles": [
+    "card",
+    "stats",
+    "stat"
+  ],
+  "scripts": null
+}

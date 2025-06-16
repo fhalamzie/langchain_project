@@ -1,0 +1,11 @@
+{
+  "name": "beiraete_table",
+  "type": "table",
+  "description": "Table component for Beiraete",
+  "styles": [
+    "table",
+    "table-zebra",
+    "overflow-x-auto"
+  ],
+  "scripts": null
+}

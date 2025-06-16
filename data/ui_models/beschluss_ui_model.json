@@ -1,0 +1,10 @@
+{
+  "entity_name": "beschluss",
+  "german_title": "WEG-Beschluss / Eigentümerversammlung",
+  "description": "resolution",
+  "primary_key": null,
+  "display_field": null,
+  "relationships": {},
+  "query_templates": [],
+  "fields": []
+}

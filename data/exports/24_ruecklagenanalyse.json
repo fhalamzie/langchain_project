@@ -1,7 +1,7 @@
 {
   "query_info": {
     "file": "24_ruecklagenanalyse.sql",
-    "generated": "2025-06-12T14:40:27.839274",
+    "generated": "2025-06-16T03:33:48.103507",
     "driver": "firebird-driver",
     "charset": "ISO8859_1",
     "business_purpose": "Vollständige Analyse der Instandhaltungsrücklagen pro WEG",
@@ -12,7 +12,7 @@
       "BUCHUNG"
     ],
     "total_rows": 81,
-    "execution_time_seconds": 0.01035
+    "execution_time_seconds": 0.008912
   },
   "columns": [
     "ONR",

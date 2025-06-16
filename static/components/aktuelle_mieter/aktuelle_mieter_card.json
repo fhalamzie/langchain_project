@@ -1,0 +1,11 @@
+{
+  "name": "aktuelle_mieter_card",
+  "type": "card",
+  "description": "Card component for Aktuelle_Mieter",
+  "styles": [
+    "card",
+    "stats",
+    "stat"
+  ],
+  "scripts": null
+}

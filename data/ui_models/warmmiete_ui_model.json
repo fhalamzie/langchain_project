@@ -1,0 +1,10 @@
+{
+  "entity_name": "warmmiete",
+  "german_title": "Gesamtmiete inkl. aller Nebenkosten",
+  "description": "bruttomiete",
+  "primary_key": null,
+  "display_field": null,
+  "relationships": {},
+  "query_templates": [],
+  "fields": []
+}

@@ -1,0 +1,11 @@
+{
+  "name": "wohnungen_table",
+  "type": "table",
+  "description": "Table component for Wohnungen",
+  "styles": [
+    "table",
+    "table-zebra",
+    "overflow-x-auto"
+  ],
+  "scripts": null
+}

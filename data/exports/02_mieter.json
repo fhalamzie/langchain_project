@@ -1,13 +1,13 @@
 {
   "query_info": {
     "file": "02_mieter.sql",
-    "generated": "2025-06-12T14:40:24.285995",
+    "generated": "2025-06-16T03:33:44.504702",
     "driver": "firebird-driver",
     "charset": "UTF8",
     "business_purpose": "Komplette Mieter-Verwaltung mit Vertragsdaten, Banking und Miethistorie",
     "main_tables": [],
     "total_rows": 189,
-    "execution_time_seconds": 0.018835
+    "execution_time_seconds": 0.018495
   },
   "columns": [
     "BEWNR",

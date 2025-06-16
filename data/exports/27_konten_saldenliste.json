@@ -1,7 +1,7 @@
 {
   "query_info": {
     "file": "27_konten_saldenliste.sql",
-    "generated": "2025-06-12T14:41:15.416792",
+    "generated": "2025-06-16T03:34:40.402775",
     "driver": "firebird-driver",
     "charset": "ISO8859_1",
     "business_purpose": "Saldenliste aller NK-relevanten Konten mit Finanzwerten",
@@ -14,7 +14,7 @@
       "Added actual financial amounts instead of just counts"
     ],
     "total_rows": 398,
-    "execution_time_seconds": 44.443412
+    "execution_time_seconds": 49.218228
   },
   "columns": [
     "ONR",

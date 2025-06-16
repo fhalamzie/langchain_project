@@ -1,0 +1,10 @@
+{
+  "entity_name": "mietpreisbremse",
+  "german_title": "Mietpreisbremse-Obergrenze",
+  "description": "rent cap",
+  "primary_key": null,
+  "display_field": null,
+  "relationships": {},
+  "query_templates": [],
+  "fields": []
+}

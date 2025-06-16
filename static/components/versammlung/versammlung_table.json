@@ -1,0 +1,11 @@
+{
+  "name": "versammlung_table",
+  "type": "table",
+  "description": "Table component for Eigentümerversammlung",
+  "styles": [
+    "table",
+    "table-zebra",
+    "overflow-x-auto"
+  ],
+  "scripts": null
+}

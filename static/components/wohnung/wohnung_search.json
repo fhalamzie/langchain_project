@@ -1,0 +1,12 @@
+{
+  "name": "wohnung_search",
+  "type": "search",
+  "description": "Search component for Mieteinheit / Apartment",
+  "styles": [
+    "form-control",
+    "input",
+    "select",
+    "checkbox"
+  ],
+  "scripts": null
+}

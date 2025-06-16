@@ -1,0 +1,10 @@
+{
+  "entity_name": "umlageschlüssel",
+  "german_title": "Kostenumlage-Schlüssel",
+  "description": "allocation key",
+  "primary_key": null,
+  "display_field": null,
+  "relationships": {},
+  "query_templates": [],
+  "fields": []
+}

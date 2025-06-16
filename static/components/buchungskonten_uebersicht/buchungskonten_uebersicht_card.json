@@ -1,0 +1,11 @@
+{
+  "name": "buchungskonten_uebersicht_card",
+  "type": "card",
+  "description": "Card component for Buchungskonten_Uebersicht",
+  "styles": [
+    "card",
+    "stats",
+    "stat"
+  ],
+  "scripts": null
+}

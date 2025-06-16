@@ -1,0 +1,435 @@
+<form 
+    id="objektbezogene_sachkonten-form"
+    hx-post="/api/objektbezogene_sachkonten"
+    hx-trigger="submit"
+    hx-target="#result-container"
+    hx-swap="innerHTML"
+    hx-indicator="#loading-indicator"
+    class="space-y-6"
+    x-data="{ formValid: false, errors: {} }"
+>
+    <div class="card bg-base-100 shadow-xl">
+        <div class="card-body">
+            <h2 class="card-title text-2xl mb-6">
+                <i class="fas fa-building mr-2"></i>
+                Objektbezogene_Sachkonten
+            </h2>
+            
+            <!-- Loading Indicator -->
+            <div id="loading-indicator" class="htmx-indicator">
+                <div class="flex justify-center items-center p-4">
+                    <span class="loading loading-spinner loading-lg"></span>
+                </div>
+            </div>
+
+            <!-- Identifikatoren -->
+            <div class="divider">Identifikatoren</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                <div class="form-control w-full">
+                    <label class="label" for="ONR">
+                        <span class="label-text">
+                            Gebäude / Liegenschaft
+                             <span class="text-error">*</span>
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="ONR"
+                        name="ONR"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        required required
+                        
+                        @blur="validateField('ONR')"
+                    />
+                    <label class="label" x-show="errors.ONR">
+                        <span class="label-text-alt text-error" x-text="errors.ONR"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="KNR">
+                        <span class="label-text">
+                            Finanzkonto für Buchhaltung
+                             <span class="text-error">*</span>
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="KNR"
+                        name="KNR"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        required required
+                        
+                        @blur="validateField('KNR')"
+                    />
+                    <label class="label" x-show="errors.KNR">
+                        <span class="label-text-alt text-error" x-text="errors.KNR"></span>
+                    </label>
+                </div>
+
+            </div>
+
+            <!-- Allgemeine Informationen -->
+            <div class="divider">Allgemeine Informationen</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                <div class="form-control w-full">
+                    <label class="label" for="OBJEKT_KURZ">
+                        <span class="label-text">
+                            Objekt Kurz
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="OBJEKT_KURZ"
+                        name="OBJEKT_KURZ"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('OBJEKT_KURZ')"
+                    />
+                    <label class="label" x-show="errors.OBJEKT_KURZ">
+                        <span class="label-text-alt text-error" x-text="errors.OBJEKT_KURZ"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="KONTO_CODE">
+                        <span class="label-text">
+                            Konto Code
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="KONTO_CODE"
+                        name="KONTO_CODE"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('KONTO_CODE')"
+                    />
+                    <label class="label" x-show="errors.KONTO_CODE">
+                        <span class="label-text-alt text-error" x-text="errors.KONTO_CODE"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="KONTO_BEZEICHNUNG">
+                        <span class="label-text">
+                            Konto Bezeichnung
+                             <span class="text-error">*</span>
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="KONTO_BEZEICHNUNG"
+                        name="KONTO_BEZEICHNUNG"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        required required
+                        
+                        @blur="validateField('KONTO_BEZEICHNUNG')"
+                    />
+                    <label class="label" x-show="errors.KONTO_BEZEICHNUNG">
+                        <span class="label-text-alt text-error" x-text="errors.KONTO_BEZEICHNUNG"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label cursor-pointer">
+                        <span class="label-text">Betriebskosten nach BetrKV</span>
+                        <input 
+                            type="checkbox"
+                            id="KKLASSE"
+                            name="KKLASSE"
+                            class="checkbox checkbox-primary"
+                            value="1"
+                        />
+                    </label>
+                </div>
+
+                <div class="form-control w-full md:col-span-2">
+                    <label class="label" for="KONTENKLASSE_TEXT">
+                        <span class="label-text">
+                            Kontenklasse Text
+                            
+                        </span>
+                    </label>
+                    <textarea 
+                        id="KONTENKLASSE_TEXT"
+                        name="KONTENKLASSE_TEXT"
+                        placeholder="None"
+                        class="textarea textarea-bordered w-full"
+                        rows="4"
+                        
+                    ></textarea>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label cursor-pointer">
+                        <span class="label-text">Einnahme Ausgabe</span>
+                        <input 
+                            type="checkbox"
+                            id="EINNAHME_AUSGABE"
+                            name="EINNAHME_AUSGABE"
+                            class="checkbox checkbox-primary"
+                            value="1"
+                        />
+                    </label>
+                </div>
+
+                <div class="form-control w-full md:col-span-2">
+                    <label class="label" for="EA_TEXT">
+                        <span class="label-text">
+                            Ea Text
+                            
+                        </span>
+                    </label>
+                    <textarea 
+                        id="EA_TEXT"
+                        name="EA_TEXT"
+                        placeholder="None"
+                        class="textarea textarea-bordered w-full"
+                        rows="4"
+                        
+                    ></textarea>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="INAKTIV">
+                        <span class="label-text">
+                            Inaktiv
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="INAKTIV"
+                        name="INAKTIV"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('INAKTIV')"
+                    />
+                    <label class="label" x-show="errors.INAKTIV">
+                        <span class="label-text-alt text-error" x-text="errors.INAKTIV"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="KONTO_STATUS">
+                        <span class="label-text">
+                            Konto Status
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="KONTO_STATUS"
+                        name="KONTO_STATUS"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('KONTO_STATUS')"
+                    />
+                    <label class="label" x-show="errors.KONTO_STATUS">
+                        <span class="label-text-alt text-error" x-text="errors.KONTO_STATUS"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="UMLAGEFAEHIGKEIT">
+                        <span class="label-text">
+                            Cost apportionability per German law
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="UMLAGEFAEHIGKEIT"
+                        name="UMLAGEFAEHIGKEIT"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('UMLAGEFAEHIGKEIT')"
+                    />
+                    <label class="label" x-show="errors.UMLAGEFAEHIGKEIT">
+                        <span class="label-text-alt text-error" x-text="errors.UMLAGEFAEHIGKEIT"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="OFFENE_POSTEN">
+                        <span class="label-text">
+                            Offene Posten
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="OFFENE_POSTEN"
+                        name="OFFENE_POSTEN"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('OFFENE_POSTEN')"
+                    />
+                    <label class="label" x-show="errors.OFFENE_POSTEN">
+                        <span class="label-text-alt text-error" x-text="errors.OFFENE_POSTEN"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="SKR_BEZEICHNUNG">
+                        <span class="label-text">
+                            Skr Bezeichnung
+                             <span class="text-error">*</span>
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="SKR_BEZEICHNUNG"
+                        name="SKR_BEZEICHNUNG"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        required required
+                        
+                        @blur="validateField('SKR_BEZEICHNUNG')"
+                    />
+                    <label class="label" x-show="errors.SKR_BEZEICHNUNG">
+                        <span class="label-text-alt text-error" x-text="errors.SKR_BEZEICHNUNG"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="KONTOAKTIVITAET">
+                        <span class="label-text">
+                            Kontoaktivitaet
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="KONTOAKTIVITAET"
+                        name="KONTOAKTIVITAET"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('KONTOAKTIVITAET')"
+                    />
+                    <label class="label" x-show="errors.KONTOAKTIVITAET">
+                        <span class="label-text-alt text-error" x-text="errors.KONTOAKTIVITAET"></span>
+                    </label>
+                </div>
+
+            </div>
+
+            <!-- Adresse -->
+            <div class="divider">Adresse</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                <div class="form-control w-full">
+                    <label class="label" for="OBJEKT_STRASSE">
+                        <span class="label-text">
+                            Straße
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="OBJEKT_STRASSE"
+                        name="OBJEKT_STRASSE"
+                        placeholder="Musterstraße 1"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('OBJEKT_STRASSE')"
+                    />
+                    <label class="label" x-show="errors.OBJEKT_STRASSE">
+                        <span class="label-text-alt text-error" x-text="errors.OBJEKT_STRASSE"></span>
+                    </label>
+                </div>
+
+            </div>
+
+            <!-- Finanzinformationen -->
+            <div class="divider">Finanzinformationen</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                <div class="form-control w-full">
+                    <label class="label" for="KOSTENART">
+                        <span class="label-text">
+                            Kostenart
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="KOSTENART"
+                        name="KOSTENART"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('KOSTENART')"
+                    />
+                    <label class="label" x-show="errors.KOSTENART">
+                        <span class="label-text-alt text-error" x-text="errors.KOSTENART"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="AKTUELLER_SALDO">
+                        <span class="label-text">
+                            Saldo
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="AKTUELLER_SALDO"
+                        name="AKTUELLER_SALDO"
+                        placeholder="0,00 €"
+                        class="input input-bordered w-full"
+                        min="0"
+                        step="0.01" min="0"
+                        @blur="validateField('AKTUELLER_SALDO')"
+                    />
+                    <label class="label" x-show="errors.AKTUELLER_SALDO">
+                        <span class="label-text-alt text-error" x-text="errors.AKTUELLER_SALDO"></span>
+                    </label>
+                </div>
+
+            </div>
+
+            <!-- Form Actions -->
+            <div class="card-actions justify-end mt-6">
+                <button type="reset" class="btn btn-ghost">
+                    <i class="fas fa-undo mr-2"></i>
+                    Zurücksetzen
+                </button>
+                <button type="submit" 
+                        class="btn btn-primary"
+                        :disabled="!formValid">
+                    <i class="fas fa-save mr-2"></i>
+                    Speichern
+                </button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<!-- Result Container -->
+<div id="result-container" class="mt-6"></div>

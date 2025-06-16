@@ -1,0 +1,10 @@
+{
+  "entity_name": "servicequalität",
+  "german_title": "Qualität der Hausverwaltung",
+  "description": "service quality",
+  "primary_key": null,
+  "display_field": null,
+  "relationships": {},
+  "query_templates": [],
+  "fields": []
+}

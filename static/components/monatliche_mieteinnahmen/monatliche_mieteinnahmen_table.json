@@ -1,0 +1,11 @@
+{
+  "name": "monatliche_mieteinnahmen_table",
+  "type": "table",
+  "description": "Table component for Monatliche_Mieteinnahmen",
+  "styles": [
+    "table",
+    "table-zebra",
+    "overflow-x-auto"
+  ],
+  "scripts": null
+}

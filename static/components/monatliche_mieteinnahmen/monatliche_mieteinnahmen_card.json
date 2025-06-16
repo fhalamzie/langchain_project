@@ -1,0 +1,11 @@
+{
+  "name": "monatliche_mieteinnahmen_card",
+  "type": "card",
+  "description": "Card component for Monatliche_Mieteinnahmen",
+  "styles": [
+    "card",
+    "stats",
+    "stat"
+  ],
+  "scripts": null
+}

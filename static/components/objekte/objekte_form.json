@@ -1,0 +1,13 @@
+{
+  "name": "objekte_form",
+  "type": "form",
+  "description": "Form component for Objekte",
+  "styles": [
+    "form-control",
+    "input",
+    "select",
+    "textarea",
+    "btn"
+  ],
+  "scripts": null
+}

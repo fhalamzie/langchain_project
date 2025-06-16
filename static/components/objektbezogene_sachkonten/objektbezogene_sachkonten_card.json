@@ -1,0 +1,11 @@
+{
+  "name": "objektbezogene_sachkonten_card",
+  "type": "card",
+  "description": "Card component for Objektbezogene_Sachkonten",
+  "styles": [
+    "card",
+    "stats",
+    "stat"
+  ],
+  "scripts": null
+}

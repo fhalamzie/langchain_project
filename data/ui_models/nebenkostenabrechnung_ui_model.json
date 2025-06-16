@@ -1,0 +1,10 @@
+{
+  "entity_name": "nebenkostenabrechnung",
+  "german_title": "Jährliche Nebenkostenabrechnung",
+  "description": "NK-abrechnung",
+  "primary_key": null,
+  "display_field": null,
+  "relationships": {},
+  "query_templates": [],
+  "fields": []
+}

@@ -1,13 +1,13 @@
 {
   "query_info": {
     "file": "13_weg_eigentuemer.sql",
-    "generated": "2025-06-12T14:40:26.297365",
+    "generated": "2025-06-16T03:33:46.580996",
     "driver": "firebird-driver",
     "charset": "ISO8859_1",
     "business_purpose": "Detaillierte WEG-Eigentümer mit Eigentumsanteilen und Zahlungsverhalten",
     "main_tables": [],
     "total_rows": 363,
-    "execution_time_seconds": 0.023479
+    "execution_time_seconds": 0.023535
   },
   "columns": [
     "EIGNR",

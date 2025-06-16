@@ -1,0 +1,13 @@
+{
+  "name": "eigentuemer_zahlungshistorie_form",
+  "type": "form",
+  "description": "Form component for Eigentuemer_Zahlungshistorie",
+  "styles": [
+    "form-control",
+    "input",
+    "select",
+    "textarea",
+    "btn"
+  ],
+  "scripts": null
+}

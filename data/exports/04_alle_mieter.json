@@ -1,13 +1,13 @@
 {
   "query_info": {
     "file": "04_alle_mieter.sql",
-    "generated": "2025-06-12T14:40:25.112973",
+    "generated": "2025-06-16T03:33:45.382518",
     "driver": "firebird-driver",
     "charset": "UTF8",
     "business_purpose": "Vollständige Mieterhistorie für Analysen und Nachverfolgung",
     "main_tables": [],
     "total_rows": 698,
-    "execution_time_seconds": 0.017314
+    "execution_time_seconds": 0.018414
   },
   "columns": [
     "KNR",
@@ -2212,7 +2212,7 @@
       "NETTOKALTMIETE": 370.0,
       "NEBENKOSTEN": 50.0,
       "WARMMIETE": null,
-      "MIETSTATUS": "KUERZLICH BEENDET",
+      "MIETSTATUS": "BEENDET          ",
       "WOHNUNGSBEZEICHNUNG": "Haus 76 - EG rechts",
       "WOHNUNGSTYP": "Wohnung",
       "OBJEKT_KURZ": "HOCHF76+78",

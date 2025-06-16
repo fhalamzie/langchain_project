@@ -1,0 +1,12 @@
+{
+  "name": "sonderentnahmen_search",
+  "type": "search",
+  "description": "Search component for Sonderentnahmen",
+  "styles": [
+    "form-control",
+    "input",
+    "select",
+    "checkbox"
+  ],
+  "scripts": null
+}

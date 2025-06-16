@@ -1,0 +1,11 @@
+{
+  "name": "objekte_portfolio_table",
+  "type": "table",
+  "description": "Table component for Objekte_Portfolio",
+  "styles": [
+    "table",
+    "table-zebra",
+    "overflow-x-auto"
+  ],
+  "scripts": null
+}

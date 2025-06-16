@@ -1,0 +1,1416 @@
+<form 
+    id="mieter-form"
+    hx-post="/api/mieter"
+    hx-trigger="submit"
+    hx-target="#result-container"
+    hx-swap="innerHTML"
+    hx-indicator="#loading-indicator"
+    class="space-y-6"
+    x-data="{ formValid: false, errors: {} }"
+>
+    <div class="card bg-base-100 shadow-xl">
+        <div class="card-body">
+            <h2 class="card-title text-2xl mb-6">
+                <i class="fas fa-building mr-2"></i>
+                Wohnungsmieter / Bewohner
+            </h2>
+            
+            <!-- Loading Indicator -->
+            <div id="loading-indicator" class="htmx-indicator">
+                <div class="flex justify-center items-center p-4">
+                    <span class="loading loading-spinner loading-lg"></span>
+                </div>
+            </div>
+
+            <!-- Identifikatoren -->
+            <div class="divider">Identifikatoren</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                <div class="form-control w-full">
+                    <label class="label" for="BEWNR">
+                        <span class="label-text">
+                            Wohnungsmieter / Bewohner
+                             <span class="text-error">*</span>
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="BEWNR"
+                        name="BEWNR"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        required required
+                        
+                        @blur="validateField('BEWNR')"
+                    />
+                    <label class="label" x-show="errors.BEWNR">
+                        <span class="label-text-alt text-error" x-text="errors.BEWNR"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="ONR">
+                        <span class="label-text">
+                            Gebäude / Liegenschaft
+                             <span class="text-error">*</span>
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="ONR"
+                        name="ONR"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        required required
+                        
+                        @blur="validateField('ONR')"
+                    />
+                    <label class="label" x-show="errors.ONR">
+                        <span class="label-text-alt text-error" x-text="errors.ONR"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="KNR">
+                        <span class="label-text">
+                            Finanzkonto für Buchhaltung
+                             <span class="text-error">*</span>
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="KNR"
+                        name="KNR"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        required required
+                        
+                        @blur="validateField('KNR')"
+                    />
+                    <label class="label" x-show="errors.KNR">
+                        <span class="label-text-alt text-error" x-text="errors.KNR"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="ENR">
+                        <span class="label-text">
+                            Mieteinheit / Apartment
+                             <span class="text-error">*</span>
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="ENR"
+                        name="ENR"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        required required
+                        
+                        @blur="validateField('ENR')"
+                    />
+                    <label class="label" x-show="errors.ENR">
+                        <span class="label-text-alt text-error" x-text="errors.ENR"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="ID">
+                        <span class="label-text">
+                            Id
+                             <span class="text-error">*</span>
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="ID"
+                        name="ID"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        required required
+                        
+                        @blur="validateField('ID')"
+                    />
+                    <label class="label" x-show="errors.ID">
+                        <span class="label-text-alt text-error" x-text="errors.ID"></span>
+                    </label>
+                </div>
+
+            </div>
+
+            <!-- Allgemeine Informationen -->
+            <div class="divider">Allgemeine Informationen</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                <div class="form-control w-full">
+                    <label class="label" for="BANREDE">
+                        <span class="label-text">
+                            Banrede
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="BANREDE"
+                        name="BANREDE"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('BANREDE')"
+                    />
+                    <label class="label" x-show="errors.BANREDE">
+                        <span class="label-text-alt text-error" x-text="errors.BANREDE"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="BANREDE2">
+                        <span class="label-text">
+                            Banrede2
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="BANREDE2"
+                        name="BANREDE2"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('BANREDE2')"
+                    />
+                    <label class="label" x-show="errors.BANREDE2">
+                        <span class="label-text-alt text-error" x-text="errors.BANREDE2"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="BBRIEFAN">
+                        <span class="label-text">
+                            Bbriefan
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="BBRIEFAN"
+                        name="BBRIEFAN"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('BBRIEFAN')"
+                    />
+                    <label class="label" x-show="errors.BBRIEFAN">
+                        <span class="label-text-alt text-error" x-text="errors.BBRIEFAN"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="BBRIEFAN2">
+                        <span class="label-text">
+                            Bbriefan2
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="BBRIEFAN2"
+                        name="BBRIEFAN2"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('BBRIEFAN2')"
+                    />
+                    <label class="label" x-show="errors.BBRIEFAN2">
+                        <span class="label-text-alt text-error" x-text="errors.BBRIEFAN2"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="BVNAME">
+                        <span class="label-text">
+                            Wohnungsmieter / Bewohner
+                             <span class="text-error">*</span>
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="BVNAME"
+                        name="BVNAME"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        required required
+                        
+                        @blur="validateField('BVNAME')"
+                    />
+                    <label class="label" x-show="errors.BVNAME">
+                        <span class="label-text-alt text-error" x-text="errors.BVNAME"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="BNAME">
+                        <span class="label-text">
+                            Wohnungsmieter / Bewohner
+                             <span class="text-error">*</span>
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="BNAME"
+                        name="BNAME"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        required required
+                        
+                        @blur="validateField('BNAME')"
+                    />
+                    <label class="label" x-show="errors.BNAME">
+                        <span class="label-text-alt text-error" x-text="errors.BNAME"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="BVNAME2">
+                        <span class="label-text">
+                            Bvname2
+                             <span class="text-error">*</span>
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="BVNAME2"
+                        name="BVNAME2"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        required required
+                        
+                        @blur="validateField('BVNAME2')"
+                    />
+                    <label class="label" x-show="errors.BVNAME2">
+                        <span class="label-text-alt text-error" x-text="errors.BVNAME2"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="BNAME2">
+                        <span class="label-text">
+                            Bname2
+                             <span class="text-error">*</span>
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="BNAME2"
+                        name="BNAME2"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        required required
+                        
+                        @blur="validateField('BNAME2')"
+                    />
+                    <label class="label" x-show="errors.BNAME2">
+                        <span class="label-text-alt text-error" x-text="errors.BNAME2"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="BZUSATZ">
+                        <span class="label-text">
+                            Bzusatz
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="BZUSATZ"
+                        name="BZUSATZ"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('BZUSATZ')"
+                    />
+                    <label class="label" x-show="errors.BZUSATZ">
+                        <span class="label-text-alt text-error" x-text="errors.BZUSATZ"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="BZUSATZ2">
+                        <span class="label-text">
+                            Bzusatz2
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="BZUSATZ2"
+                        name="BZUSATZ2"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('BZUSATZ2')"
+                    />
+                    <label class="label" x-show="errors.BZUSATZ2">
+                        <span class="label-text-alt text-error" x-text="errors.BZUSATZ2"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="BFIRMA">
+                        <span class="label-text">
+                            Bfirma
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="BFIRMA"
+                        name="BFIRMA"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('BFIRMA')"
+                    />
+                    <label class="label" x-show="errors.BFIRMA">
+                        <span class="label-text-alt text-error" x-text="errors.BFIRMA"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="BFIRMANAME">
+                        <span class="label-text">
+                            Bfirmaname
+                             <span class="text-error">*</span>
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="BFIRMANAME"
+                        name="BFIRMANAME"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        required required
+                        
+                        @blur="validateField('BFIRMANAME')"
+                    />
+                    <label class="label" x-show="errors.BFIRMANAME">
+                        <span class="label-text-alt text-error" x-text="errors.BFIRMANAME"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="BBANK">
+                        <span class="label-text">
+                            Bbank
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="BBANK"
+                        name="BBANK"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('BBANK')"
+                    />
+                    <label class="label" x-show="errors.BBANK">
+                        <span class="label-text-alt text-error" x-text="errors.BBANK"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="BBLZ">
+                        <span class="label-text">
+                            Bblz
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="BBLZ"
+                        name="BBLZ"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('BBLZ')"
+                    />
+                    <label class="label" x-show="errors.BBLZ">
+                        <span class="label-text-alt text-error" x-text="errors.BBLZ"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="BKONTO">
+                        <span class="label-text">
+                            Bkonto
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="BKONTO"
+                        name="BKONTO"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('BKONTO')"
+                    />
+                    <label class="label" x-show="errors.BKONTO">
+                        <span class="label-text-alt text-error" x-text="errors.BKONTO"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="BBIC">
+                        <span class="label-text">
+                            Bbic
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="BBIC"
+                        name="BBIC"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('BBIC')"
+                    />
+                    <label class="label" x-show="errors.BBIC">
+                        <span class="label-text-alt text-error" x-text="errors.BBIC"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="BIBAN">
+                        <span class="label-text">
+                            Biban
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="BIBAN"
+                        name="BIBAN"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('BIBAN')"
+                    />
+                    <label class="label" x-show="errors.BIBAN">
+                        <span class="label-text-alt text-error" x-text="errors.BIBAN"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="BKONTOINH">
+                        <span class="label-text">
+                            Bkontoinh
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="BKONTOINH"
+                        name="BKONTOINH"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('BKONTOINH')"
+                    />
+                    <label class="label" x-show="errors.BKONTOINH">
+                        <span class="label-text-alt text-error" x-text="errors.BKONTOINH"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="VABSCHLUS">
+                        <span class="label-text">
+                            Vabschlus
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="VABSCHLUS"
+                        name="VABSCHLUS"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('VABSCHLUS')"
+                    />
+                    <label class="label" x-show="errors.VABSCHLUS">
+                        <span class="label-text-alt text-error" x-text="errors.VABSCHLUS"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="VERTRAGSSTATUS">
+                        <span class="label-text">
+                            Vertragsstatus
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="VERTRAGSSTATUS"
+                        name="VERTRAGSSTATUS"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('VERTRAGSSTATUS')"
+                    />
+                    <label class="label" x-show="errors.VERTRAGSSTATUS">
+                        <span class="label-text-alt text-error" x-text="errors.VERTRAGSSTATUS"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="MIETSCHULDEN">
+                        <span class="label-text">
+                            Mietschulden
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="MIETSCHULDEN"
+                        name="MIETSCHULDEN"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('MIETSCHULDEN')"
+                    />
+                    <label class="label" x-show="errors.MIETSCHULDEN">
+                        <span class="label-text-alt text-error" x-text="errors.MIETSCHULDEN"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="ZAHLUNGSSTATUS">
+                        <span class="label-text">
+                            Zahlungsstatus
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="ZAHLUNGSSTATUS"
+                        name="ZAHLUNGSSTATUS"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('ZAHLUNGSSTATUS')"
+                    />
+                    <label class="label" x-show="errors.ZAHLUNGSSTATUS">
+                        <span class="label-text-alt text-error" x-text="errors.ZAHLUNGSSTATUS"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full md:col-span-2">
+                    <label class="label" for="VERTRAGSNOTIZ">
+                        <span class="label-text">
+                            Vertragsnotiz
+                            
+                        </span>
+                    </label>
+                    <textarea 
+                        id="VERTRAGSNOTIZ"
+                        name="VERTRAGSNOTIZ"
+                        placeholder="None"
+                        class="textarea textarea-bordered w-full"
+                        rows="4"
+                        
+                    ></textarea>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="LAGE">
+                        <span class="label-text">
+                            Lage
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="LAGE"
+                        name="LAGE"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('LAGE')"
+                    />
+                    <label class="label" x-show="errors.LAGE">
+                        <span class="label-text-alt text-error" x-text="errors.LAGE"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="LIEGENSCHAFTSKUERZEL">
+                        <span class="label-text">
+                            Liegenschaftskuerzel
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="LIEGENSCHAFTSKUERZEL"
+                        name="LIEGENSCHAFTSKUERZEL"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('LIEGENSCHAFTSKUERZEL')"
+                    />
+                    <label class="label" x-show="errors.LIEGENSCHAFTSKUERZEL">
+                        <span class="label-text-alt text-error" x-text="errors.LIEGENSCHAFTSKUERZEL"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="EIGENTUEMERKUERZEL">
+                        <span class="label-text">
+                            Eigentuemerkuerzel
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="EIGENTUEMERKUERZEL"
+                        name="EIGENTUEMERKUERZEL"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('EIGENTUEMERKUERZEL')"
+                    />
+                    <label class="label" x-show="errors.EIGENTUEMERKUERZEL">
+                        <span class="label-text-alt text-error" x-text="errors.EIGENTUEMERKUERZEL"></span>
+                    </label>
+                </div>
+
+            </div>
+
+            <!-- Kontaktdaten -->
+            <div class="divider">Kontaktdaten</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                <div class="form-control w-full">
+                    <label class="label" for="BTITEL">
+                        <span class="label-text">
+                            Telefon
+                             <span class="text-error">*</span>
+                        </span>
+                    </label>
+                    <input 
+                        type="tel"
+                        id="BTITEL"
+                        name="BTITEL"
+                        placeholder="+49 123 456789"
+                        class="input input-bordered w-full"
+                        required required phone
+                        
+                        @blur="validateField('BTITEL')"
+                    />
+                    <label class="label" x-show="errors.BTITEL">
+                        <span class="label-text-alt text-error" x-text="errors.BTITEL"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="BTITEL2">
+                        <span class="label-text">
+                            Telefon
+                             <span class="text-error">*</span>
+                        </span>
+                    </label>
+                    <input 
+                        type="tel"
+                        id="BTITEL2"
+                        name="BTITEL2"
+                        placeholder="+49 123 456789"
+                        class="input input-bordered w-full"
+                        required required phone
+                        
+                        @blur="validateField('BTITEL2')"
+                    />
+                    <label class="label" x-show="errors.BTITEL2">
+                        <span class="label-text-alt text-error" x-text="errors.BTITEL2"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="BTEL">
+                        <span class="label-text">
+                            Telefon
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="tel"
+                        id="BTEL"
+                        name="BTEL"
+                        placeholder="+49 123 456789"
+                        class="input input-bordered w-full"
+                        phone
+                        
+                        @blur="validateField('BTEL')"
+                    />
+                    <label class="label" x-show="errors.BTEL">
+                        <span class="label-text-alt text-error" x-text="errors.BTEL"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="BTEL2">
+                        <span class="label-text">
+                            Telefon
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="tel"
+                        id="BTEL2"
+                        name="BTEL2"
+                        placeholder="+49 123 456789"
+                        class="input input-bordered w-full"
+                        phone
+                        
+                        @blur="validateField('BTEL2')"
+                    />
+                    <label class="label" x-show="errors.BTEL2">
+                        <span class="label-text-alt text-error" x-text="errors.BTEL2"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="BEMAIL">
+                        <span class="label-text">
+                            E-Mail Adresse
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="BEMAIL"
+                        name="BEMAIL"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        maxlength="255"
+                        
+                        @blur="validateField('BEMAIL')"
+                    />
+                    <label class="label" x-show="errors.BEMAIL">
+                        <span class="label-text-alt text-error" x-text="errors.BEMAIL"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="BHANDY">
+                        <span class="label-text">
+                            Mobiltelefon
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="tel"
+                        id="BHANDY"
+                        name="BHANDY"
+                        placeholder="+49 123 456789"
+                        class="input input-bordered w-full"
+                        phone
+                        
+                        @blur="validateField('BHANDY')"
+                    />
+                    <label class="label" x-show="errors.BHANDY">
+                        <span class="label-text-alt text-error" x-text="errors.BHANDY"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="BTELBEW2">
+                        <span class="label-text">
+                            Telefon
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="tel"
+                        id="BTELBEW2"
+                        name="BTELBEW2"
+                        placeholder="+49 123 456789"
+                        class="input input-bordered w-full"
+                        phone
+                        
+                        @blur="validateField('BTELBEW2')"
+                    />
+                    <label class="label" x-show="errors.BTELBEW2">
+                        <span class="label-text-alt text-error" x-text="errors.BTELBEW2"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="BTEL2BEW2">
+                        <span class="label-text">
+                            Telefon
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="tel"
+                        id="BTEL2BEW2"
+                        name="BTEL2BEW2"
+                        placeholder="+49 123 456789"
+                        class="input input-bordered w-full"
+                        phone
+                        
+                        @blur="validateField('BTEL2BEW2')"
+                    />
+                    <label class="label" x-show="errors.BTEL2BEW2">
+                        <span class="label-text-alt text-error" x-text="errors.BTEL2BEW2"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="BEMAILBEW2">
+                        <span class="label-text">
+                            E-Mail Adresse
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="BEMAILBEW2"
+                        name="BEMAILBEW2"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        maxlength="255"
+                        
+                        @blur="validateField('BEMAILBEW2')"
+                    />
+                    <label class="label" x-show="errors.BEMAILBEW2">
+                        <span class="label-text-alt text-error" x-text="errors.BEMAILBEW2"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="BHANDYBEW2">
+                        <span class="label-text">
+                            Mobiltelefon
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="tel"
+                        id="BHANDYBEW2"
+                        name="BHANDYBEW2"
+                        placeholder="+49 123 456789"
+                        class="input input-bordered w-full"
+                        phone
+                        
+                        @blur="validateField('BHANDYBEW2')"
+                    />
+                    <label class="label" x-show="errors.BHANDYBEW2">
+                        <span class="label-text-alt text-error" x-text="errors.BHANDYBEW2"></span>
+                    </label>
+                </div>
+
+            </div>
+
+            <!-- Adresse -->
+            <div class="divider">Adresse</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                <div class="form-control w-full">
+                    <label class="label" for="BSTR">
+                        <span class="label-text">
+                            Wohnungsmieter / Bewohner
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="BSTR"
+                        name="BSTR"
+                        placeholder="Musterstraße 1"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('BSTR')"
+                    />
+                    <label class="label" x-show="errors.BSTR">
+                        <span class="label-text-alt text-error" x-text="errors.BSTR"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="BPLZORT">
+                        <span class="label-text">
+                            Wohnungsmieter / Bewohner
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="BPLZORT"
+                        name="BPLZORT"
+                        placeholder="12345"
+                        class="input input-bordered w-full"
+                        pattern="\d{5}"
+                        
+                        @blur="validateField('BPLZORT')"
+                    />
+                    <label class="label" x-show="errors.BPLZORT">
+                        <span class="label-text-alt text-error" x-text="errors.BPLZORT"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="BSTR2">
+                        <span class="label-text">
+                            Straße
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="BSTR2"
+                        name="BSTR2"
+                        placeholder="Musterstraße 1"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('BSTR2')"
+                    />
+                    <label class="label" x-show="errors.BSTR2">
+                        <span class="label-text-alt text-error" x-text="errors.BSTR2"></span>
+                    </label>
+                </div>
+
+            </div>
+
+            <!-- Zeitangaben -->
+            <div class="divider">Zeitangaben</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                <div class="form-control w-full">
+                    <label class="label" for="VBEGINN">
+                        <span class="label-text">
+                            Mietvertrag mit Konditionen
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="date"
+                        id="VBEGINN"
+                        name="VBEGINN"
+                        placeholder="TT.MM.JJJJ"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('VBEGINN')"
+                    />
+                    <label class="label" x-show="errors.VBEGINN">
+                        <span class="label-text-alt text-error" x-text="errors.VBEGINN"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="VENDE">
+                        <span class="label-text">
+                            Mietvertrag mit Konditionen
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="date"
+                        id="VENDE"
+                        name="VENDE"
+                        placeholder="TT.MM.JJJJ"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('VENDE')"
+                    />
+                    <label class="label" x-show="errors.VENDE">
+                        <span class="label-text-alt text-error" x-text="errors.VENDE"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="MIETDATUM1">
+                        <span class="label-text">
+                            Mietdatum1
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="date"
+                        id="MIETDATUM1"
+                        name="MIETDATUM1"
+                        placeholder="TT.MM.JJJJ"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('MIETDATUM1')"
+                    />
+                    <label class="label" x-show="errors.MIETDATUM1">
+                        <span class="label-text-alt text-error" x-text="errors.MIETDATUM1"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="MIETDATUM2">
+                        <span class="label-text">
+                            Mietdatum2
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="date"
+                        id="MIETDATUM2"
+                        name="MIETDATUM2"
+                        placeholder="TT.MM.JJJJ"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('MIETDATUM2')"
+                    />
+                    <label class="label" x-show="errors.MIETDATUM2">
+                        <span class="label-text-alt text-error" x-text="errors.MIETDATUM2"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="MIETDATUM3">
+                        <span class="label-text">
+                            Mietdatum3
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="date"
+                        id="MIETDATUM3"
+                        name="MIETDATUM3"
+                        placeholder="TT.MM.JJJJ"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('MIETDATUM3')"
+                    />
+                    <label class="label" x-show="errors.MIETDATUM3">
+                        <span class="label-text-alt text-error" x-text="errors.MIETDATUM3"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="MIETDATUM4">
+                        <span class="label-text">
+                            Mietdatum4
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="date"
+                        id="MIETDATUM4"
+                        name="MIETDATUM4"
+                        placeholder="TT.MM.JJJJ"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('MIETDATUM4')"
+                    />
+                    <label class="label" x-show="errors.MIETDATUM4">
+                        <span class="label-text-alt text-error" x-text="errors.MIETDATUM4"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="GEBURTSDATUM">
+                        <span class="label-text">
+                            Geburtsdatum
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="date"
+                        id="GEBURTSDATUM"
+                        name="GEBURTSDATUM"
+                        placeholder="TT.MM.JJJJ"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('GEBURTSDATUM')"
+                    />
+                    <label class="label" x-show="errors.GEBURTSDATUM">
+                        <span class="label-text-alt text-error" x-text="errors.GEBURTSDATUM"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="GEBURTSDATUM2">
+                        <span class="label-text">
+                            Geburtsdatum2
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="date"
+                        id="GEBURTSDATUM2"
+                        name="GEBURTSDATUM2"
+                        placeholder="TT.MM.JJJJ"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('GEBURTSDATUM2')"
+                    />
+                    <label class="label" x-show="errors.GEBURTSDATUM2">
+                        <span class="label-text-alt text-error" x-text="errors.GEBURTSDATUM2"></span>
+                    </label>
+                </div>
+
+            </div>
+
+            <!-- Finanzinformationen -->
+            <div class="divider">Finanzinformationen</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                <div class="form-control w-full">
+                    <label class="label" for="KALTMIETE">
+                        <span class="label-text">
+                            Kaltmiete
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="KALTMIETE"
+                        name="KALTMIETE"
+                        placeholder="0,00 €"
+                        class="input input-bordered w-full"
+                        min="0"
+                        step="0.01" min="0"
+                        @blur="validateField('KALTMIETE')"
+                    />
+                    <label class="label" x-show="errors.KALTMIETE">
+                        <span class="label-text-alt text-error" x-text="errors.KALTMIETE"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="GARAGENMIETE">
+                        <span class="label-text">
+                            Garagenmiete
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="GARAGENMIETE"
+                        name="GARAGENMIETE"
+                        placeholder="0,00 €"
+                        class="input input-bordered w-full"
+                        min="0"
+                        step="0.01" min="0"
+                        @blur="validateField('GARAGENMIETE')"
+                    />
+                    <label class="label" x-show="errors.GARAGENMIETE">
+                        <span class="label-text-alt text-error" x-text="errors.GARAGENMIETE"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="BETRIEBSKOSTEN">
+                        <span class="label-text">
+                            Betriebskosten-Vorauszahlung
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="BETRIEBSKOSTEN"
+                        name="BETRIEBSKOSTEN"
+                        placeholder="0,00 €"
+                        class="input input-bordered w-full"
+                        min="0"
+                        step="0.01" min="0"
+                        @blur="validateField('BETRIEBSKOSTEN')"
+                    />
+                    <label class="label" x-show="errors.BETRIEBSKOSTEN">
+                        <span class="label-text-alt text-error" x-text="errors.BETRIEBSKOSTEN"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="HEIZKOSTEN">
+                        <span class="label-text">
+                            Heizkosten
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="HEIZKOSTEN"
+                        name="HEIZKOSTEN"
+                        placeholder="0,00 €"
+                        class="input input-bordered w-full"
+                        min="0"
+                        step="0.01" min="0"
+                        @blur="validateField('HEIZKOSTEN')"
+                    />
+                    <label class="label" x-show="errors.HEIZKOSTEN">
+                        <span class="label-text-alt text-error" x-text="errors.HEIZKOSTEN"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="WARMMIETE_AKTUELL">
+                        <span class="label-text">
+                            Warmmiete
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="WARMMIETE_AKTUELL"
+                        name="WARMMIETE_AKTUELL"
+                        placeholder="0,00 €"
+                        class="input input-bordered w-full"
+                        min="0"
+                        step="0.01" min="0"
+                        @blur="validateField('WARMMIETE_AKTUELL')"
+                    />
+                    <label class="label" x-show="errors.WARMMIETE_AKTUELL">
+                        <span class="label-text-alt text-error" x-text="errors.WARMMIETE_AKTUELL"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="MIETE1">
+                        <span class="label-text">
+                            Miete1
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="MIETE1"
+                        name="MIETE1"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('MIETE1')"
+                    />
+                    <label class="label" x-show="errors.MIETE1">
+                        <span class="label-text-alt text-error" x-text="errors.MIETE1"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="MIETE2">
+                        <span class="label-text">
+                            Miete2
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="MIETE2"
+                        name="MIETE2"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('MIETE2')"
+                    />
+                    <label class="label" x-show="errors.MIETE2">
+                        <span class="label-text-alt text-error" x-text="errors.MIETE2"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="MIETE3">
+                        <span class="label-text">
+                            Miete3
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="MIETE3"
+                        name="MIETE3"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('MIETE3')"
+                    />
+                    <label class="label" x-show="errors.MIETE3">
+                        <span class="label-text-alt text-error" x-text="errors.MIETE3"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="MIETE4">
+                        <span class="label-text">
+                            Miete4
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="MIETE4"
+                        name="MIETE4"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('MIETE4')"
+                    />
+                    <label class="label" x-show="errors.MIETE4">
+                        <span class="label-text-alt text-error" x-text="errors.MIETE4"></span>
+                    </label>
+                </div>
+
+            </div>
+
+            <!-- Form Actions -->
+            <div class="card-actions justify-end mt-6">
+                <button type="reset" class="btn btn-ghost">
+                    <i class="fas fa-undo mr-2"></i>
+                    Zurücksetzen
+                </button>
+                <button type="submit" 
+                        class="btn btn-primary"
+                        :disabled="!formValid">
+                    <i class="fas fa-save mr-2"></i>
+                    Speichern
+                </button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<!-- Result Container -->
+<div id="result-container" class="mt-6"></div>

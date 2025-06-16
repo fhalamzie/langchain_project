@@ -1,0 +1,11 @@
+{
+  "name": "ruecklagen_management_table",
+  "type": "table",
+  "description": "Table component for Ruecklagen_Management",
+  "styles": [
+    "table",
+    "table-zebra",
+    "overflow-x-auto"
+  ],
+  "scripts": null
+}

@@ -1,0 +1,8 @@
+-- Tabelle: TIP2
+-- Generiert: 2025-05-31 10:26:39
+
+CREATE TABLE TIP2 (
+NR INTEGER NULL,
+TEXT BLOB NULL,
+    PRIMARY KEY (NR)
+);

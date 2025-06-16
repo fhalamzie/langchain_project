@@ -1,0 +1,13 @@
+{
+  "name": "weg_form",
+  "type": "form",
+  "description": "Form component for Wohnungseigentümergemeinschaft",
+  "styles": [
+    "form-control",
+    "input",
+    "select",
+    "textarea",
+    "btn"
+  ],
+  "scripts": null
+}

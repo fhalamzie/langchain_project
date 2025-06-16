@@ -1,0 +1,13 @@
+{
+  "name": "beiraete_form",
+  "type": "form",
+  "description": "Form component for Beiraete",
+  "styles": [
+    "form-control",
+    "input",
+    "select",
+    "textarea",
+    "btn"
+  ],
+  "scripts": null
+}

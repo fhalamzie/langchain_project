@@ -1,0 +1,11 @@
+{
+  "name": "objekt_card",
+  "type": "card",
+  "description": "Card component for Gebäude / Liegenschaft",
+  "styles": [
+    "card",
+    "stats",
+    "stat"
+  ],
+  "scripts": null
+}

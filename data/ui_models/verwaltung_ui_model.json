@@ -1,0 +1,10 @@
+{
+  "entity_name": "verwaltung",
+  "german_title": "Hausverwaltung / Property Management",
+  "description": "hausverwaltung",
+  "primary_key": null,
+  "display_field": null,
+  "relationships": {},
+  "query_templates": [],
+  "fields": []
+}

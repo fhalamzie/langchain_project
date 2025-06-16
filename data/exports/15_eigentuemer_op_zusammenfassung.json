@@ -1,7 +1,7 @@
 {
   "query_info": {
     "file": "15_eigentuemer_op_zusammenfassung.sql",
-    "generated": "2025-06-12T14:40:26.354656",
+    "generated": "2025-06-16T03:33:46.639432",
     "driver": "firebird-driver",
     "charset": "ISO8859_1",
     "business_purpose": "Konsolidierte Übersicht offener Posten pro Eigentümer",
@@ -13,7 +13,7 @@
       "LAYER 4 ENHANCEMENT"
     ],
     "total_rows": 0,
-    "execution_time_seconds": 0.00867
+    "execution_time_seconds": 0.008827
   },
   "columns": [
     "EIGNR",

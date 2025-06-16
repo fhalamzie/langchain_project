@@ -1,0 +1,12 @@
+{
+  "name": "versammlung_search",
+  "type": "search",
+  "description": "Search component for Eigentümerversammlung",
+  "styles": [
+    "form-control",
+    "input",
+    "select",
+    "checkbox"
+  ],
+  "scripts": null
+}

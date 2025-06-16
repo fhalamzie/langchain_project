@@ -1,0 +1,7 @@
+INSERT INTO "ZAEHLER_ORT" ("ID", "ORT") VALUES
+  (2, 'Flur'),
+  (4, 'Mieterwohnung'),
+  (5, 'Allgemeinkeller'),
+  (6, 'Mieterkeller'),
+  (7, 'Etage'),
+  (8, 'Nachspeicherzähler');

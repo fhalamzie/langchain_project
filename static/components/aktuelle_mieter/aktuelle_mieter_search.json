@@ -1,0 +1,12 @@
+{
+  "name": "aktuelle_mieter_search",
+  "type": "search",
+  "description": "Search component for Aktuelle_Mieter",
+  "styles": [
+    "form-control",
+    "input",
+    "select",
+    "checkbox"
+  ],
+  "scripts": null
+}

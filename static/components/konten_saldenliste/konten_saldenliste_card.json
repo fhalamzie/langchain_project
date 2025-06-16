@@ -1,0 +1,11 @@
+{
+  "name": "konten_saldenliste_card",
+  "type": "card",
+  "description": "Card component for Konten_Saldenliste",
+  "styles": [
+    "card",
+    "stats",
+    "stat"
+  ],
+  "scripts": null
+}

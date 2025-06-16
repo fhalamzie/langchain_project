@@ -1,0 +1,11 @@
+{
+  "name": "objekte_portfolio_card",
+  "type": "card",
+  "description": "Card component for Objekte_Portfolio",
+  "styles": [
+    "card",
+    "stats",
+    "stat"
+  ],
+  "scripts": null
+}

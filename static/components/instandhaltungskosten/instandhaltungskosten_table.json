@@ -1,0 +1,11 @@
+{
+  "name": "instandhaltungskosten_table",
+  "type": "table",
+  "description": "Table component for Instandhaltungskosten",
+  "styles": [
+    "table",
+    "table-zebra",
+    "overflow-x-auto"
+  ],
+  "scripts": null
+}

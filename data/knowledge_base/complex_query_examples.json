@@ -380,5 +380,30 @@
         "business_value": "Regulatory preparedness and compliance"
       }
     ]
+  },
+  "common_sql_patterns": {
+    "category": "Common SQL Patterns",
+    "description": "Frequently needed SQL patterns that LLM should know",
+    "examples": [
+      {
+        "query": "Welche Wohnungen stehen aktuell leer?",
+        "intent": "Find vacant apartments",
+        "sql": "SELECT W.ONR, W.ENR, W.EBEZ, W.ART, O.OBEZ, O.OSTRASSE FROM WOHNUNG W INNER JOIN OBJEKTE O ON W.ONR = O.ONR LEFT JOIN BEWOHNER B ON W.ONR = B.ONR AND W.ENR = B.ENR AND (B.VENDE IS NULL OR B.VENDE >= CURRENT_DATE) WHERE B.KNR IS NULL AND W.ART = 'Wohnung' ORDER BY W.ONR, W.ENR",
+        "entities": [
+          "wohnung",
+          "leerstand",
+          "bewohner"
+        ],
+        "complexity": "medium",
+        "key_points": [
+          "LEFT JOIN BEWOHNER to find apartments without tenants",
+          "B.KNR IS NULL indicates no tenant",
+          "Filter W.ART = 'Wohnung' to exclude garages",
+          "WOHNUNG table does NOT have EIGNR field",
+          "OBJEKTE table does NOT have EIGNR field"
+        ],
+        "business_value": "Vacancy management and revenue optimization"
+      }
+    ]
   }
 }

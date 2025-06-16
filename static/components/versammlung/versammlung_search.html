@@ -1,0 +1,47 @@
+<div class="card bg-base-100 shadow-xl">
+    <div class="card-body">
+        <h2 class="card-title">
+            <i class="fas fa-search mr-2"></i>
+            Eigentümerversammlung Suche
+        </h2>
+        
+        <form hx-get="/api/versammlung/search"
+              hx-target="#search-results"
+              hx-trigger="submit, change from:select"
+              class="space-y-4">
+            
+            <!-- Main Search -->
+            <div class="form-control">
+                <label class="label">
+                    <span class="label-text">Suchbegriff</span>
+                </label>
+                <input type="search" 
+                       name="q"
+                       placeholder="Name, Nummer oder Beschreibung..."
+                       class="input input-bordered w-full" />
+            </div>
+            
+            <!-- Filters -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+            </div>
+            
+            <!-- Search Actions -->
+            <div class="flex justify-between">
+                <button type="reset" class="btn btn-ghost btn-sm">
+                    <i class="fas fa-times mr-2"></i>
+                    Filter zurücksetzen
+                </button>
+                <button type="submit" class="btn btn-primary btn-sm">
+                    <i class="fas fa-search mr-2"></i>
+                    Suchen
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Search Results -->
+<div id="search-results" class="mt-6">
+    <!-- Results will be loaded here -->
+</div>

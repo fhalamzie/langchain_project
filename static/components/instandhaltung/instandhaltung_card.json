@@ -1,0 +1,11 @@
+{
+  "name": "instandhaltung_card",
+  "type": "card",
+  "description": "Card component for Instandhaltung / Wartung",
+  "styles": [
+    "card",
+    "stats",
+    "stat"
+  ],
+  "scripts": null
+}

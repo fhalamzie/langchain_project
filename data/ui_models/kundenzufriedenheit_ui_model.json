@@ -1,0 +1,10 @@
+{
+  "entity_name": "kundenzufriedenheit",
+  "german_title": "Mieter-/Kundenzufriedenheit",
+  "description": "customer satisfaction",
+  "primary_key": null,
+  "display_field": null,
+  "relationships": {},
+  "query_templates": [],
+  "fields": []
+}

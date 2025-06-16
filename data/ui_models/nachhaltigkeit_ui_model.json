@@ -1,0 +1,10 @@
+{
+  "entity_name": "nachhaltigkeit",
+  "german_title": "Nachhaltigkeitsbewertung",
+  "description": "sustainability",
+  "primary_key": null,
+  "display_field": null,
+  "relationships": {},
+  "query_templates": [],
+  "fields": []
+}

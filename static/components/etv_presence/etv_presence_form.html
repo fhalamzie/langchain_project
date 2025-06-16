@@ -1,0 +1,616 @@
+<form 
+    id="etv_presence-form"
+    hx-post="/api/etv_presence"
+    hx-trigger="submit"
+    hx-target="#result-container"
+    hx-swap="innerHTML"
+    hx-indicator="#loading-indicator"
+    class="space-y-6"
+    x-data="{ formValid: false, errors: {} }"
+>
+    <div class="card bg-base-100 shadow-xl">
+        <div class="card-body">
+            <h2 class="card-title text-2xl mb-6">
+                <i class="fas fa-building mr-2"></i>
+                Etv_Presence
+            </h2>
+            
+            <!-- Loading Indicator -->
+            <div id="loading-indicator" class="htmx-indicator">
+                <div class="flex justify-center items-center p-4">
+                    <span class="loading loading-spinner loading-lg"></span>
+                </div>
+            </div>
+
+            <!-- Identifikatoren -->
+            <div class="divider">Identifikatoren</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                <div class="form-control w-full">
+                    <label class="label" for="VERNR">
+                        <span class="label-text">
+                            Vernr
+                             <span class="text-error">*</span>
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="VERNR"
+                        name="VERNR"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        required required
+                        
+                        @blur="validateField('VERNR')"
+                    />
+                    <label class="label" x-show="errors.VERNR">
+                        <span class="label-text-alt text-error" x-text="errors.VERNR"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="OBJEKT_NR">
+                        <span class="label-text">
+                            Objekt Nr
+                             <span class="text-error">*</span>
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="OBJEKT_NR"
+                        name="OBJEKT_NR"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        required required
+                        
+                        @blur="validateField('OBJEKT_NR')"
+                    />
+                    <label class="label" x-show="errors.OBJEKT_NR">
+                        <span class="label-text-alt text-error" x-text="errors.OBJEKT_NR"></span>
+                    </label>
+                </div>
+
+            </div>
+
+            <!-- Allgemeine Informationen -->
+            <div class="divider">Allgemeine Informationen</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                <div class="form-control w-full">
+                    <label class="label" for="ANWESEND">
+                        <span class="label-text">
+                            Anwesend
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="ANWESEND"
+                        name="ANWESEND"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('ANWESEND')"
+                    />
+                    <label class="label" x-show="errors.ANWESEND">
+                        <span class="label-text-alt text-error" x-text="errors.ANWESEND"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="ABWESEND">
+                        <span class="label-text">
+                            Abwesend
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="ABWESEND"
+                        name="ABWESEND"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('ABWESEND')"
+                    />
+                    <label class="label" x-show="errors.ABWESEND">
+                        <span class="label-text-alt text-error" x-text="errors.ABWESEND"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="GESAMTANTEILE">
+                        <span class="label-text">
+                            Gesamtanteile
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="GESAMTANTEILE"
+                        name="GESAMTANTEILE"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('GESAMTANTEILE')"
+                    />
+                    <label class="label" x-show="errors.GESAMTANTEILE">
+                        <span class="label-text-alt text-error" x-text="errors.GESAMTANTEILE"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="ANWESENHEITSQUOTE_ANTEILE">
+                        <span class="label-text">
+                            Anwesenheitsquote Anteile
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="ANWESENHEITSQUOTE_ANTEILE"
+                        name="ANWESENHEITSQUOTE_ANTEILE"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('ANWESENHEITSQUOTE_ANTEILE')"
+                    />
+                    <label class="label" x-show="errors.ANWESENHEITSQUOTE_ANTEILE">
+                        <span class="label-text-alt text-error" x-text="errors.ANWESENHEITSQUOTE_ANTEILE"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="BESCHLUSSFAEHIGKEIT_STATUS">
+                        <span class="label-text">
+                            Beschlussfaehigkeit Status
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="BESCHLUSSFAEHIGKEIT_STATUS"
+                        name="BESCHLUSSFAEHIGKEIT_STATUS"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('BESCHLUSSFAEHIGKEIT_STATUS')"
+                    />
+                    <label class="label" x-show="errors.BESCHLUSSFAEHIGKEIT_STATUS">
+                        <span class="label-text-alt text-error" x-text="errors.BESCHLUSSFAEHIGKEIT_STATUS"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="WEG_ENTSCHEIDUNGSBEREICH">
+                        <span class="label-text">
+                            Weg Entscheidungsbereich
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="WEG_ENTSCHEIDUNGSBEREICH"
+                        name="WEG_ENTSCHEIDUNGSBEREICH"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('WEG_ENTSCHEIDUNGSBEREICH')"
+                    />
+                    <label class="label" x-show="errors.WEG_ENTSCHEIDUNGSBEREICH">
+                        <span class="label-text-alt text-error" x-text="errors.WEG_ENTSCHEIDUNGSBEREICH"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="ANZAHLANWESENDPERSONEN">
+                        <span class="label-text">
+                            Anzahlanwesendpersonen
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="ANZAHLANWESENDPERSONEN"
+                        name="ANZAHLANWESENDPERSONEN"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('ANZAHLANWESENDPERSONEN')"
+                    />
+                    <label class="label" x-show="errors.ANZAHLANWESENDPERSONEN">
+                        <span class="label-text-alt text-error" x-text="errors.ANZAHLANWESENDPERSONEN"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="ANZAHLABWESENDPERSONEN">
+                        <span class="label-text">
+                            Anzahlabwesendpersonen
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="ANZAHLABWESENDPERSONEN"
+                        name="ANZAHLABWESENDPERSONEN"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('ANZAHLABWESENDPERSONEN')"
+                    />
+                    <label class="label" x-show="errors.ANZAHLABWESENDPERSONEN">
+                        <span class="label-text-alt text-error" x-text="errors.ANZAHLABWESENDPERSONEN"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="GESAMTEIGENTUEMER">
+                        <span class="label-text">
+                            Gesamteigentuemer
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="GESAMTEIGENTUEMER"
+                        name="GESAMTEIGENTUEMER"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('GESAMTEIGENTUEMER')"
+                    />
+                    <label class="label" x-show="errors.GESAMTEIGENTUEMER">
+                        <span class="label-text-alt text-error" x-text="errors.GESAMTEIGENTUEMER"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="TEILNAHMEQUOTE_PERSONEN">
+                        <span class="label-text">
+                            Teilnahmequote Personen
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="TEILNAHMEQUOTE_PERSONEN"
+                        name="TEILNAHMEQUOTE_PERSONEN"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('TEILNAHMEQUOTE_PERSONEN')"
+                    />
+                    <label class="label" x-show="errors.TEILNAHMEQUOTE_PERSONEN">
+                        <span class="label-text-alt text-error" x-text="errors.TEILNAHMEQUOTE_PERSONEN"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label cursor-pointer">
+                        <span class="label-text">Anzahlvollmachten</span>
+                        <input 
+                            type="checkbox"
+                            id="ANZAHLVOLLMACHTEN"
+                            name="ANZAHLVOLLMACHTEN"
+                            class="checkbox checkbox-primary"
+                            value="1"
+                        />
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label cursor-pointer">
+                        <span class="label-text">Anzahlvollmachtenfallback</span>
+                        <input 
+                            type="checkbox"
+                            id="ANZAHLVOLLMACHTENFALLBACK"
+                            name="ANZAHLVOLLMACHTENFALLBACK"
+                            class="checkbox checkbox-primary"
+                            value="1"
+                        />
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="VOLLMACHT_BEWERTUNG">
+                        <span class="label-text">
+                            Vollmacht Bewertung
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="VOLLMACHT_BEWERTUNG"
+                        name="VOLLMACHT_BEWERTUNG"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('VOLLMACHT_BEWERTUNG')"
+                    />
+                    <label class="label" x-show="errors.VOLLMACHT_BEWERTUNG">
+                        <span class="label-text-alt text-error" x-text="errors.VOLLMACHT_BEWERTUNG"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="TEILNAHME_BEWERTUNG">
+                        <span class="label-text">
+                            Teilnahme Bewertung
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="TEILNAHME_BEWERTUNG"
+                        name="TEILNAHME_BEWERTUNG"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('TEILNAHME_BEWERTUNG')"
+                    />
+                    <label class="label" x-show="errors.TEILNAHME_BEWERTUNG">
+                        <span class="label-text-alt text-error" x-text="errors.TEILNAHME_BEWERTUNG"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="STIMMRECHTSVERTEILUNG">
+                        <span class="label-text">
+                            Stimmrechtsverteilung
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="STIMMRECHTSVERTEILUNG"
+                        name="STIMMRECHTSVERTEILUNG"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('STIMMRECHTSVERTEILUNG')"
+                    />
+                    <label class="label" x-show="errors.STIMMRECHTSVERTEILUNG">
+                        <span class="label-text-alt text-error" x-text="errors.STIMMRECHTSVERTEILUNG"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full md:col-span-2">
+                    <label class="label" for="VERSAMMLUNGSBESCHREIBUNG">
+                        <span class="label-text">
+                            Versammlungsbeschreibung
+                            
+                        </span>
+                    </label>
+                    <textarea 
+                        id="VERSAMMLUNGSBESCHREIBUNG"
+                        name="VERSAMMLUNGSBESCHREIBUNG"
+                        placeholder="None"
+                        class="textarea textarea-bordered w-full"
+                        rows="4"
+                        
+                    ></textarea>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="VERSAMMLUNGSLEITER">
+                        <span class="label-text">
+                            Versammlungsleiter
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="VERSAMMLUNGSLEITER"
+                        name="VERSAMMLUNGSLEITER"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('VERSAMMLUNGSLEITER')"
+                    />
+                    <label class="label" x-show="errors.VERSAMMLUNGSLEITER">
+                        <span class="label-text-alt text-error" x-text="errors.VERSAMMLUNGSLEITER"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="OBJEKT_BEZEICHNUNG">
+                        <span class="label-text">
+                            Objekt Bezeichnung
+                             <span class="text-error">*</span>
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="OBJEKT_BEZEICHNUNG"
+                        name="OBJEKT_BEZEICHNUNG"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        required required
+                        
+                        @blur="validateField('OBJEKT_BEZEICHNUNG')"
+                    />
+                    <label class="label" x-show="errors.OBJEKT_BEZEICHNUNG">
+                        <span class="label-text-alt text-error" x-text="errors.OBJEKT_BEZEICHNUNG"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="WEG_KONFORMITAET">
+                        <span class="label-text">
+                            Weg Konformitaet
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="WEG_KONFORMITAET"
+                        name="WEG_KONFORMITAET"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('WEG_KONFORMITAET')"
+                    />
+                    <label class="label" x-show="errors.WEG_KONFORMITAET">
+                        <span class="label-text-alt text-error" x-text="errors.WEG_KONFORMITAET"></span>
+                    </label>
+                </div>
+
+            </div>
+
+            <!-- Zeitangaben -->
+            <div class="divider">Zeitangaben</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                <div class="form-control w-full">
+                    <label class="label" for="ANWESENDEANTEILE">
+                        <span class="label-text">
+                            Ende
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="date"
+                        id="ANWESENDEANTEILE"
+                        name="ANWESENDEANTEILE"
+                        placeholder="TT.MM.JJJJ"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('ANWESENDEANTEILE')"
+                    />
+                    <label class="label" x-show="errors.ANWESENDEANTEILE">
+                        <span class="label-text-alt text-error" x-text="errors.ANWESENDEANTEILE"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="ABWESENDEANTEILE">
+                        <span class="label-text">
+                            Ende
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="date"
+                        id="ABWESENDEANTEILE"
+                        name="ABWESENDEANTEILE"
+                        placeholder="TT.MM.JJJJ"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('ABWESENDEANTEILE')"
+                    />
+                    <label class="label" x-show="errors.ABWESENDEANTEILE">
+                        <span class="label-text-alt text-error" x-text="errors.ABWESENDEANTEILE"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="VOLLMACHTANTEILANWESENDE">
+                        <span class="label-text">
+                            Ende
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="date"
+                        id="VOLLMACHTANTEILANWESENDE"
+                        name="VOLLMACHTANTEILANWESENDE"
+                        placeholder="TT.MM.JJJJ"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('VOLLMACHTANTEILANWESENDE')"
+                    />
+                    <label class="label" x-show="errors.VOLLMACHTANTEILANWESENDE">
+                        <span class="label-text-alt text-error" x-text="errors.VOLLMACHTANTEILANWESENDE"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="VERSAMMLUNGSDATUM">
+                        <span class="label-text">
+                            Versammlungsdatum
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="date"
+                        id="VERSAMMLUNGSDATUM"
+                        name="VERSAMMLUNGSDATUM"
+                        placeholder="TT.MM.JJJJ"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('VERSAMMLUNGSDATUM')"
+                    />
+                    <label class="label" x-show="errors.VERSAMMLUNGSDATUM">
+                        <span class="label-text-alt text-error" x-text="errors.VERSAMMLUNGSDATUM"></span>
+                    </label>
+                </div>
+
+            </div>
+
+            <!-- Adresse -->
+            <div class="divider">Adresse</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                <div class="form-control w-full">
+                    <label class="label" for="OBJEKT_STRASSE">
+                        <span class="label-text">
+                            Straße
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="OBJEKT_STRASSE"
+                        name="OBJEKT_STRASSE"
+                        placeholder="Musterstraße 1"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('OBJEKT_STRASSE')"
+                    />
+                    <label class="label" x-show="errors.OBJEKT_STRASSE">
+                        <span class="label-text-alt text-error" x-text="errors.OBJEKT_STRASSE"></span>
+                    </label>
+                </div>
+
+            </div>
+
+            <!-- Form Actions -->
+            <div class="card-actions justify-end mt-6">
+                <button type="reset" class="btn btn-ghost">
+                    <i class="fas fa-undo mr-2"></i>
+                    Zurücksetzen
+                </button>
+                <button type="submit" 
+                        class="btn btn-primary"
+                        :disabled="!formValid">
+                    <i class="fas fa-save mr-2"></i>
+                    Speichern
+                </button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<!-- Result Container -->
+<div id="result-container" class="mt-6"></div>

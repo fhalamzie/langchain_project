@@ -1,0 +1,12 @@
+{
+  "name": "eigentuemer_search",
+  "type": "search",
+  "description": "Search component for Eigentuemer",
+  "styles": [
+    "form-control",
+    "input",
+    "select",
+    "checkbox"
+  ],
+  "scripts": null
+}

@@ -1,7 +1,7 @@
 {
   "query_info": {
     "file": "25_objektbezogene_sachkonten.sql",
-    "generated": "2025-06-12T14:40:30.304205",
+    "generated": "2025-06-16T03:33:50.519729",
     "driver": "firebird-driver",
     "charset": "ISO8859_1",
     "business_purpose": "Übersicht aller Sachkonten eines Objekts für NK-Abrechnung",
@@ -13,7 +13,7 @@
       "VERWENDUNG"
     ],
     "total_rows": 1192,
-    "execution_time_seconds": 2.447606
+    "execution_time_seconds": 2.400478
   },
   "columns": [
     "ONR",

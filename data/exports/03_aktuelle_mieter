@@ -1,0 +1,15 @@
+{
+  "query_info": {
+    "file": "03_aktuelle_mieter",
+    "generated": "2025-06-16T04:21:36.822996",
+    "driver": "firebird-driver",
+    "error": "[Errno 2] No such file or directory: 'data/sql/03_aktuelle_mieter'"
+  },
+  "columns": [],
+  "data": [],
+  "summary": {
+    "row_count": 0,
+    "success": false,
+    "error": "[Errno 2] No such file or directory: 'data/sql/03_aktuelle_mieter'"
+  }
+}

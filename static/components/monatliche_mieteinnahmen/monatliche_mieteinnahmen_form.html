@@ -1,0 +1,499 @@
+<form 
+    id="monatliche_mieteinnahmen-form"
+    hx-post="/api/monatliche_mieteinnahmen"
+    hx-trigger="submit"
+    hx-target="#result-container"
+    hx-swap="innerHTML"
+    hx-indicator="#loading-indicator"
+    class="space-y-6"
+    x-data="{ formValid: false, errors: {} }"
+>
+    <div class="card bg-base-100 shadow-xl">
+        <div class="card-body">
+            <h2 class="card-title text-2xl mb-6">
+                <i class="fas fa-building mr-2"></i>
+                Monatliche_Mieteinnahmen
+            </h2>
+            
+            <!-- Loading Indicator -->
+            <div id="loading-indicator" class="htmx-indicator">
+                <div class="flex justify-center items-center p-4">
+                    <span class="loading loading-spinner loading-lg"></span>
+                </div>
+            </div>
+
+            <!-- Allgemeine Informationen -->
+            <div class="divider">Allgemeine Informationen</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                <div class="form-control w-full">
+                    <label class="label" for="JAHR">
+                        <span class="label-text">
+                            Jahr
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="JAHR"
+                        name="JAHR"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('JAHR')"
+                    />
+                    <label class="label" x-show="errors.JAHR">
+                        <span class="label-text-alt text-error" x-text="errors.JAHR"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="MONAT">
+                        <span class="label-text">
+                            Monat
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="MONAT"
+                        name="MONAT"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('MONAT')"
+                    />
+                    <label class="label" x-show="errors.MONAT">
+                        <span class="label-text-alt text-error" x-text="errors.MONAT"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="MONATSNAME">
+                        <span class="label-text">
+                            Monatsname
+                             <span class="text-error">*</span>
+                        </span>
+                    </label>
+                    <input 
+                        type="text"
+                        id="MONATSNAME"
+                        name="MONATSNAME"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        required required
+                        
+                        @blur="validateField('MONATSNAME')"
+                    />
+                    <label class="label" x-show="errors.MONATSNAME">
+                        <span class="label-text-alt text-error" x-text="errors.MONATSNAME"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="ANZAHL_ZAHLER">
+                        <span class="label-text">
+                            Anzahl Zahler
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="ANZAHL_ZAHLER"
+                        name="ANZAHL_ZAHLER"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('ANZAHL_ZAHLER')"
+                    />
+                    <label class="label" x-show="errors.ANZAHL_ZAHLER">
+                        <span class="label-text-alt text-error" x-text="errors.ANZAHL_ZAHLER"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="ANZAHL_BUCHUNGEN">
+                        <span class="label-text">
+                            Anzahl Buchungen
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="ANZAHL_BUCHUNGEN"
+                        name="ANZAHL_BUCHUNGEN"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('ANZAHL_BUCHUNGEN')"
+                    />
+                    <label class="label" x-show="errors.ANZAHL_BUCHUNGEN">
+                        <span class="label-text-alt text-error" x-text="errors.ANZAHL_BUCHUNGEN"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="NK_NACHZAHLUNGEN">
+                        <span class="label-text">
+                            Utility cost additional payments
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="NK_NACHZAHLUNGEN"
+                        name="NK_NACHZAHLUNGEN"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('NK_NACHZAHLUNGEN')"
+                    />
+                    <label class="label" x-show="errors.NK_NACHZAHLUNGEN">
+                        <span class="label-text-alt text-error" x-text="errors.NK_NACHZAHLUNGEN"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="GESAMTEINNAHMEN">
+                        <span class="label-text">
+                            Total monthly income
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="GESAMTEINNAHMEN"
+                        name="GESAMTEINNAHMEN"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('GESAMTEINNAHMEN')"
+                    />
+                    <label class="label" x-show="errors.GESAMTEINNAHMEN">
+                        <span class="label-text-alt text-error" x-text="errors.GESAMTEINNAHMEN"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="PUENKTLICHE_ZAHLER">
+                        <span class="label-text">
+                            Count of punctual payers (within 5 days)
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="PUENKTLICHE_ZAHLER"
+                        name="PUENKTLICHE_ZAHLER"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('PUENKTLICHE_ZAHLER')"
+                    />
+                    <label class="label" x-show="errors.PUENKTLICHE_ZAHLER">
+                        <span class="label-text-alt text-error" x-text="errors.PUENKTLICHE_ZAHLER"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label cursor-pointer">
+                        <span class="label-text">Count of late payers (6-30 days)</span>
+                        <input 
+                            type="checkbox"
+                            id="VERSPAETETE_ZAHLER"
+                            name="VERSPAETETE_ZAHLER"
+                            class="checkbox checkbox-primary"
+                            value="1"
+                        />
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label cursor-pointer">
+                        <span class="label-text">Count of very late payers (>30 days)</span>
+                        <input 
+                            type="checkbox"
+                            id="SEHR_SPAETE_ZAHLER"
+                            name="SEHR_SPAETE_ZAHLER"
+                            class="checkbox checkbox-primary"
+                            value="1"
+                        />
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="DURCHSCHNITTSZAHLUNG">
+                        <span class="label-text">
+                            Durchschnittszahlung
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="DURCHSCHNITTSZAHLUNG"
+                        name="DURCHSCHNITTSZAHLUNG"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('DURCHSCHNITTSZAHLUNG')"
+                    />
+                    <label class="label" x-show="errors.DURCHSCHNITTSZAHLUNG">
+                        <span class="label-text-alt text-error" x-text="errors.DURCHSCHNITTSZAHLUNG"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="SPAETE_EINNAHMEN">
+                        <span class="label-text">
+                            Spaete Einnahmen
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="SPAETE_EINNAHMEN"
+                        name="SPAETE_EINNAHMEN"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('SPAETE_EINNAHMEN')"
+                    />
+                    <label class="label" x-show="errors.SPAETE_EINNAHMEN">
+                        <span class="label-text-alt text-error" x-text="errors.SPAETE_EINNAHMEN"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="ZAHLUNGEN_100_500">
+                        <span class="label-text">
+                            Zahlungen 100 500
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="ZAHLUNGEN_100_500"
+                        name="ZAHLUNGEN_100_500"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('ZAHLUNGEN_100_500')"
+                    />
+                    <label class="label" x-show="errors.ZAHLUNGEN_100_500">
+                        <span class="label-text-alt text-error" x-text="errors.ZAHLUNGEN_100_500"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="ZAHLUNGEN_500_1000">
+                        <span class="label-text">
+                            Zahlungen 500 1000
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="ZAHLUNGEN_500_1000"
+                        name="ZAHLUNGEN_500_1000"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('ZAHLUNGEN_500_1000')"
+                    />
+                    <label class="label" x-show="errors.ZAHLUNGEN_500_1000">
+                        <span class="label-text-alt text-error" x-text="errors.ZAHLUNGEN_500_1000"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="ZAHLUNGEN_UEBER_1000">
+                        <span class="label-text">
+                            Zahlungen Ueber 1000
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="ZAHLUNGEN_UEBER_1000"
+                        name="ZAHLUNGEN_UEBER_1000"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('ZAHLUNGEN_UEBER_1000')"
+                    />
+                    <label class="label" x-show="errors.ZAHLUNGEN_UEBER_1000">
+                        <span class="label-text-alt text-error" x-text="errors.ZAHLUNGEN_UEBER_1000"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="ZAHLUNGSQUOTE_PROZENT">
+                        <span class="label-text">
+                            Payment rate percentage for owners
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="ZAHLUNGSQUOTE_PROZENT"
+                        name="ZAHLUNGSQUOTE_PROZENT"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('ZAHLUNGSQUOTE_PROZENT')"
+                    />
+                    <label class="label" x-show="errors.ZAHLUNGSQUOTE_PROZENT">
+                        <span class="label-text-alt text-error" x-text="errors.ZAHLUNGSQUOTE_PROZENT"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="MIETAUSFALLQUOTE_PROZENT">
+                        <span class="label-text">
+                            Mietausfallquote in Prozent - Critical German property KPI
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="MIETAUSFALLQUOTE_PROZENT"
+                        name="MIETAUSFALLQUOTE_PROZENT"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('MIETAUSFALLQUOTE_PROZENT')"
+                    />
+                    <label class="label" x-show="errors.MIETAUSFALLQUOTE_PROZENT">
+                        <span class="label-text-alt text-error" x-text="errors.MIETAUSFALLQUOTE_PROZENT"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="EINZUGSEFFIZIENZ_PROZENT">
+                        <span class="label-text">
+                            Collection efficiency percentage
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="EINZUGSEFFIZIENZ_PROZENT"
+                        name="EINZUGSEFFIZIENZ_PROZENT"
+                        placeholder="None"
+                        class="input input-bordered w-full"
+                        
+                        
+                        @blur="validateField('EINZUGSEFFIZIENZ_PROZENT')"
+                    />
+                    <label class="label" x-show="errors.EINZUGSEFFIZIENZ_PROZENT">
+                        <span class="label-text-alt text-error" x-text="errors.EINZUGSEFFIZIENZ_PROZENT"></span>
+                    </label>
+                </div>
+
+            </div>
+
+            <!-- Finanzinformationen -->
+            <div class="divider">Finanzinformationen</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                <div class="form-control w-full">
+                    <label class="label" for="MIETEINNAHMEN">
+                        <span class="label-text">
+                            Total rental income
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="MIETEINNAHMEN"
+                        name="MIETEINNAHMEN"
+                        placeholder="0,00 €"
+                        class="input input-bordered w-full"
+                        min="0"
+                        step="0.01" min="0"
+                        @blur="validateField('MIETEINNAHMEN')"
+                    />
+                    <label class="label" x-show="errors.MIETEINNAHMEN">
+                        <span class="label-text-alt text-error" x-text="errors.MIETEINNAHMEN"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="DURCHSCHNITTLICHE_MIETE">
+                        <span class="label-text">
+                            Average rent per unit
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="DURCHSCHNITTLICHE_MIETE"
+                        name="DURCHSCHNITTLICHE_MIETE"
+                        placeholder="0,00 €"
+                        class="input input-bordered w-full"
+                        min="0"
+                        step="0.01" min="0"
+                        @blur="validateField('DURCHSCHNITTLICHE_MIETE')"
+                    />
+                    <label class="label" x-show="errors.DURCHSCHNITTLICHE_MIETE">
+                        <span class="label-text-alt text-error" x-text="errors.DURCHSCHNITTLICHE_MIETE"></span>
+                    </label>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label" for="SOLL_MIETE_GESAMT">
+                        <span class="label-text">
+                            Soll Miete Gesamt
+                            
+                        </span>
+                    </label>
+                    <input 
+                        type="number"
+                        id="SOLL_MIETE_GESAMT"
+                        name="SOLL_MIETE_GESAMT"
+                        placeholder="0,00 €"
+                        class="input input-bordered w-full"
+                        min="0"
+                        step="0.01" min="0"
+                        @blur="validateField('SOLL_MIETE_GESAMT')"
+                    />
+                    <label class="label" x-show="errors.SOLL_MIETE_GESAMT">
+                        <span class="label-text-alt text-error" x-text="errors.SOLL_MIETE_GESAMT"></span>
+                    </label>
+                </div>
+
+            </div>
+
+            <!-- Form Actions -->
+            <div class="card-actions justify-end mt-6">
+                <button type="reset" class="btn btn-ghost">
+                    <i class="fas fa-undo mr-2"></i>
+                    Zurücksetzen
+                </button>
+                <button type="submit" 
+                        class="btn btn-primary"
+                        :disabled="!formValid">
+                    <i class="fas fa-save mr-2"></i>
+                    Speichern
+                </button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<!-- Result Container -->
+<div id="result-container" class="mt-6"></div>

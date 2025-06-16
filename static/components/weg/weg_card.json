@@ -1,0 +1,11 @@
+{
+  "name": "weg_card",
+  "type": "card",
+  "description": "Card component for Wohnungseigentümergemeinschaft",
+  "styles": [
+    "card",
+    "stats",
+    "stat"
+  ],
+  "scripts": null
+}

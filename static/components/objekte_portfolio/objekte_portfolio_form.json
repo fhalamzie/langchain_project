@@ -1,0 +1,13 @@
+{
+  "name": "objekte_portfolio_form",
+  "type": "form",
+  "description": "Form component for Objekte_Portfolio",
+  "styles": [
+    "form-control",
+    "input",
+    "select",
+    "textarea",
+    "btn"
+  ],
+  "scripts": null
+}

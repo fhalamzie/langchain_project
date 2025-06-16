@@ -1,0 +1,13 @@
+{
+  "name": "wohnungen_form",
+  "type": "form",
+  "description": "Form component for Wohnungen",
+  "styles": [
+    "form-control",
+    "input",
+    "select",
+    "textarea",
+    "btn"
+  ],
+  "scripts": null
+}

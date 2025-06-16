@@ -1,0 +1,10 @@
+{
+  "entity_name": "mietausfall",
+  "german_title": "Verlust durch Leerstand / Rental Loss",
+  "description": "rental loss",
+  "primary_key": null,
+  "display_field": null,
+  "relationships": {},
+  "query_templates": [],
+  "fields": []
+}

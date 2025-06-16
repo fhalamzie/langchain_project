@@ -1,0 +1,11 @@
+{
+  "name": "eigentuemer_zahlungshistorie_card",
+  "type": "card",
+  "description": "Card component for Eigentuemer_Zahlungshistorie",
+  "styles": [
+    "card",
+    "stats",
+    "stat"
+  ],
+  "scripts": null
+}

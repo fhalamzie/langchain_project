@@ -1,0 +1,12 @@
+{
+  "name": "objekt_search",
+  "type": "search",
+  "description": "Search component for Gebäude / Liegenschaft",
+  "styles": [
+    "form-control",
+    "input",
+    "select",
+    "checkbox"
+  ],
+  "scripts": null
+}

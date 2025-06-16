@@ -1,0 +1,12 @@
+{
+  "name": "etv_presence_search",
+  "type": "search",
+  "description": "Search component for Etv_Presence",
+  "styles": [
+    "form-control",
+    "input",
+    "select",
+    "checkbox"
+  ],
+  "scripts": null
+}

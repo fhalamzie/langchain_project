@@ -1,0 +1,10 @@
+{
+  "entity_name": "energieausweis",
+  "german_title": "Gebäude-Energieeffizienz-Ausweis",
+  "description": "energy certificate",
+  "primary_key": null,
+  "display_field": null,
+  "relationships": {},
+  "query_templates": [],
+  "fields": []
+}

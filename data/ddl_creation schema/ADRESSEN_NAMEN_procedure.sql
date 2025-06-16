@@ -1,0 +1,7 @@
+-- Prozedur: ADRESSEN_NAMEN
+-- Generiert: 2025-05-31 10:26:42
+
+CREATE OR ALTER PROCEDURE ADRESSEN_NAMEN
+BEGIN
+  /* Procedure text */
+END

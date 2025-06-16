@@ -1,0 +1,13 @@
+{
+  "name": "bank_konten_form",
+  "type": "form",
+  "description": "Form component for Bank_Konten",
+  "styles": [
+    "form-control",
+    "input",
+    "select",
+    "textarea",
+    "btn"
+  ],
+  "scripts": null
+}

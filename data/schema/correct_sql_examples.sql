@@ -1,0 +1,25 @@
+-- CORRECT SQL Examples for WINCASA Database
+
+-- Get all tenants (NOT FROM 'TENANTS' table!)
+SELECT MIETERNR, BNAME, BSTRASSE, BPLZORT, Z1 as KALTMIETE 
+FROM BEWOHNER 
+WHERE EIGNR > -1;
+
+-- Get all owners (NOT FROM 'OWNERS' table!)
+SELECT ONR, ONAME, OSTRASSE, OPLZORT 
+FROM EIGADR 
+WHERE ONR >= 890;
+
+-- Get vacant apartments
+SELECT * FROM BEWOHNER WHERE EIGNR = -1;
+
+-- Get properties
+SELECT OBJNR, OBJNAME, OBJPLZORT FROM OBJEKTE;
+
+-- Get apartments with property info
+SELECT w.WHGNR, w.WBEZ, o.OBJNAME 
+FROM WOHNUNGEN w
+JOIN OBJEKTE o ON w.WOBJNR = o.OBJNR;
+
+-- Calculate total Kaltmiete (cold rent)
+SELECT SUM(Z1) as TOTAL_KALTMIETE FROM BEWOHNER WHERE EIGNR > -1;

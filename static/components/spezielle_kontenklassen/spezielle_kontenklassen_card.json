@@ -1,0 +1,11 @@
+{
+  "name": "spezielle_kontenklassen_card",
+  "type": "card",
+  "description": "Card component for Spezielle_Kontenklassen",
+  "styles": [
+    "card",
+    "stats",
+    "stat"
+  ],
+  "scripts": null
+}

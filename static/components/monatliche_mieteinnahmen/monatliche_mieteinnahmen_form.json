@@ -1,0 +1,13 @@
+{
+  "name": "monatliche_mieteinnahmen_form",
+  "type": "form",
+  "description": "Form component for Monatliche_Mieteinnahmen",
+  "styles": [
+    "form-control",
+    "input",
+    "select",
+    "textarea",
+    "btn"
+  ],
+  "scripts": null
+}

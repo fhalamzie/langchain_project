@@ -1,0 +1,11 @@
+{
+  "name": "versammlungen_card",
+  "type": "card",
+  "description": "Card component for Versammlungen",
+  "styles": [
+    "card",
+    "stats",
+    "stat"
+  ],
+  "scripts": null
+}

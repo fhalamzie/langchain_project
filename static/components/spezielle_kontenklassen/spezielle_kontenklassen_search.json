@@ -1,0 +1,12 @@
+{
+  "name": "spezielle_kontenklassen_search",
+  "type": "search",
+  "description": "Search component for Spezielle_Kontenklassen",
+  "styles": [
+    "form-control",
+    "input",
+    "select",
+    "checkbox"
+  ],
+  "scripts": null
+}

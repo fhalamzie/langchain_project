@@ -1,0 +1,12 @@
+{
+  "name": "beschluesse_search",
+  "type": "search",
+  "description": "Search component for Beschluesse",
+  "styles": [
+    "form-control",
+    "input",
+    "select",
+    "checkbox"
+  ],
+  "scripts": null
+}

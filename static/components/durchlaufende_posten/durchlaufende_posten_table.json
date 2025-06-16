@@ -1,0 +1,11 @@
+{
+  "name": "durchlaufende_posten_table",
+  "type": "table",
+  "description": "Table component for Durchlaufende_Posten",
+  "styles": [
+    "table",
+    "table-zebra",
+    "overflow-x-auto"
+  ],
+  "scripts": null
+}

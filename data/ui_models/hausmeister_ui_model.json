@@ -1,0 +1,10 @@
+{
+  "entity_name": "hausmeister",
+  "german_title": "Hausmeister / Facility Manager",
+  "description": "facility manager",
+  "primary_key": null,
+  "display_field": null,
+  "relationships": {},
+  "query_templates": [],
+  "fields": []
+}

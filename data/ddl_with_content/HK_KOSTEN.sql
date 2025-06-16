@@ -1,0 +1,5 @@
+INSERT INTO "HK_KOSTEN" ("ID", "ONR", "KOSTENSCHLUESSEL", "KOSTENART", "KENNZEICHEN", "RECHNUNGSDATUM", "BETRAG", "WAEHRUNG", "MENGE", "MWST", "IHEIZEXT", "KONTOSTR", "HDART", "HDBETRAG", "CO2BETRAG", "CO2ART") VALUES
+  (6, 42, 19, 'Brennstoffkosten', '', '2023-12-31', 22257.330078125, '€', 0, 0, 10, '41502', 0, 0, NULL, NULL),
+  (7, 42, 29, 'Heizkostenverteiler', '', '2023-12-01', 648.109985351563, '€', NULL, 0, 20, '57004', 0, 0, NULL, NULL),
+  (8, 42, 29, 'Schornsteinfeger', '', '2023-09-04', 96.3099975585938, '€', NULL, 0, 20, '41201', 0, 0, NULL, NULL),
+  (9, 42, 29, 'Heizungswartung', '', '2023-11-20', 146.369995117188, '€', NULL, 0, 20, '57005', 0, 0, NULL, NULL);

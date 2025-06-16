@@ -1,0 +1,10 @@
+{
+  "entity_name": "sozialwohnung",
+  "german_title": "Sozial gebundene Wohnung",
+  "description": "social housing",
+  "primary_key": null,
+  "display_field": null,
+  "relationships": {},
+  "query_templates": [],
+  "fields": []
+}
