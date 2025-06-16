@@ -2,7 +2,7 @@
 
 ## Aktuelle Tasks
 
-### P0: CRITICAL - System liefert 0% korrekte Antworten [Session 14 - COMPLETED]
+### P0: CRITICAL - System liefert 0% korrekte Antworten [Session 14 & 15 - COMPLETED]
 
 - ID: T14.001
   Title: CRITICAL-SQL-Generation-Failure
@@ -91,6 +91,54 @@
   Result: ✅ 20/20 test queries successful, 100% correct SQL generation
 
 ### Session 14: DDL Schema Integration [COMPLETED]
+
+### Session 15: SQL Mode Mapping Fix [COMPLETED]
+
+- ID: T15.001
+  Title: Debug-Mode-Mapping-Issue
+  Effort: 2h
+  Status: done
+  SessionID: sql-mode-fix-20250616
+  Description: Debugged why SQL generation still failed after DDL integration
+  Dependencies: MCP Zen tools (o3-mini, Gemini Pro)
+  Result: ✅ Identified mode name mismatch: "SQL_SYSTEM" vs "sql_standard"
+
+- ID: T15.002
+  Title: Fix-Mode-Mapping-Dictionaries
+  Effort: 1h
+  Status: done
+  SessionID: sql-mode-fix-20250616
+  Description: Added "sql_system" to all prompt loading dictionaries
+  Components: src/wincasa/core/llm_handler.py
+  Result: ✅ SQL_SYSTEM mode now correctly loads VERSION_B_SQL_SYSTEM.md
+
+- ID: T15.003
+  Title: Disable-Knowledge-Base-Context
+  Effort: 1h
+  Status: done
+  SessionID: sql-mode-fix-20250616
+  Description: Disabled knowledge base context for SQL modes
+  Components: src/wincasa/core/llm_handler.py - query_llm method
+  Result: ✅ SQL modes no longer receive confusing knowledge base context
+
+- ID: T15.004
+  Title: Create-SQL-Test-Scripts
+  Effort: 2h
+  Status: done
+  SessionID: sql-mode-fix-20250616
+  Description: Created focused test scripts for SQL generation
+  Components: 
+    - test_sql_generation_focus.py - targeted testing
+    - test_sql_generation_detailed.py - query inspection
+  Result: ✅ Clear visibility into SQL generation process
+
+- ID: T15.005
+  Title: Validate-SQL-Generation-Success
+  Effort: 1h
+  Status: done
+  SessionID: sql-mode-fix-20250616
+  Description: Validated all fixes with realistic queries
+  Result: ✅ 100% success rate (20/20 queries) in test_realistic_queries.py
 
 - ID: T17.008
   Title: Create-FOCUSED-DDL-Documentation

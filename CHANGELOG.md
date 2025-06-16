@@ -221,3 +221,28 @@
   - Responsive design with proper CSS styling
 - **Result**: Clean, focused benchmark tools for mode comparison
 
+### Session 15: SQL Generation Mode Mapping Fix - 2025-06-16
+- Status: completed
+- SessionID: sql-mode-fix-20250616
+- **Problem**: SQL generation failing with 0% success rate despite DDL integration
+- **Root Cause**: Mode name mismatch - test passing "SQL_SYSTEM" but handler expecting "sql_standard"
+- **Analysis**: Used MCP Zen tools (o3-mini, Gemini Pro) to debug prompt loading issues
+- **Solution**: Fixed mode mapping in llm_handler.py
+- **Files Modified**:
+  - src/wincasa/core/llm_handler.py - Added sql_system mode mapping
+  - src/wincasa/utils/VERSION_B_SQL_SYSTEM.md - Enhanced field documentation
+- **Key Fixes**:
+  - Added "sql_system" to prompt_files, layer4_fallback, and layer2_prompts dictionaries
+  - Disabled knowledge base context for SQL modes to prevent confusion
+  - Enhanced BEWOHNER table field documentation with data types
+- **Testing**:
+  - Created test_sql_generation_focus.py for targeted SQL testing
+  - Created test_sql_generation_detailed.py for query inspection
+  - test_realistic_queries.py: 20/20 queries successful (100% success rate)
+- **Results**:
+  - SQL generation now uses correct table names (EIGADR not Eigentumer)
+  - Proper field names (Z1 for Kaltmiete, BNAME for tenant name)
+  - Average response time: 2.06s
+  - All query categories working: contact lookup, tenant search, rent inquiry
+- **Documentation**: Updated all project docs to reflect fixes
+

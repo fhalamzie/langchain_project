@@ -160,6 +160,8 @@ class InvoiceFactory(SQLAlchemyModelFactory):
   5. System Prompt Validation (`src/wincasa/utils/VERSION_*.md`)
      - DDL-basierte Prompts mit echten Firebird-Schemas
      - Exakte Tabellen-/Feldnamen enforcement
+     - Mode mapping für SQL_SYSTEM, SQL_VANILLA etc.
+     - Session 15: Enhanced _load_system_prompt_for_mode() mit sql_system mapping
   6. Dokumentation Update (`./tools/scripts/update-docs.sh`)
   7. Test Execution (`./tools/scripts/run-tests.sh`)
   8. Pipeline Validation (`tests/pipeline/test_sad_system.py`)
@@ -178,6 +180,7 @@ class InvoiceFactory(SQLAlchemyModelFactory):
   5. TESTING.md mit E2E-Testing-Strategy aktualisieren
   6. CHANGELOG.md mit Session-Updates ergänzen
      - Session 14: DDL Schema Integration vollständig dokumentiert
+     - Session 15: SQL Mode Mapping Fix dokumentiert
 
 ### 🌐 `tools/scripts/docs-live.sh`
 

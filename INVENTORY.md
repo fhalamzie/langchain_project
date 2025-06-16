@@ -187,7 +187,11 @@ Scripts und Tests setzen automatisch: `PYTHONPATH=${PYTHONPATH}:$(pwd)/src`
 - test_comprehensive.py - Comprehensive system tests [SessionID: ddl-fix-20250616]
 - query_intent_recognizer.py - Query intent recognition module [SessionID: ddl-fix-20250616]
 
-## Key Metrics (Updated Session 14)
+### Root Scripts (Session 15) - SQL Mode Mapping Fix
+- test_sql_generation_focus.py - Focused SQL generation testing [SessionID: sql-mode-fix-20250616]
+- test_sql_generation_detailed.py - Detailed SQL query inspection [SessionID: sql-mode-fix-20250616]
+
+## Key Metrics (Updated Session 15)
 - Test-Coverage: 100% (26/26 tests in integration/)
 - Field-Mappings: 400+ (erweitert von 226 in data/knowledge_base/)
 - Business Vocabulary: 41 German Terms (erweitert von 12)
@@ -195,7 +199,7 @@ Scripts und Tests setzen automatisch: `PYTHONPATH=${PYTHONPATH}:$(pwd)/src`
 - Semantic Patterns: 95% recognition accuracy (Mode 6)
 - Entities-Indexed: 588 (wincasa.core.wincasa_optimized_search)
 - Performance: 1-5ms Search, ~50ms Semantic Templates, ~100ms Templates
-- SQL Generation Accuracy: 100% with DDL integration (fixed from 0%)
-- Code-Modules: 23 (src/wincasa/*, added query_intent_recognizer.py)
-- Test-Files: 11 (tests/*/, added 4 test files in Session 14)
-- Scripts: 25 (tools/scripts/ + 6 root scripts for Session 12 + 14 for Session 14)
+- SQL Generation Accuracy: 100% with mode mapping fix (was 0% due to wrong prompt loading)
+- Code-Modules: 23 (src/wincasa/*, modified llm_handler.py)
+- Test-Files: 13 (tests/*/, added 2 SQL test files in Session 15)
+- Scripts: 27 (tools/scripts/ + 6 root scripts for Session 12 + 14 for Session 14 + 2 for Session 15)

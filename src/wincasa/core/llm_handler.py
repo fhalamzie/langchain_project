@@ -90,7 +90,8 @@ Wichtige Regeln:
             'json_standard': base_path / 'VERSION_A_JSON_LAYER4_ENHANCED.md',
             'json_vanilla': base_path / 'VERSION_A_JSON_LAYER4_VANILLA.md',
             'sql_standard': base_path / 'VERSION_B_SQL_LAYER4_ENHANCED.md',
-            'sql_vanilla': base_path / 'VERSION_B_SQL_LAYER4_VANILLA.md'
+            'sql_vanilla': base_path / 'VERSION_B_SQL_LAYER4_VANILLA.md',
+            'sql_system': base_path / 'VERSION_B_SQL_LAYER4_ENHANCED.md'  # Add mapping for SQL_SYSTEM
         }
         
         # Fallback to standard Layer 4 prompts if enhanced not found
@@ -98,7 +99,8 @@ Wichtige Regeln:
             'json_standard': base_path / 'VERSION_A_JSON_LAYER4.md',
             'json_vanilla': base_path / 'VERSION_A_JSON_LAYER4_VANILLA.md',
             'sql_standard': base_path / 'VERSION_B_SQL_LAYER4.md',
-            'sql_vanilla': base_path / 'VERSION_B_SQL_LAYER4_VANILLA.md'
+            'sql_vanilla': base_path / 'VERSION_B_SQL_LAYER4_VANILLA.md',
+            'sql_system': base_path / 'VERSION_B_SQL_LAYER4.md'  # Add mapping for SQL_SYSTEM
         }
         
         # Fallback to Layer 2 prompts if Layer 4 not found
@@ -106,7 +108,8 @@ Wichtige Regeln:
             'json_standard': base_path / 'VERSION_A_JSON_SYSTEM.md',
             'json_vanilla': base_path / 'VERSION_A_JSON_VANILLA.md',
             'sql_standard': base_path / 'VERSION_B_SQL_SYSTEM.md',
-            'sql_vanilla': base_path / 'VERSION_B_SQL_VANILLA.md'
+            'sql_vanilla': base_path / 'VERSION_B_SQL_VANILLA.md',
+            'sql_system': base_path / 'VERSION_B_SQL_SYSTEM.md'  # Add mapping for SQL_SYSTEM
         }
         
         mode_lower = mode.lower()
@@ -445,16 +448,20 @@ Wichtige Regeln:
             logger.debug(f"[{query_id}] Temperature: {llm_config.get('temperature')}, Max Tokens: {llm_config.get('max_tokens')}")
             logger.debug(f"[{query_id}] System Prompt Length: {len(self.system_prompt)} chars")
             
-            # Enhance query with knowledge base context
+            # Enhance query with knowledge base context (skip for SQL modes to avoid confusion)
             enhanced_context = ""
-            try:
-                from wincasa.knowledge.knowledge_base_loader import get_knowledge_base
-                kb = get_knowledge_base()
-                enhanced_context = kb.enhance_prompt_with_knowledge(user_query)
-                if enhanced_context:
-                    logger.info(f"[{query_id}] Added knowledge base context to query")
-            except Exception as e:
-                logger.debug(f"Could not enhance with knowledge base: {str(e)}")
+            current_mode = mode or os.environ.get('SYSTEM_MODE', 'json_standard')
+            if 'sql' not in current_mode.lower():
+                try:
+                    from wincasa.knowledge.knowledge_base_loader import get_knowledge_base
+                    kb = get_knowledge_base()
+                    enhanced_context = kb.enhance_prompt_with_knowledge(user_query)
+                    if enhanced_context:
+                        logger.info(f"[{query_id}] Added knowledge base context to query")
+                except Exception as e:
+                    logger.debug(f"Could not enhance with knowledge base: {str(e)}")
+            else:
+                logger.debug(f"[{query_id}] Skipping knowledge base context for SQL mode")
             
             # Check if this is a tenant search query that we can handle directly
             if self._is_tenant_search_query(user_query):

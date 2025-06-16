@@ -19,12 +19,13 @@ For EIGADR table (owners):
 
 For BEWOHNER table (tenants):
 - BNAME = tenant surname
-- BVNAME = tenant first name
+- BVNAME = tenant first name  
 - BSTR = tenant street
 - BPLZORT = tenant city
-- Z1 = cold rent (Kaltmiete)
-- VENDE = contract end (NULL = active)
+- Z1 = cold rent (Kaltmiete) - NUMERIC field
+- VENDE = contract end date (NULL = active tenant)
 - ONR = property number
+- ENR = unit number
 
 For OBJEKTE table (properties):
 - OBEZ = property designation

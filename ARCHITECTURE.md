@@ -143,11 +143,13 @@ Mode 3: SQL_VANILLA  → llm_handler → database   (~500ms)
 Mode 4: SQL_SYSTEM   → llm_handler → database   (~2000ms)
 ```
 
-**Critical Fixes (Session 14)**:
-- Fixed case sensitivity bug in mode handling (SQL_VANILLA vs sql_vanilla)
-- Disabled knowledge base context for SQL modes to avoid confusion
-- System prompts now include exact DDL table/field names
-- LLM enforced to use only real table names (EIGADR not Eigentümer)
+**Critical Fixes (Session 14 & 15)**:
+- Session 14: Fixed case sensitivity bug in mode handling (SQL_VANILLA vs sql_vanilla)
+- Session 14: System prompts now include exact DDL table/field names
+- Session 14: LLM enforced to use only real table names (EIGADR not Eigentümer)
+- Session 15: Fixed mode mapping - added "sql_system" to prompt dictionaries
+- Session 15: Disabled knowledge base context for SQL modes to avoid confusion
+- Session 15: Enhanced prompt loading logic in _load_system_prompt_for_mode()
 
 ### 3. Knowledge Base Architecture
 
