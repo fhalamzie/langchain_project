@@ -216,14 +216,9 @@ class WincasaConfig:
             with open(prompt_path, 'r', encoding='utf-8') as f:
                 content = f.read()
                 
-                # Extrahiere System-Prompt aus Markdown
-                if '```' in content:
-                    # Finde ersten Code-Block (System-Prompt)
-                    start = content.find('```') + 3
-                    end = content.find('```', start)
-                    return content[start:end].strip()
-                else:
-                    return content
+                # VERSION files contain the prompt directly, not in code blocks
+                # Just return the full content
+                return content.strip()
                     
         except FileNotFoundError:
             # Silently ignore and let the caller handle with fallback
