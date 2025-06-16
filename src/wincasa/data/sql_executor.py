@@ -288,10 +288,8 @@ class WincasaSQLExecutor:
     
     def close(self):
         """Schließt Datenbank-Verbindung"""
-        if self.connection:
-            self.connection.close()
-            self.connection = None
-            logger.info("Datenbank-Verbindung geschlossen")
+        # No need to close singleton connection
+        pass
     
     def __enter__(self):
         """Context Manager Entry"""

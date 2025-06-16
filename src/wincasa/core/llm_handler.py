@@ -64,7 +64,8 @@ class WincasaLLMHandler:
         try:
             return self.config.load_system_prompt()
         except Exception as e:
-            logger.error(f"Fehler beim Laden des System-Prompts: {e}")
+            # Log the error but continue with fallback
+            # logger.error(f"Fehler beim Laden des System-Prompts: {e}")
             return self._get_fallback_prompt()
     
     def _get_fallback_prompt(self) -> str:
