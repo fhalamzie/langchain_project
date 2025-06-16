@@ -2,7 +2,7 @@ module.exports = {
   apps: [{
     name: 'wincasa',
     script: '/home/projects/wincasa_llm/venv/bin/python',
-    args: '-m streamlit run src/wincasa/core/streamlit_app.py --server.port 8667 --server.address 0.0.0.0 --server.enableCORS false --server.enableXsrfProtection false --server.headless true',
+    args: '-m streamlit run src/wincasa/core/benchmark_streamlit.py --server.port 8667 --server.address 0.0.0.0 --server.enableCORS false --server.enableXsrfProtection false --server.headless true',
     cwd: '/home/projects/wincasa_llm',
     env: {
       PYTHONPATH: '/home/projects/wincasa_llm/src:/home/projects/wincasa_llm',

@@ -228,5 +228,5 @@ def get_knowledge_base() -> KnowledgeBaseLoader:
     """Get singleton knowledge base instance"""
     global _knowledge_base
     if _knowledge_base is None:
-        _knowledge_base = KnowledgeBaseLoader()
+        _knowledge_base = KnowledgeBaseLoader("data/knowledge_base")
     return _knowledge_base
