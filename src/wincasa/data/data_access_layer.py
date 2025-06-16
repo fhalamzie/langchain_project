@@ -275,7 +275,8 @@ class WincasaDataAccess:
         filtered_tenants = []
         
         for tenant in data.get('data', []):
-            tenant_street_full = str(tenant.get('STRASSE', '')).lower()
+            # Use OBJEKT_STRASSE (property address) not STRASSE (mailing address)
+            tenant_street_full = str(tenant.get('OBJEKT_STRASSE', '')).lower()
             
             # Parse tenant address
             tenant_parts = re.match(r'^(.+?)\s+(\d+\w*)$', tenant_street_full.strip())
@@ -303,10 +304,10 @@ class WincasaDataAccess:
                 # We're looking for a specific number but tenant has none
                 continue
             
-            # Additional filters
-            if postal_code and str(postal_code) not in str(tenant.get('PLZ_ORT', '')):
+            # Additional filters - use property PLZ/ORT
+            if postal_code and str(postal_code) not in str(tenant.get('OBJEKT_ORT', '')):
                 continue
-            if city and city.lower() not in str(tenant.get('PLZ_ORT', '')).lower():
+            if city and city.lower() not in str(tenant.get('OBJEKT_ORT', '')).lower():
                 continue
                 
             filtered_tenants.append(tenant)
