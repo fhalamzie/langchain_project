@@ -158,6 +158,8 @@ class InvoiceFactory(SQLAlchemyModelFactory):
   3. Package Import Tests (`src/wincasa/core/`, `src/wincasa/utils/`, etc.)
   4. Knowledge Base Update (`src/wincasa/knowledge/knowledge_extractor.py`)
   5. System Prompt Validation (`src/wincasa/utils/VERSION_*.md`)
+     - DDL-basierte Prompts mit echten Firebird-Schemas
+     - Exakte Tabellen-/Feldnamen enforcement
   6. Dokumentation Update (`./tools/scripts/update-docs.sh`)
   7. Test Execution (`./tools/scripts/run-tests.sh`)
   8. Pipeline Validation (`tests/pipeline/test_sad_system.py`)
@@ -169,9 +171,13 @@ class InvoiceFactory(SQLAlchemyModelFactory):
   1. Sphinx HTML-Dokumentation generieren (`make html` in docs/)
   2. API-Dokumentation aus src/wincasa/* Docstrings extrahieren
   3. INVENTORY.md mit src/wincasa/* Struktur aktualisieren
+     - Erweitert um Session 14 DDL-Integration Scripts
   4. ARCHITECTURE.md mit Package-Struktur aktualisieren
+     - DDL Schema Integration dokumentiert
+     - Knowledge Base 400+ field mappings
   5. TESTING.md mit E2E-Testing-Strategy aktualisieren
   6. CHANGELOG.md mit Session-Updates ergänzen
+     - Session 14: DDL Schema Integration vollständig dokumentiert
 
 ### 🌐 `tools/scripts/docs-live.sh`
 

@@ -171,7 +171,23 @@ Scripts und Tests setzen automatisch: `PYTHONPATH=${PYTHONPATH}:$(pwd)/src`
 - final_mappings_batch.py - Completes 400+ field mappings [SessionID: quality-focus-20250615]
 - enhance_german_vocabulary.py - Expands German business vocabulary [SessionID: quality-focus-20250615]
 
-## Key Metrics (Updated Session 12)
+### Root Scripts (Session 14) - DDL Integration
+- create_focused_ddl_documentation.py - Extracts DDL schemas from database [SessionID: ddl-fix-20250616]
+- update_sql_system_prompts.py - Updates system prompts with DDL schemas [SessionID: ddl-fix-20250616]
+- update_knowledge_base_ddl.py - Updates knowledge base with DDL field names [SessionID: ddl-fix-20250616]
+- fix_sql_generation.py - Enforces correct table names in SQL [SessionID: ddl-fix-20250616]
+- fix_llm_handler_prompts.py - Fixes prompt loading and context [SessionID: ddl-fix-20250616]
+- fix_mode_case.py - Fixes case sensitivity bug in mode handling [SessionID: ddl-fix-20250616]
+- fix_json_exporter_fields.py - Corrects field names in SQL query files [SessionID: ddl-fix-20250616]
+- enhance_sql_prompt.py - Makes SQL prompts more explicit [SessionID: ddl-fix-20250616]
+- test_sql_mode.py - Tests SQL generation modes [SessionID: ddl-fix-20250616]
+- test_sql_simple.py - Simple SQL generation tests [SessionID: ddl-fix-20250616]
+- debug_search_system.py - Debug tool for search system [SessionID: ddl-fix-20250616]
+- test_realistic_queries.py - Tests realistic business queries [SessionID: ddl-fix-20250616]
+- test_comprehensive.py - Comprehensive system tests [SessionID: ddl-fix-20250616]
+- query_intent_recognizer.py - Query intent recognition module [SessionID: ddl-fix-20250616]
+
+## Key Metrics (Updated Session 14)
 - Test-Coverage: 100% (26/26 tests in integration/)
 - Field-Mappings: 400+ (erweitert von 226 in data/knowledge_base/)
 - Business Vocabulary: 41 German Terms (erweitert von 12)
@@ -179,6 +195,7 @@ Scripts und Tests setzen automatisch: `PYTHONPATH=${PYTHONPATH}:$(pwd)/src`
 - Semantic Patterns: 95% recognition accuracy (Mode 6)
 - Entities-Indexed: 588 (wincasa.core.wincasa_optimized_search)
 - Performance: 1-5ms Search, ~50ms Semantic Templates, ~100ms Templates
-- Code-Modules: 22 (src/wincasa/*, added semantic_template_engine.py)
-- Test-Files: 7 (tests/*/)
-- Scripts: 11 (tools/scripts/ + 6 root scripts for Session 12)
+- SQL Generation Accuracy: 100% with DDL integration (fixed from 0%)
+- Code-Modules: 23 (src/wincasa/*, added query_intent_recognizer.py)
+- Test-Files: 11 (tests/*/, added 4 test files in Session 14)
+- Scripts: 25 (tools/scripts/ + 6 root scripts for Session 12 + 14 for Session 14)

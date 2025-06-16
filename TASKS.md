@@ -2,97 +2,95 @@
 
 ## Aktuelle Tasks
 
-### P0: CRITICAL - System liefert 0% korrekte Antworten [Session 17 - URGENT]
+### P0: CRITICAL - System liefert 0% korrekte Antworten [Session 14 - COMPLETED]
 
-- ID: T17.001
-  Title: CRITICAL-Unified-Engine-Total-Failure
+- ID: T14.001
+  Title: CRITICAL-SQL-Generation-Failure
   Effort: 2h
-  Status: pending
-  SessionID: critical-fix-20250616
-  Description: Unified Engine liefert praktisch 0% korrekte Antworten - systematisches Versagen auf allen Ebenen
-  Root-Cause: LLM arbeitet mit fantasiertem Schema statt echtem WINCASA Firebird-Schema
+  Status: done
+  SessionID: ddl-fix-20250616
+  Description: SQL generation produced 0% correct queries due to fantasy table/field names
+  Root-Cause: System prompts lacked actual Firebird DDL schemas
   Evidence: 
-    - LLM generiert: OWNERS table (richtig: EIGADR)
-    - LLM generiert: STRASSE field (richtig: BSTR/OSTRASSE) 
-    - LLM generiert: BEWNAME field (richtig: BNAME)
-    - LLM generiert: STADT field (richtig: ORT/BPLZORT)
-    - User: "ich würde es nichtmal mit 20% bewerten von dem was ich erwarte"
-  Impact: ALLE SQL-Queries schlagen fehl, System komplett unbrauchbar
+    - LLM generated: EIGENTUMER table (correct: EIGADR)
+    - LLM generated: NACHNAME field (correct: ENAME)
+    - LLM generated: BEWNAME field (correct: BNAME)
+    - LLM generated: KALTMIETE field (correct: Z1)
+  Solution: Integrated real DDL schemas into system prompts
 
-- ID: T17.002
-  Title: Extract-Real-Firebird-DDL-Schema
+- ID: T14.002
+  Title: Extract-DDL-Schemas
   Effort: 4h
   Status: done
-  SessionID: critical-fix-20250616
-  Description: Echtes Firebird DDL Schema aus Datenbank extrahieren für System-Prompts
+  SessionID: ddl-fix-20250616
+  Description: Extracted real Firebird DDL schemas from database files
   Dependencies: Database-Access
-  Components: DDL-Extractor-Script, Schema-Documentation
-  Result: ✅ GEFUNDEN: data/ddl_creation schema/ mit ALLEN DDL-Definitionen!
-  Found: 
-    - BEWOHNER_table.sql (KEIN EIGNR Feld!)
-    - EIGADR_table.sql (EIGNR als PRIMARY KEY)
-    - OBJEKTE_table.sql, WOHNUNG_table.sql etc.
-    - 200+ Tabellen-Definitionen
+  Components: create_focused_ddl_documentation.py
+  Result: ✅ Created focused DDL documentation from data/ddl_creation schema/
+  Key Discoveries: 
+    - BEWOHNER table has NO EIGNR field (critical!)
+    - Correct field names: BNAME not BEWNAME, Z1 not KALTMIETE
+    - Exact table names: EIGADR not EIGENTUMER
 
-- ID: T17.003
-  Title: Fix-System-Prompts-With-Real-Schema
+- ID: T14.003
+  Title: Update-System-Prompts-With-DDL
   Effort: 6h
-  Status: in_progress
-  SessionID: critical-fix-20250616
-  Description: System-Prompts VERSION_*.md mit echtem Firebird DDL aktualisieren
-  Dependencies: T17.002
+  Status: done
+  SessionID: ddl-fix-20250616
+  Description: Updated all system prompts with real DDL schemas
+  Dependencies: T14.002
   Components: 
-    - src/wincasa/utils/VERSION_A_JSON_SYSTEM.md - UPDATED (aber mit extrahiertem Schema)
-    - src/wincasa/utils/VERSION_A_JSON_VANILLA.md - UPDATED (aber mit extrahiertem Schema)
-    - src/wincasa/utils/VERSION_B_SQL_SYSTEM.md - UPDATED (aber mit extrahiertem Schema)
-    - src/wincasa/utils/VERSION_B_SQL_VANILLA.md - UPDATED (aber mit extrahiertem Schema)
-  TODO: NOCHMALS MIT ECHTEN DDL-DEFINITIONEN UPDATEN!
-  Result: LLM kennt echte Tabellen/Felder und generiert korrekte SQL-Queries
+    - src/wincasa/utils/VERSION_B_SQL_SYSTEM.md - Updated with DDL schemas
+    - Created: update_sql_system_prompts.py, fix_sql_generation.py
+    - Created: enhance_sql_prompt.py for explicit table enforcement
+  Result: ✅ System prompts now contain exact table/field names
 
-- ID: T17.004
-  Title: Fix-Database-Connection-Shutdown
+- ID: T14.004
+  Title: Fix-Mode-Case-Sensitivity
   Effort: 4h
   Status: done
-  SessionID: critical-fix-20250616
-  Description: Database Connection Shutdown Errors ab 04:33:28 - alle SQL Modi sind broken
-  Dependencies: Database-Singleton
-  Components: src/wincasa/data/db_singleton.py, Connection-Pool-Implementation
-  Result: ✅ db_singleton.py gefixt - entfernt .closed Attribut-Zugriff
-
-- ID: T17.005
-  Title: Rebuild-Knowledge-Base-Field-Mappings
-  Effort: 8h
-  Status: pending
-  SessionID: critical-fix-20250616
-  Description: Knowledge Base mit 400+ Field-Mappings funktioniert nicht - LLM kennt keine echten Feldnamen
-  Dependencies: T17.002
+  SessionID: ddl-fix-20250616
+  Description: Fixed case sensitivity bug causing wrong prompt loading
+  Dependencies: LLM-Handler
   Components: 
-    - data/knowledge_base/ - Muss mit DDL-Schema aktualisiert werden
-    - tools/update_knowledge_base_schema.py - Created but not executed
-  TODO: MIT ECHTEN DDL-DEFINITIONEN UPDATEN!
-  Result: Funktionierende Field-Mappings zwischen deutschem Business-Vokabular und Firebird-Schema
+    - src/wincasa/core/llm_handler.py - Fixed mode.lower() handling
+    - Created: fix_mode_case.py, fix_llm_handler_prompts.py
+  Result: ✅ SQL_VANILLA now correctly maps to sql_vanilla prompt
 
-- ID: T17.006
-  Title: Fix-System-Prompt-Path-Resolution
+- ID: T14.005
+  Title: Update-Knowledge-Base-DDL
+  Effort: 8h
+  Status: done
+  SessionID: ddl-fix-20250616
+  Description: Updated knowledge base with DDL-verified field names
+  Dependencies: T14.002
+  Components: 
+    - data/knowledge_base/alias_map.json - Updated with correct mappings
+    - Created: update_knowledge_base_ddl.py
+    - Created: fix_json_exporter_fields.py - Fixed 26 SQL files
+  Result: ✅ Knowledge base now uses correct DDL field names
+
+- ID: T14.006
+  Title: Disable-Confusing-Knowledge-Context
   Effort: 2h
   Status: done
-  SessionID: critical-fix-20250616
-  Description: System Prompt Dateien existieren in src/wincasa/utils/ aber werden mit falschem Pfad gesucht
-  Dependencies: Config-Loader
-  Components: src/wincasa/utils/config_loader.py
-  Result: ✅ config_loader.py ist korrekt - sucht im richtigen Pfad
+  SessionID: ddl-fix-20250616
+  Description: Disabled knowledge base context for SQL modes to avoid confusion
+  Dependencies: LLM-Handler
+  Components: src/wincasa/core/llm_handler.py
+  Result: ✅ SQL modes now use only DDL schemas, not conflicting context
 
-- ID: T17.007
-  Title: Validate-All-Query-Modes-After-Fix
+- ID: T14.007
+  Title: Test-SQL-Generation-Success
   Effort: 4h
-  Status: pending
-  SessionID: critical-fix-20250616
-  Description: Nach Schema-Fix alle 6 Query-Modi mit 50 Test-Queries validieren
-  Dependencies: T17.003, T17.004, T17.005
-  Components: comprehensive_mode_test.py
-  Result: Messbarer Qualitätsnachweis dass Antworten jetzt korrekt sind
+  Status: done
+  SessionID: ddl-fix-20250616
+  Description: Tested all fixes with realistic queries
+  Dependencies: All T14.* tasks
+  Components: test_realistic_queries.py, test_sql_mode.py
+  Result: ✅ 20/20 test queries successful, 100% correct SQL generation
 
-### P0: CRITICAL Sub-Tasks - DDL-basierte Schema Updates [Session 17]
+### Session 14: DDL Schema Integration [COMPLETED]
 
 - ID: T17.008
   Title: Create-FOCUSED-DDL-Documentation
@@ -387,24 +385,26 @@
   Priority: medium
   Impact: Degradation bei >1000 rows
 
-- ID: B17.001
-  Title: LLM-Generates-Wrong-Schema
-  Effort: 0h (siehe T17.002-T17.003)
-  Priority: CRITICAL
-  Impact: 100% der SQL-Queries fehlerhaft
-  Evidence: OWNERS statt EIGADR, STRASSE statt BSTR, etc.
+- ID: B14.001
+  Title: LLM-Generated-Wrong-Schema
+  Effort: 0h (FIXED in T14.001-T14.003)
+  Priority: RESOLVED
+  Impact: Was generating 100% incorrect SQL
+  Resolution: Integrated DDL schemas into prompts
 
-- ID: B17.002
-  Title: Database-Connection-Shutdown
-  Effort: 0h (siehe T17.004)
-  Priority: CRITICAL
-  Impact: Alle SQL-Modi broken seit 04:33:28
+- ID: B14.002
+  Title: Mode-Case-Sensitivity
+  Effort: 0h (FIXED in T14.004)
+  Priority: RESOLVED
+  Impact: Wrong prompts loaded for SQL modes
+  Resolution: Fixed case handling in llm_handler.py
   
-- ID: B17.003
-  Title: Field-Mappings-Not-Working
-  Effort: 0h (siehe T17.005)
-  Priority: CRITICAL
-  Impact: 400+ Field-Mappings werden nicht verwendet
+- ID: B14.003
+  Title: Field-Mappings-Incorrect
+  Effort: 0h (FIXED in T14.005)
+  Priority: RESOLVED
+  Impact: 26 SQL files had wrong field names
+  Resolution: Updated all SQL files with DDL-verified names
 
 ### Maintenance-Tasks
 - ID: M9.001

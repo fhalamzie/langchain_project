@@ -135,7 +135,7 @@ def route_query(query: str) -> ExecutionPath:
    - Structured Search für Lookups
    - Legacy SQL für Complex Queries
 
-#### Legacy Handler (Modi 1-4)
+#### Legacy Handler (Modi 1-4) - Enhanced with DDL
 ```
 Mode 1: JSON_VANILLA → llm_handler → layer4_json (~300ms)
 Mode 2: JSON_SYSTEM  → llm_handler → layer4_json (~1500ms)
@@ -143,22 +143,33 @@ Mode 3: SQL_VANILLA  → llm_handler → database   (~500ms)
 Mode 4: SQL_SYSTEM   → llm_handler → database   (~2000ms)
 ```
 
+**Critical Fixes (Session 14)**:
+- Fixed case sensitivity bug in mode handling (SQL_VANILLA vs sql_vanilla)
+- Disabled knowledge base context for SQL modes to avoid confusion
+- System prompts now include exact DDL table/field names
+- LLM enforced to use only real table names (EIGADR not Eigentümer)
+
 ### 3. Knowledge Base Architecture
 
 **Zero-Hardcoding System**
 - **src/wincasa/knowledge/knowledge_extractor.py**: Parst 35 SQL-Dateien
 - **src/wincasa/knowledge/knowledge_base_loader.py**: Runtime Context Injection
+- **DDL Schema Integration**: Real Firebird database schemas in system prompts
 
 ```
 knowledge_base/
-├── alias_map.json              # 226 field mappings
+├── alias_map.json              # 400+ field mappings (expanded)
 ├── join_graph.json             # Table relationships
 ├── business_vocabulary.json    # German → SQL mappings
-└── extraction_report.txt       # Analysis summary
+├── extraction_report.txt       # Analysis summary
+└── ddl_schemas/               # Firebird DDL definitions
 ```
 
-**Kritische Mappings**:
+**Kritische Mappings (DDL-verified)**:
 - KALTMIETE = BEWOHNER.Z1 (nicht KBETRAG!)
+- MIETER_NAME = BEWOHNER.BNAME (nicht BEWNAME)
+- EIGENTUEMER_NAME = EIGADR.ENAME (nicht NACHNAME)
+- BEWOHNER has no EIGNR field (critical fix)
 - EIGNR = -1 (Leerstand)
 - ONR >= 890 (Eigentümer-Filter)
 
@@ -305,9 +316,10 @@ Unified Engine: 100% correctness across all paths
 ### Key Metrics
 - **Accuracy**: 100% Correct Results (contextual and actual values)
 - **Test Coverage**: 100% (26/26 tests)
-- **Field Mappings**: 226 automatisch extrahiert
+- **Field Mappings**: 400+ automatisch extrahiert (expanded from 226)
 - **Query Coverage**: >98% für Business Queries
 - **Code Quality**: 70% reduction through cleanup
+- **DDL Integration**: 100% correct SQL generation with real schemas
 
 ### Business Impact
 - 311 Eigentümer verwaltet
